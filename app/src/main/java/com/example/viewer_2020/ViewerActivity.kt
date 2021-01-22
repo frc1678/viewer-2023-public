@@ -1,5 +1,6 @@
 package com.example.viewer_2020
 
+import android.app.ActionBar
 import android.app.ActivityOptions
 import android.content.Intent
 import android.view.KeyEvent
@@ -23,5 +24,12 @@ open class ViewerActivity : AppCompatActivity() {
         startActivity(
             Intent(this, MainViewerActivity::class.java),
             ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+    }
+
+    fun setToolbarText(view: ActionBar?, support: androidx.appcompat.app.ActionBar?) {
+        view?.title = this.getString(R.string.tv_version_num, com.example.viewer_2020.constants.Constants.VERSION_NUM)
+        support?.title = this.getString(R.string.tv_version_num, com.example.viewer_2020.constants.Constants.VERSION_NUM)
+        view?.show()
+        support?.show()
     }
 }

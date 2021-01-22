@@ -40,9 +40,6 @@ class MainViewerActivity : ViewerActivity() {
         // This is where you put the main activity's menu options. The ranking navigation bar
         // does not have a navigation controller connected to a fragment because its only usage
         // is to return a position value to set the correct collection of data for the ranking adapter.
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_match_schedule, R.id.navigation_ranking))
-        setupActionBarWithNavController(findNavController(host), appBarConfiguration)
         nav_view.setupWithNavController(findNavController(host))
     }
 
@@ -62,5 +59,6 @@ class MainViewerActivity : ViewerActivity() {
         supportActionBar?.hide()
         verifyCSVFileExists("match_schedule.csv")
         setupNavigationController(R.id.nav_host_fragment)
+        setToolbarText(actionBar, supportActionBar)
     }
 }
