@@ -26,13 +26,13 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
         val callback: MongoDatabaseListenerUtil.Callback<DatabaseReference.CompetitionObject> = object :
             MongoDatabaseListenerUtil.Callback<DatabaseReference.CompetitionObject> {
             override fun execute(response: DatabaseReference.CompetitionObject) {
-                //todo 'response' is a CompetitionObject. Example: response.[raw].[qr][0] will return the specified value.
+                //'response' is a CompetitionObject. Example: response.[raw].[qr][0] will return the specified value.
                 MainViewerActivity.databaseReference = response
                 startActivity(Intent(this@MongoDatabaseStartupActivity, MainViewerActivity::class.java))
             }
         }
-        MongoDatabaseListenerUtil().getCompetitionDocument(callback)
-        MongoDatabaseListenerUtil().startDatabaseListener()
+        MongoDatabaseListenerUtil().getCompetitionInformation(callback)
+//        MongoDatabaseListenerUtil().startDatabaseListener()
     }
 
     override fun onResume() {

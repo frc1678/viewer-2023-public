@@ -24,8 +24,8 @@ fun getAllianceInMatchObjectByKey(
     matchNumber: String,
     field: String
 ): String {
-    for (`object` in getDirectField(MainViewerActivity.databaseReference!!.processed, path)
-            as Array<*>) {
+    for (`object` in getDirectField(MainViewerActivity.databaseReference!!, path)
+            as List<*>) {
         if (getDirectField(`object`!!, "match_number").toString() == matchNumber) {
             if (getDirectField(`object`, "alliance_color_is_red").toString() == "true" &&
                     allianceColor == "red")

@@ -8,6 +8,7 @@
 
 package com.example.viewer_2020
 
+import android.util.Log
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.Team
 
@@ -35,13 +36,11 @@ fun getTeamObjectByKey(path: String, teamNumber: String, field: String): String 
     }
     // This for loop will occur when the team does NOT exist in the cache, AND when the team DOES
     // exist in the cache but has a null value for the given field.
-    for (`object` in getDirectField(MainViewerActivity.databaseReference!!.processed, path)
-            as Array<*>) {
+    for (`object` in getDirectField(MainViewerActivity.databaseReference!!, path) as List<*>) {
         if (getDirectField(`object`!!, "team_number").toString() == teamNumber) {
             // Creating two constant variables. One for the current null cache field, and the other
             // for the value that is going to replace it.
-            val mField =
-                MainViewerActivity.teamCache[teamNumber]!!::class.java.getDeclaredField(field)
+            val mField = MainViewerActivity.teamCache[teamNumber]!!::class.java.getDeclaredField(field)
             val mValue = getDirectField(`object`, field)
 
             // Set the accessibility to true and replace the null cache value with the database value.

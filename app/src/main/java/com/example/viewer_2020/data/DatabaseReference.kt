@@ -13,49 +13,36 @@ import org.bson.types.ObjectId
 //Database reference class to make a database object from MongoDB.
 class DatabaseReference {
     data class CompetitionObject (
-        var _id: ObjectId,
-        var year: Int,
-        var week_num: Int,
-        var tba_event_key: String,
-        var raw: Raw,
-        var tba_cache: Array<String>,
-        var processed: Processed
-    )
-
-    data class Raw (
-        var obj_pit: Array<ObjectivePit>,
-        var subj_pit: Array<SubjectivePit>
+        var raw_obj_pit: MutableList<ObjectivePit> = mutableListOf(),
+        var raw_subj_pit: MutableList<SubjectivePit> = mutableListOf(),
+        var obj_tim: MutableList<CalculatedObjectiveTeamInMatch> = mutableListOf(),
+        var obj_team: MutableList<CalculatedObjectiveTeam> = mutableListOf(),
+        var subj_team: MutableList<CalculatedSubjectiveTeam> = mutableListOf(),
+        var predicted_aim: MutableList<CalculatedPredictedAllianceInMatch> = mutableListOf(),
+        var predicted_team: MutableList<CalculatedPredictedTeam> = mutableListOf(),
+        var tba_team: MutableList<CalculatedTBATeam> = mutableListOf(),
+        var pickability: MutableList<CalculatedPickAbilityTeam> = mutableListOf()
     )
 
     data class ObjectivePit (
         var team_number: Int,
         var can_cross_trench: Boolean,
-        var drivetrain: Int, //todo IF APP CRASHES,
-        //todo THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
-        //todo WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
+        var drivetrain: Int, //IF APP CRASHES,
+        //THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
+        //WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
         var drivetrain_motors: Int,
-        var drivetrain_motor_type: Int, //todo IF APP CRASHES,
-        //todo THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
-        //todo WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
+        var drivetrain_motor_type: Int, //IF APP CRASHES,
+        //THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
+        //WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
         var has_ground_intake: Boolean
     )
 
     data class SubjectivePit (
         var team_number: Int,
         var climber_strap_installation_notes: String,
-        var climber_strap_installation_difficulty: Int //todo IF APP CRASHES,
-        //todo THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
-        //todo WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
-    )
-
-    data class Processed (
-        var calc_obj_tim: Array<CalculatedObjectiveTeamInMatch>,
-        var calc_obj_team: Array<CalculatedObjectiveTeam>,
-        var calc_subj_team: Array<CalculatedSubjectiveTeam>,
-        var calc_predicted_aim: Array<CalculatedPredictedAllianceInMatch>,
-        var calc_predicted_team: Array<CalculatedPredictedTeam>,
-        var calc_tba_team: Array<CalculatedTBATeam>,
-        var calc_pick_ability_team: Array<CalculatedPickAbilityTeam>
+        var climber_strap_installation_difficulty: Int //IF APP CRASHES,
+        //THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
+        //WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
     )
 
     data class CalculatedPredictedAllianceInMatch (

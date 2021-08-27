@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
+import com.example.viewer_2020.getTeamDataValue
 import com.example.viewer_2020.getTeamObjectByKey
 import kotlinx.android.synthetic.main.match_details_cell.view.*
 import java.lang.Float.parseFloat
@@ -49,18 +50,12 @@ class MatchDetailsAdapter(
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayed[currentSection]?.get(position)] ?:
                 datapointsDisplayed[currentSection]?.get(position)
         rowView.tv_value.text =
-            if (regex.matcher(getTeamObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM.value, teamNumber,
-                    datapointsDisplayed[currentSection]?.get(position)!!)).matches()) {
-                ("%.1f").format(parseFloat(getTeamObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM.value, teamNumber,
-                    datapointsDisplayed[currentSection]?.get(position)!!))
-                )
+                //if datafield is a float, round datapoint. Otherwise, display returned string from getTeamDataValue
+            if (regex.matcher(getTeamDataValue(teamNumber, datapointsDisplayed[currentSection]?.get(position)!!)).matches()) {
+                ("%.1f").format(parseFloat(
+                    getTeamDataValue(teamNumber, datapointsDisplayed[currentSection]?.get(position)!!)))
             } else {
-                getTeamObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM.value, teamNumber,
-                    datapointsDisplayed[currentSection]?.get(position)!!
-                )
+                getTeamDataValue(teamNumber, datapointsDisplayed[currentSection]?.get(position)!!)
             }
         return rowView
     }

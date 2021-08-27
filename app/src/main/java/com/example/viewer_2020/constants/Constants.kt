@@ -12,9 +12,7 @@ package com.example.viewer_2020.constants
 class Constants {
     companion object {
         //Game specific data.
-        const val TBA_EVENT_KEY = "2020caln"
-        const val DATABASE_NAME = "scouting_system_cloud"
-        const val COLLECTION_NAME = "competitions"
+        const val DATABASE_NAME = "test2020cadm"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
 
@@ -105,11 +103,11 @@ class Constants {
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
-        CALCULATED_OBJECTIVE_TEAM_IN_MATCH("calc_obj_tim"),
-        CALCULATED_OBJECTIVE_TEAM("calc_obj_team"),
-        CALCULATED_SUBJECTIVE_TEAM("calc_subj_team"),
-        CALCULATED_PREDICTED_ALLIANCE_IN_MATCH("calc_predicted_aim"),
-        CALCULATED_PREDICTED_TEAM("calc_predicted_team"),
-        CALCULATED_TBA_TEAM("calc_tba_team")
+        CALCULATED_OBJECTIVE_TEAM_IN_MATCH("obj_tim"),
+        CALCULATED_OBJECTIVE_TEAM("obj_team"),
+        CALCULATED_SUBJECTIVE_TEAM("subj_team"),
+        CALCULATED_PREDICTED_ALLIANCE_IN_MATCH("predicted_aim"),
+        CALCULATED_PREDICTED_TEAM("predicted_team"),
+        CALCULATED_TBA_TEAM("tba_team")
     }
 }
