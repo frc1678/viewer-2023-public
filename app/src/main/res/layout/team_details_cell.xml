@@ -7,10 +7,12 @@
     <TextView
         style="@style/tv_standard_black"
         android:textSize="24sp"
+        android:paddingLeft="65dp"
         android:id="@+id/tv_datapoint_name"/>
 
     <TextView
         style="@style/tv_standard_black"
+        android:gravity="center"
         android:textSize="24sp"
         android:id="@+id/tv_datapoint_value"/>
 
