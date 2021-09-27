@@ -46,12 +46,14 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
-                    <TextView style="@style/tv_standard_black"
-                        app:autoSizeTextType="uniform"
+                    <ImageView
+                        style="@style/RP_images"
+                        android:src="@drawable/shield"
                         android:id="@+id/tv_red_predicted_rp1" />
 
-                    <TextView style="@style/tv_standard_black"
-                        app:autoSizeTextType="uniform"
+                    <ImageView
+                        style="@style/RP_images"
+                        android:src="@drawable/lightning"
                         android:id="@+id/tv_red_predicted_rp2" />
 
                 </LinearLayout>
@@ -96,12 +98,14 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
-                    <TextView style="@style/tv_standard_black"
-                        app:autoSizeTextType="uniform"
+                    <ImageView
+                        style="@style/RP_images"
+                        android:src="@drawable/shield"
                         android:id="@+id/tv_blue_predicted_rp1" />
 
-                    <TextView style="@style/tv_standard_black"
-                        app:autoSizeTextType="uniform"
+                    <ImageView
+                        style="@style/RP_images"
+                        android:src="@drawable/lightning"
                         android:id="@+id/tv_blue_predicted_rp2" />
 
                 </LinearLayout>

@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.viewer_2020.*
@@ -175,8 +176,7 @@ class MatchScheduleListAdapter(
                         MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne!!.toDouble() >
                         Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                     ) {
-                        tv.text =
-                            Constants.RANKING_POINT_CHARACTER
+                        tv.setImageResource(R.drawable.shield)
                         continue@red_predicted
                     }
                 }
@@ -185,8 +185,7 @@ class MatchScheduleListAdapter(
                         MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() >
                         Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                     ) {
-                        tv.text =
-                            Constants.RANKING_POINT_CHARACTER
+                        tv.setImageResource(R.drawable.lightning)
                         continue@red_predicted
                     }
                 }
@@ -202,7 +201,6 @@ class MatchScheduleListAdapter(
             if (value != Constants.NULL_CHARACTER &&
                 value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION
             ) {
-                tv.text = Constants.RANKING_POINT_CHARACTER
                 when (listOf(
                     viewHolder.tvRedPredictedRPOne,
                     viewHolder.tvRedPredictedRPTwo
@@ -216,7 +214,7 @@ class MatchScheduleListAdapter(
                             value.toFloat()
                     }
                 }
-            } else tv.text = ""
+            } else tv.setImageResource(R.drawable.white_background)
         }
         blue_predicted@ for (tv in listOf(
             viewHolder.tvBluePredictedRPOne,
@@ -231,8 +229,7 @@ class MatchScheduleListAdapter(
                         MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne!!.toDouble() >
                         Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                     ) {
-                        tv.text =
-                            Constants.RANKING_POINT_CHARACTER
+                        tv.setImageResource(R.drawable.shield)
                         continue@blue_predicted
                     }
                 }
@@ -241,8 +238,7 @@ class MatchScheduleListAdapter(
                         MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() >
                         Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                     ) {
-                        tv.text =
-                            Constants.RANKING_POINT_CHARACTER
+                        tv.setImageResource(R.drawable.lightning)
                         continue@blue_predicted
                     }
                 }
@@ -258,7 +254,6 @@ class MatchScheduleListAdapter(
             if (value != Constants.NULL_CHARACTER &&
                 value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION
             ) {
-                tv.text = Constants.RANKING_POINT_CHARACTER
                 when (listOf(
                     viewHolder.tvBluePredictedRPOne,
                     viewHolder.tvBluePredictedRPTwo
@@ -272,7 +267,7 @@ class MatchScheduleListAdapter(
                             value.toFloat()
                     }
                 }
-            } else tv.text = ""
+            } else tv.setImageResource(R.drawable.white_background)
         }
         return rowView!!
     }
@@ -282,10 +277,10 @@ class MatchScheduleListAdapter(
         val tvMatchNumber = view?.findViewById(R.id.tv_match_number) as TextView
         val tvBluePredictedScore = view?.findViewById(R.id.tv_blue_predicted_score) as TextView
         val tvRedPredictedScore = view?.findViewById(R.id.tv_red_predicted_score) as TextView
-        val tvBluePredictedRPOne = view?.findViewById(R.id.tv_blue_predicted_rp1) as TextView
-        val tvRedPredictedRPOne = view?.findViewById(R.id.tv_red_predicted_rp1) as TextView
-        val tvBluePredictedRPTwo = view?.findViewById(R.id.tv_blue_predicted_rp2) as TextView
-        val tvRedPredictedRPTwo = view?.findViewById(R.id.tv_red_predicted_rp2) as TextView
+        val tvBluePredictedRPOne = view?.findViewById(R.id.tv_blue_predicted_rp1) as ImageView
+        val tvRedPredictedRPOne = view?.findViewById(R.id.tv_red_predicted_rp1) as ImageView
+        val tvBluePredictedRPTwo = view?.findViewById(R.id.tv_blue_predicted_rp2) as ImageView
+        val tvRedPredictedRPTwo = view?.findViewById(R.id.tv_red_predicted_rp2) as ImageView
         val tvBlueTeamOne = view?.findViewById(R.id.tv_blue_team_one) as TextView
         val tvBlueTeamTwo = view?.findViewById(R.id.tv_blue_team_two) as TextView
         val tvBlueTeamThree = view?.findViewById(R.id.tv_blue_team_three) as TextView
