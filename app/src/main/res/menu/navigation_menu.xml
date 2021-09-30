@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_menu_match_schedule"
+        android:title="Match Schedule"
+        />
+
+    <item
+        android:id="@+id/nav_menu_our_match_schedule"
+        android:title="Our Match Schedule"
+        />
+
+    <item
+        android:id="@+id/nav_menu_rankings"
+        android:title="Rankings"
+        />
+</menu>

@@ -8,6 +8,7 @@
 
 package com.example.viewer_2020
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -22,18 +23,15 @@ import com.example.viewer_2020.fragments.match_schedule.MatchScheduleListAdapter
 import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.team_details.view.*
+import android.util.Log
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
 class MatchScheduleFragment : Fragment() {
-
-    private val matchScheduleViewModel by lazy {
-        ViewModelProviders.of(this).get(MatchScheduleViewModel::class.java)
-    }
-
     private var currentMatchScheduleSectionMenuItem: MenuItem? = null
 
     private val matchDetailsFragment = MatchDetailsFragment()
     private val matchDetailsFragmentArguments = Bundle()
+    var scheduleSelected : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,28 +39,15 @@ class MatchScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
+        scheduleSelected = getArguments()?.getString("selection")
 
-        if (currentMatchScheduleSectionMenuItem == null) currentMatchScheduleSectionMenuItem =
-            root.nav_match_schedule_view.menu.getItem(0)
-        updateMatchScheduleListView(root)
-
-        // This creates the on menu select listener for the MatchSchedule fragment navigation bar.
-        // The purpose of this navigation bar is to switch between the type of data that the
-        // list view in match schedule displays. The list view adapter contents come from the
-        // match_schedule.csv file in the phone storage.
-        root.nav_match_schedule_view.setOnNavigationItemSelectedListener {
-            if (currentMatchScheduleSectionMenuItem != it) {
-                it.isChecked = true
-                currentMatchScheduleSectionMenuItem = it
                 updateMatchScheduleListView(root)
-            }
-            return@setOnNavigationItemSelectedListener true
-        }
 
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
+
         root.lv_match_schedule.setOnItemClickListener { _, _, position, _ ->
-            when (currentMatchScheduleSectionMenuItem.toString()) {
+            when (scheduleSelected) {
                 "Our Schedule" -> {
                     matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER,
                         getTeamSpecificMatchNumbers(Constants.MY_TEAM_NUMBER)[position].toInt())

@@ -13,5 +13,7 @@
     <string name="title_our_schedule">Our Schedule</string>
     <string name="team_number_text">Team #</string>
     <string name="tv_version_num">Version: %1$s</string>
+    <string name="close">Close</string>
+    <string name="open">Open</string>
 
 </resources>
