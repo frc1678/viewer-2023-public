@@ -5,23 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2020.R
-import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.getTeamDataValue
-import com.example.viewer_2020.getTeamObjectByKey
 import kotlinx.android.synthetic.main.match_details_cell.view.*
-import java.lang.Float.parseFloat
+import java.lang.Float
 import java.util.regex.Pattern
 
-// Custom list adapter class for each list view of the six teams featured in every MatchDetails display.
-// TODO implement a type 'Team' object parameter to access the team data for the team number.
-class MatchDetailsAdapter(
+class MatchDetailsAdapter (
     private val context: FragmentActivity,
     private val datapointsDisplayed: Map<String, ArrayList<String>>,
     private val currentSection: String,
-    private val teamNumber: String
+    private val teamNumber: List<String>
 ) : BaseAdapter() {
 
     private val inflater: LayoutInflater
@@ -44,19 +41,28 @@ class MatchDetailsAdapter(
 
     // Populate the elements of the custom cell.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val regex: Pattern = Pattern.compile("[0-9]+" + Regex.escape(".") + "[0-9]+")
         val rowView = inflater.inflate(R.layout.match_details_cell, parent, false)
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayed[currentSection]?.get(position)] ?:
-                datapointsDisplayed[currentSection]?.get(position)
-        rowView.tv_value.text =
-                //if datafield is a float, round datapoint. Otherwise, display returned string from getTeamDataValue
-            if (regex.matcher(getTeamDataValue(teamNumber, datapointsDisplayed[currentSection]?.get(position)!!)).matches()) {
-                ("%.1f").format(parseFloat(
-                    getTeamDataValue(teamNumber, datapointsDisplayed[currentSection]?.get(position)!!)))
-            } else {
-                getTeamDataValue(teamNumber, datapointsDisplayed[currentSection]?.get(position)!!)
-            }
+                    datapointsDisplayed[currentSection]?.get(position)
+
+        var values = listOf<TextView>(rowView.tv_team_one_md, rowView.tv_team_two_md, rowView.tv_team_three_md,
+            rowView.tv_team_four_md, rowView.tv_team_five_md, rowView.tv_team_six_md)
+
+        for (x in 0..5){
+            getTeamValue(values[x], datapointsDisplayed[currentSection]?.get(position)!!, teamNumber[x])
+        }
+
         return rowView
+    }
+    fun getTeamValue(textView: TextView, field: String, teamNumber: String) {
+        val regex: Pattern = Pattern.compile("[0-9]+" + Regex.escape(".") + "[0-9]+")
+        textView.text =
+                //if datafield is a float, round datapoint. Otherwise, display returned string from getTeamDataValue
+            if (regex.matcher(getTeamDataValue(teamNumber, field)).matches()) {
+                ("%.1f").format(Float.parseFloat(getTeamDataValue(teamNumber, field)))
+            } else {
+                getTeamDataValue(teamNumber, field)
+            }
     }
 }

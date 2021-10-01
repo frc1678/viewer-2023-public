@@ -12,19 +12,30 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:layout_margin">6dp</item>
         <item name="android:text">@string/data_points_texts_match_details</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="tv_team_number_match_details">
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">25dp</item>
+    <style name="tv_variable_name_match_details">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left</item>
+        <item name="android:text">9999</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="tv_team_number_match_details">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:text">9999</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="tv_team_number_team_details">
@@ -59,7 +70,7 @@
     </style>
 
     <style name="lv_standard_match_details">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
     </style>

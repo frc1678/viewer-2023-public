@@ -3,27 +3,44 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="1"
-    android:paddingRight="10dp"
-    android:paddingLeft="3dp">
+    android:padding="3dp">
 
     <TextView
         android:id="@+id/tv_datapoint_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:text="Datapoint name"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:gravity="center"/>
-
+        style="@style/tv_variable_name_match_details"
+        android:layout_weight="2"
+        android:text="variable"/>
     <TextView
-        android:id="@+id/tv_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Value"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:gravity="right" />
+        android:id="@+id/tv_team_one_md"
+        style="@style/tv_team_number_match_details"
+        android:textColor="@color/Blue"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_team_two_md"
+        style="@style/tv_team_number_match_details"
+        android:textColor="@color/Blue"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_team_three_md"
+        style="@style/tv_team_number_match_details"
+        android:textColor="@color/Blue"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_team_four_md"
+        style="@style/tv_team_number_match_details"
+        android:textColor="@color/Red"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_team_five_md"
+        style="@style/tv_team_number_match_details"
+        android:textColor="@color/Red"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_team_six_md"
+        style="@style/tv_team_number_match_details"
+        android:textColor="@color/Red"
+
+        android:layout_weight="1"/>
+
 
 </LinearLayout>

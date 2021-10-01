@@ -13,12 +13,12 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
+import kotlinx.android.synthetic.main.match_details.*
 import kotlinx.android.synthetic.main.match_details.view.*
 
 // The fragment class for the Match Details display that occurs when you click on a
@@ -57,7 +57,7 @@ class MatchDetailsFragment : Fragment() {
             return@setOnNavigationItemSelectedListener true
         }
 
-        for (teamNumber in getTeamNumberCollection(root)) {
+        for (teamNumber in getTeamNumbersXML(root)) {
             // If the index of the team number in the team number list is below 3, it means that the
             // team number is a team from the blue alliance.
 
@@ -69,16 +69,16 @@ class MatchDetailsFragment : Fragment() {
             // set the teamNumber text to the correct team index of the blueTeams/redTeams list of the Match object.
             // We get the index by checking which index of the teamNumber collection list the current team
             // number iteration is.
-            if (getTeamNumberCollection(root).indexOf(teamNumber) < 3) {
+            if (getTeamNumbersXML(root).indexOf(teamNumber) < 3) {
                 teamNumber.text = convertMatchScheduleListToMap(
                     csvFileRead("match_schedule.csv", false),
                     isFiltered = true,
-                    matchNumber = matchNumber)!![matchNumber.toString()]!!.blueTeams[getTeamNumberCollection(root).indexOf(teamNumber)]
+                    matchNumber = matchNumber)!![matchNumber.toString()]!!.blueTeams[getTeamNumbersXML(root).indexOf(teamNumber)]
             } else {
                 teamNumber.text = convertMatchScheduleListToMap(
                     csvFileRead("match_schedule.csv", false),
                     isFiltered = true,
-                    matchNumber = matchNumber)!![matchNumber.toString()]!!.redTeams[getTeamNumberCollection(root).indexOf(teamNumber) - 3]
+                    matchNumber = matchNumber)!![matchNumber.toString()]!!.redTeams[getTeamNumbersXML(root).indexOf(teamNumber) - 3]
             }
 
             // We run this method because the code above sets each team number text view to the
@@ -91,16 +91,16 @@ class MatchDetailsFragment : Fragment() {
         return root
     }
 
-    // Returns each of the six team's summary lists that are displayed in each team's section of the match details.
-    private fun getListViewCollection(root: View): List<ListView> {
-        return listOf<ListView>(root.lv_team_one, root.lv_team_two, root.lv_team_three,
-            root.lv_team_four, root.lv_team_five, root.lv_team_six)
+    // Returns each of the six team's team number xml elements.
+    private fun getTeamNumbersXML(root: View): List<TextView> {
+        return listOf<TextView>(root.tv_team_one_label, root.tv_team_two_label, root.tv_team_three_label,
+            root.tv_team_four_label, root.tv_team_five_label, root.tv_team_six_label)
     }
 
-    // Returns each of the six team's team number display.
-    private fun getTeamNumberCollection(root: View): List<TextView> {
-        return listOf<TextView>(root.tv_team_one, root.tv_team_two, root.tv_team_three,
-            root.tv_team_four, root.tv_team_five, root.tv_team_six)
+    //Returns all of the team numbers in a match as a list of Strings
+    private fun getTeamNumbersList (root: View): List<String> {
+        return listOf<String>(root.tv_team_one_label.text.toString(), root.tv_team_two_label.text.toString(), root.tv_team_three_label.text.toString(),
+            root.tv_team_four_label.text.toString(), root.tv_team_five_label.text.toString(), root.tv_team_six_label.text.toString())
     }
 
     // Returns each of the three match details header text views that lay beside the team number.
@@ -113,7 +113,7 @@ class MatchDetailsFragment : Fragment() {
     // then go to a new TeamDetails page for the given team number.
     private fun initTeamNumberClickListeners(root: View) {
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
-        for (tv in getTeamNumberCollection(root)) {
+        for (tv in getTeamNumbersXML(root)) {
             tv.setOnClickListener {
                 teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, tv.text.toString())
                 teamDetailsFragment.arguments = teamDetailsFragmentArguments
@@ -128,17 +128,15 @@ class MatchDetailsFragment : Fragment() {
         // For every team in the match details, we set the adapter for their list view according to
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
-        for (listView in getListViewCollection(root)) {
-            listView.adapter =
+//        for (listView in getListViewCollection(root)) {
+            root.lv_match_details.adapter =
                 MatchDetailsAdapter(
                     context = activity!!,
                     datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS,
                     currentSection = currentMatchDetailsSectionMenuItem.toString(),
-                    teamNumber = getTeamNumberCollection(root)[getListViewCollection(root).indexOf(
-                        listView
-                    )].text.toString()
+                    teamNumber = getTeamNumbersList(root)
                 )
-        }
+//        }
     }
 
     // Prepare the MatchDetails activity by populating each text view and other XML element
