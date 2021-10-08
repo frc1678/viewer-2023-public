@@ -75,6 +75,16 @@
         <item name="android:layout_weight">1</item>
     </style>
 
+    <style name="tv_rp_datapoint">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="tv_standard_black">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
