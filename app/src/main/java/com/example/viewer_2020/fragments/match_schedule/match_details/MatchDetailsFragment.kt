@@ -20,6 +20,7 @@ import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.match_details.*
 import kotlinx.android.synthetic.main.match_details.view.*
+import java.lang.Float.parseFloat
 
 // The fragment class for the Match Details display that occurs when you click on a
 // match in the match schedule page.
@@ -155,15 +156,15 @@ class MatchDetailsFragment : Fragment() {
 
         for (tv in getHeaderCollection(root)) {
             if (getHeaderCollection(root).indexOf(tv) < 3) {
-                tv.text = getAllianceInMatchObjectByKey(
+                tv.text = parseFloat(("%.2f").format(getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber.toString(),
-                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv)])
+                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv)]).toFloat())).toString()
             } else {
-                tv.text = getAllianceInMatchObjectByKey(
+                tv.text = parseFloat(("%.2f").format(getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber.toString(),
-                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv) - 3])
+                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv) - 3]).toFloat())).toString()
             }
         }
     }

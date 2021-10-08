@@ -19,6 +19,9 @@ import androidx.core.content.ContextCompat
 import com.example.viewer_2020.*
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2020.R
+import kotlinx.android.synthetic.main.match_details_cell.view.*
+import java.lang.Float.parseFloat
 
 // Custom list adapter class with Match object handling to display the custom cell for the match schedule.
 class MatchScheduleListAdapter(
@@ -118,9 +121,9 @@ class MatchScheduleListAdapter(
             )
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvBluePredictedScore.text =
-                    value
+                    parseFloat(("%.2f").format(value.toFloat())).toString()
                 MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
-                    value.toFloat()
+                    parseFloat(("%.2f").format(value.toFloat()))
             } else {
                 viewHolder.tvBluePredictedScore.text =
                     Constants.NULL_PREDICTED_SCORE_CHARACTER
@@ -137,9 +140,9 @@ class MatchScheduleListAdapter(
             )
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvRedPredictedScore.text =
-                    value
+                    parseFloat(("%.2f").format(value.toFloat())).toString()
                 MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
-                    value.toFloat()
+                    parseFloat(("%.2f").format(value.toFloat()))
             } else {
                 viewHolder.tvRedPredictedScore.text =
                     Constants.NULL_PREDICTED_SCORE_CHARACTER
@@ -207,11 +210,11 @@ class MatchScheduleListAdapter(
                 ).indexOf(tv)) {
                     0 -> {
                         MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne =
-                            value.toFloat()
+                            parseFloat(("%.2f").format(value.toFloat()))
                     }
                     1 -> {
                         MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo =
-                            value.toFloat()
+                            parseFloat(("%.2f").format(value.toFloat()))
                     }
                 }
             } else tv.setImageResource(R.drawable.white_background)
@@ -260,11 +263,11 @@ class MatchScheduleListAdapter(
                 ).indexOf(tv)) {
                     0 -> {
                         MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne =
-                            value.toFloat()
+                            parseFloat(("%.2f").format(value.toFloat()))
                     }
                     1 -> {
                         MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo =
-                            value.toFloat()
+                            parseFloat(("%.2f").format(value.toFloat()))
                     }
                 }
             } else tv.setImageResource(R.drawable.white_background)
