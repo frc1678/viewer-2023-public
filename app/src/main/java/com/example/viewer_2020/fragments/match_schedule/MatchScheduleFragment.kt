@@ -39,7 +39,7 @@ class MatchScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
-        scheduleSelected = getArguments()?.getString("selection")
+        scheduleSelected = arguments?.getString("selection")
 
                 updateMatchScheduleListView(root)
 
@@ -58,7 +58,7 @@ class MatchScheduleFragment : Fragment() {
             }
             matchDetailsFragment.arguments = matchDetailsFragmentArguments
             matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-            matchDetailsFragmentTransaction.replace(
+            matchDetailsFragmentTransaction.addToBackStack(null).replace(
                 (view!!.parent as ViewGroup).id,
                 matchDetailsFragment
             ).commit()

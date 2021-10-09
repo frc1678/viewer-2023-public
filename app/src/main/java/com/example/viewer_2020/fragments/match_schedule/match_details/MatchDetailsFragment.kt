@@ -9,6 +9,7 @@
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -119,7 +120,10 @@ class MatchDetailsFragment : Fragment() {
                 teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, tv.text.toString())
                 teamDetailsFragment.arguments = teamDetailsFragmentArguments
                 matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                matchDetailsFragmentTransaction.replace((view!!.parent as ViewGroup).id, teamDetailsFragment).commit()
+                matchDetailsFragmentTransaction.addToBackStack(null).replace(
+                    (view!!.parent as ViewGroup).id,
+                    teamDetailsFragment
+                ).commit()
             }
         }
     }

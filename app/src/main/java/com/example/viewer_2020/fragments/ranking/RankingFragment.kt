@@ -22,6 +22,8 @@ import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.ranking.RankingListAdapter
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
+import com.google.android.material.navigation.NavigationView
+
 
 // The fragment of the ranking lists 'view' that is one of the options of the navigation bar.
 // Disclaimer: This fragment contains another menu bar which is displayed directly above the
@@ -34,7 +36,8 @@ class RankingFragment : Fragment() {
     private val teamDetailsFragmentArguments = Bundle()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Usage of counter variable to increment at every iteration of the menu item forEach statement.
@@ -68,7 +71,7 @@ class RankingFragment : Fragment() {
             )
             teamDetailsFragment.arguments = teamDetailsFragmentArguments
             rankingFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-            rankingFragmentTransaction.replace(
+            rankingFragmentTransaction.addToBackStack(null).replace(
                 (view!!.parent as ViewGroup).id,
                 teamDetailsFragment
             ).commit()

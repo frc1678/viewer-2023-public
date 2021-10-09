@@ -11,15 +11,14 @@ package com.example.viewer_2020
 import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.viewer_2020.data.*
+import com.example.viewer_2020.data.DatabaseReference
+import com.example.viewer_2020.data.Match
+import com.example.viewer_2020.data.Team
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import java.io.File
 
 
@@ -42,8 +41,16 @@ class MainViewerActivity : ViewerActivity() {
         }
     }
 
-    // Override the onBackPressed to disable the back button as everything is inside fragments.
-    override fun onBackPressed() { }
+    //Overrides back button to go back to last fragment.
+    //Disables the back button and returns nothing when in the startup match schedule.
+    override fun onBackPressed() {
+        var backCount = supportFragmentManager.backStackEntryCount
+        if (backCount == 1) {
+            return
+        } else {
+            supportFragmentManager.popBackStack()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +58,6 @@ class MainViewerActivity : ViewerActivity() {
         supportActionBar?.hide()
         verifyCSVFileExists("match_schedule.csv")
         setToolbarText(actionBar, supportActionBar)
-
 
         val drawerLayout : DrawerLayout = findViewById(R.id.container)
         val navView : NavigationView = findViewById(R.id.navigation)
@@ -67,7 +73,7 @@ class MainViewerActivity : ViewerActivity() {
 
         //default screen when the viewer starts (after pulling data)
         bundle.putString("selection", "Match Schedule")
-        matchScheduleFragment.setArguments(bundle)
+        matchScheduleFragment.arguments = bundle
         supportFragmentManager.beginTransaction()
             .addToBackStack(null)
             .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
@@ -79,33 +85,32 @@ class MainViewerActivity : ViewerActivity() {
 
                 R.id.nav_menu_match_schedule -> {
                     bundle.putString("selection", "Match Schedule")
-                    matchScheduleFragment.setArguments(bundle)
+                    matchScheduleFragment.arguments = bundle
                     supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                            .commit()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
+                        .commit()
                 }
 
                 R.id.nav_menu_our_match_schedule -> {
                     bundle.putString("selection", "Our Schedule")
                     matchScheduleFragment.arguments = bundle
                     supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                            .commit()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
+                        .commit()
                 }
 
                 R.id.nav_menu_rankings -> {
                     supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
-                            .commit()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
+                        .commit()
                 }
             }
 
             true
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
