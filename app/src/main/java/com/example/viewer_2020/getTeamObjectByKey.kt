@@ -36,7 +36,7 @@ fun getTeamObjectByKey(path: String, teamNumber: String, field: String): String 
     }
     // This for loop will occur when the team does NOT exist in the cache, AND when the team DOES
     // exist in the cache but has a null value for the given field.
-    for (`object` in getDirectField(MainViewerActivity.databaseReference!!, path) as List<*>) {
+    for (`object` in getDirectField(MongoDatabaseStartupActivity.databaseReference!!, path) as List<*>) {
         if (getDirectField(`object`!!, "team_number").toString() == teamNumber) {
             // Creating two constant variables. One for the current null cache field, and the other
             // for the value that is going to replace it.

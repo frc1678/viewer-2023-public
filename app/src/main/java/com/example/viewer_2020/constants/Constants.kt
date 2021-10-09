@@ -15,6 +15,7 @@ class Constants {
         const val DATABASE_NAME = "test2020cadm"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
+        //In order to change the URL, see the GeDataFromWebsite Async Task
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",

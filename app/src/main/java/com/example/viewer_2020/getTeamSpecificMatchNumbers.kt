@@ -15,7 +15,7 @@ fun getTeamSpecificMatchNumbers(teamNumber: String): List<String> {
     val matches = mutableListOf<String>()
     val sortedMatches: ArrayList<Int> = ArrayList()
     val sortedMatchListString: ArrayList<String> = ArrayList()
-    for (`object` in getDirectField(MainViewerActivity.databaseReference!!,
+    for (`object` in getDirectField(MongoDatabaseStartupActivity.databaseReference!!,
         Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
             as List<*>) {
         if (getDirectField(`object`!!, "team_number").toString() == teamNumber) {

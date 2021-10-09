@@ -29,7 +29,6 @@ class MainViewerActivity : ViewerActivity() {
 
     companion object {
         var currentRankingMenuItem: MenuItem? = null
-        var databaseReference: DatabaseReference.CompetitionObject? = null
         var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: HashMap<String, Match> = HashMap()
     }
@@ -78,6 +77,8 @@ class MainViewerActivity : ViewerActivity() {
             .addToBackStack(null)
             .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
             .commit()
+
+        Log.e("ALL_DATA_FROM_WEBSITE","${MongoDatabaseStartupActivity.databaseReference}")
 
         navView.setNavigationItemSelectedListener {
 
