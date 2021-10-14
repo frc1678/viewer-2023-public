@@ -160,15 +160,19 @@ class MatchDetailsFragment : Fragment() {
 
         for (tv in getHeaderCollection(root)) {
             if (getHeaderCollection(root).indexOf(tv) < 3) {
-                tv.text = parseFloat(("%.2f").format(getAllianceInMatchObjectByKey(
+                val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber.toString(),
-                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv)]).toFloat())).toString()
+                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv)])
+                if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
+                else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
             } else {
-                tv.text = parseFloat(("%.2f").format(getAllianceInMatchObjectByKey(
+                val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber.toString(),
-                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv) - 3]).toFloat())).toString()
+                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv) - 3])
+                if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
+                else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
             }
         }
     }

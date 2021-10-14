@@ -48,15 +48,14 @@ class MatchScheduleListAdapter(
 
     // Return the size of the match schedule.
     override fun getCount(): Int {
-        return if (section == "Our Schedule") getTeamSpecificMatchNumbers(Constants.MY_TEAM_NUMBER).size
-        else matchContents.size
+        return matchContents.size
     }
 
     // Return the Match object given the match number.
-    override fun getItem(position: Int): Any {
+    override fun getItem(position: Int): Match? {
         return if (section == "Our Schedule")
-            getTeamSpecificMatchNumbers(Constants.MY_TEAM_NUMBER)[position]
-        else matchContents[(position + 1).toString()] as Any
+            matchContents[matchContents.keys.toList().sortedBy { it.toInt() } [position]]
+        else matchContents[(position + 1).toString()]
     }
 
     // Return the position of the cell.
@@ -69,7 +68,7 @@ class MatchScheduleListAdapter(
         val viewHolder: ViewHolder
         val rowView: View?
         val matchNumber: String =
-            if (section == "Our Schedule") getTeamSpecificMatchNumbers(Constants.MY_TEAM_NUMBER)[position]
+            if (section == "Our Schedule") matchContents.keys.toList().sortedBy { it.toInt() } [position]
             else (position + 1).toString()
 
 

@@ -27,11 +27,11 @@ import android.util.Log
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
 class MatchScheduleFragment : Fragment() {
-    private var currentMatchScheduleSectionMenuItem: MenuItem? = null
 
     private val matchDetailsFragment = MatchDetailsFragment()
     private val matchDetailsFragmentArguments = Bundle()
-    var scheduleSelected : String? = null
+    private var scheduleSelected : String? = null
+    private var csvFile : MutableList<String> = csvFileRead("match_schedule.csv", false)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +41,7 @@ class MatchScheduleFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
         scheduleSelected = arguments?.getString("selection")
 
-                updateMatchScheduleListView(root)
+        updateMatchScheduleListView(root, "$scheduleSelected")
 
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
@@ -50,7 +50,9 @@ class MatchScheduleFragment : Fragment() {
             when (scheduleSelected) {
                 "Our Schedule" -> {
                     matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER,
-                        getTeamSpecificMatchNumbers(Constants.MY_TEAM_NUMBER)[position].toInt())
+                        csvFile.filter { it.matches(Regex(".*[B|R]-${Constants.MY_TEAM_NUMBER}( .*)?")) }
+                            .sortedBy { it.trim().split(" ")[0].toInt() } [position]
+                            .trim().split(" ")[0].toInt())
                 }
                 "Match Schedule" -> {
                     matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER, position + 1)
@@ -66,17 +68,17 @@ class MatchScheduleFragment : Fragment() {
         return root
     }
 
-    private fun updateMatchScheduleListView(root: View) {
+    private fun updateMatchScheduleListView(root: View, scheduleSelected: String) {
         root.lv_match_schedule.adapter =
             MatchScheduleListAdapter(
                 activity!!,
                 (convertMatchScheduleListToMap(
-                    csvFileRead("match_schedule.csv", false),
+                    csvFile,
                     isFiltered = false,
                     matchNumber = null
                 )!!
                         ),
-                currentMatchScheduleSectionMenuItem.toString()
+                scheduleSelected
             )
     }
 }
