@@ -7,7 +7,9 @@
 
     <TextView style="@style/tv_standard_black"
         android:id="@+id/tv_match_number"
-        android:text="Qual 1"/>
+        android:gravity="center"
+        android:text="Qual 1"
+        android:paddingLeft="10dp"/>
 
     <LinearLayout
         android:layout_width="0dp"

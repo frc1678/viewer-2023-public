@@ -13,8 +13,6 @@
 
     <TextView
         style="@style/tv_standard_black"
-        android:layout_weight="0.5"
-        android:gravity="center"
+        android:textSize="24sp"
         android:id="@+id/tv_datapoint_value"/>
-
 </LinearLayout>
