@@ -20,13 +20,13 @@ class Translations {
             "park_successes" to "Parks",
             "auto_line_successes" to "# Auto Lines",
             "climb_all_success_avg_time" to "Climb Time",
-            "drivetrain_motor_type" to "Drivetrain Motor Type",
+            "drivetrain_motor_type" to "Motor Type",
             "drivetrain_motors" to "Drivetrain Motors",
             "drivetrain" to "Drivetrain",
             "can_cross_trench" to "Can cross trench?",
             "has_ground_intake" to "Has ground intake?",
-            "climber_strap_installation_notes" to "Climber Strap Installation Notes",
-            "climber_strap_installation_difficulty" to "Climber Strap Installation Difficulty"
+            "climber_strap_installation_notes" to "Strap Install Notes",
+            "climber_strap_installation_difficulty" to "Strap Install Diff"
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(
