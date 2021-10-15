@@ -87,25 +87,42 @@ class MainViewerActivity : ViewerActivity() {
                 R.id.nav_menu_match_schedule -> {
                     bundle.putString("selection", "Match Schedule")
                     matchScheduleFragment.arguments = bundle
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                        .commit()
+                    if (supportFragmentManager.fragments.last().tag == "matchSchedule") {
+                        val fragment = supportFragmentManager.fragments.last()
+                        supportFragmentManager.beginTransaction()
+                            .detach(fragment).attach(fragment)
+                            .addToBackStack(null)
+                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
+                            .commit()
+                    } else {
+                        supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
+                            .commit()
+                    }
                 }
 
                 R.id.nav_menu_our_match_schedule -> {
                     bundle.putString("selection", "Our Schedule")
                     matchScheduleFragment.arguments = bundle
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                        .commit()
+                    if (supportFragmentManager.fragments.last().tag == "matchSchedule") {
+                        val fragment = supportFragmentManager.fragments.last()
+                        supportFragmentManager.beginTransaction()
+                            .detach(fragment).attach(fragment).addToBackStack(null)
+                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
+                            .commit()
+                    } else {
+                        supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
+                            .commit()
+                    }
                 }
 
                 R.id.nav_menu_rankings -> {
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "rankings") ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, rankingFragment, "rankings")
                         .commit()
                 }
             }
