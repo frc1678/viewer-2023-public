@@ -9,15 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_above="@+id/nav_team_details_view">
+        android:padding="15dp">
 
         <TextView
             style="@style/tv_team_number_team_details"
             android:id="@+id/tv_team_number"/>
-
-        <TextView
-            style="@style/tv_team_number_team_details_sub"
-            android:id="@+id/tv_section_display"/>
 
         <ListView
             android:id="@+id/lv_datapoint_display"
@@ -28,15 +24,6 @@
     </LinearLayout>
 
     <View style="@style/view_separator_horizontal"
-        android:layout_above="@+id/nav_team_details_view"
         android:layout_height="5dp"/>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_team_details_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_match_details_menu"/>
 
 </RelativeLayout>

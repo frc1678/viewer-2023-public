@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.team_details.view.*
 // team in the match details page.
 class TeamDetailsFragment : Fragment() {
 
-    private var currentTeamDetailsSectionMenuItem: MenuItem? = null
     private var teamNumber: String? = null
 
     override fun onCreateView(
@@ -30,8 +29,6 @@ class TeamDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.team_details, container, false)
-        if (currentTeamDetailsSectionMenuItem == null) currentTeamDetailsSectionMenuItem =
-            root.nav_team_details_view.menu.getItem(0)
 
         populateTeamDetailsEssentials(root)
         updateDatapointDisplayListView(root)
@@ -43,15 +40,6 @@ class TeamDetailsFragment : Fragment() {
         // is a map of a string key to arraylist<string> value, with each string key being the menu
         // items and the contents of each arraylist<string> being the specific data points displayed
         // in each of the menu item's adapter settings sections.
-        root.nav_team_details_view.setOnNavigationItemSelectedListener {
-            if (currentTeamDetailsSectionMenuItem != it) {
-                it.isChecked = true
-                currentTeamDetailsSectionMenuItem = it
-                updateTeamDetailsSectionDisplay(root)
-                updateDatapointDisplayListView(root)
-            }
-            return@setOnNavigationItemSelectedListener true
-        }
         return root
     }
 
@@ -67,7 +55,6 @@ class TeamDetailsFragment : Fragment() {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
         }
         root.tv_team_number.text = teamNumber.toString()
-        updateTeamDetailsSectionDisplay(root)
     }
 
     // Updates the adapter for the list view of each team in the match details display.
@@ -79,14 +66,7 @@ class TeamDetailsFragment : Fragment() {
             TeamDetailsAdapter(
                 context = activity!!,
                 datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS,
-                currentSection = currentTeamDetailsSectionMenuItem.toString(),
                 teamNumber = teamNumber!!
             )
-    }
-
-    // Set the text of the current section selected on the TeamDetailsFragment.
-    // The current sections are accessible in Constants.kt -> FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS (keys).
-    private fun updateTeamDetailsSectionDisplay(root: View) {
-        root.tv_section_display.text = currentTeamDetailsSectionMenuItem.toString()
     }
 }

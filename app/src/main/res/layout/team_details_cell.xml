@@ -5,10 +5,6 @@
 
     <TextView
         style="@style/tv_standard_black"
-        android:layout_weight="0.25"/>
-
-    <TextView
-        style="@style/tv_standard_black"
         android:id="@+id/tv_datapoint_name"/>
 
     <TextView

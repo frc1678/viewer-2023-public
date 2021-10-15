@@ -44,34 +44,31 @@ class Constants {
             )
         )
 
-        val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: Map<String, ArrayList<String>> = mapOf(
-            "Auto" to arrayListOf(
-                "auto_avg_balls_low",
-                "auto_avg_balls_high",
-                "auto_line_successes"
-            ),
-            "Tele" to arrayListOf(
-                "team_name",
-                "driver_ability",
-                "tele_avg_balls_low",
-                "tele_avg_balls_high",
-                "tele_cp_rotation_successes",
-                "tele_cp_position_successes",
-                "can_cross_trench",
-                "drivetrain",
-                "drivetrain_motors",
-                "drivetrain_motor_type",
-                "has_ground_intake"
-            ),
-            "Endgame" to arrayListOf(
-                "climb_all_successes",
-                "climb_all_attempts",
-                "climb_all_success_avg_time",
-                "climber_strap_installation_difficulty",
-                "climb_level_successes",
-                "park_successes",
-                "climber_strap_installation_notes"
-            )
+        val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
+            "Auto",
+            "auto_avg_balls_low",
+            "auto_avg_balls_high",
+            "auto_line_successes",
+            "Tele",
+            "team_name",
+            "driver_ability",
+            "tele_avg_balls_low",
+            "tele_avg_balls_high",
+            "tele_cp_rotation_successes",
+            "tele_cp_position_successes",
+            "can_cross_trench",
+            "drivetrain",
+            "drivetrain_motors",
+            "drivetrain_motor_type",
+            "has_ground_intake",
+            "Endgame",
+            "climb_all_successes",
+            "climb_all_attempts",
+            "climb_all_success_avg_time",
+            "climber_strap_installation_difficulty",
+            "climb_level_successes",
+            "park_successes",
+            "climber_strap_installation_notes"
         )
 
         val FIELDS_TO_BE_DISPLAYED_RANKING: List<String> = listOf(
@@ -100,7 +97,7 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.3"
+        const val VERSION_NUM = "1.1.4"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
