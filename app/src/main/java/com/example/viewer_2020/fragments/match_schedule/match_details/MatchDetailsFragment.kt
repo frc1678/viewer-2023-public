@@ -28,7 +28,6 @@ import java.lang.Float.parseFloat
 class MatchDetailsFragment : Fragment() {
 
     private var matchNumber: Int? = null
-    private var currentMatchDetailsSectionMenuItem: MenuItem? = null
 
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
@@ -38,26 +37,11 @@ class MatchDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.match_details, container, false)
-        if (currentMatchDetailsSectionMenuItem == null) currentMatchDetailsSectionMenuItem =
-            root.nav_match_details_view.menu.getItem(0); updateTeamListViews(root)
 
         populateMatchDetailsEssentials(root)
 
-        // This creates the on menu select listener for the MatchDetails fragment navigation bar.
-        // The purpose of this navigation bar is to switch between the type of data that each
-        // team's list view in match details displays. The list view adapter contents can be altered
         // in Constants.kt -> FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS. FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS
-        // is a map of a string key to arraylist<string> value, with each string key being the menu
-        // items and the contents of each arraylist<string> being the specific data points displayed
-        // in each of the menu item's adapter settings sections.
-        root.nav_match_details_view.setOnNavigationItemSelectedListener {
-            if (currentMatchDetailsSectionMenuItem != it) {
-                it.isChecked = true
-                currentMatchDetailsSectionMenuItem = it
-                updateTeamListViews(root)
-            }
-            return@setOnNavigationItemSelectedListener true
-        }
+        // is a list of strings
 
         for (teamNumber in getTeamNumbersXML(root)) {
             // If the index of the team number in the team number list is below 3, it means that the
@@ -138,7 +122,6 @@ class MatchDetailsFragment : Fragment() {
                 MatchDetailsAdapter(
                     context = activity!!,
                     datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS,
-                    currentSection = currentMatchDetailsSectionMenuItem.toString(),
                     teamNumber = getTeamNumbersList(root)
                 )
 //        }

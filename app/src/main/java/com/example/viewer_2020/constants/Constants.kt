@@ -22,26 +22,23 @@ class Constants {
             "raw"
         )
 
-        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS: Map<String, ArrayList<String>> = mapOf(
-            "Auto" to arrayListOf(
-                "auto_avg_balls_low",
-                "auto_avg_balls_high",
-                "auto_line_successes"
-            ),
-            "Tele" to arrayListOf(
-                "driver_ability",
-                "tele_avg_balls_low",
-                "tele_avg_balls_high",
-                "tele_cp_rotation_successes",
-                "tele_cp_position_successes"
-            ),
-            "Endgame" to arrayListOf(
-                "climb_all_successes",
-                "climb_all_attempts",
-                "climb_all_success_avg_time",
-                "climber_strap_installation_difficulty",
-                "climb_level_successes"
-            )
+        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS: List<String> = listOf(
+            "Auto",
+            "auto_avg_balls_low",
+            "auto_avg_balls_high",
+            "auto_line_successes",
+            "Tele",
+            "driver_ability",
+            "tele_avg_balls_low",
+            "tele_avg_balls_high",
+            "tele_cp_rotation_successes",
+            "tele_cp_position_successes",
+            "Endgame",
+            "climb_all_successes",
+            "climb_all_attempts",
+            "climb_all_success_avg_time",
+            "climber_strap_installation_difficulty",
+            "climb_level_successes"
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
@@ -97,7 +94,7 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.1.5"
+        const val VERSION_NUM = "1.1.6"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
