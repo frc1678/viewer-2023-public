@@ -1,6 +1,7 @@
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.content.Context
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,9 @@ class MatchDetailsAdapter (
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayed[position]] ?: datapointsDisplayed[position]
         if((datapointsDisplayed[position] == "Auto") or (datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame")){
-            rowView.tv_datapoint_name.setTextSize(20F)
+
+            rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15F)
+
             rowView.tv_datapoint_name.setTextColor(
                 ContextCompat.getColor(
                 context,

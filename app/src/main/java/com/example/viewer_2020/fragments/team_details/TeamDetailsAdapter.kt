@@ -2,6 +2,7 @@ package com.example.viewer_2020.fragments.team_details
 
 import android.content.Context
 import android.graphics.Color
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,7 +51,7 @@ class TeamDetailsAdapter(
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayed[position]]
                 ?: datapointsDisplayed[position]
         if ((datapointsDisplayed[position] == "Auto") or(datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame")){
-            rowView.tv_datapoint_name.setTextSize(28F)
+            rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP,28F)
             rowView.tv_ranking.setBackgroundColor(ContextCompat.getColor(
                 context,
                 R.color.LightGray
