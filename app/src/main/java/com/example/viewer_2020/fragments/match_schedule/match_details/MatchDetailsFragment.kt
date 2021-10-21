@@ -18,6 +18,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.match_details.*
 import kotlinx.android.synthetic.main.match_details.view.*
@@ -95,6 +96,12 @@ class MatchDetailsFragment : Fragment() {
             root.tv_header_four, root.tv_header_five, root.tv_header_six)
     }
 
+    private fun getHeaderLabelCollection(root: View): List<TextView> {
+        return listOf<TextView>(root.tv_header_label_one, root.tv_header_label_two,
+            root.tv_header_label_three, root.tv_header_label_four, root.tv_header_label_five,
+            root.tv_header_label_six)
+    }
+
     // On every team number's specified text view, when the user clicks on the text view it will
     // then go to a new TeamDetails page for the given team number.
     private fun initTeamNumberClickListeners(root: View) {
@@ -156,6 +163,19 @@ class MatchDetailsFragment : Fragment() {
                     Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv) - 3])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
                 else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
+            }
+        }
+
+        for (tv in getHeaderLabelCollection(root)) {
+            val headerLabelIndex = getHeaderLabelCollection(root).indexOf(tv)
+
+            when {
+                (headerLabelIndex == 0) or (headerLabelIndex == 3) ->
+                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[0]]
+                (headerLabelIndex == 1) or (headerLabelIndex == 4) ->
+                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[1]]
+                (headerLabelIndex == 2) or (headerLabelIndex == 5) ->
+                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[2]]
             }
         }
     }

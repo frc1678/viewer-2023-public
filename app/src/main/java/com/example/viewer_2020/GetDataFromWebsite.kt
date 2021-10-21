@@ -41,10 +41,10 @@ class GetDataFromWebsite(var context: Context): AsyncTask<String, String, String
              var urlConnection = url.openConnection() as HttpURLConnection
 
              try {
-                 val `in`: InputStream = BufferedInputStream(urlConnection.getInputStream())
+                 val `in`: InputStream = BufferedInputStream(urlConnection.inputStream)
 
                  var reader = BufferedReader(InputStreamReader(`in`))
-
+5
                  var line = reader.readText()
                  result.append(line)
              } catch (e: Exception) {

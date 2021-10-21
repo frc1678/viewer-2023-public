@@ -3,6 +3,7 @@ package com.example.viewer_2020
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.example.viewer_2020.data.DatabaseReference
 
