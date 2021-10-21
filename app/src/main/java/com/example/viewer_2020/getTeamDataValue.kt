@@ -20,7 +20,8 @@ fun getTeamDataValue(teamNumber: String, field: String): String {
         Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM.value,
         Constants.PROCESSED_OBJECT.CALCULATED_SUBJECTIVE_TEAM.value,
         Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
-        Constants.PROCESSED_OBJECT.CALCULATED_TBA_TEAM.value
+        Constants.PROCESSED_OBJECT.CALCULATED_TBA_TEAM.value,
+        Constants.PROCESSED_OBJECT.CALCULATED_PICKABILITY.value
         )
     ) {
         try {

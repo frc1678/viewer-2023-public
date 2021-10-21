@@ -18,6 +18,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.viewer_2020.data.DatabaseReference
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
+import com.example.viewer_2020.fragments.pickability.PickabilityFragment
+import com.example.viewer_2020.fragments.pickability.PickabilityMode
 import com.google.android.material.navigation.NavigationView
 import java.io.File
 
@@ -68,6 +70,8 @@ class MainViewerActivity : ViewerActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
         val rankingFragment = RankingFragment()
+        val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
+        val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
         val bundle = Bundle()
 
         //default screen when the viewer starts (after pulling data)
@@ -123,6 +127,18 @@ class MainViewerActivity : ViewerActivity() {
                     val ft = supportFragmentManager.beginTransaction()
                     if (supportFragmentManager.fragments.last().tag != "rankings") ft.addToBackStack(null)
                     ft.replace(R.id.nav_host_fragment, rankingFragment, "rankings")
+                        .commit()
+                }
+                R.id.nav_menu_pickability_first -> {
+                    supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, firstPickabilityFragment, "pickabilityFirst")
+                        .commit()
+                }
+                R.id.nav_menu_pickability_second -> {
+                    supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, secondPickabilityFragment, "pickabilitySecond")
                         .commit()
                 }
             }

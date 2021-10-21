@@ -65,8 +65,8 @@ class DatabaseReference {
 
     data class CalculatedPickAbilityTeam (
         var team_number: Int,
-        var first_pick_ability: Float,
-        var second_pick_ability: Float
+        var first_pickability: Float,
+        var second_pickability: Float
     )
 
     data class CalculatedPredictedTeam (

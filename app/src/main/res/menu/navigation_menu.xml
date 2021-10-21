@@ -14,4 +14,12 @@
         android:id="@+id/nav_menu_rankings"
         android:title="Rankings"
         />
+    <item
+        android:id="@+id/nav_menu_pickability_first"
+        android:title="First Pickability"
+        />
+    <item
+        android:id="@+id/nav_menu_pickability_second"
+        android:title="Second Pickability"
+        />
 </menu>

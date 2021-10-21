@@ -94,7 +94,7 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.1.7"
+        const val VERSION_NUM = "1.1.8"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
@@ -103,6 +103,7 @@ class Constants {
         CALCULATED_SUBJECTIVE_TEAM("subj_team"),
         CALCULATED_PREDICTED_ALLIANCE_IN_MATCH("predicted_aim"),
         CALCULATED_PREDICTED_TEAM("predicted_team"),
-        CALCULATED_TBA_TEAM("tba_team")
+        CALCULATED_TBA_TEAM("tba_team"),
+        CALCULATED_PICKABILITY("pickability")
     }
 }

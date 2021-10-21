@@ -18,8 +18,8 @@ data class Team (var team_number: Int?) {
     var climb_level_successes: Int? = null
     var park_successes: Int? = null
     var auto_line_successes: Int? = null
-    var first_pick_ability: Float? = null
-    var second_pick_ability: Float? = null
+    var first_pickability: Float? = null
+    var second_pickability: Float? = null
     var predicted_rps: Double? = null
     var predicted_rank: Int? = null
     var current_rps: Int? = null
