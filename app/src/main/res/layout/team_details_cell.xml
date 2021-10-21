@@ -5,10 +5,16 @@
 
     <TextView
         style="@style/tv_standard_black"
+        android:layout_weight="0.25"
+        android:id="@+id/tv_ranking"/>
+
+    <TextView
+        style="@style/tv_standard_black"
         android:id="@+id/tv_datapoint_name"/>
 
     <TextView
         style="@style/tv_standard_black"
-        android:textSize="24sp"
-        android:id="@+id/tv_datapoint_value"/>
+        android:id="@+id/tv_datapoint_value"
+        android:gravity="right"
+        android:layout_weight="0.5"/>
 </LinearLayout>

@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.team_details.view.*
 class TeamDetailsFragment : Fragment() {
 
     private var teamNumber: String? = null
+    private var teamName: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,8 +54,12 @@ class TeamDetailsFragment : Fragment() {
         // is null, the default display will show '0' for the team number on TeamDetails.
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
+            teamName = it.getString(Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
+                    [Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.indexOf("team_name")],
+                Constants.NULL_CHARACTER)
         }
         root.tv_team_number.text = teamNumber.toString()
+        root.tv_team_name.text = teamName.toString()
     }
 
     // Updates the adapter for the list view of each team in the match details display.

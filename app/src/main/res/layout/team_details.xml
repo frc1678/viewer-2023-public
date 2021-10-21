@@ -15,6 +15,10 @@
             style="@style/tv_team_number_team_details"
             android:id="@+id/tv_team_number"/>
 
+        <TextView
+            style="@style/tv_team_number_team_details_sub"
+            android:id="@+id/tv_team_name"/>
+
         <ListView
             android:id="@+id/lv_datapoint_display"
             android:layout_width="match_parent"

@@ -51,6 +51,10 @@ class TeamDetailsAdapter(
                 ?: datapointsDisplayed[position]
         if ((datapointsDisplayed[position] == "Auto") or(datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame")){
             rowView.tv_datapoint_name.setTextSize(28F)
+            rowView.tv_ranking.setBackgroundColor(ContextCompat.getColor(
+                context,
+                R.color.LightGray
+            ))
             rowView.tv_datapoint_name.setBackgroundColor(ContextCompat.getColor(
                 context,
                 R.color.LightGray
