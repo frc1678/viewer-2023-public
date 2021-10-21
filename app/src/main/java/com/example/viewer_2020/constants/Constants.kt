@@ -31,13 +31,10 @@ class Constants {
             "driver_ability",
             "tele_avg_balls_low",
             "tele_avg_balls_high",
-            "tele_cp_rotation_successes",
-            "tele_cp_position_successes",
             "Endgame",
             "climb_all_successes",
             "climb_all_attempts",
             "climb_all_success_avg_time",
-            "climber_strap_installation_difficulty",
             "climb_level_successes"
         )
 
@@ -51,8 +48,6 @@ class Constants {
             "driver_ability",
             "tele_avg_balls_low",
             "tele_avg_balls_high",
-            "tele_cp_rotation_successes",
-            "tele_cp_position_successes",
             "can_cross_trench",
             "drivetrain",
             "drivetrain_motors",
@@ -62,10 +57,8 @@ class Constants {
             "climb_all_successes",
             "climb_all_attempts",
             "climb_all_success_avg_time",
-            "climber_strap_installation_difficulty",
             "climb_level_successes",
-            "park_successes",
-            "climber_strap_installation_notes"
+            "park_successes"
         )
 
         val FIELDS_TO_BE_DISPLAYED_RANKING: List<String> = listOf(
@@ -94,7 +87,7 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.2.0"
+        const val VERSION_NUM = "1.2.1"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
