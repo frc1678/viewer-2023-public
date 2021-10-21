@@ -5,11 +5,14 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
+import java.util.*
+import java.text.SimpleDateFormat
+
 
 //Super class of all activity based classes for this project.
 //Used to implement class mechanisms that all activities should comprise of.
+lateinit var lastUpdated: Date;
 open class ViewerActivity : AppCompatActivity() {
-
     //When the back press is held down, this function will confirm the long click and then 'restart'
     //the app by sending it to the mode collection activity and resetting the mode.
     override fun onKeyLongPress(keyCode: Int, event: KeyEvent): Boolean {
@@ -27,9 +30,15 @@ open class ViewerActivity : AppCompatActivity() {
     }
 
     fun setToolbarText(view: ActionBar?, support: androidx.appcompat.app.ActionBar?) {
-        view?.title = this.getString(R.string.tv_version_num, com.example.viewer_2020.constants.Constants.VERSION_NUM)
-        support?.title = this.getString(R.string.tv_version_num, com.example.viewer_2020.constants.Constants.VERSION_NUM)
+        val headerText = this.getString(R.string.tv_version_num, com.example.viewer_2020.constants.Constants.VERSION_NUM, getTimeText())
+        view?.title = headerText
+        support?.title = headerText
         view?.show()
         support?.show()
+    }
+
+    private fun getTimeText(): String {
+        val sdf = SimpleDateFormat("MM/dd HH:mm", Locale.getDefault())
+        return sdf.format(lastUpdated)
     }
 }

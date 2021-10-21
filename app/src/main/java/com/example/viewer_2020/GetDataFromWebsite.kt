@@ -13,6 +13,8 @@ import com.google.gson.Gson
 import java.io.*
 import java.net.HttpURLConnection
 import org.json.JSONObject
+import java.time.LocalDateTime
+import java.util.*
 
 class GetDataFromWebsite(var context: Context): AsyncTask<String, String, String>() {
 
@@ -66,6 +68,7 @@ class GetDataFromWebsite(var context: Context): AsyncTask<String, String, String
              }
          }
 
+    lastUpdated = Calendar.getInstance().time
     startActivity(context, Intent(context, MainViewerActivity::class.java), null)
 
     return("finished")
