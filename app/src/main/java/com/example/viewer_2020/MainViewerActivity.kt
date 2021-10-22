@@ -14,6 +14,7 @@ import android.os.Environment
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.example.viewer_2020.data.DatabaseReference
@@ -47,6 +48,8 @@ class MainViewerActivity : ViewerActivity() {
     //Overrides back button to go back to last fragment.
     //Disables the back button and returns nothing when in the startup match schedule.
     override fun onBackPressed() {
+        val drawerLayout : DrawerLayout = findViewById(R.id.container)
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.closeDrawer(GravityCompat.START)
         if (supportFragmentManager.fragments.last().tag == "rankings") {
             supportFragmentManager.popBackStack(0, 0)
             supportFragmentManager.beginTransaction()
@@ -87,7 +90,7 @@ class MainViewerActivity : ViewerActivity() {
         Log.e("ALL_DATA_FROM_WEBSITE","${MongoDatabaseStartupActivity.databaseReference}")
 
         navView.setNavigationItemSelectedListener {
-
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.closeDrawer(GravityCompat.START)
             when(it.itemId) {
 
                 R.id.nav_menu_match_schedule -> {
