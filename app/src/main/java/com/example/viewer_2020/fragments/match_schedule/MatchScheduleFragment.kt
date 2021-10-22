@@ -26,12 +26,11 @@ import kotlinx.android.synthetic.main.team_details.view.*
 import android.util.Log
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
-class MatchScheduleFragment : Fragment() {
+open class MatchScheduleFragment : Fragment() {
 
-    private val matchDetailsFragment = MatchDetailsFragment()
-    private val matchDetailsFragmentArguments = Bundle()
-    private var scheduleSelected : String? = null
-    private var csvFile : MutableList<String> = csvFileRead("match_schedule.csv", false)
+    val matchDetailsFragment = MatchDetailsFragment()
+    val matchDetailsFragmentArguments = Bundle()
+    var csvFile : MutableList<String> = csvFileRead("match_schedule.csv", false)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,25 +38,14 @@ class MatchScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
-        scheduleSelected = arguments?.getString("selection")
 
-        updateMatchScheduleListView(root, "$scheduleSelected")
+        updateMatchScheduleListView(root, false)
 
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
 
         root.lv_match_schedule.setOnItemClickListener { _, _, position, _ ->
-            when (scheduleSelected) {
-                "Our Schedule" -> {
-                    matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER,
-                        csvFile.filter { it.matches(Regex(".*[B|R]-${Constants.MY_TEAM_NUMBER}( .*)?")) }
-                            .sortedBy { it.trim().split(" ")[0].toInt() } [position]
-                            .trim().split(" ")[0].toInt())
-                }
-                "Match Schedule" -> {
-                    matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER, position + 1)
-                }
-            }
+            matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER, position + 1)
             matchDetailsFragment.arguments = matchDetailsFragmentArguments
             matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             matchDetailsFragmentTransaction.addToBackStack(null).replace(
@@ -68,7 +56,7 @@ class MatchScheduleFragment : Fragment() {
         return root
     }
 
-    private fun updateMatchScheduleListView(root: View, scheduleSelected: String) {
+    fun updateMatchScheduleListView(root: View, ourSchedule: Boolean) {
         root.lv_match_schedule.adapter =
             MatchScheduleListAdapter(
                 activity!!,
@@ -78,7 +66,7 @@ class MatchScheduleFragment : Fragment() {
                     matchNumber = null
                 )!!
                         ),
-                scheduleSelected
+                ourSchedule
             )
     }
 }

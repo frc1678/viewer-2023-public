@@ -15,9 +15,11 @@ import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.example.viewer_2020.data.DatabaseReference
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
+import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityMode
 import com.google.android.material.navigation.NavigationView
@@ -45,12 +47,14 @@ class MainViewerActivity : ViewerActivity() {
     //Overrides back button to go back to last fragment.
     //Disables the back button and returns nothing when in the startup match schedule.
     override fun onBackPressed() {
-        var backCount = supportFragmentManager.backStackEntryCount
-        if (backCount == 1) {
-            return
-        } else {
-            supportFragmentManager.popBackStack()
+        if (supportFragmentManager.fragments.last().tag == "rankings") {
+            supportFragmentManager.popBackStack(0, 0)
+            supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.nav_host_fragment, MatchScheduleFragment(), "matchSchedule")
+                .commit()
         }
+        else if (supportFragmentManager.backStackEntryCount > 1) supportFragmentManager.popBackStack()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,14 +73,12 @@ class MainViewerActivity : ViewerActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
+        val ourScheduleFragment = OurScheduleFragment()
         val rankingFragment = RankingFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
-        val bundle = Bundle()
 
         //default screen when the viewer starts (after pulling data)
-        bundle.putString("selection", "Match Schedule")
-        matchScheduleFragment.arguments = bundle
         supportFragmentManager.beginTransaction()
             .addToBackStack(null)
             .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
@@ -89,58 +91,41 @@ class MainViewerActivity : ViewerActivity() {
             when(it.itemId) {
 
                 R.id.nav_menu_match_schedule -> {
-                    bundle.putString("selection", "Match Schedule")
-                    matchScheduleFragment.arguments = bundle
-                    if (supportFragmentManager.fragments.last().tag == "matchSchedule") {
-                        val fragment = supportFragmentManager.fragments.last()
-                        supportFragmentManager.beginTransaction()
-                            .detach(fragment).attach(fragment)
-                            .addToBackStack(null)
-                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                            .commit()
-                    } else {
-                        supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                            .commit()
-                    }
+                    supportFragmentManager.popBackStack(0, 0)
+                    supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
+                        .commit()
                 }
 
                 R.id.nav_menu_our_match_schedule -> {
-                    bundle.putString("selection", "Our Schedule")
-                    matchScheduleFragment.arguments = bundle
-                    if (supportFragmentManager.fragments.last().tag == "matchSchedule") {
-                        val fragment = supportFragmentManager.fragments.last()
-                        supportFragmentManager.beginTransaction()
-                            .detach(fragment).attach(fragment).addToBackStack(null)
-                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                            .commit()
-                    } else {
-                        supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                            .commit()
-                    }
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "ourSchedule") ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, ourScheduleFragment, "ourSchedule")
+                        .commit()
                 }
 
                 R.id.nav_menu_rankings -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "rankings") ft.addToBackStack(null)
-                    ft.replace(R.id.nav_host_fragment, rankingFragment, "rankings")
+                    supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
                         .commit()
                 }
+
                 R.id.nav_menu_pickability_first -> {
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, firstPickabilityFragment, "pickabilityFirst")
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "pickabilityFirst") ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, firstPickabilityFragment, "pickabilityFirst")
                         .commit()
                 }
+
                 R.id.nav_menu_pickability_second -> {
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, secondPickabilityFragment, "pickabilitySecond")
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "pickabilitySecond") ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, secondPickabilityFragment, "pickabilitySecond")
                         .commit()
                 }
+
             }
 
             true
