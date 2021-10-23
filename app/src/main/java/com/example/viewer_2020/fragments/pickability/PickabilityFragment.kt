@@ -27,6 +27,7 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_pickability, container, false)
+        root.tv_pickability_header.text = mode.toString().toLowerCase().capitalize() + " Pickability"
         val map : Map<String, String> = updateMatchScheduleListView(root)
 
         root.lv_pickability.setOnItemClickListener { _, _, position, _ ->
