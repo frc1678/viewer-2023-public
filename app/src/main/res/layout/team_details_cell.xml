@@ -6,7 +6,8 @@
     <TextView
         style="@style/tv_standard_black"
         android:layout_weight="0.25"
-        android:id="@+id/tv_ranking"/>
+        android:id="@+id/tv_ranking"
+        android:paddingLeft="15dp"/>
 
     <TextView
         style="@style/tv_standard_black"
@@ -16,5 +17,6 @@
         style="@style/tv_standard_black"
         android:id="@+id/tv_datapoint_value"
         android:gravity="right"
-        android:layout_weight="0.5"/>
+        android:layout_weight="0.5"
+        android:paddingRight="15dp"/>
 </LinearLayout>
