@@ -1,37 +1,18 @@
-/*
-* RankingFragment.kt
-* viewer
-*
-* Created on 1/26/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
+package com.example.viewer_2020.fragments.ranking
 
-package com.example.viewer_2020
-
-import android.content.Context
 import android.os.Bundle
-import android.service.notification.NotificationListenerService
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
+import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
-import com.example.viewer_2020.fragments.ranking.RankingListAdapter
+import com.example.viewer_2020.convertToFilteredTeamsList
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
-import com.google.android.material.navigation.NavigationView
 
-
-// The fragment of the ranking lists 'view' that is one of the options of the navigation bar.
-// Disclaimer: This fragment contains another menu bar which is displayed directly above the
-// main menu bar. This navigation/menu bar does not switch between fragments on each menu's selection
-// like the main menu bar does. This navigation bar only receives the position/ID of the menu selected
-// and then updated the adapter of the list view that is right above it.
-class RankingFragment : Fragment() {
-
+class PredRankingFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
 
@@ -56,17 +37,18 @@ class RankingFragment : Fragment() {
         root.tv_datapoint_four.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[3]]
         root.tv_datapoint_five.text =
-            Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[4]]
+            Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[0]]
 
-        root.lv_ranking.adapter = RankingListAdapter(activity!!, convertToFilteredTeamsList(
+        root.lv_ranking.adapter = PredRankingListAdapter(activity!!, convertToPredFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             csvFileRead("team_list.csv", false)[0].trim().split(" ")
-        ))
+        )
+        )
 
         root.lv_ranking.setOnItemClickListener { _, _, position, _ ->
             val rankingFragmentTransaction = this.fragmentManager!!.beginTransaction()
             teamDetailsFragmentArguments.putString(
-                Constants.TEAM_NUMBER, convertToFilteredTeamsList(
+                Constants.TEAM_NUMBER, convertToPredFilteredTeamsList(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
                     csvFileRead("team_list.csv", false)[0].trim().split(" ")
                 )[position]
@@ -79,9 +61,5 @@ class RankingFragment : Fragment() {
             ).commit()
         }
         return root
-    }
-
-    fun newInstance(): RankingFragment{
-        return RankingFragment()
     }
 }

@@ -10,6 +10,8 @@ class Translations {
             "tele_avg_balls_low" to "Tele Low",
             "tele_avg_balls_high" to "Tele High",
             "climb_all_attempts" to "Climb Attempts",
+            "current_seed" to "Current Rank",
+            "predicted_rank" to "Pred. Rank",
             "predicted_rps" to "Pred. RPs",
             "predicted_rp1" to "Pred. climb RP",
             "predicted_rp2" to "Pred. 3rd stage RP",

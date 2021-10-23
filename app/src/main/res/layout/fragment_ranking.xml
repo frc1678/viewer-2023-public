@@ -39,7 +39,8 @@
 
         <TextView
             style="@style/tv_standard_gray"
-            android:id="@+id/tv_datapoint_five"/>
+            android:id="@+id/tv_datapoint_five"
+            android:layout_weight="2"/>
 
     </LinearLayout>
 

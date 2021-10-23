@@ -23,6 +23,7 @@ import com.example.viewer_2020.data.Team
 import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityMode
+import com.example.viewer_2020.fragments.ranking.PredRankingFragment
 import com.google.android.material.navigation.NavigationView
 import java.io.File
 
@@ -78,6 +79,7 @@ class MainViewerActivity : ViewerActivity() {
         val matchScheduleFragment = MatchScheduleFragment()
         val ourScheduleFragment = OurScheduleFragment()
         val rankingFragment = RankingFragment()
+        val predRankingFragment = PredRankingFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
 
@@ -114,7 +116,12 @@ class MainViewerActivity : ViewerActivity() {
                         .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
                         .commit()
                 }
-
+                R.id.nav_menu_pred_rankings -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "predRankings") ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, predRankingFragment, "predRankings")
+                        .commit()
+                }
                 R.id.nav_menu_pickability_first -> {
                     val ft = supportFragmentManager.beginTransaction()
                     if (supportFragmentManager.fragments.last().tag != "pickabilityFirst") ft.addToBackStack(null)
