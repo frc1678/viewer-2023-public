@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="@dimen/small">
+    android:padding="@dimen/small"
+    android:layout_gravity="center"
+    android:id="@+id/splash_screen_layout">
 
     <ImageView
         android:layout_width="match_parent"
@@ -10,4 +12,14 @@
         android:src="@drawable/logo"
         android:adjustViewBounds="true" />
 
-</RelativeLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/refresh_button"
+        android:visibility="gone"
+        android:id="@+id/refresh_button"
+        android:onClick="refreshClick"
+        />
+
+</LinearLayout>

@@ -15,5 +15,6 @@
     <string name="tv_version_num">%1$s - Updated: %2$s</string>
     <string name="close">Close</string>
     <string name="open">Open</string>
+    <string name="refresh_button">Refresh</string>
 
 </resources>
