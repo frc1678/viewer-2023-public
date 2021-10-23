@@ -9,6 +9,7 @@
 package com.example.viewer_2020.fragments.team_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -54,9 +55,7 @@ class TeamDetailsFragment : Fragment() {
         // is null, the default display will show '0' for the team number on TeamDetails.
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
-            teamName = it.getString(Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-                    [Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.indexOf("team_name")],
-                Constants.NULL_CHARACTER)
+            teamName = getTeamDataValue(teamNumber!!, "team_name")
         }
         root.tv_team_number.text = teamNumber.toString()
         root.tv_team_name.text = teamName.toString()
