@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -82,6 +83,8 @@ class MainViewerActivity : ViewerActivity() {
         val predRankingFragment = PredRankingFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
+
+        findViewById<TextView>(R.id.nav_footer).text = getString(R.string.last_updated, super.getTimeText())
 
         //default screen when the viewer starts (after pulling data)
         supportFragmentManager.beginTransaction()

@@ -30,15 +30,15 @@ open class ViewerActivity : AppCompatActivity() {
     }
 
     fun setToolbarText(view: ActionBar?, support: androidx.appcompat.app.ActionBar?) {
-        val headerText = this.getString(R.string.tv_version_num, com.example.viewer_2020.constants.Constants.VERSION_NUM, getTimeText())
+        val headerText = this.getString(R.string.tv_version_num, com.example.viewer_2020.constants.Constants.VERSION_NUM)
         view?.title = headerText
         support?.title = headerText
         view?.show()
         support?.show()
     }
 
-    private fun getTimeText(): String {
-        val sdf = SimpleDateFormat("MM/dd HH:mm", Locale.getDefault())
+    fun getTimeText(): String {
+        val sdf = SimpleDateFormat("MM/dd/yy hh:mm:ss a", Locale.getDefault())
         return sdf.format(lastUpdated)
     }
 }

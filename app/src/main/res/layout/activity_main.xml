@@ -32,6 +32,18 @@
         android:layout_height="match_parent"
         app:menu="@menu/navigation_menu"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"/>
+        android:paddingBottom="@dimen/small"
+        android:fitsSystemWindows="true" >
+        <TextView style="@style/tv_standard_gray"
+            android:id="@+id/nav_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="start"
+            android:paddingStart="@dimen/small"
+            android:paddingEnd="@dimen/small"
+            android:lineSpacingExtra="@dimen/very_small"
+            android:text="Footer" />
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
