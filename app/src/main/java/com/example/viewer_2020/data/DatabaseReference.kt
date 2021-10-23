@@ -27,22 +27,16 @@ class DatabaseReference {
     data class ObjectivePit (
         var team_number: Int,
         var can_cross_trench: Boolean,
-        var drivetrain: Int, //IF APP CRASHES,
-        //THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
-        //WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
+        var drivetrain: Int, //value is an enum in schema
         var drivetrain_motors: Int,
-        var drivetrain_motor_type: Int, //IF APP CRASHES,
-        //THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
-        //WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
+        var drivetrain_motor_type: Int, //value is an enum in schema
         var has_ground_intake: Boolean
     )
 
     data class SubjectivePit (
         var team_number: Int,
         var climber_strap_installation_notes: String,
-        var climber_strap_installation_difficulty: Int //IF APP CRASHES,
-        //THIS VALUE IS ACTUALLY AN ENUM BUT I HAVE NO IDEA WHY THEY THOUGHT IT
-        //WAS A GOOD IDEA TO HAVE IT AS AN ENUM WHEN WE OBVIOUSLY CANNOT HANDLE ENUMS
+        var climber_strap_installation_difficulty: Int
     )
 
     data class CalculatedPredictedAllianceInMatch (
@@ -56,11 +50,23 @@ class DatabaseReference {
     data class CalculatedTBATeam (
         var team_number: Int,
         var team_name: String,
+        var auto_high_balls_percent_inner: Float,
+        var tele_high_balls_percent_inner: Float,
         var climb_all_success_avg_time: Float,
+        var climb_percent_success: Float,
         var climb_all_successes: Int,
         var climb_level_successes: Int,
         var park_successes: Int,
         var auto_line_successes: Int
+    )
+
+    data class CalculatedTBATeamInMatch (
+        var team_number: Int,
+        var match_number: Int,
+        var auto_line: Boolean,
+        var climb: Boolean,
+        var park: Boolean,
+        var level_climb: Boolean
     )
 
     data class CalculatedPickAbilityTeam (
@@ -81,7 +87,7 @@ class DatabaseReference {
     data class CalculatedSubjectiveTeam (
         var team_number: Int,
         var driver_agility: Float,
-        var driver_speed: Float,
+        var driver_rendezvous_agility: Float,
         var driver_ability: Float
     )
 
@@ -89,11 +95,15 @@ class DatabaseReference {
         var team_number: Int,
         var auto_avg_balls_low: Float,
         var auto_avg_balls_high: Float,
+        var auto_avg_balls_total: Float,
         var tele_avg_balls_low: Float,
         var tele_avg_balls_high: Float,
+        var tele_avg_balls_total: Float,
+        var avg_incap_time: Float,
         var tele_cp_rotation_successes: Int,
         var tele_cp_position_successes: Int,
-        var climb_all_attempts: Int
+        var climb_all_attempts: Int,
+        var matches_played: Int
     )
 
     data class CalculatedObjectiveTeamInMatch (
@@ -105,6 +115,7 @@ class DatabaseReference {
         var tele_balls_high: Int,
         var control_panel_rotation: Boolean,
         var control_panel_position: Boolean,
-        var timeline_cycle_time: Int
+        var incap: Int,
+        var climb_time: Int
     )
 }
