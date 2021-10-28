@@ -4,6 +4,8 @@ class Translations {
     companion object {
         val ACTUAL_TO_HUMAN_READABLE: Map<String, String> = mapOf(
             "team_name" to "Team Name",
+            "driver_agility" to "Driver Agility",
+            "driver_speed" to "Driver Speed",
             "driver_ability" to "Driver Ability",
             "auto_avg_balls_low" to "Auto Low",
             "auto_avg_balls_high" to "Auto High",
@@ -20,18 +22,19 @@ class Translations {
             "current_avg_rps" to "Avg RPs",
             "tele_cp_rotation_successes" to "# Rotations",
             "tele_cp_position_successes" to "# Positions",
-            "climb_all_successes" to "# Climbs",
-            "climb_level_successes" to "Level Climbs",
+            "climb_percent_success" to "Climb Success %",
             "park_successes" to "Parks",
-            "auto_line_successes" to "# Auto Lines",
-            "climb_all_success_avg_time" to "Climb Time",
+            "climb_all_success_avg_time" to "Avg Climb Time",
             "drivetrain_motor_type" to "Motor Type",
             "drivetrain_motors" to "Drivetrain Motors",
             "drivetrain" to "Drivetrain",
             "can_cross_trench" to "Can cross trench?",
             "has_ground_intake" to "Has ground intake?",
             "climber_strap_installation_notes" to "Strap Install Notes",
-            "climber_strap_installation_difficulty" to "Strap Install Diff"
+            "climber_strap_installation_difficulty" to "Strap Install Diff",
+            "climb_all_successes" to "# Climbs",
+            "climb_level_successes" to "# Level Climbs",
+            "auto_line_successes" to "# Auto Lines"
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(

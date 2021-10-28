@@ -50,7 +50,7 @@ class TeamDetailsAdapter(
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayed[position]]
                 ?: datapointsDisplayed[position]
-        if ((datapointsDisplayed[position] == "Auto") or(datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame")){
+        if ((datapointsDisplayed[position] == "Auto") or(datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame") or (datapointsDisplayed[position] == "Pit Data")){
             rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP,28F)
             rowView.tv_ranking.setBackgroundColor(ContextCompat.getColor(
                 context,

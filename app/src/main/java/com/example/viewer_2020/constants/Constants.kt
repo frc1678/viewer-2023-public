@@ -26,16 +26,17 @@ class Constants {
             "Auto",
             "auto_avg_balls_low",
             "auto_avg_balls_high",
-            "auto_line_successes",
             "Tele",
-            "driver_ability",
             "tele_avg_balls_low",
             "tele_avg_balls_high",
             "Endgame",
-            "climb_all_successes",
+            "climb_percent_success",
             "climb_all_attempts",
             "climb_all_success_avg_time",
-            "climb_level_successes"
+            "Other",
+            "driver_agility",
+            "driver_speed",
+            "driver_ability"
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
@@ -44,21 +45,24 @@ class Constants {
             "auto_avg_balls_high",
             "auto_line_successes",
             "Tele",
-            "team_name",
-            "driver_ability",
             "tele_avg_balls_low",
             "tele_avg_balls_high",
+            "driver_ability",
+            "driver_speed",
+            "driver_agility",
             "can_cross_trench",
+            "Endgame",
+            "climb_percent_success",
+            "climb_all_attempts",
+            "climb_all_successes",
+            "climb_level_successes",
+            "climb_all_success_avg_time",
+            "park_successes",
+            "Pit Data",
             "drivetrain",
             "drivetrain_motors",
             "drivetrain_motor_type",
-            "has_ground_intake",
-            "Endgame",
-            "climb_all_successes",
-            "climb_all_attempts",
-            "climb_all_success_avg_time",
-            "climb_level_successes",
-            "park_successes"
+            "has_ground_intake"
         )
 
         val FIELDS_TO_BE_DISPLAYED_RANKING: List<String> = listOf(
@@ -87,7 +91,7 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.2.10"
+        const val VERSION_NUM = "1.3.2"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {

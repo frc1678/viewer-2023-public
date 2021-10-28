@@ -47,9 +47,7 @@ class MatchDetailsAdapter (
         val rowView = inflater.inflate(R.layout.match_details_cell, parent, false)
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayed[position]] ?: datapointsDisplayed[position]
-        if((datapointsDisplayed[position] == "Auto") or (datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame")){
-
-            rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15F)
+        if((datapointsDisplayed[position] == "Auto") or (datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame") or (datapointsDisplayed[position] == "Other")){
 
             rowView.tv_datapoint_name.setTextColor(
                 ContextCompat.getColor(
