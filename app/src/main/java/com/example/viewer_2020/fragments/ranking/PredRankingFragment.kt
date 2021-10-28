@@ -41,7 +41,7 @@ class PredRankingFragment : Fragment() {
 
         root.lv_ranking.adapter = PredRankingListAdapter(activity!!, convertToPredFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
-            csvFileRead("team_list.csv", false)[0].trim().split(" ")
+            MainViewerActivity.teamList
         )
         )
 
@@ -50,7 +50,7 @@ class PredRankingFragment : Fragment() {
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER, convertToPredFilteredTeamsList(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
-                    csvFileRead("team_list.csv", false)[0].trim().split(" ")
+                    MainViewerActivity.teamList
                 )[position]
             )
             teamDetailsFragment.arguments = teamDetailsFragmentArguments

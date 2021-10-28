@@ -30,7 +30,6 @@ open class MatchScheduleFragment : Fragment() {
 
     val matchDetailsFragment = MatchDetailsFragment()
     val matchDetailsFragmentArguments = Bundle()
-    var csvFile : MutableList<String> = csvFileRead("match_schedule.csv", false)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,11 +59,7 @@ open class MatchScheduleFragment : Fragment() {
         root.lv_match_schedule.adapter =
             MatchScheduleListAdapter(
                 activity!!,
-                (convertMatchScheduleListToMap(
-                    csvFile,
-                    isFiltered = false,
-                    matchNumber = null
-                )!!
+                (getMatchSchedule((if(ourSchedule) Constants.MY_TEAM_NUMBER else null))
                         ),
                 ourSchedule
             )

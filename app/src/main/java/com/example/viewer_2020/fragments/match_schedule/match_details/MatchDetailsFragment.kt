@@ -57,15 +57,9 @@ class MatchDetailsFragment : Fragment() {
             // We get the index by checking which index of the teamNumber collection list the current team
             // number iteration is.
             if (getTeamNumbersXML(root).indexOf(teamNumber) < 3) {
-                teamNumber.text = convertMatchScheduleListToMap(
-                    csvFileRead("match_schedule.csv", false),
-                    isFiltered = true,
-                    matchNumber = matchNumber)!![matchNumber.toString()]!!.blueTeams[getTeamNumbersXML(root).indexOf(teamNumber)]
+                teamNumber.text = getMatchSchedule()[matchNumber.toString()]!!.blueTeams[getTeamNumbersXML(root).indexOf(teamNumber)]
             } else {
-                teamNumber.text = convertMatchScheduleListToMap(
-                    csvFileRead("match_schedule.csv", false),
-                    isFiltered = true,
-                    matchNumber = matchNumber)!![matchNumber.toString()]!!.redTeams[getTeamNumbersXML(root).indexOf(teamNumber) - 3]
+                teamNumber.text = getMatchSchedule()[matchNumber.toString()]!!.redTeams[getTeamNumbersXML(root).indexOf(teamNumber) - 3]
             }
 
             // We run this method because the code above sets each team number text view to the

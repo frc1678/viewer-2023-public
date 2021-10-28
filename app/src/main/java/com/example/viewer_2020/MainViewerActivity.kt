@@ -38,7 +38,8 @@ class MainViewerActivity : ViewerActivity() {
     companion object {
         var currentRankingMenuItem: MenuItem? = null
         var teamCache: HashMap<String, Team> = HashMap()
-        var matchCache: HashMap<String, Match> = HashMap()
+        var matchCache: MutableMap<String, Match> = HashMap()
+        var teamList: List<String> = listOf()
     }
 
     fun verifyCSVFileExists(file: String) {
@@ -67,7 +68,6 @@ class MainViewerActivity : ViewerActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
-        verifyCSVFileExists("match_schedule.csv")
         setToolbarText(actionBar, supportActionBar)
 
         val drawerLayout : DrawerLayout = findViewById(R.id.container)

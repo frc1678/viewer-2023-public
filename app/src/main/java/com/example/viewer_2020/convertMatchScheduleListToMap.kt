@@ -17,7 +17,7 @@ fun convertMatchScheduleListToMap(
     matchScheduleList: MutableList<String>,
     isFiltered: Boolean,
     matchNumber: Int?
-): HashMap<String, Match>? {
+): Map<String, Match>? {
     // If isFiltered is true, only load the match details for the given match number.
     // Because of this, matchNumber should only contain a value if isFiltered is true, so if
     // isFiltered is true and matchNumber is inputted as null, then there is no need to continue

@@ -27,23 +27,11 @@ import java.lang.Float.parseFloat
 // Custom list adapter class with Match object handling to display the custom cell for the match schedule.
 class MatchScheduleListAdapter(
     private val context: Context,
-    private var matchContents: HashMap<String, Match>,
+    private var matchContents: Map<String, Match>,
     private val ourSchedule: Boolean
 ) : BaseAdapter() {
 
-    init {
-        if (ourSchedule) {
-            val amendedMap = HashMap<String, Match>()
-            for (match in matchContents) {
-                if (Constants.MY_TEAM_NUMBER in match.value.blueTeams ||
-                    Constants.MY_TEAM_NUMBER in match.value.redTeams
-                ) {
-                    amendedMap[match.key] = match.value
-                }
-            }
-            matchContents = amendedMap
-        }
-    }
+
 
     private val inflater = LayoutInflater.from(context)
 
@@ -55,7 +43,7 @@ class MatchScheduleListAdapter(
     // Return the Match object given the match number.
     override fun getItem(position: Int): Match? {
         return if (ourSchedule)
-            matchContents[matchContents.keys.toList().sortedBy { it.toInt() } [position]]
+            matchContents[matchContents.keys.toList()[position]]
         else matchContents[(position + 1).toString()]
     }
 
@@ -66,10 +54,12 @@ class MatchScheduleListAdapter(
 
     // Populate the elements of the custom cell.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        Log.e("matchContents", matchContents["1"]?.redTeams.toString())
+
         val viewHolder: ViewHolder
         val rowView: View?
         val matchNumber: String =
-            if (ourSchedule) matchContents.keys.toList().sortedBy { it.toInt() } [position]
+            if (ourSchedule) matchContents.keys.toList()[position]
             else (position + 1).toString()
 
 
@@ -90,8 +80,8 @@ class MatchScheduleListAdapter(
             viewHolder.tvRedTeamTwo,
             viewHolder.tvRedTeamThree
         )) {
-            tv.text = matchContents[matchNumber]!!.redTeams[0 +
-                    listOf(
+
+            tv.text = matchContents[matchNumber]!!.redTeams[listOf(
                         viewHolder.tvRedTeamOne,
                         viewHolder.tvRedTeamTwo,
                         viewHolder.tvRedTeamThree

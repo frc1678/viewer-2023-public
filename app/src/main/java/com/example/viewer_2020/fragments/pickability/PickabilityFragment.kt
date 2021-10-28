@@ -6,12 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.R
+import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.convertToFilteredTeamsList
-import com.example.viewer_2020.csvFileRead
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
-import com.example.viewer_2020.getTeamDataValue
 import kotlinx.android.synthetic.main.fragment_pickability.view.*
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import java.lang.ClassCastException
@@ -51,7 +48,7 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
         var map = mutableMapOf<String, String>()
         val rawTeamNumbers = convertToFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
-            csvFileRead("team_list.csv", false)[0].trim().split(" ")
+            MainViewerActivity.teamList
         )
 
         rawTeamNumbers.forEach { e -> map[e] = try {

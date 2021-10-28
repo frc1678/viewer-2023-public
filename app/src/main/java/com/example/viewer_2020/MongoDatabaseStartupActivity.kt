@@ -38,17 +38,14 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
 
     override fun onResume() {
         super.onResume()
-        if ((ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) or ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET))
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET)
             != PackageManager.PERMISSION_GRANTED
         ) {
             try {
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
+
                         Manifest.permission.INTERNET
                     ),
                     100
@@ -61,6 +58,7 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
     private fun getData(){
         buttonClickable = false
         var getURLData = GetDataFromWebsite(this) {
+            Log.e("error", it)
             runOnUiThread {
                 // Stuff that updates the UI
                 Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()

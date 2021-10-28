@@ -60,7 +60,7 @@ class RankingFragment : Fragment() {
 
         root.lv_ranking.adapter = RankingListAdapter(activity!!, convertToFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
-            csvFileRead("team_list.csv", false)[0].trim().split(" ")
+            MainViewerActivity.teamList
         ))
 
         root.lv_ranking.setOnItemClickListener { _, _, position, _ ->
@@ -68,7 +68,7 @@ class RankingFragment : Fragment() {
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER, convertToFilteredTeamsList(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
-                    csvFileRead("team_list.csv", false)[0].trim().split(" ")
+                    MainViewerActivity.teamList
                 )[position]
             )
             teamDetailsFragment.arguments = teamDetailsFragmentArguments
