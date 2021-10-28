@@ -16,6 +16,7 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.example.viewer_2020.data.DatabaseReference
@@ -71,7 +72,7 @@ class MainViewerActivity : ViewerActivity() {
 
         val drawerLayout : DrawerLayout = findViewById(R.id.container)
         val navView : NavigationView = findViewById(R.id.navigation)
-
+        navView.setCheckedItem(R.id.nav_menu_match_schedule)
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
