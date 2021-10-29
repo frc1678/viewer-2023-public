@@ -4,8 +4,8 @@ class Translations {
     companion object {
         val ACTUAL_TO_HUMAN_READABLE: Map<String, String> = mapOf(
             "team_name" to "Team Name",
-            "driver_agility" to "Driver Agility",
-            "driver_speed" to "Driver Speed",
+            "driver_quickness" to "Driver Quickness",
+            "driver_field_awareness" to "Driver Field Aware.",
             "driver_ability" to "Driver Ability",
             "auto_avg_balls_low" to "Auto Low",
             "auto_avg_balls_high" to "Auto High",

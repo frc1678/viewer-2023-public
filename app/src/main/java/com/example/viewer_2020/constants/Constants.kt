@@ -34,8 +34,8 @@ class Constants {
             "climb_all_attempts",
             "climb_all_success_avg_time",
             "Other",
-            "driver_agility",
-            "driver_speed",
+            "driver_quickness",
+            "driver_field_awareness",
             "driver_ability"
         )
 
@@ -48,8 +48,8 @@ class Constants {
             "tele_avg_balls_low",
             "tele_avg_balls_high",
             "driver_ability",
-            "driver_speed",
-            "driver_agility",
+            "driver_field_awareness",
+            "driver_quickness",
             "can_cross_trench",
             "Endgame",
             "climb_percent_success",

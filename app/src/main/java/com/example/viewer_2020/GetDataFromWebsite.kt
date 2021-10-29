@@ -25,22 +25,21 @@ class GetDataFromWebsite(var context: Context, val onError: (error: String) -> U
             var listOfCollectionNames: List<String> =
                 listOf(
                     "raw_obj_pit",
-                    "subj_pit_collection",
-                    "calc_obj_tim",
-                    "calc_obj_team",
-                    "calc_subj_team",
-                    "calc_predicted_aim",
-                    "calc_predicted_team",
-                    "calc_tba_team",
-                    "calc_pickability"
+                    "raw_subj_pit",
+                    "obj_tim",
+                    "obj_team",
+                    "subj_team",
+                    "predicted_aim",
+                    "predicted_team",
+                    "tba_team",
+                    "pickability"
                 )
 
             //For each of the collections (make sure to change this number if the number of collections change),
             //pull the data from the website and then add it to the databaseReference variable
             for (x in 0..8) {
                 val result =
-                    sendRequest("https://cardinal.citruscircuits.org/cardinal/api/collection/${listOfCollectionNames[x]}/?format=json&test")
-
+                    sendRequest("https://cardinal.citruscircuits.org/cardinal/api/collection/${listOfCollectionNames[x]}/")
                 when (x) {
                     0 -> databaseReference?.raw_obj_pit = Gson().fromJson(
                         result.toString(),
@@ -82,7 +81,7 @@ class GetDataFromWebsite(var context: Context, val onError: (error: String) -> U
             }
 
             val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/2020caln/?format=json"),
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/2021ijso/?format=json"),
                 WebsiteMatchSchedule
             )
             for (i in rawMatchSchedule) {
