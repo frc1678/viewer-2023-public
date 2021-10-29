@@ -41,7 +41,7 @@
     <style name="tv_team_number_match_details">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">0dp</item>
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:gravity">center</item>
         <item name="android:text">9999</item>
         <item name="android:padding">5dp</item>
@@ -51,7 +51,7 @@
     <style name="tv_md_value_cell">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">0dp</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:gravity">center</item>
         <item name="android:text">9999</item>
         <item name="android:padding">5dp</item>
