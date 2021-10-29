@@ -40,6 +40,11 @@ class Constants {
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
+            "current_rps",
+            "current_rank",
+            "current_avg_rps",
+            "predicted_rps",
+            "predicted_rank",
             "Auto",
             "auto_avg_balls_low",
             "auto_avg_balls_high",

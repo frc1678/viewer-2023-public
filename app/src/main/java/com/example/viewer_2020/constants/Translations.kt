@@ -34,7 +34,10 @@ class Translations {
             "climber_strap_installation_difficulty" to "Strap Install Diff",
             "climb_all_successes" to "# Climbs",
             "climb_level_successes" to "# Level Climbs",
-            "auto_line_successes" to "# Auto Lines"
+            "auto_line_successes" to "# Auto Lines",
+            "current_rank" to "Current Rank",
+            "predicted_rps" to "Pred. RPs",
+            "predicted_rank" to "Pred. Rank"
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(

@@ -79,7 +79,7 @@ class DatabaseReference {
         var team_number: Int,
         var predicted_rps: Double,
         var predicted_rank: Int,
-        var current_rps: Int,
+        var current_rps: Float, //todo Change to INT for Chezy (and all other comps)
         var current_rank: Int,
         var current_avg_rps: Float
     )
