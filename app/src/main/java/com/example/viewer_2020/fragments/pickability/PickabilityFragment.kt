@@ -25,7 +25,7 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_pickability, container, false)
         root.tv_pickability_header.text = mode.toString().toLowerCase().capitalize() + " Pickability"
-        val map : Map<String, String> = updateMatchScheduleListView(root)
+        val map : Map<String, Float> = updateMatchScheduleListView(root)
 
         root.lv_pickability.setOnItemClickListener { _, _, position, _ ->
             val list : List<String> = map.keys.toList()
@@ -44,8 +44,8 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
         return root
     }
 
-    private fun updateMatchScheduleListView(root: View) : Map<String, String>{
-        var map = mutableMapOf<String, String>()
+    private fun updateMatchScheduleListView(root: View) : Map<String, Float>{
+        var map = mutableMapOf<String, Float>()
         val rawTeamNumbers = convertToFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             MainViewerActivity.teamList
@@ -55,15 +55,15 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
             getTeamDataValue(
                 e,
                 (if (mode == PickabilityMode.FIRST) "first_pickability" else "second_pickability")
-            )
-        } catch (e: ClassCastException) {
-            Constants.NULL_CHARACTER
+            ).toFloat()
+        } catch (e: Exception) {
+            (-1000).toFloat()
         } }
 
         map = map.toList().sortedBy {(k, v) ->
 
 
-            (if(v == Constants.NULL_CHARACTER) "-1" else v)
+            (v)
         }.reversed().toMap().toMutableMap()
 
         root.lv_pickability.adapter = PickabilityListAdapter(

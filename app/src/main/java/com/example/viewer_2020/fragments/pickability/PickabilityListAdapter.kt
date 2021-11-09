@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.pickability_cell.view.*
 import java.lang.ClassCastException
 import java.lang.Float.parseFloat
 
-class PickabilityListAdapter(private val context: Context,  private val items: Map<String, String>, private val mode: PickabilityMode) : BaseAdapter() {
+class PickabilityListAdapter(private val context: Context,  private val items: Map<String, Float>, private val mode: PickabilityMode) : BaseAdapter() {
     private val inflater = LayoutInflater.from(context)
     override fun getCount(): Int {
         return items.size;
@@ -29,7 +29,11 @@ class PickabilityListAdapter(private val context: Context,  private val items: M
 
     override fun getView(i: Int, view: View?, parent: ViewGroup?): View {
         val e = getItem(i)
-        val pickability = items[e]!!
+        val pickability = if (items[e] == (-1000).toFloat()){
+            Constants.NULL_CHARACTER
+        } else{
+            items[e]!!.toString()
+        }
         val rowView = inflater.inflate(R.layout.pickability_cell, parent, false)
         rowView.tv_placement.text = (i+1).toString()
         rowView.tv_team_number.text = e
