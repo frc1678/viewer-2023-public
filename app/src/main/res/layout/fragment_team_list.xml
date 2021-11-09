@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_team_list_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Team List"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <View style="@style/view_separator_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/tv_standard_gray"
+            android:layout_weight="2"
+            android:text="Team Number"/>
+        <TextView
+            style="@style/tv_standard_gray"
+            android:layout_weight="5"
+            android:text="Team Name" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/Black"
+        />
+
+    <ListView
+        android:id="@+id/lv_team_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>
