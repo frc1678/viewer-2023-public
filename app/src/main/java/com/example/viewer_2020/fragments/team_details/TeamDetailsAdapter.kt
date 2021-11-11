@@ -20,11 +20,8 @@ import com.example.viewer_2020.getTeamDataValue
 import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
-import android.widget.LinearLayout
 import android.widget.TextView
 import java.io.File
-import android.view.Gravity
-
 import android.widget.FrameLayout
 
 
