@@ -2,10 +2,12 @@ package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.content.Context
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -49,7 +51,9 @@ class MatchDetailsAdapter (
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayed[position]] ?: datapointsDisplayed[position]
         if((datapointsDisplayed[position] == "Auto") or (datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame") or (datapointsDisplayed[position] == "Other")){
-
+            val noWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
+            val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
+            rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
             rowView.tv_datapoint_name.setTextColor(
                 ContextCompat.getColor(
                 context,
@@ -59,30 +63,13 @@ class MatchDetailsAdapter (
                 context,
                 R.color.LightGray
             ))
-            rowView.tv_team_one_md.setBackgroundColor(ContextCompat.getColor(
-                context,
-                R.color.LightGray
-            ))
-            rowView.tv_team_two_md.setBackgroundColor(ContextCompat.getColor(
-                context,
-                R.color.LightGray
-            ))
-            rowView.tv_team_three_md.setBackgroundColor(ContextCompat.getColor(
-                context,
-                R.color.LightGray
-            ))
-            rowView.tv_team_four_md.setBackgroundColor(ContextCompat.getColor(
-                context,
-                R.color.LightGray
-            ))
-            rowView.tv_team_five_md.setBackgroundColor(ContextCompat.getColor(
-                context,
-                R.color.LightGray
-            ))
-            rowView.tv_team_six_md.setBackgroundColor(ContextCompat.getColor(
-                context,
-                R.color.LightGray
-            ))
+            rowView.tv_datapoint_name.layoutParams = allWidth
+            rowView.tv_team_one_md.layoutParams = noWidth
+            rowView.tv_team_two_md.layoutParams = noWidth
+            rowView.tv_team_three_md.layoutParams = noWidth
+            rowView.tv_team_four_md.layoutParams = noWidth
+            rowView.tv_team_five_md.layoutParams = noWidth
+            rowView.tv_team_six_md.layoutParams = noWidth
             rowView.tv_team_one_md.text = ""
             rowView.tv_team_two_md.text = ""
             rowView.tv_team_three_md.text = ""

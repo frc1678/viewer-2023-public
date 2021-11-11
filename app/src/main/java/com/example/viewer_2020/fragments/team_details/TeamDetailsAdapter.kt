@@ -5,10 +5,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Environment
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2020.R
@@ -64,15 +66,13 @@ class TeamDetailsAdapter(
                 ?: datapointsDisplayed[position]
         if ((datapointsDisplayed[position] == "Auto") or(datapointsDisplayed[position] == "Tele") or (datapointsDisplayed[position] == "Endgame") or (datapointsDisplayed[position] == "Pit Data")){
             rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP,28F)
-            rowView.tv_ranking.setBackgroundColor(ContextCompat.getColor(
-                context,
-                R.color.LightGray
-            ))
+            rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
+            val noWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
+            val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
+            rowView.tv_ranking.layoutParams = noWidth
+            rowView.tv_datapoint_name.layoutParams = allWidth
+            rowView.tv_datapoint_value.layoutParams = noWidth
             rowView.tv_datapoint_name.setBackgroundColor(ContextCompat.getColor(
-                context,
-                R.color.LightGray
-            ))
-            rowView.tv_datapoint_value.setBackgroundColor(ContextCompat.getColor(
                 context,
                 R.color.LightGray
             ))
