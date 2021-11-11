@@ -10,6 +10,7 @@
 
     <TextView
         style="@style/tv_standard_black"
+        android:gravity="center"
         android:id="@+id/tv_team_number"
         android:layout_weight="2"/>
 

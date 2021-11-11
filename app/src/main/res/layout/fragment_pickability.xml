@@ -4,15 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
+        style="@style/tv_header"
         android:id="@+id/tv_pickability_header"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Pickability"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"></TextView>
+        android:text="Pickability"/>
     <View
-        style="@style/view_separator_horizontal"></View>
+        style="@style/view_separator_horizontal"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"

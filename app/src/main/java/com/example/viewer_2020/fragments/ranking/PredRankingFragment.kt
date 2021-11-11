@@ -30,6 +30,9 @@ class PredRankingFragment : Fragment() {
         // the handler activity (MainViewerActivity) to set the adapter of this fragment's
         // resource layout to the correct adapter given the new menu item that should be displayed.
 
+        root.tv_ranking_header.text = "Pred. Rankings"
+        root.btn_toggle.text = "To Rankings"
+
         root.tv_datapoint_two.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[1]]
         root.tv_datapoint_three.text =
@@ -60,6 +63,18 @@ class PredRankingFragment : Fragment() {
                 teamDetailsFragment
             ).commit()
         }
+        root.btn_toggle.setOnClickListener {
+            toggletoRanking()
+        }
         return root
+    }
+    fun toggletoRanking() {
+        val rankingFragment = RankingFragment()
+        val ft = fragmentManager!!.beginTransaction()
+        fragmentManager!!.beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
+            .commit()
+        return
     }
 }

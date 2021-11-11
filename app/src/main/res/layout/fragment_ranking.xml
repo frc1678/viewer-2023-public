@@ -3,44 +3,82 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ranking_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/toggle_bar"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/very_small"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_ranking_header"
+            style="@style/tv_header"
+            android:layout_weight="1"
+            android:layout_height="80dp"
+            android:text="Header"
+            android:textSize="20sp"/>
+        <Button
+            android:id="@+id/btn_toggle"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Toggle"
+            android:textSize="15sp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <View
+        style="@style/view_separator_horizontal"
+        android:id="@+id/separator_header"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toggle_bar"/>
 
     <LinearLayout
         android:id="@+id/ll_ranking_key"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/separator_header"
         android:padding="@dimen/very_small"
         android:orientation="horizontal">
 
         <TextView
             style="@style/tv_standard_gray"
-            android:id="@+id/tv_datapoint_one"/>
+            android:id="@+id/tv_datapoint_one"
+            android:textSize="12sp"/>
 
         <TextView
             style="@style/tv_standard_black"
+            android:gravity="center"
             android:id="@+id/tv_team_number"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            android:textSize="12sp" />
 
         <TextView
             style="@style/tv_standard_gray"
             android:id="@+id/tv_datapoint_two"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            android:textSize="12sp"/>
 
         <TextView
             style="@style/tv_standard_gray"
             android:id="@+id/tv_datapoint_three"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            android:textSize="12sp"/>
 
         <TextView
             style="@style/tv_standard_gray"
             android:id="@+id/tv_datapoint_four"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            android:textSize="12sp"/>
 
         <TextView
             style="@style/tv_standard_gray"
             android:id="@+id/tv_datapoint_five"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            android:textSize="12sp"/>
 
     </LinearLayout>
 
@@ -54,6 +92,6 @@
         android:id="@+id/lv_ranking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_ranking_key"/>
+        android:layout_below="@+id/view_separator_ll_key"/>
 
 </RelativeLayout>

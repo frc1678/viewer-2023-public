@@ -19,10 +19,12 @@ import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
+import com.example.viewer_2020.fragments.ranking.PredRankingFragment
 import com.example.viewer_2020.fragments.ranking.RankingListAdapter
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import com.google.android.material.navigation.NavigationView
+import android.util.Log
 
 
 // The fragment of the ranking lists 'view' that is one of the options of the navigation bar.
@@ -48,6 +50,9 @@ class RankingFragment : Fragment() {
         // When a menu item of the navigation bar is clicked, it sends the MenuItem to
         // the handler activity (MainViewerActivity) to set the adapter of this fragment's
         // resource layout to the correct adapter given the new menu item that should be displayed.
+
+        root.tv_ranking_header.text = "Rankings"
+        root.btn_toggle.text = "To Pred. Rankings"
 
         root.tv_datapoint_two.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[1]]
@@ -78,10 +83,23 @@ class RankingFragment : Fragment() {
                 teamDetailsFragment
             ).commit()
         }
+
+        root.btn_toggle.setOnClickListener{
+            toggleToPredicted()
+        }
         return root
     }
 
     fun newInstance(): RankingFragment{
         return RankingFragment()
+    }
+
+    fun toggleToPredicted() {
+        val predictedRankingFragment = PredRankingFragment()
+        val ft = fragmentManager!!.beginTransaction()
+        if (fragmentManager!!.fragments.last().tag != "predRankings") ft.addToBackStack(null)
+        ft.replace(R.id.nav_host_fragment, predictedRankingFragment, "predRankings")
+            .commit()
+        return
     }
 }
