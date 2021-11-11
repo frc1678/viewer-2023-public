@@ -207,7 +207,7 @@ class MatchScheduleListAdapter(
                             parseFloat(("%.2f").format(value.toFloat()))
                     }
                 }
-            } else tv.setImageResource(R.drawable.white_background)
+            } else tv.setImageDrawable(null)
         }
         blue_predicted@ for (tv in listOf(
             viewHolder.tvBluePredictedRPOne,
@@ -260,7 +260,7 @@ class MatchScheduleListAdapter(
                             parseFloat(("%.2f").format(value.toFloat()))
                     }
                 }
-            } else tv.setImageResource(R.drawable.white_background)
+            } else tv.setImageDrawable(null)
         }
         return rowView!!
     }
