@@ -103,7 +103,12 @@ class DatabaseReference {
         var tele_cp_rotation_successes: Int,
         var tele_cp_position_successes: Int,
         var climb_all_attempts: Int,
-        var matches_played: Int
+        var matches_played: Int,
+        var auto_max_balls_low: Int,
+        var auto_max_balls_high: Int,
+        var tele_max_balls_low: Int,
+        var tele_max_balls_high: Int,
+        var max_incap: Int
     )
 
     data class CalculatedObjectiveTeamInMatch (
