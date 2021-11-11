@@ -45,7 +45,7 @@ class TeamDetailsAdapter(
 
     // Populate the elements of the custom cell.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val regex: Pattern = Pattern.compile("[0-9]+" + Regex.escape(".") + "[0-9]+")
+        val regex: Pattern = Pattern.compile("-?" +"[0-9]+" + Regex.escape(".") + "[0-9]+")
         val rowView = inflater.inflate(R.layout.team_details_cell, parent, false)
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayed[position]]
@@ -73,15 +73,16 @@ class TeamDetailsAdapter(
         }
 
         else {
-            rowView.tv_datapoint_value.text =
-                if (regex.matcher(
-                    getTeamDataValue(
+                if(regex.matcher(getTeamDataValue(
                         teamNumber,
                         datapointsDisplayed[position])).matches()) {
-                            ("%.1f").format(parseFloat(getTeamDataValue(teamNumber, datapointsDisplayed[position]))
-                    )
+                    if(datapointsDisplayed[position] in Constants.DRIVER_DATA){
+                        rowView.tv_datapoint_value.text = ("%.2f").format(parseFloat(getTeamDataValue(teamNumber, datapointsDisplayed[position])))
+                    }else{
+                        rowView.tv_datapoint_value.text = ("%.1f").format(parseFloat(getTeamDataValue(teamNumber, datapointsDisplayed[position])))
+                    }
                 } else {
-                    getTeamDataValue(
+                    rowView.tv_datapoint_value.text = getTeamDataValue(
                         teamNumber,
                         datapointsDisplayed[position]
                     )

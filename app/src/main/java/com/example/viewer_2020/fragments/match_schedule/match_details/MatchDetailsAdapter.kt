@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2020.R
+import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.getTeamDataValue
 import kotlinx.android.synthetic.main.match_details_cell.view.*
@@ -102,13 +103,16 @@ class MatchDetailsAdapter (
         return rowView
     }
     fun getTeamValue(textView: TextView, field: String, teamNumber: String) {
-        val regex: Pattern = Pattern.compile("[0-9]+" + Regex.escape(".") + "[0-9]+")
-        textView.text =
+        val regex: Pattern = Pattern.compile("-?" +"[0-9]+" + Regex.escape(".") + "[0-9]+")
                 //if datafield is a float, round datapoint. Otherwise, display returned string from getTeamDataValue
-            if (regex.matcher(getTeamDataValue(teamNumber, field)).matches()) {
-                ("%.1f").format(Float.parseFloat(getTeamDataValue(teamNumber, field)))
+        if (regex.matcher(getTeamDataValue(teamNumber, field)).matches()) {
+            if (field in Constants.DRIVER_DATA) {
+                textView.text  = ("%.2f").format(Float.parseFloat(getTeamDataValue(teamNumber, field)))
             } else {
-                getTeamDataValue(teamNumber, field)
+                textView.text  = ("%.1f").format(Float.parseFloat(getTeamDataValue(teamNumber, field)))
             }
+        } else {
+        textView.text = getTeamDataValue(teamNumber, field)
+        }
     }
 }

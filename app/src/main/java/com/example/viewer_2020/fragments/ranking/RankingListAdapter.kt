@@ -17,6 +17,8 @@ import android.widget.TextView
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.getTeamObjectByKey
+import java.lang.Float
+import java.util.regex.Pattern
 
 // Custom list adapter class with aq object handling to display the custom cell for the match schedule.
 class RankingListAdapter(
@@ -60,10 +62,20 @@ class RankingListAdapter(
 
         viewHolder.tvTeamNumber.text = listContents[position]
 
+        val regex: Pattern = Pattern.compile("[0-9]+" + Regex.escape(".") + "[0-9]+")
+
         viewHolder.tvDatapointOne.text = getTeamObject("current_rank",
             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
-        viewHolder.tvDatapointTwo.text = getTeamObject("current_avg_rps",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
+        viewHolder.tvDatapointTwo.text =
+            if (regex.matcher(getTeamObject("current_avg_rps",
+                position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)).matches()) {
+            (("%.2f").format(
+                Float.parseFloat(getTeamObject("current_avg_rps",
+                position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))))
+        } else{
+            getTeamObject("current_avg_rps",
+                position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
+        }
         viewHolder.tvDatapointThree.text = getTeamObject("current_rps",
             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
         viewHolder.tvDatapointFour.text = getTeamObject("predicted_rps",

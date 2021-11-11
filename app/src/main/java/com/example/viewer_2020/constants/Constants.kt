@@ -85,7 +85,13 @@ class Constants {
             "predicted_rp2"
         )
 
-        val PERCENT_DATA: List<String> = listOf(
+      val DRIVER_DATA: List<String> = listOf(
+            "driver_quickness",
+            "driver_field_awareness",
+            "driver_ability"
+        )
+
+          val PERCENT_DATA: List<String> = listOf(
             "climb_percent_success"
         )
 
@@ -101,7 +107,7 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.3.7"
+        const val VERSION_NUM = "1.3.9"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
