@@ -37,7 +37,8 @@ class Translations {
             "auto_line_successes" to "# Auto Lines",
             "current_rank" to "Current Rank",
             "predicted_rps" to "Pred. RPs",
-            "predicted_rank" to "Pred. Rank"
+            "predicted_rank" to "Pred. Rank",
+            "avg_incap_time" to "Avg Incap Time"
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(

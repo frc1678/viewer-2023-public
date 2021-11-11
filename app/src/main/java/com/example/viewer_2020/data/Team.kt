@@ -39,4 +39,6 @@ data class Team (var team_number: Int?) {
     var climb_all_attempts: Int? = null
     var climber_strap_installation_notes: String? = null
     var climber_strap_installation_difficulty: Int? = null
+    var avg_incap_time: Float? = null
+    var climb_percent_success: Float? = null
 }

@@ -29,9 +29,15 @@ fun getTeamDataValue(teamNumber: String, field: String): String {
                     item, teamNumber, field
                 ) != Constants.NULL_CHARACTER
             ) {
-                return getTeamObjectByKey(
-                    item, teamNumber, field
-                )
+                return if (field in Constants.PERCENT_DATA) {
+                    (getTeamObjectByKey(
+                        item, teamNumber, field
+                    ).toFloat() * 100.0).toString()
+                } else {
+                    getTeamObjectByKey(
+                        item, teamNumber, field
+                    )
+                }
             }
         } catch (e: Exception) {
             continue
