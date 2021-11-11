@@ -63,6 +63,8 @@
                 <TextView style="@style/tv_rp_datapoint"
                     android:id="@+id/tv_red_predicted_score"
                     android:layout_height="0dp"
+                    android:gravity="left"
+                    android:padding="5dp"
                     android:textSize="12sp"
                     android:layout_weight="2"
                     android:layout_width="match_parent"/>
@@ -115,6 +117,8 @@
                 <TextView style="@style/tv_rp_datapoint"
                     android:id="@+id/tv_blue_predicted_score"
                     android:textSize="12sp"
+                    android:gravity="left"
+                    android:padding="5dp"
                     android:layout_height="0dp"
                     android:layout_weight="2"
                     android:layout_width="match_parent"/>
