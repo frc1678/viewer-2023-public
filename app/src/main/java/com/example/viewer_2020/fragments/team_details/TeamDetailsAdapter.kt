@@ -2,6 +2,8 @@ package com.example.viewer_2020.fragments.team_details
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Bundle
+import android.os.Environment
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,16 @@ import com.example.viewer_2020.getTeamDataValue
 import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
+import android.widget.LinearLayout
+import android.widget.TextView
+import java.io.File
+import android.view.Gravity
+
+import android.widget.FrameLayout
+
+
+
+
 
 // Custom list adapter class for each list view of the six teams featured in every MatchDetails display.
 // TODO implement a type 'Team' object parameter to access the team data for the team number.
