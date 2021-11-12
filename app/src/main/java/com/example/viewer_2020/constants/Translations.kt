@@ -42,7 +42,7 @@ class Translations {
             "auto_max_balls_high" to "Auto Max Balls High",
             "tele_max_balls_low" to "Tele Max Balls Low",
             "tele_max_balls_high" to "Tele Max Balls High",
-            "max_incap" to "Max Incap"
+            "max_incap" to "Max Incap",
             "avg_incap_time" to "Avg Incap Time"
         )
 
