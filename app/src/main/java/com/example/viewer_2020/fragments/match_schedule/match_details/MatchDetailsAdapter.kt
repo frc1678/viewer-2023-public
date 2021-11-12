@@ -20,11 +20,9 @@ import java.lang.Float
 import java.util.regex.Pattern
 
 class MatchDetailsAdapter (
-        private val context: FragmentActivity,
-        private val datapointsDisplayedNotPlayed: List<String>,
-        private val datapointsDisplayedPlayed: List<String>,
-        private val beenPlayed: Boolean,
-        private val teamNumber: List<String>
+    private val context: FragmentActivity,
+    private val datapointsDisplay: List<String>,
+    private val teamNumber: List<String>
 ) : BaseAdapter() {
 
     private val inflater: LayoutInflater
@@ -32,12 +30,12 @@ class MatchDetailsAdapter (
 
     // Return the size of the list of the data points to be displayed.
     override fun getCount(): Int {
-        return datapointsDisplayedNotPlayed.size
+        return datapointsDisplay.size
     }
 
     // Returns the specific data point given the position of the data point.
     override fun getItem(position: Int): Any {
-        return datapointsDisplayedNotPlayed[position] as Any
+        return datapointsDisplay[position] as Any
     }
 
     // Returns the position of the cell.
@@ -47,12 +45,11 @@ class MatchDetailsAdapter (
 
     // Populate the elements of the custom cell.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        if(beenPlayed == false) {
             val rowView = inflater.inflate(R.layout.match_details_cell, parent, false)
             rowView.tv_datapoint_name.text =
-                    Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayedNotPlayed[position]]
-                            ?: datapointsDisplayedNotPlayed[position]
-            if ((datapointsDisplayedNotPlayed[position] == "Auto") or (datapointsDisplayedNotPlayed[position] == "Tele") or (datapointsDisplayedNotPlayed[position] == "Endgame") or (datapointsDisplayedNotPlayed[position] == "Other")) {
+                    Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplay[position]]
+                            ?: datapointsDisplay[position]
+            if ((datapointsDisplay[position] == "Auto") or (datapointsDisplay[position] == "Tele") or (datapointsDisplay[position] == "Endgame") or (datapointsDisplay[position] == "Other")) {
                 val noWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
                 val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
                 rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
@@ -85,50 +82,7 @@ class MatchDetailsAdapter (
                 )
 
                 for (x in 0..5) {
-                    getTeamValue(values[x], datapointsDisplayedNotPlayed[position], teamNumber[x])
-                }
-            }
-            return rowView
-        }
-        else {
-            val rowView = inflater.inflate(R.layout.match_details_cell, parent, false)
-            rowView.tv_datapoint_name.text =
-                    Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplayedPlayed[position]]
-                            ?: datapointsDisplayedPlayed[position]
-            if ((datapointsDisplayedPlayed[position] == "Auto") or (datapointsDisplayedPlayed[position] == "Tele") or (datapointsDisplayedPlayed[position] == "Endgame") or (datapointsDisplayedPlayed[position] == "Other")) {
-                val noWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
-                val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
-                rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
-                rowView.tv_datapoint_name.setTextColor(
-                        ContextCompat.getColor(
-                                context,
-                                R.color.Black
-                        ))
-                rowView.tv_datapoint_name.setBackgroundColor(ContextCompat.getColor(
-                        context,
-                        R.color.LightGray
-                ))
-                rowView.tv_datapoint_name.layoutParams = allWidth
-                rowView.tv_team_one_md.layoutParams = noWidth
-                rowView.tv_team_two_md.layoutParams = noWidth
-                rowView.tv_team_three_md.layoutParams = noWidth
-                rowView.tv_team_four_md.layoutParams = noWidth
-                rowView.tv_team_five_md.layoutParams = noWidth
-                rowView.tv_team_six_md.layoutParams = noWidth
-                rowView.tv_team_one_md.text = ""
-                rowView.tv_team_two_md.text = ""
-                rowView.tv_team_three_md.text = ""
-                rowView.tv_team_four_md.text = ""
-                rowView.tv_team_five_md.text = ""
-                rowView.tv_team_six_md.text = ""
-            } else {
-                var values = listOf<TextView>(
-                        rowView.tv_team_one_md, rowView.tv_team_two_md, rowView.tv_team_three_md,
-                        rowView.tv_team_four_md, rowView.tv_team_five_md, rowView.tv_team_six_md
-                )
-
-                for (x in 0..5) {
-                    getTeamValue(values[x], datapointsDisplayedPlayed[position], teamNumber[x])
+                    getTeamValue(values[x], datapointsDisplay[position], teamNumber[x])
                 }
             }
             return rowView
@@ -148,4 +102,3 @@ class MatchDetailsAdapter (
         textView.text = getTeamDataValue(teamNumber, field)
         }
     }
-}

@@ -119,16 +119,15 @@ class MatchDetailsFragment : Fragment() {
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
-        var beenPlayed = getAllianceInMatchObjectByKey(
+        var datapointsDisplay = (if (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber.toString(),
-                "hasActualData").toBoolean()
+                "hasActualData").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED)
+
             root.lv_match_details.adapter =
                 MatchDetailsAdapter(
                     context = activity!!,
-                    datapointsDisplayedNotPlayed = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED,
-                    datapointsDisplayedPlayed = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED,
-                    beenPlayed = beenPlayed,
+                    datapointsDisplay = datapointsDisplay,
                     teamNumber = getTeamNumbersList(root)
                 )
 //        }
