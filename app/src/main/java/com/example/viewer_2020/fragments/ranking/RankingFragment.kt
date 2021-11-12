@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.constants.Constants
@@ -32,7 +33,7 @@ import android.util.Log
 // main menu bar. This navigation/menu bar does not switch between fragments on each menu's selection
 // like the main menu bar does. This navigation bar only receives the position/ID of the menu selected
 // and then updated the adapter of the list view that is right above it.
-class RankingFragment : Fragment() {
+class RankingFragment : IFrag() {
 
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
@@ -62,11 +63,11 @@ class RankingFragment : Fragment() {
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[3]]
         root.tv_datapoint_five.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[4]]
-
-        root.lv_ranking.adapter = RankingListAdapter(activity!!, convertToFilteredTeamsList(
+        adapter = RankingListAdapter(activity!!, convertToFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             MainViewerActivity.teamList
         ))
+        root.lv_ranking.adapter = adapter
 
         root.lv_ranking.setOnItemClickListener { _, _, position, _ ->
             val rankingFragmentTransaction = this.fragmentManager!!.beginTransaction()

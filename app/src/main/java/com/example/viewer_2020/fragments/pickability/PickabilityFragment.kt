@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import java.lang.ClassCastException
 import java.util.Comparator
 
-class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
+class PickabilityFragment(val mode: PickabilityMode) : IFrag() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
 
@@ -65,12 +66,12 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
 
             (v)
         }.reversed().toMap().toMutableMap()
-
-        root.lv_pickability.adapter = PickabilityListAdapter(
+        adapter = PickabilityListAdapter(
             items = map,
             context = activity!!,
             mode = mode
         )
+        root.lv_pickability.adapter = adapter
         return map
     }
 }

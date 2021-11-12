@@ -6,7 +6,8 @@
     android:id="@+id/container"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".MainViewerActivity">
+    tools:context=".MainViewerActivity"
+    tools:showIn="@layout/activity_main">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,16 +38,32 @@
         android:layout_gravity="start"
         android:paddingBottom="@dimen/small"
         android:fitsSystemWindows="true" >
-        <TextView style="@style/tv_standard_gray"
-            android:id="@+id/nav_footer"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:gravity="start"
-            android:paddingStart="@dimen/small"
-            android:paddingEnd="@dimen/small"
-            android:lineSpacingExtra="@dimen/very_small"
-            android:text="Footer" />
+            android:orientation="vertical"
+            android:layout_gravity="bottom">
+            <Button
+                android:id="@+id/data_refresh_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Refresh"
+
+                />
+            <TextView style="@style/tv_standard_gray"
+                android:id="@+id/nav_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="start"
+                android:paddingStart="@dimen/small"
+                android:paddingEnd="@dimen/small"
+                android:lineSpacingExtra="@dimen/very_small"
+                android:text="Footer" />
+
+        </LinearLayout>
+
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

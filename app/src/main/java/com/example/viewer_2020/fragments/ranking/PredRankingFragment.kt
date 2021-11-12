@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
@@ -12,7 +13,7 @@ import com.example.viewer_2020.convertToFilteredTeamsList
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 
-class PredRankingFragment : Fragment() {
+class PredRankingFragment : IFrag() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
 
@@ -42,11 +43,12 @@ class PredRankingFragment : Fragment() {
         root.tv_datapoint_five.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[0]]
 
-        root.lv_ranking.adapter = PredRankingListAdapter(activity!!, convertToPredFilteredTeamsList(
+        adapter = PredRankingListAdapter(activity!!, convertToPredFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             MainViewerActivity.teamList
-        )
-        )
+        ))
+
+        root.lv_ranking.adapter = adapter
 
         root.lv_ranking.setOnItemClickListener { _, _, position, _ ->
             val rankingFragmentTransaction = this.fragmentManager!!.beginTransaction()

@@ -24,9 +24,10 @@ import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetai
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.team_details.view.*
 import android.util.Log
+import android.widget.BaseAdapter
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
-open class MatchScheduleFragment : Fragment() {
+open class MatchScheduleFragment : IFrag(){
 
     val matchDetailsFragment = MatchDetailsFragment()
     val matchDetailsFragmentArguments = Bundle()
@@ -56,12 +57,13 @@ open class MatchScheduleFragment : Fragment() {
     }
 
     fun updateMatchScheduleListView(root: View, ourSchedule: Boolean) {
-        root.lv_match_schedule.adapter =
-            MatchScheduleListAdapter(
-                activity!!,
-                (getMatchSchedule((if(ourSchedule) Constants.MY_TEAM_NUMBER else null))
-                        ),
-                ourSchedule
-            )
+        adapter = MatchScheduleListAdapter(
+            activity!!,
+            (getMatchSchedule((if(ourSchedule) Constants.MY_TEAM_NUMBER else null))
+                    ),
+            ourSchedule
+        )
+        root.lv_match_schedule.adapter =adapter
+
     }
 }

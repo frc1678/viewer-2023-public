@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
@@ -27,7 +28,6 @@ import java.lang.Float.parseFloat
 // The fragment class for the Match Details display that occurs when you click on a
 // match in the match schedule page.
 class MatchDetailsFragment : Fragment() {
-
     private var matchNumber: Int? = null
 
     private val teamDetailsFragment = TeamDetailsFragment()

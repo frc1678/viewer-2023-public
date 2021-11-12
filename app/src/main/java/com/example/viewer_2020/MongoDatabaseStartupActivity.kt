@@ -1,11 +1,13 @@
 package com.example.viewer_2020
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.viewer_2020.data.DatabaseReference
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
@@ -57,7 +59,10 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
     }
     private fun getData(){
         buttonClickable = false
-        var getURLData = GetDataFromWebsite(this) {
+        GetDataFromWebsite({
+            ContextCompat.startActivity(this, Intent(this, MainViewerActivity::class.java), null)
+
+        }) {
             Log.e("error", it)
             runOnUiThread {
                 // Stuff that updates the UI
@@ -68,6 +73,7 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
             }
 
         }.execute()
+
     }
 
     fun refreshClick(view: View) {

@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 
 //Super class of all activity based classes for this project.
 //Used to implement class mechanisms that all activities should comprise of.
-lateinit var lastUpdated: Date;
+var lastUpdated: Date = Calendar.getInstance().time;
 open class ViewerActivity : AppCompatActivity() {
     //When the back press is held down, this function will confirm the long click and then 'restart'
     //the app by sending it to the mode collection activity and resetting the mode.

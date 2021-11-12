@@ -16,7 +16,7 @@ import org.json.JSONObject
 import java.time.LocalDateTime
 import java.util.*
 
-class GetDataFromWebsite(var context: Context, val onError: (error: String) -> Unit = {}) :
+class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: String) -> Unit = {}) :
     AsyncTask<String, String, String>() {
 
     override fun doInBackground(vararg p0: String?): String {
@@ -110,7 +110,6 @@ class GetDataFromWebsite(var context: Context, val onError: (error: String) -> U
             )
 
             lastUpdated = Calendar.getInstance().time
-            startActivity(context, Intent(context, MainViewerActivity::class.java), null)
 
             return ("finished")
         } catch (e: Throwable) {
@@ -120,6 +119,7 @@ class GetDataFromWebsite(var context: Context, val onError: (error: String) -> U
     }
 
     override fun onPostExecute(result: String) {
+        onCompleted()
     }
 }
 
