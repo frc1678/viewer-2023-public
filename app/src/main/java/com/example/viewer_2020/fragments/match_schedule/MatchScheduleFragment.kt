@@ -39,7 +39,7 @@ open class MatchScheduleFragment : IFrag(){
     ): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
 
-        updateMatchScheduleListView(root, false)
+        updateMatchScheduleListView(root, null)
 
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
@@ -56,14 +56,13 @@ open class MatchScheduleFragment : IFrag(){
         return root
     }
 
-    fun updateMatchScheduleListView(root: View, ourSchedule: Boolean) {
-        adapter = MatchScheduleListAdapter(
-            activity!!,
-            (getMatchSchedule((if(ourSchedule) Constants.MY_TEAM_NUMBER else null))
-                    ),
-            ourSchedule
-        )
-        root.lv_match_schedule.adapter =adapter
-
+    fun updateMatchScheduleListView(root: View, forTeam: String?) {
+        root.lv_match_schedule.adapter =
+            MatchScheduleListAdapter(
+                activity!!,
+                (getMatchSchedule((forTeam))
+                        ),
+                forTeam
+            )
     }
 }
