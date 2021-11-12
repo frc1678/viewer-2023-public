@@ -42,6 +42,7 @@ class DatabaseReference {
     data class CalculatedPredictedAllianceInMatch (
         var match_number: Int,
         var alliance_color_is_red: Boolean,
+        var has_actual_data: Boolean,
         var predicted_score: Float,
         var predicted_rp1: Float,
         var predicted_rp2: Float

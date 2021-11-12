@@ -41,4 +41,13 @@ data class Team (var team_number: Int?) {
     var climber_strap_installation_difficulty: Int? = null
     var avg_incap_time: Float? = null
     var climb_percent_success: Float? = null
+    var match_number: Int? = null
+    var auto_balls_low: Int? = null
+    var auto_balls_high: Int? = null
+    var tele_balls_low: Int? = null
+    var tele_balls_high: Int? = null
+    var control_panel_rotation: Boolean? = null
+    var control_panel_position: Boolean? = null
+    var incap: Int? = null
+    var climb_time: Int? = null
 }

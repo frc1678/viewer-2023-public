@@ -22,7 +22,7 @@ class Constants {
             "raw"
         )
 
-        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS: List<String> = listOf(
+        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED: List<String> = listOf(
             "Auto",
             "auto_avg_balls_low",
             "auto_avg_balls_high",
@@ -42,6 +42,18 @@ class Constants {
             "driver_quickness",
             "driver_field_awareness",
             "driver_ability"
+        )
+
+        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED: List<String> = listOf(
+                "Auto",
+                "auto_balls_low",
+                "auto_balls_high",
+                "Tele",
+                "tele_balls_low",
+                "tele_balls_high",
+                "Other",
+                "incap",
+                "climb_time"
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(

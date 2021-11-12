@@ -95,8 +95,6 @@ class GetDataFromWebsite(var context: Context, val onError: (error: String) -> U
                             match.blueTeams.add(j.number.toString())
                         }
                     }
-
-
                 }
 
                 Log.e("parsedmap", match.toString())
