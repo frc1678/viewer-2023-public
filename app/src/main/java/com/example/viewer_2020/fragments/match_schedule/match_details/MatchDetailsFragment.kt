@@ -123,7 +123,6 @@ class MatchDetailsFragment : Fragment() {
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber.toString(),
                 "hasActualData").toBoolean()
-        Log.e("TIMD",getTeamObjectByKey("obj_tim",973.toString(),"tele_balls_high"))
             root.lv_match_details.adapter =
                 MatchDetailsAdapter(
                     context = activity!!,
