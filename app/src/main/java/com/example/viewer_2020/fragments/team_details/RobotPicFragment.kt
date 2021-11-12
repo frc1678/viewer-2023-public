@@ -54,7 +54,7 @@ class RobotPicFragment : Fragment() {
             "$fileName.jpg"
         )
         if (file.exists()){
-            root.team_pic.setImageBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeFile(file.absolutePath),100,100,false))
+            root.team_pic.setImageBitmap(BitmapFactory.decodeFile(file.absolutePath))
         }
     }
 }
