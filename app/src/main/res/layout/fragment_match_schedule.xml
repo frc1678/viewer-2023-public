@@ -29,16 +29,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="10678"
+            android:text="8678"
             android:enabled="false"
-            android:id="@+id/btn_t10"/>
+            android:id="@+id/btn_t8"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="11678"
+            android:text="7678"
             android:enabled="false"
-            android:id="@+id/btn_t11"/>
+            android:id="@+id/btn_t7"/>
     </LinearLayout>
     <ListView
         android:id="@+id/lv_match_schedule"

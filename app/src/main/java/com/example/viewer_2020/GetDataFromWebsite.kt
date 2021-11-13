@@ -81,7 +81,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
             }
 
             val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/2021cc/?format=json"),
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/2021mttd/?format=json"),
                 WebsiteMatchSchedule
             )
             for (i in rawMatchSchedule) {
@@ -105,7 +105,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                     .toMap().toMutableMap()
 
             MainViewerActivity.teamList = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/2021cc/?format=json"),
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/2021mttd/?format=json"),
                 WebsiteTeams
             )
 

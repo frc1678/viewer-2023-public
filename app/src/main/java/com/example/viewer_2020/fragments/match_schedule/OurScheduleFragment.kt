@@ -32,8 +32,8 @@ class OurScheduleFragment : MatchScheduleFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         btn_t1.isEnabled = true
         btn_t9.isEnabled = true
-        btn_t10.isEnabled = true
-        btn_t11.isEnabled = true
+        btn_t8.isEnabled = true
+        btn_t7.isEnabled = true
 
         btn_t1.setOnClickListener {
             changeTeamNumber("1678", view)
@@ -43,12 +43,12 @@ class OurScheduleFragment : MatchScheduleFragment() {
             changeTeamNumber("9678", view)
         }
 
-        btn_t10.setOnClickListener {
-            changeTeamNumber("10678", view)
+        btn_t8.setOnClickListener {
+            changeTeamNumber("8678", view)
         }
 
-        btn_t11.setOnClickListener {
-            changeTeamNumber("11678", view)
+        btn_t7.setOnClickListener {
+            changeTeamNumber("7678", view)
         }
     }
 
