@@ -49,7 +49,10 @@ class Translations {
             "tele_balls_high" to "Tele Balls High",
             "incap" to "Incap (s)",
             "climb_time" to "Climb (s)",
-            "max_incap" to "Max Incap"
+            "max_incap" to "Max Incap",
+            "actual_score" to "Actual Score",
+            "actual_rp1" to "Actual Climb RP",
+            "actual_rp2" to "Actual 3rd Stage RP"
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(

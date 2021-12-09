@@ -9,12 +9,9 @@
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
@@ -32,11 +29,18 @@ class MatchDetailsFragment : Fragment() {
 
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
+    lateinit var headerDisplay: List<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        headerDisplay = (if (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.BLUE, matchNumber.toString(),
+                "has_actual_data").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
+
         val root = inflater.inflate(R.layout.match_details, container, false)
 
         populateMatchDetailsEssentials(root)
@@ -119,10 +123,10 @@ class MatchDetailsFragment : Fragment() {
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
-        var datapointsDisplay = (if (getAllianceInMatchObjectByKey(
+        val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber.toString(),
-                "hasActualData").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED)
+                "has_actual_data").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED)
 
             root.lv_match_details.adapter =
                 MatchDetailsAdapter(
@@ -152,14 +156,14 @@ class MatchDetailsFragment : Fragment() {
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber.toString(),
-                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv)])
+                    headerDisplay[getHeaderCollection(root).indexOf(tv)])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
                 else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
             } else {
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber.toString(),
-                    Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[getHeaderCollection(root).indexOf(tv) - 3])
+                    headerDisplay[getHeaderCollection(root).indexOf(tv) - 3])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
                 else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
             }
@@ -170,11 +174,11 @@ class MatchDetailsFragment : Fragment() {
 
             when {
                 (headerLabelIndex == 0) or (headerLabelIndex == 3) ->
-                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[0]]
+                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[0]]
                 (headerLabelIndex == 1) or (headerLabelIndex == 4) ->
-                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[1]]
+                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[1]]
                 (headerLabelIndex == 2) or (headerLabelIndex == 5) ->
-                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER[2]]
+                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[2]]
             }
         }
     }

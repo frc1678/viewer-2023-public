@@ -101,10 +101,16 @@ class Constants {
             "predicted_rank"
         )
 
-        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER: List<String> = listOf(
+        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED: List<String> = listOf(
             "predicted_rp1",
             "predicted_score",
             "predicted_rp2"
+        )
+
+        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED: List<String> = listOf(
+            "actual_rp1",
+            "actual_score",
+            "actual_rp2"
         )
 
       val DRIVER_DATA: List<String> = listOf(
@@ -129,7 +135,7 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.3.15"
+        const val VERSION_NUM = "1.3.16"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
