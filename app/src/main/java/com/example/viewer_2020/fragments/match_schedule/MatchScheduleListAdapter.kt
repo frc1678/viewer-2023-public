@@ -101,14 +101,34 @@ class MatchScheduleListAdapter(
         }
         viewHolder.tvMatchNumber.text = matchNumber
 
+        if ((getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.RED, matchNumber.toString(),
+                "has_actual_data").toBoolean()) && (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.BLUE, matchNumber.toString(),
+                "has_actual_data").toBoolean())) {
+            viewHolder.tvMatchNumber.text = matchNumber + "\nActual"
+        }
+
         if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore != null) {
             viewHolder.tvBluePredictedScore.text =
                 MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
         } else {
-            val value = getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber, "predicted_score"
-            )
+            val value = if (getAllianceInMatchObjectByKey(
+                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                    Constants.BLUE, matchNumber.toString(),
+                    "has_actual_data").toBoolean()) {
+                getAllianceInMatchObjectByKey(
+                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                    Constants.BLUE, matchNumber, "actual_score"
+                )
+            } else{
+                getAllianceInMatchObjectByKey(
+                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                    Constants.BLUE, matchNumber, "predicted_score"
+                )
+            }
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvBluePredictedScore.text =
                     parseFloat(("%.2f").format(value.toFloat())).toString()
@@ -124,10 +144,21 @@ class MatchScheduleListAdapter(
             viewHolder.tvRedPredictedScore.text =
                 MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
         } else {
-            val value = getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber, "predicted_score"
-            )
+            val value = if (getAllianceInMatchObjectByKey(
+                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                    Constants.RED, matchNumber.toString(),
+                    "has_actual_data").toBoolean()) {
+                getAllianceInMatchObjectByKey(
+                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                    Constants.RED, matchNumber, "actual_score"
+                )
+            } else{
+                Log.e("red no score", matchNumber)
+                getAllianceInMatchObjectByKey(
+                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                    Constants.RED, matchNumber, "predicted_score"
+                )
+            }
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvRedPredictedScore.text =
                     parseFloat(("%.2f").format(value.toFloat())).toString()
@@ -165,21 +196,60 @@ class MatchScheduleListAdapter(
                 viewHolder.tvRedPredictedRPTwo
             ).indexOf(tv)) {
                 0 -> {
-                    if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne != null &&
-                        MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne!!.toDouble() >
-                        Constants.PREDICTED_RANKING_POINT_QUALIFICATION
-                    ) {
-                        tv.setImageResource(R.drawable.shield)
-                        continue@red_predicted
+                    if (getAllianceInMatchObjectByKey(
+                            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                            Constants.RED, matchNumber.toString(),
+                            "has_actual_data").toBoolean()) {
+                        if ((getAllianceInMatchObjectByKey(
+                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                                Constants.RED, matchNumber, "actual_rp1"
+                            )) != "?" &&
+                            (getAllianceInMatchObjectByKey(
+                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                                Constants.RED, matchNumber, "actual_rp1"
+                            ).toDouble() >
+                                    Constants.PREDICTED_RANKING_POINT_QUALIFICATION)
+                        ) {
+                            tv.setImageResource(R.drawable.shield)
+                            continue@red_predicted
+                        }
+                    }else{
+                        if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne != null &&
+                            MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne!!.toDouble() >
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
+                        ) {
+                            tv.setImageResource(R.drawable.shield)
+                            continue@red_predicted
+                        }
                     }
                 }
                 1 -> {
-                    if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null &&
-                        MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() >
-                        Constants.PREDICTED_RANKING_POINT_QUALIFICATION
-                    ) {
-                        tv.setImageResource(R.drawable.lightning)
-                        continue@red_predicted
+                    if (getAllianceInMatchObjectByKey(
+                            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                            Constants.RED, matchNumber.toString(),
+                            "has_actual_data").toBoolean()) {
+                        if ((getAllianceInMatchObjectByKey(
+                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                                Constants.RED, matchNumber, "actual_rp2"
+                            )) != "?" &&
+                            (getAllianceInMatchObjectByKey(
+                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                                Constants.RED, matchNumber, "actual_rp2"
+                            ).toDouble() >
+                                    Constants.PREDICTED_RANKING_POINT_QUALIFICATION)
+                        ) {
+                            tv.setImageResource(R.drawable.lightning)
+                            continue@red_predicted
+                        }
+                    }
+                    else {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null &&
+                            MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() >
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
+                        ) {
+                            tv.setImageResource(R.drawable.lightning)
+                            continue@red_predicted
+                        }
                     }
                 }
             }
@@ -218,21 +288,63 @@ class MatchScheduleListAdapter(
                 viewHolder.tvBluePredictedRPTwo
             ).indexOf(tv)) {
                 0 -> {
-                    if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne != null &&
-                        MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne!!.toDouble() >
-                        Constants.PREDICTED_RANKING_POINT_QUALIFICATION
+                    if (getAllianceInMatchObjectByKey(
+                            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                            Constants.BLUE, matchNumber.toString(),
+                            "has_actual_data"
+                        ).toBoolean()
                     ) {
-                        tv.setImageResource(R.drawable.shield)
-                        continue@blue_predicted
+                        if ((getAllianceInMatchObjectByKey(
+                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                                Constants.BLUE, matchNumber, "actual_rp1"
+                            )) != "?" &&
+                            (getAllianceInMatchObjectByKey(
+                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                                Constants.BLUE, matchNumber, "actual_rp1"
+                            ).toDouble() >
+                                    Constants.PREDICTED_RANKING_POINT_QUALIFICATION)
+                        ) {
+                            tv.setImageResource(R.drawable.shield)
+                            continue@blue_predicted
+                        }
+                    } else {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne != null &&
+                            MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne!!.toDouble() >
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
+                        ) {
+                            tv.setImageResource(R.drawable.shield)
+                            continue@blue_predicted
+                        }
                     }
                 }
                 1 -> {
-                    if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null &&
-                        MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() >
-                        Constants.PREDICTED_RANKING_POINT_QUALIFICATION
+                    if (getAllianceInMatchObjectByKey(
+                            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                            Constants.BLUE, matchNumber.toString(),
+                            "has_actual_data"
+                        ).toBoolean()
                     ) {
-                        tv.setImageResource(R.drawable.lightning)
-                        continue@blue_predicted
+                        if ((getAllianceInMatchObjectByKey(
+                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                                Constants.BLUE, matchNumber, "actual_rp2"
+                            )) != "?" &&
+                            (getAllianceInMatchObjectByKey(
+                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                                Constants.BLUE, matchNumber, "actual_rp2"
+                            ).toDouble() >
+                                    Constants.PREDICTED_RANKING_POINT_QUALIFICATION)
+                        ) {
+                            tv.setImageResource(R.drawable.lightning)
+                            continue@blue_predicted
+                        }
+                    } else {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null &&
+                            MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() >
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
+                        ) {
+                            tv.setImageResource(R.drawable.lightning)
+                            continue@blue_predicted
+                        }
                     }
                 }
             }
