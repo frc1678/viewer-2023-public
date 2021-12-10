@@ -28,7 +28,7 @@ import java.lang.Float.parseFloat
 class MatchScheduleListAdapter(
     private val context: Context,
     private var matchContents: Map<String, Match>,
-    private val forTeam: String?
+    private val ourSchedule: Boolean
 ) : BaseAdapter() {
 
 
@@ -42,7 +42,7 @@ class MatchScheduleListAdapter(
 
     // Return the Match object given the match number.
     override fun getItem(position: Int): Match? {
-        return if (forTeam != null)
+        return if (ourSchedule)
             matchContents[matchContents.keys.toList()[position]]
         else matchContents[(position + 1).toString()]
     }
@@ -59,7 +59,7 @@ class MatchScheduleListAdapter(
         val viewHolder: ViewHolder
         val rowView: View?
         val matchNumber: String =
-            if (forTeam != null) matchContents.keys.toList()[position]
+            if (ourSchedule) matchContents.keys.toList()[position]
             else (position + 1).toString()
 
 

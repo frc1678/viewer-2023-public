@@ -8,23 +8,14 @@
 
 package com.example.viewer_2020
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.fragments.match_schedule.MatchScheduleListAdapter
 import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
-import kotlinx.android.synthetic.main.team_details.view.*
-import android.util.Log
-import android.widget.BaseAdapter
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
 open class MatchScheduleFragment : IFrag(){
@@ -39,7 +30,7 @@ open class MatchScheduleFragment : IFrag(){
     ): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
 
-        updateMatchScheduleListView(root, null)
+        updateMatchScheduleListView(root, false)
 
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
@@ -56,13 +47,13 @@ open class MatchScheduleFragment : IFrag(){
         return root
     }
 
-    fun updateMatchScheduleListView(root: View, forTeam: String?) {
-        root.lv_match_schedule.adapter =
-            MatchScheduleListAdapter(
-                activity!!,
-                (getMatchSchedule((forTeam))
-                        ),
-                forTeam
-            )
+    fun updateMatchScheduleListView(root: View, ourSchedule: Boolean) {
+        adapter = MatchScheduleListAdapter(
+            activity!!,
+            (getMatchSchedule((if(ourSchedule) Constants.MY_TEAM_NUMBER else null))
+                    ),
+            ourSchedule
+        )
+        root.lv_match_schedule.adapter =adapter
     }
 }

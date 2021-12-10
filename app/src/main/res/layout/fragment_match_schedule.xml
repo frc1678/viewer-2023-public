@@ -4,42 +4,8 @@
     android:orientation="vertical"
     android:id="@+id/container_match_schedule"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
 
-    >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="1678"
-            android:enabled="false"
-            android:id="@+id/btn_t1"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="9678"
-            android:enabled="false"
-            android:id="@+id/btn_t9"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="8678"
-            android:enabled="false"
-            android:id="@+id/btn_t8"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="7678"
-            android:enabled="false"
-            android:id="@+id/btn_t7"/>
-    </LinearLayout>
     <ListView
         android:id="@+id/lv_match_schedule"
         android:layout_width="match_parent"
