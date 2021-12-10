@@ -50,4 +50,9 @@ data class Team (var team_number: Int?) {
     var control_panel_position: Boolean? = null
     var incap: Int? = null
     var climb_time: Int? = null
+    var auto_max_balls_low: Int? = null
+    var auto_max_balls_high: Int? = null
+    var tele_max_balls_low: Int? = null
+    var tele_max_balls_high: Int? = null
+    var max_incap: Int? = null
 }
