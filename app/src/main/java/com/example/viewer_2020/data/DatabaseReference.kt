@@ -31,7 +31,7 @@ class DatabaseReference {
         var has_ground_intake: Boolean,
         var can_eject_terminal: Boolean,
         var has_vision: Boolean,
-        var can_cheescake: Boolean,
+        var can_cheesecake: Boolean,
         var can_intake_terminal: Boolean,
         var can_under_low_rung: Boolean,
         var can_climb: Boolean
