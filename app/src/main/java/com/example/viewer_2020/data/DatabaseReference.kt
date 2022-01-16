@@ -14,7 +14,6 @@ import org.bson.types.ObjectId
 class DatabaseReference {
     data class CompetitionObject (
         var raw_obj_pit: MutableList<ObjectivePit> = mutableListOf(),
-        var raw_subj_pit: MutableList<SubjectivePit> = mutableListOf(),
         var obj_tim: MutableList<CalculatedObjectiveTeamInMatch> = mutableListOf(),
         var obj_team: MutableList<CalculatedObjectiveTeam> = mutableListOf(),
         var subj_team: MutableList<CalculatedSubjectiveTeam> = mutableListOf(),
@@ -26,18 +25,18 @@ class DatabaseReference {
 
     data class ObjectivePit (
         var team_number: Int,
-        var can_cross_trench: Boolean,
         var drivetrain: Int, //value is an enum in schema
         var drivetrain_motors: Int,
         var drivetrain_motor_type: Int, //value is an enum in schema
-        var has_ground_intake: Boolean
+        var has_ground_intake: Boolean,
+        var can_eject_terminal: Boolean,
+        var has_vision: Boolean,
+        var can_cheescake: Boolean,
+        var can_intake_terminal: Boolean,
+        var can_under_low_rung: Boolean,
+        var can_climb: Boolean
     )
 
-    data class SubjectivePit (
-        var team_number: Int,
-        var climber_strap_installation_notes: String,
-        var climber_strap_installation_difficulty: Int
-    )
 
     data class CalculatedPredictedAllianceInMatch (
         var match_number: Int,
@@ -54,13 +53,6 @@ class DatabaseReference {
     data class CalculatedTBATeam (
         var team_number: Int,
         var team_name: String,
-        var auto_high_balls_percent_inner: Float,
-        var tele_high_balls_percent_inner: Float,
-        var climb_all_success_avg_time: Float,
-        var climb_percent_success: Float,
-        var climb_all_successes: Int,
-        var climb_level_successes: Int,
-        var park_successes: Int,
         var auto_line_successes: Int
     )
 
@@ -104,6 +96,10 @@ class DatabaseReference {
         var tele_avg_balls_high: Float,
         var tele_avg_balls_total: Float,
         var avg_incap_time: Float,
+        var auto_sd_balls_low: Float,
+        var auto_sd_balls_high: Float,
+        var tele_sd_balls_low: Float,
+        var tele_sd_balls_high: Float,
         var tele_cp_rotation_successes: Int,
         var tele_cp_position_successes: Int,
         var climb_all_attempts: Int,
@@ -116,6 +112,7 @@ class DatabaseReference {
     )
 
     data class CalculatedObjectiveTeamInMatch (
+        var confidence_rating: Int,
         var team_number: Int,
         var match_number: Int,
         var auto_balls_low: Int,
