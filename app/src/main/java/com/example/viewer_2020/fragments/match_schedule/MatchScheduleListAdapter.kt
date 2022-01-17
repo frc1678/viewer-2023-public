@@ -228,54 +228,37 @@ class MatchScheduleListAdapter(
             ).indexOf(tv)) {
                 0 -> {
                     if (redAct && blueAct) {
-                        if (getAllianceInMatchObjectByKey(
-                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.RED, matchNumber, "actual_rp1"
-                            ) != Constants.NULL_CHARACTER &&
-                            getAllianceInMatchObjectByKey(
-                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.RED, matchNumber, "actual_rp1"
-                            ).toDouble() >
+                        if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne != null &&
+                            MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.shield)
                             continue@red_predicted
                         }
-                    }else{
-                        if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne != null &&
+                    }else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
-                            tv.setImageResource(R.drawable.shield)
-                            continue@red_predicted
-                        }
+                        tv.setImageResource(R.drawable.shield)
+                        continue@red_predicted
                     }
                 }
                 1 -> {
                     if (redAct && blueAct) {
-                        if (getAllianceInMatchObjectByKey(
-                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.RED, matchNumber, "actual_rp2"
-                            ) != Constants.NULL_CHARACTER &&
-                            getAllianceInMatchObjectByKey(
-                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.RED, matchNumber, "actual_rp1"
-                            ).toDouble() >
-                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
-                        ) {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo != null &&
+                            MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo!!.toDouble() >
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
                             tv.setImageResource(R.drawable.lightning)
                             continue@red_predicted
                         }
                     }
-                    else {
-                        if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null &&
+                    else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.lightning)
                             continue@red_predicted
                         }
-                    }
                 }
             }
             val value = getAllianceInMatchObjectByKey(
@@ -294,12 +277,22 @@ class MatchScheduleListAdapter(
                     viewHolder.tvRedPredictedRPTwo
                 ).indexOf(tv)) {
                     0 -> {
-                        MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne =
-                            parseFloat(("%.2f").format(value.toFloat()))
+                        if(redAct && blueAct){
+                            MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne =
+                                parseFloat(("%.2f").format(value.toFloat()))
+                        }else{
+                            MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne =
+                                parseFloat(("%.2f").format(value.toFloat()))
+                        }
                     }
                     1 -> {
-                        MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo =
-                            parseFloat(("%.2f").format(value.toFloat()))
+                        if(redAct && blueAct){
+                            MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo =
+                                parseFloat(("%.2f").format(value.toFloat()))
+                        }else{
+                            MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo =
+                                parseFloat(("%.2f").format(value.toFloat()))
+                        }
                     }
                 }
             } else tv.setImageDrawable(null)
@@ -314,53 +307,36 @@ class MatchScheduleListAdapter(
             ).indexOf(tv)) {
                 0 -> {
                     if (blueAct && redAct) {
-                        if (getAllianceInMatchObjectByKey(
-                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.BLUE, matchNumber, "actual_rp1"
-                            ) != Constants.NULL_CHARACTER &&
-                            getAllianceInMatchObjectByKey(
-                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.BLUE, matchNumber, "actual_rp1"
-                            ).toDouble() >
-                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
-                        ) {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne != null &&
+                            MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne!!.toDouble() >
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
                             tv.setImageResource(R.drawable.shield)
                             continue@blue_predicted
                         }
-                    } else {
-                        if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne != null &&
+                    } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.shield)
                             continue@blue_predicted
                         }
-                    }
                 }
                 1 -> {
                     if (blueAct && redAct) {
-                        if (getAllianceInMatchObjectByKey(
-                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.BLUE, matchNumber, "actual_rp2"
-                            ) != Constants.NULL_CHARACTER &&
-                            getAllianceInMatchObjectByKey(
-                                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.BLUE, matchNumber, "actual_rp2"
-                            ).toDouble() >
+                        if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo != null &&
+                            MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.lightning)
                             continue@blue_predicted
                         }
-                    } else {
-                        if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null &&
+                    } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.lightning)
                             continue@blue_predicted
                         }
-                    }
                 }
             }
             val value = getAllianceInMatchObjectByKey(
@@ -379,16 +355,34 @@ class MatchScheduleListAdapter(
                     viewHolder.tvBluePredictedRPTwo
                 ).indexOf(tv)) {
                     0 -> {
-                        MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne =
-                            parseFloat(("%.2f").format(value.toFloat()))
+                        if (redAct && blueAct){
+                            MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne =
+                                parseFloat(("%.2f").format(value.toFloat()))
+                        }else{
+                            MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne =
+                                parseFloat(("%.2f").format(value.toFloat()))
+                        }
                     }
                     1 -> {
-                        MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo =
-                            parseFloat(("%.2f").format(value.toFloat()))
+                        if(redAct && blueAct){
+                            MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo =
+                                parseFloat(("%.2f").format(value.toFloat()))
+                        }else{
+                            MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo =
+                                parseFloat(("%.2f").format(value.toFloat()))
+                        }
                     }
                 }
             } else tv.setImageDrawable(null)
         }
+        Log.e("here", "$matchNumber ra1: ${MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne}")
+        Log.e("here", "$matchNumber ra2: ${MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo}")
+        Log.e("here", "$matchNumber rp1: ${MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne}")
+        Log.e("here", "$matchNumber rp2: ${MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo}")
+        Log.e("here", "$matchNumber ba1: ${MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne}")
+        Log.e("here", "$matchNumber ba2: ${MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo}")
+        Log.e("here", "$matchNumber bp1: ${MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne}")
+        Log.e("here", "$matchNumber bp2: ${MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo}")
         return rowView!!
     }
 
