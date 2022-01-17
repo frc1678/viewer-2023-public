@@ -42,13 +42,15 @@ class Constants {
             "tele_far_hub_highs",
             "tele_near_other_highs",
             "tele_far_other_highs",
-            "Other",
-            "intakes",
-            "incap",
+            "Endgame",
             "climb_time",
             "climb_level",
+            "Fouls",
             "exit_ball_catches",
-            "opp_balls_scored"
+            "opp_balls_scored",
+            "Other",
+            "intakes",
+            "incap"
         )
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED: List<String> = listOf(
@@ -109,10 +111,6 @@ class Constants {
             "max_incap",
             "avg_incap_time",
             "matches_incap",
-            "avg_exit_ball_catches",
-            "max_exit_ball_catches",
-            "avg_opp_balls_scored",
-            "max_opp_balls_scored",
             "Endgame",
             "climb_percent_success",
             "climb_all_attempts",
@@ -126,6 +124,11 @@ class Constants {
             "mid_avg_time",
             "high_avg_time",
             "traversal_avg_time",
+            "Fouls",
+            "avg_exit_ball_catches",
+            "max_exit_ball_catches",
+            "avg_opp_balls_scored",
+            "max_opp_balls_scored",
             "Pit Data",
             "drivetrain",
             "drivetrain_motors",
