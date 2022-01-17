@@ -28,11 +28,8 @@ class Constants {
             "quintet",
             "auto_balls_low",
             "auto_balls_high",
-            "auto_launchpad_highs",
             "auto_near_hub_highs",
-            "auto_far_hub_highs",
             "auto_near_other_highs",
-            "auto_far_other_highs",
             "auto_line",
             "Tele",
             "tele_balls_low",
@@ -57,8 +54,11 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED: List<String> = listOf(
             "Auto",
+            "auto_balls_low",
             "Tele",
-            "Endgame"
+            "tele_balls_low",
+            "Endgame",
+            "avg_climb_time"
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
