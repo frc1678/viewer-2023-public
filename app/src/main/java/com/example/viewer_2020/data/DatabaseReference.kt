@@ -79,8 +79,9 @@ class DatabaseReference {
 
     data class CalculatedSubjectiveTeam (
         var team_number: Int,
+        var driver_near_field_awareness: Float,
+        var driver_far_field_awareness: Float,
         var driver_quickness: Float,
-        var driver_field_awareness: Float,
         var driver_ability: Float
     )
 
@@ -128,6 +129,7 @@ class DatabaseReference {
         var lfm_auto_avg_balls_high: Float,
         var lfm_tele_avg_balls_low: Float,
         var lfm_tele_avg_balls_high: Float,
+        var lfm_avg_incap_time: Float,
         var lfm_avg_exit_ball_catches: Float,
         var lfm_avg_opp_balls_scored: Float,
         var auto_sd_balls_low: Float,
