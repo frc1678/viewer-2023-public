@@ -1,8 +1,5 @@
 [{
-    "auto_line": false,
-    "climb": true,
-    "level_climb": true,
+    "auto_line": true,
     "match_number": 34,
-    "park": true,
     "team_number": 88
   }]

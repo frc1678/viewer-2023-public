@@ -25,7 +25,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
             var listOfCollectionNames: List<String> =
                 listOf(
                     "raw_obj_pit",
-                    "raw_subj_pit",
+//                    "raw_subj_pit",
                     "obj_tim",
                     "obj_team",
                     "subj_team",
@@ -45,10 +45,10 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                         result.toString(),
                         Array<DatabaseReference.ObjectivePit>::class.java
                     ).toMutableList()
-                    1 -> databaseReference?.raw_subj_pit = Gson().fromJson(
-                        result.toString(),
-                        Array<DatabaseReference.SubjectivePit>::class.java
-                    ).toMutableList()
+//                    1 -> databaseReference?.raw_subj_pit = Gson().fromJson(
+//                        result.toString(),
+//                        Array<DatabaseReference.SubjectivePit>::class.java
+//                    ).toMutableList()
                     2 -> databaseReference?.obj_tim = Gson().fromJson(
                         result.toString(),
                         Array<DatabaseReference.CalculatedObjectiveTeamInMatch>::class.java

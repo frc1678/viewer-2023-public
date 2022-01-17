@@ -23,10 +23,10 @@ class GetDataFromFiles(var context:Context, val onCompleted: () -> Unit = {} ,va
                     0 -> databaseReference?.raw_obj_pit = Gson().fromJson(
                             readFile(context.getResources().openRawResource(R.raw.raw_obj_pit)),
                                     Array<DatabaseReference.ObjectivePit>::class.java).toMutableList()
-                    1 -> databaseReference?.raw_subj_pit = Gson().fromJson(
-                        readFile(context.getResources().openRawResource(R.raw.raw_subj_pit)),
-                            Array<DatabaseReference.SubjectivePit>::class.java
-                        ).toMutableList()
+//                    1 -> databaseReference?.raw_subj_pit = Gson().fromJson(
+//                        readFile(context.getResources().openRawResource(R.raw.raw_subj_pit)),
+//                            Array<DatabaseReference.SubjectivePit>::class.java
+//                        ).toMutableList()
                     2 -> databaseReference?.obj_tim = Gson().fromJson(
                         readFile(context.getResources().openRawResource(R.raw.calc_obj_tim)),
                         Array<DatabaseReference.CalculatedObjectiveTeamInMatch>::class.java
