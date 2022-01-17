@@ -59,7 +59,7 @@ class MongoDatabaseListenerUtil {
             var competitionObject = DatabaseReference.CompetitionObject()
             Tasks.whenAll(listOf(
                 getDocumentList<DatabaseReference.ObjectivePit>(database.getCollection("raw_obj_pit"), competitionObject.raw_obj_pit),
-                getDocumentList<DatabaseReference.SubjectivePit>(database.getCollection("raw_subj_pit"), competitionObject.raw_subj_pit),
+//                getDocumentList<DatabaseReference.SubjectivePit>(database.getCollection("raw_subj_pit"), competitionObject.raw_subj_pit),
                 getDocumentList<DatabaseReference.CalculatedObjectiveTeamInMatch>(database.getCollection("obj_tim"), competitionObject.obj_tim),
                 getDocumentList<DatabaseReference.CalculatedObjectiveTeam>(database.getCollection("obj_team"), competitionObject.obj_team),
                 getDocumentList<DatabaseReference.CalculatedSubjectiveTeam>(database.getCollection("subj_team"), competitionObject.subj_team),

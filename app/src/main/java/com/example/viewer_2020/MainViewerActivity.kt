@@ -12,6 +12,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.os.Environment
 import android.os.PersistableBundle
@@ -25,6 +26,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.DatabaseReference
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
@@ -143,15 +145,27 @@ class MainViewerActivity : ViewerActivity() {
 
         data_refresh_button.setOnClickListener {
             data_refresh_button.isEnabled = false
-            GetDataFromWebsite({
-                data_refresh_button.isEnabled = true
-                Snackbar.make(container, "Refreshed Data!", 2500).show()
-                reloadAllListViews()
-                updateNavFooter()
-            }, {
-                data_refresh_button.isEnabled = true
-                Snackbar.make(container, "Data Failed to load", 2500).show()
-            }).execute()
+            if (Constants.USE_TEST_DATA) {
+                GetDataFromFiles(this, {
+                    data_refresh_button.isEnabled = true
+                    Snackbar.make(container, "Refreshed Data!", 2500).show()
+                    reloadAllListViews()
+                    updateNavFooter()
+                }, {
+                    data_refresh_button.isEnabled = true
+                    Snackbar.make(container, "Data Failed to load", 2500).show()
+                }).execute()
+            } else {
+                GetDataFromWebsite({
+                    data_refresh_button.isEnabled = true
+                    Snackbar.make(container, "Refreshed Data!", 2500).show()
+                    reloadAllListViews()
+                    updateNavFooter()
+                }, {
+                    data_refresh_button.isEnabled = true
+                    Snackbar.make(container, "Data Failed to load", 2500).show()
+                }).execute()
+            }
         }
 
         navView.setNavigationItemSelectedListener {

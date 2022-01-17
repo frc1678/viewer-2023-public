@@ -1,0 +1,13 @@
+[{
+    "team_number": 691,
+    "drivetrain": 1,
+    "drivetrain_motors": 52,
+    "drivetrain_motor_type": 1,
+    "has_ground_intake": true,
+    "can_eject_terminal":  true,
+    "has_vision": true,
+    "can_cheesecake": true,
+    "can_intake_terminal": false,
+    "can_under_low_rung": false,
+    "can_climb": true
+  }]

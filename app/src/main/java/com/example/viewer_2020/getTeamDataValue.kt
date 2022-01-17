@@ -45,8 +45,8 @@ fun getTeamDataValue(teamNumber: String, field: String): String {
         }
     }
     for (item in listOf(
-        "raw_obj_pit",
-        "raw_subj_pit"
+        "raw_obj_pit"
+//        "raw_subj_pit"
         )
     ) {
         try {
