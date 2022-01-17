@@ -126,7 +126,7 @@ class Constants {
         )
 
         val FIELDS_TO_BE_DISPLAYED_RANKING: List<String> = listOf(
-            "current_seed",
+            "current_rank",
             "current_avg_rps",
             "current_rps",
             "predicted_rps",
