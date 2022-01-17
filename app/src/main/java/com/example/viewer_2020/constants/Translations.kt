@@ -125,7 +125,7 @@ class Translations {
             "low_avg_time" to "Low Avg Time",
             "mid_avg_time" to "Mid Avg Time",
             "high_avg_time" to "High Avg Time",
-            "traversal_avg_time" to "Traveral Avg Time",
+            "traversal_avg_time" to "Traversal Avg Time",
             "lfm_low_avg_time" to "Low Avg Time",
             "lfm_mid_avg_time" to "Mid Avg Time",
             "lfm_high_avg_time" to "High Avg Time",
