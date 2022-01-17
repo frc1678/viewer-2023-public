@@ -24,6 +24,8 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED: List<String> = listOf(
             "Auto",
+            "start_position",
+            "quintet",
             "auto_balls_low",
             "auto_balls_high",
             "auto_launchpad_highs",
@@ -92,9 +94,7 @@ class Constants {
             "auto_max_balls_high",
             "auto_sd_balls_low",
             "auto_sd_balls_high",
-            "start_position",
             "mode_start_position",
-            "quintet",
             "Tele",
             "tele_avg_balls_low",
             "tele_avg_balls_high",
