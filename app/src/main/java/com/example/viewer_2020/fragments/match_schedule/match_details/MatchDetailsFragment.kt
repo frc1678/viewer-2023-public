@@ -9,6 +9,7 @@
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,10 +37,19 @@ class MatchDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        arguments?.let {
+            matchNumber = it.getInt(Constants.MATCH_NUMBER, 0)
+        }
+
         headerDisplay = (if (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber.toString(),
+                "has_actual_data").toBoolean() and getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.RED, matchNumber.toString(),
                 "has_actual_data").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
+
+        Log.e("update_data", "here $matchNumber, $headerDisplay")
 
         val root = inflater.inflate(R.layout.match_details, container, false)
 
@@ -126,7 +136,10 @@ class MatchDetailsFragment : Fragment() {
         val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED)
+                "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.RED, matchNumber.toString(),
+                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED)
 
             root.lv_match_details.adapter =
                 MatchDetailsAdapter(
@@ -145,9 +158,6 @@ class MatchDetailsFragment : Fragment() {
 
         // If the match number from the MainViewerActivity's match schedule list view cell position
         // is null, the default display will show '0' for the match number on MatchDetails.
-        arguments?.let {
-            matchNumber = it.getInt(Constants.MATCH_NUMBER, 0)
-        }
         root.tv_match_number_display.
             text = matchNumber.toString()
 

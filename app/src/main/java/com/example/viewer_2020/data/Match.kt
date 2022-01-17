@@ -18,4 +18,10 @@ data class Match(var matchNumber: String) {
     var bluePredictedRPOne: Float? = null
     var redPredictedRPTwo: Float? = null
     var bluePredictedRPTwo: Float? = null
+    var redActualScore: Float? = null
+    var blueActualScore: Float? = null
+    var redActualRPOne: Float? = null
+    var blueActualRPOne: Float? = null
+    var redActualRPTwo: Float? = null
+    var blueActualRPTwo: Float? = null
 }

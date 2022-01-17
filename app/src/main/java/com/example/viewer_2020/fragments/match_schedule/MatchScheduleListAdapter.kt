@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.viewer_2020.*
@@ -54,6 +55,8 @@ class MatchScheduleListAdapter(
 
     // Populate the elements of the custom cell.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        var blueAct = false
+        var redAct = false
         Log.e("matchContents", matchContents["1"]?.redTeams.toString())
 
         val viewHolder: ViewHolder
@@ -82,10 +85,10 @@ class MatchScheduleListAdapter(
         )) {
 
             tv.text = matchContents[matchNumber]!!.redTeams[listOf(
-                        viewHolder.tvRedTeamOne,
-                        viewHolder.tvRedTeamTwo,
-                        viewHolder.tvRedTeamThree
-                    ).indexOf(tv)]
+                viewHolder.tvRedTeamOne,
+                viewHolder.tvRedTeamTwo,
+                viewHolder.tvRedTeamThree
+            ).indexOf(tv)]
         }
         for (tv in listOf(
             viewHolder.tvBlueTeamOne,
@@ -101,24 +104,45 @@ class MatchScheduleListAdapter(
         }
         viewHolder.tvMatchNumber.text = matchNumber
 
-        if ((getAllianceInMatchObjectByKey(
+        if (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean()) && (getAllianceInMatchObjectByKey(
+                "has_actual_data").toBoolean()){
+                    Log.e("update_data", "red $matchNumber")
+                    redAct = true
+        }
+        if (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean())) {
-            viewHolder.tvMatchNumber.text = matchNumber + "\nActual"
+                "has_actual_data").toBoolean()){
+                    Log.e("update_data", "blue $matchNumber")
+                    blueAct = true
+        }
+        val field : String
+
+        if (redAct && blueAct) {
+            field = "actual_rp"
+            viewHolder.wholeLine.setBackgroundColor(ContextCompat.getColor(
+                context,
+                R.color.LightGray
+            ))
+        } else{
+            field = "predicted_rp"
+            viewHolder.wholeLine.setBackgroundColor(ContextCompat.getColor(
+                context,
+                R.color.White
+            ))
         }
 
-        if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore != null) {
+        if ((!blueAct or !redAct) && MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore != null) {
             viewHolder.tvBluePredictedScore.text =
                 MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
-        } else {
-            val value = if (getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                    Constants.BLUE, matchNumber.toString(),
-                    "has_actual_data").toBoolean()) {
+        } else if (blueAct && redAct && MainViewerActivity.matchCache[matchNumber]!!.blueActualScore != null){
+            viewHolder.tvBluePredictedScore.text =
+                MainViewerActivity.matchCache[matchNumber]!!.blueActualScore.toString()
+        }
+        else {
+            val value = if (blueAct && redAct) {
                 getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber, "actual_score"
@@ -132,22 +156,27 @@ class MatchScheduleListAdapter(
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvBluePredictedScore.text =
                     parseFloat(("%.2f").format(value.toFloat())).toString()
-                MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
-                    parseFloat(("%.2f").format(value.toFloat()))
+                if(!blueAct or !redAct) {
+                    MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
+                        parseFloat(("%.2f").format(value.toFloat()))
+                }else{
+                    MainViewerActivity.matchCache[matchNumber]!!.blueActualScore =
+                        parseFloat(("%.2f").format(value.toFloat()))
+                }
             } else {
                 viewHolder.tvBluePredictedScore.text =
                     Constants.NULL_PREDICTED_SCORE_CHARACTER
             }
         }
 
-        if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore != null) {
+        if ((!redAct or !blueAct) && MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore != null) {
             viewHolder.tvRedPredictedScore.text =
                 MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
+        }else if (redAct && blueAct && MainViewerActivity.matchCache[matchNumber]!!.redActualScore != null) {
+            viewHolder.tvRedPredictedScore.text =
+                MainViewerActivity.matchCache[matchNumber]!!.redActualScore.toString()
         } else {
-            val value = if (getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                    Constants.RED, matchNumber.toString(),
-                    "has_actual_data").toBoolean()) {
+            val value = if (redAct && blueAct) {
                 getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber, "actual_score"
@@ -162,8 +191,13 @@ class MatchScheduleListAdapter(
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvRedPredictedScore.text =
                     parseFloat(("%.2f").format(value.toFloat())).toString()
-                MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
-                    parseFloat(("%.2f").format(value.toFloat()))
+                if (!redAct or !blueAct) {
+                    MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
+                        parseFloat(("%.2f").format(value.toFloat()))
+                }else{
+                    MainViewerActivity.matchCache[matchNumber]!!.redActualScore =
+                        parseFloat(("%.2f").format(value.toFloat()))
+                }
             } else {
                 viewHolder.tvRedPredictedScore.text =
                     Constants.NULL_PREDICTED_SCORE_CHARACTER
@@ -196,19 +230,16 @@ class MatchScheduleListAdapter(
                 viewHolder.tvRedPredictedRPTwo
             ).indexOf(tv)) {
                 0 -> {
-                    if (getAllianceInMatchObjectByKey(
-                            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                            Constants.RED, matchNumber.toString(),
-                            "has_actual_data").toBoolean()) {
-                        if ((getAllianceInMatchObjectByKey(
+                    if (redAct && blueAct) {
+                        if (getAllianceInMatchObjectByKey(
                                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                                 Constants.RED, matchNumber, "actual_rp1"
-                            )) != "?" &&
-                            (getAllianceInMatchObjectByKey(
+                            ) != Constants.NULL_CHARACTER &&
+                            getAllianceInMatchObjectByKey(
                                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                                 Constants.RED, matchNumber, "actual_rp1"
                             ).toDouble() >
-                                    Constants.PREDICTED_RANKING_POINT_QUALIFICATION)
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.shield)
                             continue@red_predicted
@@ -224,19 +255,16 @@ class MatchScheduleListAdapter(
                     }
                 }
                 1 -> {
-                    if (getAllianceInMatchObjectByKey(
-                            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                            Constants.RED, matchNumber.toString(),
-                            "has_actual_data").toBoolean()) {
-                        if ((getAllianceInMatchObjectByKey(
+                    if (redAct && blueAct) {
+                        if (getAllianceInMatchObjectByKey(
                                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                                 Constants.RED, matchNumber, "actual_rp2"
-                            )) != "?" &&
-                            (getAllianceInMatchObjectByKey(
+                            ) != Constants.NULL_CHARACTER &&
+                            getAllianceInMatchObjectByKey(
                                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                                Constants.RED, matchNumber, "actual_rp2"
+                                Constants.RED, matchNumber, "actual_rp1"
                             ).toDouble() >
-                                    Constants.PREDICTED_RANKING_POINT_QUALIFICATION)
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.lightning)
                             continue@red_predicted
@@ -255,7 +283,7 @@ class MatchScheduleListAdapter(
             }
             val value = getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber, "predicted_rp" +
+                Constants.RED, matchNumber, field +
                         "${listOf(
                             viewHolder.tvRedPredictedRPOne,
                             viewHolder.tvRedPredictedRPTwo
@@ -288,21 +316,16 @@ class MatchScheduleListAdapter(
                 viewHolder.tvBluePredictedRPTwo
             ).indexOf(tv)) {
                 0 -> {
-                    if (getAllianceInMatchObjectByKey(
-                            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                            Constants.BLUE, matchNumber.toString(),
-                            "has_actual_data"
-                        ).toBoolean()
-                    ) {
-                        if ((getAllianceInMatchObjectByKey(
+                    if (blueAct && redAct) {
+                        if (getAllianceInMatchObjectByKey(
                                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                                 Constants.BLUE, matchNumber, "actual_rp1"
-                            )) != "?" &&
-                            (getAllianceInMatchObjectByKey(
+                            ) != Constants.NULL_CHARACTER &&
+                            getAllianceInMatchObjectByKey(
                                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                                 Constants.BLUE, matchNumber, "actual_rp1"
                             ).toDouble() >
-                                    Constants.PREDICTED_RANKING_POINT_QUALIFICATION)
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.shield)
                             continue@blue_predicted
@@ -318,21 +341,16 @@ class MatchScheduleListAdapter(
                     }
                 }
                 1 -> {
-                    if (getAllianceInMatchObjectByKey(
-                            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                            Constants.BLUE, matchNumber.toString(),
-                            "has_actual_data"
-                        ).toBoolean()
-                    ) {
-                        if ((getAllianceInMatchObjectByKey(
+                    if (blueAct && redAct) {
+                        if (getAllianceInMatchObjectByKey(
                                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                                 Constants.BLUE, matchNumber, "actual_rp2"
-                            )) != "?" &&
-                            (getAllianceInMatchObjectByKey(
+                            ) != Constants.NULL_CHARACTER &&
+                            getAllianceInMatchObjectByKey(
                                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                                 Constants.BLUE, matchNumber, "actual_rp2"
                             ).toDouble() >
-                                    Constants.PREDICTED_RANKING_POINT_QUALIFICATION)
+                            Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
                             tv.setImageResource(R.drawable.lightning)
                             continue@blue_predicted
@@ -350,7 +368,7 @@ class MatchScheduleListAdapter(
             }
             val value = getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber, "predicted_rp" +
+                Constants.BLUE, matchNumber, field +
                         "${listOf(
                             viewHolder.tvBluePredictedRPOne,
                             viewHolder.tvBluePredictedRPTwo
@@ -392,5 +410,6 @@ class MatchScheduleListAdapter(
         val tvRedTeamOne = view?.findViewById(R.id.tv_red_team_one) as TextView
         val tvRedTeamTwo = view?.findViewById(R.id.tv_red_team_two) as TextView
         val tvRedTeamThree = view?.findViewById(R.id.tv_red_team_three) as TextView
+        val wholeLine = view?.findViewById(R.id.whole_line) as LinearLayout
     }
 }

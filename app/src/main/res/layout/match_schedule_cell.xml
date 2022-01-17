@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    android:id="@+id/whole_line">
 
     <TextView style="@style/tv_standard_black"
         android:id="@+id/tv_match_number"
