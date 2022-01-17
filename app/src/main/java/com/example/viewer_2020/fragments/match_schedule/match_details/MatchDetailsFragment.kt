@@ -9,7 +9,6 @@
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,8 +47,6 @@ class MatchDetailsFragment : Fragment() {
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED, matchNumber.toString(),
                 "has_actual_data").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
-
-        Log.e("update_data", "here $matchNumber, $headerDisplay")
 
         val root = inflater.inflate(R.layout.match_details, container, false)
 

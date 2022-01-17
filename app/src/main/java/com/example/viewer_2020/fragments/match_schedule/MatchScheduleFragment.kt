@@ -9,7 +9,6 @@
 package com.example.viewer_2020
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +50,6 @@ open class MatchScheduleFragment : IFrag(){
     }
 
     fun updateMatchScheduleListView(root: View, ourSchedule: Boolean) {
-        Log.e("update_data", "${Match("2").redActualRPOne}")
         adapter = MatchScheduleListAdapter(
             activity!!,
             (getMatchSchedule((if(ourSchedule) Constants.MY_TEAM_NUMBER else null))

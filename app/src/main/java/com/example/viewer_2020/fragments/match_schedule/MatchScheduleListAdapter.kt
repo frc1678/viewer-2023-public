@@ -108,14 +108,12 @@ class MatchScheduleListAdapter(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED, matchNumber.toString(),
                 "has_actual_data").toBoolean()){
-                    Log.e("update_data", "red $matchNumber")
                     redAct = true
         }
         if (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber.toString(),
                 "has_actual_data").toBoolean()){
-                    Log.e("update_data", "blue $matchNumber")
                     blueAct = true
         }
         val field : String
@@ -182,7 +180,6 @@ class MatchScheduleListAdapter(
                     Constants.RED, matchNumber, "actual_score"
                 )
             } else{
-                Log.e("red no score", matchNumber)
                 getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber, "predicted_score"
