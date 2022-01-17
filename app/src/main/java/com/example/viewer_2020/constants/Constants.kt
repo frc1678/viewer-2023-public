@@ -57,24 +57,8 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED: List<String> = listOf(
             "Auto",
-            "auto_avg_balls_low",
-            "auto_avg_balls_high",
-            "auto_max_balls_low",
-            "auto_max_balls_high",
             "Tele",
-            "tele_avg_balls_low",
-            "tele_avg_balls_high",
-            "tele_max_balls_low",
-            "tele_max_balls_high",
-            "max_incap",
-            "Endgame",
-            "climb_percent_success",
-            "climb_all_attempts",
-            "climb_all_success_avg_time",
-            "Other",
-            "driver_quickness",
-            "driver_field_awareness",
-            "driver_ability"
+            "Endgame"
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
