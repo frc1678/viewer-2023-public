@@ -128,6 +128,7 @@ class DatabaseReference {
         var lfm_auto_avg_balls_high: Float,
         var lfm_tele_avg_balls_low: Float,
         var lfm_tele_avg_balls_high: Float,
+        var lfm_avg_incap_time: Float,
         var lfm_avg_exit_ball_catches: Float,
         var lfm_avg_opp_balls_scored: Float,
         var auto_sd_balls_low: Float,
