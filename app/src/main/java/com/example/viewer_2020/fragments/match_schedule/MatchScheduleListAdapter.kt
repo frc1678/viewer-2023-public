@@ -375,14 +375,6 @@ class MatchScheduleListAdapter(
                 }
             } else tv.setImageDrawable(null)
         }
-        Log.e("here", "$matchNumber ra1: ${MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne}")
-        Log.e("here", "$matchNumber ra2: ${MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo}")
-        Log.e("here", "$matchNumber rp1: ${MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne}")
-        Log.e("here", "$matchNumber rp2: ${MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo}")
-        Log.e("here", "$matchNumber ba1: ${MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne}")
-        Log.e("here", "$matchNumber ba2: ${MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo}")
-        Log.e("here", "$matchNumber bp1: ${MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne}")
-        Log.e("here", "$matchNumber bp2: ${MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo}")
         return rowView!!
     }
 
