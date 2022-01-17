@@ -114,6 +114,15 @@ class Constants {
             "actual_rp2"
         )
 
+        val GRAPHABLE: List<String> = listOf(
+            "auto_avg_balls_low",
+            "auto_avg_balls_high",
+            "tele_avg_balls_low",
+            "tele_avg_balls_high",
+            "avg_incap_time",
+            "climb_all_success_avg_time"
+        )
+
       val DRIVER_DATA: List<String> = listOf(
             "driver_quickness",
             "driver_field_awareness",

@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
 import android.widget.FrameLayout
+import com.example.viewer_2020.RankingFragment
 
 // Custom list adapter class for each list view of the six teams featured in every MatchDetails display.
 // TODO implement a type 'Team' object parameter to access the team data for the team number.
@@ -50,6 +51,8 @@ class TeamDetailsAdapter(
 
     // Populate the elements of the custom cell.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val graphsFragment = GraphsFragment()
+        val graphsFragmentArguments = Bundle()
         val regex: Pattern = Pattern.compile("-?" +"[0-9]+" + Regex.escape(".") + "[0-9]+")
         val rowView = inflater.inflate(R.layout.team_details_cell, parent, false)
         rowView.tv_datapoint_name.text =
@@ -91,6 +94,19 @@ class TeamDetailsAdapter(
                     )
                 }
         }
+
+        rowView.setOnClickListener(){
+            if(Constants.GRAPHABLE.contains(datapointsDisplayed[position])){
+                graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+                graphsFragmentArguments.putString("datapoint", datapointsDisplayed[position])
+                graphsFragment.arguments = graphsFragmentArguments
+                context.supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.nav_host_fragment, graphsFragment, "graphs")
+                    .commit()
+            }
+        }
+
         return rowView
     }
 }
