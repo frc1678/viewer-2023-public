@@ -6,9 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.R
+import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
+import com.example.viewer_2020.data.DatabaseReference
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -27,16 +28,33 @@ class GraphsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.e("here", "in graphs fragment")
+        //Log.e("here", "in graphs fragment")
         val root = inflater.inflate(R.layout.fragment_graphs, container, false)
 
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
             datapoint = it.getString("datapoint", Constants.NULL_CHARACTER)
         }
-        Log.e("here", "$teamNumber, $datapoint")
+        //Log.e("here", "$teamNumber, $datapoint")
 
-        val timDatapoint = Translations.AVG_TO_TIM[datapoint]
+        val timDatapoint = Translations.AVG_TO_TIM[datapoint!!]
+
+        val thing = getTIMDataValue(teamNumber!!, timDatapoint!!)
+        Log.e("important", "$thing")
+
+        val test = getTeamDataValue(teamNumber!!, timDatapoint!!)
+        val test2 = (getAllianceInMatchObjectByKey(
+            Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value,
+            Constants.BLUE, "2",
+            "auto_balls_low"))
+        Log.e("important", "test2: $test2")
+        val matchSchedule = getMatchSchedule(teamNumber)
+        //Log.e("important", "keys ${matchSchedule.keys}")
+        //Log.e("important", "values ${matchSchedule.values}")
+        //Log.e("here", "match schedule: $matchSchedule")
+
+        //Log.e("here", test)
+        //Log.e("here", "alliance : $test2")
 
         val entries: ArrayList<BarEntry> = ArrayList()
         entries.add(BarEntry(1f, 4f))

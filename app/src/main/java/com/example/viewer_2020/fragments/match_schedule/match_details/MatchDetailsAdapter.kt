@@ -1,6 +1,7 @@
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.content.Context
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -90,6 +91,8 @@ class MatchDetailsAdapter (
     }
 
     fun getTeamValue(textView: TextView, field: String, teamNumber: String) {
+        Log.e("here", "$teamNumber $field")
+        //Log.e("here", "mHERE $field $teamNumber ${getTeamDataValue(teamNumber, field)}")
         val regex: Pattern = Pattern.compile("-?" +"[0-9]+" + Regex.escape(".") + "[0-9]+")
                 //if datafield is a float, round datapoint. Otherwise, display returned string from getTeamDataValue
         if (regex.matcher(getTeamDataValue(teamNumber, field)).matches()) {
