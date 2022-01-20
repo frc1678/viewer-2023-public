@@ -39,15 +39,15 @@ class GraphsFragment : Fragment() {
 
         val timDatapoint = Translations.AVG_TO_TIM[datapoint!!]
 
-        val thing = getTIMDataValue(teamNumber!!, timDatapoint!!)
-        Log.e("important", "$thing")
+        val things = getTIMDataValue(teamNumber!!, timDatapoint!!, Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
+        Log.e("important", "$things")
 
         val test = getTeamDataValue(teamNumber!!, timDatapoint!!)
         val test2 = (getAllianceInMatchObjectByKey(
             Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value,
             Constants.BLUE, "2",
             "auto_balls_low"))
-        Log.e("important", "test2: $test2")
+        //Log.e("important", "test2: $test2")
         val matchSchedule = getMatchSchedule(teamNumber)
         //Log.e("important", "keys ${matchSchedule.keys}")
         //Log.e("important", "values ${matchSchedule.values}")
@@ -57,12 +57,10 @@ class GraphsFragment : Fragment() {
         //Log.e("here", "alliance : $test2")
 
         val entries: ArrayList<BarEntry> = ArrayList()
-        entries.add(BarEntry(1f, 4f))
-        entries.add(BarEntry(2f, 10f))
-        entries.add(BarEntry(3f, 2f))
-        entries.add(BarEntry(4f, 15f))
-        entries.add(BarEntry(5f, 13f))
-        entries.add(BarEntry(6f, 2f))
+        for(thing in things){
+            entries.add(BarEntry(thing.key.toFloat(), thing.value.toFloat()))
+        }
+        Log.e("important", "here: $entries")
 
         val barDataSet = BarDataSet(entries, "")
         barDataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
