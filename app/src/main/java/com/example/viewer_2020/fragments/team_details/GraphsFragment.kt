@@ -9,71 +9,69 @@ import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
-import com.example.viewer_2020.data.DatabaseReference
-import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
-import kotlinx.android.synthetic.main.fragment_graphs.*
 import kotlinx.android.synthetic.main.fragment_graphs.view.*
-import kotlinx.android.synthetic.main.team_details_cell.view.*
 
 
 class GraphsFragment : Fragment() {
     private var teamNumber: String? = null
     private var datapoint: String? = null
+    private val teamDetailsFragmentArguments = Bundle()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //Log.e("here", "in graphs fragment")
         val root = inflater.inflate(R.layout.fragment_graphs, container, false)
+        val teamDetailsFragment = TeamDetailsFragment()
 
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
             datapoint = it.getString("datapoint", Constants.NULL_CHARACTER)
         }
-        //Log.e("here", "$teamNumber, $datapoint")
 
-        val timDatapoint = Translations.AVG_TO_TIM[datapoint!!]
+        val timDatapoint = Translations.TIM_FROM_TEAM[datapoint!!]
+        root.y_axis_label.text = Translations.TIM_TO_HUMAN_READABLE[timDatapoint]
 
-        val things = getTIMDataValue(teamNumber!!, timDatapoint!!, Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
-        Log.e("important", "$things")
-
-        val test = getTeamDataValue(teamNumber!!, timDatapoint!!)
-        val test2 = (getAllianceInMatchObjectByKey(
-            Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value,
-            Constants.BLUE, "2",
-            "auto_balls_low"))
-        //Log.e("important", "test2: $test2")
-        val matchSchedule = getMatchSchedule(teamNumber)
-        //Log.e("important", "keys ${matchSchedule.keys}")
-        //Log.e("important", "values ${matchSchedule.values}")
-        //Log.e("here", "match schedule: $matchSchedule")
-
-        //Log.e("here", test)
-        //Log.e("here", "alliance : $test2")
+        val timDataMap = getTIMDataValue(teamNumber!!, timDatapoint!!, Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
+        Log.e("important", "$timDataMap")
 
         val entries: ArrayList<BarEntry> = ArrayList()
-        for(thing in things){
-            entries.add(BarEntry(thing.key.toFloat(), thing.value.toFloat()))
+        for(timData in timDataMap){
+            entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
         }
         Log.e("important", "here: $entries")
 
         val barDataSet = BarDataSet(entries, "")
         barDataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+        barDataSet.valueTextSize = 18F
+        root.bar_chart.extraBottomOffset = 15F
+        root.bar_chart.extraLeftOffset = 15F
+        root.bar_chart.extraRightOffset = 15F
+        root.bar_chart.xAxis.textSize = 18F
+        root.bar_chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+        root.bar_chart.axisLeft.textSize = 18F
+        root.bar_chart.axisRight.textSize = 18F
+        root.bar_chart.axisLeft.axisMinimum = 0F
+        root.bar_chart.axisRight.axisMinimum = 0F
 
         val data = BarData(barDataSet)
         root.bar_chart.data = data
 
-        //hide grid lines
+        //show grid lines
         root.bar_chart.axisLeft.setDrawGridLines(true)
         root.bar_chart.xAxis.setDrawGridLines(true)
         root.bar_chart.xAxis.setDrawAxisLine(true)
 
-        //remove right y-axis
+        //right y-axis
         root.bar_chart.axisRight.isEnabled = true
 
         //remove legend
@@ -82,8 +80,23 @@ class GraphsFragment : Fragment() {
         //remove description label
         root.bar_chart.description.isEnabled = false
 
+        //disable zooming
+        root.bar_chart.isDoubleTapToZoomEnabled = false
+        root.bar_chart.setPinchZoom(false)
+        root.bar_chart.setScaleEnabled(false)
+
         //draw chart
         root.bar_chart.invalidate()
+
+        root.bar_chart.setOnClickListener(){
+            //Change to open TIMD fragment when we have it
+            teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+            teamDetailsFragment.arguments = teamDetailsFragmentArguments
+            this.fragmentManager!!.beginTransaction().addToBackStack(null).replace(
+                (view!!.parent as ViewGroup).id,
+                teamDetailsFragment
+            ).commit()
+        }
 
         return root
     }

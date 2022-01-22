@@ -4,11 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/bar_chart"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/small"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:orientation="horizontal">
+
+        <com.example.viewer_2020.VerticalTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="start|center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="18dp"
+            android:text="Test Test"
+            android:id="@+id/y_axis_label"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/bar_chart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="12"
+            android:layout_marginRight="@dimen/small"
+            android:layout_marginTop="@dimen/small"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Match Number"
+        android:textSize="20sp"
+        android:textColor="@color/Black"
+        android:paddingBottom="10dp"
+        android:gravity="center_horizontal"/>
 
 </LinearLayout>

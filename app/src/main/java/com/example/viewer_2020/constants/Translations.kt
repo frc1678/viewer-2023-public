@@ -168,13 +168,22 @@ class Translations {
             "3" to "falcon"
         )
 
-        val AVG_TO_TIM : Map<String, String> = mapOf(
+        val TIM_FROM_TEAM : Map<String, String> = mapOf(
             "auto_avg_balls_low" to "auto_balls_low",
             "auto_avg_balls_high" to "auto_balls_high",
             "tele_avg_balls_low" to "tele_balls_low",
             "tele_avg_balls_high" to "tele_balls_high",
             "avg_incap_time" to "incap",
             "climb_all_success_avg_time" to "climb_time"
+        )
+
+        val TIM_TO_HUMAN_READABLE : Map<String, String> = mapOf(
+            "auto_balls_low" to "Auto Balls Low",
+            "auto_balls_high" to "Auto Balls High",
+            "tele_balls_low" to "Tele Balls Low",
+            "tele_balls_high" to "Tele Balls High",
+            "incap" to "Incap",
+            "climb_time" to "Climb Time"
         )
     }
 }

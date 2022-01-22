@@ -1,7 +1,6 @@
 package com.example.viewer_2020
 
 import android.util.Log
-import com.example.viewer_2020.constants.Constants
 
 fun getTIMDataValue(teamNumber: String, field: String, path: String) : Map<String, String> {
     val matchNumList = getMatchSchedule(teamNumber).keys
