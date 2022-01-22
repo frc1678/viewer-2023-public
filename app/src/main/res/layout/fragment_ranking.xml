@@ -92,6 +92,7 @@
         android:id="@+id/lv_ranking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/view_separator_ll_key"/>
+        android:layout_below="@+id/view_separator_ll_key"
+        android:layout_marginTop="0dp" />
 
 </RelativeLayout>
