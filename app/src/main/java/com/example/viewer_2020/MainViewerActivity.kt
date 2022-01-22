@@ -18,6 +18,10 @@ import android.os.Environment
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
@@ -54,6 +58,7 @@ class MainViewerActivity : ViewerActivity() {
     private var firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
     private var secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
     private val teamListFragment = TeamListFragment()
+    private val preferencesFragment = PreferencesFragment()
 
     private val frags: List<IFrag> =
         listOf(
@@ -62,7 +67,8 @@ class MainViewerActivity : ViewerActivity() {
             rankingFragment,
             firstPickabilityFragment,
             secondPickabilityFragment,
-            teamListFragment
+            teamListFragment,
+            preferencesFragment
         )
 
     companion object {
@@ -132,6 +138,7 @@ class MainViewerActivity : ViewerActivity() {
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
         val teamListFragment = TeamListFragment()
+        val preferencesFragment = PreferencesFragment()
 
         updateNavFooter()
 
@@ -227,6 +234,15 @@ class MainViewerActivity : ViewerActivity() {
                         null
                     )
                     ft.replace(R.id.nav_host_fragment, teamListFragment, "teamlist")
+                        .commit()
+                }
+
+                R.id.nav_preferences -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "preferences") ft.addToBackStack(
+                        null
+                    )
+                    ft.replace(R.id.nav_host_fragment, preferencesFragment, "preferences")
                         .commit()
                 }
 
