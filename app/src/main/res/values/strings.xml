@@ -18,4 +18,14 @@
     <string name="open">Open</string>
     <string name="refresh_button">Refresh</string>
 
+    <string-array name="user_array">
+        <item>None</item>
+        <item>Austin</item>
+        <item>Dave</item>
+        <item>Kate</item>
+        <item>Mike</item>
+        <item>Richard</item>
+
+    </string-array>
+
 </resources>

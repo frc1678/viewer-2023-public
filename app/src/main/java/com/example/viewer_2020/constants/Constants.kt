@@ -179,4 +179,13 @@ class Constants {
         CALCULATED_TBA_TEAM("tba_team"),
         CALCULATED_PICKABILITY("pickability")
     }
+
+    enum class USERS() {
+        NONE,
+        AUSTIN,
+        DAVE,
+        KATE,
+        MIKE,
+        RICHARD
+    }
 }
