@@ -11,7 +11,7 @@
 
     <TextView
         style="@style/tv_subheader"
-        android:text="User Name" />
+        android:text="User Name"/>
 
     <Spinner
         android:id="@+id/spin_user"

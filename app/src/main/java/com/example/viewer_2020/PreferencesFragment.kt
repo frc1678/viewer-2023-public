@@ -28,7 +28,6 @@ class PreferencesFragment: IFrag() {
 
     fun createSpinner(context: Context, spinner: Spinner, array: Int) {
 
-        Log.e("bobbo", "made it to function")
         ArrayAdapter.createFromResource(
             context, array, R.layout.spinner_layout
         ).also { adapter ->
@@ -51,6 +50,5 @@ class PreferencesFragment: IFrag() {
                 return
             }
         }
-        Log.e("bobbo", "made it to end of fun")
     }
 }
