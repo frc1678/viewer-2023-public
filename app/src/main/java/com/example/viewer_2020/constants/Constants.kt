@@ -261,5 +261,4 @@ class Constants {
         CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
     }
 
-
 }
