@@ -33,13 +33,12 @@ class MatchDetailsFragment : Fragment() {
     private val teamDetailsFragmentArguments = Bundle()
     lateinit var headerDisplay: List<String>
 
-    var user_name = context?.getSharedPreferences("username", "")
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.e("bobbo", "User Name: $user_name")
+        var userName = retrieveFromStorage("username")
+        Log.e("bobbo", "User Name: $userName")
         arguments?.let {
             matchNumber = it.getInt(Constants.MATCH_NUMBER, 0)
         }
@@ -192,5 +191,9 @@ class MatchDetailsFragment : Fragment() {
                     tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[2]]
             }
         }
+    }
+
+    fun retrieveFromStorage(key: String): String {
+        return context?.getSharedPreferences("VIEWER", 0)?.getString(key, "").toString()
     }
 }

@@ -1,6 +1,7 @@
 package com.example.viewer_2020
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -49,7 +50,7 @@ class PreferencesFragment: IFrag() {
                 spinner.setSelection(position)
                 userName = spin_user.selectedItem.toString().toUpperCase()
                 Log.e("bobbo", "$userName")
-                context.getSharedPreferences("PREFS", 0).edit().putString("username", userName).apply()
+                context.getSharedPreferences("VIEWER", 0).edit().putString("username", userName).apply()
 
             }
 
