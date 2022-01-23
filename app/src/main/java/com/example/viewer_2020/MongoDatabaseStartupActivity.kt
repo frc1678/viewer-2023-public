@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.DatabaseReference
+import com.example.viewer_2020.data.GetDataFromWebsite
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 

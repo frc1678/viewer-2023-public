@@ -1,4 +1,4 @@
-package com.example.viewer_2020
+package com.example.viewer_2020.data
 
 import android.content.Context
 import android.content.Intent
@@ -6,9 +6,11 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
+import com.example.viewer_2020.MainViewerActivity
 import java.net.URL
 import com.example.viewer_2020.MongoDatabaseStartupActivity.Companion.databaseReference
 import com.example.viewer_2020.data.*
+import com.example.viewer_2020.lastUpdated
 import com.google.gson.Gson
 import java.io.*
 import java.net.HttpURLConnection
@@ -25,7 +27,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
             var listOfCollectionNames: List<String> =
                 listOf(
                     "raw_obj_pit",
-//                    "raw_subj_pit",
+                    "tba_tim",
                     "obj_tim",
                     "obj_team",
                     "subj_team",
@@ -45,10 +47,10 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                         result.toString(),
                         Array<DatabaseReference.ObjectivePit>::class.java
                     ).toMutableList()
-//                    1 -> databaseReference?.raw_subj_pit = Gson().fromJson(
-//                        result.toString(),
-//                        Array<DatabaseReference.SubjectivePit>::class.java
-//                    ).toMutableList()
+                    1 -> databaseReference?.tba_tim = Gson().fromJson(
+                        result.toString(),
+                        Array<DatabaseReference.CalculatedTBATeamInMatch>::class.java
+                    ).toMutableList()
                     2 -> databaseReference?.obj_tim = Gson().fromJson(
                         result.toString(),
                         Array<DatabaseReference.CalculatedObjectiveTeamInMatch>::class.java

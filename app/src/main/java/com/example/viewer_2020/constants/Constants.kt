@@ -177,7 +177,8 @@ class Constants {
         CALCULATED_PREDICTED_ALLIANCE_IN_MATCH("predicted_aim"),
         CALCULATED_PREDICTED_TEAM("predicted_team"),
         CALCULATED_TBA_TEAM("tba_team"),
-        CALCULATED_PICKABILITY("pickability")
+        CALCULATED_PICKABILITY("pickability"),
+        CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
     }
 
     enum class USERS() {
