@@ -8,9 +8,7 @@
 
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -132,7 +130,6 @@ class MatchDetailsFragment : Fragment() {
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
         var userName = retrieveFromStorage("username")
-        Log.e("bobbo", "$userName")
         val datapointsDisplay = MatchDetailsConstants.USERS.valueOf(userName)
         root.lv_match_details.adapter =
             MatchDetailsAdapter(

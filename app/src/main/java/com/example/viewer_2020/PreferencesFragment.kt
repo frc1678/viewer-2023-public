@@ -1,10 +1,7 @@
 package com.example.viewer_2020
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.TextUtils.indexOf
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +9,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.example.viewer_2020.constants.MatchDetailsConstants
-import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
-import com.google.android.gms.common.util.ArrayUtils.indexOf
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
 
