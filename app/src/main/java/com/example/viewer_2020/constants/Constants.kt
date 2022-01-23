@@ -53,7 +53,7 @@ class Constants {
             "incap"
         )
 
-        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED: List<String> = listOf(
+        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS: List<String> = listOf(
             "Auto",
             "auto_balls_low",
             "Tele",

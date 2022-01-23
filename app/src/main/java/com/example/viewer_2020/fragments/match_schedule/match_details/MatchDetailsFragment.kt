@@ -20,7 +20,6 @@ import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
-import kotlinx.android.synthetic.main.match_details.*
 import kotlinx.android.synthetic.main.match_details.view.*
 import java.lang.Float.parseFloat
 
@@ -133,20 +132,13 @@ class MatchDetailsFragment : Fragment() {
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
-        val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_NOT_PLAYED)
-
-            root.lv_match_details.adapter =
-                MatchDetailsAdapter(
-                    context = activity!!,
-                    datapointsDisplay = datapointsDisplay,
-                    teamNumber = getTeamNumbersList(root)
-                )
+        val datapointsDisplay = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS
+        root.lv_match_details.adapter =
+            MatchDetailsAdapter(
+                context = activity!!,
+                datapointsDisplay = datapointsDisplay,
+                teamNumber = getTeamNumbersList(root)
+            )
 //        }
     }
 
