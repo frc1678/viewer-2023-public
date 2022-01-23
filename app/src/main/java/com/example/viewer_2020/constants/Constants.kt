@@ -180,9 +180,60 @@ class Constants {
             "driver_ability"
         )
 
-          val PERCENT_DATA: List<String> = listOf(
+        val PERCENT_DATA: List<String> = listOf(
             "climb_percent_success"
         )
+
+        //List of rankable fields
+        //The boolean is if it should be sorted descending
+        //Not if it is rankable or not
+        //True means descending and false means ascending
+        //All items in the list are rankable no matter what
+        val RANKABLE_FIELDS = mapOf<String, Boolean>(
+            "current_rps" to true,
+            "current_avg_rps" to true,
+            "predicted_rps" to true,
+            "first_pickability" to true,
+            "second_pickability" to true,
+            "auto_avg_balls_low" to true,
+            "auto_avg_balls_high" to true,
+            "auto_avg_balls_total" to true,
+            "auto_line_successes" to true, //?????
+            "auto_max_balls_low" to true,
+            "auto_max_balls_high" to true,
+            "auto_sd_balls_low" to true,
+            "auto_sd_balls_high" to true,
+            "tele_avg_balls_low" to true,
+            "tele_avg_balls_high" to true,
+            "tele_avg_balls_total" to true,
+            "driver_ability" to false,
+            "driver_near_field_awareness" to false,
+            "driver_far_field_awareness" to false,
+            "driver_quickness" to false,
+            "tele_max_balls_low" to false,
+            "tele_max_balls_high" to false,
+            "tele_sd_balls_low" to false,
+            "tele_sd_balls_high" to false,
+            "max_incap" to false,
+            "avg_incap_time" to false,
+            "matches_incap" to false,
+            "climb_percent_success" to true,
+            "climb_all_attempts" to true,
+            "low_rung_successes" to true,
+            "mid_rung_successes" to true,
+            "high_rung_successes" to true,
+            "traversal_rung_successes" to true,
+            "low_avg_time" to true,
+            "mid_avg_time" to true,
+            "high_avg_time" to true,
+            "traversal_avg_time" to true,
+            "avg_exit_ball_catches" to true,
+            "max_exit_ball_catches" to true,
+            "avg_opp_balls_scored" to true,
+            "max_opp_balls_scored" to true,
+            "drivetrain_motors" to true
+        )
+
 
         //String literal translations.
         const val TEAM_NUMBER = "teamNumber"
