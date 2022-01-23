@@ -42,6 +42,9 @@ class GraphsFragment : Fragment() {
             datapoint = it.getString("datapoint", Constants.NULL_CHARACTER)
         }
 
+        root.tv_team_number.text = teamNumber
+        root.tv_datapoint.text = Translations.ACTUAL_TO_HUMAN_READABLE[datapoint]
+
         val timDatapoint = Translations.TIM_FROM_TEAM[datapoint!!]
         root.y_axis_label.text = Translations.TIM_TO_HUMAN_READABLE[datapoint!!]
 
@@ -66,55 +69,81 @@ class GraphsFragment : Fragment() {
             if((datapoint=="matches_incap") or (datapoint=="climb_all_attempts")){
                 if((timData.value != "0") and (timData.value != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(timData.key.toFloat(), 1F))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint=="low_rung_successes"){
                 if(timData.value == "Low"){
                     entries.add(BarEntry(timData.key.toFloat(), 1F))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint=="mid_rung_successes"){
                 if(timData.value == "Mid"){
                     entries.add(BarEntry(timData.key.toFloat(), 1F))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint=="high_rung_successes"){
                 if(timData.value == "High"){
                     entries.add(BarEntry(timData.key.toFloat(), 1F))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint=="traversal_rung_successes"){
                 if(timData.value == "Traversal"){
                     entries.add(BarEntry(timData.key.toFloat(), 1F))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint == "climb_all_success_avg_time"){
                 if((timDataMapClimbLevel!![timData.key] != "none") and
                     (timDataMapClimbLevel[timData.key] != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint == "low_avg_time"){
                 if(timDataMapClimbLevel!![timData.key] == "Low"){
                     entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint == "mid_avg_time"){
                 if(timDataMapClimbLevel!![timData.key] == "Mid"){
                     entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint == "high_avg_time"){
                 if(timDataMapClimbLevel!![timData.key] == "High"){
                     entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint == "traversal_avg_time"){
                 if(timDataMapClimbLevel!![timData.key] == "Traversal"){
                     entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             } else if (datapoint == "climb_percent_success"){
                 if((timData.value != "none") and (timData.value != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(timData.key.toFloat(), 1F))
+                } else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
             }
             else if(Constants.GRAPHABLE_BOOL.contains(datapoint!!)) {
                 if (timData.value == "true") {
                     entries.add(BarEntry(timData.key.toFloat(), 1F))
+                }else{
+                    entries.add(BarEntry(timData.key.toFloat(), 0F))
                 }
-            }else if(timData.value != Constants.NULL_CHARACTER){
+            } else if(timData.value != Constants.NULL_CHARACTER){
                 entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+            } else{
+                entries.add(BarEntry(timData.key.toFloat(), 0F))
             }
         }
 
