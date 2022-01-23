@@ -1,10 +1,14 @@
 package com.example.viewer_2020.fragments.team_details
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.Color.rgb
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
@@ -42,16 +46,18 @@ class GraphsFragment : Fragment() {
         root.y_axis_label.text = Translations.TIM_TO_HUMAN_READABLE[timDatapoint]
 
         val timDataMap = getTIMDataValue(teamNumber!!, timDatapoint!!, Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
-        Log.e("important", "$timDataMap")
+        //Log.e("important", "$timDataMap")
 
         val entries: ArrayList<BarEntry> = ArrayList()
         for(timData in timDataMap){
             entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
         }
-        Log.e("important", "here: $entries")
+        //Log.e("important", "here: $entries")
 
         val barDataSet = BarDataSet(entries, "")
-        barDataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+        barDataSet.setColors(ContextCompat.getColor(
+            context!!,
+            R.color.colorPrimaryLight))
         barDataSet.valueTextSize = 18F
         root.bar_chart.extraBottomOffset = 15F
         root.bar_chart.extraLeftOffset = 15F
@@ -88,15 +94,41 @@ class GraphsFragment : Fragment() {
         //draw chart
         root.bar_chart.invalidate()
 
-        root.bar_chart.setOnClickListener(){
-            //Change to open TIMD fragment when we have it
-            teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
-            teamDetailsFragment.arguments = teamDetailsFragmentArguments
-            this.fragmentManager!!.beginTransaction().addToBackStack(null).replace(
-                (view!!.parent as ViewGroup).id,
-                teamDetailsFragment
-            ).commit()
+        root.bar_chart.isHighlightFullBarEnabled = true
+        root.bar_chart.maxHighlightDistance = 10F
+        fun getOnChartValueSelectedListener(): OnChartValueSelectedListener {
+            return object : OnChartValueSelectedListener {
+                override fun onValueSelected(e: Entry?, h: Highlight?) {
+                    root.bar_chart.setTouchEnabled(false)
+                    val matchNumberClicked: Int = e!!.x.toInt()
+                    Log.e("Important", "$matchNumberClicked")
+                    teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+                    //TODO: Change to opening the TIM fragment once available
+                    //teamDetailsFragmentArguments.putString(Constants.MATCH_NUMBER, matchNumberClicked)
+                    teamDetailsFragment.arguments = teamDetailsFragmentArguments
+                    fragmentManager!!.beginTransaction().addToBackStack(null).replace(
+                        (view!!.parent as ViewGroup).id,
+                        teamDetailsFragment
+                    ).commit()
+                }
+
+                override fun onNothingSelected() {
+                    Log.e("important", "nothing")
+                }
+            }
         }
+        root.bar_chart.setOnChartValueSelectedListener(getOnChartValueSelectedListener())
+
+
+//        root.bar_chart.setOnClickListener(){
+//            //Change to open TIMD fragment when we have it
+//            teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+//            teamDetailsFragment.arguments = teamDetailsFragmentArguments
+//            this.fragmentManager!!.beginTransaction().addToBackStack(null).replace(
+//                (view!!.parent as ViewGroup).id,
+//                teamDetailsFragment
+//            ).commit()
+//        }
 
         return root
     }
