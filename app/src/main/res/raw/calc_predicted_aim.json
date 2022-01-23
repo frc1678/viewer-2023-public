@@ -12,4 +12,64 @@
     "predicted_score": 336.6,
     "predicted_rp1": 1,
     "predicted_rp2": 0
+  },{
+  "match_number": 2,
+  "alliance_color_is_red": false,
+  "has_actual_data": true,
+  "predicted_score": 73,
+  "predicted_rp1": 1,
+  "predicted_rp2": 0,
+  "actual_score": 500,
+  "actual_rp1": 1,
+  "actual_rp2": 1
+  },{
+  "match_number": 2,
+  "alliance_color_is_red": true,
+  "has_actual_data": true,
+  "predicted_score": 43,
+  "predicted_rp1": 0,
+  "predicted_rp2": 0,
+  "actual_score": 92,
+  "actual_rp1": 1,
+  "actual_rp2": 0
+  },{
+  "match_number": 3,
+  "alliance_color_is_red": false,
+  "has_actual_data": true,
+  "predicted_score": 73,
+  "predicted_rp1": 1,
+  "predicted_rp2": 0,
+  "actual_score": 500,
+  "actual_rp1": 1,
+  "actual_rp2": 1
+},{
+  "match_number": 3,
+  "alliance_color_is_red": true,
+  "has_actual_data": true,
+  "predicted_score": 43,
+  "predicted_rp1": 0,
+  "predicted_rp2": 0,
+  "actual_score": 92,
+  "actual_rp1": 1,
+  "actual_rp2": 0
+  },{
+  "match_number": 8,
+  "alliance_color_is_red": false,
+  "has_actual_data": true,
+  "predicted_score": 73,
+  "predicted_rp1": 1,
+  "predicted_rp2": 0,
+  "actual_score": 500,
+  "actual_rp1": 1,
+  "actual_rp2": 1
+},{
+  "match_number": 8,
+  "alliance_color_is_red": true,
+  "has_actual_data": true,
+  "predicted_score": 43,
+  "predicted_rp1": 0,
+  "predicted_rp2": 0,
+  "actual_score": 92,
+  "actual_rp1": 1,
+  "actual_rp2": 0
   }]
