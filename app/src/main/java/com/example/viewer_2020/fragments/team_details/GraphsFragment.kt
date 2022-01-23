@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_graphs.view.*
 
 
 class GraphsFragment : Fragment() {
+    //TODO: Remove log statements, comment everything, test more thoroughly, make styles for tvs
     private var teamNumber: String? = null
     private var datapoint: String? = null
     private val teamDetailsFragmentArguments = Bundle()
@@ -45,30 +46,45 @@ class GraphsFragment : Fragment() {
         val timDatapoint = Translations.TIM_FROM_TEAM[datapoint!!]
         root.y_axis_label.text = Translations.TIM_TO_HUMAN_READABLE[timDatapoint]
 
-        val timDataMap = getTIMDataValue(teamNumber!!, timDatapoint!!, Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
-        //Log.e("important", "$timDataMap")
+        //get data
+        val timDataMap = getTIMDataValue(teamNumber!!, timDatapoint!!,
+            Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
 
+        //add data to a list of BarEntries so it can be added to the chart
         val entries: ArrayList<BarEntry> = ArrayList()
         for(timData in timDataMap){
             entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
         }
-        //Log.e("important", "here: $entries")
 
+        //make the list of entries into a BarDataSet so it can be added to the chart
         val barDataSet = BarDataSet(entries, "")
+
+        //set color of bars
         barDataSet.setColors(ContextCompat.getColor(
             context!!,
             R.color.colorPrimaryLight))
+
+        //set text size of the numbers labelling the height of each bar
         barDataSet.valueTextSize = 18F
+
+        //add extra margins around the chart to accommodate increased text size of labels
         root.bar_chart.extraBottomOffset = 15F
         root.bar_chart.extraLeftOffset = 15F
         root.bar_chart.extraRightOffset = 15F
+
+        //increase text size of labels (the numbers on the axes)
         root.bar_chart.xAxis.textSize = 18F
-        root.bar_chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         root.bar_chart.axisLeft.textSize = 18F
         root.bar_chart.axisRight.textSize = 18F
+
+        //put xAxis on the bottom instead of the top
+        root.bar_chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+
+        //set yAxis minimum to 0
         root.bar_chart.axisLeft.axisMinimum = 0F
         root.bar_chart.axisRight.axisMinimum = 0F
 
+        //chart the data
         val data = BarData(barDataSet)
         root.bar_chart.data = data
 
@@ -94,12 +110,18 @@ class GraphsFragment : Fragment() {
         //draw chart
         root.bar_chart.invalidate()
 
+        //set up chart to detect clicking on different bars
         root.bar_chart.isHighlightFullBarEnabled = true
+
+        //change the sensitivity of how close a click must be to a bar to register
         root.bar_chart.maxHighlightDistance = 10F
+
+        //define function for what to do after a bar is clicked
         fun getOnChartValueSelectedListener(): OnChartValueSelectedListener {
             return object : OnChartValueSelectedListener {
                 override fun onValueSelected(e: Entry?, h: Highlight?) {
                     root.bar_chart.setTouchEnabled(false)
+                    //set match number to the x value of the entry selected
                     val matchNumberClicked: Int = e!!.x.toInt()
                     Log.e("Important", "$matchNumberClicked")
                     teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
@@ -113,22 +135,12 @@ class GraphsFragment : Fragment() {
                 }
 
                 override fun onNothingSelected() {
-                    Log.e("important", "nothing")
-                }
+               }
             }
         }
+
+        //set on click listener to the function created
         root.bar_chart.setOnChartValueSelectedListener(getOnChartValueSelectedListener())
-
-
-//        root.bar_chart.setOnClickListener(){
-//            //Change to open TIMD fragment when we have it
-//            teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
-//            teamDetailsFragment.arguments = teamDetailsFragmentArguments
-//            this.fragmentManager!!.beginTransaction().addToBackStack(null).replace(
-//                (view!!.parent as ViewGroup).id,
-//                teamDetailsFragment
-//            ).commit()
-//        }
 
         return root
     }
