@@ -1,7 +1,6 @@
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.content.Context
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
