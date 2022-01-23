@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="horizontal">
+    <TextView
+        style="@style/tv_standard_black"
+        android:layout_weight="1"
+
+        android:id="@+id/tv_team_ranking"
+        android:text="rank"
+        android:gravity="center"
+        />
+    <TextView
+        style="@style/tv_standard_black"
+        android:layout_weight="1"
+        android:id="@+id/tv_team_number_ranking"
+        android:text="team number"
+        android:gravity="center"
+
+        />
+    <TextView
+        style="@style/tv_standard_black"
+        android:layout_weight="1"
+        android:id="@+id/tv_value_ranking"
+        android:text="value"
+        android:gravity="center"
+
+        />
+
+</LinearLayout>
