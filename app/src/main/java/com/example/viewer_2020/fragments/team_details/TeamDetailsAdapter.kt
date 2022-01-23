@@ -131,14 +131,14 @@ class TeamDetailsAdapter(
                     //attach the bundle to the fragment
                     teamRankingFragment.arguments = teamRankingFragmentArguments
 
-//                println((it.parent.parent.parent.parent as ViewGroup))
+//                println((it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup))
 
                     //the reason i have to do so many .parent calls is because this cell is so far back the the stack
                     //normally i would have done it from the fragment but i forgot about that
                     //this could also be fixed with some other way to get the id
                     //if something breaks from someone just changing xml. this is why
                     teamRankingFragmentTransaction.addToBackStack(null).replace(
-                        (it.parent.parent.parent.parent as ViewGroup).id,
+                        (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
                         teamRankingFragment
                     ).commit()
 
