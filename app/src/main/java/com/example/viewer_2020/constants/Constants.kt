@@ -180,12 +180,5 @@ class Constants {
         CALCULATED_PICKABILITY("pickability")
     }
 
-    enum class USERS() {
-        NONE,
-        AUSTIN,
-        DAVE,
-        KATE,
-        MIKE,
-        RICHARD
-    }
+
 }

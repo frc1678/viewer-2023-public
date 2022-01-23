@@ -9,7 +9,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import com.example.viewer_2020.MainViewerActivity.Companion.userName
+import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
+
 
 class PreferencesFragment: IFrag() {
 
@@ -44,6 +47,10 @@ class PreferencesFragment: IFrag() {
                 id: Long
             ) {
                 spinner.setSelection(position)
+                userName = spin_user.selectedItem.toString().toUpperCase()
+                Log.e("bobbo", "$userName")
+                context.getSharedPreferences("PREFS", 0).edit().putString("username", userName).apply()
+
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {

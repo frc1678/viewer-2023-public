@@ -8,7 +8,9 @@
 
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,11 +33,13 @@ class MatchDetailsFragment : Fragment() {
     private val teamDetailsFragmentArguments = Bundle()
     lateinit var headerDisplay: List<String>
 
+    var user_name = context?.getSharedPreferences("username", "")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        Log.e("bobbo", "User Name: $user_name")
         arguments?.let {
             matchNumber = it.getInt(Constants.MATCH_NUMBER, 0)
         }

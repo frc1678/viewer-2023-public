@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import com.example.viewer_2020.MainViewerActivity.Companion.userName
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
@@ -49,6 +50,13 @@ class MatchDetailsAdapter (
             rowView.tv_datapoint_name.text =
                     Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplay[position]]
                             ?: datapointsDisplay[position]
+            when (userName){
+                "NONE" -> ""
+                "AUSTIN" -> ""
+                "KATE" -> ""
+                "MIKE" -> ""
+                "RICHARD" -> ""
+            }
             if ((datapointsDisplay[position] == "Auto") or (datapointsDisplay[position] == "Tele") or (datapointsDisplay[position] == "Endgame") or (datapointsDisplay[position] == "Other")) {
                 val noWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
                 val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
