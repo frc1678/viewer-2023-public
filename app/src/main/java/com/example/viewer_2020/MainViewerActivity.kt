@@ -76,7 +76,6 @@ class MainViewerActivity : ViewerActivity() {
         var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
-        var userName: String = "NONE"
     }
 
 

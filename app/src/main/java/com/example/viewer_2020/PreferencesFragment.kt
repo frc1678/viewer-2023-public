@@ -3,6 +3,7 @@ package com.example.viewer_2020
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.TextUtils.indexOf
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import com.example.viewer_2020.MainViewerActivity.Companion.userName
+import com.example.viewer_2020.constants.MatchDetailsConstants
+import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
+import com.google.android.gms.common.util.ArrayUtils.indexOf
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
 
@@ -24,13 +27,13 @@ class PreferencesFragment: IFrag() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_preferences, container, false)
-
         context?.let { createSpinner(it, root.spin_user, R.array.user_array) }
-
+        var namePosition = MatchDetailsConstants.USERS.valueOf(context?.getSharedPreferences("VIEWER", 0)?.getString("username", "").toString()).ordinal
+        root.spin_user.setSelection(namePosition)
         return root
     }
 
-    fun createSpinner(context: Context, spinner: Spinner, array: Int) {
+    private fun createSpinner(context: Context, spinner: Spinner, array: Int) {
 
         ArrayAdapter.createFromResource(
             context, array, R.layout.spinner_layout
@@ -47,9 +50,8 @@ class PreferencesFragment: IFrag() {
                 position: Int,
                 id: Long
             ) {
-                spinner.setSelection(position)
-                userName = spin_user.selectedItem.toString().toUpperCase()
-                Log.e("bobbo", "$userName")
+                var userName: String = spin_user.selectedItem.toString().toUpperCase()
+
                 context.getSharedPreferences("VIEWER", 0).edit().putString("username", userName).apply()
 
             }
