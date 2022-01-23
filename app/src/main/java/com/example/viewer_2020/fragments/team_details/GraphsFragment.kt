@@ -26,7 +26,6 @@ import kotlinx.android.synthetic.main.fragment_graphs.view.*
 
 
 class GraphsFragment : Fragment() {
-    //TODO: Remove log statements, comment everything, test more thoroughly, make styles for tvs
     private var teamNumber: String? = null
     private var datapoint: String? = null
     private val teamDetailsFragmentArguments = Bundle()
@@ -85,7 +84,8 @@ class GraphsFragment : Fragment() {
                     entries.add(BarEntry(timData.key.toFloat(), 1F))
                 }
             } else if (datapoint == "climb_all_success_avg_time"){
-                if(timDataMapClimbLevel!![timData.key] != "none"){
+                if((timDataMapClimbLevel!![timData.key] != "none") and
+                    (timDataMapClimbLevel[timData.key] != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
                 }
             } else if (datapoint == "low_avg_time"){
@@ -196,7 +196,7 @@ class GraphsFragment : Fragment() {
                     root.bar_chart.setTouchEnabled(false)
                     //set match number to the x value of the entry selected
                     val matchNumberClicked: Int = e!!.x.toInt()
-                    Log.e("Important", "$matchNumberClicked")
+                    Log.e("match number", "$matchNumberClicked")
                     teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
                     //TODO: Change to opening the TIM fragment once available
                     //teamDetailsFragmentArguments.putString(Constants.MATCH_NUMBER, matchNumberClicked)

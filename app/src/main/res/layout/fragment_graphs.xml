@@ -17,8 +17,7 @@
             android:textColor="@color/Black"
             android:gravity="start|center_vertical"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="18dp"
-            android:text="Test Test"
+            android:layout_marginStart="@dimen/corner_radius_small"
             android:id="@+id/y_axis_label"/>
 
         <com.github.mikephil.charting.charts.BarChart
@@ -39,7 +38,7 @@
         android:text="Match Number"
         android:textSize="20sp"
         android:textColor="@color/Black"
-        android:paddingBottom="10dp"
+        android:paddingBottom="@dimen/very_small"
         android:gravity="center_horizontal"/>
 
 </LinearLayout>
