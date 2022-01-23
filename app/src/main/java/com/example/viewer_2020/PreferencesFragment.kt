@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import com.example.viewer_2020.constants.MatchDetailsConstants
 import kotlinx.android.synthetic.main.fragment_preferences.*
@@ -55,5 +56,15 @@ class PreferencesFragment: IFrag() {
                 return
             }
         }
+
+        btn_user_pref_edit.setOnClickListener {
+            val userPreferencesFragment = UserPreferencesFragment()
+
+            fragmentManager!!.beginTransaction().addToBackStack(null).replace(
+                (view!!.parent as ViewGroup).id,
+                userPreferencesFragment
+            ).commit()
+        }
+
     }
 }

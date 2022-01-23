@@ -43,6 +43,7 @@ import com.example.viewer_2020.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 import java.io.File
 
@@ -60,6 +61,7 @@ class MainViewerActivity : ViewerActivity() {
     private var secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
     private val teamListFragment = TeamListFragment()
     private val preferencesFragment = PreferencesFragment()
+    private val userPreferencesFragment = UserPreferencesFragment()
 
     private val frags: List<IFrag> =
         listOf(
@@ -69,7 +71,8 @@ class MainViewerActivity : ViewerActivity() {
             firstPickabilityFragment,
             secondPickabilityFragment,
             teamListFragment,
-            preferencesFragment
+            preferencesFragment,
+            userPreferencesFragment
         )
 
     companion object {
@@ -250,6 +253,15 @@ class MainViewerActivity : ViewerActivity() {
             }
 
             true
+        }
+
+        btn_user_pref_edit.setOnClickListener(){
+            val ft = supportFragmentManager.beginTransaction()
+            if (supportFragmentManager.fragments.last().tag != "user preferences") ft.addToBackStack(
+                null
+            )
+            ft.replace(R.id.nav_host_fragment, preferencesFragment, "user preferences")
+                .commit()
         }
     }
 

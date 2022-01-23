@@ -147,7 +147,7 @@ class MatchDetailsFragment : Fragment() {
         // then set the match number display on MatchDetails to the match number provided with the intent.
 
         // If the match number from the MainViewerActivity's match schedule list view cell position
-        // is null, the default display will show '0' for the match number on MatchDetails.
+        // is null, the default display will show '0'  for the match number on MatchDetails.
         root.tv_match_number_display.
             text = matchNumber.toString()
 
