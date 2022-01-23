@@ -16,6 +16,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2020.constants.MatchDetailsConstants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.match_details.view.*
@@ -34,7 +35,6 @@ class MatchDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         arguments?.let {
             matchNumber = it.getInt(Constants.MATCH_NUMBER, 0)
         }
@@ -129,11 +129,12 @@ class MatchDetailsFragment : Fragment() {
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
-        val datapointsDisplay = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS
+        var userName = retrieveFromStorage("username")
+        val datapointsDisplay = MatchDetailsConstants.USERS.valueOf(userName)
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
                 context = activity!!,
-                datapointsDisplay = datapointsDisplay,
+                datapointsDisplay = datapointsDisplay.dataPoints,
                 teamNumber = getTeamNumbersList(root)
             )
 //        }
@@ -180,5 +181,9 @@ class MatchDetailsFragment : Fragment() {
                     tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[2]]
             }
         }
+    }
+
+    fun retrieveFromStorage(key: String): String {
+        return context?.getSharedPreferences("VIEWER", 0)?.getString(key, "").toString()
     }
 }

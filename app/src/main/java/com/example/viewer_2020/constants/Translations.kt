@@ -167,5 +167,51 @@ class Translations {
             "2" to "neo",
             "3" to "falcon"
         )
+
+        val TIM_FROM_TEAM : Map<String, String> = mapOf(
+            "auto_avg_balls_low" to "auto_balls_low",
+            "auto_avg_balls_high" to "auto_balls_high",
+            "tele_avg_balls_low" to "tele_balls_low",
+            "tele_avg_balls_high" to "tele_balls_high",
+            "avg_incap_time" to "incap",
+            "avg_exit_ball_catches" to "exit_ball_catches",
+            "avg_opp_balls_scored" to "opp_balls_scored",
+            "auto_line_successes" to "auto_line",
+            "matches_incap" to "incap",
+            "climb_percent_success" to "climb_level",
+            "climb_all_attempts" to "climb_time",
+            "low_rung_successes" to "climb_level",
+            "mid_rung_successes" to "climb_level",
+            "high_rung_successes" to "climb_level",
+            "traversal_rung_successes" to "climb_level",
+            "climb_all_success_avg_time" to "climb_time",
+            "low_avg_time" to "climb_time",
+            "mid_avg_time" to "climb_time",
+            "high_avg_time" to "climb_time",
+            "traversal_avg_time" to "climb_time"
+        )
+
+        val TIM_TO_HUMAN_READABLE : Map<String, String> = mapOf(
+            "auto_avg_balls_low" to "Auto Balls Low",
+            "auto_avg_balls_high" to "Auto Balls High",
+            "tele_avg_balls_low" to "Tele Balls Low",
+            "tele_avg_balls_high" to "Tele Balls High",
+            "avg_incap_time" to "Time Incap",
+            "climb_all_success_avg_time" to "Successful Climb Time",
+            "low_avg_time" to "Low Climb Time",
+            "mid_avg_time" to "Mid Climb Time",
+            "high_avg_time" to "High Climb Time",
+            "traversal_avg_time" to "Traversal Climb Time",
+            "avg_exit_ball_catches" to "Exit Balls Caught",
+            "avg_opp_balls_scored" to "Opponent Balls Scored",
+            "matches_incap" to "Incap?",
+            "auto_line_successes" to "Auto Line Success?",
+            "climb_percent_success" to "Climb Success?",
+            "climb_all_attempts" to "Climb Attempted?",
+            "low_rung_successes" to "Low Rung Success?",
+            "mid_rung_successes" to "Mid Rung Success?",
+            "high_rung_successes" to "High Rung Success?",
+            "traversal_rung_successes" to "Traversal Rung Success?"
+        )
     }
 }

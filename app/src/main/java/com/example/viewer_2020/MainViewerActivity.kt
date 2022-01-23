@@ -31,7 +31,9 @@ import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2020.constants.MatchDetailsConstants
 import com.example.viewer_2020.data.DatabaseReference
+import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
 import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
@@ -78,7 +80,6 @@ class MainViewerActivity : ViewerActivity() {
         var teamList: List<String> = listOf()
     }
 
-
     //Overrides back button to go back to last fragment.
     //Disables the back button and returns nothing when in the startup match schedule.
     override fun onBackPressed() {
@@ -120,6 +121,13 @@ class MainViewerActivity : ViewerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(this.getSharedPreferences("VIEWER", 0)?.getString("username","")==""){
+            this.getSharedPreferences("VIEWER", 0).edit().putString("username",
+                MatchDetailsConstants.USERS.NONE.toString()
+            ).apply()
+        }
+
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
         setToolbarText(actionBar, supportActionBar)
