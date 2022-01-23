@@ -24,8 +24,8 @@
         android:layout_weight="1"
         android:id="@+id/tv_value_ranking"
         android:text="value"
-        android:gravity="center"
-
+        android:gravity="right|center_vertical"
+        android:layout_marginRight="@dimen/very_small"
         />
 
 </LinearLayout>
