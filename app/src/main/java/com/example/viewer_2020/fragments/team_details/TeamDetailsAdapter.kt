@@ -130,6 +130,7 @@ class TeamDetailsAdapter(
                     .replace(R.id.nav_host_fragment, graphsFragment, "graphs")
                     .commit()
             }
+        }
 
             //Headers don't need on click handlers
             if (!isHeader) {
@@ -170,7 +171,6 @@ class TeamDetailsAdapter(
                 }
 
             }
-        }
 
         return rowView
     }
