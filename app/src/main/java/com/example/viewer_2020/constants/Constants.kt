@@ -232,12 +232,5 @@ class Constants {
         CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
     }
 
-    enum class USERS() {
-        NONE,
-        AUSTIN,
-        DAVE,
-        KATE,
-        MIKE,
-        RICHARD
-    }
+
 }

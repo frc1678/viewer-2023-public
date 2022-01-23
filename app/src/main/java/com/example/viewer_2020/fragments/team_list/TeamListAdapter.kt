@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.team_list_cell.view.*
 
 class TeamListAdapter(private val context: Context,  private val items: List<String>) : BaseAdapter() {
     private val inflater = LayoutInflater.from(context)
-
     override fun getCount(): Int {
         return items.size;
     }
