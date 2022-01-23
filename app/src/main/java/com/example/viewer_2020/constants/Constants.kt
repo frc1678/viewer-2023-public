@@ -155,6 +155,11 @@ class Constants {
             "climb_percent_success"
         )
 
+        //List of rankable fields
+        //The boolean is if it should be sorted descending
+        //Not if it is rankable or not
+        //True means descending and false means ascending
+        //All items in the list are rankable no matter what
         val RANKABLE_FIELDS = mapOf<String, Boolean>(
             "current_rps" to true,
             "current_avg_rps" to true,
