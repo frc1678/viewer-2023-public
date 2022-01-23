@@ -29,7 +29,6 @@ class TeamRankingFragment : IFrag() {
 
     var lvAdapter: TeamRankingListAdapter? = null
 
-    var btnState = OrderState.DOWN
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +40,6 @@ class TeamRankingFragment : IFrag() {
         populateArguments(root)
         setTextViews(root)
         setupAdapter(root)
-        setupDirectionBtn(root)
 
         return root
     }
@@ -104,24 +102,9 @@ class TeamRankingFragment : IFrag() {
         return sortedData + nullTeams
     }
 
-    private fun setupDirectionBtn(root: View) {
-        root.iv_direction.setOnClickListener {
-            val view = it as ImageView
-            btnState = when (btnState) {
-                OrderState.DOWN -> {
-                    view.setImageResource(R.drawable.arrow_up); lvAdapter!!.updateItems(getData(false)); OrderState.UP
-                }
-                OrderState.UP -> {
-                    view.setImageResource(R.drawable.arrow_down); lvAdapter!!.updateItems(getData(true)); OrderState.DOWN
-                }
-            }
-        }
-    }
 }
 
 data class TeamRankingItem(val teamNumber: String, val value: String)
-
-enum class OrderState { UP, DOWN }
 
 //Maybe a better method of sorting https://kotlinlang.org/docs/collection-ordering.html
 /*
