@@ -32,12 +32,13 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                     "predicted_aim",
                     "predicted_team",
                     "tba_team",
-                    "pickability"
+                    "pickability",
+                    "tba_tim"
                 )
 
             //For each of the collections (make sure to change this number if the number of collections change),
             //pull the data from the website and then add it to the databaseReference variable
-            for (x in 0..8) {
+            for (x in 0..9) {
                 val result =
                     sendRequest("https://cardinal.citruscircuits.org/cardinal/api/collection/${listOfCollectionNames[x]}/")
                 when (x) {
@@ -76,6 +77,10 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                     8 -> databaseReference?.pickability = Gson().fromJson(
                         result.toString(),
                         Array<DatabaseReference.CalculatedPickAbilityTeam>::class.java
+                    ).toMutableList()
+                    9 -> databaseReference?.tba_tim = Gson().fromJson(
+                        result.toString(),
+                        Array<DatabaseReference.CalculatedTBATeamInMatch>::class.java
                     ).toMutableList()
                 }
             }

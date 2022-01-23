@@ -96,7 +96,9 @@ class TeamDetailsAdapter(
         }
 
         rowView.setOnClickListener(){
-            if(Constants.GRAPHABLE.contains(datapointsDisplayed[position])){
+            if(Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
+                Constants.GRAPHABLE_BOOL.contains(datapointsDisplayed[position]) or
+                Constants.GRAPHABLE_CLIMB_TIMES.contains(datapointsDisplayed[position])){
                 graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
                 graphsFragmentArguments.putString("datapoint", datapointsDisplayed[position])
                 graphsFragment.arguments = graphsFragmentArguments

@@ -44,16 +44,78 @@ class GraphsFragment : Fragment() {
         }
 
         val timDatapoint = Translations.TIM_FROM_TEAM[datapoint!!]
-        root.y_axis_label.text = Translations.TIM_TO_HUMAN_READABLE[timDatapoint]
+        root.y_axis_label.text = Translations.TIM_TO_HUMAN_READABLE[datapoint!!]
 
         //get data
-        val timDataMap = getTIMDataValue(teamNumber!!, timDatapoint!!,
-            Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
+        val timDataMap : Map<String, String> = if(timDatapoint == "auto_line"){
+            getTIMDataValue(teamNumber!!, timDatapoint,
+                Constants.PROCESSED_OBJECT.CALCULATED_TBA_TEAM_IN_MATCH.value)
+        }else{
+            getTIMDataValue(teamNumber!!, timDatapoint!!,
+                Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
+        }
+
+        var timDataMapClimbLevel : Map<String, String>? = null
+        if(Constants.GRAPHABLE_CLIMB_TIMES.contains(datapoint!!)){
+            timDataMapClimbLevel = getTIMDataValue(teamNumber!!, "climb_level",
+                Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
+        }
 
         //add data to a list of BarEntries so it can be added to the chart
         val entries: ArrayList<BarEntry> = ArrayList()
         for(timData in timDataMap){
-            entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+            if((datapoint=="matches_incap") or (datapoint=="climb_all_attempts")){
+                if((timData.value != "0") and (timData.value != Constants.NULL_CHARACTER)){
+                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                }
+            } else if (datapoint=="low_rung_successes"){
+                if(timData.value == "Low"){
+                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                }
+            } else if (datapoint=="mid_rung_successes"){
+                if(timData.value == "Mid"){
+                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                }
+            } else if (datapoint=="high_rung_successes"){
+                if(timData.value == "High"){
+                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                }
+            } else if (datapoint=="traversal_rung_successes"){
+                if(timData.value == "Traversal"){
+                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                }
+            } else if (datapoint == "climb_all_success_avg_time"){
+                if(timDataMapClimbLevel!![timData.key] != "none"){
+                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                }
+            } else if (datapoint == "low_avg_time"){
+                if(timDataMapClimbLevel!![timData.key] == "Low"){
+                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                }
+            } else if (datapoint == "mid_avg_time"){
+                if(timDataMapClimbLevel!![timData.key] == "Mid"){
+                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                }
+            } else if (datapoint == "high_avg_time"){
+                if(timDataMapClimbLevel!![timData.key] == "High"){
+                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                }
+            } else if (datapoint == "traversal_avg_time"){
+                if(timDataMapClimbLevel!![timData.key] == "Traversal"){
+                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                }
+            } else if (datapoint == "climb_percent_success"){
+                if((timData.value != "none") and (timData.value != Constants.NULL_CHARACTER)){
+                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                }
+            }
+            else if(Constants.GRAPHABLE_BOOL.contains(datapoint!!)) {
+                if (timData.value == "true") {
+                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                }
+            }else if(timData.value != Constants.NULL_CHARACTER){
+                entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+            }
         }
 
         //make the list of entries into a BarDataSet so it can be added to the chart
@@ -66,6 +128,17 @@ class GraphsFragment : Fragment() {
 
         //set text size of the numbers labelling the height of each bar
         barDataSet.valueTextSize = 18F
+
+        //set labels to only be integers
+        root.bar_chart.xAxis.granularity = 1.0f
+        root.bar_chart.xAxis.isGranularityEnabled = true
+        if (Constants.GRAPHABLE_BOOL.contains(datapoint!!) or Constants.GRAPHABLE.contains(datapoint!!)
+        and (datapoint != "avg_incap_time")){
+            root.bar_chart.axisLeft.granularity = 1.0f
+            root.bar_chart.axisLeft.isGranularityEnabled = true
+            root.bar_chart.axisRight.granularity = 1.0f
+            root.bar_chart.axisRight.isGranularityEnabled = true
+        }
 
         //add extra margins around the chart to accommodate increased text size of labels
         root.bar_chart.extraBottomOffset = 15F
@@ -114,7 +187,7 @@ class GraphsFragment : Fragment() {
         root.bar_chart.isHighlightFullBarEnabled = true
 
         //change the sensitivity of how close a click must be to a bar to register
-        root.bar_chart.maxHighlightDistance = 10F
+        root.bar_chart.maxHighlightDistance = 11F
 
         //define function for what to do after a bar is clicked
         fun getOnChartValueSelectedListener(): OnChartValueSelectedListener {

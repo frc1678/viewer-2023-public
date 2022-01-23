@@ -9,7 +9,7 @@ fun getTIMDataValue(teamNumber: String, field: String, path: String) : Map<Strin
         for (`object` in getDirectField(MongoDatabaseStartupActivity.databaseReference!!, path)
                 as List<*>) {
                     Log.e("important", getDirectField(`object`!!, "team_number").toString())
-            if (getDirectField(`object`!!, "match_number").toString() == matchNumber &&
+            if (getDirectField(`object`, "match_number").toString() == matchNumber &&
                 getDirectField(`object`, "team_number").toString() == teamNumber
             ) {
                result[matchNumber] = getDirectField(`object`, field).toString()

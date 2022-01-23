@@ -20,7 +20,8 @@ class DatabaseReference {
         var predicted_aim: MutableList<CalculatedPredictedAllianceInMatch> = mutableListOf(),
         var predicted_team: MutableList<CalculatedPredictedTeam> = mutableListOf(),
         var tba_team: MutableList<CalculatedTBATeam> = mutableListOf(),
-        var pickability: MutableList<CalculatedPickAbilityTeam> = mutableListOf()
+        var pickability: MutableList<CalculatedPickAbilityTeam> = mutableListOf(),
+        var tba_tim: MutableList<CalculatedTBATeamInMatch> = mutableListOf()
     )
 
     data class ObjectivePit (
