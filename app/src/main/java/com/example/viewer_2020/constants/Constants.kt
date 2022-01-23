@@ -234,6 +234,8 @@ class Constants {
             "drivetrain_motors" to true
         )
 
+        val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Collection")
+
 
         //String literal translations.
         const val TEAM_NUMBER = "teamNumber"
