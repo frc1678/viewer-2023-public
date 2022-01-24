@@ -51,6 +51,8 @@ class TeamDetailsAdapter(
 
     // Populate the elements of the custom cell.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val graphsFragment = GraphsFragment()
+        val graphsFragmentArguments = Bundle()
         val e = getItem(position)
         val regex: Pattern = Pattern.compile("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
         val rowView = inflater.inflate(R.layout.team_details_cell, parent, false)
@@ -114,41 +116,61 @@ class TeamDetailsAdapter(
                 )
             }
         }
-        //Headers don't need on click handlers
-        if (!isHeader) {
-            //Some fields (eg drivetrain_motor_type) don't need to be rankable
-            if(e in Constants.RANKABLE_FIELDS.keys){
-                rowView.setOnLongClickListener {
-                    val teamRankingFragment = TeamRankingFragment()
-                    val teamRankingFragmentArguments = Bundle()
-                    val teamRankingFragmentTransaction = context.supportFragmentManager.beginTransaction()
 
-                    //add the data point key to the bundle
-                    teamRankingFragmentArguments.putString(TeamRankingFragment.DATA_POINT, e)
-                    //add the team number to the bundle
-                    teamRankingFragmentArguments.putString(TeamRankingFragment.TEAM_NUMBER, teamNumber)
+        rowView.setOnClickListener() {
+            if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
+                Constants.GRAPHABLE_BOOL.contains(datapointsDisplayed[position]) or
+                Constants.GRAPHABLE_CLIMB_TIMES.contains(datapointsDisplayed[position])
+            ) {
+                graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+                graphsFragmentArguments.putString("datapoint", datapointsDisplayed[position])
+                graphsFragment.arguments = graphsFragmentArguments
+                context.supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.nav_host_fragment, graphsFragment, "graphs")
+                    .commit()
+            }
+        }
 
-                    //attach the bundle to the fragment
-                    teamRankingFragment.arguments = teamRankingFragmentArguments
+            //Headers don't need on click handlers
+            if (!isHeader) {
+                //Some fields (eg drivetrain_motor_type) don't need to be rankable
+                if (e in Constants.RANKABLE_FIELDS.keys) {
+                    rowView.setOnLongClickListener {
+                        val teamRankingFragment = TeamRankingFragment()
+                        val teamRankingFragmentArguments = Bundle()
+                        val teamRankingFragmentTransaction =
+                            context.supportFragmentManager.beginTransaction()
+
+                        //add the data point key to the bundle
+                        teamRankingFragmentArguments.putString(TeamRankingFragment.DATA_POINT, e)
+                        //add the team number to the bundle
+                        teamRankingFragmentArguments.putString(
+                            TeamRankingFragment.TEAM_NUMBER,
+                            teamNumber
+                        )
+
+                        //attach the bundle to the fragment
+                        teamRankingFragment.arguments = teamRankingFragmentArguments
 
 //                println((it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup))
 
-                    //the reason i have to do so many .parent calls is because this cell is so far back the the stack
-                    //normally i would have done it from the fragment but i forgot about that
-                    //this could also be fixed with some other way to get the id
-                    //if something breaks from someone just changing xml. this is why
-                    teamRankingFragmentTransaction.addToBackStack(null).replace(
-                        (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
-                        teamRankingFragment
-                    ).commit()
+                        //the reason i have to do so many .parent calls is because this cell is so far back the the stack
+                        //normally i would have done it from the fragment but i forgot about that
+                        //this could also be fixed with some other way to get the id
+                        //if something breaks from someone just changing xml. this is why
+                        teamRankingFragmentTransaction.addToBackStack(null).replace(
+                            (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
+                            teamRankingFragment
+                        ).commit()
 
-                    println(e)
-                    //return true says that the onLongClick was handled successfully so haptic feedback can happen correctly
-                    return@setOnLongClickListener true
+                        println(e)
+                        //return true says that the onLongClick was handled successfully so haptic feedback can happen correctly
+                        return@setOnLongClickListener true
+                    }
                 }
-            }
 
-        }
+            }
 
         return rowView
     }

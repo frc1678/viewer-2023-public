@@ -145,7 +145,36 @@ class Constants {
             "actual_rp2"
         )
 
-        val DRIVER_DATA: List<String> = listOf(
+        val GRAPHABLE: List<String> = listOf(
+            "auto_avg_balls_low",
+            "auto_avg_balls_high",
+            "tele_avg_balls_low",
+            "tele_avg_balls_high",
+            "avg_incap_time",
+            "avg_exit_ball_catches",
+            "avg_opp_balls_scored",
+            "matches_incap"
+        )
+
+        val GRAPHABLE_BOOL: List<String> = listOf(
+            "auto_line_successes",
+            "climb_percent_success",
+            "climb_all_attempts",
+            "low_rung_successes",
+            "mid_rung_successes",
+            "high_rung_successes",
+            "traversal_rung_successes"
+        )
+
+        val GRAPHABLE_CLIMB_TIMES: List<String> = listOf(
+            "climb_all_success_avg_time",
+            "low_avg_time",
+            "mid_avg_time",
+            "high_avg_time",
+            "traversal_avg_time"
+        )
+
+      val DRIVER_DATA: List<String> = listOf(
             "driver_quickness",
             "driver_field_awareness",
             "driver_ability"
@@ -231,6 +260,5 @@ class Constants {
         CALCULATED_PICKABILITY("pickability"),
         CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
     }
-
 
 }

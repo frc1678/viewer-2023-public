@@ -51,12 +51,12 @@
 
                     <ImageView
                         style="@style/RP_images"
-                        android:src="@drawable/shield"
+                        android:src="@drawable/cargo_ball"
                         android:id="@+id/tv_red_predicted_rp1" />
 
                     <ImageView
                         style="@style/RP_images"
-                        android:src="@drawable/lightning"
+                        android:src="@drawable/pull_up_bars"
                         android:id="@+id/tv_red_predicted_rp2" />
 
                 </LinearLayout>
@@ -105,12 +105,12 @@
 
                     <ImageView
                         style="@style/RP_images"
-                        android:src="@drawable/shield"
+                        android:src="@drawable/cargo_ball"
                         android:id="@+id/tv_blue_predicted_rp1" />
 
                     <ImageView
                         style="@style/RP_images"
-                        android:src="@drawable/lightning"
+                        android:src="@drawable/pull_up_bars"
                         android:id="@+id/tv_blue_predicted_rp2" />
 
                 </LinearLayout>

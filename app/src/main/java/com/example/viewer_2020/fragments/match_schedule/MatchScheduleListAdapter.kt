@@ -232,14 +232,14 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
-                            tv.setImageResource(R.drawable.shield)
+                            tv.setImageResource(R.drawable.cargo_ball)
                             continue@red_predicted
                         }
                     }else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
-                        tv.setImageResource(R.drawable.shield)
+                        tv.setImageResource(R.drawable.cargo_ball)
                         continue@red_predicted
                     }
                 }
@@ -248,7 +248,7 @@ class MatchScheduleListAdapter(
                         if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.lightning)
+                            tv.setImageResource(R.drawable.pull_up_bars)
                             continue@red_predicted
                         }
                     }
@@ -256,7 +256,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
-                            tv.setImageResource(R.drawable.lightning)
+                            tv.setImageResource(R.drawable.pull_up_bars)
                             continue@red_predicted
                         }
                 }
@@ -310,14 +310,14 @@ class MatchScheduleListAdapter(
                         if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.shield)
+                            tv.setImageResource(R.drawable.cargo_ball)
                             continue@blue_predicted
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
-                            tv.setImageResource(R.drawable.shield)
+                            tv.setImageResource(R.drawable.cargo_ball)
                             continue@blue_predicted
                         }
                 }
@@ -327,14 +327,14 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
-                            tv.setImageResource(R.drawable.lightning)
+                            tv.setImageResource(R.drawable.pull_up_bars)
                             continue@blue_predicted
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null &&
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() >
                             Constants.PREDICTED_RANKING_POINT_QUALIFICATION
                         ) {
-                            tv.setImageResource(R.drawable.lightning)
+                            tv.setImageResource(R.drawable.pull_up_bars)
                             continue@blue_predicted
                         }
                 }
