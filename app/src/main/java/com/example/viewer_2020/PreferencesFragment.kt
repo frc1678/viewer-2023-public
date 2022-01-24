@@ -26,6 +26,16 @@ class PreferencesFragment: IFrag() {
         context?.let { createSpinner(it, root.spin_user, R.array.user_array) }
         var namePosition = MatchDetailsConstants.USERS.valueOf(context?.getSharedPreferences("VIEWER", 0)?.getString("username", "").toString()).ordinal
         root.spin_user.setSelection(namePosition)
+
+        root.btn_user_pref_edit.setOnClickListener() {
+            val userPreferencesFragment = UserPreferencesFragment()
+
+            fragmentManager!!.beginTransaction().addToBackStack(null).replace(
+                (view!!.parent as ViewGroup).id,
+                userPreferencesFragment
+            ).commit()
+        }
+
         return root
     }
 
@@ -55,15 +65,6 @@ class PreferencesFragment: IFrag() {
             override fun onNothingSelected(parentView: AdapterView<*>) {
                 return
             }
-        }
-
-        btn_user_pref_edit.setOnClickListener {
-            val userPreferencesFragment = UserPreferencesFragment()
-
-            fragmentManager!!.beginTransaction().addToBackStack(null).replace(
-                (view!!.parent as ViewGroup).id,
-                userPreferencesFragment
-            ).commit()
         }
 
     }

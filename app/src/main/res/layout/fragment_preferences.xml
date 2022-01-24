@@ -30,9 +30,10 @@
             android:layout_height="70dp"
             android:layout_margin="10dp"
             android:padding="20dp"
-            android:text="Edit">
-
+            android:text="Edit"
+            android:enabled="true">
         </Button>
+
     </LinearLayout>
 
 </LinearLayout>

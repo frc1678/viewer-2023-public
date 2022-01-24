@@ -19,6 +19,7 @@ import android.os.PersistableBundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -81,7 +82,6 @@ class MainViewerActivity : ViewerActivity() {
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
     }
-
 
     //Overrides back button to go back to last fragment.
     //Disables the back button and returns nothing when in the startup match schedule.
@@ -253,15 +253,6 @@ class MainViewerActivity : ViewerActivity() {
             }
 
             true
-        }
-
-        btn_user_pref_edit.setOnClickListener(){
-            val ft = supportFragmentManager.beginTransaction()
-            if (supportFragmentManager.fragments.last().tag != "user preferences") ft.addToBackStack(
-                null
-            )
-            ft.replace(R.id.nav_host_fragment, preferencesFragment, "user preferences")
-                .commit()
         }
     }
 
