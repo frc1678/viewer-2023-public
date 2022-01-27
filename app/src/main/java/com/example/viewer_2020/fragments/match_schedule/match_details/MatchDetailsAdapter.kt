@@ -52,7 +52,7 @@ class MatchDetailsAdapter (
                     Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplay[position]]
                             ?: datapointsDisplay[position]
 
-            if ((datapointsDisplay[position] == "Auto") or (datapointsDisplay[position] == "Tele") or (datapointsDisplay[position] == "Endgame") or (datapointsDisplay[position] == "Pit Collection")) {
+            if (datapointsDisplay[position] in Constants.CATEGORY_NAMES) {
                 val noWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
                 val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
                 rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
