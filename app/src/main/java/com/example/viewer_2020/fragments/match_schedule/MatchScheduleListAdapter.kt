@@ -137,7 +137,7 @@ class MatchScheduleListAdapter(
                 MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
         } else if (blueAct && redAct && MainViewerActivity.matchCache[matchNumber]!!.blueActualScore != null){
             viewHolder.tvBluePredictedScore.text =
-                MainViewerActivity.matchCache[matchNumber]!!.blueActualScore.toString()
+                (if (blueAct) "%.0f" else "%.2f").format(MainViewerActivity.matchCache[matchNumber]!!.blueActualScore)
         }
         else {
             val value = if (blueAct && redAct) {
@@ -152,8 +152,10 @@ class MatchScheduleListAdapter(
                 )
             }
             if (value != Constants.NULL_CHARACTER) {
+                println("blueAct: $blueAct")
+                println("redAct: $redAct")
                 viewHolder.tvBluePredictedScore.text =
-                    parseFloat(("%.2f").format(value.toFloat())).toString()
+                    (if (blueAct) "%.0f" else "%.2f").format(value.toFloat())
                 if(!blueAct or !redAct) {
                     MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
                         parseFloat(("%.2f").format(value.toFloat()))
@@ -172,7 +174,7 @@ class MatchScheduleListAdapter(
                 MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
         }else if (redAct && blueAct && MainViewerActivity.matchCache[matchNumber]!!.redActualScore != null) {
             viewHolder.tvRedPredictedScore.text =
-                MainViewerActivity.matchCache[matchNumber]!!.redActualScore.toString()
+                (if (redAct) "%.0f" else "%.2f").format(MainViewerActivity.matchCache[matchNumber]!!.redActualScore)
         } else {
             val value = if (redAct && blueAct) {
                 getAllianceInMatchObjectByKey(
@@ -187,7 +189,7 @@ class MatchScheduleListAdapter(
             }
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvRedPredictedScore.text =
-                    parseFloat(("%.2f").format(value.toFloat())).toString()
+                    (if (redAct) "%.0f" else "%.2f").format(value.toFloat())
                 if (!redAct or !blueAct) {
                     MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
                         parseFloat(("%.2f").format(value.toFloat()))

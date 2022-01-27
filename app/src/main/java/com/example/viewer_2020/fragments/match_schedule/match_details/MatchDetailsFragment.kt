@@ -26,6 +26,7 @@ import java.lang.Float.parseFloat
 // match in the match schedule page.
 class MatchDetailsFragment : Fragment() {
     private var matchNumber: Int? = null
+    private var hasActualData: Boolean? = null
 
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
@@ -38,14 +39,9 @@ class MatchDetailsFragment : Fragment() {
         arguments?.let {
             matchNumber = it.getInt(Constants.MATCH_NUMBER, 0)
         }
+        hasActualData = setHasActualData()
 
-        headerDisplay = (if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean() and getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
+        headerDisplay = (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
 
         val root = inflater.inflate(R.layout.match_details, container, false)
 
@@ -133,13 +129,7 @@ class MatchDetailsFragment : Fragment() {
 
         var userName = retrieveFromStorage("username")
         val customizedDatapoints = MatchDetailsConstants.USERS.valueOf(userName).dataPoints
-        val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else customizedDatapoints)
+        val datapointsDisplay = (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else customizedDatapoints)
 
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
@@ -168,14 +158,14 @@ class MatchDetailsFragment : Fragment() {
                     Constants.BLUE, matchNumber.toString(),
                     headerDisplay[getHeaderCollection(root).indexOf(tv)])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
-                else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
+                else {tv.text = (if (hasActualData!!) "%.0f" else "%.2f").format(newText.toFloat())}
             } else {
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber.toString(),
                     headerDisplay[getHeaderCollection(root).indexOf(tv) - 3])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
-                else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
+                else {tv.text = (if (hasActualData!!) "%.0f" else "%.2f").format(newText.toFloat())}
             }
         }
 
@@ -193,7 +183,17 @@ class MatchDetailsFragment : Fragment() {
         }
     }
 
-    fun retrieveFromStorage(key: String): String {
+    private fun retrieveFromStorage(key: String): String {
         return context?.getSharedPreferences("VIEWER", 0)?.getString(key, "").toString()
+    }
+
+    private fun setHasActualData(): Boolean{
+        return (getAllianceInMatchObjectByKey(
+            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+            Constants.BLUE, matchNumber.toString(),
+            "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
+            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+            Constants.RED, matchNumber.toString(),
+            "has_actual_data").toBoolean()))
     }
 }
