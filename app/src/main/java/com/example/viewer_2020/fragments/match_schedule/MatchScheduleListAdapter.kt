@@ -152,8 +152,6 @@ class MatchScheduleListAdapter(
                 )
             }
             if (value != Constants.NULL_CHARACTER) {
-                println("blueAct: $blueAct")
-                println("redAct: $redAct")
                 viewHolder.tvBluePredictedScore.text =
                     (if (blueAct) "%.0f" else "%.2f").format(value.toFloat())
                 if(!blueAct or !redAct) {
