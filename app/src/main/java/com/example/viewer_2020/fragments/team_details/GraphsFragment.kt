@@ -171,7 +171,7 @@ class GraphsFragment : Fragment() {
 
         //add extra margins around the chart to accommodate increased text size of labels
         root.bar_chart.extraBottomOffset = 15F
-        root.bar_chart.extraLeftOffset = 15F
+        root.bar_chart.extraLeftOffset = 10F
         root.bar_chart.extraRightOffset = 15F
 
         //increase text size of labels (the numbers on the axes)
