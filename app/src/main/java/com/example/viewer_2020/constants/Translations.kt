@@ -151,7 +151,9 @@ class Translations {
             "exit_ball_catches" to "# Balls Caught",
             "opp_balls_scored" to "# Opp. Balls Scored",
             "climb_level" to "Climb Level",
-            "start_position" to "Start Position"
+            "start_position" to "Start Position",
+            "quintet" to "Quintet",
+            "auto_near_hub_highs" to "# Near Hub Highs"
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(
