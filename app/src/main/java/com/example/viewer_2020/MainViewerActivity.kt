@@ -37,6 +37,7 @@ import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
 import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
+import com.example.viewer_2020.fragments.match_schedule.StarredMatchesFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityMode
 import com.example.viewer_2020.fragments.ranking.PredRankingFragment
@@ -78,6 +79,7 @@ class MainViewerActivity : ViewerActivity() {
         var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
+        var starredMatches: HashSet<String> = HashSet()
     }
 
     //Overrides back button to go back to last fragment.
@@ -142,6 +144,7 @@ class MainViewerActivity : ViewerActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
         val ourScheduleFragment = OurScheduleFragment()
+        val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
@@ -149,6 +152,11 @@ class MainViewerActivity : ViewerActivity() {
         val preferencesFragment = PreferencesFragment()
 
         updateNavFooter()
+
+        // Pull the set of starred matches from the shared preferences.
+        starredMatches = HashSet(baseContext.getSharedPreferences("VIEWER", 0)
+            .getStringSet("starredMatches", HashSet()) as HashSet<String>)
+        Log.d("starredMatchesOnStart", "$starredMatches")
 
         //default screen when the viewer starts (after pulling data)
         supportFragmentManager.beginTransaction()
@@ -203,6 +211,14 @@ class MainViewerActivity : ViewerActivity() {
                         null
                     )
                     ft.replace(R.id.nav_host_fragment, ourScheduleFragment, "ourSchedule")
+                        .commit()
+                }
+
+                R.id.nav_menu_starred_matches -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "starredMatches")
+                        ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, starredMatchesFragment, "starredMatches")
                         .commit()
                 }
 
