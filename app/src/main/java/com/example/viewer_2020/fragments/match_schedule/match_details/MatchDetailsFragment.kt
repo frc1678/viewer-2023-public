@@ -20,7 +20,6 @@ import com.example.viewer_2020.constants.MatchDetailsConstants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.match_details.view.*
-import java.lang.Float.parseFloat
 
 // The fragment class for the Match Details display that occurs when you click on a
 // match in the match schedule page.
@@ -39,7 +38,7 @@ class MatchDetailsFragment : Fragment() {
         arguments?.let {
             matchNumber = it.getInt(Constants.MATCH_NUMBER, 0)
         }
-        hasActualData = setHasActualData()
+        hasActualData = checkHasActualData()
 
         headerDisplay = (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
 
@@ -187,7 +186,7 @@ class MatchDetailsFragment : Fragment() {
         return context?.getSharedPreferences("VIEWER", 0)?.getString(key, "").toString()
     }
 
-    private fun setHasActualData(): Boolean{
+    private fun checkHasActualData(): Boolean{
         return (getAllianceInMatchObjectByKey(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
             Constants.BLUE, matchNumber.toString(),
