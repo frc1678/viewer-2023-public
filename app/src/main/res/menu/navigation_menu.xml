@@ -13,6 +13,12 @@
         />
 
     <item
+        android:id="@+id/nav_menu_starred_matches"
+        android:title="Starred Matches"
+        android:checkable="true"
+        />
+
+    <item
         android:id="@+id/nav_menu_rankings"
         android:title="Rankings"
         android:checkable="true"

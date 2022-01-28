@@ -9,43 +9,28 @@
 package com.example.viewer_2020
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.pm.PackageManager
-import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
-import android.os.Environment
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.content.ContextCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
-import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.MatchDetailsConstants
-import com.example.viewer_2020.data.DatabaseReference
 import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
 import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
+import com.example.viewer_2020.fragments.match_schedule.StarredMatchesFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityMode
-import com.example.viewer_2020.fragments.ranking.PredRankingFragment
 import com.example.viewer_2020.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
-import java.io.File
 
 
 // Main activity class that handles the dual fragment view.
@@ -78,6 +63,7 @@ class MainViewerActivity : ViewerActivity() {
         var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
+        var starredMatches: HashSet<String> = HashSet()
     }
 
     //Overrides back button to go back to last fragment.
@@ -142,6 +128,7 @@ class MainViewerActivity : ViewerActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
         val ourScheduleFragment = OurScheduleFragment()
+        val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
@@ -149,6 +136,10 @@ class MainViewerActivity : ViewerActivity() {
         val preferencesFragment = PreferencesFragment()
 
         updateNavFooter()
+
+        // Pull the set of starred matches from the shared preferences.
+        starredMatches = HashSet(baseContext.getSharedPreferences("VIEWER", 0)
+            .getStringSet("starredMatches", HashSet()) as HashSet<String>)
 
         //default screen when the viewer starts (after pulling data)
         supportFragmentManager.beginTransaction()
@@ -203,6 +194,14 @@ class MainViewerActivity : ViewerActivity() {
                         null
                     )
                     ft.replace(R.id.nav_host_fragment, ourScheduleFragment, "ourSchedule")
+                        .commit()
+                }
+
+                R.id.nav_menu_starred_matches -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "starredMatches")
+                        ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, starredMatchesFragment, "starredMatches")
                         .commit()
                 }
 
