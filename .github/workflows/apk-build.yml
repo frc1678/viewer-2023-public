@@ -25,6 +25,8 @@ jobs:
       run: echo "viewer.cardinalkey=$CARDINAL_KEY" > local.properties
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+    - name: Install NDK
+      run: sdkmanager --install "ndk;20.1.5948944"
     - name: Build release APK with Gradle
       run: ./gradlew assembleRelease
     - name: Sign APK
