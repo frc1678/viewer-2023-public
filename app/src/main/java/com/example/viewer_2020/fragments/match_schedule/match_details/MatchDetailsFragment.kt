@@ -129,12 +129,21 @@ class MatchDetailsFragment : Fragment() {
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
-        val userName = retrieveFromStorage("username")
-        val datapointsDisplay = MatchDetailsConstants.USERS.valueOf(userName)
+
+        var userName = retrieveFromStorage("username")
+        val customizedDatapoints = MatchDetailsConstants.USERS.valueOf(userName).dataPoints
+        val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.BLUE, matchNumber.toString(),
+                "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.RED, matchNumber.toString(),
+                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else customizedDatapoints)
+
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
                 context = activity!!,
-                datapointsDisplay = datapointsDisplay.dataPoints,
+                datapointsDisplay = datapointsDisplay,
                 teamNumber = getTeamNumbersList(root)
             )
 //        }

@@ -29,7 +29,7 @@ import java.lang.Float.parseFloat
 class MatchScheduleListAdapter(
     private val context: Context,
     private var matchContents: Map<String, Match>,
-    private val ourSchedule: Boolean
+    private val scheduleType: ScheduleType
 ) : BaseAdapter() {
 
 
@@ -43,9 +43,11 @@ class MatchScheduleListAdapter(
 
     // Return the Match object given the match number.
     override fun getItem(position: Int): Match? {
-        return if (ourSchedule)
-            matchContents[matchContents.keys.toList()[position]]
-        else matchContents[(position + 1).toString()]
+        return when (scheduleType) {
+            ScheduleType.OUR_MATCHES, ScheduleType.STARRED_MATCHES ->
+                matchContents[matchContents.keys.toList()[position]]
+            else -> matchContents[(position + 1).toString()]
+        }
     }
 
     // Return the position of the cell.
@@ -61,9 +63,11 @@ class MatchScheduleListAdapter(
 
         val viewHolder: ViewHolder
         val rowView: View?
-        val matchNumber: String =
-            if (ourSchedule) matchContents.keys.toList()[position]
-            else (position + 1).toString()
+        val matchNumber: String = when (scheduleType) {
+            ScheduleType.OUR_MATCHES, ScheduleType.STARRED_MATCHES ->
+                matchContents.keys.toList()[position]
+            else -> (position + 1).toString()
+        }
 
 
         if (convertView == null) {
@@ -374,6 +378,9 @@ class MatchScheduleListAdapter(
                     }
                 }
             } else tv.setImageDrawable(null)
+        }
+        if (MainViewerActivity.starredMatches.contains(matchNumber)) {
+            viewHolder.wholeLine.setBackgroundColor(ContextCompat.getColor(context, R.color.Yellow))
         }
         return rowView!!
     }
