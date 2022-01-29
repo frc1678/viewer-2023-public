@@ -6,6 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Debug print ANDROID_NDK_HOME
+      run: echo $ANDROID_NDK_HOME
     - name: Install dependencies
       run: |
         sudo apt install zipalign
