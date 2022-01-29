@@ -90,7 +90,7 @@ class MatchDetailsFragment : Fragment() {
 
     //Returns all of the team numbers in a match as a list of Strings
     private fun getTeamNumbersList (root: View): List<String> {
-        return listOf<String>(root.tv_team_one_label.text.toString(), root.tv_team_two_label.text.toString(), root.tv_team_three_label.text.toString(),
+        return listOf(root.tv_team_one_label.text.toString(), root.tv_team_two_label.text.toString(), root.tv_team_three_label.text.toString(),
             root.tv_team_four_label.text.toString(), root.tv_team_five_label.text.toString(), root.tv_team_six_label.text.toString())
     }
 
@@ -129,7 +129,7 @@ class MatchDetailsFragment : Fragment() {
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
-        var userName = retrieveFromStorage("username")
+        val userName = retrieveFromStorage("username")
         val datapointsDisplay = MatchDetailsConstants.USERS.valueOf(userName)
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
