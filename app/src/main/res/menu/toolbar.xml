@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/map_button"
+        app:actionViewClass="android.widget.Button"
+        app:showAsAction="always"
+        android:title="@string/map"
+        android:titleCondensed="@string/map"
+        android:text="@string/map"
+        android:textColor="@color/Black"
+        android:textSize="20dp"
+        android:padding="10dp"/>
+</menu>

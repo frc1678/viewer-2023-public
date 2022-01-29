@@ -17,6 +17,7 @@
     <string name="close">Close</string>
     <string name="open">Open</string>
     <string name="refresh_button">Refresh</string>
+    <string name="map">Map</string>
 
     <string-array name="user_array">
         <item>None</item>

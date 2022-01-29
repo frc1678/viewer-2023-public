@@ -17,12 +17,11 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.Gravity
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.core.app.ActivityCompat
@@ -46,6 +45,9 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 import java.io.File
+import androidx.appcompat.widget.AppCompatButton
+import androidx.core.view.marginRight
+import androidx.core.view.setPadding
 
 
 // Main activity class that handles the dual fragment view.
@@ -268,6 +270,22 @@ class MainViewerActivity : ViewerActivity() {
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu) : Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.toolbar, menu)
+        val mapItem : MenuItem = menu.findItem(R.id.map_button)
+        val button = mapItem.actionView
+        button.setBackgroundColor(resources.getColor(R.color.White))
+        button.setOnClickListener(){
+            val popupView = View.inflate(this, R.layout.map_popup, null)
+            val width = LinearLayout.LayoutParams.MATCH_PARENT
+            val height = LinearLayout.LayoutParams.MATCH_PARENT
+            val popupWindow = PopupWindow(popupView, width, height, false)
+            popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
+        }
+        return true
     }
 
     fun updateNavFooter(){
