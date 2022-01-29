@@ -147,7 +147,7 @@ class MainViewerActivity : ViewerActivity() {
             .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
             .commit()
 
-        Log.e("ALL_DATA_FROM_WEBSITE", "${MongoDatabaseStartupActivity.databaseReference}")
+        Log.e("ALL_DATA_FROM_WEBSITE", "${StartupActivity.databaseReference}")
 
         data_refresh_button.setOnClickListener {
             data_refresh_button.isEnabled = false

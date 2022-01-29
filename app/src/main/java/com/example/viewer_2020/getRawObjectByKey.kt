@@ -19,7 +19,7 @@ import com.example.viewer_2020.constants.Constants
 
 // If the value cannot be found, then it returns whatever character is set in Constants -> NULL_CHARACTER.
 fun getRawObjectByKey(path: String, teamNumber: String, field: String): String {
-    for (`object` in getDirectField(MongoDatabaseStartupActivity.databaseReference!!, path)
+    for (`object` in getDirectField(StartupActivity.databaseReference!!, path)
             as List<*>) {
         if (getDirectField(`object`!!, "team_number").toString() == teamNumber) {
             return getDirectField(`object`, field).toString()
