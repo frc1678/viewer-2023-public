@@ -7,6 +7,8 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+    def Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
     defaultConfig {
         applicationId "com.example.viewer_2020"
         minSdkVersion 21
@@ -14,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resValue "string", "cardinalkey", properties.getProperty("viewer.cardinalkey", "")
     }
     dexOptions {
         javaMaxHeapSize "2g"

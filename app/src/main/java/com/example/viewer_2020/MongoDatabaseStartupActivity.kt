@@ -1,6 +1,7 @@
 package com.example.viewer_2020
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
@@ -24,6 +25,7 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
     companion object {
         var databaseReference: DatabaseReference.CompetitionObject? =
             DatabaseReference.CompetitionObject()
+        var cardinalKey = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +40,23 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
         // you want by referencing response. Example: response.raw.qr[0] -> specified value in database.
         // TODO Make not crash when permissions are denied.
 
-        getData()
+        cardinalKey = resources.getString(R.string.cardinalkey)
+        Log.d("cardinal", "Cardinal Key is $cardinalKey")
+        if (cardinalKey.isEmpty()) {
+            AlertDialog.Builder(this).setTitle("Cardinal Error")
+                .setMessage("No Cardinal key provided. Put it as 'viewer.cardinalkey' in 'local.properties'")
+                .setNegativeButton("Dismiss") { dialog, _ ->
+                    dialog.cancel()
+                }
+                .setOnDismissListener {
+                    getData()
+                }
+                .show()
+        } else {
+            getData()
+
+        }
+
     }
 
     override fun onResume() {
@@ -60,10 +78,11 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
             }
         }
     }
-    private fun getData(){
+
+    private fun getData() {
         buttonClickable = false
         if (Constants.USE_TEST_DATA) {
-            GetDataFromFiles( this, {
+            GetDataFromFiles(this, {
                 ContextCompat.startActivity(
                     this,
                     Intent(this, MainViewerActivity::class.java),
@@ -105,7 +124,7 @@ class MongoDatabaseStartupActivity : ViewerActivity() {
     }
 
     fun refreshClick(view: View) {
-        if(buttonClickable){
+        if (buttonClickable) {
             Snackbar.make(splash_screen_layout, "Refreshing Data", 2500).show()
             refresh_button.isEnabled = false
             getData()
