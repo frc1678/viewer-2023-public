@@ -48,9 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="Refresh"
-
-                />
+                android:text="Refresh" />
             <TextView style="@style/tv_standard_gray"
                 android:id="@+id/nav_footer"
                 android:layout_width="match_parent"

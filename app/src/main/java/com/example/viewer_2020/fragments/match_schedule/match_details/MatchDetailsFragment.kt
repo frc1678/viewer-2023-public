@@ -92,7 +92,7 @@ class MatchDetailsFragment : Fragment() {
 
     //Returns all of the team numbers in a match as a list of Strings
     private fun getTeamNumbersList (root: View): List<String> {
-        return listOf<String>(root.tv_team_one_label.text.toString(), root.tv_team_two_label.text.toString(), root.tv_team_three_label.text.toString(),
+        return listOf(root.tv_team_one_label.text.toString(), root.tv_team_two_label.text.toString(), root.tv_team_three_label.text.toString(),
             root.tv_team_four_label.text.toString(), root.tv_team_five_label.text.toString(), root.tv_team_six_label.text.toString())
     }
 
@@ -131,19 +131,28 @@ class MatchDetailsFragment : Fragment() {
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
+
         val userName = UserDatapoints.contents?.get("selected")?.asString
-        val datapointsDisplay = UserDatapoints.contents?.get(userName)?.asJsonArray
+        val datapoints = UserDatapoints.contents?.get(userName)?.asJsonArray
 
         val datapointsList : ArrayList<String> = arrayListOf()
 
-        for (datapoint in datapointsDisplay!!){
+        for (datapoint in datapoints!!){
             datapointsList.add(datapoint.asString)
         }
+
+        val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.BLUE, matchNumber.toString(),
+                "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.RED, matchNumber.toString(),
+                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else datapointsList)
 
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
                 context = activity!!,
-                datapointsDisplay = datapointsList,
+                datapointsDisplay = datapointsDisplay,
                 teamNumber = getTeamNumbersList(root)
             )
 //        }

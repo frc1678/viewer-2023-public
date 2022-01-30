@@ -1,10 +1,6 @@
 package com.example.viewer_2020.fragments.team_details
 
-import android.content.Intent
-import android.graphics.Color
-import android.graphics.Color.rgb
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,29 +9,28 @@ import androidx.fragment.app.Fragment
 import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
+import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.fragment_graphs.view.*
 
 
 class GraphsFragment : Fragment() {
     private var teamNumber: String? = null
     private var datapoint: String? = null
-    private val teamDetailsFragmentArguments = Bundle()
+    private val matchDetailsFragmentArguments = Bundle()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_graphs, container, false)
-        val teamDetailsFragment = TeamDetailsFragment()
+        val matchDetailsFragment = MatchDetailsFragment()
 
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
@@ -171,7 +166,7 @@ class GraphsFragment : Fragment() {
 
         //add extra margins around the chart to accommodate increased text size of labels
         root.bar_chart.extraBottomOffset = 15F
-        root.bar_chart.extraLeftOffset = 15F
+        root.bar_chart.extraLeftOffset = 10F
         root.bar_chart.extraRightOffset = 15F
 
         //increase text size of labels (the numbers on the axes)
@@ -225,14 +220,11 @@ class GraphsFragment : Fragment() {
                     root.bar_chart.setTouchEnabled(false)
                     //set match number to the x value of the entry selected
                     val matchNumberClicked: Int = e!!.x.toInt()
-                    Log.e("match number", "$matchNumberClicked")
-                    teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
-                    //TODO: Change to opening the TIM fragment once available
-                    //teamDetailsFragmentArguments.putString(Constants.MATCH_NUMBER, matchNumberClicked)
-                    teamDetailsFragment.arguments = teamDetailsFragmentArguments
+                    matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER, matchNumberClicked)
+                    matchDetailsFragment.arguments = matchDetailsFragmentArguments
                     fragmentManager!!.beginTransaction().addToBackStack(null).replace(
                         (view!!.parent as ViewGroup).id,
-                        teamDetailsFragment
+                        matchDetailsFragment
                     ).commit()
                 }
 

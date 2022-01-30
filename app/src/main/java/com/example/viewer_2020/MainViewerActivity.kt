@@ -9,22 +9,41 @@
 package com.example.viewer_2020
 
 import android.Manifest
+<<<<<<< HEAD
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Environment
+=======
+import android.app.ActionBar
+import android.app.AlertDialog
+import android.content.pm.PackageManager
+import android.os.Bundle
+>>>>>>> 3e14a203e8397b7345d40b51cf52d7589afc689e
 import android.util.Log
+import android.view.Gravity
+import android.view.Menu
 import android.view.MenuItem
+<<<<<<< HEAD
+=======
+import android.view.View
+import android.widget.*
+>>>>>>> 3e14a203e8397b7345d40b51cf52d7589afc689e
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.viewer_2020.constants.Constants
+<<<<<<< HEAD
+=======
+import com.example.viewer_2020.constants.MatchDetailsConstants
+>>>>>>> 3e14a203e8397b7345d40b51cf52d7589afc689e
 import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
 import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
+import com.example.viewer_2020.fragments.match_schedule.StarredMatchesFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityMode
 import com.example.viewer_2020.fragments.team_list.TeamListFragment
@@ -35,7 +54,19 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
+<<<<<<< HEAD
 import java.io.*
+=======
+import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
+import java.io.File
+import androidx.appcompat.widget.AppCompatButton
+import androidx.core.view.marginRight
+import androidx.core.view.setPadding
+import kotlinx.android.synthetic.main.map_popup.view.*
+import android.text.style.ForegroundColorSpan
+import androidx.core.content.ContextCompat
+import kotlinx.android.synthetic.main.action_bar.*
+>>>>>>> 3e14a203e8397b7345d40b51cf52d7589afc689e
 
 
 // Main activity class that handles the dual fragment view.
@@ -70,6 +101,7 @@ class MainViewerActivity : ViewerActivity() {
         var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
+        var starredMatches: HashSet<String> = HashSet()
     }
 
     //Overrides back button to go back to last fragment.
@@ -133,6 +165,7 @@ class MainViewerActivity : ViewerActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
         val ourScheduleFragment = OurScheduleFragment()
+        val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
@@ -141,13 +174,17 @@ class MainViewerActivity : ViewerActivity() {
 
         updateNavFooter()
 
+        // Pull the set of starred matches from the shared preferences.
+        starredMatches = HashSet(baseContext.getSharedPreferences("VIEWER", 0)
+            .getStringSet("starredMatches", HashSet()) as HashSet<String>)
+
         //default screen when the viewer starts (after pulling data)
         supportFragmentManager.beginTransaction()
             .addToBackStack(null)
             .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
             .commit()
 
-        Log.e("ALL_DATA_FROM_WEBSITE", "${MongoDatabaseStartupActivity.databaseReference}")
+        Log.e("ALL_DATA_FROM_WEBSITE", "${StartupActivity.databaseReference}")
 
         data_refresh_button.setOnClickListener {
             data_refresh_button.isEnabled = false
@@ -194,6 +231,14 @@ class MainViewerActivity : ViewerActivity() {
                         null
                     )
                     ft.replace(R.id.nav_host_fragment, ourScheduleFragment, "ourSchedule")
+                        .commit()
+                }
+
+                R.id.nav_menu_starred_matches -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "starredMatches")
+                        ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, starredMatchesFragment, "starredMatches")
                         .commit()
                 }
 
@@ -259,6 +304,24 @@ class MainViewerActivity : ViewerActivity() {
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu) : Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.toolbar, menu)
+        val mapItem : MenuItem = menu.findItem(R.id.map_button)
+        val button = mapItem.actionView
+        button.setOnClickListener {
+            val popupView = View.inflate(this, R.layout.map_popup, null)
+            val width = LinearLayout.LayoutParams.MATCH_PARENT
+            val height = LinearLayout.LayoutParams.MATCH_PARENT
+            val popupWindow = PopupWindow(popupView, width, height, false)
+            popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
+            popupView.close_button.setOnClickListener {
+                popupWindow.dismiss()
+            }
+        }
+        return super.onCreateOptionsMenu(menu)
     }
 
     fun updateNavFooter(){
