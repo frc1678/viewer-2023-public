@@ -141,8 +141,6 @@ class MainViewerActivity : ViewerActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setCustomView(R.layout.action_bar)
-//        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         val matchScheduleFragment = MatchScheduleFragment()
         val ourScheduleFragment = OurScheduleFragment()
         val starredMatchesFragment = StarredMatchesFragment()
