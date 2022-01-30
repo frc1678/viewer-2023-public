@@ -5,6 +5,6 @@
     android:orientation="horizontal"
     android:id="@+id/btn_map"
     android:text="@string/map"
-    android:background="@color/White"
+    android:background="@color/colorPrimaryLight"
     android:textColor="@color/Black"
     android:textSize="20sp"/>
