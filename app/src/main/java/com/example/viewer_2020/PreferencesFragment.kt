@@ -61,8 +61,6 @@ class PreferencesFragment: IFrag() {
                 UserDatapoints.contents?.remove("selected")
                 UserDatapoints.contents?.addProperty("selected", userName)
                 UserDatapoints.write()
-                context.getSharedPreferences("VIEWER", 0).edit().putString("username", userName).apply()
-
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {

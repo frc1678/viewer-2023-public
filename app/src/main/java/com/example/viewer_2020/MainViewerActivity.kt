@@ -9,36 +9,23 @@
 package com.example.viewer_2020
 
 import android.Manifest
-<<<<<<< HEAD
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Environment
-=======
-import android.app.ActionBar
-import android.app.AlertDialog
-import android.content.pm.PackageManager
-import android.os.Bundle
->>>>>>> 3e14a203e8397b7345d40b51cf52d7589afc689e
 import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-<<<<<<< HEAD
-=======
 import android.view.View
-import android.widget.*
->>>>>>> 3e14a203e8397b7345d40b51cf52d7589afc689e
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.viewer_2020.constants.Constants
-<<<<<<< HEAD
-=======
-import com.example.viewer_2020.constants.MatchDetailsConstants
->>>>>>> 3e14a203e8397b7345d40b51cf52d7589afc689e
 import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
@@ -54,20 +41,8 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
-<<<<<<< HEAD
-import java.io.*
-=======
-import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
-import java.io.File
-import androidx.appcompat.widget.AppCompatButton
-import androidx.core.view.marginRight
-import androidx.core.view.setPadding
 import kotlinx.android.synthetic.main.map_popup.view.*
-import android.text.style.ForegroundColorSpan
-import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.action_bar.*
->>>>>>> 3e14a203e8397b7345d40b51cf52d7589afc689e
-
+import java.io.*
 
 // Main activity class that handles the dual fragment view.
 class MainViewerActivity : ViewerActivity() {

@@ -53,7 +53,7 @@ class UserPreferencesAdapter(
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[datapointName]
                 ?: datapointName
-        if ((datapointName == "Auto") or (datapointName == "Tele") or (datapointName == "Endgame") or (datapointName == "Pit Data")) {
+        if (datapointsDisplayed[position] in Constants.CATEGORY_NAMES) {
             rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28F)
             rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
             val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)

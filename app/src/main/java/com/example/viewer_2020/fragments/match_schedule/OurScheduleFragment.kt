@@ -22,9 +22,6 @@ class OurScheduleFragment : MatchScheduleFragment() {
             matchDetailsFragmentArguments.putInt(
                 Constants.MATCH_NUMBER,
                 getMatchSchedule(Constants.MY_TEAM_NUMBER, false).keys.elementAt(position).toInt())
-//                csvFile.filter { it.matches(Regex(".*[B|R]-${Constants.MY_TEAM_NUMBER}( .*)?")) }
-//                    .sortedBy { it.trim().split(" ")[0].toInt() } [position]
-//                    .trim().split(" ")[0].toInt()
             matchDetailsFragment.arguments = matchDetailsFragmentArguments
             matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             matchDetailsFragmentTransaction.addToBackStack(null).replace(
