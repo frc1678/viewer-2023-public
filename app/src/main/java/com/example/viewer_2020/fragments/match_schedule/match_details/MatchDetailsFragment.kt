@@ -14,11 +14,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.*
+import com.example.viewer_2020.MainViewerActivity.UserDatapoints
+import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.MatchDetailsConstants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2020.getAllianceInMatchObjectByKey
+import com.example.viewer_2020.getMatchSchedule
 import kotlinx.android.synthetic.main.match_details.view.*
 import java.lang.Float.parseFloat
 
@@ -129,12 +131,19 @@ class MatchDetailsFragment : Fragment() {
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
-        var userName = retrieveFromStorage("username")
-        val datapointsDisplay = MatchDetailsConstants.USERS.valueOf(userName)
+        val userName = UserDatapoints.contents?.get("selected")?.asString
+        val datapointsDisplay = UserDatapoints.contents?.get(userName)?.asJsonArray
+
+        val datapointsList : ArrayList<String> = arrayListOf()
+
+        for (datapoint in datapointsDisplay!!){
+            datapointsList.add(datapoint.asString)
+        }
+
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
                 context = activity!!,
-                datapointsDisplay = datapointsDisplay.dataPoints,
+                datapointsDisplay = datapointsList,
                 teamNumber = getTeamNumbersList(root)
             )
 //        }
@@ -183,7 +192,4 @@ class MatchDetailsFragment : Fragment() {
         }
     }
 
-    fun retrieveFromStorage(key: String): String {
-        return context?.getSharedPreferences("VIEWER", 0)?.getString(key, "").toString()
-    }
 }

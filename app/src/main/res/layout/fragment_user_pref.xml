@@ -6,8 +6,15 @@
 
     <TextView
         style="@style/tv_header"
+        android:id="@+id/user_datapoints_header"
+        android:layout_width="match_parent"/>
+
+    <Button
+        android:id="@+id/reset_button"
         android:layout_width="match_parent"
-        android:text="User Datapoints"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/very_small"
+        android:text="@string/reset_button"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,13 +22,6 @@
 
         <ListView
             android:id="@+id/lv_user_datapoints"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:layout_gravity="center"/>
-
-        <ListView
-            android:id="@+id/lv_user_datapoints_toggle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"

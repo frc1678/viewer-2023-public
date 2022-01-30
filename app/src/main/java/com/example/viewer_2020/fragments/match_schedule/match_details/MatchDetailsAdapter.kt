@@ -1,7 +1,6 @@
 package com.example.viewer_2020.fragments.match_schedule.match_details
 
 import android.content.Context
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.MatchDetailsConstants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.getTeamDataValue
 import kotlinx.android.synthetic.main.match_details_cell.view.*
@@ -52,7 +50,7 @@ class MatchDetailsAdapter (
                     Translations.ACTUAL_TO_HUMAN_READABLE[datapointsDisplay[position]]
                             ?: datapointsDisplay[position]
 
-            if ((datapointsDisplay[position] == "Auto") or (datapointsDisplay[position] == "Tele") or (datapointsDisplay[position] == "Endgame") or (datapointsDisplay[position] == "Pit Collection")) {
+            if ((datapointsDisplay[position] == "Auto") or (datapointsDisplay[position] == "Tele") or (datapointsDisplay[position] == "Endgame") or (datapointsDisplay[position] == "Pit Data")) {
                 val noWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
                 val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
                 rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
@@ -79,7 +77,7 @@ class MatchDetailsAdapter (
                 rowView.tv_team_five_md.text = ""
                 rowView.tv_team_six_md.text = ""
             } else {
-                var values = listOf<TextView>(
+                val values = listOf<TextView>(
                         rowView.tv_team_one_md, rowView.tv_team_two_md, rowView.tv_team_three_md,
                         rowView.tv_team_four_md, rowView.tv_team_five_md, rowView.tv_team_six_md
                 )
