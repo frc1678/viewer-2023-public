@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 // begins the other Viewer activities. AKA once MainViewerActivity.databaseReference is not null,
 // it will begin the actual viewer activity so ensure that all data is accessible before the viewer
 // activity begins.
-class MongoDatabaseStartupActivity : ViewerActivity() {
+class StartupActivity : ViewerActivity() {
     var buttonClickable = false
     companion object {
         var databaseReference: DatabaseReference.CompetitionObject? =
