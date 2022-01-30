@@ -45,6 +45,7 @@ import androidx.core.view.setPadding
 import kotlinx.android.synthetic.main.map_popup.view.*
 import android.text.style.ForegroundColorSpan
 import androidx.core.content.ContextCompat
+import kotlinx.android.synthetic.main.action_bar.*
 
 
 // Main activity class that handles the dual fragment view.
@@ -140,6 +141,8 @@ class MainViewerActivity : ViewerActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setCustomView(R.layout.action_bar)
+//        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         val matchScheduleFragment = MatchScheduleFragment()
         val ourScheduleFragment = OurScheduleFragment()
         val starredMatchesFragment = StarredMatchesFragment()
@@ -288,31 +291,13 @@ class MainViewerActivity : ViewerActivity() {
         menuInflater.inflate(R.menu.toolbar, menu)
         val mapItem : MenuItem = menu.findItem(R.id.map_button)
         val button = mapItem.actionView
-        button.setBackgroundColor(
-            ContextCompat.getColor(
-            this,
-            R.color.White
-        ))
-        mapItem.setTitle("Map")
-//        val spanString = SpannableString(mapItem.title.toString())
-//        spanString.setSpan(
-//            ForegroundColorSpan(ContextCompat.getColor(
-//                this,
-//                R.color.Black
-//            )),
-//            0,
-//            spanString.length,
-//            0
-//        ) //fix the color to black
-//
-//        mapItem.setTitle(spanString)
-        button.setOnClickListener(){
+        button.setOnClickListener {
             val popupView = View.inflate(this, R.layout.map_popup, null)
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
-            popupView.close_button.setOnClickListener(){
+            popupView.close_button.setOnClickListener {
                 popupWindow.dismiss()
             }
         }

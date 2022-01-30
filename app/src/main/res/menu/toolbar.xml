@@ -4,9 +4,12 @@
     <item
         android:id="@+id/map_button"
         android:visible="true"
-        app:showAsAction="always|withText"
-        app:actionViewClass="android.widget.Button"
+        app:showAsAction="ifRoom|withText"
+        app:actionProviderClass="android.widget.Button"
+        app:actionLayout="@layout/action_bar"
         android:label="@string/map"
         android:text="@string/map"
-        android:title="@string/map"/>
+        android:title="@string/map"
+        android:padding="@dimen/very_small"
+        android:enabled="true"/>
 </menu>
