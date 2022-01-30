@@ -2,9 +2,38 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:background="@color/White">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"/>
+
+        <ImageButton
+            android:id="@+id/close_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/Red"
+            android:src="@drawable/close_button"
+            android:scaleType="fitCenter"
+            android:layout_marginRight="@dimen/very_small"
+            android:layout_marginTop="@dimen/very_small"/>
+
+
+    </LinearLayout>
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:src="@drawable/field_map_vert"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -3,12 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/map_button"
+        android:visible="true"
+        app:showAsAction="always|withText"
         app:actionViewClass="android.widget.Button"
-        app:showAsAction="always"
-        android:title="@string/map"
-        android:titleCondensed="@string/map"
+        android:label="@string/map"
         android:text="@string/map"
-        android:textColor="@color/Black"
-        android:textSize="20dp"
-        android:padding="10dp"/>
+        android:title="@string/map"/>
 </menu>

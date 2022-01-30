@@ -9,6 +9,7 @@
 package com.example.viewer_2020
 
 import android.Manifest
+import android.app.ActionBar
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.content.Intent
@@ -48,6 +49,13 @@ import java.io.File
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.marginRight
 import androidx.core.view.setPadding
+import kotlinx.android.synthetic.main.map_popup.view.*
+import android.text.style.ForegroundColorSpan
+
+import android.text.SpannableString
+
+
+
 
 
 // Main activity class that handles the dual fragment view.
@@ -277,15 +285,34 @@ class MainViewerActivity : ViewerActivity() {
         menuInflater.inflate(R.menu.toolbar, menu)
         val mapItem : MenuItem = menu.findItem(R.id.map_button)
         val button = mapItem.actionView
-        button.setBackgroundColor(resources.getColor(R.color.White))
+        button.setBackgroundColor(ContextCompat.getColor(
+            this,
+            R.color.White
+        ))
+        mapItem.setTitle("Map")
+//        val spanString = SpannableString(mapItem.title.toString())
+//        spanString.setSpan(
+//            ForegroundColorSpan(ContextCompat.getColor(
+//                this,
+//                R.color.Black
+//            )),
+//            0,
+//            spanString.length,
+//            0
+//        ) //fix the color to black
+//
+//        mapItem.setTitle(spanString)
         button.setOnClickListener(){
             val popupView = View.inflate(this, R.layout.map_popup, null)
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
+            popupView.close_button.setOnClickListener(){
+                popupWindow.dismiss()
+            }
         }
-        return true
+        return super.onCreateOptionsMenu(menu)
     }
 
     fun updateNavFooter(){
