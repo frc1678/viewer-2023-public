@@ -3,13 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/map_button"
-        android:visible="true"
-        app:showAsAction="ifRoom|withText"
-        app:actionProviderClass="android.widget.Button"
+        app:showAsAction="always|withText"
         app:actionLayout="@layout/action_bar"
-        android:label="@string/map"
-        android:text="@string/map"
-        android:title="@string/map"
-        android:padding="@dimen/very_small"
-        android:enabled="true"/>
+        android:title="@string/map"/>
 </menu>
