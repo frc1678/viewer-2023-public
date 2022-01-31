@@ -71,6 +71,7 @@ class UserPreferencesAdapter(
                 )
             )
 
+            chosenDatapoints.add(datapointName)
             rowView.isEnabled = false
         }
 
