@@ -22,6 +22,7 @@ import com.example.viewer_2020.*
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.R
+import com.example.viewer_2020.constants.ScheduleType
 import kotlinx.android.synthetic.main.match_details_cell.view.*
 import java.lang.Float.parseFloat
 

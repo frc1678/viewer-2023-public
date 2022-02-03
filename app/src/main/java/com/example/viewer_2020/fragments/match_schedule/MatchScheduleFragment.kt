@@ -14,7 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.fragments.match_schedule.MatchScheduleListAdapter
-import com.example.viewer_2020.fragments.match_schedule.ScheduleType
+import com.example.viewer_2020.constants.ScheduleType
 import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*

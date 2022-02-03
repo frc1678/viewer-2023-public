@@ -8,8 +8,8 @@ import com.example.viewer_2020.MainViewerActivity
 import com.example.viewer_2020.MatchScheduleFragment
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2020.constants.ScheduleType
 import com.example.viewer_2020.data.Match
-import com.example.viewer_2020.getMatchSchedule
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 
