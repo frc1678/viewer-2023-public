@@ -41,6 +41,7 @@ class UserPreferencesFragment: IFrag() {
             UserDatapoints.write()
 
             root.lv_user_datapoints.invalidateViews()
+            updateUserDatapointsListView(root)
         }
 
         return root
