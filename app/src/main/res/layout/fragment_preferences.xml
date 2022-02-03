@@ -7,16 +7,35 @@
     <TextView
         style="@style/tv_header"
         android:id="@+id/tv_preferences_header"
-        android:text="Preferences" />
+        android:text="@string/preferences" />
 
     <TextView
         style="@style/tv_subheader"
-        android:text="User Name"/>
+        android:text="@string/user_name"/>
 
-    <Spinner
-        android:id="@+id/spin_user"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_margin="10dp" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spin_user"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:id="@+id/btn_user_pref_edit"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:padding="20dp"
+            android:text="@string/edit"
+            android:enabled="true">
+        </Button>
+
+    </LinearLayout>
 
 </LinearLayout>

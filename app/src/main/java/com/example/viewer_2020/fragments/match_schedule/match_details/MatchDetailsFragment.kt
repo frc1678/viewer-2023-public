@@ -14,11 +14,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.*
+import com.example.viewer_2020.MainViewerActivity.UserDatapoints
+import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.MatchDetailsConstants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2020.getAllianceInMatchObjectByKey
+import com.example.viewer_2020.getMatchSchedule
 import kotlinx.android.synthetic.main.match_details.view.*
 import java.lang.Float.parseFloat
 
@@ -130,15 +132,22 @@ class MatchDetailsFragment : Fragment() {
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
 
-        var userName = retrieveFromStorage("username")
-        val customizedDatapoints = MatchDetailsConstants.USERS.valueOf(userName).dataPoints
+        val userName = UserDatapoints.contents?.get("selected")?.asString
+        val datapoints = UserDatapoints.contents?.get(userName)?.asJsonArray
+
+        val datapointsList : ArrayList<String> = arrayListOf()
+
+        for (datapoint in datapoints!!){
+            datapointsList.add(datapoint.asString)
+        }
+
         val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber.toString(),
                 "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else customizedDatapoints)
+                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else datapointsList)
 
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
@@ -156,7 +165,7 @@ class MatchDetailsFragment : Fragment() {
         // then set the match number display on MatchDetails to the match number provided with the intent.
 
         // If the match number from the MainViewerActivity's match schedule list view cell position
-        // is null, the default display will show '0' for the match number on MatchDetails.
+        // is null, the default display will show '0'  for the match number on MatchDetails.
         root.tv_match_number_display.
             text = matchNumber.toString()
 
@@ -192,7 +201,4 @@ class MatchDetailsFragment : Fragment() {
         }
     }
 
-    fun retrieveFromStorage(key: String): String {
-        return context?.getSharedPreferences("VIEWER", 0)?.getString(key, "").toString()
-    }
 }
