@@ -9,44 +9,40 @@
 package com.example.viewer_2020
 
 import android.Manifest
-import android.app.AlertDialog
+import android.content.Context
 import android.content.pm.PackageManager
-import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import android.os.Environment
-import android.os.PersistableBundle
 import android.util.Log
+import android.view.Gravity
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.content.ContextCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
-import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.MatchDetailsConstants
-import com.example.viewer_2020.data.DatabaseReference
 import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
 import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
+import com.example.viewer_2020.fragments.match_schedule.StarredMatchesFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityMode
-import com.example.viewer_2020.fragments.ranking.PredRankingFragment
 import com.example.viewer_2020.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
-import java.io.File
-
+import kotlinx.android.synthetic.main.map_popup.view.*
+import java.io.*
 
 // Main activity class that handles the dual fragment view.
 class MainViewerActivity : ViewerActivity() {
@@ -61,6 +57,7 @@ class MainViewerActivity : ViewerActivity() {
     private var secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
     private val teamListFragment = TeamListFragment()
     private val preferencesFragment = PreferencesFragment()
+    private val userPreferencesFragment = UserPreferencesFragment()
 
     private val frags: List<IFrag> =
         listOf(
@@ -70,7 +67,8 @@ class MainViewerActivity : ViewerActivity() {
             firstPickabilityFragment,
             secondPickabilityFragment,
             teamListFragment,
-            preferencesFragment
+            preferencesFragment,
+            userPreferencesFragment
         )
 
     companion object {
@@ -78,6 +76,7 @@ class MainViewerActivity : ViewerActivity() {
         var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
+        var starredMatches: HashSet<String> = HashSet()
     }
 
     //Overrides back button to go back to last fragment.
@@ -104,12 +103,14 @@ class MainViewerActivity : ViewerActivity() {
     override fun onResume() {
         super.onResume()
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED) {
+            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED) {
             try {
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(
-                        Manifest.permission.READ_EXTERNAL_STORAGE
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
                     ),
                     100
                 )
@@ -117,16 +118,13 @@ class MainViewerActivity : ViewerActivity() {
                 e.printStackTrace()
             }
         }
+
+        UserDatapoints.read(this)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if(this.getSharedPreferences("VIEWER", 0)?.getString("username","")==""){
-            this.getSharedPreferences("VIEWER", 0).edit().putString("username",
-                MatchDetailsConstants.USERS.NONE.toString()
-            ).apply()
-        }
 
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
@@ -142,6 +140,7 @@ class MainViewerActivity : ViewerActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
         val ourScheduleFragment = OurScheduleFragment()
+        val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
@@ -150,13 +149,17 @@ class MainViewerActivity : ViewerActivity() {
 
         updateNavFooter()
 
+        // Pull the set of starred matches from the shared preferences.
+        starredMatches = HashSet(baseContext.getSharedPreferences("VIEWER", 0)
+            .getStringSet("starredMatches", HashSet()) as HashSet<String>)
+
         //default screen when the viewer starts (after pulling data)
         supportFragmentManager.beginTransaction()
             .addToBackStack(null)
             .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
             .commit()
 
-        Log.e("ALL_DATA_FROM_WEBSITE", "${MongoDatabaseStartupActivity.databaseReference}")
+        Log.e("ALL_DATA_FROM_WEBSITE", "${StartupActivity.databaseReference}")
 
         data_refresh_button.setOnClickListener {
             data_refresh_button.isEnabled = false
@@ -203,6 +206,14 @@ class MainViewerActivity : ViewerActivity() {
                         null
                     )
                     ft.replace(R.id.nav_host_fragment, ourScheduleFragment, "ourSchedule")
+                        .commit()
+                }
+
+                R.id.nav_menu_starred_matches -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "starredMatches")
+                        ft.addToBackStack(null)
+                    ft.replace(R.id.nav_host_fragment, starredMatchesFragment, "starredMatches")
                         .commit()
                 }
 
@@ -270,8 +281,74 @@ class MainViewerActivity : ViewerActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu) : Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.toolbar, menu)
+        val mapItem : MenuItem = menu.findItem(R.id.map_button)
+        val button = mapItem.actionView
+        button.setOnClickListener {
+            val popupView = View.inflate(this, R.layout.map_popup, null)
+            val width = LinearLayout.LayoutParams.MATCH_PARENT
+            val height = LinearLayout.LayoutParams.MATCH_PARENT
+            val popupWindow = PopupWindow(popupView, width, height, false)
+            popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
+            popupView.close_button.setOnClickListener {
+                popupWindow.dismiss()
+            }
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+
     fun updateNavFooter(){
         findViewById<TextView>(R.id.nav_footer).text =
             getString(R.string.last_updated, super.getTimeText())
     }
+
+    object UserDatapoints {
+
+        var contents: JsonObject? = null
+        var gson = Gson()
+
+        private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_user_data_prefs.json")
+
+        fun read(context: Context) {
+            if (!fileExists()){
+                copyDefaults(context)
+            }
+            try { contents = JsonParser.parseReader(FileReader(file)).asJsonObject }
+            catch (e: Exception) {
+                Log.e("UserDatapoints.read", "Failed to read user datapoints file")
+            }
+        }
+
+        fun write() {
+            var writer = FileWriter(file, false)
+            gson.toJson(contents as JsonElement, writer)
+
+            writer.close()
+        }
+
+        fun fileExists(): Boolean = file.exists()
+
+        fun copyDefaults(context: Context){
+            val inputStream : InputStream = context.resources.openRawResource(R.raw.default_prefs)
+
+            try {
+                val outputStream : OutputStream = FileOutputStream(file)
+
+                val buffer = ByteArray(1024)
+                var len: Int? = null
+                while (inputStream.read(buffer, 0, buffer.size).also({ len = it }) != -1) {
+                    outputStream.write(buffer, 0, len!!)
+                }
+                inputStream.close()
+                outputStream.close()
+
+            } catch (e: Exception) {
+                Log.e("copyDefaults", "Failed to copy default preferences to file, $e")
+            }
+
+        }
+    }
+
 }

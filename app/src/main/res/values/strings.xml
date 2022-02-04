@@ -17,6 +17,11 @@
     <string name="close">Close</string>
     <string name="open">Open</string>
     <string name="refresh_button">Refresh</string>
+    <string name="reset_button">Reset to Default</string>
+    <string name="preferences">Preferences</string>
+    <string name="user_name">User Name</string>
+    <string name="edit">Edit</string>
+    <string name="map">Map</string>
 
     <string-array name="user_array">
         <item>None</item>

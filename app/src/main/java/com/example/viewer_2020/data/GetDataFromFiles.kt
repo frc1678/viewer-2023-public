@@ -1,10 +1,9 @@
 package com.example.viewer_2020
 
 import android.content.Context
-import android.content.res.Resources
 import android.os.AsyncTask
 import android.util.Log
-import com.example.viewer_2020.MongoDatabaseStartupActivity.Companion.databaseReference
+import com.example.viewer_2020.StartupActivity.Companion.databaseReference
 import com.example.viewer_2020.data.*
 import com.google.gson.Gson
 import java.io.*

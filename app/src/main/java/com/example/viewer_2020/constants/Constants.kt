@@ -234,7 +234,7 @@ class Constants {
             "drivetrain_motors" to true
         )
 
-        val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Collection")
+        val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
 
 
         //String literal translations.

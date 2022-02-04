@@ -1,21 +1,15 @@
 package com.example.viewer_2020.data
 
-import android.content.Context
-import android.content.Intent
 import android.os.AsyncTask
-import android.os.Bundle
 import android.util.Log
-import androidx.core.content.ContextCompat.startActivity
 import com.example.viewer_2020.MainViewerActivity
 import java.net.URL
-import com.example.viewer_2020.MongoDatabaseStartupActivity.Companion.databaseReference
+import com.example.viewer_2020.StartupActivity.Companion.databaseReference
 import com.example.viewer_2020.data.*
 import com.example.viewer_2020.lastUpdated
 import com.google.gson.Gson
 import java.io.*
 import java.net.HttpURLConnection
-import org.json.JSONObject
-import java.time.LocalDateTime
 import java.util.*
 
 class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: String) -> Unit = {}) :

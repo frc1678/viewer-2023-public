@@ -2,12 +2,14 @@ package com.example.viewer_2020.fragments.team_details
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
@@ -47,14 +49,25 @@ class RobotPicFragment : Fragment() {
         root.tv_team_name.text = teamName.toString()
     }
 
+    private fun rotateBitmap(source: Bitmap, degrees: Float): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(degrees)
+        return Bitmap.createBitmap(
+            source, 0, 0, source.width, source.height, matrix, true
+        )
+    }
+
     private fun getTeamPic(root: View){
         val fileName = "${teamNumber}_full_robot"
         val file = File(
             "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
             "$fileName.jpg"
         )
-        if (file.exists()){
-            root.team_pic.setImageBitmap(BitmapFactory.decodeFile(file.absolutePath))
+
+        if (file.exists()) {
+            val myBitmap: Bitmap = BitmapFactory.decodeFile(file.absolutePath)
+            val rotatedBitmap = rotateBitmap(myBitmap, 90f)
+            root.team_pic.setImageBitmap(rotatedBitmap)
         }
     }
 }

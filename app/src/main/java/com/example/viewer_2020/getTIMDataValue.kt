@@ -4,7 +4,7 @@ fun getTIMDataValue(teamNumber: String, field: String, path: String) : Map<Strin
     val matchNumList = getMatchSchedule(teamNumber).keys
     val result : MutableMap<String, String> = mutableMapOf()
     for (matchNumber in matchNumList) {
-        for (`object` in getDirectField(MongoDatabaseStartupActivity.databaseReference!!, path)
+        for (`object` in getDirectField(StartupActivity.databaseReference!!, path)
                 as List<*>) {
             if (getDirectField(`object`!!, "match_number").toString() == matchNumber &&
                 getDirectField(`object`, "team_number").toString() == teamNumber

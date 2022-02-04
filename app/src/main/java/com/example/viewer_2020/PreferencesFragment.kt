@@ -2,17 +2,15 @@ package com.example.viewer_2020
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import com.example.viewer_2020.constants.MatchDetailsConstants
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
-
+import com.example.viewer_2020.MainViewerActivity.UserDatapoints
 
 class PreferencesFragment: IFrag() {
 
@@ -24,8 +22,20 @@ class PreferencesFragment: IFrag() {
 
         val root = inflater.inflate(R.layout.fragment_preferences, container, false)
         context?.let { createSpinner(it, root.spin_user, R.array.user_array) }
-        var namePosition = MatchDetailsConstants.USERS.valueOf(context?.getSharedPreferences("VIEWER", 0)?.getString("username", "").toString()).ordinal
+
+        val name = UserDatapoints.contents?.get("selected")?.asString?.toLowerCase()?.capitalize()
+        val namePosition = resources.getStringArray(R.array.user_array).indexOf(name)
         root.spin_user.setSelection(namePosition)
+
+        root.btn_user_pref_edit.setOnClickListener() {
+            val userPreferencesFragment = UserPreferencesFragment()
+
+            fragmentManager!!.beginTransaction().addToBackStack(null).replace(
+                (view!!.parent as ViewGroup).id,
+                userPreferencesFragment
+            ).commit()
+        }
+
         return root
     }
 
@@ -48,13 +58,15 @@ class PreferencesFragment: IFrag() {
             ) {
                 var userName: String = spin_user.selectedItem.toString().toUpperCase()
 
-                context.getSharedPreferences("VIEWER", 0).edit().putString("username", userName).apply()
-
+                UserDatapoints.contents?.remove("selected")
+                UserDatapoints.contents?.addProperty("selected", userName)
+                UserDatapoints.write()
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
                 return
             }
         }
+
     }
 }
