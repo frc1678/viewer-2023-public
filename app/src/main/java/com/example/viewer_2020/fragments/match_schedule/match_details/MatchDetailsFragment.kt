@@ -136,13 +136,7 @@ class MatchDetailsFragment : Fragment() {
             datapointsList.add(datapoint.asString)
         }
 
-        val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else datapointsList)
+        val datapointsDisplay = (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else datapointsList)
 
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
