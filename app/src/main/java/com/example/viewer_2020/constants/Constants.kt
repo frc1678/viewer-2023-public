@@ -29,19 +29,14 @@ class Constants {
             "quintet",
             "auto_balls_low",
             "auto_balls_high",
-            "auto_near_hub_highs",
-            "auto_near_other_highs",
             "auto_line",
             "Tele",
             "tele_balls_low",
             "tele_balls_high",
-            "tele_near_hub_lows",
-            "tele_far_hub_lows",
+            "tele_hub_lows",
             "tele_launchpad_highs",
-            "tele_near_hub_highs",
-            "tele_far_hub_highs",
-            "tele_near_other_highs",
-            "tele_far_other_highs",
+            "tele_hub_highs",
+            "tele_other_highs",
             "Endgame",
             "climb_time",
             "climb_level",
@@ -247,6 +242,7 @@ class Constants {
         const val NULL_PREDICTED_SCORE_CHARACTER = "-"
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
+        //somebody should get rid of RANKING_POINT_CHARACTER, we use pictures now and have for over a year
         const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
         const val VERSION_NUM = "1.3.19"
