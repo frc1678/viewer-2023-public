@@ -190,9 +190,7 @@ class MatchDetailsFragment : Fragment() {
         }
     }
 
-    private fun retrieveFromStorage(key: String): String {
-        return context?.getSharedPreferences("VIEWER", 0)?.getString(key, "").toString()
-    }
+
 
     private fun checkHasActualData(): Boolean{
         return (getAllianceInMatchObjectByKey(
