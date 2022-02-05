@@ -24,6 +24,7 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
+import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import com.example.viewer_2020.constants.Constants
@@ -356,20 +357,11 @@ class MainViewerActivity : ViewerActivity() {
 }
 
 class NavDrawerListener(private val navView: NavigationView, private val fragManager: FragmentManager) : DrawerLayout.DrawerListener {
-    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-
-    }
-
-    override fun onDrawerOpened(drawerView: View) {
-
-    }
-
-    override fun onDrawerClosed(drawerView: View) {
-
-    }
-
+    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
+    override fun onDrawerOpened(drawerView: View) {}
+    override fun onDrawerClosed(drawerView: View) {}
     override fun onDrawerStateChanged(newState: Int) {
-        if(newState == 2){
+        if(newState == ViewDragHelper.STATE_SETTLING){
             when (fragManager.fragments.last().tag) {
                 "matchSchedule" -> navView.setCheckedItem(R.id.nav_menu_match_schedule)
                 "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
@@ -382,5 +374,4 @@ class NavDrawerListener(private val navView: NavigationView, private val fragMan
             }
         }
     }
-
 }
