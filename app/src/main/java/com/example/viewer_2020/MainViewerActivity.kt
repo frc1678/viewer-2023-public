@@ -370,9 +370,6 @@ class NavDrawerListener(private val navView: NavigationView, private val fragMan
 
     override fun onDrawerStateChanged(newState: Int) {
         if(newState == 2){
-            println("drawerOpened")
-            println(fragManager.fragments)
-
             when (fragManager.fragments.last().tag) {
                 "matchSchedule" -> navView.setCheckedItem(R.id.nav_menu_match_schedule)
                 "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
