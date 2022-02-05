@@ -14,7 +14,7 @@
     <string name="team_number_text">Team #</string>
     <string name="tv_version_num">Version %1$s</string>
     <string name="last_updated">Last Updated:\n%1$s</string>
-    <string name="test_data">Using Test Data</string>
+    <string name="test_data">Last Updated:\nUsing Test Data</string>
     <string name="close">Close</string>
     <string name="open">Open</string>
     <string name="refresh_button">Refresh</string>
