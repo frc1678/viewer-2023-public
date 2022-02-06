@@ -11,6 +11,7 @@ fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<
                 tempMatches[i.key] = i.value
             }
         }
+        //Nathan, this is the part that is broken
         if (teamNumber != null) {
             for (i in tempMatches) {
                 if (teamNumber in i.value.redTeams || teamNumber in i.value.blueTeams) {
