@@ -9,6 +9,9 @@
 package com.example.viewer_2020
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -77,5 +80,23 @@ open class MatchScheduleFragment : IFrag(){
             scheduleType
         )
         root.lv_match_schedule.adapter = adapter
+
+        root.match_search_bar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                var searchString = s.toString()
+                var matchesWanted = getMatchSchedule(searchString,
+                    scheduleType == ScheduleType.STARRED_MATCHES
+                )
+                if(!matchesWanted.isEmpty()) {
+                    (adapter as MatchScheduleListAdapter).updateData(matchesWanted, ScheduleType.OUR_MATCHES)
+                    Log.e("matchesWanted", "$matchesWanted")
+                } else if (s.toString().length == 0){
+                    matchesWanted = getMatchSchedule((if (scheduleType == ScheduleType.OUR_MATCHES) Constants.MY_TEAM_NUMBER else null), scheduleType == ScheduleType.STARRED_MATCHES)
+                    (adapter as MatchScheduleListAdapter).updateData(matchesWanted, scheduleType)
+                }
+            }
+            override fun afterTextChanged(s: Editable) {}
+        })
     }
 }
