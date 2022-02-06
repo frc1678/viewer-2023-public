@@ -24,7 +24,9 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
+import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentManager
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
@@ -160,6 +162,7 @@ class MainViewerActivity : ViewerActivity() {
             .commit()
 
         Log.e("ALL_DATA_FROM_WEBSITE", "${StartupActivity.databaseReference}")
+        container.addDrawerListener(NavDrawerListener(navView, supportFragmentManager))
 
         data_refresh_button.setOnClickListener {
             data_refresh_button.isEnabled = false
@@ -356,4 +359,24 @@ class MainViewerActivity : ViewerActivity() {
         }
     }
 
+}
+
+class NavDrawerListener(private val navView: NavigationView, private val fragManager: FragmentManager) : DrawerLayout.DrawerListener {
+    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
+    override fun onDrawerOpened(drawerView: View) {}
+    override fun onDrawerClosed(drawerView: View) {}
+    override fun onDrawerStateChanged(newState: Int) {
+        if(newState == ViewDragHelper.STATE_SETTLING){
+            when (fragManager.fragments.last().tag) {
+                "matchSchedule" -> navView.setCheckedItem(R.id.nav_menu_match_schedule)
+                "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
+                "starredMatches" -> navView.setCheckedItem(R.id.nav_menu_starred_matches)
+                "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
+                "pickabilityFirst" -> navView.setCheckedItem(R.id.nav_menu_pickability_first)
+                "pickabilitySecond" -> navView.setCheckedItem(R.id.nav_menu_pickability_second)
+                "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
+                "preferences" -> navView.setCheckedItem(R.id.nav_preferences)
+            }
+        }
+    }
 }
