@@ -300,8 +300,13 @@ class MainViewerActivity : ViewerActivity() {
     }
 
     fun updateNavFooter(){
-        findViewById<TextView>(R.id.nav_footer).text =
-            getString(R.string.last_updated, super.getTimeText())
+        val footer = findViewById<TextView>(R.id.nav_footer)
+        if(Constants.USE_TEST_DATA){
+            footer.text = getString(R.string.test_data)
+            data_refresh_button.isEnabled = false
+        } else {
+            footer.text = getString(R.string.last_updated, super.getTimeText())
+        }
     }
 
     object UserDatapoints {
