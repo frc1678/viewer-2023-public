@@ -14,18 +14,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.*
+import com.example.viewer_2020.MainViewerActivity.UserDatapoints
+import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.MatchDetailsConstants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2020.getAllianceInMatchObjectByKey
+import com.example.viewer_2020.getMatchSchedule
 import kotlinx.android.synthetic.main.match_details.view.*
-import java.lang.Float.parseFloat
 
 // The fragment class for the Match Details display that occurs when you click on a
 // match in the match schedule page.
 class MatchDetailsFragment : Fragment() {
     private var matchNumber: Int? = null
+    private var hasActualData: Boolean? = null
 
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
@@ -38,14 +40,9 @@ class MatchDetailsFragment : Fragment() {
         arguments?.let {
             matchNumber = it.getInt(Constants.MATCH_NUMBER, 0)
         }
+        hasActualData = checkHasActualData()
 
-        headerDisplay = (if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean() and getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean()) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
+        headerDisplay = (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
 
         val root = inflater.inflate(R.layout.match_details, container, false)
 
@@ -130,15 +127,16 @@ class MatchDetailsFragment : Fragment() {
         // data points we expect to be displayed on the MatchDetails list view.
 //        for (listView in getListViewCollection(root)) {
 
-        var userName = retrieveFromStorage("username")
-        val customizedDatapoints = MatchDetailsConstants.USERS.valueOf(userName).dataPoints
-        val datapointsDisplay = (if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean())) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else customizedDatapoints)
+        val userName = UserDatapoints.contents?.get("selected")?.asString
+        val datapoints = UserDatapoints.contents?.get(userName)?.asJsonArray
+
+        val datapointsList : ArrayList<String> = arrayListOf()
+
+        for (datapoint in datapoints!!){
+            datapointsList.add(datapoint.asString)
+        }
+
+        val datapointsDisplay = (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else datapointsList)
 
         root.lv_match_details.adapter =
             MatchDetailsAdapter(
@@ -156,7 +154,7 @@ class MatchDetailsFragment : Fragment() {
         // then set the match number display on MatchDetails to the match number provided with the intent.
 
         // If the match number from the MainViewerActivity's match schedule list view cell position
-        // is null, the default display will show '0' for the match number on MatchDetails.
+        // is null, the default display will show '0'  for the match number on MatchDetails.
         root.tv_match_number_display.
             text = matchNumber.toString()
 
@@ -167,14 +165,14 @@ class MatchDetailsFragment : Fragment() {
                     Constants.BLUE, matchNumber.toString(),
                     headerDisplay[getHeaderCollection(root).indexOf(tv)])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
-                else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
+                else {tv.text = (if (hasActualData!!) "%.0f" else "%.2f").format(newText.toFloat())}
             } else {
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber.toString(),
                     headerDisplay[getHeaderCollection(root).indexOf(tv) - 3])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
-                else {tv.text = parseFloat(("%.2f").format(newText.toFloat())).toString()}
+                else {tv.text = (if (hasActualData!!) "%.0f" else "%.2f").format(newText.toFloat())}
             }
         }
 
@@ -192,7 +190,15 @@ class MatchDetailsFragment : Fragment() {
         }
     }
 
-    fun retrieveFromStorage(key: String): String {
-        return context?.getSharedPreferences("VIEWER", 0)?.getString(key, "").toString()
+
+
+    private fun checkHasActualData(): Boolean{
+        return (getAllianceInMatchObjectByKey(
+            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+            Constants.BLUE, matchNumber.toString(),
+            "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
+            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+            Constants.RED, matchNumber.toString(),
+            "has_actual_data").toBoolean()))
     }
 }

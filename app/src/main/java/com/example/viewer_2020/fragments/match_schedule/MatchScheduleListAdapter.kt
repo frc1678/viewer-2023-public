@@ -30,7 +30,7 @@ import java.lang.Float.parseFloat
 class MatchScheduleListAdapter(
     private val context: Context,
     private var matchContents: Map<String, Match>,
-    private val scheduleType: ScheduleType
+    private var scheduleType: ScheduleType
 ) : BaseAdapter() {
 
 
@@ -49,6 +49,12 @@ class MatchScheduleListAdapter(
                 matchContents[matchContents.keys.toList()[position]]
             else -> matchContents[(position + 1).toString()]
         }
+    }
+
+    fun updateData (newData: Map<String, Match>, oneTeam: ScheduleType) {
+        matchContents = newData
+        scheduleType = oneTeam
+        notifyDataSetChanged()
     }
 
     // Return the position of the cell.
@@ -142,7 +148,7 @@ class MatchScheduleListAdapter(
                 MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
         } else if (blueAct && redAct && MainViewerActivity.matchCache[matchNumber]!!.blueActualScore != null){
             viewHolder.tvBluePredictedScore.text =
-                MainViewerActivity.matchCache[matchNumber]!!.blueActualScore.toString()
+                (if (blueAct) "%.0f" else "%.2f").format(MainViewerActivity.matchCache[matchNumber]!!.blueActualScore)
         }
         else {
             val value = if (blueAct && redAct) {
@@ -158,7 +164,7 @@ class MatchScheduleListAdapter(
             }
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvBluePredictedScore.text =
-                    parseFloat(("%.2f").format(value.toFloat())).toString()
+                    (if (blueAct) "%.0f" else "%.2f").format(value.toFloat())
                 if(!blueAct or !redAct) {
                     MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
                         parseFloat(("%.2f").format(value.toFloat()))
@@ -177,7 +183,7 @@ class MatchScheduleListAdapter(
                 MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
         }else if (redAct && blueAct && MainViewerActivity.matchCache[matchNumber]!!.redActualScore != null) {
             viewHolder.tvRedPredictedScore.text =
-                MainViewerActivity.matchCache[matchNumber]!!.redActualScore.toString()
+                (if (redAct) "%.0f" else "%.2f").format(MainViewerActivity.matchCache[matchNumber]!!.redActualScore)
         } else {
             val value = if (redAct && blueAct) {
                 getAllianceInMatchObjectByKey(
@@ -192,7 +198,7 @@ class MatchScheduleListAdapter(
             }
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvRedPredictedScore.text =
-                    parseFloat(("%.2f").format(value.toFloat())).toString()
+                    (if (redAct) "%.0f" else "%.2f").format(value.toFloat())
                 if (!redAct or !blueAct) {
                     MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
                         parseFloat(("%.2f").format(value.toFloat()))
@@ -381,7 +387,10 @@ class MatchScheduleListAdapter(
             } else tv.setImageDrawable(null)
         }
         if (MainViewerActivity.starredMatches.contains(matchNumber)) {
-            viewHolder.wholeLine.setBackgroundColor(ContextCompat.getColor(context, R.color.Yellow))
+            viewHolder.wholeLine.setBackgroundColor(ContextCompat.getColor(context,
+                if (redAct && blueAct) R.color.DarkYellow
+                else R.color.Yellow
+            ))
         }
         return rowView!!
     }
