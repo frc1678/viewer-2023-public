@@ -11,7 +11,7 @@ package com.example.viewer_2020.constants
 //Class that contains a collection of Constant values, or final values that never change
 class Constants {
     companion object {
-        //Game specific data.
+        //Game specfific data.
         const val DATABASE_NAME = "test2020cadm"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
@@ -246,8 +246,6 @@ class Constants {
         //Util.
         const val NULL_PREDICTED_SCORE_CHARACTER = "-"
         const val NULL_CHARACTER = "?"
-        const val EMPTY_CHARACTER = ""
-        const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
         const val VERSION_NUM = "1.3.19"
     }
