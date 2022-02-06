@@ -6,22 +6,22 @@ import com.example.viewer_2020.data.WebsiteMatchSchedule
 
 fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<String, Match> {
     if (starred) {
-        val tempMatches = mutableMapOf<String, Match>()
-        val staredMatches = mutableMapOf<String, Match>()
+        val starredMatches = mutableMapOf<String, Match>()
+        val searchedMatches = mutableMapOf<String, Match>()
         val returnedMatches = mutableMapOf<String, Match>()
         for (i in MainViewerActivity.matchCache) {
             if (MainViewerActivity.starredMatches.contains(i.value.matchNumber)) {
-                tempMatches[i.key] = i.value
+                starredMatches[i.key] = i.value
             }
         }
         if (teamNumber != null) {
             for (i in MainViewerActivity.matchCache) {
                 if ((teamNumber in i.value.redTeams) or (teamNumber in i.value.blueTeams)) {
-                    staredMatches[i.key] = i.value
+                    searchedMatches[i.key] = i.value
                 }
             }
-            for (i in tempMatches) {
-                for (x in staredMatches) {
+            for (i in starredMatches) {
+                for (x in searchedMatches) {
                     if (i == x) {
                         returnedMatches[x.key] = x.value
                     }
@@ -30,7 +30,7 @@ fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<
             return returnedMatches
         }
         else {
-            return tempMatches
+            return starredMatches
         }
 
     } else if (teamNumber != null) {
