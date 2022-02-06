@@ -29,7 +29,7 @@ import java.lang.Float.parseFloat
 class MatchScheduleListAdapter(
     private val context: Context,
     private var matchContents: Map<String, Match>,
-    private val scheduleType: ScheduleType
+    private var scheduleType: ScheduleType
 ) : BaseAdapter() {
 
 
@@ -48,6 +48,12 @@ class MatchScheduleListAdapter(
                 matchContents[matchContents.keys.toList()[position]]
             else -> matchContents[(position + 1).toString()]
         }
+    }
+
+    fun updateData (newData: Map<String, Match>, oneTeam: ScheduleType) {
+        matchContents = newData
+        scheduleType = oneTeam
+        notifyDataSetChanged()
     }
 
     // Return the position of the cell.

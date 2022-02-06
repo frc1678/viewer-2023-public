@@ -11,6 +11,13 @@ fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<
                 tempMatches[i.key] = i.value
             }
         }
+        if (teamNumber != null) {
+            for (i in tempMatches) {
+                if (teamNumber in i.value.redTeams || teamNumber in i.value.blueTeams) {
+                    tempMatches[i.key] = i.value
+                }
+            }
+        }
         return tempMatches
     } else if (teamNumber != null) {
         val tempMatches = mutableMapOf<String, Match>()
