@@ -380,7 +380,10 @@ class MatchScheduleListAdapter(
             } else tv.setImageDrawable(null)
         }
         if (MainViewerActivity.starredMatches.contains(matchNumber)) {
-            viewHolder.wholeLine.setBackgroundColor(ContextCompat.getColor(context, R.color.Yellow))
+            viewHolder.wholeLine.setBackgroundColor(ContextCompat.getColor(context,
+                if (redAct && blueAct) R.color.DarkYellow
+                else R.color.Yellow
+            ))
         }
         return rowView!!
     }
