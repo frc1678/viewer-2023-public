@@ -86,10 +86,6 @@ class DatabaseReference {
         var driver_ability: Float
     )
 
-    data class SuperObjectiveCounts (
-        var matches_scored_far: Int
-    )
-
     data class CalculatedObjectiveTeam (
         var team_number: Int,
         var auto_avg_hub_highs: Float,
@@ -174,7 +170,8 @@ class DatabaseReference {
         var position_one_starts: Int,
         var position_two_starts: Int,
         var position_three_starts: Int,
-        var position_four_starts: Int
+        var position_four_starts: Int,
+        var matches_scored_far: Int
     )
 
     data class CalculatedObjectiveTeamInMatch (
