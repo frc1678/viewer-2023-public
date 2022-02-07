@@ -86,15 +86,13 @@ open class MatchScheduleFragment : IFrag(){
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 var searchString = s.toString()
                 var matchesWanted = getMatchSchedule(searchString,
-                    scheduleType == ScheduleType.STARRED_MATCHES
-                )
-                if(!matchesWanted.isEmpty()) {
-                    (adapter as MatchScheduleListAdapter).updateData(matchesWanted, ScheduleType.OUR_MATCHES)
-                    Log.e("matchesWanted", "$matchesWanted")
-                } else if (s.toString().length == 0){
+                    scheduleType == ScheduleType.STARRED_MATCHES)
+                 if (s.toString().length == 0){
                     matchesWanted = getMatchSchedule((if (scheduleType == ScheduleType.OUR_MATCHES) Constants.MY_TEAM_NUMBER else null), scheduleType == ScheduleType.STARRED_MATCHES)
                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, scheduleType)
-                }
+                } else {
+                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, ScheduleType.OUR_MATCHES)
+                 }
             }
             override fun afterTextChanged(s: Editable) {}
         })

@@ -1,8 +1,6 @@
 package com.example.viewer_2020
 
-import android.util.Log
 import com.example.viewer_2020.data.Match
-import com.example.viewer_2020.data.WebsiteMatchSchedule
 
 fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<String, Match> {
     if (starred) {
@@ -32,8 +30,9 @@ fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<
         else {
             return starredMatches
         }
+    }
 
-    } else if (teamNumber != null) {
+    else if (teamNumber != null) {
         val tempMatches = mutableMapOf<String, Match>()
         for (i in MainViewerActivity.matchCache) {
             if ((teamNumber in i.value.redTeams) or (teamNumber in i.value.blueTeams)) {
