@@ -22,7 +22,6 @@ import com.example.viewer_2020.*
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.R
-import com.example.viewer_2020.constants.ScheduleType
 import kotlinx.android.synthetic.main.match_details_cell.view.*
 import java.lang.Float.parseFloat
 
@@ -30,7 +29,7 @@ import java.lang.Float.parseFloat
 class MatchScheduleListAdapter(
     private val context: Context,
     private var matchContents: Map<String, Match>,
-    private var scheduleType: ScheduleType
+    private var scheduleType: Constants.ScheduleType
 ) : BaseAdapter() {
 
 
@@ -45,13 +44,13 @@ class MatchScheduleListAdapter(
     // Return the Match object given the match number.
     override fun getItem(position: Int): Match? {
         return when (scheduleType) {
-            ScheduleType.OUR_MATCHES, ScheduleType.STARRED_MATCHES ->
+            Constants.ScheduleType.OUR_MATCHES, Constants.ScheduleType.STARRED_MATCHES ->
                 matchContents[matchContents.keys.toList()[position]]
             else -> matchContents[(position + 1).toString()]
         }
     }
 
-    fun updateData (newData: Map<String, Match>, oneTeam: ScheduleType) {
+    fun updateData (newData: Map<String, Match>, oneTeam: Constants.ScheduleType) {
         matchContents = newData
         scheduleType = oneTeam
         notifyDataSetChanged()
@@ -71,7 +70,7 @@ class MatchScheduleListAdapter(
         val viewHolder: ViewHolder
         val rowView: View?
         val matchNumber: String = when (scheduleType) {
-            ScheduleType.OUR_MATCHES, ScheduleType.STARRED_MATCHES ->
+            Constants.ScheduleType.OUR_MATCHES, Constants.ScheduleType.STARRED_MATCHES ->
                 matchContents.keys.toList()[position]
             else -> (position + 1).toString()
         }

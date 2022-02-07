@@ -8,7 +8,6 @@ import com.example.viewer_2020.MainViewerActivity
 import com.example.viewer_2020.MatchScheduleFragment
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.ScheduleType
 import com.example.viewer_2020.getMatchSchedule
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
@@ -17,7 +16,7 @@ class OurScheduleFragment : MatchScheduleFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
-        updateMatchScheduleListView(root, ScheduleType.OUR_MATCHES)
+        updateMatchScheduleListView(root, Constants.ScheduleType.OUR_MATCHES)
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         root.lv_match_schedule.setOnItemClickListener { _, _, position, _ ->
             matchDetailsFragmentArguments.putInt(

@@ -260,5 +260,11 @@ class Constants {
         CALCULATED_PICKABILITY("pickability"),
         CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
     }
+    enum class ScheduleType {
+        ALL_MATCHES,
+        OUR_MATCHES,
+        STARRED_MATCHES
+    }
+
 
 }
