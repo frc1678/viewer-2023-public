@@ -3,6 +3,7 @@ package com.example.viewer_2020.data
 import android.os.AsyncTask
 import android.util.Log
 import com.example.viewer_2020.MainViewerActivity
+import com.example.viewer_2020.MongoDatabaseStartupActivity
 import java.net.URL
 import com.example.viewer_2020.StartupActivity.Companion.databaseReference
 import com.example.viewer_2020.data.*
@@ -128,7 +129,9 @@ private fun sendRequest(url: String): String {
     var result = StringBuilder()
     var url =
         URL(url)
+
     var urlConnection = url.openConnection() as HttpURLConnection
+    urlConnection.setRequestProperty("Authorization", "Token ${MongoDatabaseStartupActivity.cardinalKey}")
 
     try {
         val `in`: InputStream = BufferedInputStream(urlConnection.inputStream)
