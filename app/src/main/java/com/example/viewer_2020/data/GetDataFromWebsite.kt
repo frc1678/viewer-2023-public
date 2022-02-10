@@ -3,7 +3,7 @@ package com.example.viewer_2020.data
 import android.os.AsyncTask
 import android.util.Log
 import com.example.viewer_2020.MainViewerActivity
-import com.example.viewer_2020.MongoDatabaseStartupActivity
+import com.example.viewer_2020.StartupActivity
 import java.net.URL
 import com.example.viewer_2020.StartupActivity.Companion.databaseReference
 import com.example.viewer_2020.data.*
@@ -83,9 +83,10 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
             }
 
             val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/2021mttd/?format=json"),
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/2021ijso/?format=json"),
                 WebsiteMatchSchedule
             )
+
             for (i in rawMatchSchedule) {
                 val match = Match(i.key)
                 for (j in i.value.teams) {
@@ -107,7 +108,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                     .toMap().toMutableMap()
 
             MainViewerActivity.teamList = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/2021mttd/?format=json"),
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/2021ijso/?format=json"),
                 WebsiteTeams
             )
 
@@ -131,7 +132,7 @@ private fun sendRequest(url: String): String {
         URL(url)
 
     var urlConnection = url.openConnection() as HttpURLConnection
-    urlConnection.setRequestProperty("Authorization", "Token ${MongoDatabaseStartupActivity.cardinalKey}")
+    urlConnection.setRequestProperty("Authorization", "Token ${StartupActivity.cardinalKey}")
 
     try {
         val `in`: InputStream = BufferedInputStream(urlConnection.inputStream)
