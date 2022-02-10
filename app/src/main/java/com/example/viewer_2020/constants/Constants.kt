@@ -12,10 +12,10 @@ package com.example.viewer_2020.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val DATABASE_NAME = "test2020cadm"
+        const val DATABASE_NAME = "test2021isjo"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = true
+        const val USE_TEST_DATA = false
         //In order to change the URL, see the GeDataFromWebsite Async Task
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
