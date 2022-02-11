@@ -9,7 +9,6 @@ import com.example.viewer_2020.MatchScheduleFragment
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.Match
-import com.example.viewer_2020.getMatchSchedule
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 
@@ -20,7 +19,7 @@ class StarredMatchesFragment : MatchScheduleFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
-        updateMatchScheduleListView(root, ScheduleType.STARRED_MATCHES)
+        updateMatchScheduleListView(root, Constants.ScheduleType.STARRED_MATCHES)
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         root.lv_match_schedule.setOnItemClickListener { _, _, position, _ ->
             matchDetailsFragmentArguments.putInt(
@@ -40,11 +39,11 @@ class StarredMatchesFragment : MatchScheduleFragment() {
             if (MainViewerActivity.starredMatches.contains(cell.tv_match_number.text.toString())) {
                 // The match is already starred.
                 MainViewerActivity.starredMatches.remove(cell.tv_match_number.text.toString())
-                updateMatchScheduleListView(root, ScheduleType.STARRED_MATCHES)
+                updateMatchScheduleListView(root, Constants.ScheduleType.STARRED_MATCHES)
             } else {
                 // The match is not starred.
                 MainViewerActivity.starredMatches.add(cell.tv_match_number.text.toString())
-                updateMatchScheduleListView(root, ScheduleType.STARRED_MATCHES)
+                updateMatchScheduleListView(root, Constants.ScheduleType.STARRED_MATCHES)
             }
             context?.getSharedPreferences("VIEWER", 0)?.edit()
                 ?.putStringSet("starredMatches", MainViewerActivity.starredMatches)?.apply()
