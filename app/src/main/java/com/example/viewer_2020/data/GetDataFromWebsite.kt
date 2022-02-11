@@ -113,8 +113,6 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                 }
             }
 
-            Log.e("ObjectiveTeam","${databaseReference?.obj_team}")
-
             lastUpdated = Calendar.getInstance().time
 
             return ("finished")
