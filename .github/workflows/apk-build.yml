@@ -19,10 +19,6 @@ jobs:
       with:
         fetch-depth: 1 # Latest commit only
         ref: ${{ github.ref }}
-    - name: Create local.properties
-      env:
-        CARDINAL_KEY: ${{ secrets.CARDINAL_KEY }}
-      run: echo "viewer.cardinalkey=$CARDINAL_KEY" > local.properties
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Install NDK
