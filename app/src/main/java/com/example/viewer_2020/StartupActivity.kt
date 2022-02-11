@@ -25,7 +25,6 @@ class StartupActivity : ViewerActivity() {
     companion object {
         var databaseReference: DatabaseReference.CompetitionObject? =
             DatabaseReference.CompetitionObject()
-        var cardinalKey = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,22 +39,7 @@ class StartupActivity : ViewerActivity() {
         // you want by referencing response. Example: response.raw.qr[0] -> specified value in database.
         // TODO Make not crash when permissions are denied.
 
-        cardinalKey = resources.getString(R.string.cardinalkey)
-        Log.d("cardinal", "Cardinal Key is $cardinalKey")
-        if (cardinalKey.isEmpty()) {
-            AlertDialog.Builder(this).setTitle("Cardinal Error")
-                .setMessage("No Cardinal key provided. Put it as 'viewer.cardinalkey' in 'local.properties'")
-                .setNegativeButton("Dismiss") { dialog, _ ->
-                    dialog.cancel()
-                }
-                .setOnDismissListener {
-                    getData()
-                }
-                .show()
-        } else {
-            getData()
-
-        }
+        getData()
 
     }
 

@@ -6,6 +6,7 @@ import com.example.viewer_2020.MainViewerActivity
 import com.example.viewer_2020.StartupActivity
 import java.net.URL
 import com.example.viewer_2020.StartupActivity.Companion.databaseReference
+import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.*
 import com.example.viewer_2020.lastUpdated
 import com.google.gson.Gson
@@ -132,7 +133,7 @@ private fun sendRequest(url: String): String {
         URL(url)
 
     var urlConnection = url.openConnection() as HttpURLConnection
-    urlConnection.setRequestProperty("Authorization", "Token ${StartupActivity.cardinalKey}")
+    urlConnection.setRequestProperty("Authorization", "Token ${Constants.CARDINAL_KEY}")
 
     try {
         val `in`: InputStream = BufferedInputStream(urlConnection.inputStream)
