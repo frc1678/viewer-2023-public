@@ -16,7 +16,7 @@ class OurScheduleFragment : MatchScheduleFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
-        updateMatchScheduleListView(root, ScheduleType.OUR_MATCHES)
+        updateMatchScheduleListView(root, Constants.ScheduleType.OUR_MATCHES)
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         root.lv_match_schedule.setOnItemClickListener { _, _, position, _ ->
             matchDetailsFragmentArguments.putInt(

@@ -17,7 +17,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.fragments.match_schedule.MatchScheduleListAdapter
-import com.example.viewer_2020.fragments.match_schedule.ScheduleType
 import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
@@ -35,7 +34,7 @@ open class MatchScheduleFragment : IFrag(){
     ): View? {
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
 
-        updateMatchScheduleListView(root, ScheduleType.ALL_MATCHES)
+        updateMatchScheduleListView(root, Constants.ScheduleType.ALL_MATCHES)
 
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
 
@@ -69,12 +68,12 @@ open class MatchScheduleFragment : IFrag(){
         return root
     }
 
-    fun updateMatchScheduleListView(root: View, scheduleType: ScheduleType) {
+    fun updateMatchScheduleListView(root: View, scheduleType: Constants.ScheduleType) {
         adapter = MatchScheduleListAdapter(
             activity!!,
             (getMatchSchedule(
-                (if (scheduleType == ScheduleType.OUR_MATCHES) Constants.MY_TEAM_NUMBER else null),
-                scheduleType == ScheduleType.STARRED_MATCHES
+                (if (scheduleType == Constants.ScheduleType.OUR_MATCHES) Constants.MY_TEAM_NUMBER else null),
+                scheduleType == Constants.ScheduleType.STARRED_MATCHES
             )
                     ),
             scheduleType
@@ -86,13 +85,13 @@ open class MatchScheduleFragment : IFrag(){
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 var searchString = s.toString()
                 var matchesWanted = getMatchSchedule(searchString,
-                    scheduleType == ScheduleType.STARRED_MATCHES
+                    scheduleType == Constants.ScheduleType.STARRED_MATCHES
                 )
                 if(!matchesWanted.isEmpty()) {
-                    (adapter as MatchScheduleListAdapter).updateData(matchesWanted, ScheduleType.OUR_MATCHES)
+                    (adapter as MatchScheduleListAdapter).updateData(matchesWanted, Constants.ScheduleType.OUR_MATCHES)
                     Log.e("matchesWanted", "$matchesWanted")
                 } else if (s.toString().length == 0){
-                    matchesWanted = getMatchSchedule((if (scheduleType == ScheduleType.OUR_MATCHES) Constants.MY_TEAM_NUMBER else null), scheduleType == ScheduleType.STARRED_MATCHES)
+                    matchesWanted = getMatchSchedule((if (scheduleType == Constants.ScheduleType.OUR_MATCHES) Constants.MY_TEAM_NUMBER else null), scheduleType == Constants.ScheduleType.STARRED_MATCHES)
                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, scheduleType)
                 }
             }
