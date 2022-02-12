@@ -19,7 +19,6 @@ import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.fragments.match_schedule.MatchScheduleListAdapter
 import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
-import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
 open class MatchScheduleFragment : IFrag(){
@@ -36,35 +35,6 @@ open class MatchScheduleFragment : IFrag(){
 
         updateMatchScheduleListView(root, Constants.ScheduleType.ALL_MATCHES)
 
-        val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
-
-        // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
-        root.lv_match_schedule.setOnItemClickListener { _, _, position, _ ->
-            matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER, position + 1)
-            matchDetailsFragment.arguments = matchDetailsFragmentArguments
-            matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-            matchDetailsFragmentTransaction.addToBackStack(null).replace(
-                (view!!.parent as ViewGroup).id,
-                matchDetailsFragment
-            ).commit()
-        }
-
-        // Mark matches as starred when long clicked.
-        root.lv_match_schedule.setOnItemLongClickListener { _, _, position, _ ->
-            val cell = root.lv_match_schedule.adapter.getView(position, null, root.lv_match_schedule)
-            if (MainViewerActivity.starredMatches.contains(cell.tv_match_number.text.toString())) {
-                // The match is already starred.
-                MainViewerActivity.starredMatches.remove(cell.tv_match_number.text.toString())
-                root.lv_match_schedule.invalidateViews()
-            } else {
-                // The match is not starred.
-                MainViewerActivity.starredMatches.add(cell.tv_match_number.text.toString())
-                root.lv_match_schedule.invalidateViews()
-            }
-            context?.getSharedPreferences("VIEWER", 0)?.edit()
-                ?.putStringSet("starredMatches", MainViewerActivity.starredMatches)?.apply()
-            return@setOnItemLongClickListener true
-        }
         return root
     }
 
@@ -76,7 +46,8 @@ open class MatchScheduleFragment : IFrag(){
                 scheduleType == Constants.ScheduleType.STARRED_MATCHES
             )
                     ),
-            scheduleType
+            scheduleType,
+            root.lv_match_schedule
         )
         root.lv_match_schedule.adapter = adapter
 
