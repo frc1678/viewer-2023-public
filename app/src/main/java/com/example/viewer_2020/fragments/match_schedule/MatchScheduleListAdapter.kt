@@ -14,10 +14,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2020.*
@@ -34,7 +31,8 @@ import java.lang.Float.parseFloat
 class MatchScheduleListAdapter(
     private val context: FragmentActivity,
     private var matchContents: Map<String, Match>,
-    private var scheduleType: Constants.ScheduleType
+    private var scheduleType: Constants.ScheduleType,
+    private var listView: ListView
 ) : BaseAdapter() {
 
 
@@ -399,11 +397,8 @@ class MatchScheduleListAdapter(
         val matchDetailsFragment = MatchDetailsFragment()
         val matchDetailsFragmentArguments = Bundle()
         val matchDetailsFragmentTransaction = context.supportFragmentManager.beginTransaction()
-//        return when (scheduleType) {
-//            Constants.ScheduleType.OUR_MATCHES, Constants.ScheduleType.STARRED_MATCHES ->
-//                matchContents[matchContents.keys.toList()[position]]
-//            else -> matchContents[(position + 1).toString()]
-//        }
+
+        // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
         rowView!!.setOnClickListener {
             val matchSelected = if ((scheduleType==Constants.ScheduleType.OUR_MATCHES) or (scheduleType==Constants.ScheduleType.STARRED_MATCHES)){
                 matchContents.keys.toList()[position].toInt()
@@ -424,11 +419,11 @@ class MatchScheduleListAdapter(
             if (MainViewerActivity.starredMatches.contains(viewHolder.tvMatchNumber.text.toString())) {
                 // The match is already starred.
                 MainViewerActivity.starredMatches.remove(viewHolder.tvMatchNumber.text.toString())
-                //root.lv_match_schedule.invalidateViews()
+                listView.invalidateViews()
             } else {
                 // The match is not starred.
                 MainViewerActivity.starredMatches.add(viewHolder.tvMatchNumber.text.toString())
-                //root.lv_match_schedule.invalidateViews()
+                listView.invalidateViews()
             }
             context.getSharedPreferences("VIEWER", 0)?.edit()
                 ?.putStringSet("starredMatches", MainViewerActivity.starredMatches)?.apply()
