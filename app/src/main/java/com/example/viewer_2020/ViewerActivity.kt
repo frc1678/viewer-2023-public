@@ -30,7 +30,7 @@ open class ViewerActivity : AppCompatActivity() {
     }
 
     fun setToolbarText(view: ActionBar?, support: androidx.appcompat.app.ActionBar?) {
-        val headerText = this.getString(R.string.tv_version_num, com.example.viewer_2020.constants.Constants.VERSION_NUM)
+        val headerText = "Viewer"
         view?.title = headerText
         support?.title = headerText
         view?.show()
