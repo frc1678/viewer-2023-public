@@ -9,7 +9,6 @@
 package com.example.viewer_2020.fragments.match_schedule
 
 import android.content.Context
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,20 +18,16 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2020.*
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.R
-import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
-import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_details_cell.view.*
-import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 import java.lang.Float.parseFloat
 
 // Custom list adapter class with Match object handling to display the custom cell for the match schedule.
 class MatchScheduleListAdapter(
-    private val context: FragmentActivity,
+    private val context: Context,
     private var matchContents: Map<String, Match>,
     private var scheduleType: Constants.ScheduleType
 ) : BaseAdapter() {
@@ -396,45 +391,7 @@ class MatchScheduleListAdapter(
                 else R.color.Yellow
             ))
         }
-        val matchDetailsFragment = MatchDetailsFragment()
-        val matchDetailsFragmentArguments = Bundle()
-        val matchDetailsFragmentTransaction = context.supportFragmentManager.beginTransaction()
-//        return when (scheduleType) {
-//            Constants.ScheduleType.OUR_MATCHES, Constants.ScheduleType.STARRED_MATCHES ->
-//                matchContents[matchContents.keys.toList()[position]]
-//            else -> matchContents[(position + 1).toString()]
-//        }
-        rowView!!.setOnClickListener {
-            val matchSelected = if ((scheduleType==Constants.ScheduleType.OUR_MATCHES) or (scheduleType==Constants.ScheduleType.STARRED_MATCHES)){
-                matchContents.keys.toList()[position].toInt()
-            } else{
-                position + 1
-            }
-            matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER, matchSelected)
-            matchDetailsFragment.arguments = matchDetailsFragmentArguments
-            matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-            matchDetailsFragmentTransaction.addToBackStack(null).replace(
-                (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
-                matchDetailsFragment
-            ).commit()
-        }
-
-        // Mark matches as starred when long clicked.
-        rowView.setOnLongClickListener {
-            if (MainViewerActivity.starredMatches.contains(viewHolder.tvMatchNumber.text.toString())) {
-                // The match is already starred.
-                MainViewerActivity.starredMatches.remove(viewHolder.tvMatchNumber.text.toString())
-                //root.lv_match_schedule.invalidateViews()
-            } else {
-                // The match is not starred.
-                MainViewerActivity.starredMatches.add(viewHolder.tvMatchNumber.text.toString())
-                //root.lv_match_schedule.invalidateViews()
-            }
-            context.getSharedPreferences("VIEWER", 0)?.edit()
-                ?.putStringSet("starredMatches", MainViewerActivity.starredMatches)?.apply()
-            return@setOnLongClickListener true
-        }
-        return rowView
+        return rowView!!
     }
 
     // View holder class to handle the elements used in the custom cells.
