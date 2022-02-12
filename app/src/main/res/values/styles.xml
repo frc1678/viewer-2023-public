@@ -162,4 +162,17 @@
         <item name="android:textColor">@color/Black</item>
     </style>
 
+    <style name="version_number">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:gravity">left</item>
+
+
+
+    </style>
+
 </resources>

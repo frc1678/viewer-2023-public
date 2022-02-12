@@ -15,7 +15,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="110dp"
         android:orientation="horizontal">
 
         <Spinner
@@ -24,7 +24,6 @@
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_margin="10dp" />
-
         <Button
             android:id="@+id/btn_user_pref_edit"
             android:layout_weight="1"
@@ -36,6 +35,11 @@
             android:enabled="true">
         </Button>
 
+
     </LinearLayout>
+    <TextView
+        style="@style/version_number"
+        android:id="@+id/tv_version_num"
+        android:text="@string/tv_version_num"/>
 
 </LinearLayout>
