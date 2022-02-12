@@ -11,11 +11,12 @@ package com.example.viewer_2020.constants
 //Class that contains a collection of Constant values, or final values that never change
 class Constants {
     companion object {
-        //Game specific data.
-        const val DATABASE_NAME = "test2020cadm"
+        //Game specfific data.
+        const val DATABASE_NAME = "test2021isjo"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = true
+        const val USE_TEST_DATA = false
+        const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
         //In order to change the URL, see the GeDataFromWebsite Async Task
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
@@ -242,8 +243,6 @@ class Constants {
         const val NULL_PREDICTED_SCORE_CHARACTER = "-"
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
-        //somebody should get rid of RANKING_POINT_CHARACTER, we use pictures now and have for over a year
-        const val RANKING_POINT_CHARACTER = "•"
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
         const val VERSION_NUM = "1.3.19"
     }
@@ -258,5 +257,11 @@ class Constants {
         CALCULATED_PICKABILITY("pickability"),
         CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
     }
+    enum class ScheduleType {
+        ALL_MATCHES,
+        OUR_MATCHES,
+        STARRED_MATCHES
+    }
+
 
 }
