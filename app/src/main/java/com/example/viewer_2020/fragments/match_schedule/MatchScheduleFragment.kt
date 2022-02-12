@@ -19,7 +19,6 @@ import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.fragments.match_schedule.MatchScheduleListAdapter
 import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
-import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
 open class MatchScheduleFragment : IFrag(){

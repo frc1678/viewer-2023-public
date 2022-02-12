@@ -8,7 +8,6 @@
 
 package com.example.viewer_2020.fragments.match_schedule
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
