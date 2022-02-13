@@ -5,7 +5,7 @@
     "second_pickability": 89.7082
   },
   {
-    "team_number": 5089,
+    "team_number": 867,
     "first_pickability": 65.8291,
     "second_pickability": 35.0921
   },
@@ -13,5 +13,50 @@
     "team_number": 1661,
     "first_pickability": 12.6732,
     "second_pickability": 45.7432
+  },
+  {
+    "team_number": 5089,
+    "first_pickability": 54.2334,
+    "second_pickability": 23.3412
+  },
+  {
+    "team_number": 114,
+    "first_pickability": 53.2334,
+    "second_pickability": 22.3412
+  },
+  {
+    "team_number": 6814,
+    "first_pickability": 56.2334,
+    "second_pickability": 13.3412
+  },
+  {
+    "team_number": 691,
+    "first_pickability": 58.2334,
+    "second_pickability": 43.3412
+  },
+  {
+    "team_number": 973,
+    "first_pickability": 93.2334,
+    "second_pickability": 63.3412
+  },
+  {
+    "team_number": 580,
+    "first_pickability": 52.2334,
+    "second_pickability": 43.3412
+  },
+  {
+    "team_number": 2465,
+    "first_pickability": 55.2334,
+    "second_pickability": 73.3412
+  },
+  {
+    "team_number": 6934,
+    "first_pickability": 54.2334,
+    "second_pickability": 33.3412
+  },
+  {
+    "team_number": 8129,
+    "first_pickability": 45.2334,
+    "second_pickability": 53.3412
   }
 ]

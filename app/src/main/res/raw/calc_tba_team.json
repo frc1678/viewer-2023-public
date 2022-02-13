@@ -1,5 +1,25 @@
 [{
-    "auto_line_successes": 12,
-    "team_name": "Ray of Hope",
-    "team_number": 7415
+  "auto_line_successes": 12,
+  "team_name": "Ray of Hope",
+  "team_number": 7415
+  }, {
+  "auto_line_successes": 13,
+  "team_name": "cardbots",
+  "team_number": 1661
+  }, {
+  "auto_line_successes": 11,
+  "team_name": "northern forest",
+  "team_number": 867
+  }, {
+  "auto_line_successes": 15,
+  "team_name": "robotics is fun",
+  "team_number": 5089
+  }, {
+  "auto_line_successes": 12,
+  "team_name": "i heart robotics",
+  "team_number": 114
+  }, {
+  "auto_line_successes": 8,
+  "team_name": "robotics rules",
+  "team_number": 6814
   }]
