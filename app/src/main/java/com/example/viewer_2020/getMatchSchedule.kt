@@ -1,10 +1,8 @@
 package com.example.viewer_2020
 
-import android.util.Log
 import com.example.viewer_2020.data.Match
-import com.example.viewer_2020.data.WebsiteMatchSchedule
 
-fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<String, Match> {
+fun getMatchSchedule(teamNumbers: List<String> = listOf(), starred: Boolean = false): Map<String, Match> {
     if (starred) {
         val starredMatches = mutableMapOf<String, Match>()
         val searchedMatches = mutableMapOf<String, Match>()
@@ -14,9 +12,14 @@ fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<
                 starredMatches[i.key] = i.value
             }
         }
-        if (teamNumber != null) {
+        if (teamNumbers.isNotEmpty()) {
             for (i in MainViewerActivity.matchCache) {
-                if ((teamNumber in i.value.redTeams) or (teamNumber in i.value.blueTeams)) {
+                if (teamNumbers.size == 1) {
+                    if ((teamNumbers[0] in i.value.redTeams) or (teamNumbers[0] in i.value.blueTeams)) {
+                        searchedMatches[i.key] = i.value
+                    }
+                } else if (((teamNumbers[0] in i.value.redTeams) or (teamNumbers[0] in i.value.blueTeams))
+                    and ((teamNumbers[1] in i.value.redTeams) or (teamNumbers[1] in i.value.blueTeams))) {
                     searchedMatches[i.key] = i.value
                 }
             }
@@ -33,10 +36,15 @@ fun getMatchSchedule(teamNumber: String? = null, starred: Boolean = false): Map<
             return starredMatches
         }
 
-    } else if (teamNumber != null) {
+    } else if (teamNumbers.isNotEmpty()) {
         val tempMatches = mutableMapOf<String, Match>()
         for (i in MainViewerActivity.matchCache) {
-            if ((teamNumber in i.value.redTeams) or (teamNumber in i.value.blueTeams)) {
+            if (teamNumbers.size == 1) {
+                if ((teamNumbers[0] in i.value.redTeams) or (teamNumbers[0] in i.value.blueTeams)) {
+                    tempMatches[i.key] = i.value
+                }
+            } else if (((teamNumbers[0] in i.value.redTeams) or (teamNumbers[0] in i.value.blueTeams))
+                and ((teamNumbers[1] in i.value.redTeams) or (teamNumbers[1] in i.value.blueTeams))) {
                 tempMatches[i.key] = i.value
             }
         }
