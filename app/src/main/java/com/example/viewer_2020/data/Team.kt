@@ -46,7 +46,7 @@ data class Team (var team_number: Int?) {
     var max_incap: Int? = null
     var auto_sd_balls_low: Float? = null
     var auto_sd_balls_high: Float? = null
-    var mode_start_position: String? = null
+    var mode_start_position: List<String>? = null
     var tele_sd_balls_low: Float? = null
     var tele_sd_balls_high: Float? = null
     var low_rung_successes: Int? = null
@@ -54,7 +54,7 @@ data class Team (var team_number: Int?) {
     var high_rung_successes: Int? = null
     var traversal_rung_successes: Int? = null
     var matches_incap: Int? = null
-    var mode_climb_level: String? = null
+    var mode_climb_level: List<String>? = null
     var max_climb_level: String? = null
     var low_avg_time: Float? = null
     var mid_avg_time: Float? = null
