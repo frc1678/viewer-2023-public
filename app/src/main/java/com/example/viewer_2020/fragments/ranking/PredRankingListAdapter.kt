@@ -69,7 +69,7 @@ class PredRankingListAdapter(
         viewHolder.tvDatapointTwo.text =
             if (regex.matcher(getTeamObject("current_avg_rps",
                     position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)).matches()) {
-                (("%.0f").format(Float.parseFloat(getTeamObject("current_avg_rps",
+                (("%.1f").format(Float.parseFloat(getTeamObject("current_avg_rps",
                     position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))))
             } else{
                 getTeamObject("current_avg_rps",
