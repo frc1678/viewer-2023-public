@@ -37,18 +37,20 @@ fun getTeamObjectByKey(path: String, teamNumber: String, field: String): String 
     // exist in the cache but has a null value for the given field.
     for (`object` in getDirectField(StartupActivity.databaseReference!!, path) as List<*>) {
         if (getDirectField(`object`!!, "team_number").toString() == teamNumber) {
+            //TODO: Fix Team Cache stuff (Kate)
+
             // Creating two constant variables. One for the current null cache field, and the other
             // for the value that is going to replace it.
-            val mField = MainViewerActivity.teamCache[teamNumber]!!::class.java.getDeclaredField(field)
+            //val mField = MainViewerActivity.teamCache[teamNumber]!!::class.java.getDeclaredField(field)
             val mValue = getDirectField(`object`, field)
 
             // Set the accessibility to true and replace the null cache value with the database value.
-            mField.isAccessible = true
-            if (mValue != Constants.NULL_CHARACTER) {
-                mField.set(MainViewerActivity.teamCache[teamNumber]!!, mValue)
-            } else {
-                mField.set(MainViewerActivity.teamCache[teamNumber]!!, null)
-            }
+//            mField.isAccessible = true
+//            if (mValue != Constants.NULL_CHARACTER) {
+//                mField.set(MainViewerActivity.teamCache[teamNumber]!!, mValue)
+//            } else {
+//                mField.set(MainViewerActivity.teamCache[teamNumber]!!, null)
+//            }
             return mValue.toString()
         }
     }

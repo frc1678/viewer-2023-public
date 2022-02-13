@@ -8,7 +8,6 @@
 
 package com.example.viewer_2020
 
-import android.util.Log
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
 import java.lang.Exception

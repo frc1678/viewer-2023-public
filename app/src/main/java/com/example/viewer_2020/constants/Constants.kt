@@ -15,7 +15,7 @@ class Constants {
         const val DATABASE_NAME = "test2021isjo"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = false
+        const val USE_TEST_DATA = true
         const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
         //In order to change the URL, see the GeDataFromWebsite Async Task
 
@@ -47,15 +47,6 @@ class Constants {
             "Other",
             "intakes",
             "incap"
-        )
-
-        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS: List<String> = listOf(
-            "Auto",
-            "auto_balls_low",
-            "Tele",
-            "tele_balls_low",
-            "Endgame",
-            "avg_climb_time"
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
