@@ -49,15 +49,6 @@ class Constants {
             "incap"
         )
 
-        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS: List<String> = listOf(
-            "Auto",
-            "auto_balls_low",
-            "Tele",
-            "tele_balls_low",
-            "Endgame",
-            "avg_climb_time"
-        )
-
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
             "current_rps",
             "current_rank",
