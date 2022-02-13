@@ -166,14 +166,14 @@ class MatchDetailsFragment : Fragment() {
                     Constants.BLUE, matchNumber.toString(),
                     headerDisplay[getHeaderCollection(root).indexOf(tv)])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
-                else {tv.text = (if (hasActualData!!) "%.0f" else "%.2f").format(newText.toFloat())}
+                else {tv.text = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())}
             } else {
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber.toString(),
                     headerDisplay[getHeaderCollection(root).indexOf(tv) - 3])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
-                else {tv.text = (if (hasActualData!!) "%.0f" else "%.2f").format(newText.toFloat())}
+                else {tv.text = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())}
             }
         }
 
