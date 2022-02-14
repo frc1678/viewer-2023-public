@@ -1,7 +1,7 @@
 package com.example.viewer_2020
 
 fun getTIMDataValue(teamNumber: String, field: String, path: String) : Map<String, String> {
-    val matchNumList = getMatchSchedule(teamNumber).keys
+    val matchNumList = getMatchSchedule(listOf(teamNumber)).keys
     val result : MutableMap<String, String> = mutableMapOf()
     for (matchNumber in matchNumList) {
         for (`object` in getDirectField(StartupActivity.databaseReference!!, path)
