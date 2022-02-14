@@ -37,7 +37,7 @@ class PickabilityListAdapter(private val context: Context,  private val items: M
         val rowView = inflater.inflate(R.layout.pickability_cell, parent, false)
         rowView.tv_placement.text = (i+1).toString()
         rowView.tv_team_number.text = e
-        rowView.tv_pickability.text = (if (pickability != Constants.NULL_CHARACTER) parseFloat(("%.2f").format(pickability.toFloat())).toString() else pickability)
+        rowView.tv_pickability.text = (if (pickability != Constants.NULL_CHARACTER) parseFloat(("%.1f").format(pickability.toFloat())).toString() else pickability)
         return rowView
     }
 }
