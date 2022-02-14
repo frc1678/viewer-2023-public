@@ -120,14 +120,14 @@ class Constants {
         )
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED: List<String> = listOf(
-            "predicted_rp1",
             "predicted_score",
+            "predicted_rp1",
             "predicted_rp2"
         )
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED: List<String> = listOf(
-            "actual_rp1",
             "actual_score",
+            "actual_rp1",
             "actual_rp2"
         )
 
