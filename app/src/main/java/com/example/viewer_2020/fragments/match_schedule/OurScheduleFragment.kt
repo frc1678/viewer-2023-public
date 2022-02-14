@@ -21,7 +21,7 @@ class OurScheduleFragment : MatchScheduleFragment() {
         root.lv_match_schedule.setOnItemClickListener { _, _, position, _ ->
             matchDetailsFragmentArguments.putInt(
                 Constants.MATCH_NUMBER,
-                getMatchSchedule(Constants.MY_TEAM_NUMBER, false).keys.elementAt(position).toInt())
+                getMatchSchedule(listOf(Constants.MY_TEAM_NUMBER), false).keys.elementAt(position).toInt())
             matchDetailsFragment.arguments = matchDetailsFragmentArguments
             matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             matchDetailsFragmentTransaction.addToBackStack(null).replace(

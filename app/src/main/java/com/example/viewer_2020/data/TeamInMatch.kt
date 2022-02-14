@@ -14,7 +14,6 @@ data class TeamInMatch(
     var match_number: Int? = null
 ) {
     var start_position: String? = null
-    var quintet: Boolean? = null
     var auto_balls_low: Int? = null
     var auto_balls_high: Int? = null
     var auto_line: Boolean? = null

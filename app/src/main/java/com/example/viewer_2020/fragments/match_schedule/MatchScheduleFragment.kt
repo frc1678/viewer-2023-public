@@ -42,7 +42,7 @@ open class MatchScheduleFragment : IFrag(){
         adapter = MatchScheduleListAdapter(
             activity!!,
             (getMatchSchedule(
-                (if (scheduleType == Constants.ScheduleType.OUR_MATCHES) Constants.MY_TEAM_NUMBER else null),
+                (if (scheduleType == Constants.ScheduleType.OUR_MATCHES) listOf(Constants.MY_TEAM_NUMBER) else listOf()),
                 scheduleType == Constants.ScheduleType.STARRED_MATCHES
             )
                     ),
@@ -54,15 +54,18 @@ open class MatchScheduleFragment : IFrag(){
         root.match_search_bar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                var searchString = s.toString()
-                var matchesWanted = getMatchSchedule(searchString,
+                val search = mutableListOf(s.toString())
+                if (scheduleType == Constants.ScheduleType.OUR_MATCHES) {
+                    search.add(Constants.MY_TEAM_NUMBER)
+                }
+                var matchesWanted = getMatchSchedule(search,
                     scheduleType == Constants.ScheduleType.STARRED_MATCHES
                 )
                 if(!matchesWanted.isEmpty()) {
                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, Constants.ScheduleType.OUR_MATCHES)
                     Log.e("matchesWanted", "$matchesWanted")
                 } else if (s.toString().length == 0){
-                    matchesWanted = getMatchSchedule((if (scheduleType == Constants.ScheduleType.OUR_MATCHES) Constants.MY_TEAM_NUMBER else null), scheduleType == Constants.ScheduleType.STARRED_MATCHES)
+                    matchesWanted = getMatchSchedule((if (scheduleType == Constants.ScheduleType.OUR_MATCHES) listOf(Constants.MY_TEAM_NUMBER) else listOf()), scheduleType == Constants.ScheduleType.STARRED_MATCHES)
                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, scheduleType)
                 } else {
                      (adapter as MatchScheduleListAdapter).updateData(matchesWanted, ScheduleType.OUR_MATCHES)
