@@ -36,7 +36,7 @@ import java.util.*
 
 // The fragment class for the Team Details display that occurs when you click on a
 // team in the match details page.
-class TeamDetailsFragment : Fragment() {
+class TeamDetailsFragment : IFrag() {
     private var teamNumber: String? = null
     private var teamName: String? = null
 
@@ -82,12 +82,12 @@ class TeamDetailsFragment : Fragment() {
         // We set the adapter for their list view according to
         // the team number and the current section. We also include a list of the
         // data points we expect to be displayed on the TeamDetails list view.
-
-        root.lv_datapoint_display.adapter = TeamDetailsAdapter(
+        adapter = TeamDetailsAdapter(
             context = activity!!,
             datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS,
             teamNumber = teamNumber!!
         )
+        root.lv_datapoint_display.adapter = adapter
 
     }
 
