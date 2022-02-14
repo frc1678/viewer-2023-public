@@ -40,7 +40,7 @@
     {
         "team_number": 5089,
         "drivetrain": 2,
-        "drivetrain_motors": 34,
+        "drivetrain_motors": 2,
         "drivetrain_motor_type": 2,
         "has_ground_intake": true,
         "can_eject_terminal":  false,
@@ -53,7 +53,7 @@
     {
         "team_number": 114,
         "drivetrain": 2,
-        "drivetrain_motors": 34,
+        "drivetrain_motors": 3,
         "drivetrain_motor_type": 2,
         "has_ground_intake": true,
         "can_eject_terminal":  false,
@@ -105,7 +105,7 @@
     {
         "team_number": 580,
         "drivetrain": 2,
-        "drivetrain_motors": 34,
+        "drivetrain_motors": 3,
         "drivetrain_motor_type": 2,
         "has_ground_intake": true,
         "can_eject_terminal":  false,
