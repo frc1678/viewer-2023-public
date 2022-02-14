@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.example.viewer_2020.IFrag
+import androidx.fragment.app.Fragment
 import com.example.viewer_2020.MainViewerActivity
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_team_ranking.view.*
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 
 
-class TeamRankingFragment : IFrag() {
+class TeamRankingFragment : Fragment() {
     companion object {
         const val TEAM_NUMBER = "teamNumber"
         const val DATA_POINT = "dataPoint"
@@ -63,6 +63,9 @@ class TeamRankingFragment : IFrag() {
 
 
         lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getData(descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+        MainViewerActivity.refreshManager.addRefreshListener("team-ranking") {
+            lvAdapter?.notifyDataSetInvalidated()
+        }
         root.lv_team_ranking.adapter = lvAdapter
         root.lv_team_ranking.setOnItemClickListener { parent, view, position, id ->
             val teamDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()

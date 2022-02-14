@@ -61,17 +61,7 @@ class MainViewerActivity : ViewerActivity() {
     private val preferencesFragment = PreferencesFragment()
     private val userPreferencesFragment = UserPreferencesFragment()
 
-    private val frags: List<IFrag> =
-        listOf(
-            matchScheduleFragment,
-            ourScheduleFragment,
-            rankingFragment,
-            firstPickabilityFragment,
-            secondPickabilityFragment,
-            teamListFragment,
-            preferencesFragment,
-            userPreferencesFragment
-        )
+
 
     companion object {
         var currentRankingMenuItem: MenuItem? = null
@@ -79,6 +69,7 @@ class MainViewerActivity : ViewerActivity() {
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
+        val refreshManager = RefreshManager()
     }
 
     //Overrides back button to go back to last fragment.
@@ -95,12 +86,7 @@ class MainViewerActivity : ViewerActivity() {
         } else if (supportFragmentManager.backStackEntryCount > 1) supportFragmentManager.popBackStack()
     }
 
-    fun reloadAllListViews(){
-        frags.forEachIndexed { i, e ->
-            Log.e("help", "refreshing $i")
-            e.updateListView()
-        }
-    }
+
 
     override fun onResume() {
         super.onResume()
@@ -170,7 +156,7 @@ class MainViewerActivity : ViewerActivity() {
                 GetDataFromFiles(this, {
                     data_refresh_button.isEnabled = true
                     Snackbar.make(container, "Refreshed Data!", 2500).show()
-                    reloadAllListViews()
+                    refreshManager.refresh()
                     updateNavFooter()
                 }, {
                     data_refresh_button.isEnabled = true
@@ -180,7 +166,7 @@ class MainViewerActivity : ViewerActivity() {
                 GetDataFromWebsite({
                     data_refresh_button.isEnabled = true
                     Snackbar.make(container, "Refreshed Data!", 2500).show()
-                    reloadAllListViews()
+                    refreshManager.refresh()
                     updateNavFooter()
                 }, {
                     data_refresh_button.isEnabled = true

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import java.lang.ClassCastException
 import java.util.Comparator
 
-class PickabilityFragment(val mode: PickabilityMode) : IFrag() {
+class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
 
@@ -66,11 +66,14 @@ class PickabilityFragment(val mode: PickabilityMode) : IFrag() {
 
             (v)
         }.reversed().toMap().toMutableMap()
-        adapter = PickabilityListAdapter(
+        val adapter = PickabilityListAdapter(
             items = map,
             context = activity!!,
             mode = mode
         )
+        MainViewerActivity.refreshManager.addRefreshListener("pickability") {
+            adapter.notifyDataSetChanged()
+        }
         root.lv_pickability.adapter = adapter
         return map
     }
