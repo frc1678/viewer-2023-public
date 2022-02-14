@@ -79,6 +79,7 @@ class MainViewerActivity : ViewerActivity() {
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
+        val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
     }
 
     //Overrides back button to go back to last fragment.

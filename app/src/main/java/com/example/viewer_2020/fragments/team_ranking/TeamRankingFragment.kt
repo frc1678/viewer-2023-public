@@ -4,15 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import com.example.viewer_2020.IFrag
-import com.example.viewer_2020.MainViewerActivity
-import com.example.viewer_2020.R
+import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
-import com.example.viewer_2020.getTeamDataValue
-import kotlinx.android.synthetic.main.fragment_team_ranking.*
 import kotlinx.android.synthetic.main.fragment_team_ranking.view.*
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 
@@ -62,7 +57,7 @@ class TeamRankingFragment : IFrag() {
     private fun setupAdapter(root: View) {
 
 
-        lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getData(descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+        lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
         root.lv_team_ranking.adapter = lvAdapter
         root.lv_team_ranking.setOnItemClickListener { parent, view, position, id ->
             val teamDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
@@ -81,30 +76,10 @@ class TeamRankingFragment : IFrag() {
         }
     }
 
-    private fun getData(descending: Boolean): List<TeamRankingItem> {
-        val data = mutableListOf<TeamRankingItem>()
 
-        MainViewerActivity.teamList.forEach {
-            val value = getTeamDataValue(it, dataPoint!!).toFloatOrNull()
-            data.add(
-                TeamRankingItem(
-                    it,
-                    value?.let { it1 -> floatToString(it1) } ?: Constants.NULL_CHARACTER))
-        }
-
-        val nullTeams = data.filter { item -> item.value == Constants.NULL_CHARACTER }
-        val dataTeams = data.filter { item -> item.value != Constants.NULL_CHARACTER }
-
-        var sortedData = dataTeams.sortedWith(compareBy { it.value.toFloatOrNull() })
-
-        if (descending) sortedData = sortedData.reversed()
-
-        return sortedData + nullTeams
-    }
 
 }
 
-data class TeamRankingItem(val teamNumber: String, val value: String)
 
 //Maybe a better method of sorting https://kotlinlang.org/docs/collection-ordering.html
 /*
