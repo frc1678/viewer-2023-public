@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Environment
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -22,8 +21,6 @@ import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
 import android.widget.FrameLayout
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.viewer_2020.fragments.team_ranking.TeamRankingFragment
 import com.example.viewer_2020.getRankingTeam
 
@@ -33,65 +30,59 @@ class TeamDetailsAdapter(
     private val context: FragmentActivity,
     private val datapointsDisplayed: List<String>,
     private val teamNumber: String
-) : RecyclerView.Adapter<TeamDetailsAdapter.ViewHolder>() {
+) : BaseAdapter() {
 
-    init {
-        super.setHasStableIds(true)
-        Log.d("match-details", datapointsDisplayed.toString())
+    private val inflater: LayoutInflater =
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+    // Return the size of the list of the data points to be displayed.
+    override fun getCount(): Int {
+        return datapointsDisplayed.size
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val ranking: TextView = view.findViewById(R.id.tv_ranking)
-        val datapointName: TextView = view.findViewById(R.id.tv_datapoint_name)
-        val datapointValue: TextView = view.findViewById(R.id.tv_datapoint_value)
-        val root = view
-
+    // Returns the specific data point given the position of the data point.
+    override fun getItem(position: Int): String {
+        return datapointsDisplayed[position]
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
-        val layoutInflater = LayoutInflater.from(viewGroup.context)
-        val rowView = layoutInflater
-            .inflate(R.layout.team_details_cell, viewGroup, false)
-
-
-
-        return ViewHolder(rowView)
+    // Returns the position of the cell.
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    // Populate the elements of the custom cell.
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val graphsFragment = GraphsFragment()
         val graphsFragmentArguments = Bundle()
-        val e = datapointsDisplayed[position]
+        val e = getItem(position)
         val regex: Pattern = Pattern.compile("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
+        val rowView = inflater.inflate(R.layout.team_details_cell, parent, false)
         var isHeader = false
-        holder.datapointName.text =
+        rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[e]
                 ?: e
-        if (e in Constants.CATEGORY_NAMES) {
-            holder.setIsRecyclable(false)
+        if ((e == "Auto") or (e == "Tele") or (e == "Endgame") or (e == "Pit Data")) {
             isHeader = true
-            holder.root.layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
-            holder.datapointName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28F)
-            holder.datapointName.gravity = Gravity.CENTER_HORIZONTAL
+            rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28F)
+            rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
             val noWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
             val allWidth = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f)
-            holder.ranking.layoutParams = noWidth
-            holder.datapointName.layoutParams = allWidth
-            holder.datapointValue.layoutParams = noWidth
-            holder.datapointName.setBackgroundColor(
+            rowView.tv_ranking.layoutParams = noWidth
+            rowView.tv_datapoint_name.layoutParams = allWidth
+            rowView.tv_datapoint_value.layoutParams = noWidth
+            rowView.tv_datapoint_name.setBackgroundColor(
                 ContextCompat.getColor(
                     context,
                     R.color.LightGray
                 )
             )
-            holder.datapointName.setTextColor(
+            rowView.tv_datapoint_name.setTextColor(
                 ContextCompat.getColor(
                     context,
                     R.color.Black
                 )
             )
-            holder.datapointValue.text = ""
+            rowView.tv_datapoint_value.text = ""
         } else {
             if (regex.matcher(
                     getTeamDataValue(
@@ -101,7 +92,7 @@ class TeamDetailsAdapter(
                 ).matches()
             ) {
                 if (e in Constants.DRIVER_DATA) {
-                    holder.datapointValue.text = ("%.2f").format(
+                    rowView.tv_datapoint_value.text = ("%.2f").format(
                         parseFloat(
                             getTeamDataValue(
                                 teamNumber,
@@ -110,7 +101,7 @@ class TeamDetailsAdapter(
                         )
                     )
                 } else {
-                    holder.datapointValue.text = ("%.1f").format(
+                    rowView.tv_datapoint_value.text = ("%.1f").format(
                         parseFloat(
                             getTeamDataValue(
                                 teamNumber,
@@ -120,24 +111,36 @@ class TeamDetailsAdapter(
                     )
                 }
             } else {
-                holder.datapointValue.text = getTeamDataValue(
+                rowView.tv_datapoint_value.text = getTeamDataValue(
                     teamNumber,
                     e
                 )
             }
-            if (e in Constants.RANKABLE_FIELDS) {
-                holder.ranking.text =
-                    getRankingTeam(teamNumber, e, Constants.RANKABLE_FIELDS[e]!!)
+        }
+        if (e in Constants.RANKABLE_FIELDS) {
+            rowView.tv_ranking.text =
+                getRankingTeam(teamNumber, e, Constants.RANKABLE_FIELDS[e]!!)
+        }
+        rowView.setOnClickListener() {
+            if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
+                Constants.GRAPHABLE_BOOL.contains(datapointsDisplayed[position]) or
+                Constants.GRAPHABLE_CLIMB_TIMES.contains(datapointsDisplayed[position])
+            ) {
+                graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+                graphsFragmentArguments.putString("datapoint", datapointsDisplayed[position])
+                graphsFragment.arguments = graphsFragmentArguments
+                context.supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.nav_host_fragment, graphsFragment, "graphs")
+                    .commit()
             }
         }
-
-
 
         //Headers don't need on click handlers
         if (!isHeader) {
             //Some fields (eg drivetrain_motor_type) don't need to be rankable
             if (e in Constants.RANKABLE_FIELDS.keys) {
-                holder.root.setOnLongClickListener {
+                rowView.setOnLongClickListener {
                     val teamRankingFragment = TeamRankingFragment()
                     val teamRankingFragmentArguments = Bundle()
                     val teamRankingFragmentTransaction =
@@ -170,29 +173,9 @@ class TeamDetailsAdapter(
                     return@setOnLongClickListener true
                 }
             }
-            holder.root.setOnClickListener() {
-                if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
-                    Constants.GRAPHABLE_BOOL.contains(datapointsDisplayed[position]) or
-                    Constants.GRAPHABLE_CLIMB_TIMES.contains(datapointsDisplayed[position])
-                ) {
-                    graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
-                    graphsFragmentArguments.putString("datapoint", datapointsDisplayed[position])
-                    graphsFragment.arguments = graphsFragmentArguments
-                    context.supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, graphsFragment, "graphs")
-                        .commit()
-                }
-            }
+
         }
-    }
 
-    override fun getItemCount(): Int {
-        return datapointsDisplayed.size
+        return rowView
     }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
 }
