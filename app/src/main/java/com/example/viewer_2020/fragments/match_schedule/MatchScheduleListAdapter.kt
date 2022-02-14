@@ -146,7 +146,7 @@ class MatchScheduleListAdapter(
                 MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
         } else if (blueAct && redAct && MainViewerActivity.matchCache[matchNumber]!!.blueActualScore != null){
             viewHolder.tvBluePredictedScore.text =
-                (if (blueAct) "%.0f" else "%.2f").format(MainViewerActivity.matchCache[matchNumber]!!.blueActualScore)
+                (if (blueAct) "%.0f" else "%.1f").format(MainViewerActivity.matchCache[matchNumber]!!.blueActualScore)
         }
         else {
             val value = if (blueAct && redAct) {
@@ -162,13 +162,13 @@ class MatchScheduleListAdapter(
             }
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvBluePredictedScore.text =
-                    (if (blueAct) "%.0f" else "%.2f").format(value.toFloat())
+                    (if (blueAct) "%.0f" else "%.1f").format(value.toFloat())
                 if(!blueAct or !redAct) {
                     MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
-                        parseFloat(("%.2f").format(value.toFloat()))
+                        parseFloat(("%.1f").format(value.toFloat()))
                 }else{
                     MainViewerActivity.matchCache[matchNumber]!!.blueActualScore =
-                        parseFloat(("%.2f").format(value.toFloat()))
+                        parseFloat(("%.0f").format(value.toFloat()))
                 }
             } else {
                 viewHolder.tvBluePredictedScore.text =
@@ -181,7 +181,7 @@ class MatchScheduleListAdapter(
                 MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
         }else if (redAct && blueAct && MainViewerActivity.matchCache[matchNumber]!!.redActualScore != null) {
             viewHolder.tvRedPredictedScore.text =
-                (if (redAct) "%.0f" else "%.2f").format(MainViewerActivity.matchCache[matchNumber]!!.redActualScore)
+                (if (redAct) "%.0f" else "%.1f").format(MainViewerActivity.matchCache[matchNumber]!!.redActualScore)
         } else {
             val value = if (redAct && blueAct) {
                 getAllianceInMatchObjectByKey(
@@ -196,13 +196,13 @@ class MatchScheduleListAdapter(
             }
             if (value != Constants.NULL_CHARACTER) {
                 viewHolder.tvRedPredictedScore.text =
-                    (if (redAct) "%.0f" else "%.2f").format(value.toFloat())
+                    (if (redAct) "%.0f" else "%.1f").format(value.toFloat())
                 if (!redAct or !blueAct) {
                     MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
-                        parseFloat(("%.2f").format(value.toFloat()))
+                        parseFloat(("%.1f").format(value.toFloat()))
                 }else{
                     MainViewerActivity.matchCache[matchNumber]!!.redActualScore =
-                        parseFloat(("%.2f").format(value.toFloat()))
+                        parseFloat(("%.0f").format(value.toFloat()))
                 }
             } else {
                 viewHolder.tvRedPredictedScore.text =
@@ -288,19 +288,19 @@ class MatchScheduleListAdapter(
                     0 -> {
                         if(redAct && blueAct){
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne =
-                                parseFloat(("%.2f").format(value.toFloat()))
+                                parseFloat(("%.0f").format(value.toFloat()))
                         }else{
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne =
-                                parseFloat(("%.2f").format(value.toFloat()))
+                                parseFloat(("%.1f").format(value.toFloat()))
                         }
                     }
                     1 -> {
                         if(redAct && blueAct){
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo =
-                                parseFloat(("%.2f").format(value.toFloat()))
+                                parseFloat(("%.0f").format(value.toFloat()))
                         }else{
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo =
-                                parseFloat(("%.2f").format(value.toFloat()))
+                                parseFloat(("%.1f").format(value.toFloat()))
                         }
                     }
                 }
@@ -366,19 +366,19 @@ class MatchScheduleListAdapter(
                     0 -> {
                         if (redAct && blueAct){
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne =
-                                parseFloat(("%.2f").format(value.toFloat()))
+                                parseFloat(("%.0f").format(value.toFloat()))
                         }else{
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne =
-                                parseFloat(("%.2f").format(value.toFloat()))
+                                parseFloat(("%.1f").format(value.toFloat()))
                         }
                     }
                     1 -> {
                         if(redAct && blueAct){
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo =
-                                parseFloat(("%.2f").format(value.toFloat()))
+                                parseFloat(("%.0f").format(value.toFloat()))
                         }else{
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo =
-                                parseFloat(("%.2f").format(value.toFloat()))
+                                parseFloat(("%.1f").format(value.toFloat()))
                         }
                     }
                 }
