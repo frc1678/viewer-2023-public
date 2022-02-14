@@ -38,5 +38,53 @@
         "current_rank": 7,
         "current_rps": 7,
         "current_avg_rps": 2.0
+    },
+    {
+        "team_number": 299,
+        "predicted_rps": 2,
+        "predicted_rank": 8,
+        "current_rank": 5,
+        "current_rps": 3,
+        "current_avg_rps": 2.3
+    },
+    {
+        "team_number": 589,
+        "predicted_rps": 2,
+        "predicted_rank": 8,
+        "current_rank": 5,
+        "current_rps": 3,
+        "current_avg_rps": 2.3
+    },
+    {
+        "team_number": 3863,
+        "predicted_rps": 2,
+        "predicted_rank": 8,
+        "current_rank": 5,
+        "current_rps": 3,
+        "current_avg_rps": 2.3
+    },
+    {
+        "team_number": 3501,
+        "predicted_rps": 2,
+        "predicted_rank": 8,
+        "current_rank": 5,
+        "current_rps": 3,
+        "current_avg_rps": 2.3
+    },
+    {
+        "team_number": 3309,
+        "predicted_rps": 2,
+        "predicted_rank": 8,
+        "current_rank": 5,
+        "current_rps": 3,
+        "current_avg_rps": 2.3
+    },
+    {
+        "team_number": 3328,
+        "predicted_rps": 2,
+        "predicted_rank": 8,
+        "current_rank": 5,
+        "current_rps": 3,
+        "current_avg_rps": 2.3
     }
 ]

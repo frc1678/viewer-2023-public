@@ -12,10 +12,11 @@ package com.example.viewer_2020.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val DATABASE_NAME = "test2020cadm"
+        const val DATABASE_NAME = "test2021isjo"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = true
+        const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
         //In order to change the URL, see the GeDataFromWebsite Async Task
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
@@ -29,19 +30,14 @@ class Constants {
             "quintet",
             "auto_balls_low",
             "auto_balls_high",
-            "auto_near_hub_highs",
-            "auto_near_other_highs",
             "auto_line",
             "Tele",
             "tele_balls_low",
             "tele_balls_high",
-            "tele_near_hub_lows",
-            "tele_far_hub_lows",
+            "tele_hub_lows",
             "tele_launchpad_highs",
-            "tele_near_hub_highs",
-            "tele_far_hub_highs",
-            "tele_near_other_highs",
-            "tele_far_other_highs",
+            "tele_hub_highs",
+            "tele_other_highs",
             "Endgame",
             "climb_time",
             "climb_level",
@@ -51,15 +47,6 @@ class Constants {
             "Other",
             "intakes",
             "incap"
-        )
-
-        val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS: List<String> = listOf(
-            "Auto",
-            "auto_balls_low",
-            "Tele",
-            "tele_balls_low",
-            "Endgame",
-            "avg_climb_time"
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
@@ -246,6 +233,7 @@ class Constants {
         //Util.
         const val NULL_PREDICTED_SCORE_CHARACTER = "-"
         const val NULL_CHARACTER = "?"
+        const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
         const val VERSION_NUM = "1.3.19"
     }
@@ -260,5 +248,11 @@ class Constants {
         CALCULATED_PICKABILITY("pickability"),
         CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
     }
+    enum class ScheduleType {
+        ALL_MATCHES,
+        OUR_MATCHES,
+        STARRED_MATCHES
+    }
+
 
 }
