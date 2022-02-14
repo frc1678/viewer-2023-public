@@ -67,7 +67,9 @@ open class MatchScheduleFragment : IFrag(){
                 } else if (s.toString().length == 0){
                     matchesWanted = getMatchSchedule((if (scheduleType == Constants.ScheduleType.OUR_MATCHES) listOf(Constants.MY_TEAM_NUMBER) else listOf()), scheduleType == Constants.ScheduleType.STARRED_MATCHES)
                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, scheduleType)
-                }
+                } else {
+                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, ScheduleType.OUR_MATCHES)
+                 }
             }
             override fun afterTextChanged(s: Editable) {}
         })

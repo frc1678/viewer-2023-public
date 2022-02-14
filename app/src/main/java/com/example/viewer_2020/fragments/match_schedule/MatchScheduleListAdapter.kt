@@ -34,8 +34,6 @@ class MatchScheduleListAdapter(
     private var listView: ListView
 ) : BaseAdapter() {
 
-
-
     private val inflater = LayoutInflater.from(context)
 
     // Return the size of the match schedule.
@@ -67,7 +65,6 @@ class MatchScheduleListAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var blueAct = false
         var redAct = false
-        Log.e("matchContents", matchContents["1"]?.redTeams.toString())
 
         val viewHolder: ViewHolder
         val rowView: View?

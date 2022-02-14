@@ -35,6 +35,7 @@ fun getMatchSchedule(teamNumbers: List<String> = listOf(), starred: Boolean = fa
         else {
             return starredMatches
         }
+    }
 
     } else if (teamNumbers.isNotEmpty()) {
         val tempMatches = mutableMapOf<String, Match>()
