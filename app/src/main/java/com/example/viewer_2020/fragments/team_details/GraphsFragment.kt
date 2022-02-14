@@ -18,6 +18,10 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import kotlinx.android.synthetic.main.fragment_graphs.view.*
+import com.github.mikephil.charting.formatter.ValueFormatter
+
+
+
 
 
 class GraphsFragment : Fragment() {
@@ -38,10 +42,9 @@ class GraphsFragment : Fragment() {
         }
 
         root.tv_team_number.text = teamNumber
-        root.tv_datapoint.text = Translations.ACTUAL_TO_HUMAN_READABLE[datapoint]
+        root.tv_datapoint.text = Translations.ACTUAL_TO_HUMAN_READABLE[datapoint] + " by " + Translations.TIM_TO_HUMAN_READABLE[datapoint!!]
 
         val timDatapoint = Translations.TIM_FROM_TEAM[datapoint!!]
-        root.y_axis_label.text = Translations.TIM_TO_HUMAN_READABLE[datapoint!!]
 
         //get data
         val timDataMap : Map<String, String> = if(timDatapoint == "auto_line"){
@@ -151,23 +154,28 @@ class GraphsFragment : Fragment() {
             R.color.colorPrimaryLight))
 
         //set text size of the numbers labelling the height of each bar
-        barDataSet.valueTextSize = 18F
+        barDataSet.valueTextSize = 12F
 
         //set labels to only be integers
         root.bar_chart.xAxis.granularity = 1.0f
         root.bar_chart.xAxis.isGranularityEnabled = true
-        if (Constants.GRAPHABLE_BOOL.contains(datapoint!!) or Constants.GRAPHABLE.contains(datapoint!!)
-        and (datapoint != "avg_incap_time")){
-            root.bar_chart.axisLeft.granularity = 1.0f
-            root.bar_chart.axisLeft.isGranularityEnabled = true
-            root.bar_chart.axisRight.granularity = 1.0f
-            root.bar_chart.axisRight.isGranularityEnabled = true
+        root.bar_chart.axisLeft.granularity = 1.0f
+        root.bar_chart.axisLeft.isGranularityEnabled = true
+        root.bar_chart.axisRight.granularity = 1.0f
+        root.bar_chart.axisRight.isGranularityEnabled = true
+
+        val valueFormatter: ValueFormatter = object : ValueFormatter() {
+            //value format here, here is the overridden method
+            override fun getFormattedValue(value: Float): String {
+                return "" + value.toInt()
+            }
         }
+        barDataSet.valueFormatter = valueFormatter
 
         //add extra margins around the chart to accommodate increased text size of labels
         root.bar_chart.extraBottomOffset = 15F
         root.bar_chart.extraLeftOffset = 10F
-        root.bar_chart.extraRightOffset = 15F
+        root.bar_chart.extraRightOffset = 10F
 
         //increase text size of labels (the numbers on the axes)
         root.bar_chart.xAxis.textSize = 18F
@@ -190,8 +198,8 @@ class GraphsFragment : Fragment() {
         root.bar_chart.xAxis.setDrawGridLines(true)
         root.bar_chart.xAxis.setDrawAxisLine(true)
 
-        //right y-axis
-        root.bar_chart.axisRight.isEnabled = true
+        //disable right y-axis
+        root.bar_chart.axisRight.isEnabled = false
 
         //remove legend
         root.bar_chart.legend.isEnabled = false
