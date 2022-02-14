@@ -390,12 +390,14 @@ class MatchScheduleListAdapter(
                 else R.color.Yellow
             ))
         }
-        val matchDetailsFragment = MatchDetailsFragment()
-        val matchDetailsFragmentArguments = Bundle()
-        val matchDetailsFragmentTransaction = context.supportFragmentManager.beginTransaction()
+
 
         // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
         rowView!!.setOnClickListener {
+            val matchDetailsFragment = MatchDetailsFragment()
+            Log.d("data-refresh", "created MatchDetailsFragment in MatchSchedule")
+            val matchDetailsFragmentArguments = Bundle()
+            val matchDetailsFragmentTransaction = context.supportFragmentManager.beginTransaction()
             val matchSelected = if ((scheduleType==Constants.ScheduleType.OUR_MATCHES) or (scheduleType==Constants.ScheduleType.STARRED_MATCHES)){
                 matchContents.keys.toList()[position].toInt()
             } else{

@@ -24,8 +24,9 @@ import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
 open class MatchScheduleFragment : Fragment(){
 
-    val matchDetailsFragment = MatchDetailsFragment()
-    val matchDetailsFragmentArguments = Bundle()
+
+
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,8 +51,11 @@ open class MatchScheduleFragment : Fragment(){
             scheduleType,
             root.lv_match_schedule
         )
-        MainViewerActivity.refreshManager.addRefreshListener("match-schedule") {
-            adapter.notifyDataSetChanged()
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: match-schedule")
+                adapter.notifyDataSetChanged()
+            }
         }
         root.lv_match_schedule.adapter = adapter
 
@@ -77,5 +81,10 @@ open class MatchScheduleFragment : Fragment(){
             }
             override fun afterTextChanged(s: Editable) {}
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }

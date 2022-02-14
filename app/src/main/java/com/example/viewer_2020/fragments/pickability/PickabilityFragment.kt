@@ -19,6 +19,8 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
 
+    private var refreshId: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,6 +48,25 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
     }
 
     private fun updateMatchScheduleListView(root: View) : Map<String, Float>{
+        val map = makeData()
+        val adapter = PickabilityListAdapter(
+            items = map,
+            context = activity!!,
+            mode = mode
+        )
+        if(refreshId == null) {
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: Pickability")
+                adapter.items = makeData()
+                adapter.notifyDataSetChanged()
+            }
+        }
+
+        root.lv_pickability.adapter = adapter
+        return map
+    }
+
+    fun makeData(): Map<String, Float> {
         var map = mutableMapOf<String, Float>()
         val rawTeamNumbers = convertToFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
@@ -66,16 +87,12 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
 
             (v)
         }.reversed().toMap().toMutableMap()
-        val adapter = PickabilityListAdapter(
-            items = map,
-            context = activity!!,
-            mode = mode
-        )
-        MainViewerActivity.refreshManager.addRefreshListener("pickability") {
-            adapter.notifyDataSetChanged()
-        }
-        root.lv_pickability.adapter = adapter
-        return map
+        return map.toMap()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }
 enum class PickabilityMode {

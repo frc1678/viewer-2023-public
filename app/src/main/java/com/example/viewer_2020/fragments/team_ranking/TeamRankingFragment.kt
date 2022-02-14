@@ -1,6 +1,7 @@
 package com.example.viewer_2020.fragments.team_ranking
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,7 @@ class TeamRankingFragment : Fragment() {
 
     var lvAdapter: TeamRankingListAdapter? = null
 
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,8 +65,12 @@ class TeamRankingFragment : Fragment() {
 
 
         lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getData(descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
-        MainViewerActivity.refreshManager.addRefreshListener("team-ranking") {
-            lvAdapter?.notifyDataSetInvalidated()
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: team-ranking")
+                lvAdapter?.updateItems(getData(descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+
+            }
         }
         root.lv_team_ranking.adapter = lvAdapter
         root.lv_team_ranking.setOnItemClickListener { parent, view, position, id ->
@@ -105,6 +111,10 @@ class TeamRankingFragment : Fragment() {
         return sortedData + nullTeams
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
+    }
 }
 
 data class TeamRankingItem(val teamNumber: String, val value: String)

@@ -1,6 +1,7 @@
 package com.example.viewer_2020.fragments.ranking
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_ranking.view.*
 class PredRankingFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
+
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,8 +50,11 @@ class PredRankingFragment : Fragment() {
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             MainViewerActivity.teamList
         ))
-        MainViewerActivity.refreshManager.addRefreshListener("pred-ranking") {
-            adapter.notifyDataSetChanged()
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: pred-ranking")
+                adapter.notifyDataSetChanged()
+            }
         }
         root.lv_ranking.adapter = adapter
 
@@ -80,5 +86,10 @@ class PredRankingFragment : Fragment() {
             .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
             .commit()
         return
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }

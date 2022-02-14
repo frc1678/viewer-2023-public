@@ -40,6 +40,8 @@ class TeamDetailsFragment : Fragment() {
     private var teamNumber: String? = null
     private var teamName: String? = null
 
+    private var refreshId: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -87,8 +89,11 @@ class TeamDetailsFragment : Fragment() {
             datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS,
             teamNumber = teamNumber!!
         )
-        MainViewerActivity.refreshManager.addRefreshListener("team-details"){
-            adapter.notifyDataSetChanged()
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: team-details")
+                adapter.notifyDataSetChanged()
+            }
         }
         root.lv_datapoint_display.adapter = adapter
 
@@ -117,5 +122,10 @@ class TeamDetailsFragment : Fragment() {
                     .commit()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }

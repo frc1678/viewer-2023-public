@@ -53,9 +53,6 @@ class UserPreferencesFragment: Fragment() {
             context = activity!!,
             datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
         )
-        MainViewerActivity.refreshManager.addRefreshListener("user-preferences") {
-            adapter.notifyDataSetChanged()
-        }
         root.lv_user_datapoints.adapter = adapter
 
     }

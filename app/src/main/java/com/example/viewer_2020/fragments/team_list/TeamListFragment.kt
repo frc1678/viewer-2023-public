@@ -1,6 +1,7 @@
 package com.example.viewer_2020.fragments.team_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ class TeamListFragment() : Fragment() {
     private val teamDetailsFragmentArguments = Bundle()
     private val list: List<String> = MainViewerActivity.teamList.sortedBy{it.toInt()}
 
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,11 +51,17 @@ class TeamListFragment() : Fragment() {
             context = activity!!,
             items = list
         )
-        MainViewerActivity.refreshManager.addRefreshListener("team-list") {
-            adapter.notifyDataSetInvalidated()
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: team-list")
+                adapter.notifyDataSetInvalidated()
+            }
         }
         root.lv_team_list.adapter = adapter
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
+    }
 }

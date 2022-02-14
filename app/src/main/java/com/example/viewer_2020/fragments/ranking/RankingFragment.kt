@@ -38,6 +38,9 @@ class RankingFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
 
+    private var refreshId: String? = null
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -67,8 +70,11 @@ class RankingFragment : Fragment() {
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             MainViewerActivity.teamList
         ))
-        MainViewerActivity.refreshManager.addRefreshListener("ranking") {
-            adapter.notifyDataSetChanged()
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: ranking")
+                adapter.notifyDataSetChanged()
+            }
         }
         root.lv_ranking.adapter = adapter
 
@@ -105,5 +111,10 @@ class RankingFragment : Fragment() {
         ft.replace(R.id.nav_host_fragment, predictedRankingFragment, "predRankings")
             .commit()
         return
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }

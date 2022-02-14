@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.viewer_2020.MainViewerActivity
 import com.example.viewer_2020.MainViewerActivity.UserDatapoints
 import com.example.viewer_2020.R
 import com.example.viewer_2020.constants.Constants
@@ -29,6 +30,8 @@ import kotlinx.android.synthetic.main.match_details.view.*
 class MatchDetailsFragment : Fragment() {
     private var matchNumber: Int? = null
     private var hasActualData: Boolean? = null
+
+    private var refreshId: String? = null
 
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
@@ -70,13 +73,14 @@ class MatchDetailsFragment : Fragment() {
                 teamNumber.text = getMatchSchedule()[matchNumber.toString()]!!.redTeams[getTeamNumbersXML(root).indexOf(teamNumber) - 3]
             }
 
-            // We run this method because the code above sets each team number text view to the
-            // specified team number, and both the updateTeamListViews method and
-            // the initTeamNumberClickListener methods pull the text view's text
-            // value to access each team number.
-            updateTeamListViews(root)
-            initTeamNumberClickListeners(root)
+
         }
+        // We run this method because the code above sets each team number text view to the
+        // specified team number, and both the updateTeamListViews method and
+        // the initTeamNumberClickListener methods pull the text view's text
+        // value to access each team number.
+        updateTeamListViews(root)
+        initTeamNumberClickListeners(root)
         return root
     }
 
@@ -139,12 +143,20 @@ class MatchDetailsFragment : Fragment() {
 
         val datapointsDisplay = (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else datapointsList)
 
-        root.lv_match_details.adapter =
-            MatchDetailsAdapter(
-                context = activity!!,
-                datapointsDisplay = datapointsDisplay,
-                teamNumber = getTeamNumbersList(root)
-            )
+        val adapter = MatchDetailsAdapter(
+            context = activity!!,
+            datapointsDisplay = datapointsDisplay,
+            teamNumber = getTeamNumbersList(root)
+        )
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: match-details")
+                adapter.notifyDataSetChanged()
+            }
+        }
+
+        root.lv_match_details.adapter = adapter
+
 //        }
     }
 
@@ -201,5 +213,10 @@ class MatchDetailsFragment : Fragment() {
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
             Constants.RED, matchNumber.toString(),
             "has_actual_data").toBoolean()))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }

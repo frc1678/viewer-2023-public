@@ -27,6 +27,7 @@ import androidx.core.view.GravityCompat
 import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
@@ -45,8 +46,10 @@ import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.map_popup.view.*
 import java.io.*
+import kotlin.time.ExperimentalTime
 
 // Main activity class that handles the dual fragment view.
+@OptIn(ExperimentalTime::class)
 class MainViewerActivity : ViewerActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
@@ -113,6 +116,8 @@ class MainViewerActivity : ViewerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        refreshManager.start(lifecycleScope)
 
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
