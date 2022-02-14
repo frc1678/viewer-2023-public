@@ -68,7 +68,7 @@ open class MatchScheduleFragment : IFrag(){
                     matchesWanted = getMatchSchedule((if (scheduleType == Constants.ScheduleType.OUR_MATCHES) listOf(Constants.MY_TEAM_NUMBER) else listOf()), scheduleType == Constants.ScheduleType.STARRED_MATCHES)
                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, scheduleType)
                 } else {
-                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, ScheduleType.OUR_MATCHES)
+                     (adapter as MatchScheduleListAdapter).updateData(matchesWanted, Constants.ScheduleType.OUR_MATCHES)
                  }
             }
             override fun afterTextChanged(s: Editable) {}
