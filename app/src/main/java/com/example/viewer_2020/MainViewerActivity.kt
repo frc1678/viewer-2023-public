@@ -73,6 +73,7 @@ class MainViewerActivity : ViewerActivity() {
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
+        val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
     }
 
     //Overrides back button to go back to last fragment.
@@ -129,6 +130,13 @@ class MainViewerActivity : ViewerActivity() {
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
+            if(it !in Constants.CATEGORY_NAMES){
+                getRankingList(it, true)
+                getRankingList(it, false)
+            }
+        }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2020.R
+import com.example.viewer_2020.TeamRankingItem
 import com.example.viewer_2020.constants.Constants
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 

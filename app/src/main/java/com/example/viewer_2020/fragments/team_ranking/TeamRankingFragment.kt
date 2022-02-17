@@ -9,11 +9,10 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.viewer_2020.MainViewerActivity
 import com.example.viewer_2020.R
+import com.example.viewer_2020.*
 import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
-import com.example.viewer_2020.getTeamDataValue
-import kotlinx.android.synthetic.main.fragment_team_ranking.*
 import kotlinx.android.synthetic.main.fragment_team_ranking.view.*
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 
@@ -63,12 +62,11 @@ class TeamRankingFragment : Fragment() {
 
     private fun setupAdapter(root: View) {
 
-
-        lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getData(descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+        lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
         if(refreshId == null){
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {
                 Log.d("data-refresh", "Updated: team-ranking")
-                lvAdapter?.updateItems(getData(descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+                lvAdapter?.updateItems(getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
 
             }
         }
@@ -88,27 +86,6 @@ class TeamRankingFragment : Fragment() {
                 teamDetailsFragment
             ).commit()
         }
-    }
-
-    private fun getData(descending: Boolean): List<TeamRankingItem> {
-        val data = mutableListOf<TeamRankingItem>()
-
-        MainViewerActivity.teamList.forEach {
-            val value = getTeamDataValue(it, dataPoint!!).toFloatOrNull()
-            data.add(
-                TeamRankingItem(
-                    it,
-                    value?.let { it1 -> floatToString(it1) } ?: Constants.NULL_CHARACTER))
-        }
-
-        val nullTeams = data.filter { item -> item.value == Constants.NULL_CHARACTER }
-        val dataTeams = data.filter { item -> item.value != Constants.NULL_CHARACTER }
-
-        var sortedData = dataTeams.sortedWith(compareBy { it.value.toFloatOrNull() })
-
-        if (descending) sortedData = sortedData.reversed()
-
-        return sortedData + nullTeams
     }
 
     override fun onDestroy() {

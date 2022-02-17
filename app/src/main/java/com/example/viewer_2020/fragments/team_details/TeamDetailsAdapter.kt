@@ -22,6 +22,7 @@ import java.lang.Float.parseFloat
 import java.util.regex.Pattern
 import android.widget.FrameLayout
 import com.example.viewer_2020.fragments.team_ranking.TeamRankingFragment
+import com.example.viewer_2020.getRankingTeam
 
 // Custom list adapter class for each list view of the six teams featured in every MatchDetails display.
 // TODO implement a type 'Team' object parameter to access the team data for the team number.
@@ -116,7 +117,10 @@ class TeamDetailsAdapter(
                 )
             }
         }
-
+        if (e in Constants.RANKABLE_FIELDS) {
+            rowView.tv_ranking.text =
+                getRankingTeam(teamNumber, e, Constants.RANKABLE_FIELDS[e]!!)
+        }
         rowView.setOnClickListener() {
             if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
                 Constants.GRAPHABLE_BOOL.contains(datapointsDisplayed[position]) or
@@ -132,45 +136,45 @@ class TeamDetailsAdapter(
             }
         }
 
-            //Headers don't need on click handlers
-            if (!isHeader) {
-                //Some fields (eg drivetrain_motor_type) don't need to be rankable
-                if (e in Constants.RANKABLE_FIELDS.keys) {
-                    rowView.setOnLongClickListener {
-                        val teamRankingFragment = TeamRankingFragment()
-                        val teamRankingFragmentArguments = Bundle()
-                        val teamRankingFragmentTransaction =
-                            context.supportFragmentManager.beginTransaction()
+        //Headers don't need on click handlers
+        if (!isHeader) {
+            //Some fields (eg drivetrain_motor_type) don't need to be rankable
+            if (e in Constants.RANKABLE_FIELDS.keys) {
+                rowView.setOnLongClickListener {
+                    val teamRankingFragment = TeamRankingFragment()
+                    val teamRankingFragmentArguments = Bundle()
+                    val teamRankingFragmentTransaction =
+                        context.supportFragmentManager.beginTransaction()
 
-                        //add the data point key to the bundle
-                        teamRankingFragmentArguments.putString(TeamRankingFragment.DATA_POINT, e)
-                        //add the team number to the bundle
-                        teamRankingFragmentArguments.putString(
-                            TeamRankingFragment.TEAM_NUMBER,
-                            teamNumber
-                        )
+                    //add the data point key to the bundle
+                    teamRankingFragmentArguments.putString(TeamRankingFragment.DATA_POINT, e)
+                    //add the team number to the bundle
+                    teamRankingFragmentArguments.putString(
+                        TeamRankingFragment.TEAM_NUMBER,
+                        teamNumber
+                    )
 
-                        //attach the bundle to the fragment
-                        teamRankingFragment.arguments = teamRankingFragmentArguments
+                    //attach the bundle to the fragment
+                    teamRankingFragment.arguments = teamRankingFragmentArguments
 
 //                println((it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup))
 
-                        //the reason i have to do so many .parent calls is because this cell is so far back the the stack
-                        //normally i would have done it from the fragment but i forgot about that
-                        //this could also be fixed with some other way to get the id
-                        //if something breaks from someone just changing xml. this is why
-                        teamRankingFragmentTransaction.addToBackStack(null).replace(
-                            (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
-                            teamRankingFragment
-                        ).commit()
+                    //the reason i have to do so many .parent calls is because this cell is so far back the the stack
+                    //normally i would have done it from the fragment but i forgot about that
+                    //this could also be fixed with some other way to get the id
+                    //if something breaks from someone just changing xml. this is why
+                    teamRankingFragmentTransaction.addToBackStack(null).replace(
+                        (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
+                        teamRankingFragment
+                    ).commit()
 
-                        println(e)
-                        //return true says that the onLongClick was handled successfully so haptic feedback can happen correctly
-                        return@setOnLongClickListener true
-                    }
+                    println(e)
+                    //return true says that the onLongClick was handled successfully so haptic feedback can happen correctly
+                    return@setOnLongClickListener true
                 }
-
             }
+
+        }
 
         return rowView
     }
