@@ -46,10 +46,8 @@ import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.map_popup.view.*
 import java.io.*
-import kotlin.time.ExperimentalTime
 
 // Main activity class that handles the dual fragment view.
-@OptIn(ExperimentalTime::class)
 class MainViewerActivity : ViewerActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
