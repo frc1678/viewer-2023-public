@@ -26,10 +26,10 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED: List<String> = listOf(
             "Auto",
+            "auto_line",
             "start_position",
             "auto_balls_low",
             "auto_balls_high",
-            "auto_line",
             "Tele",
             "tele_balls_low",
             "tele_balls_high",
