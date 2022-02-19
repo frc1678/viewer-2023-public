@@ -16,7 +16,6 @@ import com.example.viewer_2020.constants.Translations
 import com.example.viewer_2020.getTIMDataValueByMatch
 import com.example.viewer_2020.getTeamDataValue
 import kotlinx.android.synthetic.main.match_details_cell.view.*
-import java.util.regex.Pattern
 
 class MatchDetailsAdapter(
     private val context: FragmentActivity,
@@ -86,9 +85,9 @@ class MatchDetailsAdapter(
     private fun getTeamValue(teamNumber: String, field: String): String {
         // If the datafield is a float, round the datapoint.
         // Otherwise, get returned string from getTeamDataValue.
-        val regex: Pattern = Pattern.compile("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
+        val regex = Regex("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
         val dataValue = getTeamDataValue(teamNumber, field)
-        return if (regex.matcher(dataValue).matches()) {
+        return if (regex matches dataValue) {
             if (field in Constants.DRIVER_DATA) "%.2f".format(dataValue.toFloat())
             else "%.1f".format(dataValue.toFloat())
         } else getTeamDataValue(teamNumber, field)
