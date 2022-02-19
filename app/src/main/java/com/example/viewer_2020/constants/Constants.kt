@@ -216,8 +216,7 @@ class Constants {
             "avg_exit_ball_catches" to true,
             "max_exit_ball_catches" to true,
             "avg_opp_balls_scored" to true,
-            "max_opp_balls_scored" to true,
-            "drivetrain_motors" to true
+            "max_opp_balls_scored" to true
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
