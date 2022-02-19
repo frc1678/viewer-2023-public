@@ -46,6 +46,12 @@ import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.map_popup.view.*
 import java.io.*
+import com.example.viewer_2020.R
+import androidx.fragment.app.FragmentActivity
+
+import org.honorato.multistatetogglebutton.MultiStateToggleButton
+import org.honorato.multistatetogglebutton.ToggleButton
+
 
 // Main activity class that handles the dual fragment view.
 class MainViewerActivity : ViewerActivity() {
@@ -327,10 +333,19 @@ class MainViewerActivity : ViewerActivity() {
         val button = mapItem.actionView
         button.setOnClickListener {
             val popupView = View.inflate(this, R.layout.map_popup, null)
+            val tbMapAlliance = popupView.tb_map_alliance as MultiStateToggleButton
+            tbMapAlliance.value = 1
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
+            tbMapAlliance.setOnValueChangedListener { position ->
+                when (position) {
+                    0 -> popupView.map.setImageResource(R.drawable.field_map_red)
+                    1 -> popupView.map.setImageResource(R.drawable.field_map)
+                    2 -> popupView.map.setImageResource(R.drawable.field_map_blue)
+                }
+            }
             popupView.close_button.setOnClickListener {
                 popupWindow.dismiss()
             }

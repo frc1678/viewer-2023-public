@@ -34,4 +34,10 @@
 
     </string-array>
 
+    <string-array name="map_tb_array">
+        <item>Red</item>
+        <item>None</item>
+        <item>Blue</item>
+    </string-array>
+
 </resources>
