@@ -126,6 +126,14 @@ class GraphsFragment() : Fragment() {
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
+            } else if (datapoint == "mode_climb_level"){
+                when(timDataListClimbLevel!![index]){
+                    "Low" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "Mid" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "High" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "Traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
+                    else -> entries.add(BarEntry(index.toFloat(), 0F))
+                }
             } else if (datapoint == "climb_percent_success"){
                 if((timData != "none") and (timData != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(index.toFloat(), 1F))
@@ -181,6 +189,9 @@ class GraphsFragment() : Fragment() {
 
         //set yAxis minimum to 0
         root.bar_chart.axisLeft.axisMinimum = 0F
+        if(datapoint!! in Constants.GRAPHABLE_BOOL){
+            root.bar_chart.axisLeft.axisMaximum = 1F
+        }
 
         //Convert y-axis values to integers
         val intValueFormatter: ValueFormatter = object : ValueFormatter() {

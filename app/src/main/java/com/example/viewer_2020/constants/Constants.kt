@@ -157,7 +157,8 @@ class Constants {
             "low_avg_time",
             "mid_avg_time",
             "high_avg_time",
-            "traversal_avg_time"
+            "traversal_avg_time",
+            "mode_climb_level"
         )
 
       val DRIVER_DATA: List<String> = listOf(
