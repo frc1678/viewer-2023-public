@@ -1,7 +1,7 @@
 package com.example.viewer_2020.fragments.team_details
 
+import android.graphics.Canvas
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,14 +20,13 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import kotlinx.android.synthetic.main.fragment_graphs.view.*
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.formatter.IAxisValueFormatter
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.github.mikephil.charting.utils.ViewPortHandler
-import java.lang.Math.round
+import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.renderer.XAxisRenderer
+import com.github.mikephil.charting.utils.MPPointF
+import com.github.mikephil.charting.utils.Utils
 import kotlin.math.roundToInt
 
-class GraphsFragment : Fragment() {
+class GraphsFragment() : Fragment() {
     private var teamNumber: String? = null
     private var datapoint: String? = null
     private val matchDetailsFragmentArguments = Bundle()
@@ -57,8 +56,6 @@ class GraphsFragment : Fragment() {
             getTIMDataValue(teamNumber!!, timDatapoint!!,
                 Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
         }
-
-        Log.e("here", "$timDataMap")
 
         var timDataMapClimbLevel : List<String>? = null
         if(Constants.GRAPHABLE_CLIMB_TIMES.contains(datapoint!!)){
@@ -156,7 +153,6 @@ class GraphsFragment : Fragment() {
         //chart the data
         val data = BarData(barDataSet)
         root.bar_chart.data = data
-        Log.e("here", "data: $entries")
 
         //set color of bars
         barDataSet.setColors(ContextCompat.getColor(
@@ -186,10 +182,6 @@ class GraphsFragment : Fragment() {
 
         //set yAxis minimum to 0
         root.bar_chart.axisLeft.axisMinimum = 0F
-        root.bar_chart.xAxis.axisMinimum = -0.4F
-        root.bar_chart.xAxis.axisMaximum = (barDataSet.entryCount - 1.6).toFloat()
-
-        //val dataSet = BarDataSet(listToDataPoints(getValues()), "")
 
         //Convert y-axis values to integers
         val intValueFormatter: ValueFormatter = object : ValueFormatter() {
@@ -200,24 +192,61 @@ class GraphsFragment : Fragment() {
         }
         root.bar_chart.axisLeft.valueFormatter = intValueFormatter
         barDataSet.valueFormatter = intValueFormatter
-        barDataSet.axisDependency
 
+        //draw x-axis labels, centered beneath the bars
         root.bar_chart.xAxis.setDrawLabels(true)
         root.bar_chart.xAxis.setCenterAxisLabels(true)
 
-        val xValueFormatter: ValueFormatter = object : ValueFormatter(){
-            override fun getFormattedValue(value: Float): String {
-                Log.e("here", "value: $value, ${value.roundToInt()}")
-                return "Q${timDataMap.keys.toList()[value.roundToInt()]}"
+        //customize xAxisRenderer to display labels at specific positions
+        val specificPositionLabelsXAxisRenderer : XAxisRenderer = object : XAxisRenderer(
+            root.bar_chart.viewPortHandler, root.bar_chart.xAxis, root.bar_chart.getTransformer(YAxis.AxisDependency.LEFT)) {
+            override fun drawLabels(c: Canvas, pos: Float, anchor: MPPointF) {
+                val specificLabelPositions: MutableList<Float> = mutableListOf()
+                for (i in 0 until timDataMap.size){
+                    specificLabelPositions.add(i.toFloat())
+                }
+                val labelRotationAngleDegrees = mXAxis.labelRotationAngle
+                val positions = FloatArray(specificLabelPositions.size * 2)
+                for (i in positions.indices step 2) {
+                    positions[i] = specificLabelPositions[i / 2]
+                }
+
+                mTrans.pointValuesToPixel(positions)
+
+                for (i in positions.indices step 2) {
+                    var x = positions[i]
+                    if (mViewPortHandler.isInBoundsX(x)) {
+                        val label = mXAxis.valueFormatter.getFormattedValue(specificLabelPositions[i / 2], mXAxis)
+                        if (mXAxis.isAvoidFirstLastClippingEnabled) {
+                            // avoid clipping of the last
+                            if (i == mXAxis.mEntryCount - 1 && mXAxis.mEntryCount > 1) {
+                                val width = Utils.calcTextWidth(mAxisLabelPaint, label)
+                                if (width > mViewPortHandler.offsetRight() * 2 && x + width > mViewPortHandler.chartWidth)
+                                    x -= width / 2
+                                // avoid clipping of the first
+                            } else if (i == 0) {
+                                val width = Utils.calcTextWidth(mAxisLabelPaint, label)
+                                x += width / 2
+                            }
+                        }
+
+                        drawLabel(c, label, x, pos, anchor, labelRotationAngleDegrees)
+                    }
+                }
             }
         }
-        Log.e("here", "entry count: ${barDataSet.entryCount}")
-        root.bar_chart.xAxis.setLabelCount(barDataSet.entryCount, true)
-        root.bar_chart.xAxis.valueFormatter = xValueFormatter
-        Log.e("here", "label count: ${root.bar_chart.xAxis.labelCount}")
-        //root.bar_chart.xAxis.setSpaceBetweenLabels(2)
+        root.bar_chart.setXAxisRenderer(specificPositionLabelsXAxisRenderer)
 
-        //root.bar_chart.barData.barWidth = 5f
+        //format xAxis labels to be Q then the appropriate match number as an integer
+        val xValueFormatter: ValueFormatter = object : ValueFormatter(){
+            override fun getFormattedValue(value: Float): String {
+                return "Q${timDataMap.keys.toList()[value.toInt()]}"
+            }
+        }
+        root.bar_chart.xAxis.valueFormatter = xValueFormatter
+
+        //set the number of labels so there won't be extra labels or missing labels
+        root.bar_chart.xAxis.setLabelCount(barDataSet.entryCount, true)
 
         //show grid lines
         root.bar_chart.axisLeft.setDrawGridLines(true)
