@@ -1,6 +1,7 @@
 package com.example.viewer_2020.fragments.team_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,8 @@ import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.utils.ViewPortHandler
+import java.lang.Math.round
+import kotlin.math.roundToInt
 
 class GraphsFragment : Fragment() {
     private var teamNumber: String? = null
@@ -55,98 +58,105 @@ class GraphsFragment : Fragment() {
                 Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
         }
 
-        var timDataMapClimbLevel : Map<String, String>? = null
+        Log.e("here", "$timDataMap")
+
+        var timDataMapClimbLevel : List<String>? = null
         if(Constants.GRAPHABLE_CLIMB_TIMES.contains(datapoint!!)){
             timDataMapClimbLevel = getTIMDataValue(teamNumber!!, "climb_level",
-                Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
+                Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value).values.toList()
         }
 
         //add data to a list of BarEntries so it can be added to the chart
         val entries: ArrayList<BarEntry> = ArrayList()
-        for(timData in timDataMap){
+        for((index, timData) in timDataMap.values.withIndex()){
             if((datapoint=="matches_incap") or (datapoint=="climb_all_attempts")){
-                if((timData.value != "0") and (timData.value != Constants.NULL_CHARACTER)){
-                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                if((timData != "0") and (timData != Constants.NULL_CHARACTER)){
+                    entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint=="low_rung_successes"){
-                if(timData.value == "Low"){
-                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                if(timData == "Low"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint=="mid_rung_successes"){
-                if(timData.value == "Mid"){
-                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                if(timData == "Mid"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint=="high_rung_successes"){
-                if(timData.value == "High"){
-                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                if(timData == "High"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint=="traversal_rung_successes"){
-                if(timData.value == "Traversal"){
-                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                if(timData == "Traversal"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "climb_all_success_avg_time"){
-                if((timDataMapClimbLevel!![timData.key] != "none") and
-                    (timDataMapClimbLevel[timData.key] != Constants.NULL_CHARACTER)){
-                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                if((timDataMapClimbLevel!![index] != "none") and
+                    (timDataMapClimbLevel[index] != Constants.NULL_CHARACTER)){
+                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "low_avg_time"){
-                if(timDataMapClimbLevel!![timData.key] == "Low"){
-                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                if(timDataMapClimbLevel!![index] == "Low"){
+                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "mid_avg_time"){
-                if(timDataMapClimbLevel!![timData.key] == "Mid"){
-                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                if(timDataMapClimbLevel!![index] == "Mid"){
+                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "high_avg_time"){
-                if(timDataMapClimbLevel!![timData.key] == "High"){
-                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                if(timDataMapClimbLevel!![index] == "High"){
+                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "traversal_avg_time"){
-                if(timDataMapClimbLevel!![timData.key] == "Traversal"){
-                    entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+                if(timDataMapClimbLevel!![index] == "Traversal"){
+                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "climb_percent_success"){
-                if((timData.value != "none") and (timData.value != Constants.NULL_CHARACTER)){
-                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                if((timData != "none") and (timData != Constants.NULL_CHARACTER)){
+                    entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             }
             else if(Constants.GRAPHABLE_BOOL.contains(datapoint!!)) {
-                if (timData.value == "true") {
-                    entries.add(BarEntry(timData.key.toFloat(), 1F))
+                if (timData == "true") {
+                    entries.add(BarEntry(index.toFloat(), 1F))
                 }else{
-                    entries.add(BarEntry(timData.key.toFloat(), 0F))
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
-            } else if(timData.value != Constants.NULL_CHARACTER){
-                entries.add(BarEntry(timData.key.toFloat(), timData.value.toFloat()))
+            } else if(timData != Constants.NULL_CHARACTER){
+                entries.add(BarEntry(index.toFloat(), timData.toFloat()))
             } else{
-                entries.add(BarEntry(timData.key.toFloat(), 0F))
+                entries.add(BarEntry(index.toFloat(), 0F))
             }
         }
 
         //make the list of entries into a BarDataSet so it can be added to the chart
         val barDataSet = BarDataSet(entries, "")
+
+        //chart the data
+        val data = BarData(barDataSet)
+        root.bar_chart.data = data
+        Log.e("here", "data: $entries")
 
         //set color of bars
         barDataSet.setColors(ContextCompat.getColor(
@@ -157,10 +167,10 @@ class GraphsFragment : Fragment() {
         barDataSet.valueTextSize = 12F
 
         //set labels to only be integers
-        root.bar_chart.xAxis.granularity = 1f
         root.bar_chart.xAxis.isGranularityEnabled = true
-        root.bar_chart.axisLeft.granularity = 1f
+        root.bar_chart.xAxis.granularity = 1f
         root.bar_chart.axisLeft.isGranularityEnabled = true
+        root.bar_chart.axisLeft.granularity = 1f
 
         //add extra margins around the chart to accommodate increased text size of labels
         root.bar_chart.extraBottomOffset = 15F
@@ -168,19 +178,16 @@ class GraphsFragment : Fragment() {
         root.bar_chart.extraRightOffset = 10F
 
         //increase text size of labels (the numbers on the axes)
-        root.bar_chart.xAxis.textSize = 18F
-        root.bar_chart.axisLeft.textSize = 18F
+        root.bar_chart.xAxis.textSize = 15F
+        root.bar_chart.axisLeft.textSize = 15F
 
         //put xAxis on the bottom instead of the top
         root.bar_chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
 
         //set yAxis minimum to 0
         root.bar_chart.axisLeft.axisMinimum = 0F
-        root.bar_chart.xAxis.axisMinimum=1F
-
-        //chart the data
-        val data = BarData(barDataSet)
-        root.bar_chart.data = data
+        root.bar_chart.xAxis.axisMinimum = -0.4F
+        root.bar_chart.xAxis.axisMaximum = (barDataSet.entryCount - 1.6).toFloat()
 
         //val dataSet = BarDataSet(listToDataPoints(getValues()), "")
 
@@ -196,19 +203,21 @@ class GraphsFragment : Fragment() {
         barDataSet.axisDependency
 
         root.bar_chart.xAxis.setDrawLabels(true)
+        root.bar_chart.xAxis.setCenterAxisLabels(true)
 
         val xValueFormatter: ValueFormatter = object : ValueFormatter(){
-            override fun getAxisLabel(value: Float, axisBase: AxisBase): String {
-                return "Q${value.toInt()}"
+            override fun getFormattedValue(value: Float): String {
+                Log.e("here", "value: $value, ${value.roundToInt()}")
+                return "Q${timDataMap.keys.toList()[value.roundToInt()]}"
             }
         }
+        Log.e("here", "entry count: ${barDataSet.entryCount}")
         root.bar_chart.xAxis.setLabelCount(barDataSet.entryCount, true)
-        root.bar_chart.xAxis.setCenterAxisLabels(true)
         root.bar_chart.xAxis.valueFormatter = xValueFormatter
+        Log.e("here", "label count: ${root.bar_chart.xAxis.labelCount}")
         //root.bar_chart.xAxis.setSpaceBetweenLabels(2)
 
-
-        root.bar_chart.barData.barWidth = 5f
+        //root.bar_chart.barData.barWidth = 5f
 
         //show grid lines
         root.bar_chart.axisLeft.setDrawGridLines(true)
@@ -244,7 +253,7 @@ class GraphsFragment : Fragment() {
                 override fun onValueSelected(e: Entry?, h: Highlight?) {
                     root.bar_chart.setTouchEnabled(false)
                     //set match number to the x value of the entry selected
-                    val matchNumberClicked: Int = e!!.x.toInt()
+                    val matchNumberClicked: Int = timDataMap.keys.toList()[e!!.x.toInt()].toInt()
                     matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER, matchNumberClicked)
                     matchDetailsFragment.arguments = matchDetailsFragmentArguments
                     fragmentManager!!.beginTransaction().addToBackStack(null).replace(
