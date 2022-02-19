@@ -143,7 +143,9 @@ class MatchDetailsFragment : Fragment() {
             MatchDetailsAdapter(
                 context = activity!!,
                 datapointsDisplay = datapointsDisplay,
-                teamNumber = getTeamNumbersList(root)
+                matchNumber = matchNumber!!,
+                teamNumbers = getTeamNumbersList(root),
+                hasActualData = hasActualData!!
             )
 //        }
     }
