@@ -2,8 +2,8 @@
   "selected": "NONE",
   "NONE": [
     "Auto",
-    "mode_start_position",
     "auto_line_successes",
+    "mode_start_position",
     "auto_avg_balls_low",
     "auto_avg_balls_high",
     "auto_max_balls_low",
@@ -27,8 +27,8 @@
   ],
   "AUSTIN": [
     "Auto",
-    "mode_start_position",
     "auto_line_successes",
+    "mode_start_position",
     "auto_avg_balls_low",
     "auto_avg_balls_high",
     "auto_max_balls_low",
@@ -52,6 +52,7 @@
   ],
   "DAVE": [
     "Auto",
+    "auto_line_successes",
     "mode_start_position",
     "auto_line_successes",
     "auto_avg_balls_low",
@@ -77,8 +78,8 @@
   ],
   "KATE": [
     "Auto",
-    "mode_start_position",
     "auto_line_successes",
+    "mode_start_position",
     "auto_avg_balls_low",
     "auto_avg_balls_high",
     "auto_max_balls_low",
@@ -123,8 +124,8 @@
   ],
   "RICHARD": [
     "Auto",
-    "mode_start_position",
     "auto_line_successes",
+    "mode_start_position",
     "auto_avg_balls_low",
     "auto_avg_balls_high",
     "auto_max_balls_low",
