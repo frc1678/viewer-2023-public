@@ -24,7 +24,6 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.renderer.XAxisRenderer
 import com.github.mikephil.charting.utils.MPPointF
 import com.github.mikephil.charting.utils.Utils
-import kotlin.math.roundToInt
 
 class GraphsFragment() : Fragment() {
     private var teamNumber: String? = null
@@ -57,9 +56,9 @@ class GraphsFragment() : Fragment() {
                 Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
         }
 
-        var timDataMapClimbLevel : List<String>? = null
+        var timDataListClimbLevel : List<String>? = null
         if(Constants.GRAPHABLE_CLIMB_TIMES.contains(datapoint!!)){
-            timDataMapClimbLevel = getTIMDataValue(teamNumber!!, "climb_level",
+            timDataListClimbLevel = getTIMDataValue(teamNumber!!, "climb_level",
                 Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value).values.toList()
         }
 
@@ -97,35 +96,43 @@ class GraphsFragment() : Fragment() {
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "climb_all_success_avg_time"){
-                if((timDataMapClimbLevel!![index] != "none") and
-                    (timDataMapClimbLevel[index] != Constants.NULL_CHARACTER)){
+                if((timDataListClimbLevel!![index] != "none") and
+                    (timDataListClimbLevel[index] != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "low_avg_time"){
-                if(timDataMapClimbLevel!![index] == "Low"){
+                if(timDataListClimbLevel!![index] == "Low"){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "mid_avg_time"){
-                if(timDataMapClimbLevel!![index] == "Mid"){
+                if(timDataListClimbLevel!![index] == "Mid"){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "high_avg_time"){
-                if(timDataMapClimbLevel!![index] == "High"){
+                if(timDataListClimbLevel!![index] == "High"){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "traversal_avg_time"){
-                if(timDataMapClimbLevel!![index] == "Traversal"){
+                if(timDataListClimbLevel!![index] == "Traversal"){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
+                }
+            } else if (datapoint == "mode_climb_level"){
+                when(timDataListClimbLevel!![index]){
+                    "Low" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "Mid" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "High" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "Traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
+                    else -> entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "climb_percent_success"){
                 if((timData != "none") and (timData != Constants.NULL_CHARACTER)){
@@ -182,6 +189,9 @@ class GraphsFragment() : Fragment() {
 
         //set yAxis minimum to 0
         root.bar_chart.axisLeft.axisMinimum = 0F
+        if(datapoint!! in Constants.GRAPHABLE_BOOL){
+            root.bar_chart.axisLeft.axisMaximum = 1F
+        }
 
         //Convert y-axis values to integers
         val intValueFormatter: ValueFormatter = object : ValueFormatter() {
