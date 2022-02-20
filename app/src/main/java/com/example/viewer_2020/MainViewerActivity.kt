@@ -32,6 +32,7 @@ import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
+import com.example.viewer_2020.data.TeamInMatch
 import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
 import com.example.viewer_2020.fragments.match_schedule.StarredMatchesFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityFragment
@@ -74,6 +75,33 @@ class MainViewerActivity : ViewerActivity() {
         var currentRankingMenuItem: MenuItem? = null
         var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
+        var timCache = object : HashSet<TeamInMatch>() {
+            /**
+             * The largest size the cache can have. If the cache size exceeds this, the cache will
+             * be cleared.
+             */
+            val maxCacheSize = 6
+
+            /**
+             * Adds the given TIM object to the cache. If the cache size exceeds the
+             * [max cache size][maxCacheSize], then the cache is cleared.
+             * @see java.util.HashSet.add
+             */
+            override fun add(element: TeamInMatch): Boolean {
+                if (this.size >= maxCacheSize) this.clear()
+                return super.add(element)
+            }
+
+            /**
+             * Adds the given TIM objects to the cache. If the cache size exceeds the
+             * [max cache size][maxCacheSize], then the cache is cleared.
+             * @see java.util.HashSet.addAll
+             */
+            override fun addAll(elements: Collection<TeamInMatch>): Boolean {
+                if (this.size + elements.size > maxCacheSize) this.clear()
+                return super.addAll(elements)
+            }
+        }
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
