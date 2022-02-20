@@ -26,10 +26,10 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED: List<String> = listOf(
             "Auto",
+            "auto_line",
             "start_position",
             "auto_balls_low",
             "auto_balls_high",
-            "auto_line",
             "Tele",
             "tele_balls_low",
             "tele_balls_high",
@@ -57,10 +57,10 @@ class Constants {
             "first_pickability",
             "second_pickability",
             "Auto",
+            "auto_line_successes",
             "auto_avg_balls_low",
             "auto_avg_balls_high",
             "auto_avg_balls_total",
-            "auto_line_successes",
             "auto_max_balls_low",
             "auto_max_balls_high",
             "auto_sd_balls_low",
@@ -157,7 +157,8 @@ class Constants {
             "low_avg_time",
             "mid_avg_time",
             "high_avg_time",
-            "traversal_avg_time"
+            "traversal_avg_time",
+            "mode_climb_level"
         )
 
       val DRIVER_DATA: List<String> = listOf(
@@ -216,8 +217,7 @@ class Constants {
             "avg_exit_ball_catches" to true,
             "max_exit_ball_catches" to true,
             "avg_opp_balls_scored" to true,
-            "max_opp_balls_scored" to true,
-            "drivetrain_motors" to true
+            "max_opp_balls_scored" to true
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
