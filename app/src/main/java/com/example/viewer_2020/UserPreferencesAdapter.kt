@@ -1,6 +1,7 @@
 package com.example.viewer_2020
 
 import android.content.Context
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -77,6 +78,8 @@ class UserPreferencesAdapter(
 
         val datapointsArray = UserDatapoints.contents?.get(userName)?.asJsonArray
 
+        Log.e("bobbo", "$userName}")
+        Log.e("bobbo", "$datapointsArray}")
         for (datapoint in datapointsArray!!) {
             if (datapoint.asString == datapointName){
                 chosenDatapoints.add(datapointName)
