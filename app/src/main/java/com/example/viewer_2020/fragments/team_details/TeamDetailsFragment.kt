@@ -36,9 +36,11 @@ import java.util.*
 
 // The fragment class for the Team Details display that occurs when you click on a
 // team in the match details page.
-class TeamDetailsFragment : IFrag() {
+class TeamDetailsFragment : Fragment() {
     private var teamNumber: String? = null
     private var teamName: String? = null
+
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,11 +84,17 @@ class TeamDetailsFragment : IFrag() {
         // We set the adapter for their list view according to
         // the team number and the current section. We also include a list of the
         // data points we expect to be displayed on the TeamDetails list view.
-        adapter = TeamDetailsAdapter(
+        val adapter = TeamDetailsAdapter(
             context = activity!!,
             datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS,
             teamNumber = teamNumber!!
         )
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: team-details")
+                adapter.notifyDataSetChanged()
+            }
+        }
         root.lv_datapoint_display.adapter = adapter
 
     }
@@ -114,5 +122,10 @@ class TeamDetailsFragment : IFrag() {
                     .commit()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }

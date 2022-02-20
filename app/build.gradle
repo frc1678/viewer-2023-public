@@ -34,6 +34,13 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            freeCompilerArgs += [
+                    '-Xopt-in=kotlin.time.ExperimentalTime',
+            ]
+        }
+    }
 }
 
 dependencies {
@@ -56,5 +63,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
     implementation 'org.honorato.multistatetogglebutton:multistatetogglebutton:0.2.2'
 }

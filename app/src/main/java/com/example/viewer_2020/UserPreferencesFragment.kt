@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.viewer_2020.MainViewerActivity.UserDatapoints
 import com.example.viewer_2020.constants.Constants
 import com.google.gson.JsonArray
@@ -11,7 +12,7 @@ import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.fragment_user_pref.view.*
 import java.io.InputStreamReader
 
-class UserPreferencesFragment: IFrag() {
+class UserPreferencesFragment: Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,7 +49,7 @@ class UserPreferencesFragment: IFrag() {
     }
 
     private fun updateUserDatapointsListView(root: View) {
-        adapter = UserPreferencesAdapter(
+        val adapter = UserPreferencesAdapter(
             context = activity!!,
             datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
         )

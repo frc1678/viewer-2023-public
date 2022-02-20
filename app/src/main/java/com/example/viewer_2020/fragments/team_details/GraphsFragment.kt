@@ -28,14 +28,12 @@ import com.github.mikephil.charting.utils.Utils
 class GraphsFragment() : Fragment() {
     private var teamNumber: String? = null
     private var datapoint: String? = null
-    private val matchDetailsFragmentArguments = Bundle()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_graphs, container, false)
-        val matchDetailsFragment = MatchDetailsFragment()
 
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
@@ -293,6 +291,8 @@ class GraphsFragment() : Fragment() {
                     root.bar_chart.setTouchEnabled(false)
                     //set match number to the x value of the entry selected
                     val matchNumberClicked: Int = timDataMap.keys.toList()[e!!.x.toInt()].toInt()
+                    val matchDetailsFragment = MatchDetailsFragment()
+                    val matchDetailsFragmentArguments = Bundle()
                     matchDetailsFragmentArguments.putInt(Constants.MATCH_NUMBER, matchNumberClicked)
                     matchDetailsFragment.arguments = matchDetailsFragmentArguments
                     fragmentManager!!.beginTransaction().addToBackStack(null).replace(

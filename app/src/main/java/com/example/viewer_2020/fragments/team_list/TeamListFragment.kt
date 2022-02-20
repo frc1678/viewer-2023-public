@@ -1,6 +1,7 @@
 package com.example.viewer_2020.fragments.team_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +13,12 @@ import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_team_list.view.*
 
 // displays the team numbers in team list in numerical order
-class TeamListFragment() : IFrag() {
+class TeamListFragment() : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
     private val list: List<String> = MainViewerActivity.teamList.sortedBy{it.toInt()}
 
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,12 +47,21 @@ class TeamListFragment() : IFrag() {
     }
 
     private fun updateTeamListView(root: View){
-        adapter = TeamListAdapter(
+        val adapter = TeamListAdapter(
             context = activity!!,
             items = list
         )
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: team-list")
+                adapter.notifyDataSetInvalidated()
+            }
+        }
         root.lv_team_list.adapter = adapter
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
+    }
 }
