@@ -1,10 +1,10 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.content.Context
 import android.os.AsyncTask
 import android.util.Log
-import com.example.viewer_2020.StartupActivity.Companion.databaseReference
-import com.example.viewer_2020.data.*
+import com.example.viewer_2022.StartupActivity.Companion.databaseReference
+import com.example.viewer_2022.data.*
 import com.google.gson.Gson
 import java.io.*
 import java.util.*

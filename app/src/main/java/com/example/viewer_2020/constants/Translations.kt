@@ -1,4 +1,4 @@
-package com.example.viewer_2020.constants
+package com.example.viewer_2022.constants
 
 class Translations {
     companion object {

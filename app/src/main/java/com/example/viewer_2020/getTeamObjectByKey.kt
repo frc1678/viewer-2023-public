@@ -6,10 +6,10 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020
+package com.example.viewer_2022
 
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.Team
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.Team
 
 // Returns a string value of any team object in the database as long as you provide it with
 // the team number and the requested field.

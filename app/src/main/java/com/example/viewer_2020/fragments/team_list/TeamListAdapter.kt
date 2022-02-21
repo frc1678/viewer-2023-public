@@ -1,12 +1,12 @@
-package com.example.viewer_2020.fragments.team_list;
+package com.example.viewer_2022.fragments.team_list;
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.example.viewer_2020.R
-import com.example.viewer_2020.getTeamDataValue
+import com.example.viewer_2022.R
+import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.pickability_cell.view.tv_team_number
 import kotlinx.android.synthetic.main.team_list_cell.view.*
 

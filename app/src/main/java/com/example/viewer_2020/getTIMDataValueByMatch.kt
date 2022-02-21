@@ -1,7 +1,7 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.TeamInMatch
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.TeamInMatch
 
 /**
  * Gets a single requested TIM data value given the match number and the team number. Inserts the

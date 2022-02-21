@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020.fragments.match_schedule.match_details
+package com.example.viewer_2022.fragments.match_schedule.match_details
 
 import android.os.Bundle
 import android.util.Log
@@ -15,13 +15,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.MainViewerActivity.UserDatapoints
-import com.example.viewer_2020.R
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.Translations
-import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
-import com.example.viewer_2020.getAllianceInMatchObjectByKey
-import com.example.viewer_2020.getMatchSchedule
+import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.R
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.constants.Translations
+import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2022.getAllianceInMatchObjectByKey
+import com.example.viewer_2022.getMatchSchedule
 import kotlinx.android.synthetic.main.match_details.view.*
 
 // The fragment class for the Match Details display that occurs when you click on a

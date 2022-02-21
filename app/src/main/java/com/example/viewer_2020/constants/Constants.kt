@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020.constants
+package com.example.viewer_2022.constants
 
 //Class that contains a collection of Constant values, or final values that never change
 class Constants {

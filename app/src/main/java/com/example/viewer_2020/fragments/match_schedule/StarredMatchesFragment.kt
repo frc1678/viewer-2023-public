@@ -1,14 +1,14 @@
-package com.example.viewer_2020.fragments.match_schedule
+package com.example.viewer_2022.fragments.match_schedule
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.viewer_2020.MainViewerActivity
-import com.example.viewer_2020.MatchScheduleFragment
-import com.example.viewer_2020.R
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.Match
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.MatchScheduleFragment
+import com.example.viewer_2022.R
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.Match
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 

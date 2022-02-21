@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020.fragments.match_schedule
+package com.example.viewer_2022.fragments.match_schedule
 
 import android.os.Bundle
 import android.util.Log
@@ -16,11 +16,11 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
-import com.example.viewer_2020.*
-import com.example.viewer_2020.data.Match
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.R
-import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
+import com.example.viewer_2022.*
+import com.example.viewer_2022.data.Match
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.R
+import com.example.viewer_2022.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_details_cell.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
