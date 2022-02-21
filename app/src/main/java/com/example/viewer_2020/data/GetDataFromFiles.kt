@@ -17,7 +17,7 @@ class GetDataFromFiles(var context:Context, val onCompleted: () -> Unit = {} ,va
         try {
             //For each of the collections (make sure to change this number if the number of collections change),
             //pull the data from the website and then add it to the databaseReference variable
-            for (x in 0..8) {
+            for (x in 0..9) {
                 when (x) {
                     0 -> databaseReference?.raw_obj_pit = Gson().fromJson(
                             readFile(context.getResources().openRawResource(R.raw.raw_obj_pit)),
@@ -52,6 +52,10 @@ class GetDataFromFiles(var context:Context, val onCompleted: () -> Unit = {} ,va
                     8 -> databaseReference?.pickability = Gson().fromJson(
                         readFile(context.getResources().openRawResource(R.raw.calc_pickability)),
                         Array<DatabaseReference.CalculatedPickAbilityTeam>::class.java
+                    ).toMutableList()
+                    9 -> databaseReference?.picklist = Gson().fromJson(
+                        readFile(context.getResources().openRawResource(R.raw.picklist)),
+                        Array<DatabaseReference.PicklistTeam>::class.java
                     ).toMutableList()
                 }
                 Log.e("databaseReference","$databaseReference")
