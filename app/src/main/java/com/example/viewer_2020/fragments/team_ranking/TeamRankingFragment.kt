@@ -48,7 +48,11 @@ class TeamRankingFragment : IFrag() {
 
     private fun setTextViews(root: View) {
         if (Translations.ACTUAL_TO_HUMAN_READABLE.containsKey(dataPoint)) {
-            root.tv_datapoint_header.text = Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
+            if(Constants.FIELDS_TO_BE_DISPLAYED_LFM.contains(dataPoint)) {
+                root.tv_datapoint_header.text = "LFM " + Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
+            } else {
+                root.tv_datapoint_header.text = Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
+            }
         } else {
             root.tv_datapoint_header.text = dataPoint
         }

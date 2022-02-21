@@ -82,12 +82,37 @@ class TeamDetailsFragment : IFrag() {
         // We set the adapter for their list view according to
         // the team number and the current section. We also include a list of the
         // data points we expect to be displayed on the TeamDetails list view.
+
+        var dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
+        var isChecked = false
+
         adapter = TeamDetailsAdapter(
             context = activity!!,
-            datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS,
+            datapointsDisplayed = dataDisplay,
             teamNumber = teamNumber!!
         )
         root.lv_datapoint_display.adapter = adapter
+
+        // Repopulates the list view based on whether LFM is toggled or not
+        root.btn_lfm.setOnClickListener{
+            if (!isChecked) {
+                isChecked = true
+                dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_LFM
+                btn_lfm.text = "To All Matches"
+
+            } else {
+                isChecked = false
+                dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
+                btn_lfm.text = "To LFM"
+            }
+
+            adapter = TeamDetailsAdapter(
+                context = activity!!,
+                datapointsDisplayed = dataDisplay,
+                teamNumber = teamNumber!!
+            )
+            root.lv_datapoint_display.adapter = adapter
+        }
 
     }
 
