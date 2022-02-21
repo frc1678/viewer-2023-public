@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:mstb="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,18 +13,50 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <org.honorato.multistatetogglebutton.MultiStateToggleButton
-            android:id="@+id/tb_map_alliance"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            mstb:mstbColorNotPressedText="@color/Black"
-            mstb:mstbColorPressedText="@color/Black"
-            mstb:values="@array/map_tb_array"
-            mstb:mstbColorPressedBackground="@color/LightYellow"
-            mstb:mstbColorNotPressedBackground="@color/LightGray"
             android:layout_marginLeft="@dimen/very_small"
-            android:layout_marginTop="@dimen/very_small"/>
+            android:layout_marginTop="@dimen/very_small"
+            android:layout_weight="4"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/red_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Red"
+                android:textAppearance="?android:attr/textAppearance"
+                android:textColor="@color/Black"
+                android:checkable="true"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                app:chipBackgroundColor="@drawable/map_red_selector"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/none_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="None"
+                android:textAppearance="?android:attr/textAppearance"
+                android:textColor="@color/Black"
+                android:checkable="true"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                app:chipBackgroundColor="@drawable/map_none_selector"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/blue_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Blue"
+                android:textAppearance="?android:attr/textAppearance"
+                android:textColor="@color/Black"
+                android:checkable="true"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                app:chipBackgroundColor="@drawable/map_blue_selector"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
 
         <View
             android:layout_width="0dp"

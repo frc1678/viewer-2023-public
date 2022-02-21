@@ -49,9 +49,6 @@ import java.io.*
 import com.example.viewer_2020.R
 import androidx.fragment.app.FragmentActivity
 
-import org.honorato.multistatetogglebutton.MultiStateToggleButton
-import org.honorato.multistatetogglebutton.ToggleButton
-
 
 // Main activity class that handles the dual fragment view.
 class MainViewerActivity : ViewerActivity() {
@@ -333,18 +330,33 @@ class MainViewerActivity : ViewerActivity() {
         val button = mapItem.actionView
         button.setOnClickListener {
             val popupView = View.inflate(this, R.layout.map_popup, null)
-            val tbMapAlliance = popupView.tb_map_alliance as MultiStateToggleButton
-            tbMapAlliance.value = 1
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
-            tbMapAlliance.setOnValueChangedListener { position ->
-                when (position) {
-                    0 -> popupView.map.setImageResource(R.drawable.field_map_red)
-                    1 -> popupView.map.setImageResource(R.drawable.field_map)
-                    2 -> popupView.map.setImageResource(R.drawable.field_map_blue)
+            popupView.none_chip.isChecked = true
+            popupView.red_chip.setOnClickListener{
+                popupView.red_chip.isChecked = true
+            }
+            popupView.blue_chip.setOnClickListener{
+                popupView.blue_chip.isChecked = true
+            }
+            popupView.none_chip.setOnClickListener{
+                popupView.none_chip.isChecked = true
+            }
+            popupView.chip_group.setOnCheckedChangeListener { _, checkedId ->
+                when (checkedId) {
+                    popupView.red_chip.id -> {
+                        popupView.map.setImageResource(R.drawable.field_map_red)
+                    }
+                    popupView.none_chip.id -> {
+                        popupView.map.setImageResource(R.drawable.field_map)
+                    }
+                    popupView.blue_chip.id -> {
+                        popupView.map.setImageResource(R.drawable.field_map_blue)
+                    }
                 }
+                return@setOnCheckedChangeListener
             }
             popupView.close_button.setOnClickListener {
                 popupWindow.dismiss()
