@@ -32,6 +32,7 @@ import com.example.viewer_2020.data.GetDataFromWebsite
 import com.example.viewer_2020.data.Match
 import com.example.viewer_2020.data.Team
 import com.example.viewer_2020.data.TeamInMatch
+import com.example.viewer_2020.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
 import com.example.viewer_2020.fragments.match_schedule.StarredMatchesFragment
 import com.example.viewer_2020.fragments.pickability.PickabilityFragment
@@ -45,12 +46,8 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.map_popup.view.*
-import java.io.*
-import com.example.viewer_2020.R
-import androidx.fragment.app.FragmentActivity
-
 import org.honorato.multistatetogglebutton.MultiStateToggleButton
-import org.honorato.multistatetogglebutton.ToggleButton
+import java.io.*
 
 
 // Main activity class that handles the dual fragment view.
@@ -62,6 +59,7 @@ class MainViewerActivity : ViewerActivity() {
     private var matchScheduleFragment = MatchScheduleFragment()
     private var ourScheduleFragment = OurScheduleFragment()
     private var rankingFragment = RankingFragment()
+    private var livePicklistFragment = LivePicklistFragment()
     private var firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
     private var secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
     private val teamListFragment = TeamListFragment()
@@ -73,6 +71,7 @@ class MainViewerActivity : ViewerActivity() {
             matchScheduleFragment,
             ourScheduleFragment,
             rankingFragment,
+            livePicklistFragment,
             firstPickabilityFragment,
             secondPickabilityFragment,
             teamListFragment,
@@ -186,6 +185,7 @@ class MainViewerActivity : ViewerActivity() {
         val ourScheduleFragment = OurScheduleFragment()
         val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
+        val livePicklistFragment = LivePicklistFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
         val teamListFragment = TeamListFragment()
@@ -269,6 +269,12 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
+                R.id.nav_menu_live_picklist -> {
+                    supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
+                        .commit()
+                }
 
                 R.id.nav_menu_pickability_first -> {
                     val ft = supportFragmentManager.beginTransaction()
@@ -423,6 +429,7 @@ class NavDrawerListener(private val navView: NavigationView, private val fragMan
                 "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
                 "starredMatches" -> navView.setCheckedItem(R.id.nav_menu_starred_matches)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
+                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
                 "pickabilityFirst" -> navView.setCheckedItem(R.id.nav_menu_pickability_first)
                 "pickabilitySecond" -> navView.setCheckedItem(R.id.nav_menu_pickability_second)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)

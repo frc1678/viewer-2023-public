@@ -23,6 +23,10 @@
     <string name="user_name">User Name</string>
     <string name="edit">Edit</string>
     <string name="map">Map</string>
+    <string name="live_picklist">Live Picklist</string>
+    <string name="first_rank">First Pickability Rank</string>
+    <string name="second_rank">Second Pickability Rank</string>
+    <string name="team_number">Team Number</string>
 
     <string-array name="user_array">
         <item>None</item>
