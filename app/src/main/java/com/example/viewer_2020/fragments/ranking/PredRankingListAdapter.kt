@@ -77,9 +77,9 @@ class PredRankingListAdapter(
             }
         viewHolder.tvDatapointThree.text = getTeamObject("current_rps",
             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
-        viewHolder.tvDatapointFour.text = ("%.1f").format(
-            Float.parseFloat(getTeamObject("predicted_rps",
-                position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)))
+        val predValue = (getTeamObject("predicted_rps",
+            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))
+        viewHolder.tvDatapointFour.text = if(predValue == Constants.NULL_CHARACTER) Constants.NULL_CHARACTER else ("%.1f").format(predValue.toFloat())
         viewHolder.tvDatapointFive.text = getTeamObject("current_rank",
             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
 
