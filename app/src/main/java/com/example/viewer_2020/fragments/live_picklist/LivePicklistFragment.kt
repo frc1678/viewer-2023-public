@@ -65,13 +65,19 @@ class LivePicklistFragment : IFrag() {
 
         // Register the listener to open the team details fragment when the user taps on a team in
         // the picklist.
-        root.lv_live_picklist.setOnItemClickListener { _, view, _, _ ->
+        root.lv_live_picklist.setOnItemClickListener { _, _, position, _ ->
+            // Put the arguments for the team details fragment.
+            teamDetailsFragment.arguments = Bundle().also {
+                it.putString(
+                    Constants.TEAM_NUMBER,
+                    when (currentOrdering) {
+                        Orders.FIRST -> firstOrder[position].team_number.toString()
+                        Orders.SECOND -> secondOrder[position].team_number.toString()
+                    }
+                )
+            }
+            // Switch to the team details fragment.
             val ft = fragmentManager!!.beginTransaction()
-            teamDetailsFragment.arguments = Bundle()
-            teamDetailsFragment.arguments!!.putString(
-                Constants.TEAM_NUMBER,
-                view.tv_team_number.text.toString()
-            )
             ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             ft.addToBackStack(null).replace((view!!.parent as ViewGroup).id, teamDetailsFragment)
                 .commit()
