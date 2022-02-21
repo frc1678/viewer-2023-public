@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.viewer_2020.IFrag
 import com.example.viewer_2020.R
 import com.example.viewer_2020.StartupActivity
@@ -12,9 +11,7 @@ import com.example.viewer_2020.constants.Constants
 import com.example.viewer_2020.data.DatabaseReference
 import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_live_picklist.view.*
-import kotlinx.android.synthetic.main.live_picklist_cell.view.*
 import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 /**

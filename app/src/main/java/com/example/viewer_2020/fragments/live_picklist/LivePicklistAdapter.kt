@@ -10,6 +10,8 @@ import android.widget.TextView
 import com.example.viewer_2020.R
 import com.example.viewer_2020.data.DatabaseReference
 import kotlinx.android.synthetic.main.live_picklist_cell.view.*
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 /**
  * The adapter for the [`ListView`][android.widget.ListView] in the
@@ -59,9 +61,11 @@ class LivePicklistAdapter(
         }
         // Populate the row with the data.
         val team = teams[position]
-        row?.tv_team_number?.text = team.team_number.toString()
-        row?.tv_first_rank?.text = team.first_rank.toString()
-        row?.tv_second_rank?.text = team.second_rank.toString()
+        runBlocking { // Asynchronous jobs to make populating three times as fast.
+            launch { row?.tv_team_number?.text = team.team_number.toString() }
+            launch { row?.tv_first_rank?.text = team.first_rank.toString() }
+            launch { row?.tv_second_rank?.text = team.second_rank.toString() }
+        }
         return row!!
     }
 
