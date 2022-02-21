@@ -51,17 +51,17 @@ class LivePicklistAdapter(
         if (convertView == null) { // The row is being inflated for the first time.
             // Inflate the row's layout.
             row = inflater.inflate(R.layout.live_picklist_cell, parent, false)
-            // Populate the row with the data.
-            val team = teams[position]
-            row.tv_team_number.text = team.team_number.toString()
-            row.tv_first_rank.text = team.first_rank.toString()
-            row.tv_second_rank.text = team.second_rank.toString()
             // Set the tag of the row so that it doesn't need to be reinflated if it gets loaded
             // again.
             row.tag = TeamHolder(row.tv_team_number, row.tv_first_rank, row.tv_second_rank)
         } else { // The row was already inflated, and doesn't need to be inflated again.
             row = convertView
         }
+        // Populate the row with the data.
+        val team = teams[position]
+        row?.tv_team_number?.text = team.team_number.toString()
+        row?.tv_first_rank?.text = team.first_rank.toString()
+        row?.tv_second_rank?.text = team.second_rank.toString()
         return row!!
     }
 
