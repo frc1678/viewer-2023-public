@@ -111,6 +111,7 @@ class MainViewerActivity : ViewerActivity() {
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
+        var mapMode = 1
     }
 
     //Overrides back button to go back to last fragment.
@@ -334,7 +335,26 @@ class MainViewerActivity : ViewerActivity() {
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
-            popupView.none_chip.isChecked = true
+            when(mapMode){
+                0 -> {
+                    popupView.red_chip.isChecked = true
+                    popupView.none_chip.isChecked = false
+                    popupView.blue_chip.isChecked = false
+                    popupView.map.setImageResource(R.drawable.field_map_red)
+                }
+                1 -> {
+                    popupView.red_chip.isChecked = false
+                    popupView.none_chip.isChecked = true
+                    popupView.blue_chip.isChecked = false
+                    popupView.map.setImageResource(R.drawable.field_map)
+                }
+                2 -> {
+                    popupView.red_chip.isChecked = false
+                    popupView.none_chip.isChecked = false
+                    popupView.blue_chip.isChecked = true
+                    popupView.map.setImageResource(R.drawable.field_map_blue)
+                }
+            }
             popupView.red_chip.setOnClickListener{
                 popupView.red_chip.isChecked = true
             }
@@ -348,12 +368,15 @@ class MainViewerActivity : ViewerActivity() {
                 when (checkedId) {
                     popupView.red_chip.id -> {
                         popupView.map.setImageResource(R.drawable.field_map_red)
+                        mapMode=0
                     }
                     popupView.none_chip.id -> {
                         popupView.map.setImageResource(R.drawable.field_map)
+                        mapMode=1
                     }
                     popupView.blue_chip.id -> {
                         popupView.map.setImageResource(R.drawable.field_map_blue)
+                        mapMode=2
                     }
                 }
                 return@setOnCheckedChangeListener
