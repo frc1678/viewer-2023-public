@@ -14,6 +14,7 @@ import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_live_picklist.view.*
 import kotlinx.android.synthetic.main.live_picklist_cell.view.*
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 /**
@@ -111,7 +112,7 @@ class LivePicklistFragment : IFrag() {
                 Orders.FIRST -> firstOrder
                 Orders.SECOND -> secondOrder
             },
-            onNotifyDataSetChanged = { updateList() }
+            onNotifyDataSetChanged = { refreshList() }
         )
         root.lv_live_picklist.adapter = adapter
     }
