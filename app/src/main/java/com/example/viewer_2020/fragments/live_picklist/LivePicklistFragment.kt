@@ -20,8 +20,6 @@ import kotlinx.coroutines.runBlocking
 /**
  * The fragment for the live team orderings from the picklist.
  *
- * TODO: Add a way for the user to switch between first and second orderings.
- *
  * @see R.layout.fragment_live_picklist
  */
 class LivePicklistFragment : IFrag() {
@@ -60,6 +58,10 @@ class LivePicklistFragment : IFrag() {
         // Refresh and update the list to show the data.
         refreshList()
         updateList()
+
+        // Register the listeners for the sorting buttons.
+        root.btn_first_rank.setOnClickListener { currentOrdering = Orders.FIRST }
+        root.btn_second_rank.setOnClickListener { currentOrdering = Orders.SECOND }
 
         // Register the listener to open the team details fragment when the user taps on a team in
         // the picklist.

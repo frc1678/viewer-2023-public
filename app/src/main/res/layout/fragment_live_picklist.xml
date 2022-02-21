@@ -22,16 +22,14 @@
             android:layout_width="0dp"
             android:layout_marginHorizontal="@dimen/very_small"
             android:text="@string/team_number" />
-        <TextView
-            style="@style/tv_standard_gray"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/btn_first_rank"
+            style="@style/btn_live_picklist_header"
             android:layout_marginHorizontal="@dimen/very_small"
             android:text="@string/first_rank" />
-        <TextView
-            style="@style/tv_standard_gray"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/btn_second_rank"
+            style="@style/btn_live_picklist_header"
             android:layout_marginHorizontal="@dimen/very_small"
             android:text="@string/second_rank" />
 
