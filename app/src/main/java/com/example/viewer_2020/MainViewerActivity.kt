@@ -114,6 +114,7 @@ class MainViewerActivity : ViewerActivity() {
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
+        var map_mode = 1
     }
 
     //Overrides back button to go back to last fragment.
@@ -339,12 +340,19 @@ class MainViewerActivity : ViewerActivity() {
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
+            when (map_mode) {
+                0 -> popupView.map.setImageResource(R.drawable.field_map_red)
+                1 -> popupView.map.setImageResource(R.drawable.field_map)
+                2 -> popupView.map.setImageResource(R.drawable.field_map_blue)
+            }
+            tbMapAlliance.setElements(R.array.map_tb_array, map_mode)
             tbMapAlliance.setOnValueChangedListener { position ->
                 when (position) {
                     0 -> popupView.map.setImageResource(R.drawable.field_map_red)
                     1 -> popupView.map.setImageResource(R.drawable.field_map)
                     2 -> popupView.map.setImageResource(R.drawable.field_map_blue)
                 }
+                map_mode = tbMapAlliance.value
             }
             popupView.close_button.setOnClickListener {
                 popupWindow.dismiss()
