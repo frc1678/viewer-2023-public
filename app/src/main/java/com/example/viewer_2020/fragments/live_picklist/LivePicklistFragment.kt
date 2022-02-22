@@ -1,5 +1,6 @@
 package com.example.viewer_2020.fragments.live_picklist
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +41,7 @@ class LivePicklistFragment : IFrag() {
     private var currentOrdering = Orders.FIRST
         set(value) {
             field = value
+            updateHeaders()
             updateList()
         }
 
@@ -55,6 +57,7 @@ class LivePicklistFragment : IFrag() {
         // Refresh and update the list to show the data.
         refreshList()
         updateList()
+        updateHeaders()
 
         // Register the listeners for the sorting buttons.
         root.btn_first_rank.setOnClickListener { currentOrdering = Orders.FIRST }
@@ -103,6 +106,23 @@ class LivePicklistFragment : IFrag() {
             secondOrder = secondJob.await()
             // Update the adapter.
             updateList()
+        }
+    }
+
+    /**
+     * Updates the text styles of the header buttons based on the current ordering. Called when the
+     * order is changed.
+     */
+    private fun updateHeaders() {
+        when (currentOrdering) {
+            Orders.FIRST -> {
+                root.btn_first_rank.typeface = Typeface.DEFAULT_BOLD
+                root.btn_second_rank.typeface = Typeface.DEFAULT
+            }
+            Orders.SECOND -> {
+                root.btn_first_rank.typeface = Typeface.DEFAULT
+                root.btn_second_rank.typeface = Typeface.DEFAULT_BOLD
+            }
         }
     }
 

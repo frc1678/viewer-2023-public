@@ -62,7 +62,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                     "predicted_team",
                     "tba_team",
                     "pickability",
-                    "tba_tim"
+                    "picklist"
                 )
 
             //For each of the collections (make sure to change this number if the number of collections change),
