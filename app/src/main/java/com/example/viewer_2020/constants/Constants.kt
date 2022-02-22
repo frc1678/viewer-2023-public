@@ -113,6 +113,7 @@ class Constants {
         )
 
         val FIELDS_TO_BE_DISPLAYED_LFM: List<String> = listOf(
+            "See Matches",
             "LFM Auto",
             "lfm_auto_avg_lows",
             "lfm_auto_avg_hub_highs",
