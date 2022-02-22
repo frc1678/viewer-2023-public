@@ -27,6 +27,7 @@ import androidx.core.view.GravityCompat
 import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.GetDataFromWebsite
 import com.example.viewer_2022.data.Match
@@ -48,6 +49,7 @@ import kotlinx.android.synthetic.main.map_popup.view.*
 import java.io.*
 import com.example.viewer_2022.R
 import androidx.fragment.app.FragmentActivity
+import com.example.viewer_2022.RefreshManager
 
 
 // Main activity class that handles the dual fragment view.
@@ -65,17 +67,7 @@ class MainViewerActivity : ViewerActivity() {
     private val preferencesFragment = PreferencesFragment()
     private val userPreferencesFragment = UserPreferencesFragment()
 
-    private val frags: List<IFrag> =
-        listOf(
-            matchScheduleFragment,
-            ourScheduleFragment,
-            rankingFragment,
-            firstPickabilityFragment,
-            secondPickabilityFragment,
-            teamListFragment,
-            preferencesFragment,
-            userPreferencesFragment
-        )
+
 
     companion object {
         var currentRankingMenuItem: MenuItem? = null
@@ -110,6 +102,7 @@ class MainViewerActivity : ViewerActivity() {
         }
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
+        val refreshManager = RefreshManager()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
         var mapMode = 1
     }
@@ -128,12 +121,7 @@ class MainViewerActivity : ViewerActivity() {
         } else if (supportFragmentManager.backStackEntryCount > 1) supportFragmentManager.popBackStack()
     }
 
-    fun reloadAllListViews(){
-        frags.forEachIndexed { i, e ->
-            Log.e("help", "refreshing $i")
-            e.updateListView()
-        }
-    }
+
 
     override fun onResume() {
         super.onResume()
@@ -160,6 +148,8 @@ class MainViewerActivity : ViewerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        refreshManager.start(lifecycleScope)
 
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
@@ -210,7 +200,7 @@ class MainViewerActivity : ViewerActivity() {
                 GetDataFromFiles(this, {
                     data_refresh_button.isEnabled = true
                     Snackbar.make(container, "Refreshed Data!", 2500).show()
-                    reloadAllListViews()
+                    refreshManager.refresh()
                     updateNavFooter()
                 }, {
                     data_refresh_button.isEnabled = true
@@ -220,7 +210,7 @@ class MainViewerActivity : ViewerActivity() {
                 GetDataFromWebsite({
                     data_refresh_button.isEnabled = true
                     Snackbar.make(container, "Refreshed Data!", 2500).show()
-                    reloadAllListViews()
+                    refreshManager.refresh()
                     updateNavFooter()
                 }, {
                     data_refresh_button.isEnabled = true

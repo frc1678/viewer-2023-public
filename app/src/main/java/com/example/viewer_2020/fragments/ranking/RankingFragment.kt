@@ -33,10 +33,13 @@ import android.util.Log
 // main menu bar. This navigation/menu bar does not switch between fragments on each menu's selection
 // like the main menu bar does. This navigation bar only receives the position/ID of the menu selected
 // and then updated the adapter of the list view that is right above it.
-class RankingFragment : IFrag() {
+class RankingFragment : Fragment() {
 
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
+
+    private var refreshId: String? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,10 +66,16 @@ class RankingFragment : IFrag() {
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[3]]
         root.tv_datapoint_five.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[4]]
-        adapter = RankingListAdapter(activity!!, convertToFilteredTeamsList(
+        val adapter = RankingListAdapter(activity!!, convertToFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             MainViewerActivity.teamList
         ))
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: ranking")
+                adapter.notifyDataSetChanged()
+            }
+        }
         root.lv_ranking.adapter = adapter
 
         root.lv_ranking.setOnItemClickListener { _, _, position, _ ->
@@ -102,5 +111,10 @@ class RankingFragment : IFrag() {
         ft.replace(R.id.nav_host_fragment, predictedRankingFragment, "predRankings")
             .commit()
         return
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }
