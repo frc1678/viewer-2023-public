@@ -64,7 +64,7 @@ class LivePicklistAdapter(
         }
         // Populate the row with the data.
         val team = teams[position]
-        runBlocking { // Asynchronous jobs to make populating three times as fast.
+        runBlocking { // Asynchronous jobs to make populating much faster.
             launch { row?.tv_team_number?.text = team.team_number.toString() }
             launch { row?.tv_first_rank?.text = team.first_rank.toString() }
             launch { row?.tv_second_rank?.text = team.second_rank.toString() }
