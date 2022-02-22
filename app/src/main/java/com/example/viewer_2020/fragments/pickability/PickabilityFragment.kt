@@ -1,4 +1,4 @@
-package com.example.viewer_2020.fragments.pickability
+package com.example.viewer_2022.fragments.pickability
 
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.*
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2022.*
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_pickability.view.*
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import java.lang.ClassCastException

@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.Manifest
 import android.content.Context
@@ -27,16 +27,16 @@ import androidx.core.view.GravityCompat
 import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.GetDataFromWebsite
-import com.example.viewer_2020.data.Match
-import com.example.viewer_2020.data.Team
-import com.example.viewer_2020.data.TeamInMatch
-import com.example.viewer_2020.fragments.match_schedule.OurScheduleFragment
-import com.example.viewer_2020.fragments.match_schedule.StarredMatchesFragment
-import com.example.viewer_2020.fragments.pickability.PickabilityFragment
-import com.example.viewer_2020.fragments.pickability.PickabilityMode
-import com.example.viewer_2020.fragments.team_list.TeamListFragment
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.GetDataFromWebsite
+import com.example.viewer_2022.data.Match
+import com.example.viewer_2022.data.Team
+import com.example.viewer_2022.data.TeamInMatch
+import com.example.viewer_2022.fragments.match_schedule.OurScheduleFragment
+import com.example.viewer_2022.fragments.match_schedule.StarredMatchesFragment
+import com.example.viewer_2022.fragments.pickability.PickabilityFragment
+import com.example.viewer_2022.fragments.pickability.PickabilityMode
+import com.example.viewer_2022.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -46,7 +46,7 @@ import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.map_popup.view.*
 import java.io.*
-import com.example.viewer_2020.R
+import com.example.viewer_2022.R
 import androidx.fragment.app.FragmentActivity
 
 

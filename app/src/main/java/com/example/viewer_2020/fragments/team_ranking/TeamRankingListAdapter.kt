@@ -1,4 +1,4 @@
-package com.example.viewer_2020.fragments.team_ranking
+package com.example.viewer_2022.fragments.team_ranking
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.fragment.app.FragmentActivity
-import com.example.viewer_2020.R
-import com.example.viewer_2020.TeamRankingItem
-import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2022.R
+import com.example.viewer_2022.TeamRankingItem
+import com.example.viewer_2022.constants.Constants
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 
 class TeamRankingListAdapter(private val context: FragmentActivity, private val teamNumber: String?, private var items: List<TeamRankingItem>) : BaseAdapter() {

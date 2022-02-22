@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020.fragments.team_details
+package com.example.viewer_2022.fragments.team_details
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -25,9 +25,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.*
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.Team
+import com.example.viewer_2022.*
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.Team
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
 import kotlinx.android.synthetic.main.team_details_cell.view.*

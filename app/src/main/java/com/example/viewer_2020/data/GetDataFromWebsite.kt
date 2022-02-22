@@ -1,14 +1,14 @@
-package com.example.viewer_2020.data
+package com.example.viewer_2022.data
 
 import android.os.AsyncTask
 import android.util.Log
-import com.example.viewer_2020.MainViewerActivity
-import com.example.viewer_2020.StartupActivity
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.StartupActivity
 import java.net.URL
-import com.example.viewer_2020.StartupActivity.Companion.databaseReference
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.*
-import com.example.viewer_2020.lastUpdated
+import com.example.viewer_2022.StartupActivity.Companion.databaseReference
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.*
+import com.example.viewer_2022.lastUpdated
 import com.google.gson.Gson
 import java.io.*
 import java.net.HttpURLConnection

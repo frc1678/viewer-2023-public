@@ -1,13 +1,13 @@
-package com.example.viewer_2020.fragments.team_ranking
+package com.example.viewer_2022.fragments.team_ranking
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.viewer_2020.*
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.Translations
-import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2022.*
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.constants.Translations
+import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_team_ranking.view.*
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 

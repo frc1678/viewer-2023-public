@@ -1,6 +1,6 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
-import com.example.viewer_2020.data.Match
+import com.example.viewer_2022.data.Match
 
 fun getMatchSchedule(teamNumbers: List<String> = listOf(), starred: Boolean = false): Map<String, Match> {
     if (starred) {

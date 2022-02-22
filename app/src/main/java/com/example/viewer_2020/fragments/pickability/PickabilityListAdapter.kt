@@ -1,4 +1,4 @@
-package com.example.viewer_2020.fragments.pickability;
+package com.example.viewer_2022.fragments.pickability;
 
 import android.content.Context
 import android.util.Log
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.example.viewer_2020.R
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.getTeamDataValue
+import com.example.viewer_2022.R
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.pickability_cell.view.*
 import java.lang.ClassCastException
 import java.lang.Float.parseFloat

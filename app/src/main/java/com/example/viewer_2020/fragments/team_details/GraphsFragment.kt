@@ -1,4 +1,4 @@
-package com.example.viewer_2020.fragments.team_details
+package com.example.viewer_2022.fragments.team_details
 
 import android.graphics.Canvas
 import android.os.Bundle
@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.*
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.Translations
-import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
+import com.example.viewer_2022.*
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.constants.Translations
+import com.example.viewer_2022.fragments.match_schedule.match_details.MatchDetailsFragment
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet

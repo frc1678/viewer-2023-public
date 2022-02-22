@@ -6,9 +6,9 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020
+package com.example.viewer_2022
 
-import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2022.constants.Constants
 
 // Returns a string value of any alliance object in the database as long as you provide it with
 // the match number and the alliance of the color (and the requested field).

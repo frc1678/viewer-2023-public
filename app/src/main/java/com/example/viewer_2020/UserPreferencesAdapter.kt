@@ -1,4 +1,4 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.content.Context
 import android.util.TypedValue
@@ -10,9 +10,9 @@ import android.widget.BaseAdapter
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
-import com.example.viewer_2020.MainViewerActivity.UserDatapoints
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.Translations
+import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.constants.Translations
 import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.team_details_cell.view.*
 

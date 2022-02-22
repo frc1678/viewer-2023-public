@@ -6,9 +6,9 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020
+package com.example.viewer_2022
 
-import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2022.constants.Constants
 
 // Returns the value of the datapoint provided by findFieldInInheritedFields.
 @Throws(Exception::class)

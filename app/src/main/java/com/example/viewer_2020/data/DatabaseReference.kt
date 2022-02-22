@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020.data
+package com.example.viewer_2022.data
 
 import org.bson.types.ObjectId
 

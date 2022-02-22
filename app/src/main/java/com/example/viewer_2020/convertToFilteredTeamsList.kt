@@ -1,6 +1,6 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
-import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2022.constants.Constants
 
 fun convertToFilteredTeamsList(path: String, teamsList: List<String>): List<String> {
     val unsortedMap = HashMap<String, Double>()

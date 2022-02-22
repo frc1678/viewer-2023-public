@@ -6,7 +6,7 @@
 * Copyright 2null2null Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020.data
+package com.example.viewer_2022.data
 
 // Data storage class for each individual team object.
 data class Team (var team_number: Int?) {
