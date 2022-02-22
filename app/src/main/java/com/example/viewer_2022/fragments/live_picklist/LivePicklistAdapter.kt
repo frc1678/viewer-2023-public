@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.viewer_2022.R
-import com.example.viewer_2022.data.DatabaseReference
 import kotlinx.android.synthetic.main.live_picklist_cell.view.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -17,24 +16,28 @@ import kotlinx.coroutines.runBlocking
  * The adapter for the [`ListView`][android.widget.ListView] in the
  * [Live Picklist fragment][LivePicklistFragment].
  *
- * @param teams The list of teams to be displayed, in the form of
- * [`PicklistTeam`][DatabaseReference.PicklistTeam] objects. This list should already be sorted.
- * @param currentOrdering The current ordering of the list of teams.
+ * @param fragment A reference to the original instance of the fragment, so that properties of it
+ * can be accessed.
  */
 class LivePicklistAdapter(
     context: Context,
-    private val teams: List<DatabaseReference.PicklistTeam>,
-    private val currentOrdering: LivePicklistFragment.Orders
+    private val fragment: LivePicklistFragment
 ) : BaseAdapter() {
 
     /** A convenience object for inflating layouts. */
     private val inflater = LayoutInflater.from(context)
 
     /** The number of teams displayed in the list. */
-    override fun getCount() = teams.size
+    override fun getCount() = when (fragment.currentOrdering) {
+        LivePicklistFragment.Orders.FIRST -> fragment.firstOrder.size
+        LivePicklistFragment.Orders.SECOND -> fragment.secondOrder.size
+    }
 
     /** The number of the team at the given position in the list. */
-    override fun getItem(i: Int) = teams[i].team_number
+    override fun getItem(i: Int) = when (fragment.currentOrdering) {
+        LivePicklistFragment.Orders.FIRST -> fragment.firstOrder
+        LivePicklistFragment.Orders.SECOND -> fragment.secondOrder
+    }[i].team_number
 
     /** The ID of the row at the given position in the list. Simply uses the position. */
     override fun getItemId(position: Int) = position.toLong()
@@ -52,20 +55,23 @@ class LivePicklistAdapter(
             row = convertView
         }
         // Populate the row with the data.
-        val team = teams[position]
+        val team = when (fragment.currentOrdering) {
+            LivePicklistFragment.Orders.FIRST -> fragment.firstOrder
+            LivePicklistFragment.Orders.SECOND -> fragment.secondOrder
+        }[position]
         runBlocking { // Asynchronous jobs to make populating much faster.
             launch { row?.tv_team_number?.text = team.team_number.toString() }
             launch { row?.tv_first_rank?.text = team.first_rank.toString() }
             launch { row?.tv_second_rank?.text = team.second_rank.toString() }
             // Set the text style based on the current ordering.
             launch {
-                row?.tv_first_rank?.typeface = when (currentOrdering) {
+                row?.tv_first_rank?.typeface = when (fragment.currentOrdering) {
                     LivePicklistFragment.Orders.FIRST -> Typeface.DEFAULT_BOLD
                     LivePicklistFragment.Orders.SECOND -> Typeface.DEFAULT
                 }
             }
             launch {
-                row?.tv_second_rank?.typeface = when (currentOrdering) {
+                row?.tv_second_rank?.typeface = when (fragment.currentOrdering) {
                     LivePicklistFragment.Orders.FIRST -> Typeface.DEFAULT
                     LivePicklistFragment.Orders.SECOND -> Typeface.DEFAULT_BOLD
                 }
