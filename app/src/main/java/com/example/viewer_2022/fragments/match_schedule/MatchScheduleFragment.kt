@@ -22,7 +22,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
-open class MatchScheduleFragment : IFrag(){
+open class MatchScheduleFragment : Fragment(){
     private var teamNumber: String? = null
     private var refreshId: String? = null
 
