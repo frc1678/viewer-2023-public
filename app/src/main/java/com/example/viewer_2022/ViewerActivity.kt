@@ -17,6 +17,7 @@ open class ViewerActivity : AppCompatActivity() {
     //the app by sending it to the mode collection activity and resetting the mode.
     override fun onKeyLongPress(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+            MainViewerActivity.refreshManager.removeAllListeners()
             intentToMainViewerActivity()
         }
         return super.onKeyLongPress(keyCode, event)

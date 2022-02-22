@@ -1,6 +1,7 @@
 package com.example.viewer_2022.fragments.match_schedule.match_details
 
 import android.content.Context
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,9 @@ class MatchDetailsAdapter(
     private val teamNumbers: List<String>,
     private val hasActualData: Boolean
 ) : BaseAdapter() {
+    init {
+        Log.d("data-refresh", "created match details adapter: teamNumbers: $teamNumbers")
+    }
 
     private val inflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

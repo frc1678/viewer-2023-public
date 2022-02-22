@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
 import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.R
+import com.example.viewer_2022.UserPreferencesFragment
 import com.example.viewer_2022.constants.Constants
-class PreferencesFragment: IFrag() {
+class PreferencesFragment: Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
