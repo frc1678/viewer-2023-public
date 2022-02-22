@@ -72,18 +72,27 @@ class TeamDetailsAdapter(
             rowView.tv_ranking.layoutParams = noWidth
             rowView.tv_datapoint_name.layoutParams = allWidth
             rowView.tv_datapoint_value.layoutParams = noWidth
-            rowView.tv_datapoint_name.setBackgroundColor(
-                ContextCompat.getColor(
-                    context,
-                    R.color.LightGray
+            if (e=="See Matches"){
+                rowView.tv_datapoint_name.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.colorPrimaryLight
+                    )
                 )
-            )
-            rowView.tv_datapoint_name.setTextColor(
-                ContextCompat.getColor(
-                    context,
-                    R.color.Black
+            } else {
+                rowView.tv_datapoint_name.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.LightGray
+                    )
                 )
-            )
+                rowView.tv_datapoint_name.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.Black
+                    )
+                )
+            }
             rowView.tv_datapoint_value.text = ""
         } else {
             if (regex.matcher(
