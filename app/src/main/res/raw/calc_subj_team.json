@@ -1,6 +1,191 @@
-[{
-    "driver_quickness": 29.5912,
-    "driver_field_awareness": 42.6533,
-    "driver_ability": 85.6003,
-    "team_number": 867
-  }]
+[
+  {
+    "team_number": 58,
+    "driver_near_field_awareness": 71.648674,
+    "driver_far_field_awareness": 65.18281,
+    "driver_quickness": 57.35228,
+    "driver_ability": 16.038382
+  },
+  {
+    "team_number": 88,
+    "driver_near_field_awareness": 58.62538,
+    "driver_far_field_awareness": 19.411724,
+    "driver_quickness": 89.331856,
+    "driver_ability": 63.489212
+  },
+  {
+    "team_number": 125,
+    "driver_near_field_awareness": 33.334076,
+    "driver_far_field_awareness": 52.09005,
+    "driver_quickness": 2.574414,
+    "driver_ability": 31.482178
+  },
+  {
+    "team_number": 151,
+    "driver_near_field_awareness": 89.87634,
+    "driver_far_field_awareness": 67.4694,
+    "driver_quickness": 21.851725,
+    "driver_ability": 83.12518
+  },
+  {
+    "team_number": 157,
+    "driver_near_field_awareness": 73.63167,
+    "driver_far_field_awareness": 63.932716,
+    "driver_quickness": 20.591713,
+    "driver_ability": 30.842949
+  },
+  {
+    "team_number": 238,
+    "driver_near_field_awareness": 97.36631,
+    "driver_far_field_awareness": 13.460339,
+    "driver_quickness": 5.1778135,
+    "driver_ability": 77.44796
+  },
+  {
+    "team_number": 246,
+    "driver_near_field_awareness": 34.7337,
+    "driver_far_field_awareness": 66.076096,
+    "driver_quickness": 83.85373,
+    "driver_ability": 53.994488
+  },
+  {
+    "team_number": 501,
+    "driver_near_field_awareness": 0.32218695,
+    "driver_far_field_awareness": 39.77074,
+    "driver_quickness": 20.587105,
+    "driver_ability": 73.63302
+  },
+  {
+    "team_number": 509,
+    "driver_near_field_awareness": 73.144165,
+    "driver_far_field_awareness": 31.08405,
+    "driver_quickness": 70.95271,
+    "driver_ability": 85.55517
+  },
+  {
+    "team_number": 811,
+    "driver_near_field_awareness": 38.363243,
+    "driver_far_field_awareness": 24.388922,
+    "driver_quickness": 76.46703,
+    "driver_ability": 50.59642
+  },
+  {
+    "team_number": 1073,
+    "driver_near_field_awareness": 23.211605,
+    "driver_far_field_awareness": 95.47784,
+    "driver_quickness": 59.21172,
+    "driver_ability": 50.450493
+  },
+  {
+    "team_number": 1153,
+    "driver_near_field_awareness": 70.18551,
+    "driver_far_field_awareness": 1.5972793,
+    "driver_quickness": 60.025227,
+    "driver_ability": 30.89574
+  },
+  {
+    "team_number": 1721,
+    "driver_near_field_awareness": 87.962364,
+    "driver_far_field_awareness": 65.6112,
+    "driver_quickness": 41.91639,
+    "driver_ability": 58.226944
+  },
+  {
+    "team_number": 2342,
+    "driver_near_field_awareness": 37.05889,
+    "driver_far_field_awareness": 38.578194,
+    "driver_quickness": 23.951794,
+    "driver_ability": 77.33483
+  },
+  {
+    "team_number": 2370,
+    "driver_near_field_awareness": 30.58594,
+    "driver_far_field_awareness": 24.951643,
+    "driver_quickness": 32.528297,
+    "driver_ability": 62.220787
+  },
+  {
+    "team_number": 2713,
+    "driver_near_field_awareness": 68.1881,
+    "driver_far_field_awareness": 60.07405,
+    "driver_quickness": 15.839237,
+    "driver_ability": 5.5545387
+  },
+  {
+    "team_number": 3467,
+    "driver_near_field_awareness": 7.907563,
+    "driver_far_field_awareness": 4.7042074,
+    "driver_quickness": 96.61321,
+    "driver_ability": 50.077045
+  },
+  {
+    "team_number": 4041,
+    "driver_near_field_awareness": 44.488014,
+    "driver_far_field_awareness": 47.258232,
+    "driver_quickness": 77.850624,
+    "driver_ability": 10.1341305
+  },
+  {
+    "team_number": 4909,
+    "driver_near_field_awareness": 92.549965,
+    "driver_far_field_awareness": 31.69706,
+    "driver_quickness": 13.937837,
+    "driver_ability": 96.403435
+  },
+  {
+    "team_number": 5459,
+    "driver_near_field_awareness": 77.41853,
+    "driver_far_field_awareness": 89.71695,
+    "driver_quickness": 12.46804,
+    "driver_ability": 84.27785
+  },
+  {
+    "team_number": 5687,
+    "driver_near_field_awareness": 48.73259,
+    "driver_far_field_awareness": 60.623867,
+    "driver_quickness": 59.979202,
+    "driver_ability": 39.205593
+  },
+  {
+    "team_number": 5813,
+    "driver_near_field_awareness": 49.27102,
+    "driver_far_field_awareness": 66.02129,
+    "driver_quickness": 69.74914,
+    "driver_ability": 97.65302
+  },
+  {
+    "team_number": 6153,
+    "driver_near_field_awareness": 30.927711,
+    "driver_far_field_awareness": 25.941235,
+    "driver_quickness": 98.61101,
+    "driver_ability": 30.513435
+  },
+  {
+    "team_number": 8724,
+    "driver_near_field_awareness": 66.63946,
+    "driver_far_field_awareness": 21.196997,
+    "driver_quickness": 79.81295,
+    "driver_ability": 61.79114
+  },
+  {
+    "team_number": 8897,
+    "driver_near_field_awareness": 6.165701,
+    "driver_far_field_awareness": 46.644382,
+    "driver_quickness": 58.538055,
+    "driver_ability": 43.970966
+  },
+  {
+    "team_number": 8898,
+    "driver_near_field_awareness": 17.164087,
+    "driver_far_field_awareness": 60.810844,
+    "driver_quickness": 88.52041,
+    "driver_ability": 72.832016
+  },
+  {
+    "team_number": 8899,
+    "driver_near_field_awareness": 24.139017,
+    "driver_far_field_awareness": 61.452995,
+    "driver_quickness": 12.105047,
+    "driver_ability": 64.03202
+  }
+]
