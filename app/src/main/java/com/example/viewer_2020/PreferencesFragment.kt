@@ -1,4 +1,4 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.content.Context
 import android.os.Bundle
@@ -11,8 +11,10 @@ import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
-import com.example.viewer_2020.MainViewerActivity.UserDatapoints
-import com.example.viewer_2020.constants.Constants
+import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.R
+import com.example.viewer_2022.UserPreferencesFragment
+import com.example.viewer_2022.constants.Constants
 class PreferencesFragment: Fragment() {
 
     override fun onCreateView(

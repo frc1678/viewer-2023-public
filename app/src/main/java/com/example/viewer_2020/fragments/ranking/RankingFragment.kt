@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.content.Context
 import android.os.Bundle
@@ -18,11 +18,11 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.Translations
-import com.example.viewer_2020.fragments.ranking.PredRankingFragment
-import com.example.viewer_2020.fragments.ranking.RankingListAdapter
-import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.constants.Translations
+import com.example.viewer_2022.fragments.ranking.PredRankingFragment
+import com.example.viewer_2022.fragments.ranking.RankingListAdapter
+import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import com.google.android.material.navigation.NavigationView
 import android.util.Log

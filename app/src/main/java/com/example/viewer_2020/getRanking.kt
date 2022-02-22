@@ -1,7 +1,7 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.fragments.team_ranking.floatToString
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.team_ranking.floatToString
 
 fun getRankingList(datapoint: String, descending: Boolean): List<TeamRankingItem> {
     if(MainViewerActivity.leaderboardCache.containsKey(datapoint)){

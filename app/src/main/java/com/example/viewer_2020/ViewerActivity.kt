@@ -1,4 +1,4 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.app.ActionBar
 import android.app.ActivityOptions

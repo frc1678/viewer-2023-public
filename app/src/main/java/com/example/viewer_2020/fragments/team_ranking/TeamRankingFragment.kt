@@ -1,4 +1,4 @@
-package com.example.viewer_2020.fragments.team_ranking
+package com.example.viewer_2022.fragments.team_ranking
 
 import android.os.Bundle
 import android.util.Log
@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.MainViewerActivity
-import com.example.viewer_2020.R
-import com.example.viewer_2020.*
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.Translations
-import com.example.viewer_2020.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
+import com.example.viewer_2022.*
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.constants.Translations
+import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_team_ranking.view.*
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 
@@ -54,7 +54,11 @@ class TeamRankingFragment : Fragment() {
 
     private fun setTextViews(root: View) {
         if (Translations.ACTUAL_TO_HUMAN_READABLE.containsKey(dataPoint)) {
-            root.tv_datapoint_header.text = Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
+            if(Constants.FIELDS_TO_BE_DISPLAYED_LFM.contains(dataPoint)) {
+                root.tv_datapoint_header.text = "LFM " + Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
+            } else {
+                root.tv_datapoint_header.text = Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
+            }
         } else {
             root.tv_datapoint_header.text = dataPoint
         }

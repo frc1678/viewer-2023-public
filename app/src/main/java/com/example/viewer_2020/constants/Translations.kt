@@ -1,4 +1,4 @@
-package com.example.viewer_2020.constants
+package com.example.viewer_2022.constants
 
 class Translations {
     companion object {
@@ -104,6 +104,7 @@ class Translations {
             "lfm_tele_max_balls_low" to "# Max Balls Low",
             "lfm_tele_max_balls_high" to "# Max Balls High",
             "lfm_max_incap" to "Max Incap",
+            "lfm_avg_incap_time" to "Incap Avg Time",
             "lfm_max_exit_ball_catches" to "# Max Balls Caught",
             "lfm_max_opp_balls_scored" to "# Max Opp. Scored",
             "lfm_max_climb_level" to "Max Climb Level",

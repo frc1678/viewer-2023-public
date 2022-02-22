@@ -17,37 +17,32 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/btn_lfm"
+                style="@style/btn_standard"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="15dp">
+                android:text="To LFM"
+                android:background="@color/colorPrimaryLight"
+            />
 
-                <TextView
-                    style="@style/tv_team_number_team_details"
-                    android:gravity="start"
-                    android:id="@+id/tv_team_number"/>
-
-                <TextView
-                    style="@style/tv_team_number_team_details_sub"
-                    android:gravity="start"
-                    android:id="@+id/tv_team_name"/>
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_team_number"
+                style="@style/tv_team_number_team_details"
+                android:layout_weight="1"
+                android:layout_width="0dp"/>
 
             <Button
-                android:layout_marginTop="15dp"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.5"
-                android:layout_gravity="center|top"
                 android:id="@+id/robot_pic_button"
-                android:text="Picture"
-                android:textSize="18sp"
-                android:background="@color/LightYellow"/>
+                style="@style/btn_standard"
+                android:layout_weight="1"
+                android:background="@color/LightYellow"
+                android:text="Picture" />
 
         </LinearLayout>
+
+        <TextView
+            style="@style/tv_team_number_team_details_sub"
+            android:id="@+id/tv_team_name" />
 
         <View style="@style/view_separator_horizontal"
             android:layout_height="5dp"/>

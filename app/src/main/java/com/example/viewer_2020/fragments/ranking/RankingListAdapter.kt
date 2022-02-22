@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020.fragments.ranking
+package com.example.viewer_2022.fragments.ranking
 
 import android.app.Activity
 import android.view.LayoutInflater
@@ -14,9 +14,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.example.viewer_2020.R
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.getTeamObjectByKey
+import com.example.viewer_2022.R
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.getTeamObjectByKey
 import java.lang.Float
 import java.util.regex.Pattern
 

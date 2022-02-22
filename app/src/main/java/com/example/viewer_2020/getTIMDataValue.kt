@@ -1,4 +1,4 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 fun getTIMDataValue(teamNumber: String, field: String, path: String) : Map<String, String> {
     val matchNumList = getMatchSchedule(listOf(teamNumber)).keys

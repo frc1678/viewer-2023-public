@@ -6,10 +6,10 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020
+package com.example.viewer_2022
 
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.constants.Translations
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.constants.Translations
 import java.lang.Exception
 
 // Parses through every local database key to return the value of the given field.

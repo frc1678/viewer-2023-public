@@ -1,4 +1,4 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.Manifest
 import android.app.AlertDialog
@@ -10,9 +10,9 @@ import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.DatabaseReference
-import com.example.viewer_2020.data.GetDataFromWebsite
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.DatabaseReference
+import com.example.viewer_2022.data.GetDataFromWebsite
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 

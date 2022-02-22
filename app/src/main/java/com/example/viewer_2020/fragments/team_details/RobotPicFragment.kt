@@ -1,4 +1,4 @@
-package com.example.viewer_2020.fragments.team_details
+package com.example.viewer_2022.fragments.team_details
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -11,9 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.R
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.getTeamDataValue
+import com.example.viewer_2022.R
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.robot_pic.view.*
 import kotlinx.android.synthetic.main.team_details.view.*
 import kotlinx.android.synthetic.main.team_details.view.tv_team_name

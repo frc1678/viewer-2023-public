@@ -6,7 +6,7 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.os.Bundle
 import android.text.Editable
@@ -15,10 +15,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.match_schedule.MatchScheduleListAdapter
+import com.example.viewer_2022.fragments.match_schedule.match_details.MatchDetailsFragment
 import androidx.fragment.app.Fragment
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.fragments.match_schedule.MatchScheduleListAdapter
-import com.example.viewer_2020.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
