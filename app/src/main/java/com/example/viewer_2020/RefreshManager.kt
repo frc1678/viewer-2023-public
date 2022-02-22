@@ -1,10 +1,10 @@
-package com.example.viewer_2020
+package com.example.viewer_2022
 
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.example.viewer_2020.constants.Constants
-import com.example.viewer_2020.data.GetDataFromWebsite
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.GetDataFromWebsite
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow

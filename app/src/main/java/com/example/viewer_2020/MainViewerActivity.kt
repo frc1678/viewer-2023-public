@@ -49,6 +49,7 @@ import kotlinx.android.synthetic.main.map_popup.view.*
 import java.io.*
 import com.example.viewer_2022.R
 import androidx.fragment.app.FragmentActivity
+import com.example.viewer_2022.RefreshManager
 
 
 // Main activity class that handles the dual fragment view.
