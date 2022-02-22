@@ -8,6 +8,7 @@ import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.Match
+import com.example.viewer_2022.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 
@@ -21,6 +22,8 @@ class StarredMatchesFragment : MatchScheduleFragment() {
         updateMatchScheduleListView(root, Constants.ScheduleType.STARRED_MATCHES)
         val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
         root.lv_match_schedule.setOnItemClickListener { _, _, position, _ ->
+            val matchDetailsFragment = MatchDetailsFragment()
+            val matchDetailsFragmentArguments = Bundle()
             matchDetailsFragmentArguments.putInt(
                 Constants.MATCH_NUMBER,
                 (root.lv_match_schedule.adapter.getItem(position) as Match).matchNumber.toInt()

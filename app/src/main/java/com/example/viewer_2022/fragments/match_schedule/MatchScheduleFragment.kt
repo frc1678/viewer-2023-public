@@ -15,18 +15,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.viewer_2022.IFrag
+import androidx.fragment.app.Fragment
+import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.fragments.match_schedule.match_details.MatchDetailsFragment
 import com.example.viewer_2022.getMatchSchedule
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
-open class MatchScheduleFragment : IFrag(){
+open class MatchScheduleFragment : Fragment(){
 
-    val matchDetailsFragment = MatchDetailsFragment()
-    val matchDetailsFragmentArguments = Bundle()
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +40,7 @@ open class MatchScheduleFragment : IFrag(){
     }
 
     fun updateMatchScheduleListView(root: View, scheduleType: Constants.ScheduleType) {
-        adapter = MatchScheduleListAdapter(
+        val adapter = MatchScheduleListAdapter(
             activity!!,
             (getMatchSchedule(
                 (if (scheduleType == Constants.ScheduleType.OUR_MATCHES) listOf(Constants.MY_TEAM_NUMBER) else listOf()),
@@ -51,6 +50,12 @@ open class MatchScheduleFragment : IFrag(){
             scheduleType,
             root.lv_match_schedule
         )
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: match-schedule")
+                adapter.notifyDataSetChanged()
+            }
+        }
         root.lv_match_schedule.adapter = adapter
 
         root.match_search_bar.addTextChangedListener(object : TextWatcher {
@@ -75,5 +80,10 @@ open class MatchScheduleFragment : IFrag(){
             }
             override fun afterTextChanged(s: Editable) {}
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }

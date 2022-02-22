@@ -2,10 +2,12 @@ package com.example.viewer_2022.fragments.live_picklist
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.viewer_2022.IFrag
+import androidx.fragment.app.Fragment
+import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.StartupActivity
 import com.example.viewer_2022.constants.Constants
@@ -20,10 +22,13 @@ import kotlinx.coroutines.runBlocking
  *
  * @see R.layout.fragment_live_picklist
  */
-class LivePicklistFragment : IFrag() {
+class LivePicklistFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
 
     private lateinit var root: View
+
+    /** The refresh ID used for live resync. */
+    private var refreshId: String? = null
 
     /** The list of teams with their picklist rankings, sorted by their first rank. */
     private lateinit var firstOrder: List<DatabaseReference.PicklistTeam>
@@ -59,6 +64,14 @@ class LivePicklistFragment : IFrag() {
         updateList()
         updateHeaders()
 
+        // Register the refresh listener for live resync.
+        if (refreshId == null) {
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                refreshList()
+                Log.d("data-refresh", "Updated: Live Picklist")
+            }
+        }
+
         // Register the listeners for the sorting buttons.
         root.btn_first_rank.setOnClickListener { currentOrdering = Orders.FIRST }
         root.btn_second_rank.setOnClickListener { currentOrdering = Orders.SECOND }
@@ -84,6 +97,14 @@ class LivePicklistFragment : IFrag() {
         }
 
         return root
+    }
+
+    /**
+     * Removes the live resync listener when the fragment is destroyed.
+     */
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 
     /**
@@ -131,15 +152,13 @@ class LivePicklistFragment : IFrag() {
      * needs to be displayed, for example when the user selects a different sort order.
      */
     private fun updateList() {
-        adapter = LivePicklistAdapter(
+        root.lv_live_picklist.adapter = LivePicklistAdapter(
             context = context!!,
             teams = when (currentOrdering) {
                 Orders.FIRST -> firstOrder
                 Orders.SECOND -> secondOrder
             },
-            currentOrdering = currentOrdering,
-            onNotifyDataSetChanged = { refreshList() }
+            currentOrdering = currentOrdering
         )
-        root.lv_live_picklist.adapter = adapter
     }
 }

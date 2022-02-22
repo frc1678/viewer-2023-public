@@ -1,18 +1,22 @@
 package com.example.viewer_2022.fragments.team_ranking
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.viewer_2022.*
+import androidx.fragment.app.Fragment
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2022.getRankingList
 import kotlinx.android.synthetic.main.fragment_team_ranking.view.*
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 
 
-class TeamRankingFragment : IFrag() {
+class TeamRankingFragment : Fragment() {
     companion object {
         const val TEAM_NUMBER = "teamNumber"
         const val DATA_POINT = "dataPoint"
@@ -24,6 +28,7 @@ class TeamRankingFragment : IFrag() {
 
     var lvAdapter: TeamRankingListAdapter? = null
 
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,8 +65,14 @@ class TeamRankingFragment : IFrag() {
 
     private fun setupAdapter(root: View) {
 
-
         lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: team-ranking")
+                lvAdapter?.updateItems(getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+
+            }
+        }
         root.lv_team_ranking.adapter = lvAdapter
         root.lv_team_ranking.setOnItemClickListener { parent, view, position, id ->
             val teamDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
@@ -80,10 +91,13 @@ class TeamRankingFragment : IFrag() {
         }
     }
 
-
-
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
+    }
 }
 
+data class TeamRankingItem(val teamNumber: String, val value: String)
 
 //Maybe a better method of sorting https://kotlinlang.org/docs/collection-ordering.html
 /*

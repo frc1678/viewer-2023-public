@@ -1,7 +1,6 @@
 package com.example.viewer_2022.fragments.live_picklist
 
 import android.content.Context
-import android.database.DataSetObserver
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
@@ -21,22 +20,12 @@ import kotlinx.coroutines.runBlocking
  * @param teams The list of teams to be displayed, in the form of
  * [`PicklistTeam`][DatabaseReference.PicklistTeam] objects. This list should already be sorted.
  * @param currentOrdering The current ordering of the list of teams.
- * @param onNotifyDataSetChanged A method to call when
- * [`notifyDataSetChanged`][notifyDataSetChanged] is called on this adapter.
  */
 class LivePicklistAdapter(
     context: Context,
     private val teams: List<DatabaseReference.PicklistTeam>,
-    private val currentOrdering: LivePicklistFragment.Orders,
-    onNotifyDataSetChanged: () -> Unit
+    private val currentOrdering: LivePicklistFragment.Orders
 ) : BaseAdapter() {
-
-    init {
-        // Register a callback when notifyDataSetChanged is called on this adapter.
-        registerDataSetObserver(object : DataSetObserver() {
-            override fun onChanged() = onNotifyDataSetChanged()
-        })
-    }
 
     /** A convenience object for inflating layouts. */
     private val inflater = LayoutInflater.from(context)

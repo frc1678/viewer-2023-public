@@ -1,18 +1,22 @@
 package com.example.viewer_2022.fragments.ranking
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.viewer_2022.*
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 
-class PredRankingFragment : IFrag() {
+class PredRankingFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
+
+    private var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,11 +44,16 @@ class PredRankingFragment : IFrag() {
         root.tv_datapoint_five.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[0]]
 
-        adapter = PredRankingListAdapter(activity!!, convertToPredFilteredTeamsList(
+        val adapter = PredRankingListAdapter(activity!!, convertToPredFilteredTeamsList(
             Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             MainViewerActivity.teamList
         ))
-
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: pred-ranking")
+                adapter.notifyDataSetChanged()
+            }
+        }
         root.lv_ranking.adapter = adapter
 
         root.lv_ranking.setOnItemClickListener { _, _, position, _ ->
@@ -75,5 +84,10 @@ class PredRankingFragment : IFrag() {
             .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
             .commit()
         return
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 }
