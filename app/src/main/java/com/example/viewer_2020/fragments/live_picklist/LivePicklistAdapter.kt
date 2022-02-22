@@ -2,6 +2,7 @@ package com.example.viewer_2020.fragments.live_picklist
 
 import android.content.Context
 import android.database.DataSetObserver
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,7 @@ import kotlinx.coroutines.runBlocking
 class LivePicklistAdapter(
     context: Context,
     private val teams: List<DatabaseReference.PicklistTeam>,
+    private val currentOrdering: LivePicklistFragment.Orders,
     onNotifyDataSetChanged: () -> Unit
 ) : BaseAdapter() {
 
@@ -65,6 +67,19 @@ class LivePicklistAdapter(
             launch { row?.tv_team_number?.text = team.team_number.toString() }
             launch { row?.tv_first_rank?.text = team.first_rank.toString() }
             launch { row?.tv_second_rank?.text = team.second_rank.toString() }
+            // Set the text style based on the current ordering.
+            launch {
+                row?.tv_first_rank?.typeface = when (currentOrdering) {
+                    LivePicklistFragment.Orders.FIRST -> Typeface.DEFAULT_BOLD
+                    LivePicklistFragment.Orders.SECOND -> Typeface.DEFAULT
+                }
+            }
+            launch {
+                row?.tv_second_rank?.typeface = when (currentOrdering) {
+                    LivePicklistFragment.Orders.FIRST -> Typeface.DEFAULT
+                    LivePicklistFragment.Orders.SECOND -> Typeface.DEFAULT_BOLD
+                }
+            }
         }
         return row!!
     }

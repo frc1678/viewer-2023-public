@@ -137,6 +137,7 @@ class LivePicklistFragment : IFrag() {
                 Orders.FIRST -> firstOrder
                 Orders.SECOND -> secondOrder
             },
+            currentOrdering = currentOrdering,
             onNotifyDataSetChanged = { refreshList() }
         )
         root.lv_live_picklist.adapter = adapter
