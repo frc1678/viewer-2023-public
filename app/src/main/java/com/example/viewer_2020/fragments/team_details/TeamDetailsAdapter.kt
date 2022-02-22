@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
 import android.widget.FrameLayout
+import com.example.viewer_2022.MatchScheduleFragment
 import com.example.viewer_2022.fragments.team_ranking.TeamRankingFragment
 import com.example.viewer_2022.getRankingTeam
 
@@ -62,7 +63,7 @@ class TeamDetailsAdapter(
             Translations.ACTUAL_TO_HUMAN_READABLE[e]
                 ?: e
         if ((e == "Auto") or (e == "LFM Auto") or (e == "Tele") or (e == "LFM Tele") or
-            (e == "Endgame") or (e == "LFM Endgame") or (e == "Pit Data")) {
+            (e == "Endgame") or (e == "LFM Endgame") or (e == "Pit Data") or (e=="See Matches")) {
             isHeader = true
             rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28F)
             rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
@@ -134,6 +135,21 @@ class TeamDetailsAdapter(
                     .addToBackStack(null)
                     .replace(R.id.nav_host_fragment, graphsFragment, "graphs")
                     .commit()
+            }
+        }
+
+        if (e=="See Matches"){
+            rowView.setOnClickListener {
+                val matchScheduleFragment = MatchScheduleFragment()
+                val matchScheduleFragmentArguments = Bundle()
+                val matchScheduleFragmentTransaction =
+                    context.supportFragmentManager.beginTransaction()
+                matchScheduleFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+                matchScheduleFragment.arguments = matchScheduleFragmentArguments
+                matchScheduleFragmentTransaction.addToBackStack(null).replace(
+                    (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
+                    matchScheduleFragment
+                ).commit()
             }
         }
 
