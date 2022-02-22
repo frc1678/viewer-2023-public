@@ -20,6 +20,7 @@ import kotlinx.coroutines.runBlocking
  *
  * @param teams The list of teams to be displayed, in the form of
  * [`PicklistTeam`][DatabaseReference.PicklistTeam] objects. This list should already be sorted.
+ * @param currentOrdering The current ordering of the list of teams.
  * @param onNotifyDataSetChanged A method to call when
  * [`notifyDataSetChanged`][notifyDataSetChanged] is called on this adapter.
  */
