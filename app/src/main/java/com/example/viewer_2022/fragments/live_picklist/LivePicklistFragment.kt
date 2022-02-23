@@ -36,10 +36,10 @@ class LivePicklistFragment : Fragment() {
     private var refreshId: String? = null
 
     /** The list of teams with their picklist rankings, sorted by their first rank. */
-    var firstOrder = mutableListOf<DatabaseReference.PicklistTeam>()
+    lateinit var firstOrder: MutableList<DatabaseReference.PicklistTeam>
 
     /** The list of teams with their picklist rankings, sorted by their second rank. */
-    var secondOrder = mutableListOf<DatabaseReference.PicklistTeam>()
+    lateinit var secondOrder: MutableList<DatabaseReference.PicklistTeam>
 
     /**
      * The possible orderings of the picklist.
@@ -125,18 +125,24 @@ class LivePicklistFragment : Fragment() {
      * Should be called when there is new data pulled.
      */
     private fun refreshLists() {
-        // Create a CoroutineScope using runBlocking.
-        runBlocking {
-            // Launch both of the sorting jobs, running asynchronously.
-            val firstJob = async {
-                StartupActivity.databaseReference!!.picklist.sortedBy { it.first_rank }
+        if (StartupActivity.databaseReference!!.picklist.isEmpty()) {
+            // If the picklist is empty for some reason, the orders should be empty as well.
+            firstOrder = mutableListOf()
+            secondOrder = mutableListOf()
+        } else {
+            // Create a CoroutineScope using runBlocking.
+            runBlocking {
+                // Launch both of the sorting jobs, running asynchronously.
+                val firstJob = async {
+                    StartupActivity.databaseReference!!.picklist.sortedBy { it.first_rank }
+                }
+                val secondJob = async {
+                    StartupActivity.databaseReference!!.picklist.sortedBy { it.second_rank }
+                }
+                // Once both are done, save the generated lists.
+                firstOrder = firstJob.await() as MutableList<DatabaseReference.PicklistTeam>
+                secondOrder = secondJob.await() as MutableList<DatabaseReference.PicklistTeam>
             }
-            val secondJob = async {
-                StartupActivity.databaseReference!!.picklist.sortedBy { it.second_rank }
-            }
-            // Once both are done, save the generated lists.
-            firstOrder = firstJob.await() as MutableList<DatabaseReference.PicklistTeam>
-            secondOrder = secondJob.await() as MutableList<DatabaseReference.PicklistTeam>
         }
         // Notify the adapter that the data has been updated.
         if (root.lv_live_picklist.adapter != null) {
