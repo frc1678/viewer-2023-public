@@ -194,30 +194,7 @@ class MainViewerActivity : ViewerActivity() {
         Log.e("ALL_DATA_FROM_WEBSITE", "${StartupActivity.databaseReference}")
         container.addDrawerListener(NavDrawerListener(navView, supportFragmentManager))
 
-        data_refresh_button.setOnClickListener {
-            data_refresh_button.isEnabled = false
-            if (Constants.USE_TEST_DATA) {
-                GetDataFromFiles(this, {
-                    data_refresh_button.isEnabled = true
-                    Snackbar.make(container, "Refreshed Data!", 2500).show()
-                    refreshManager.refresh()
-                    updateNavFooter()
-                }, {
-                    data_refresh_button.isEnabled = true
-                    Snackbar.make(container, "Data Failed to load", 2500).show()
-                }).execute()
-            } else {
-                GetDataFromWebsite({
-                    data_refresh_button.isEnabled = true
-                    Snackbar.make(container, "Refreshed Data!", 2500).show()
-                    refreshManager.refresh()
-                    updateNavFooter()
-                }, {
-                    data_refresh_button.isEnabled = true
-                    Snackbar.make(container, "Data Failed to load", 2500).show()
-                }).execute()
-            }
-        }
+
 
         navView.setNavigationItemSelectedListener {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.closeDrawer(
@@ -382,7 +359,7 @@ class MainViewerActivity : ViewerActivity() {
         val footer = findViewById<TextView>(R.id.nav_footer)
         if(Constants.USE_TEST_DATA){
             footer.text = getString(R.string.test_data)
-            data_refresh_button.isEnabled = false
+
         } else {
             footer.text = getString(R.string.last_updated, super.getTimeText())
         }

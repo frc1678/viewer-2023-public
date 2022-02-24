@@ -43,12 +43,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="bottom">
-            <Button
-                android:id="@+id/data_refresh_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:text="Refresh" />
+
             <TextView style="@style/tv_standard_gray"
                 android:id="@+id/nav_footer"
                 android:layout_width="match_parent"
