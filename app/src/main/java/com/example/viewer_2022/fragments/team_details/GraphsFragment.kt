@@ -132,6 +132,14 @@ class GraphsFragment() : Fragment() {
                     "Traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
                     else -> entries.add(BarEntry(index.toFloat(), 0F))
                 }
+            } else if (datapoint == "mode_start_position"){
+                when(timData){
+                    "One" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "Two" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "Three" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "Four" -> entries.add(BarEntry(index.toFloat(), 4F))
+                    else -> entries.add(BarEntry(index.toFloat(), 0F))
+                }
             } else if (datapoint == "climb_percent_success"){
                 if((timData != "none") and (timData != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(index.toFloat(), 1F))
