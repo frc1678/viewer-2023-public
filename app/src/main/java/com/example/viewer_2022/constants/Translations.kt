@@ -138,7 +138,8 @@ class Translations {
             "position_one_starts" to "Position One Starts",
             "position_two_starts" to "Position Two Starts",
             "position_three_starts" to "Position Three Starts",
-            "position_four_starts" to "Position Four Starts"
+            "position_four_starts" to "Position Four Starts",
+            "See Matches" to "See Matches " + "\u2192".toCharArray()[0].toString()
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(

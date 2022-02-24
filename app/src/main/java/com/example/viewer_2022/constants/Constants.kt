@@ -49,6 +49,7 @@ class Constants {
         )
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
+            "See Matches",
             "current_rps",
             "current_rank",
             "current_avg_rps",
@@ -112,6 +113,7 @@ class Constants {
         )
 
         val FIELDS_TO_BE_DISPLAYED_LFM: List<String> = listOf(
+            "See Matches",
             "LFM Auto",
             "lfm_auto_avg_lows",
             "lfm_auto_avg_hub_highs",
