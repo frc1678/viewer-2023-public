@@ -1,20 +1,15 @@
 package com.example.viewer_2022
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.GetDataFromWebsite
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import java.util.*
 import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
 
 
 class RefreshManager {

@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
 import android.widget.FrameLayout
-import com.example.viewer_2022.MatchScheduleFragment
+import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.team_ranking.TeamRankingFragment
 import com.example.viewer_2022.getRankingTeam
 

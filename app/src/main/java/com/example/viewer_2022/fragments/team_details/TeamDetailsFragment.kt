@@ -8,31 +8,22 @@
 
 package com.example.viewer_2022.fragments.team_details
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.util.TypedValue
-import android.view.*
-import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.viewer_2022.*
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.Team
+import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
-import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.io.File
-import java.util.*
 
 // The fragment class for the Team Details display that occurs when you click on a
 // team in the match details page.

@@ -1,10 +1,8 @@
 package com.example.viewer_2022
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.DatabaseReference
+import com.example.viewer_2022.data.GetDataFromFiles
 import com.example.viewer_2022.data.GetDataFromWebsite
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*

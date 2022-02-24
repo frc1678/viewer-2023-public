@@ -5,12 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import androidx.fragment.app.Fragment
 import com.example.viewer_2022.*
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
-import com.example.viewer_2022.convertToFilteredTeamsList
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 

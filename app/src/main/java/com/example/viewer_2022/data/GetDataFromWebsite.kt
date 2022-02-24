@@ -62,7 +62,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                     "predicted_team",
                     "tba_team",
                     "pickability",
-                    "tba_tim"
+                    "picklist"
                 )
 
             //For each of the collections (make sure to change this number if the number of collections change),
@@ -107,9 +107,9 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                         result.toString(),
                         Array<DatabaseReference.CalculatedPickAbilityTeam>::class.java
                     ).toMutableList()
-                    9 -> databaseReference?.tba_tim = Gson().fromJson(
+                    9 -> databaseReference?.picklist = Gson().fromJson(
                         result.toString(),
-                        Array<DatabaseReference.CalculatedTBATeamInMatch>::class.java
+                        Array<DatabaseReference.PicklistTeam>::class.java
                     ).toMutableList()
                 }
             }

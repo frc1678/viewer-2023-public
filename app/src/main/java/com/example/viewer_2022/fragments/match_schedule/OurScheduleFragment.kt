@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.viewer_2022.MainViewerActivity
-import com.example.viewer_2022.MatchScheduleFragment
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.fragments.match_schedule.match_details.MatchDetailsFragment

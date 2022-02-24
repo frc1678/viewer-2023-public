@@ -1,10 +1,13 @@
-package com.example.viewer_2022
+package com.example.viewer_2022.data
 
 import android.content.Context
 import android.os.AsyncTask
 import android.util.Log
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.StartupActivity.Companion.databaseReference
 import com.example.viewer_2022.data.*
+import com.example.viewer_2022.lastUpdated
 import com.google.gson.Gson
 import java.io.*
 import java.util.*
@@ -17,7 +20,7 @@ class GetDataFromFiles(var context:Context, val onCompleted: () -> Unit = {} ,va
         try {
             //For each of the collections (make sure to change this number if the number of collections change),
             //pull the data from the website and then add it to the databaseReference variable
-            for (x in 0..8) {
+            for (x in 0..9) {
                 when (x) {
                     0 -> databaseReference?.raw_obj_pit = Gson().fromJson(
                             readFile(context.getResources().openRawResource(R.raw.raw_obj_pit)),
@@ -52,6 +55,10 @@ class GetDataFromFiles(var context:Context, val onCompleted: () -> Unit = {} ,va
                     8 -> databaseReference?.pickability = Gson().fromJson(
                         readFile(context.getResources().openRawResource(R.raw.calc_pickability)),
                         Array<DatabaseReference.CalculatedPickAbilityTeam>::class.java
+                    ).toMutableList()
+                    9 -> databaseReference?.picklist = Gson().fromJson(
+                        readFile(context.getResources().openRawResource(R.raw.picklist)),
+                        Array<DatabaseReference.PicklistTeam>::class.java
                     ).toMutableList()
                 }
                 Log.e("databaseReference","$databaseReference")

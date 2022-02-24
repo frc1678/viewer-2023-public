@@ -5,15 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import androidx.fragment.app.Fragment
-import com.example.viewer_2022.*
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_team_list.view.*
 
 // displays the team numbers in team list in numerical order
-class TeamListFragment() : Fragment() {
+class TeamListFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
     private val list: List<String> = MainViewerActivity.teamList.sortedBy{it.toInt()}

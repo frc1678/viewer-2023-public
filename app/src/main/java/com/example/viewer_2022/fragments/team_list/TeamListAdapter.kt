@@ -1,4 +1,4 @@
-package com.example.viewer_2022.fragments.team_list;
+package com.example.viewer_2022.fragments.team_list
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -6,26 +6,21 @@
 * Copyright 2020 Citrus Circuits. All rights reserved.
 */
 
-package com.example.viewer_2022
+package com.example.viewer_2022.fragments.ranking
 
-import android.content.Context
 import android.os.Bundle
-import android.service.notification.NotificationListenerService
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
-import com.example.viewer_2022.fragments.ranking.PredRankingFragment
-import com.example.viewer_2022.fragments.ranking.RankingListAdapter
+import com.example.viewer_2022.convertToFilteredTeamsList
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
-import com.google.android.material.navigation.NavigationView
-import android.util.Log
 
 
 // The fragment of the ranking lists 'view' that is one of the options of the navigation bar.
@@ -100,7 +95,7 @@ class RankingFragment : Fragment() {
         return root
     }
 
-    fun newInstance(): RankingFragment{
+    fun newInstance(): RankingFragment {
         return RankingFragment()
     }
 

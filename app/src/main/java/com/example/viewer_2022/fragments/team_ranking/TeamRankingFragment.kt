@@ -5,14 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
-import com.example.viewer_2022.*
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
+import com.example.viewer_2022.getRankingList
 import kotlinx.android.synthetic.main.fragment_team_ranking.view.*
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 

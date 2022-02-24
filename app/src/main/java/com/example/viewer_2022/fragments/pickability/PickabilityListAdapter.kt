@@ -1,4 +1,4 @@
-package com.example.viewer_2022.fragments.pickability;
+package com.example.viewer_2022.fragments.pickability
 
 import android.content.Context
 import android.util.Log
