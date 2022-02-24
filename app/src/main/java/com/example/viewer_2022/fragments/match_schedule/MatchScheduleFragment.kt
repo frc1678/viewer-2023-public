@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 
 //The fragment of the match schedule 'view' that is one of the options of the navigation bar.
 open class MatchScheduleFragment : Fragment(){
-
+    private var teamNumber: String? = null
     private var refreshId: String? = null
 
     override fun onCreateView(
@@ -32,6 +32,9 @@ open class MatchScheduleFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        arguments?.let {
+            teamNumber = it.getString(Constants.TEAM_NUMBER, null)
+        }
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
 
         updateMatchScheduleListView(root, Constants.ScheduleType.ALL_MATCHES)
@@ -57,6 +60,23 @@ open class MatchScheduleFragment : Fragment(){
             }
         }
         root.lv_match_schedule.adapter = adapter
+
+        if(teamNumber != null){
+            root.match_search_bar.setText(teamNumber)
+            val search = listOf(teamNumber!!)
+            var matchesWanted = getMatchSchedule(search,
+                false
+            )
+            if(!matchesWanted.isEmpty()) {
+                (adapter as MatchScheduleListAdapter).updateData(matchesWanted, Constants.ScheduleType.OUR_MATCHES)
+                Log.e("matchesWanted", "$matchesWanted")
+            } else if (teamNumber!!.length == 0){
+                matchesWanted = getMatchSchedule((listOf()), true)
+                (adapter as MatchScheduleListAdapter).updateData(matchesWanted, Constants.ScheduleType.STARRED_MATCHES)
+            } else {
+                (adapter as MatchScheduleListAdapter).updateData(matchesWanted, Constants.ScheduleType.OUR_MATCHES)
+            }
+        }
 
         root.match_search_bar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

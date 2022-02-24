@@ -23,7 +23,7 @@ fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: Strin
         val tbaTim = StartupActivity.databaseReference!!.tba_tim.find {
             it.match_number.toString() == matchNumber && it.team_number.toString() == teamNumber
         }
-        timObject = TeamInMatch(matchNumber.toInt(), teamNumber.toInt())
+        timObject = TeamInMatch(teamNumber.toInt(), matchNumber.toInt())
         timObject.objTim = objTim
         timObject.tbaTim = tbaTim
         MainViewerActivity.timCache.add(timObject)
