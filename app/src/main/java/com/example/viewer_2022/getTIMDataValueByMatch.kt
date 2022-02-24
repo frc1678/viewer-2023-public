@@ -28,9 +28,14 @@ fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: Strin
         timObject.tbaTim = tbaTim
         MainViewerActivity.timCache.add(timObject)
     }
-    var fieldValue = getDirectField(timObject.objTim!!, field).toString()
+    var fieldValue = Constants.NULL_CHARACTER
+    if (timObject.objTim != null) {
+        fieldValue = getDirectField(timObject.objTim!!, field).toString()
+    }
     if (fieldValue == Constants.NULL_CHARACTER) {
-        fieldValue = getDirectField(timObject.tbaTim!!, field).toString()
+        if (timObject.tbaTim != null) {
+            fieldValue = getDirectField(timObject.tbaTim!!, field).toString()
+        }
     }
     return fieldValue
 }
