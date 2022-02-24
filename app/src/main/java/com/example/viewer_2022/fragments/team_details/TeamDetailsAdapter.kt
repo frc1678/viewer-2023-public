@@ -76,7 +76,7 @@ class TeamDetailsAdapter(
                 rowView.tv_datapoint_name.setBackgroundColor(
                     ContextCompat.getColor(
                         context,
-                        R.color.colorPrimaryLight
+                        R.color.MediumGray
                     )
                 )
             } else {
