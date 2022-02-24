@@ -182,7 +182,8 @@ class Constants {
             "avg_incap_time",
             "avg_exit_ball_catches",
             "avg_opp_balls_scored",
-            "matches_incap"
+            "matches_incap",
+            "mode_start_position"
         )
 
         val GRAPHABLE_BOOL: List<String> = listOf(

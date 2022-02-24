@@ -177,7 +177,8 @@ class Translations {
             "mid_avg_time" to "climb_time",
             "high_avg_time" to "climb_time",
             "traversal_avg_time" to "climb_time",
-            "mode_climb_level" to "climb_level"
+            "mode_climb_level" to "climb_level",
+            "mode_start_position" to "start_position"
         )
 
         val TIM_TO_HUMAN_READABLE : Map<String, String> = mapOf(
@@ -201,7 +202,8 @@ class Translations {
             "mid_rung_successes" to "Mid Rung Success?",
             "high_rung_successes" to "High Rung Success?",
             "traversal_rung_successes" to "Traversal Rung Success?",
-            "mode_climb_level" to "Climb Level"
+            "mode_climb_level" to "Climb Level",
+            "mode_start_position" to "Start Position"
         )
     }
 }
