@@ -148,7 +148,11 @@ class MainViewerActivity : ViewerActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-
+        Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
+            if(it !in Constants.CATEGORY_NAMES){
+                getRankingList(it, false)
+            }
+        }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
