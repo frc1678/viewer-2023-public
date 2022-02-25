@@ -1,21 +1,24 @@
 package com.example.viewer_2022
 
+import android.util.Log
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.fragments.team_ranking.floatToString
 
-fun getRankingList(datapoint: String, descending: Boolean): List<TeamRankingItem> {
-    if(MainViewerActivity.leaderboardCache.containsKey(datapoint)){
+fun getRankingList(datapoint: String, descending: Boolean): Leaderboard {
+    if (MainViewerActivity.leaderboardCache.containsKey(datapoint)) {
+        Log.d("getRankingList", "using cached leaderboard")
         val leaderboard = MainViewerActivity.leaderboardCache[datapoint] as Leaderboard
-        if(descending){
-            if(leaderboard.descending != null){
-                return leaderboard.descending!!
-            }
-        } else {
-            if(leaderboard.ascending != null){
-                return leaderboard.ascending!!
-            }
+        val rankedTeams = leaderboard.map {
+            it.teamNumber
         }
+        val nullTeams = (MainViewerActivity.teamList - rankedTeams).map {
+            return@map TeamRankingItem(it, Constants.NULL_CHARACTER, -1)
+        }
+
+        val finalLeaderboard = if (descending) leaderboard.reversed() else leaderboard
+        return finalLeaderboard + nullTeams
     }
+    Log.d("getRankingList", "generating new leaderboard")
 
     val data = mutableListOf<TeamUnplacedItem>()
 
@@ -30,38 +33,48 @@ fun getRankingList(datapoint: String, descending: Boolean): List<TeamRankingItem
     val nullTeams = data.filter { item -> item.value == Constants.NULL_CHARACTER }
     val dataTeams = data.filter { item -> item.value != Constants.NULL_CHARACTER }
 
-    var sortedData = dataTeams.sortedWith(compareBy { it.value.toFloatOrNull() })
+    val unidirectionalSortedData = dataTeams.sortedWith(compareBy { it.value.toFloatOrNull() })
 
-    if (descending) sortedData = sortedData.reversed()
+    val sortedData = if (descending) unidirectionalSortedData.reversed() else unidirectionalSortedData
 
-    val finalList = (sortedData + nullTeams).mapIndexed { index, item -> TeamRankingItem(item.teamNumber, item.value, index + 1) }
-    if(MainViewerActivity.leaderboardCache.containsKey(datapoint)){
-        val leaderboard = MainViewerActivity.leaderboardCache[datapoint] as Leaderboard
-        if(descending){
-            leaderboard.descending = finalList
-        } else {
-            leaderboard.ascending = finalList
-        }
-    } else {
-        if(descending){
-            MainViewerActivity.leaderboardCache[datapoint] = Leaderboard(descending = finalList)
-        } else {
-            MainViewerActivity.leaderboardCache[datapoint] = Leaderboard(ascending = finalList)
 
-        }
+    val orderedDataList = sortedData.mapIndexed { index, item ->
+        TeamRankingItem(
+            item.teamNumber,
+            item.value,
+            if (item.value != Constants.NULL_CHARACTER) index + 1 else -1
+        )
     }
+
+    val orderedNullList = nullTeams.mapIndexed { index, item ->
+        TeamRankingItem(
+            item.teamNumber,
+            item.value,
+            if (item.value != Constants.NULL_CHARACTER) index + 1 else -1
+        )
+    }
+    val finalList = (orderedDataList + orderedNullList)
+
+    MainViewerActivity.leaderboardCache[datapoint] = unidirectionalSortedData.mapIndexed { index, item ->
+        TeamRankingItem(
+            item.teamNumber,
+            item.value,
+            if (item.value != Constants.NULL_CHARACTER) index + 1 else -1
+        )
+    }
+
     return finalList
 }
 
-fun getRankingTeam(teamNumber: String, datapoint: String, descending: Boolean): String{
+fun getRankingTeam(teamNumber: String, datapoint: String, descending: Boolean): String {
     val rankList = getRankingList(datapoint, descending)
 
     val teamEntry = rankList.first { it.teamNumber == teamNumber }
 
-    return if(teamEntry.value == Constants.NULL_CHARACTER) teamEntry.value else teamEntry.placement.toString()
+    return if (teamEntry.value == Constants.NULL_CHARACTER) teamEntry.value else teamEntry.placement.toString()
 }
 
 
 data class TeamUnplacedItem(val teamNumber: String, val value: String)
 data class TeamRankingItem(val teamNumber: String, val value: String, val placement: Int)
-data class Leaderboard(var descending: List<TeamRankingItem>? = null, var ascending: List<TeamRankingItem>? = null)
+typealias Leaderboard = List<TeamRankingItem>
