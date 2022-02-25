@@ -222,7 +222,7 @@ class Constants {
             "current_avg_rps" to true,
             "predicted_rps" to true,
             "first_pickability" to true,
-            "second_pickability" to true,
+            "second_pickability" to false,
             "auto_avg_balls_low" to true,
             "auto_avg_balls_high" to true,
             "auto_avg_balls_total" to true,
