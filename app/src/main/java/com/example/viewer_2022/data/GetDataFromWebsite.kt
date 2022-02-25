@@ -47,7 +47,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
                     .toMap().toMutableMap()
 
             MainViewerActivity.teamList = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/2021isjo/?format=json"),
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/2022week0/?format=json"),
                 WebsiteTeams
             )
 
@@ -125,6 +125,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
     }
 
     override fun onPostExecute(result: String) {
+        MainViewerActivity.leaderboardCache.clear()
         Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
             if(it !in Constants.CATEGORY_NAMES){
                 getRankingList(it, false)
