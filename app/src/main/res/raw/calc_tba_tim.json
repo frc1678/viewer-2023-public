@@ -1,30 +1,122 @@
-[{
-    "auto_line": true,
+[
+  {
+    "team_number": 4041,
     "match_number": 1,
-    "team_number": 867
+    "auto_line": true
   },
   {
-    "auto_line": true,
+    "team_number": 1153,
     "match_number": 1,
-    "team_number": 1661
+    "auto_line": true
   },
   {
-    "auto_line": false,
+    "team_number": 2370,
     "match_number": 1,
-    "team_number": 7415
+    "auto_line": true
   },
   {
-    "auto_line": false,
+    "team_number": 88,
     "match_number": 1,
-    "team_number": 6814
+    "auto_line": true
   },
   {
-    "auto_line": false,
+    "team_number": 2342,
     "match_number": 1,
-    "team_number": 114
+    "auto_line": true
   },
   {
-    "auto_line": true,
+    "team_number": 157,
     "match_number": 1,
-    "team_number": 5089
-  }]
+    "auto_line": true
+  },
+  {
+    "team_number": 811,
+    "match_number": 2,
+    "auto_line": true
+  },
+  {
+    "team_number": 3467,
+    "match_number": 2,
+    "auto_line": true
+  },
+  {
+    "team_number": 246,
+    "match_number": 2,
+    "auto_line": true
+  },
+  {
+    "team_number": 4909,
+    "match_number": 2,
+    "auto_line": true
+  },
+  {
+    "team_number": 58,
+    "match_number": 2,
+    "auto_line": true
+  },
+  {
+    "team_number": 1721,
+    "match_number": 2,
+    "auto_line": true
+  },
+  {
+    "team_number": 151,
+    "match_number": 3,
+    "auto_line": true
+  },
+  {
+    "team_number": 2713,
+    "match_number": 3,
+    "auto_line": true
+  },
+  {
+    "team_number": 501,
+    "match_number": 3,
+    "auto_line": true
+  },
+  {
+    "team_number": 509,
+    "match_number": 3,
+    "auto_line": true
+  },
+  {
+    "team_number": 1073,
+    "match_number": 3,
+    "auto_line": true
+  },
+  {
+    "team_number": 6153,
+    "match_number": 3,
+    "auto_line": true
+  },
+  {
+    "team_number": 8724,
+    "match_number": 4,
+    "auto_line": true
+  },
+  {
+    "team_number": 5459,
+    "match_number": 4,
+    "auto_line": false
+  },
+  {
+    "team_number": 125,
+    "match_number": 4,
+    "auto_line": true
+  },
+  {
+    "team_number": 5687,
+    "match_number": 4,
+    "auto_line": true
+  },
+  {
+    "team_number": 238,
+    "match_number": 4,
+    "auto_line": true
+  },
+  {
+    "team_number": 5813,
+    "match_number": 4,
+    "auto_line": true
+  }
+]

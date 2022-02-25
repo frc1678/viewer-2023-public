@@ -1,62 +1,137 @@
 [
   {
-    "team_number": 7415,
-    "first_pickability": 79.2763,
-    "second_pickability": 89.7082
+    "team_number": 58,
+    "first_pickability": 22.6669,
+    "second_pickability": 27.15534
   },
   {
-    "team_number": 867,
-    "first_pickability": 65.8291,
-    "second_pickability": 35.0921
+    "team_number": 88,
+    "first_pickability": 84.596245,
+    "second_pickability": 1.5400231
   },
   {
-    "team_number": 1661,
-    "first_pickability": 12.6732,
-    "second_pickability": 45.7432
+    "team_number": 125,
+    "first_pickability": 2.421254,
+    "second_pickability": 13.091171
   },
   {
-    "team_number": 5089,
-    "first_pickability": 54.2334,
-    "second_pickability": 23.3412
+    "team_number": 151,
+    "first_pickability": 96.387146,
+    "second_pickability": 31.069935
   },
   {
-    "team_number": 114,
-    "first_pickability": 53.2334,
-    "second_pickability": 22.3412
+    "team_number": 157,
+    "first_pickability": 47.998955,
+    "second_pickability": 52.778755
   },
   {
-    "team_number": 6814,
-    "first_pickability": 56.2334,
-    "second_pickability": 13.3412
+    "team_number": 238,
+    "first_pickability": 46.001442,
+    "second_pickability": 63.69503
   },
   {
-    "team_number": 691,
-    "first_pickability": 58.2334,
-    "second_pickability": 43.3412
+    "team_number": 246,
+    "first_pickability": 6.307864,
+    "second_pickability": 6.3372793
   },
   {
-    "team_number": 973,
-    "first_pickability": 93.2334,
-    "second_pickability": 63.3412
+    "team_number": 501,
+    "first_pickability": 9.865731,
+    "second_pickability": 56.53622
   },
   {
-    "team_number": 580,
-    "first_pickability": 52.2334,
-    "second_pickability": 43.3412
+    "team_number": 509,
+    "first_pickability": 64.95871,
+    "second_pickability": 44.58127
   },
   {
-    "team_number": 2465,
-    "first_pickability": 55.2334,
-    "second_pickability": 73.3412
+    "team_number": 811,
+    "first_pickability": 15.8843155,
+    "second_pickability": 30.845272
   },
   {
-    "team_number": 6934,
-    "first_pickability": 54.2334,
-    "second_pickability": 33.3412
+    "team_number": 1073,
+    "first_pickability": 27.862675,
+    "second_pickability": 82.6382
   },
   {
-    "team_number": 8129,
-    "first_pickability": 45.2334,
-    "second_pickability": 53.3412
+    "team_number": 1153,
+    "first_pickability": 30.686872,
+    "second_pickability": 11.82369
+  },
+  {
+    "team_number": 1721,
+    "first_pickability": 52.409054,
+    "second_pickability": 60.616547
+  },
+  {
+    "team_number": 2342,
+    "first_pickability": 47.26255,
+    "second_pickability": 48.36806
+  },
+  {
+    "team_number": 2370,
+    "first_pickability": 57.824455,
+    "second_pickability": 16.124714
+  },
+  {
+    "team_number": 2713,
+    "first_pickability": 86.841896,
+    "second_pickability": 92.53855
+  },
+  {
+    "team_number": 3467,
+    "first_pickability": 96.93421,
+    "second_pickability": 83.10458
+  },
+  {
+    "team_number": 4041,
+    "first_pickability": 53.825333,
+    "second_pickability": 64.61674
+  },
+  {
+    "team_number": 4909,
+    "first_pickability": 48.406307,
+    "second_pickability": 47.5079
+  },
+  {
+    "team_number": 5459,
+    "first_pickability": 70.26579,
+    "second_pickability": 48.782032
+  },
+  {
+    "team_number": 5687,
+    "first_pickability": 72.578865,
+    "second_pickability": 13.789326
+  },
+  {
+    "team_number": 5813,
+    "first_pickability": 26.602667,
+    "second_pickability": 5.1908674
+  },
+  {
+    "team_number": 6153,
+    "first_pickability": 34.263653,
+    "second_pickability": 10.083228
+  },
+  {
+    "team_number": 8724,
+    "first_pickability": 57.690895,
+    "second_pickability": 96.61733
+  },
+  {
+    "team_number": 8897,
+    "first_pickability": 98.53845,
+    "second_pickability": 69.198555
+  },
+  {
+    "team_number": 8898,
+    "first_pickability": 13.9661255,
+    "second_pickability": 78.29347
+  },
+  {
+    "team_number": 8899,
+    "first_pickability": 46.232826,
+    "second_pickability": 22.88152
   }
 ]
