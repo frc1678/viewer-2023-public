@@ -118,13 +118,15 @@ class TeamDetailsFragment : Fragment() {
                 "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
                 "${teamNumber}_full_robot.jpg"
             ).exists()
-        ){
-            val not_exist = LinearLayout.LayoutParams(0, 0, 0f)
-            root.robot_pic_button.setLayoutParams(not_exist)
-            root.tv_team_number.setGravity(Gravity.CENTER_HORIZONTAL)
-            root.tv_team_name.setGravity(Gravity.CENTER_HORIZONTAL)
-        }
-        else {
+            && !File(
+                "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
+                "${teamNumber}_full_robot_2.jpg"
+            ).exists()
+        ) {
+            root.robot_pic_button.layoutParams = LinearLayout.LayoutParams(0, 0, 0f)
+            root.tv_team_number.gravity = Gravity.CENTER_HORIZONTAL
+            root.tv_team_name.gravity = Gravity.CENTER_HORIZONTAL
+        } else {
             root.robot_pic_button.setOnClickListener {
                 robotPicFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
                 robotPicFragment.arguments = robotPicFragmentArguments
