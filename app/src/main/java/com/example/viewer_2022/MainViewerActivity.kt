@@ -154,6 +154,11 @@ class MainViewerActivity : ViewerActivity() {
             }
         }
 
+        refreshManager.addRefreshListener {
+            Log.d("data-refresh", "Updated: ranking")
+            updateNavFooter()
+        }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
         val ourScheduleFragment = OurScheduleFragment()
