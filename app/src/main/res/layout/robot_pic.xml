@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_team_number"
+        style="@style/tv_team_number_team_details" />
+
+    <TextView
+        android:id="@+id/tv_team_name"
+        style="@style/tv_team_number_team_details_sub"
+        android:layout_marginBottom="@dimen/very_small" />
+
+    <TextView
+        style="@style/tv_standard_gray"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="15dp">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/very_small"
+        android:layout_weight="0"
+        android:text="@string/full_robot"
+        tools:ignore="InefficientWeight" />
 
-        <TextView
-            style="@style/tv_team_number_team_details"
-            android:id="@+id/tv_team_number"/>
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/tv_team_number_team_details_sub"
-            android:id="@+id/tv_team_name"/>
+        <LinearLayout
+            android:id="@+id/ll_robot_pics"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/team_pic"/>
+    </HorizontalScrollView>
 
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>
