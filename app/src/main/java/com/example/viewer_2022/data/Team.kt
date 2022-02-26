@@ -25,9 +25,15 @@ data class Team (var team_number: Int?) {
     var driver_ability: Float? = null
     var auto_avg_balls_low: Float? = null
     var auto_avg_balls_high: Float? = null
+    var auto_avg_hub_highs: Float? = null
+    var auto_avg_launchpad_highs: Float? = null
+    var auto_avg_other_highs: Float? = null
     var auto_avg_balls_total: Float? = null
     var tele_avg_balls_low: Float? = null
     var tele_avg_balls_high: Float? = null
+    var tele_avg_hub_highs: Float? = null
+    var tele_avg_launchpad_highs: Float? = null
+    var tele_avg_other_highs: Float? = null
     var tele_avg_balls_total: Float? = null
     var climb_all_attempts: Int? = null
     var avg_incap_time: Float? = null
