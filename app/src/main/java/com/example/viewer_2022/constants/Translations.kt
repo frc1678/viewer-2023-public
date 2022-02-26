@@ -136,9 +136,9 @@ class Translations {
             "climb_level" to "Climb Level",
             "start_position" to "Start Position",
             "position_one_starts" to "# Start Pos 1",
-            "position_two_starts" to "#Start Pos 2",
-            "position_three_starts" to "#Start Pos 3",
-            "position_four_starts" to "#Start Pos 4",
+            "position_two_starts" to "# Start Pos 2",
+            "position_three_starts" to "# Start Pos 3",
+            "position_four_starts" to "# Start Pos 4",
             "See Matches" to "See Matches " + "\u2192".toCharArray()[0].toString()
         )
 
