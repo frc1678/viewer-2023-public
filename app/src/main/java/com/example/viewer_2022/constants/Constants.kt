@@ -15,7 +15,7 @@ class Constants {
         const val DATABASE_NAME = "test2021isjo"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = false
+        const val USE_TEST_DATA = true
         const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
         //In order to change the URL, see the GeDataFromWebsite Async Task
 
@@ -50,6 +50,7 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
             "See Matches",
+            "matches_played",
             "current_rps",
             "current_rank",
             "current_avg_rps",
@@ -59,33 +60,44 @@ class Constants {
             "second_pickability",
             "Auto",
             "auto_line_successes",
+            "mode_start_position",
+            "position_one_starts",
+            "position_two_starts",
+            "position_three_starts",
+            "position_four_starts",
             "auto_avg_balls_low",
             "auto_avg_balls_high",
+            "auto_avg_hub_highs",
+            "auto_avg_launchpad_highs",
+            "auto_avg_other_highs",
             "auto_avg_balls_total",
             "auto_max_balls_low",
             "auto_max_balls_high",
             "auto_sd_balls_low",
             "auto_sd_balls_high",
-            "mode_start_position",
             "Tele",
             "tele_avg_balls_low",
             "tele_avg_balls_high",
+            "tele_avg_hub_highs",
+            "tele_avg_launchpad_highs",
+            "tele_avg_other_highs",
             "tele_avg_balls_total",
-            "driver_ability",
-            "driver_near_field_awareness",
-            "driver_far_field_awareness",
-            "driver_quickness",
             "tele_max_balls_low",
             "tele_max_balls_high",
             "tele_sd_balls_low",
             "tele_sd_balls_high",
-            "max_incap",
+            "avg_intakes",
             "avg_incap_time",
+            "max_incap",
             "matches_incap",
             "avg_exit_ball_catches",
             "max_exit_ball_catches",
             "avg_opp_balls_scored",
             "max_opp_balls_scored",
+            "driver_ability",
+            "driver_near_field_awareness",
+            "driver_far_field_awareness",
+            "driver_quickness",
             "Endgame",
             "climb_percent_success",
             "climb_all_attempts",
@@ -115,26 +127,24 @@ class Constants {
         val FIELDS_TO_BE_DISPLAYED_LFM: List<String> = listOf(
             "See Matches",
             "LFM Auto",
-            "lfm_auto_avg_lows",
+            "lfm_mode_start_position",
+            "lfm_auto_avg_balls_low",
+            "lfm_auto_avg_balls_high",
             "lfm_auto_avg_hub_highs",
             "lfm_auto_avg_launchpad_highs",
             "lfm_auto_avg_other_highs",
-            "lfm_auto_avg_balls_low",
-            "lfm_auto_avg_balls_high",
             "lfm_auto_max_balls_low",
             "lfm_auto_max_balls_high",
-            "lfm_mode_start_position",
             "LFM Tele",
-            "lfm_tele_avg_lows",
+            "lfm_tele_avg_balls_low",
+            "lfm_tele_avg_balls_high",
             "lfm_tele_avg_hub_highs",
             "lfm_tele_avg_launchpad_highs",
             "lfm_tele_avg_other_highs",
-            "lfm_tele_avg_balls_low",
-            "lfm_tele_avg_balls_high",
             "lfm_tele_max_balls_low",
             "lfm_tele_max_balls_high",
-            "lfm_max_incap",
             "lfm_avg_incap_time",
+            "lfm_max_incap",
             "lfm_matches_incap",
             "lfm_avg_exit_ball_catches",
             "lfm_max_exit_ball_catches",
@@ -177,13 +187,27 @@ class Constants {
         val GRAPHABLE: List<String> = listOf(
             "auto_avg_balls_low",
             "auto_avg_balls_high",
+            "auto_avg_hub_highs",
+            "auto_avg_launchpad_highs",
+            "auto_avg_other_highs",
+            "auto_avg_balls_total",
+            "tele_avg_hub_highs",
+            "tele_avg_launchpad_highs",
+            "tele_avg_other_highs",
+            "tele_avg_balls_total",
+            "avg_intakes",
             "tele_avg_balls_low",
             "tele_avg_balls_high",
             "avg_incap_time",
+            "matches_incap",
             "avg_exit_ball_catches",
             "avg_opp_balls_scored",
             "matches_incap",
-            "mode_start_position"
+            "mode_start_position",
+            "position_one_starts",
+            "position_two_starts",
+            "position_three_starts",
+            "position_four_starts"
         )
 
         val GRAPHABLE_BOOL: List<String> = listOf(
@@ -222,12 +246,17 @@ class Constants {
         //All items in the list are rankable no matter what
         val RANKABLE_FIELDS = mapOf<String, Boolean>(
             "current_rps" to true,
+            "current_rank" to false,
+            "predicted_rank" to false,
             "current_avg_rps" to true,
             "predicted_rps" to true,
             "first_pickability" to true,
             "second_pickability" to true,
             "auto_avg_balls_low" to true,
             "auto_avg_balls_high" to true,
+            "auto_avg_hub_highs" to true,
+            "auto_avg_launchpad_highs" to true,
+            "auto_avg_other_highs" to true,
             "auto_avg_balls_total" to true,
             "auto_line_successes" to true, //?????
             "auto_max_balls_low" to true,
@@ -236,6 +265,9 @@ class Constants {
             "auto_sd_balls_high" to true,
             "tele_avg_balls_low" to true,
             "tele_avg_balls_high" to true,
+            "tele_avg_hub_highs" to true,
+            "tele_avg_launchpad_highs" to true,
+            "tele_avg_other_highs" to true,
             "tele_avg_balls_total" to true,
             "driver_ability" to false,
             "driver_near_field_awareness" to false,
@@ -294,7 +326,9 @@ class Constants {
             "lfm_low_avg_time" to true,
             "lfm_mid_avg_time" to true,
             "lfm_high_avg_time" to true,
-            "lfm_traversal_success_avg_time" to true
+            "lfm_traversal_success_avg_time" to false,
+            "avg_intakes" to true,
+            "incap" to false
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")

@@ -104,6 +104,7 @@ class DatabaseReference {
         var tele_avg_balls_high: Float,
         var tele_avg_balls_total: Float,
         var avg_incap_time: Float,
+        var incap: Int,
         var avg_intakes: Float,
         var avg_exit_ball_catches: Float,
         var avg_opp_balls_scored: Float,
