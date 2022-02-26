@@ -91,8 +91,8 @@ class StartupActivity : ViewerActivity() {
                     null
                 )
 
-            })
-            {
+            }) {
+
                 Log.e("error", it)
                 runOnUiThread {
                     // Stuff that updates the UI
@@ -101,18 +101,14 @@ class StartupActivity : ViewerActivity() {
                     refresh_button.isEnabled = true
                     buttonClickable = true
                 }
-
             }.execute()
         }
-
     }
-
     fun refreshClick(view: View) {
         if (buttonClickable) {
             Snackbar.make(splash_screen_layout, "Refreshing Data", 2500).show()
             refresh_button.isEnabled = false
             getData()
         }
-
     }
 }
