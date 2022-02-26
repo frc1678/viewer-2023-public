@@ -55,10 +55,10 @@ class RobotPicFragment : Fragment() {
     private fun showPictures(root: View) {
         val bitmapsToDisplay = mutableListOf<Bitmap>()
         if (picFile1!!.exists()) {
-            bitmapsToDisplay.add(BitmapFactory.decodeFile(picFile1!!.absolutePath))
+            bitmapsToDisplay.add(BitmapFactory.decodeFile(picFile1!!.absolutePath).rotated())
         }
         if (picFile2!!.exists()) {
-            bitmapsToDisplay.add(BitmapFactory.decodeFile(picFile2!!.absolutePath))
+            bitmapsToDisplay.add(BitmapFactory.decodeFile(picFile2!!.absolutePath).rotated())
         }
         for (bitmap in bitmapsToDisplay) {
             root.ll_robot_pics.addView(ImageView(context).also {
@@ -67,4 +67,8 @@ class RobotPicFragment : Fragment() {
             })
         }
     }
+
+    private fun Bitmap.rotated() = Bitmap.createBitmap(
+        this, 0, 0, width, height, Matrix().also { it.postRotate(90F) }, true
+    )
 }
