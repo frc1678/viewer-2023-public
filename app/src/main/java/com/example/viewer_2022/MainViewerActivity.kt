@@ -154,7 +154,7 @@ class MainViewerActivity : ViewerActivity() {
             }
         }
 
-        var refreshId = refreshManager.addRefreshListener {
+        refreshManager.addRefreshListener {
             Log.d("data-refresh", "Updated: ranking")
             updateNavFooter()
         }
