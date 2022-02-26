@@ -1,6 +1,7 @@
 package com.example.viewer_2022
 
 import android.util.Log
+import android.widget.TextView
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.GetDataFromWebsite
 import kotlinx.coroutines.CoroutineScope

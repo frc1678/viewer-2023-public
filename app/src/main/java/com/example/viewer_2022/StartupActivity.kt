@@ -91,7 +91,8 @@ class StartupActivity : ViewerActivity() {
                     null
                 )
 
-            }) {
+            })
+            {
                 Log.e("error", it)
                 runOnUiThread {
                     // Stuff that updates the UI
