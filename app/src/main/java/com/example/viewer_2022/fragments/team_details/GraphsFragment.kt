@@ -70,84 +70,113 @@ class GraphsFragment() : Fragment() {
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint=="low_rung_successes"){
-                if(timData == "Low"){
+                if(timData.lowercase() == "low"){
                     entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint=="mid_rung_successes"){
-                if(timData == "Mid"){
+                if(timData.lowercase() == "mid"){
                     entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint=="high_rung_successes"){
-                if(timData == "High"){
+                if(timData.lowercase() == "high"){
                     entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint=="traversal_rung_successes"){
-                if(timData == "Traversal"){
+                if(timData.lowercase() == "traversal"){
                     entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "climb_all_success_avg_time"){
-                if((timDataListClimbLevel!![index] != "none") and
-                    (timDataListClimbLevel[index] != Constants.NULL_CHARACTER)){
+                if((timDataListClimbLevel!![index].lowercase() != "none") and
+                    (timDataListClimbLevel[index].lowercase() != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "low_avg_time"){
-                if(timDataListClimbLevel!![index] == "Low"){
+                if(timDataListClimbLevel!![index].lowercase() == "low"){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "mid_avg_time"){
-                if(timDataListClimbLevel!![index] == "Mid"){
+                if(timDataListClimbLevel!![index].lowercase() == "mid"){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "high_avg_time"){
-                if(timDataListClimbLevel!![index] == "High"){
+                if(timDataListClimbLevel!![index].lowercase() == "high"){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "traversal_avg_time"){
-                if(timDataListClimbLevel!![index] == "Traversal"){
+                if(timDataListClimbLevel!![index].lowercase() == "traversal"){
                     entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "mode_climb_level"){
-                when(timDataListClimbLevel!![index]){
-                    "Low" -> entries.add(BarEntry(index.toFloat(), 1F))
-                    "Mid" -> entries.add(BarEntry(index.toFloat(), 2F))
-                    "High" -> entries.add(BarEntry(index.toFloat(), 3F))
-                    "Traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
+                when(timDataListClimbLevel!![index].lowercase()){
+                    "low" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "mid" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "high" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
                     else -> entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "mode_start_position"){
-                when(timData){
-                    "One" -> entries.add(BarEntry(index.toFloat(), 1F))
-                    "Two" -> entries.add(BarEntry(index.toFloat(), 2F))
-                    "Three" -> entries.add(BarEntry(index.toFloat(), 3F))
-                    "Four" -> entries.add(BarEntry(index.toFloat(), 4F))
+                when(timData.lowercase()){
+                    "one" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "two" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "three" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "four" -> entries.add(BarEntry(index.toFloat(), 4F))
                     else -> entries.add(BarEntry(index.toFloat(), 0F))
                 }
+            } else if (datapoint == "position_one_starts"){
+                if(timData.lowercase() == "one"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
+                } else {
+                    entries.add(BarEntry(index.toFloat(), 0F))
+                }
+            } else if (datapoint == "position_two_starts"){
+                if(timData.lowercase() == "two"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
+                } else {
+                    entries.add(BarEntry(index.toFloat(), 0F))
+                }
+            } else if (datapoint == "position_three_starts"){
+                if(timData.lowercase() == "three"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
+                } else {
+                    entries.add(BarEntry(index.toFloat(), 0F))
+                }
+            } else if (datapoint == "position_one_starts"){
+                if(timData.lowercase() == "one"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
+                } else {
+                    entries.add(BarEntry(index.toFloat(), 0F))
+                }
+            } else if (datapoint == "position_four_starts"){
+                if(timData.lowercase() == "four"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
+                } else {
+                    entries.add(BarEntry(index.toFloat(), 0F))
+                }
             } else if (datapoint == "climb_percent_success"){
-                if((timData != "none") and (timData != Constants.NULL_CHARACTER)){
+                if((timData.lowercase() != "none") and (timData != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
-            }
-            else if(Constants.GRAPHABLE_BOOL.contains(datapoint!!)) {
+            } else if(Constants.GRAPHABLE_BOOL.contains(datapoint!!)) {
                 if (timData == "true") {
                     entries.add(BarEntry(index.toFloat(), 1F))
                 }else{
@@ -195,7 +224,9 @@ class GraphsFragment() : Fragment() {
 
         //set yAxis minimum to 0
         root.bar_chart.axisLeft.axisMinimum = 0F
-        if(datapoint!! in Constants.GRAPHABLE_BOOL){
+        if((datapoint!! in Constants.GRAPHABLE_BOOL) or (datapoint == "position_one_starts") or
+            (datapoint == "position_two_starts") or (datapoint == "position_three_starts") or
+            (datapoint == "position_four_starts")){
             root.bar_chart.axisLeft.axisMaximum = 1F
         }
 

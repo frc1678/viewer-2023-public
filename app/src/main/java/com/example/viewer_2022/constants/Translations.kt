@@ -135,10 +135,10 @@ class Translations {
             "opp_balls_scored" to "# Opp. Balls Scored",
             "climb_level" to "Climb Level",
             "start_position" to "Start Position",
-            "position_one_starts" to "Position One Starts",
-            "position_two_starts" to "Position Two Starts",
-            "position_three_starts" to "Position Three Starts",
-            "position_four_starts" to "Position Four Starts",
+            "position_one_starts" to "# Start Pos 1",
+            "position_two_starts" to "#Start Pos 2",
+            "position_three_starts" to "#Start Pos 3",
+            "position_four_starts" to "#Start Pos 4",
             "See Matches" to "See Matches " + "\u2192".toCharArray()[0].toString()
         )
 
@@ -188,15 +188,19 @@ class Translations {
             "high_avg_time" to "climb_time",
             "traversal_avg_time" to "climb_time",
             "mode_climb_level" to "climb_level",
-            "mode_start_position" to "start_position"
-        )
+            "mode_start_position" to "start_position",
+            "position_one_starts" to "start_position",
+            "position_two_starts" to "start_position",
+            "position_three_starts" to "start_position",
+            "position_four_starts" to "start_position",
+            )
 
         val TIM_TO_HUMAN_READABLE : Map<String, String> = mapOf(
             "auto_avg_balls_low" to "Auto Balls Low",
             "auto_avg_balls_high" to "Auto Balls High",
             "auto_avg_hub_highs" to "Auto Hub Highs",
             "auto_avg_launchpad_highs" to "Auto LaunchP (H)",
-            "auto_avg_other_highs" to "Auto Other highs",
+            "auto_avg_other_highs" to "Auto Other Highs",
             "auto_avg_balls_total" to "Auto Balls Total",
             "tele_avg_balls_low" to "Tele Balls Low",
             "tele_avg_balls_high" to "Tele Balls High",
@@ -223,10 +227,10 @@ class Translations {
             "traversal_rung_successes" to "Traversal Rung Success?",
             "mode_climb_level" to "Climb Level",
             "start_position" to "Start Pos",
-            "position_one_starts" to "# Start Pos 1",
-            "position_two_starts" to "# Start Pos 2",
-            "position_three_starts" to "# Start Pos 3",
-            "position_four_starts" to "# Start Pos 4",
+            "position_one_starts" to "Start Pos 1?",
+            "position_two_starts" to "Start Pos 2?",
+            "position_three_starts" to "Start Pos 3?",
+            "position_four_starts" to "Start Pos 4?",
             "mode_start_position" to "Start Position"
         )
     }
