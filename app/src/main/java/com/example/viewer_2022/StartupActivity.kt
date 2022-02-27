@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 // it will begin the actual viewer activity so ensure that all data is accessible before the viewer
 // activity begins.
 class StartupActivity : ViewerActivity() {
-    var buttonClickable = false
     companion object {
         var databaseReference: DatabaseReference.CompetitionObject? =
             DatabaseReference.CompetitionObject()
@@ -65,7 +64,6 @@ class StartupActivity : ViewerActivity() {
     }
 
     private fun getData() {
-        buttonClickable = false
         if (Constants.USE_TEST_DATA) {
             GetDataFromFiles(this, {
                 ContextCompat.startActivity(
@@ -79,9 +77,6 @@ class StartupActivity : ViewerActivity() {
                 runOnUiThread {
                     // Stuff that updates the UI
                     Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
-                    refresh_button.visibility = View.VISIBLE
-                    refresh_button.isEnabled = true
-                    buttonClickable = true
                 }
 
             }.execute()
@@ -99,18 +94,8 @@ class StartupActivity : ViewerActivity() {
                 runOnUiThread {
                     // Stuff that updates the UI
                     Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
-                    refresh_button.visibility = View.VISIBLE
-                    refresh_button.isEnabled = true
-                    buttonClickable = true
                 }
             }.execute()
-        }
-    }
-    fun refreshClick(view: View) {
-        if (buttonClickable) {
-            Snackbar.make(splash_screen_layout, "Refreshing Data", 2500).show()
-            refresh_button.isEnabled = false
-            getData()
         }
     }
 }
