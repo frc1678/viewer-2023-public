@@ -27,7 +27,7 @@ class UserPreferencesFragment: Fragment() {
         root.user_datapoints_header.text = if (userName == "NONE"){
             "User's Datapoints"
         } else {
-            "${userName?.toLowerCase()?.capitalize()}'s Datapoints"
+            "${userName?.lowercase()?.capitalize()}'s Datapoints"
         }
 
         updateUserDatapointsListView(root)
