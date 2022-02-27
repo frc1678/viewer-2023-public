@@ -142,6 +142,7 @@ private fun sendRequest(url: String): String {
 
     var urlConnection = url.openConnection() as HttpURLConnection
     urlConnection.setRequestProperty("Authorization", "Token ${Constants.CARDINAL_KEY}")
+    urlConnection.setConnectTimeout(5_000)
 
     try {
         val `in`: InputStream = BufferedInputStream(urlConnection.inputStream)

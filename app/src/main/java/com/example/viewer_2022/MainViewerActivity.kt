@@ -135,8 +135,6 @@ class MainViewerActivity : ViewerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        refreshManager.start(lifecycleScope)
-
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
         setToolbarText(actionBar, supportActionBar)
@@ -182,7 +180,6 @@ class MainViewerActivity : ViewerActivity() {
             .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
             .commit()
 
-        Log.e("ALL_DATA_FROM_WEBSITE", "${StartupActivity.databaseReference}")
         container.addDrawerListener(NavDrawerListener(navView, supportFragmentManager))
 
 

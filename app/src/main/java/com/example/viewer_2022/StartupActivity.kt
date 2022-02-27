@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.DatabaseReference
 import com.example.viewer_2022.data.GetDataFromFiles
@@ -37,6 +38,7 @@ class StartupActivity : ViewerActivity() {
         // 'response' is a CompetitionObject, so you should be able to access whatever datapoint
         // you want by referencing response. Example: response.raw.qr[0] -> specified value in database.
         // TODO Make not crash when permissions are denied.
+        MainViewerActivity.refreshManager.start(lifecycleScope)
 
         getData()
 
