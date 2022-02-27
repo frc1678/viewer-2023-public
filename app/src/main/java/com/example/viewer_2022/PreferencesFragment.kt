@@ -30,7 +30,7 @@ class PreferencesFragment: Fragment() {
         root.tv_version_num.text = versionNumber
         context?.let { createSpinner(it, root.spin_user, R.array.user_array) }
 
-        val name = UserDatapoints.contents?.get("selected")?.asString?.lowercase()?.capitalize()
+        val name = UserDatapoints.contents?.get("selected")?.asString?.toLowerCase()?.capitalize()
         val namePosition = resources.getStringArray(R.array.user_array).indexOf(name)
         root.spin_user.setSelection(namePosition)
 
@@ -63,7 +63,7 @@ class PreferencesFragment: Fragment() {
                 position: Int,
                 id: Long
             ) {
-                var userName: String = spin_user.selectedItem.toString().uppercase()
+                var userName: String = spin_user.selectedItem.toString().toUpperCase()
 
                 UserDatapoints.contents?.remove("selected")
                 UserDatapoints.contents?.addProperty("selected", userName)
