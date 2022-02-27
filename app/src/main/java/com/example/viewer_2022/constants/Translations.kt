@@ -135,6 +135,7 @@ class Translations {
             "opp_balls_scored" to "# Opp. Balls Scored",
             "climb_level" to "Climb Level",
             "start_position" to "Start Position",
+            "position_zero_starts" to "No Show",
             "position_one_starts" to "# Start Pos 1",
             "position_two_starts" to "# Start Pos 2",
             "position_three_starts" to "# Start Pos 3",
@@ -189,10 +190,11 @@ class Translations {
             "traversal_avg_time" to "climb_time",
             "mode_climb_level" to "climb_level",
             "mode_start_position" to "start_position",
+            "position_zero_starts" to "start_position",
             "position_one_starts" to "start_position",
             "position_two_starts" to "start_position",
             "position_three_starts" to "start_position",
-            "position_four_starts" to "start_position",
+            "position_four_starts" to "start_position"
             )
 
         val TIM_TO_HUMAN_READABLE : Map<String, String> = mapOf(
@@ -227,6 +229,7 @@ class Translations {
             "traversal_rung_successes" to "Traversal Rung Success?",
             "mode_climb_level" to "Climb Level",
             "start_position" to "Start Pos",
+            "position_zero_starts" to "No Show?",
             "position_one_starts" to "Start Pos 1?",
             "position_two_starts" to "Start Pos 2?",
             "position_three_starts" to "Start Pos 3?",

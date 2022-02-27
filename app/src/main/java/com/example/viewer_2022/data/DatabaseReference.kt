@@ -169,6 +169,7 @@ class DatabaseReference {
         var lfm_traversal_success_avg_time: Float,
         var climb_percent_success: Float,
         var lfm_climb_percent_success: Float,
+        var position_zero_starts: Int,
         var position_one_starts: Int,
         var position_two_starts: Int,
         var position_three_starts: Int,
