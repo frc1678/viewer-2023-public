@@ -99,7 +99,7 @@ class TeamDetailsFragment : Fragment() {
             } else {
                 isChecked = false
                 dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-                btn_lfm.text = "To LFM"
+                btn_lfm.text = "To L4M"
             }
 
             val adapter = TeamDetailsAdapter(
