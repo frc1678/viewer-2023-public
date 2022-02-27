@@ -134,7 +134,7 @@ class GraphsFragment() : Fragment() {
                 }
             } else if (datapoint == "mode_start_position"){
                 when(timData.lowercase()){
-                    "zero" -> entries.add(BarEntry(index.toFloat(),0F))
+                    "zero" -> entries.add(BarEntry(index.toFloat(), 0F))
                     "one" -> entries.add(BarEntry(index.toFloat(), 1F))
                     "two" -> entries.add(BarEntry(index.toFloat(), 2F))
                     "three" -> entries.add(BarEntry(index.toFloat(), 3F))
