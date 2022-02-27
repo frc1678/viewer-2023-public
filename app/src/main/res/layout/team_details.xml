@@ -21,7 +21,7 @@
                 android:id="@+id/btn_lfm"
                 style="@style/btn_standard"
                 android:layout_weight="1"
-                android:text="To LFM"
+                android:text="To L4M"
                 android:background="@color/colorPrimaryLight"
             />
 

@@ -126,7 +126,7 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_LFM: List<String> = listOf(
             "See Matches",
-            "LFM Auto",
+            "L4M Auto",
             "lfm_mode_start_position",
             "lfm_auto_avg_balls_low",
             "lfm_auto_avg_balls_high",
@@ -135,7 +135,7 @@ class Constants {
             "lfm_auto_avg_other_highs",
             "lfm_auto_max_balls_low",
             "lfm_auto_max_balls_high",
-            "LFM Tele",
+            "L4M Tele",
             "lfm_tele_avg_balls_low",
             "lfm_tele_avg_balls_high",
             "lfm_tele_avg_hub_highs",
@@ -150,7 +150,7 @@ class Constants {
             "lfm_max_exit_ball_catches",
             "lfm_avg_opp_balls_scored",
             "lfm_max_opp_balls_scored",
-            "LFM Endgame",
+            "L4M Endgame",
             "lfm_climb_percent_success",
             "lfm_climb_all_attempts",
             "lfm_low_rung_successes",
