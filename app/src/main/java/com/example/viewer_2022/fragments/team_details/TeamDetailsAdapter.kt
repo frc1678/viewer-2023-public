@@ -62,8 +62,8 @@ class TeamDetailsAdapter(
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[e]
                 ?: e
-        if ((e == "Auto") or (e == "LFM Auto") or (e == "Tele") or (e == "LFM Tele") or
-            (e == "Endgame") or (e == "LFM Endgame") or (e == "Pit Data") or (e=="See Matches")) {
+        if ((e == "Auto") or (e == "L4M Auto") or (e == "Tele") or (e == "L4M Tele") or
+            (e == "Endgame") or (e == "L4M Endgame") or (e == "Pit Data") or (e=="See Matches")) {
             isHeader = true
             rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28F)
             rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
