@@ -153,7 +153,8 @@ class Translations {
             "0" to "minicim",
             "1" to "cim",
             "2" to "neo",
-            "3" to "falcon"
+            "3" to "falcon",
+            "4" to "other"
         )
 
         val TIM_FROM_TEAM : Map<String, String> = mapOf(
