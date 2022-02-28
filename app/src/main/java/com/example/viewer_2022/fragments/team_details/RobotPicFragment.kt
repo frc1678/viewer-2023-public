@@ -62,7 +62,8 @@ class RobotPicFragment : Fragment() {
         }
         for (bitmap in bitmapsToDisplay) {
             root.ll_robot_pics.addView(ImageView(context).also {
-                it.scaleType = ImageView.ScaleType.FIT_CENTER
+                it.scaleType = ImageView.ScaleType.FIT_START
+                it.adjustViewBounds = true
                 it.setImageBitmap(bitmap)
             })
         }
