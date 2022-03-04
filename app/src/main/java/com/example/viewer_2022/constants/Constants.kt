@@ -12,7 +12,7 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val EVENT_KEY = "2022week0"
+        const val EVENT_KEY = "2022caph"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
@@ -347,7 +347,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.3.19"
+        const val VERSION_NUM = "2.0.0"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
