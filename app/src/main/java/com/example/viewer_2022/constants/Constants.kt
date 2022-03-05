@@ -234,7 +234,6 @@ class Constants {
       val DRIVER_DATA: List<String> = listOf(
             "driver_quickness",
             "driver_field_awareness",
-            "driver_far_field_rating",
             "driver_ability"
         )
 
