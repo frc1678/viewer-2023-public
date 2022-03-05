@@ -96,8 +96,8 @@ class Constants {
             "avg_opp_balls_scored",
             "max_opp_balls_scored",
             "driver_ability",
-            "driver_near_field_awareness",
-            "driver_far_field_awareness",
+            "driver_field_awareness",
+            "driver_far_field_rating",
             "driver_quickness",
             "Endgame",
             "climb_percent_success",
@@ -234,6 +234,7 @@ class Constants {
       val DRIVER_DATA: List<String> = listOf(
             "driver_quickness",
             "driver_field_awareness",
+            "driver_far_field_rating",
             "driver_ability"
         )
 
@@ -272,8 +273,8 @@ class Constants {
             "tele_avg_other_highs" to true,
             "tele_avg_balls_total" to true,
             "driver_ability" to false,
-            "driver_near_field_awareness" to false,
-            "driver_far_field_awareness" to false,
+            "driver_field_awareness" to false,
+            "driver_far_field_rating" to false,
             "driver_quickness" to false,
             "tele_max_balls_low" to false,
             "tele_max_balls_high" to false,

@@ -81,8 +81,8 @@ class DatabaseReference {
 
     data class CalculatedSubjectiveTeam (
         var team_number: Int,
-        var driver_near_field_awareness: Float,
-        var driver_far_field_awareness: Float,
+        var driver_field_awareness: Float,
+        var driver_far_field_rating: Float,
         var driver_quickness: Float,
         var driver_ability: Float
     )

@@ -20,8 +20,8 @@ data class Team (var team_number: Int?) {
     var current_rank: Int? = null
     var current_avg_rps: Float? = null
     var driver_quickness: Float? = null
-    var driver_far_field_awareness: Float? = null
-    var driver_near_field_awareness: Float? = null
+    var driver_far_field_rating: Float? = null
+    var driver_field_awareness: Float? = null
     var driver_ability: Float? = null
     var auto_avg_balls_low: Float? = null
     var auto_avg_balls_high: Float? = null
