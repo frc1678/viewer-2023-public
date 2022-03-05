@@ -48,7 +48,7 @@ class Constants {
             "incap"
         )
 
-        val verFIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
+        val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
             "See Matches",
             "matches_played",
             "current_rps",
