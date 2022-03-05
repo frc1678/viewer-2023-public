@@ -96,8 +96,8 @@ class Constants {
             "avg_opp_balls_scored",
             "max_opp_balls_scored",
             "driver_ability",
-            "driver_near_field_awareness",
-            "driver_far_field_awareness",
+            "driver_field_awareness",
+            "driver_far_field_rating",
             "driver_quickness",
             "Endgame",
             "climb_percent_success",
@@ -272,8 +272,8 @@ class Constants {
             "tele_avg_other_highs" to true,
             "tele_avg_balls_total" to true,
             "driver_ability" to false,
-            "driver_near_field_awareness" to false,
-            "driver_far_field_awareness" to false,
+            "driver_field_awareness" to false,
+            "driver_far_field_rating" to false,
             "driver_quickness" to false,
             "tele_max_balls_low" to false,
             "tele_max_balls_high" to false,
@@ -347,7 +347,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "2.0.1"
+        const val VERSION_NUM = "2.0.2"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {

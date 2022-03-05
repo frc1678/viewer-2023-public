@@ -5,8 +5,8 @@ class Translations {
         val ACTUAL_TO_HUMAN_READABLE: Map<String, String> = mapOf(
             "team_name" to "Team Name",
             "driver_quickness" to "Driver Quickness",
-            "driver_near_field_awareness" to "Driver Near Awareness",
-            "driver_far_field_awareness" to "Driver Far Awareness",
+            "driver_field_awareness" to "Driver Field Awareness",
+            "driver_far_field_rating" to "Driver Far Field Rating",
             "driver_ability" to "Driver Ability",
             "auto_avg_balls_low" to "Avg Balls Low",
             "auto_avg_balls_high" to "Avg Balls High",
