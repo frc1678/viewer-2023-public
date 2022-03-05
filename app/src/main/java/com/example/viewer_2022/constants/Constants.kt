@@ -48,7 +48,7 @@ class Constants {
             "incap"
         )
 
-        val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
+        val verFIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
             "See Matches",
             "matches_played",
             "current_rps",
@@ -347,7 +347,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "2.0.1"
+        const val VERSION_NUM = "2.0.2"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
