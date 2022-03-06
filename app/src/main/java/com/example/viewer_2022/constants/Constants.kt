@@ -33,7 +33,6 @@ class Constants {
             "Tele",
             "tele_lows",
             "tele_balls_high",
-            "tele_lows",
             "tele_launchpad_highs",
             "tele_hub_highs",
             "tele_other_highs",
