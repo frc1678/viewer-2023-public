@@ -132,6 +132,7 @@ class GraphsFragment() : Fragment() {
                     "traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
                     else -> entries.add(BarEntry(index.toFloat(), 0F))
                 }
+                root.bar_chart.axisLeft.axisMaximum = 4F
             } else if (datapoint == "mode_start_position"){
                 when(timData.lowercase()){
                     "zero" -> entries.add(BarEntry(index.toFloat(), 0F))
@@ -141,6 +142,7 @@ class GraphsFragment() : Fragment() {
                     "four" -> entries.add(BarEntry(index.toFloat(), 4F))
                     else -> entries.add(BarEntry(index.toFloat(), 0F))
                 }
+                root.bar_chart.axisLeft.axisMaximum = 4F
             } else if (datapoint == "position_zero_starts"){
                 if(timData.lowercase() == "zero"){
                     entries.add(BarEntry(index.toFloat(), 1F))
