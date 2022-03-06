@@ -346,7 +346,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "2.0.7"
+        const val VERSION_NUM = "2.0.8"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {

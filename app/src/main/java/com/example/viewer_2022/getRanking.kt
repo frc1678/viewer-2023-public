@@ -71,7 +71,15 @@ fun getRankingTeam(teamNumber: String, datapoint: String, descending: Boolean): 
 
     val teamEntry = rankList.first { it.teamNumber == teamNumber }
 
-    return if (teamEntry.value == Constants.NULL_CHARACTER) teamEntry.value else teamEntry.placement.toString()
+    return if (teamEntry.value == Constants.NULL_CHARACTER) {
+        teamEntry.value
+    } else{
+        if(!descending){
+            teamEntry.placement.toString()
+        } else{
+            (rankList.size - teamEntry.placement).toString()
+        }
+    }
 }
 
 
