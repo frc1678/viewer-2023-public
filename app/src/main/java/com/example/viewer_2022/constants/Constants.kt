@@ -33,7 +33,6 @@ class Constants {
             "Tele",
             "tele_lows",
             "tele_balls_high",
-            "tele_lows",
             "tele_launchpad_highs",
             "tele_hub_highs",
             "tele_other_highs",
@@ -347,7 +346,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "2.0.5"
+        const val VERSION_NUM = "2.0.6"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
