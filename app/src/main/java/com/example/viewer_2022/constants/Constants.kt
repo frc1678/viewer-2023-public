@@ -12,7 +12,7 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val EVENT_KEY = "2022week0"
+        const val EVENT_KEY = "test2022caph"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
@@ -28,12 +28,11 @@ class Constants {
             "Auto",
             "auto_line",
             "start_position",
-            "auto_balls_low",
+            "auto_lows",
             "auto_balls_high",
             "Tele",
-            "tele_balls_low",
-            "tele_balls_high",
             "tele_lows",
+            "tele_balls_high",
             "tele_launchpad_highs",
             "tele_hub_highs",
             "tele_other_highs",
@@ -66,7 +65,7 @@ class Constants {
             "position_two_starts",
             "position_three_starts",
             "position_four_starts",
-            "auto_avg_balls_low",
+            "auto_avg_lows",
             "auto_avg_balls_high",
             "auto_avg_hub_highs",
             "auto_avg_launchpad_highs",
@@ -77,7 +76,7 @@ class Constants {
             "auto_sd_balls_low",
             "auto_sd_balls_high",
             "Tele",
-            "tele_avg_balls_low",
+            "tele_avg_lows",
             "tele_avg_balls_high",
             "tele_avg_hub_highs",
             "tele_avg_launchpad_highs",
@@ -96,8 +95,8 @@ class Constants {
             "avg_opp_balls_scored",
             "max_opp_balls_scored",
             "driver_ability",
-            "driver_near_field_awareness",
-            "driver_far_field_awareness",
+            "driver_field_awareness",
+            "driver_far_field_rating",
             "driver_quickness",
             "Endgame",
             "climb_percent_success",
@@ -129,7 +128,7 @@ class Constants {
             "See Matches",
             "L4M Auto",
             "lfm_mode_start_position",
-            "lfm_auto_avg_balls_low",
+            "lfm_auto_avg_lows",
             "lfm_auto_avg_balls_high",
             "lfm_auto_avg_hub_highs",
             "lfm_auto_avg_launchpad_highs",
@@ -137,7 +136,7 @@ class Constants {
             "lfm_auto_max_balls_low",
             "lfm_auto_max_balls_high",
             "L4M Tele",
-            "lfm_tele_avg_balls_low",
+            "lfm_tele_avg_lows",
             "lfm_tele_avg_balls_high",
             "lfm_tele_avg_hub_highs",
             "lfm_tele_avg_launchpad_highs",
@@ -186,7 +185,7 @@ class Constants {
         )
 
         val GRAPHABLE: List<String> = listOf(
-            "auto_avg_balls_low",
+            "auto_avg_lows",
             "auto_avg_balls_high",
             "auto_avg_hub_highs",
             "auto_avg_launchpad_highs",
@@ -197,7 +196,7 @@ class Constants {
             "tele_avg_other_highs",
             "tele_avg_balls_total",
             "avg_intakes",
-            "tele_avg_balls_low",
+            "tele_avg_lows",
             "tele_avg_balls_high",
             "avg_incap_time",
             "matches_incap",
@@ -254,7 +253,7 @@ class Constants {
             "predicted_rps" to true,
             "first_pickability" to true,
             "second_pickability" to true,
-            "auto_avg_balls_low" to true,
+            "auto_avg_lows" to true,
             "auto_avg_balls_high" to true,
             "auto_avg_hub_highs" to true,
             "auto_avg_launchpad_highs" to true,
@@ -265,18 +264,18 @@ class Constants {
             "auto_max_balls_high" to true,
             "auto_sd_balls_low" to true,
             "auto_sd_balls_high" to true,
-            "tele_avg_balls_low" to true,
+            "tele_avg_lows" to true,
             "tele_avg_balls_high" to true,
             "tele_avg_hub_highs" to true,
             "tele_avg_launchpad_highs" to true,
             "tele_avg_other_highs" to true,
             "tele_avg_balls_total" to true,
-            "driver_ability" to false,
-            "driver_near_field_awareness" to false,
-            "driver_far_field_awareness" to false,
-            "driver_quickness" to false,
-            "tele_max_balls_low" to false,
-            "tele_max_balls_high" to false,
+            "driver_ability" to true,
+            "driver_field_awareness" to true,
+            "driver_far_field_rating" to true,
+            "driver_quickness" to true,
+            "tele_max_balls_low" to true,
+            "tele_max_balls_high" to true,
             "tele_sd_balls_low" to false,
             "tele_sd_balls_high" to false,
             "max_incap" to false,
@@ -300,7 +299,7 @@ class Constants {
             "lfm_auto_avg_hub_highs" to true,
             "lfm_auto_avg_launchpad_highs" to true,
             "lfm_auto_avg_other_highs" to true,
-            "lfm_auto_avg_balls_low" to true,
+            "lfm_auto_avg_lows" to true,
             "lfm_auto_avg_balls_high" to true,
             "lfm_auto_max_balls_low" to true,
             "lfm_auto_max_balls_high" to true,
@@ -308,10 +307,10 @@ class Constants {
             "lfm_tele_avg_hub_highs" to true,
             "lfm_tele_avg_launchpad_highs" to true,
             "lfm_tele_avg_other_highs" to true,
-            "lfm_tele_avg_balls_low" to true,
+            "lfm_tele_avg_lows" to true,
             "lfm_tele_avg_balls_high" to true,
-            "lfm_tele_max_balls_low" to false,
-            "lfm_tele_max_balls_high" to false,
+            "lfm_tele_max_balls_low" to true,
+            "lfm_tele_max_balls_high" to true,
             "lfm_max_incap" to false,
             "lfm_avg_incap_time" to false,
             "lfm_matches_incap" to false,
@@ -347,7 +346,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "1.3.19"
+        const val VERSION_NUM = "1.3.20"
     }
 
     enum class PROCESSED_OBJECT(val value: String) {
