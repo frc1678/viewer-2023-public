@@ -410,6 +410,20 @@ class MatchScheduleListAdapter(
             ).commit()
         }
 
+        fun teamLongClick(selected : Button, it : View){
+            val teamNumber = selected.text.toString()
+            val matchScheduleFragment = MatchScheduleFragment()
+            val matchScheduleFragmentArguments = Bundle()
+            val matchScheduleFragmentTransaction =
+                context.supportFragmentManager.beginTransaction()
+            matchScheduleFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+            matchScheduleFragment.arguments = matchScheduleFragmentArguments
+            matchScheduleFragmentTransaction.addToBackStack(null).replace(
+                (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
+                matchScheduleFragment
+            ).commit()
+        }
+
         // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
         rowView!!.setOnClickListener {
             matchClick(it)
@@ -431,6 +445,31 @@ class MatchScheduleListAdapter(
         }
         viewHolder.tvBlueTeamThree.setOnClickListener {
             matchClick(it)
+        }
+
+        viewHolder.tvRedTeamOne.setOnLongClickListener {
+            teamLongClick(viewHolder.tvRedTeamOne, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvRedTeamTwo.setOnLongClickListener {
+            teamLongClick(viewHolder.tvRedTeamTwo, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvRedTeamThree.setOnLongClickListener {
+            teamLongClick(viewHolder.tvRedTeamThree, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvBlueTeamOne.setOnLongClickListener {
+            teamLongClick(viewHolder.tvBlueTeamOne, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvBlueTeamTwo.setOnLongClickListener {
+            teamLongClick(viewHolder.tvBlueTeamTwo, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvBlueTeamThree.setOnLongClickListener {
+            teamLongClick(viewHolder.tvBlueTeamThree, it)
+            return@setOnLongClickListener true
         }
 
         // Mark matches as starred when long clicked.
