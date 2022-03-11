@@ -24,8 +24,13 @@ class GetDataFromWebsite(
     override fun doInBackground(vararg p0: String?): String {
         try {
 
+            MainViewerActivity.teamList = Gson().fromJson(
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/${Constants.EVENT_KEY}/?format=json"),
+                WebsiteTeams
+            )
+
             val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/2022week0/?format=json"),
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/${Constants.EVENT_KEY}/?format=json"),
                 WebsiteMatchSchedule
             )
 
@@ -48,11 +53,6 @@ class GetDataFromWebsite(
             MainViewerActivity.matchCache =
                 MainViewerActivity.matchCache.toList().sortedBy { (k, v) -> v.matchNumber.toInt() }
                     .toMap().toMutableMap()
-
-            MainViewerActivity.teamList = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/2022week0/?format=json"),
-                WebsiteTeams
-            )
 
             //Sets the name of the collections on the website
             var listOfCollectionNames: List<String> =
@@ -145,6 +145,7 @@ private fun sendRequest(url: String): String {
 
     val urlConnection = requestUrl.openConnection() as HttpURLConnection
     urlConnection.setRequestProperty("Authorization", "Token ${Constants.CARDINAL_KEY}")
+    urlConnection.setConnectTimeout(5_000)
 
     try {
         val `in`: InputStream = BufferedInputStream(urlConnection.inputStream)

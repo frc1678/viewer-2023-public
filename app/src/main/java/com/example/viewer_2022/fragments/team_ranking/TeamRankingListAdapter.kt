@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.TeamRankingItem
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
+import java.util.regex.Pattern
 
 class TeamRankingListAdapter(private val context: FragmentActivity, private val teamNumber: String?, private var items: List<TeamRankingItem>) : BaseAdapter() {
     private val inflater: LayoutInflater =
@@ -30,9 +32,14 @@ class TeamRankingListAdapter(private val context: FragmentActivity, private val 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val e = getItem(position)
         val rowView = inflater.inflate(R.layout.team_ranking_cell, parent, false)
+        val regex: Pattern = Pattern.compile("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
 
         rowView.tv_team_number_ranking.text = e.teamNumber
-        rowView.tv_value_ranking.text = e.value
+        if(regex.matcher(e.value).matches()) {
+            rowView.tv_value_ranking.text = ("%.2f").format(java.lang.Float.parseFloat(e.value))
+        } else {
+            rowView.tv_value_ranking.text = e.value
+        }
         rowView.tv_team_ranking.text = if (e.value == Constants.NULL_CHARACTER) Constants.NULL_PREDICTED_SCORE_CHARACTER else (position + 1).toString()
 
         if(e.teamNumber == teamNumber){

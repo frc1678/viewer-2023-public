@@ -22,6 +22,7 @@ class RefreshManager {
                 Log.d("data-refresh", "tick")
                 GetDataFromWebsite({
                     Log.i("data-refresh", "Fetched data from website successfully")
+
                     refresh()
                 }, {
                     Log.e("data-refresh", "Error fetching data $it")

@@ -114,7 +114,7 @@ class TeamDetailsFragment : Fragment() {
             } else {
                 isChecked = false
                 dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-                btn_lfm.text = "To LFM"
+                btn_lfm.text = "To L4M"
             }
 
             val adapter = TeamDetailsAdapter(
@@ -131,7 +131,7 @@ class TeamDetailsFragment : Fragment() {
         val robotPicFragment = RobotPicFragment()
         if (!File(
                 "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
-                "${teamNumber}_full_robot.jpg"
+                "${teamNumber}_full_robot_1.jpg"
             ).exists()
             && !File(
                 "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",

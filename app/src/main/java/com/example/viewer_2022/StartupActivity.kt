@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.DatabaseReference
 import com.example.viewer_2022.data.GetDataFromFiles
@@ -20,7 +21,6 @@ import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 // it will begin the actual viewer activity so ensure that all data is accessible before the viewer
 // activity begins.
 class StartupActivity : ViewerActivity() {
-    var buttonClickable = false
     companion object {
         var databaseReference: DatabaseReference.CompetitionObject? =
             DatabaseReference.CompetitionObject()
@@ -37,6 +37,7 @@ class StartupActivity : ViewerActivity() {
         // 'response' is a CompetitionObject, so you should be able to access whatever datapoint
         // you want by referencing response. Example: response.raw.qr[0] -> specified value in database.
         // TODO Make not crash when permissions are denied.
+        MainViewerActivity.refreshManager.start(lifecycleScope)
 
         getData()
 
@@ -63,7 +64,6 @@ class StartupActivity : ViewerActivity() {
     }
 
     private fun getData() {
-        buttonClickable = false
         if (Constants.USE_TEST_DATA) {
             GetDataFromFiles(this, {
                 ContextCompat.startActivity(
@@ -77,9 +77,6 @@ class StartupActivity : ViewerActivity() {
                 runOnUiThread {
                     // Stuff that updates the UI
                     Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
-                    refresh_button.visibility = View.VISIBLE
-                    refresh_button.isEnabled = true
-                    buttonClickable = true
                 }
 
             }.execute()
@@ -97,18 +94,8 @@ class StartupActivity : ViewerActivity() {
                 runOnUiThread {
                     // Stuff that updates the UI
                     Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
-                    refresh_button.visibility = View.VISIBLE
-                    refresh_button.isEnabled = true
-                    buttonClickable = true
                 }
             }.execute()
-        }
-    }
-    fun refreshClick(view: View) {
-        if (buttonClickable) {
-            Snackbar.make(splash_screen_layout, "Refreshing Data", 2500).show()
-            refresh_button.isEnabled = false
-            getData()
         }
     }
 }

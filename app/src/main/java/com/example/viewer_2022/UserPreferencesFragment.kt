@@ -48,9 +48,12 @@ class UserPreferencesFragment: Fragment() {
     }
 
     private fun updateUserDatapointsListView(root: View) {
+        val datapointsDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
+
         val adapter = UserPreferencesAdapter(
             context = activity!!,
-            datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
+            datapointsDisplayed = datapointsDisplay.minus("See Matches")
+
         )
         root.lv_user_datapoints.adapter = adapter
 

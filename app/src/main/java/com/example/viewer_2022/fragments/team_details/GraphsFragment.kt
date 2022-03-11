@@ -132,13 +132,22 @@ class GraphsFragment() : Fragment() {
                     "traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
                     else -> entries.add(BarEntry(index.toFloat(), 0F))
                 }
+                root.bar_chart.axisLeft.axisMaximum = 4F
             } else if (datapoint == "mode_start_position"){
                 when(timData.lowercase()){
+                    "zero" -> entries.add(BarEntry(index.toFloat(), 0F))
                     "one" -> entries.add(BarEntry(index.toFloat(), 1F))
                     "two" -> entries.add(BarEntry(index.toFloat(), 2F))
                     "three" -> entries.add(BarEntry(index.toFloat(), 3F))
                     "four" -> entries.add(BarEntry(index.toFloat(), 4F))
                     else -> entries.add(BarEntry(index.toFloat(), 0F))
+                }
+                root.bar_chart.axisLeft.axisMaximum = 4F
+            } else if (datapoint == "position_zero_starts"){
+                if(timData.lowercase() == "zero"){
+                    entries.add(BarEntry(index.toFloat(), 1F))
+                } else {
+                    entries.add(BarEntry(index.toFloat(), 0F))
                 }
             } else if (datapoint == "position_one_starts"){
                 if(timData.lowercase() == "one"){
@@ -154,12 +163,6 @@ class GraphsFragment() : Fragment() {
                 }
             } else if (datapoint == "position_three_starts"){
                 if(timData.lowercase() == "three"){
-                    entries.add(BarEntry(index.toFloat(), 1F))
-                } else {
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "position_one_starts"){
-                if(timData.lowercase() == "one"){
                     entries.add(BarEntry(index.toFloat(), 1F))
                 } else {
                     entries.add(BarEntry(index.toFloat(), 0F))
@@ -224,7 +227,7 @@ class GraphsFragment() : Fragment() {
 
         //set yAxis minimum to 0
         root.bar_chart.axisLeft.axisMinimum = 0F
-        if((datapoint!! in Constants.GRAPHABLE_BOOL) or (datapoint == "position_one_starts") or
+        if((datapoint!! in Constants.GRAPHABLE_BOOL) or (datapoint == "position_zero_starts") or (datapoint == "position_one_starts") or
             (datapoint == "position_two_starts") or (datapoint == "position_three_starts") or
             (datapoint == "position_four_starts")){
             root.bar_chart.axisLeft.axisMaximum = 1F

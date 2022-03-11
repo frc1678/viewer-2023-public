@@ -17,7 +17,6 @@
     <string name="test_data">Last Updated:\nUsing Test Data</string>
     <string name="close">Close</string>
     <string name="open">Open</string>
-    <string name="refresh_button">Refresh</string>
     <string name="reset_button">Reset to Default</string>
     <string name="preferences">Preferences</string>
     <string name="user_name">User Name</string>
@@ -36,7 +35,6 @@
         <item>Kate</item>
         <item>Mike</item>
         <item>Richard</item>
-        <item>Elie</item>
         <item>Brendan</item>
 
     </string-array>
