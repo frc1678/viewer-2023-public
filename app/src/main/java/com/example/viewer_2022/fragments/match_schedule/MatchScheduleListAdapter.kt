@@ -391,9 +391,7 @@ class MatchScheduleListAdapter(
             ))
         }
 
-
-        // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
-        rowView!!.setOnClickListener {
+        fun matchClick(it : View){
             val matchDetailsFragment = MatchDetailsFragment()
             Log.d("data-refresh", "created MatchDetailsFragment in MatchSchedule")
             val matchDetailsFragmentArguments = Bundle()
@@ -410,6 +408,68 @@ class MatchScheduleListAdapter(
                 (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
                 matchDetailsFragment
             ).commit()
+        }
+
+        fun teamLongClick(selected : Button, it : View){
+            val teamNumber = selected.text.toString()
+            val matchScheduleFragment = MatchScheduleFragment()
+            val matchScheduleFragmentArguments = Bundle()
+            val matchScheduleFragmentTransaction =
+                context.supportFragmentManager.beginTransaction()
+            matchScheduleFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+            matchScheduleFragment.arguments = matchScheduleFragmentArguments
+            matchScheduleFragmentTransaction.addToBackStack(null).replace(
+                (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
+                matchScheduleFragment
+            ).commit()
+        }
+
+        // When an item click occurs, go to the MatchDetails fragment of the match item clicked.
+        rowView!!.setOnClickListener {
+            matchClick(it)
+        }
+        viewHolder.tvRedTeamOne.setOnClickListener {
+            matchClick(it)
+        }
+        viewHolder.tvRedTeamTwo.setOnClickListener {
+            matchClick(it)
+        }
+        viewHolder.tvRedTeamThree.setOnClickListener {
+            matchClick(it)
+        }
+        viewHolder.tvBlueTeamOne.setOnClickListener {
+            matchClick(it)
+        }
+        viewHolder.tvBlueTeamTwo.setOnClickListener {
+            matchClick(it)
+        }
+        viewHolder.tvBlueTeamThree.setOnClickListener {
+            matchClick(it)
+        }
+
+        viewHolder.tvRedTeamOne.setOnLongClickListener {
+            teamLongClick(viewHolder.tvRedTeamOne, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvRedTeamTwo.setOnLongClickListener {
+            teamLongClick(viewHolder.tvRedTeamTwo, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvRedTeamThree.setOnLongClickListener {
+            teamLongClick(viewHolder.tvRedTeamThree, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvBlueTeamOne.setOnLongClickListener {
+            teamLongClick(viewHolder.tvBlueTeamOne, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvBlueTeamTwo.setOnLongClickListener {
+            teamLongClick(viewHolder.tvBlueTeamTwo, it)
+            return@setOnLongClickListener true
+        }
+        viewHolder.tvBlueTeamThree.setOnLongClickListener {
+            teamLongClick(viewHolder.tvBlueTeamThree, it)
+            return@setOnLongClickListener true
         }
 
         // Mark matches as starred when long clicked.
@@ -439,12 +499,12 @@ class MatchScheduleListAdapter(
         val tvRedPredictedRPOne = view?.findViewById(R.id.tv_red_predicted_rp1) as ImageView
         val tvBluePredictedRPTwo = view?.findViewById(R.id.tv_blue_predicted_rp2) as ImageView
         val tvRedPredictedRPTwo = view?.findViewById(R.id.tv_red_predicted_rp2) as ImageView
-        val tvBlueTeamOne = view?.findViewById(R.id.tv_blue_team_one) as TextView
-        val tvBlueTeamTwo = view?.findViewById(R.id.tv_blue_team_two) as TextView
-        val tvBlueTeamThree = view?.findViewById(R.id.tv_blue_team_three) as TextView
-        val tvRedTeamOne = view?.findViewById(R.id.tv_red_team_one) as TextView
-        val tvRedTeamTwo = view?.findViewById(R.id.tv_red_team_two) as TextView
-        val tvRedTeamThree = view?.findViewById(R.id.tv_red_team_three) as TextView
+        val tvBlueTeamOne = view?.findViewById(R.id.tv_blue_team_one) as Button
+        val tvBlueTeamTwo = view?.findViewById(R.id.tv_blue_team_two) as Button
+        val tvBlueTeamThree = view?.findViewById(R.id.tv_blue_team_three) as Button
+        val tvRedTeamOne = view?.findViewById(R.id.tv_red_team_one) as Button
+        val tvRedTeamTwo = view?.findViewById(R.id.tv_red_team_two) as Button
+        val tvRedTeamThree = view?.findViewById(R.id.tv_red_team_three) as Button
         val wholeLine = view?.findViewById(R.id.whole_line) as LinearLayout
     }
 }
