@@ -139,6 +139,7 @@ class GetDataFromWebsite(
 }
 
 private fun sendRequest(url: String): String {
+    Log.d("sendRequest", "Sending get request to $url")
     val result = StringBuilder()
     val requestUrl =
         URL(url)
@@ -161,7 +162,18 @@ private fun sendRequest(url: String): String {
     return result.toString()
 }
 
-class PostRequestTask(val endpoint: String, val data: String) : AsyncTask<Unit, String, String>() {
+class GetRequestTask(val endpoint: String, val done: ((response: String) -> Unit)? = null): AsyncTask<Unit, Unit, String>() {
+    override fun doInBackground(vararg params: Unit?): String {
+        return sendRequest("https://cardinal.citruscircuits.org/cardinal/api/$endpoint")
+    }
+
+    override fun onPostExecute(result: String) {
+        done?.let { it(result) }
+    }
+}
+
+
+class PostRequestTask(val endpoint: String, val data: String, val done: ((response: String) -> Unit)? = null) : AsyncTask<Unit, Unit, String>() {
     override fun doInBackground(vararg params: Unit?): String {
         val result = StringBuilder()
 
@@ -207,6 +219,9 @@ class PostRequestTask(val endpoint: String, val data: String) : AsyncTask<Unit, 
         Log.d("postRequest", "Status message: ${urlConnection.responseMessage}")
         Log.d("postRequest", "Response body: $result")
         return result.toString()
+    }
+    override fun onPostExecute(result: String) {
+        done?.let { it(result) }
     }
 
 }

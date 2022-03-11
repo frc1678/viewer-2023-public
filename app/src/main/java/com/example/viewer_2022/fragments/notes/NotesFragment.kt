@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
+import com.example.viewer_2022.data.GetRequestTask
 import com.example.viewer_2022.data.PostRequestTask
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_notes.view.*
+import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -17,7 +20,9 @@ class NotesFragment : Fragment() {
 
     var mode = Mode.VIEW
 
-    var team_number: String? = "1678"
+    var teamNumber: String? = "1678"
+
+    var refreshId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +31,16 @@ class NotesFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_notes, container, false)
 
+        if(refreshId == null){
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                if(this.mode == Mode.VIEW){
+                    getNotes(root)
+                }
+            }
+        }
+
         setupListeners(root)
+        getNotes(root)
 
         return root
     }
@@ -54,9 +68,32 @@ class NotesFragment : Fragment() {
     private fun setupViewMode(root: View){
         root.btn_edit_notes.setImageResource(R.drawable.ic_baseline_edit_24)
         root.et_notes.isEnabled = false
-        val data = SetNotesData(team_number!!, root.et_notes.text.toString())
+        val data = SetNotesData(teamNumber!!, root.et_notes.text.toString())
         Log.d("notes", Gson().toJson(data))
-        PostRequestTask("notes/", Gson().toJson(data)).execute()
+        root.btn_edit_notes.isEnabled = false
+        PostRequestTask("notes/", Gson().toJson(data)) {
+            root.btn_edit_notes.isEnabled = true
+        }.execute()
+    }
+
+    private fun getNotes(root: View){
+        root.btn_edit_notes.isEnabled = false
+        GetRequestTask("notes/$teamNumber") {
+            try {
+                val resp = Gson().fromJson(it, GetNotesData::class.java)
+                if(resp.success){
+                    root.et_notes.setText(resp.notes)
+                }
+            } catch (e: Exception) {
+
+            }
+            root.btn_edit_notes.isEnabled = true
+        }.execute()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
 
     enum class Mode {
@@ -66,3 +103,4 @@ class NotesFragment : Fragment() {
 }
 
 data class SetNotesData(val team_number: String, val notes: String)
+data class GetNotesData(val success: Boolean, val notes: String)
