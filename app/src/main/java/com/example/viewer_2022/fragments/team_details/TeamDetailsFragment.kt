@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.notes.NotesFragment
 import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
@@ -43,6 +44,7 @@ class TeamDetailsFragment : Fragment() {
         populateTeamDetailsEssentials(root)
         updateDatapointDisplayListView(root)
         robotPics(root)
+        notesPage(root)
 
         // This creates the on menu select listener for the TeamDetails fragment navigation bar.
         // The purpose of this navigation bar is to switch between the type of data that the
@@ -52,6 +54,19 @@ class TeamDetailsFragment : Fragment() {
         // items and the contents of each arraylist<string> being the specific data points displayed
         // in each of the menu item's adapter settings sections.
         return root
+    }
+
+    private fun notesPage(root: View) {
+        root.btn_to_notes.setOnClickListener {
+            val notesFragment = NotesFragment()
+            val notesFragmentArgs = Bundle()
+            notesFragment.arguments = notesFragmentArgs
+            val notesFragmentTransaction = this.fragmentManager?.beginTransaction()
+            notesFragmentTransaction?.addToBackStack(null)?.replace(
+                (view?.parent as ViewGroup).id,
+                notesFragment
+            )?.commit()
+        }
     }
 
     // Prepare the TeamDetails page by populating each text view and other XML element
