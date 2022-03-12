@@ -174,10 +174,14 @@ class GetRequestTask(val endpoint: String, val done: ((response: String) -> Unit
     }
 }
 
-fun getAllNotes(cb: (List<NotesData>) -> Unit): Unit {
-    GetRequestTask("notes/all"){
-        cb(Gson().fromJson(it, GetAllNotesData))
-    }.execute()
+fun getAllNotes(cb: (List<NotesData>) -> Unit) {
+    try {
+        GetRequestTask("notes/all"){
+            cb(Gson().fromJson(it, GetAllNotesData))
+        }.execute()
+    } catch (e: Exception){
+        Log.e("notes", "FAILED TO FETCH ALL NOTES. THIS IS NOT GOOD. VERY VERY BAD")
+    }
 }
 
 

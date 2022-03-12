@@ -83,17 +83,22 @@ class NotesFragment : Fragment() {
 
     private fun getNotes(root: View){
         root.btn_edit_notes.isEnabled = false
-        GetRequestTask("notes/$teamNumber") {
-            try {
-                val resp = Gson().fromJson(it, GetNotesData::class.java)
-                if(resp.success){
-                    root.et_notes.setText(resp.notes)
-                }
-            } catch (e: Exception) {
+        try {
+            GetRequestTask("notes/$teamNumber") {
+                try {
+                    val resp = Gson().fromJson(it, GetNotesData::class.java)
+                    if(resp.success){
+                        root.et_notes.setText(resp.notes)
+                    }
+                } catch (e: Exception) {
 
-            }
-            root.btn_edit_notes.isEnabled = true
-        }.execute()
+                }
+                root.btn_edit_notes.isEnabled = true
+            }.execute()
+        } catch (e: Exception) {
+            Log.e("notes", "FAILED TO FETCH NOTES FOR $teamNumber. THIS IS NOT GOOD. VERY VERY BAD")
+        }
+
     }
 
     override fun onDestroy() {

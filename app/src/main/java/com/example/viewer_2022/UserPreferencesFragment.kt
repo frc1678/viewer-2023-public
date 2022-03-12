@@ -52,7 +52,7 @@ class UserPreferencesFragment: Fragment() {
 
         val adapter = UserPreferencesAdapter(
             context = activity!!,
-            datapointsDisplayed = datapointsDisplay.minus("See Matches")
+            datapointsDisplayed = datapointsDisplay - listOf("See Matches", "Notes")
 
         )
         root.lv_user_datapoints.adapter = adapter
