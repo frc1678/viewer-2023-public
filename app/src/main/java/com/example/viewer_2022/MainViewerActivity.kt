@@ -92,6 +92,7 @@ class MainViewerActivity : ViewerActivity() {
         var starredMatches: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
+        var notesCache: Map<String, String> = mapOf()
         var mapMode = 1
     }
 
@@ -155,6 +156,13 @@ class MainViewerActivity : ViewerActivity() {
         refreshManager.addRefreshListener {
             Log.d("data-refresh", "Updated: ranking")
             updateNavFooter()
+        }
+
+
+        updateNotesCache()
+
+        refreshManager.addRefreshListener {
+            updateNotesCache()
         }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -406,6 +414,16 @@ class MainViewerActivity : ViewerActivity() {
         }
     }
 
+    fun updateNotesCache(){
+        getAllNotes { notesList ->
+            val newMap = mutableMapOf<String, String>()
+            notesList.forEach {
+                newMap[it.team_number] = it.notes;
+            }
+            notesCache = newMap.toMap()
+            Log.d("notes", "updated notes cache")
+        }
+    }
 }
 
 class NavDrawerListener(private val navView: NavigationView, private val fragManager: FragmentManager) : DrawerLayout.DrawerListener {

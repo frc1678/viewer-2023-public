@@ -31,14 +31,6 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"/>
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_sticky_note_2_24"
-                android:background="@drawable/circle"
-                android:layout_marginEnd="@dimen/very_small"
-                android:id="@+id/btn_to_notes"
-                />
 
             <Button
                 android:id="@+id/robot_pic_button"

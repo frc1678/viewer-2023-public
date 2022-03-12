@@ -14,6 +14,7 @@
     <color name="MediumGray">#B1B0B0</color>
     <color name="LightYellow">#FFF59E</color>
     <color name="Yellow">#FFDB58</color>
+    <color name="Highlighter">#FF9900</color>
     <color name="DarkYellow">#C9AA23</color>
     <color name="CircleButtonGreen">#4CAF50</color>
 </resources>

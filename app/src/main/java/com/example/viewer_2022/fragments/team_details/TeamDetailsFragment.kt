@@ -44,7 +44,6 @@ class TeamDetailsFragment : Fragment() {
         populateTeamDetailsEssentials(root)
         updateDatapointDisplayListView(root)
         robotPics(root)
-        notesPage(root)
 
         // This creates the on menu select listener for the TeamDetails fragment navigation bar.
         // The purpose of this navigation bar is to switch between the type of data that the
@@ -56,18 +55,6 @@ class TeamDetailsFragment : Fragment() {
         return root
     }
 
-    private fun notesPage(root: View) {
-        root.btn_to_notes.setOnClickListener {
-            val notesFragment = NotesFragment()
-            val notesFragmentArgs = Bundle()
-            notesFragment.arguments = notesFragmentArgs
-            val notesFragmentTransaction = this.fragmentManager?.beginTransaction()
-            notesFragmentTransaction?.addToBackStack(null)?.replace(
-                (view?.parent as ViewGroup).id,
-                notesFragment
-            )?.commit()
-        }
-    }
 
     // Prepare the TeamDetails page by populating each text view and other XML element
     // with its team specific information.

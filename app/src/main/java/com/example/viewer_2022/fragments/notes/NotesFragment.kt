@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
+import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.GetRequestTask
 import com.example.viewer_2022.data.PostRequestTask
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_notes.view.*
 import java.lang.Exception
+import java.lang.reflect.Type
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -20,7 +23,7 @@ class NotesFragment : Fragment() {
 
     var mode = Mode.VIEW
 
-    var teamNumber: String? = "1678"
+    var teamNumber: String? = null
 
     var refreshId: String? = null
 
@@ -30,7 +33,9 @@ class NotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_notes, container, false)
-
+        arguments?.let {
+            teamNumber = it.getString(Constants.TEAM_NUMBER)
+        }
         if(refreshId == null){
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {
                 if(this.mode == Mode.VIEW){
@@ -102,5 +107,7 @@ class NotesFragment : Fragment() {
     }
 }
 
-data class SetNotesData(val team_number: String, val notes: String)
+data class NotesData(val team_number: String, val notes: String)
+typealias SetNotesData = NotesData
 data class GetNotesData(val success: Boolean, val notes: String)
+val GetAllNotesData: Type = object : TypeToken<List<NotesData>>() {}.type

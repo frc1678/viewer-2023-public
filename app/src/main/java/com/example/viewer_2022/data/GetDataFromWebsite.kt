@@ -8,6 +8,8 @@ import java.net.URL
 import com.example.viewer_2022.StartupActivity.Companion.databaseReference
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.*
+import com.example.viewer_2022.fragments.notes.GetAllNotesData
+import com.example.viewer_2022.fragments.notes.NotesData
 import com.example.viewer_2022.getRankingList
 import com.example.viewer_2022.lastUpdated
 import com.google.gson.Gson
@@ -170,6 +172,12 @@ class GetRequestTask(val endpoint: String, val done: ((response: String) -> Unit
     override fun onPostExecute(result: String) {
         done?.let { it(result) }
     }
+}
+
+fun getAllNotes(cb: (List<NotesData>) -> Unit): Unit {
+    GetRequestTask("notes/all"){
+        cb(Gson().fromJson(it, GetAllNotesData))
+    }.execute()
 }
 
 
