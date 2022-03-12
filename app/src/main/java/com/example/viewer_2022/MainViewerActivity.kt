@@ -18,6 +18,7 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
@@ -28,7 +29,6 @@ import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
-import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.*
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
@@ -39,17 +39,16 @@ import com.example.viewer_2022.fragments.pickability.PickabilityMode
 import com.example.viewer_2022.fragments.ranking.RankingFragment
 import com.example.viewer_2022.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.map_popup.view.*
+import kotlinx.android.synthetic.main.field_map_popup.view.*
+import kotlinx.android.synthetic.main.field_map_popup.view.close_button
+import kotlinx.android.synthetic.main.pit_map_popup.*
+import kotlinx.android.synthetic.main.pit_map_popup.view.*
 import java.io.*
-import com.example.viewer_2022.R
-import androidx.fragment.app.FragmentActivity
-import com.example.viewer_2022.RefreshManager
 
 
 // Main activity class that handles the dual fragment view.
@@ -93,6 +92,7 @@ class MainViewerActivity : ViewerActivity() {
         val refreshManager = RefreshManager()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
         var mapMode = 1
+        var mapRotation = -90F
     }
 
     //Overrides back button to go back to last fragment.
@@ -288,10 +288,35 @@ class MainViewerActivity : ViewerActivity() {
     override fun onCreateOptionsMenu(menu: Menu) : Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.toolbar, menu)
-        val mapItem : MenuItem = menu.findItem(R.id.map_button)
-        val button = mapItem.actionView
-        button.setOnClickListener {
-            val popupView = View.inflate(this, R.layout.map_popup, null)
+        val fieldMapItem : MenuItem = menu.findItem(R.id.field_map_button)
+        val pitMapItem : MenuItem = menu.findItem(R.id.pit_map_button)
+        val fieldButton = fieldMapItem.actionView
+        val pitButton = pitMapItem.actionView
+
+        pitButton.setOnClickListener {
+            val popupView = View.inflate(this, R.layout.pit_map_popup, null)
+            val width = LinearLayout.LayoutParams.MATCH_PARENT
+            val height = LinearLayout.LayoutParams.MATCH_PARENT
+            val popupWindow = PopupWindow(popupView, width, height, false)
+            mapRotation = this.getSharedPreferences("VIEWER", 0).getFloat("mapRotation", mapRotation)
+
+            popupView.pit_map.rotation = mapRotation
+            popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
+
+            popupView.rotate_view.setOnClickListener {
+                popupView.pit_map.rotation += 90F
+                mapRotation = popupView.pit_map.rotation
+                this.getSharedPreferences("VIEWER", 0)?.edit()
+                    ?.putFloat("mapRotation", mapRotation)?.apply()
+            }
+
+            popupView.close_button.setOnClickListener {
+                popupWindow.dismiss()
+            }
+        }
+
+        fieldButton.setOnClickListener {
+            val popupView = View.inflate(this, R.layout.field_map_popup, null)
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
@@ -301,19 +326,19 @@ class MainViewerActivity : ViewerActivity() {
                     popupView.red_chip.isChecked = true
                     popupView.none_chip.isChecked = false
                     popupView.blue_chip.isChecked = false
-                    popupView.map.setImageResource(R.drawable.field_map_red)
+                    popupView.field_map.setImageResource(R.drawable.field_map_red)
                 }
                 1 -> {
                     popupView.red_chip.isChecked = false
                     popupView.none_chip.isChecked = true
                     popupView.blue_chip.isChecked = false
-                    popupView.map.setImageResource(R.drawable.field_map)
+                    popupView.field_map.setImageResource(R.drawable.field_map)
                 }
                 2 -> {
                     popupView.red_chip.isChecked = false
                     popupView.none_chip.isChecked = false
                     popupView.blue_chip.isChecked = true
-                    popupView.map.setImageResource(R.drawable.field_map_blue)
+                    popupView.field_map.setImageResource(R.drawable.field_map_blue)
                 }
             }
             popupView.red_chip.setOnClickListener{
@@ -328,15 +353,15 @@ class MainViewerActivity : ViewerActivity() {
             popupView.chip_group.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
                     popupView.red_chip.id -> {
-                        popupView.map.setImageResource(R.drawable.field_map_red)
+                        popupView.field_map.setImageResource(R.drawable.field_map_red)
                         mapMode=0
                     }
                     popupView.none_chip.id -> {
-                        popupView.map.setImageResource(R.drawable.field_map)
+                        popupView.field_map.setImageResource(R.drawable.field_map)
                         mapMode=1
                     }
                     popupView.blue_chip.id -> {
-                        popupView.map.setImageResource(R.drawable.field_map_blue)
+                        popupView.field_map.setImageResource(R.drawable.field_map_blue)
                         mapMode=2
                     }
                 }
