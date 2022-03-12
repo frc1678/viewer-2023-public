@@ -20,6 +20,7 @@ class RefreshManager {
         if (!Constants.USE_TEST_DATA) {
             tickerFlow(Duration.seconds(20), Duration.seconds(20)).onEach {
                 Log.d("data-refresh", "tick")
+                MainViewerActivity.updateNotesCache()
                 GetDataFromWebsite({
                     Log.i("data-refresh", "Fetched data from website successfully")
 
