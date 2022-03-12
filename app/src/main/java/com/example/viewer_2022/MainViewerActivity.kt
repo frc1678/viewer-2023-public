@@ -11,6 +11,8 @@ package com.example.viewer_2022
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -24,6 +26,7 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
+import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
 import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
@@ -48,6 +51,7 @@ import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
 import kotlinx.android.synthetic.main.pit_map_popup.*
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
+import kotlinx.android.synthetic.main.robot_pic.view.*
 import java.io.*
 
 
@@ -298,6 +302,14 @@ class MainViewerActivity : ViewerActivity() {
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
+
+            var mapFile = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
+            "pit_map")
+
+            if (mapFile!!.exists()) {
+                popupView.pit_map.setImageURI(mapFile.toUri())
+            }
+
             mapRotation = this.getSharedPreferences("VIEWER", 0).getFloat("mapRotation", mapRotation)
 
             popupView.pit_map.rotation = mapRotation
