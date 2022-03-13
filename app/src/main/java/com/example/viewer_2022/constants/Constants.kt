@@ -17,6 +17,7 @@ class Constants {
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
         const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
+        const val REFRESH_INTERVAL = 180
         //In order to change the URL, see the GeDataFromWebsite Async Task
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
@@ -365,6 +366,7 @@ class Constants {
         OUR_MATCHES,
         STARRED_MATCHES
     }
+
 
 
 }
