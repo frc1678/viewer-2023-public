@@ -95,8 +95,20 @@ class MainViewerActivity : ViewerActivity() {
         var starredMatches: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
+        var notesCache: Map<String, String> = mapOf()
         var mapMode = 1
         var mapRotation = -90F
+
+        fun updateNotesCache(){
+            getAllNotes { notesList ->
+                val newMap = mutableMapOf<String, String>()
+                notesList.forEach {
+                    newMap[it.team_number] = it.notes;
+                }
+                notesCache = newMap.toMap()
+                Log.d("notes", "updated notes cache")
+            }
+        }
     }
 
     //Overrides back button to go back to last fragment.
@@ -160,6 +172,8 @@ class MainViewerActivity : ViewerActivity() {
             Log.d("data-refresh", "Updated: ranking")
             updateNavFooter()
         }
+
+        updateNotesCache()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()

@@ -8,6 +8,8 @@ import java.net.URL
 import com.example.viewer_2022.StartupActivity.Companion.databaseReference
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.*
+import com.example.viewer_2022.fragments.notes.GetAllNotesData
+import com.example.viewer_2022.fragments.notes.NotesData
 import com.example.viewer_2022.getRankingList
 import com.example.viewer_2022.lastUpdated
 import com.google.gson.Gson
@@ -15,7 +17,10 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.util.*
 
-class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: String) -> Unit = {}) :
+class GetDataFromWebsite(
+    val onCompleted: () -> Unit = {},
+    val onError: (error: String) -> Unit = {}
+) :
     AsyncTask<String, String, String>() {
 
     override fun doInBackground(vararg p0: String?): String {
@@ -127,7 +132,7 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
     override fun onPostExecute(result: String) {
         MainViewerActivity.leaderboardCache.clear()
         Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
-            if(it !in Constants.CATEGORY_NAMES){
+            if (it !in Constants.CATEGORY_NAMES) {
                 getRankingList(it, false)
             }
         }
@@ -136,19 +141,20 @@ class GetDataFromWebsite(val onCompleted: () -> Unit = {} ,val onError: (error: 
 }
 
 private fun sendRequest(url: String): String {
-    var result = StringBuilder()
-    var url =
+    Log.d("sendRequest", "Sending get request to $url")
+    val result = StringBuilder()
+    val requestUrl =
         URL(url)
 
-    var urlConnection = url.openConnection() as HttpURLConnection
+    val urlConnection = requestUrl.openConnection() as HttpURLConnection
     urlConnection.setRequestProperty("Authorization", "Token ${Constants.CARDINAL_KEY}")
     urlConnection.setConnectTimeout(5_000)
 
     try {
         val `in`: InputStream = BufferedInputStream(urlConnection.inputStream)
 
-        var reader = BufferedReader(InputStreamReader(`in`))
-        var line = reader.readText()
+        val reader = BufferedReader(InputStreamReader(`in`))
+        val line = reader.readText()
         result.append(line)
     } catch (e: Exception) {
         e.printStackTrace();
@@ -156,4 +162,78 @@ private fun sendRequest(url: String): String {
         urlConnection.disconnect();
     }
     return result.toString()
+}
+
+class GetRequestTask(val endpoint: String, val done: ((response: String) -> Unit)? = null): AsyncTask<Unit, Unit, String>() {
+    override fun doInBackground(vararg params: Unit?): String {
+        return sendRequest("https://cardinal.citruscircuits.org/cardinal/api/$endpoint")
+    }
+
+    override fun onPostExecute(result: String) {
+        done?.let { it(result) }
+    }
+}
+
+fun getAllNotes(cb: (List<NotesData>) -> Unit) {
+    try {
+        GetRequestTask("notes/all"){
+            cb(Gson().fromJson(it, GetAllNotesData))
+        }.execute()
+    } catch (e: Exception){
+        Log.e("notes", "FAILED TO FETCH ALL NOTES. THIS IS NOT GOOD. VERY VERY BAD")
+    }
+}
+
+
+class PostRequestTask(val endpoint: String, val data: String, val done: ((response: String) -> Unit)? = null) : AsyncTask<Unit, Unit, String>() {
+    override fun doInBackground(vararg params: Unit?): String {
+        val result = StringBuilder()
+
+        val requestUrl = URL("https://cardinal.citruscircuits.org/cardinal/api/$endpoint")
+
+        val urlConnection = requestUrl.openConnection() as HttpURLConnection
+        urlConnection.setRequestProperty("Authorization", "Token ${Constants.CARDINAL_KEY}")
+        urlConnection.setRequestProperty("Content-Type", "application/json");
+        urlConnection.requestMethod = "POST";
+        urlConnection.doOutput = true
+        urlConnection.doInput = true
+        urlConnection.setChunkedStreamingMode(0)
+
+        try {
+            val os = urlConnection.outputStream
+            val bodyStream = BufferedWriter(OutputStreamWriter(os, "UTF-8"))
+            bodyStream.write(data)
+            bodyStream.flush()
+            os.close()
+            val status = urlConnection.responseCode;
+            if (status != HttpURLConnection.HTTP_OK)  {
+                val inputStream = urlConnection.errorStream;
+                val reader = BufferedReader(InputStreamReader(inputStream))
+                val line = reader.readText()
+                Log.d("postRequest", "Line: $line")
+                result.append(line)
+            }
+            else  {
+                val inputStream = urlConnection.inputStream;
+                val reader = BufferedReader(InputStreamReader(inputStream))
+                val line = reader.readText()
+                Log.d("postRequest", "Line: $line")
+                result.append(line)
+            }
+
+
+        } catch (e: Exception) {
+            e.printStackTrace();
+        } finally {
+            urlConnection.disconnect();
+        }
+        Log.d("postRequest", "Status code: ${urlConnection.responseCode}")
+        Log.d("postRequest", "Status message: ${urlConnection.responseMessage}")
+        Log.d("postRequest", "Response body: $result")
+        return result.toString()
+    }
+    override fun onPostExecute(result: String) {
+        done?.let { it(result) }
+    }
+
 }

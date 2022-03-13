@@ -50,6 +50,7 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
             "See Matches",
+            "Notes",
             "matches_played",
             "current_rps",
             "current_rank",
