@@ -44,8 +44,9 @@ class OurScheduleFragment : MatchScheduleFragment() {
                 MainViewerActivity.starredMatches.add(cell.tv_match_number.text.toString())
                 root.lv_match_schedule.invalidateViews()
             }
-            context?.getSharedPreferences("VIEWER", 0)?.edit()
-                ?.putStringSet("starredMatches", MainViewerActivity.starredMatches)?.apply()
+
+            MainViewerActivity.StarredMatches.input()
+
             return@setOnItemLongClickListener true
         }
         return root

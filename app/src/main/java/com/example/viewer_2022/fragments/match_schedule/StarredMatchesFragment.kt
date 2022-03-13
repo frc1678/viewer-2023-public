@@ -11,6 +11,7 @@ import com.example.viewer_2022.data.Match
 import com.example.viewer_2022.fragments.match_schedule.match_details.MatchDetailsFragment
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
+import com.example.viewer_2022.MainViewerActivity.StarredMatches
 
 class StarredMatchesFragment : MatchScheduleFragment() {
     override fun onCreateView(
@@ -47,8 +48,9 @@ class StarredMatchesFragment : MatchScheduleFragment() {
                 MainViewerActivity.starredMatches.add(cell.tv_match_number.text.toString())
                 updateMatchScheduleListView(root, Constants.ScheduleType.STARRED_MATCHES)
             }
-            context?.getSharedPreferences("VIEWER", 0)?.edit()
-                ?.putStringSet("starredMatches", MainViewerActivity.starredMatches)?.apply()
+
+            StarredMatches.input()
+
             return@setOnItemLongClickListener true
         }
         return root
