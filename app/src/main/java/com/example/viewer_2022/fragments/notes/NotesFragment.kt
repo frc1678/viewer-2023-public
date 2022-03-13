@@ -76,9 +76,14 @@ class NotesFragment : Fragment() {
         val data = SetNotesData(teamNumber!!, root.et_notes.text.toString())
         Log.d("notes", Gson().toJson(data))
         root.btn_edit_notes.isEnabled = false
-        PostRequestTask("notes/", Gson().toJson(data)) {
-            root.btn_edit_notes.isEnabled = true
-        }.execute()
+        try {
+            PostRequestTask("notes/", Gson().toJson(data)) {
+                root.btn_edit_notes.isEnabled = true
+            }.execute()
+        } catch (e: Exception){
+            Log.e("NOTES", "FAILED TO SAVE NOTES. WE JUST LOST DATA. FIX IMMEDIATELY")
+        }
+
     }
 
     private fun getNotes(root: View){
@@ -91,7 +96,7 @@ class NotesFragment : Fragment() {
                         root.et_notes.setText(resp.notes)
                     }
                 } catch (e: Exception) {
-
+                    Log.e("notes", "FAILED TO PARSE JSON FOR $teamNumber. THIS IS NOT GOOD. VERY VERY BAD. CARDINAL PROBABLY THREW A 500")
                 }
                 root.btn_edit_notes.isEnabled = true
             }.execute()
