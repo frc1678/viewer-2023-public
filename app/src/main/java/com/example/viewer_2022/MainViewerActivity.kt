@@ -31,6 +31,7 @@ import androidx.core.view.GravityCompat
 import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
+import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
 import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.*
@@ -42,16 +43,14 @@ import com.example.viewer_2022.fragments.pickability.PickabilityMode
 import com.example.viewer_2022.fragments.ranking.RankingFragment
 import com.example.viewer_2022.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
-import com.google.gson.Gson
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
+import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
 import kotlinx.android.synthetic.main.pit_map_popup.*
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
 import kotlinx.android.synthetic.main.robot_pic.view.*
+import org.apache.commons.collections.map.HashedMap
 import java.io.*
 
 
@@ -132,8 +131,18 @@ class MainViewerActivity : ViewerActivity() {
             }
         }
 
+        // Creates the files for user datapoints and starred matches
         UserDatapoints.read(this)
+        StarredMatches.read()
 
+        // Pull the set of starred matches from the downloads file viewer_starred_matches.
+        var jsonStarred = contents.get("starredMatches")?.asJsonArray
+
+        if (jsonStarred != null) {
+            for (starred in jsonStarred) {
+                starredMatches.add(starred.asString)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -173,10 +182,6 @@ class MainViewerActivity : ViewerActivity() {
         val preferencesFragment = PreferencesFragment()
 
         updateNavFooter()
-
-        // Pull the set of starred matches from the shared preferences.
-        starredMatches = HashSet(baseContext.getSharedPreferences("VIEWER", 0)
-            .getStringSet("starredMatches", HashSet()) as HashSet<String>)
 
         //default screen when the viewer starts (after pulling data)
         supportFragmentManager.beginTransaction()
@@ -441,6 +446,47 @@ class MainViewerActivity : ViewerActivity() {
             }
 
         }
+    }
+
+    // Writes file to store the starred matches on the viewer
+    object StarredMatches {
+
+        var contents = JsonObject()
+        var gson = Gson()
+
+        private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_matches.json")
+
+        fun read() {
+            if (!fileExists()){
+                write()
+            }
+            try { contents = JsonParser.parseReader(FileReader(file)).asJsonObject }
+            catch (e: Exception) {
+                Log.e("StarredMatches.read", "Failed to read starred matches file")
+            }
+        }
+
+        fun write() {
+            var writer = FileWriter(file, false)
+            gson.toJson(contents as JsonElement, writer)
+
+            writer.close()
+        }
+
+        fun fileExists(): Boolean = file.exists()
+
+        // Updates the file with the currently starred matches based on the companion object starredMatches
+        fun input() {
+            val starredJsonArray = JsonArray()
+            for (starred in starredMatches) {
+                starredJsonArray.add(starred)
+            }
+
+            contents.remove("starredMatches")
+            contents.add("starredMatches", starredJsonArray)
+            write()
+        }
+
     }
 
 }

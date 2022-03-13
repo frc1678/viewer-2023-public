@@ -25,6 +25,8 @@ import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_details_cell.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 import java.lang.Float.parseFloat
+import com.example.viewer_2022.MainViewerActivity.StarredMatches
+import com.google.gson.JsonArray
 
 // Custom list adapter class with Match object handling to display the custom cell for the match schedule.
 class MatchScheduleListAdapter(
@@ -483,8 +485,7 @@ class MatchScheduleListAdapter(
                 MainViewerActivity.starredMatches.add(viewHolder.tvMatchNumber.text.toString())
                 listView.invalidateViews()
             }
-            context.getSharedPreferences("VIEWER", 0)?.edit()
-                ?.putStringSet("starredMatches", MainViewerActivity.starredMatches)?.apply()
+            StarredMatches.input()
             return@setOnLongClickListener true
         }
         return rowView
