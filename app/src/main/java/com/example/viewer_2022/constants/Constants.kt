@@ -343,15 +343,15 @@ class Constants {
             "lfm_traversal_success_avg_time" to false,
             "avg_intakes" to true,
             "incap" to false,
-            "drivetrain" to true,
-            "drivetrain_motors" to true,
-            "drivetrain_motor_type" to true,
-            "can_climb" to true,
-            "has_ground_intake" to true,
-            "can_intake_terminal" to true,
-            "has_vision" to true,
-            "can_under_low_rung" to true,
-            "can_cheesecake" to true
+            "drivetrain" to false,
+            "drivetrain_motors" to false,
+            "drivetrain_motor_type" to false,
+            "can_climb" to false,
+            "has_ground_intake" to false,
+            "can_intake_terminal" to false,
+            "has_vision" to false,
+            "can_under_low_rung" to false,
+            "can_cheesecake" to false
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
