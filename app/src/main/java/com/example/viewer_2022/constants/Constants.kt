@@ -120,7 +120,6 @@ class Constants {
             "can_climb",
             "has_ground_intake",
             "can_intake_terminal",
-            "can_eject_terminal",
             "has_vision",
             "can_under_low_rung",
             "can_cheesecake"
@@ -242,6 +241,18 @@ class Constants {
             "climb_percent_success"
         )
 
+        val PIT_DATA: List<String> = listOf(
+            "drivetrain",
+            "drivetrain_motors",
+            "drivetrain_motor_type",
+            "can_climb",
+            "has_ground_intake",
+            "can_intake_terminal",
+            "has_vision",
+            "can_under_low_rung",
+            "can_cheesecake"
+        )
+
         //List of rankable fields
         //The boolean is if it should be sorted descending
         //Not if it is rankable or not
@@ -331,7 +342,16 @@ class Constants {
             "lfm_high_avg_time" to true,
             "lfm_traversal_success_avg_time" to false,
             "avg_intakes" to true,
-            "incap" to false
+            "incap" to false,
+            "drivetrain" to false,
+            "drivetrain_motors" to false,
+            "drivetrain_motor_type" to false,
+            "can_climb" to false,
+            "has_ground_intake" to false,
+            "can_intake_terminal" to false,
+            "has_vision" to false,
+            "can_under_low_rung" to false,
+            "can_cheesecake" to false
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")

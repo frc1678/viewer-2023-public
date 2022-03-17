@@ -23,11 +23,15 @@ fun getRankingList(datapoint: String, descending: Boolean): Leaderboard {
     val data = mutableListOf<TeamUnplacedItem>()
 
     MainViewerActivity.teamList.forEach {
-        val value = getTeamDataValue(it, datapoint).toFloatOrNull()
-        data.add(
-            TeamUnplacedItem(
-                it,
-                value?.let { it1 -> floatToString(it1) } ?: Constants.NULL_CHARACTER))
+        if (datapoint !in Constants.PIT_DATA){
+            val value = getTeamDataValue(it, datapoint).toFloatOrNull()
+            data.add(
+                TeamUnplacedItem(
+                    it,
+                    value?.let { it1 -> floatToString(it1) } ?: Constants.NULL_CHARACTER))
+        } else {
+            data.add(TeamUnplacedItem(it, getTeamDataValue(it, datapoint)))
+        }
     }
 
     val nullTeams = data.filter { item -> item.value == Constants.NULL_CHARACTER }

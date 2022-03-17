@@ -64,8 +64,7 @@ class TeamRankingFragment : Fragment() {
     }
 
     private fun setupAdapter(root: View) {
-
-        lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+        lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!), dataPoint in Constants.PIT_DATA)
         if(refreshId == null){
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {
                 Log.d("data-refresh", "Updated: team-ranking")
