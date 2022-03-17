@@ -43,7 +43,6 @@ class Translations {
             "actual_rp1" to "Actual Cargo RP",
             "actual_rp2" to "Actual Climb RP",
             "team_number" to "Team Number",
-            "can_eject_terminal" to "Eject Terminal",
             "has_vision" to "Has vision",
             "can_cheesecake" to "Cheesecake",
             "can_intake_terminal" to "Intake Terminal",
