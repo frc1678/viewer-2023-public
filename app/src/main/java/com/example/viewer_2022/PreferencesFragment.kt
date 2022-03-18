@@ -18,11 +18,6 @@ import com.example.viewer_2022.MainViewerActivity.UserDatapoints
 import com.example.viewer_2022.R
 import com.example.viewer_2022.UserPreferencesFragment
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.fragments.match_schedule.MatchScheduleListAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
-import kotlinx.android.synthetic.main.match_schedule_cell.view.*
-
 
 class PreferencesFragment : Fragment() {
 
