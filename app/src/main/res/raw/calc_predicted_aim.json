@@ -8,7 +8,8 @@
     "actual_rp2": 0.0,
     "predicted_score": 133.0,
     "predicted_rp1": 0.74208707,
-    "predicted_rp2": 0.19974387
+    "predicted_rp2": 0.19974387,
+    "won_match": true
   },
   {
     "match_number": 1,
@@ -19,7 +20,8 @@
     "actual_rp2": 0.0,
     "predicted_score": 103.0,
     "predicted_rp1": 0.95715535,
-    "predicted_rp2": 0.95894
+    "predicted_rp2": 0.95894,
+    "won_match": false
   },
   {
     "match_number": 2,
@@ -30,7 +32,8 @@
     "actual_rp2": 0.0,
     "predicted_score": 132.0,
     "predicted_rp1": 0.8329433,
-    "predicted_rp2": 0.7686506
+    "predicted_rp2": 0.7686506,
+    "won_match": false
   },
   {
     "match_number": 2,
@@ -41,7 +44,8 @@
     "actual_rp2": 1.0,
     "predicted_score": 200.0,
     "predicted_rp1": 0.4144435,
-    "predicted_rp2": 0.6696522
+    "predicted_rp2": 0.6696522,
+    "won_match": true
   },
   {
     "match_number": 3,
@@ -52,7 +56,8 @@
     "actual_rp2": 0.0,
     "predicted_score": 78.0,
     "predicted_rp1": 0.24454993,
-    "predicted_rp2": 0.5959846
+    "predicted_rp2": 0.5959846,
+    "won_match": false
   },
   {
     "match_number": 3,
@@ -63,7 +68,8 @@
     "actual_rp2": 0.0,
     "predicted_score": 90.0,
     "predicted_rp1": 0.418468,
-    "predicted_rp2": 0.345356
+    "predicted_rp2": 0.345356,
+    "won_match": true
   },
   {
     "match_number": 4,
@@ -74,7 +80,8 @@
     "actual_rp2": 1.0,
     "predicted_score": 85.0,
     "predicted_rp1": 0.4230976,
-    "predicted_rp2": 0.42681265
+    "predicted_rp2": 0.42681265,
+    "won_match": true
   },
   {
     "match_number": 4,
@@ -85,7 +92,8 @@
     "actual_rp2": 1.0,
     "predicted_score": 175.0,
     "predicted_rp1": 0.06570816,
-    "predicted_rp2": 0.74377364
+    "predicted_rp2": 0.74377364,
+    "won_match": false
   },
   {
     "match_number": 5,
@@ -93,7 +101,8 @@
     "has_actual_data": false,
     "predicted_score": 149.0,
     "predicted_rp1": 0.8681892,
-    "predicted_rp2": 0.96385217
+    "predicted_rp2": 0.96385217,
+    "won_match": false
   },
   {
     "match_number": 5,
@@ -101,7 +110,8 @@
     "has_actual_data": false,
     "predicted_score": 197.0,
     "predicted_rp1": 0.87999284,
-    "predicted_rp2": 0.6281473
+    "predicted_rp2": 0.6281473,
+    "won_match": true
   },
   {
     "match_number": 6,
@@ -109,7 +119,8 @@
     "has_actual_data": false,
     "predicted_score": 64.0,
     "predicted_rp1": 0.57235265,
-    "predicted_rp2": 0.035045505
+    "predicted_rp2": 0.035045505,
+    "won_match": true
   },
   {
     "match_number": 6,
@@ -117,7 +128,8 @@
     "has_actual_data": false,
     "predicted_score": 173.0,
     "predicted_rp1": 0.843367,
-    "predicted_rp2": 0.12505001
+    "predicted_rp2": 0.12505001,
+    "won_match": false
   },
   {
     "match_number": 7,
@@ -125,7 +137,8 @@
     "has_actual_data": false,
     "predicted_score": 54.0,
     "predicted_rp1": 0.24426514,
-    "predicted_rp2": 0.1020239
+    "predicted_rp2": 0.1020239,
+    "won_match": false
   },
   {
     "match_number": 7,
@@ -133,7 +146,8 @@
     "has_actual_data": false,
     "predicted_score": 105.0,
     "predicted_rp1": 0.7048822,
-    "predicted_rp2": 0.14358997
+    "predicted_rp2": 0.14358997,
+    "won_match": true
   },
   {
     "match_number": 8,
