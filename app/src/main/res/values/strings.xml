@@ -21,7 +21,8 @@
     <string name="preferences">Preferences</string>
     <string name="user_name">User Name</string>
     <string name="edit">Edit</string>
-    <string name="map">Map</string>
+    <string name="field">Field</string>
+    <string name="pit">Pit</string>
     <string name="live_picklist">Live Picklist</string>
     <string name="first_rank">First Pickability Rank</string>
     <string name="second_rank">Second Pickability Rank</string>
@@ -29,7 +30,7 @@
     <string name="full_robot">Full Robot</string>
     <string name="highlight_our_matches_enabled">Unstar Our Matches</string>
     <string name="highlight_our_matches_disabled">Star Our Matches</string>
-
+    <string name="rotate">Rotate View</string>
 
     <string-array name="user_array">
         <item>None</item>

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.notes.NotesFragment
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_team_list.view.*
 
@@ -39,6 +40,20 @@ class TeamListFragment : Fragment() {
                 (view!!.parent as ViewGroup).id,
                 teamDetailsFragment
             ).commit()
+        }
+
+        root.lv_team_list.setOnItemLongClickListener { _, _, position, _ ->
+            val teamNumber = list[position]
+            val notesFragment = NotesFragment()
+            val notesFragmentArgs = Bundle()
+            notesFragmentArgs.putString(Constants.TEAM_NUMBER, teamNumber)
+            notesFragment.arguments = notesFragmentArgs
+            val notesFragmentTransaction = this.fragmentManager?.beginTransaction()
+            notesFragmentTransaction?.addToBackStack(null)?.replace(
+                (view?.parent as ViewGroup).id,
+                notesFragment
+            )?.commit()
+            return@setOnItemLongClickListener true
         }
 
         updateTeamListView(root)

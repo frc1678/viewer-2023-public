@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/map_button"
+        android:id="@+id/pit_map_button"
         app:showAsAction="always|withText"
-        app:actionLayout="@layout/action_bar"
-        android:title="@string/map"/>
+        app:actionLayout="@layout/pit_map_bar"
+        android:title="@string/pit"/>
+    <item
+        android:id="@+id/field_map_button"
+        app:showAsAction="always|withText"
+        app:actionLayout="@layout/field_map_bar"
+        android:title="@string/field"/>
 </menu>

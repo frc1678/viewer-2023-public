@@ -12,11 +12,12 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val EVENT_KEY = "test2022caph"
+        const val EVENT_KEY = "2022caph"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
         const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
+        const val REFRESH_INTERVAL = 180
         //In order to change the URL, see the GeDataFromWebsite Async Task
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
@@ -49,6 +50,7 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
             "See Matches",
+            "Notes",
             "matches_played",
             "current_rps",
             "current_rank",
@@ -118,7 +120,6 @@ class Constants {
             "can_climb",
             "has_ground_intake",
             "can_intake_terminal",
-            "can_eject_terminal",
             "has_vision",
             "can_under_low_rung",
             "can_cheesecake"
@@ -240,6 +241,18 @@ class Constants {
             "climb_percent_success"
         )
 
+        val PIT_DATA: List<String> = listOf(
+            "drivetrain",
+            "drivetrain_motors",
+            "drivetrain_motor_type",
+            "can_climb",
+            "has_ground_intake",
+            "can_intake_terminal",
+            "has_vision",
+            "can_under_low_rung",
+            "can_cheesecake"
+        )
+
         //List of rankable fields
         //The boolean is if it should be sorted descending
         //Not if it is rankable or not
@@ -329,7 +342,16 @@ class Constants {
             "lfm_high_avg_time" to true,
             "lfm_traversal_success_avg_time" to false,
             "avg_intakes" to true,
-            "incap" to false
+            "incap" to false,
+            "drivetrain" to false,
+            "drivetrain_motors" to false,
+            "drivetrain_motor_type" to false,
+            "can_climb" to false,
+            "has_ground_intake" to false,
+            "can_intake_terminal" to false,
+            "has_vision" to false,
+            "can_under_low_rung" to false,
+            "can_cheesecake" to false
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
@@ -364,6 +386,7 @@ class Constants {
         OUR_MATCHES,
         STARRED_MATCHES
     }
+
 
 
 }

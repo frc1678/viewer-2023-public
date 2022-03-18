@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -21,7 +22,9 @@ import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
 import android.widget.FrameLayout
+import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
+import com.example.viewer_2022.fragments.notes.NotesFragment
 import com.example.viewer_2022.fragments.team_ranking.TeamRankingFragment
 import com.example.viewer_2022.getRankingTeam
 
@@ -62,8 +65,18 @@ class TeamDetailsAdapter(
         rowView.tv_datapoint_name.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[e]
                 ?: e
-        if ((e == "Auto") or (e == "L4M Auto") or (e == "Tele") or (e == "L4M Tele") or
-            (e == "Endgame") or (e == "L4M Endgame") or (e == "Pit Data") or (e=="See Matches")) {
+        if (e in listOf(
+                "Auto",
+                "L4M Auto",
+                "Tele",
+                "L4M Tele",
+                "Endgame",
+                "L4M Endgame",
+                "Pit Data",
+                "See Matches",
+                "Notes"
+            )
+        ) {
             isHeader = true
             rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28F)
             rowView.tv_datapoint_name.gravity = Gravity.CENTER_HORIZONTAL
@@ -72,7 +85,7 @@ class TeamDetailsAdapter(
             rowView.tv_ranking.layoutParams = noWidth
             rowView.tv_datapoint_name.layoutParams = allWidth
             rowView.tv_datapoint_value.layoutParams = noWidth
-            if (e=="See Matches"){
+            if (e == "See Matches") {
                 rowView.tv_datapoint_name.setBackgroundColor(
                     ContextCompat.getColor(
                         context,
@@ -94,6 +107,31 @@ class TeamDetailsAdapter(
                 )
             }
             rowView.tv_datapoint_value.text = ""
+
+            if (e == "Notes") {
+                Log.d("notes", "SETTING UP NOTES CELL IN TEAM DETAILS")
+                rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
+                rowView.tv_datapoint_name.setBackgroundColor(context.resources.getColor(R.color.Highlighter))
+                rowView.setOnClickListener {
+                    Log.d("notes", "notes button clicked in team details")
+                    val notesFragment = NotesFragment()
+                    val notesFragmentArgs = Bundle()
+                    notesFragmentArgs.putString(Constants.TEAM_NUMBER, teamNumber)
+                    notesFragment.arguments = notesFragmentArgs
+                    val notesFragmentTransaction =
+                        context.supportFragmentManager.beginTransaction()
+                    notesFragmentTransaction?.addToBackStack(null).replace(
+                        (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
+                        notesFragment
+                    )?.commit()
+                }
+                if (MainViewerActivity.notesCache.containsKey(teamNumber)) {
+                    rowView.tv_datapoint_name.text = MainViewerActivity.notesCache[teamNumber]
+                } else {
+                    Log.d("notes", "notesCache does not contain team $teamNumber")
+                    rowView.tv_datapoint_name.text = ""
+                }
+            }
         } else {
             if (regex.matcher(
                     getTeamDataValue(
@@ -129,14 +167,14 @@ class TeamDetailsAdapter(
             }
         }
         if (e in Constants.RANKABLE_FIELDS) {
-            rowView.tv_ranking.text =
-                getRankingTeam(teamNumber, e, Constants.RANKABLE_FIELDS[e]!!)
+            rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(teamNumber, e, Constants.RANKABLE_FIELDS[e]!!)
         }
-        rowView.setOnClickListener() {
-            if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
-                Constants.GRAPHABLE_BOOL.contains(datapointsDisplayed[position]) or
-                Constants.GRAPHABLE_CLIMB_TIMES.contains(datapointsDisplayed[position])
-            ) {
+
+        if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
+            Constants.GRAPHABLE_BOOL.contains(datapointsDisplayed[position]) or
+            Constants.GRAPHABLE_CLIMB_TIMES.contains(datapointsDisplayed[position])
+        ) {
+            rowView.setOnClickListener {
                 graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
                 graphsFragmentArguments.putString("datapoint", datapointsDisplayed[position])
                 graphsFragment.arguments = graphsFragmentArguments
@@ -147,7 +185,7 @@ class TeamDetailsAdapter(
             }
         }
 
-        if (e=="See Matches"){
+        if (e == "See Matches") {
             rowView.setOnClickListener {
                 val matchScheduleFragment = MatchScheduleFragment()
                 val matchScheduleFragmentArguments = Bundle()
@@ -185,10 +223,7 @@ class TeamDetailsAdapter(
 
 //                println((it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup))
 
-                    //the reason i have to do so many .parent calls is because this cell is so far back the the stack
-                    //normally i would have done it from the fragment but i forgot about that
-                    //this could also be fixed with some other way to get the id
-                    //if something breaks from someone just changing xml. this is why
+
                     teamRankingFragmentTransaction.addToBackStack(null).replace(
                         (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
                         teamRankingFragment

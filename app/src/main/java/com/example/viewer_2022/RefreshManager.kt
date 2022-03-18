@@ -18,8 +18,9 @@ class RefreshManager {
 
     fun start(scope: CoroutineScope) {
         if (!Constants.USE_TEST_DATA) {
-            tickerFlow(Duration.seconds(20), Duration.seconds(20)).onEach {
+            tickerFlow(Duration.seconds(Constants.REFRESH_INTERVAL), Duration.seconds(Constants.REFRESH_INTERVAL)).onEach {
                 Log.d("data-refresh", "tick")
+                MainViewerActivity.updateNotesCache()
                 GetDataFromWebsite({
                     Log.i("data-refresh", "Fetched data from website successfully")
 

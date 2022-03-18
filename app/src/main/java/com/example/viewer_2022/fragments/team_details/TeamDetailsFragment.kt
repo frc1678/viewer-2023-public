@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.notes.NotesFragment
 import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
@@ -53,6 +54,7 @@ class TeamDetailsFragment : Fragment() {
         // in each of the menu item's adapter settings sections.
         return root
     }
+
 
     // Prepare the TeamDetails page by populating each text view and other XML element
     // with its team specific information.

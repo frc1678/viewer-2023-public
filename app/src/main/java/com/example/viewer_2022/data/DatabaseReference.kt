@@ -31,7 +31,6 @@ class DatabaseReference {
         var drivetrain_motors: Int,
         var drivetrain_motor_type: Int, //value is an enum in schema
         var has_ground_intake: Boolean,
-        var can_eject_terminal: Boolean,
         var has_vision: Boolean,
         var can_cheesecake: Boolean,
         var can_intake_terminal: Boolean,

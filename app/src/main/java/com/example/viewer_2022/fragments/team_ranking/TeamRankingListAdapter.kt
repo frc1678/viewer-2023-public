@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.TeamRankingItem
@@ -13,7 +14,7 @@ import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 import java.util.regex.Pattern
 
-class TeamRankingListAdapter(private val context: FragmentActivity, private val teamNumber: String?, private var items: List<TeamRankingItem>) : BaseAdapter() {
+class TeamRankingListAdapter(private val context: FragmentActivity, private val teamNumber: String?, private var items: List<TeamRankingItem>, private var pit: Boolean) : BaseAdapter() {
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -40,7 +41,14 @@ class TeamRankingListAdapter(private val context: FragmentActivity, private val 
         } else {
             rowView.tv_value_ranking.text = e.value
         }
-        rowView.tv_team_ranking.text = if (e.value == Constants.NULL_CHARACTER) Constants.NULL_PREDICTED_SCORE_CHARACTER else (position + 1).toString()
+        if (pit){
+            rowView.tv_team_ranking.text = ""
+            rowView.tv_team_ranking.layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 0f)
+        } else if (e.value == Constants.NULL_CHARACTER){
+            rowView.tv_team_ranking.text = Constants.NULL_PREDICTED_SCORE_CHARACTER
+        } else {
+            rowView.tv_team_ranking.text = (position + 1).toString()
+        }
 
         if(e.teamNumber == teamNumber){
             rowView.setBackgroundColor(context.resources.getColor(R.color.ElectricGreen))
