@@ -27,6 +27,9 @@
     <string name="second_rank">Second Pickability Rank</string>
     <string name="team_number">Team Number</string>
     <string name="full_robot">Full Robot</string>
+    <string name="highlight_our_matches_enabled">Unstar Our Matches</string>
+    <string name="highlight_our_matches_disabled">Star Our Matches</string>
+
 
     <string-array name="user_array">
         <item>None</item>

@@ -2,6 +2,9 @@ package com.example.viewer_2022
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +18,13 @@ import com.example.viewer_2022.MainViewerActivity.UserDatapoints
 import com.example.viewer_2022.R
 import com.example.viewer_2022.UserPreferencesFragment
 import com.example.viewer_2022.constants.Constants
-class PreferencesFragment: Fragment() {
+import com.example.viewer_2022.fragments.match_schedule.MatchScheduleListAdapter
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
+import kotlinx.android.synthetic.main.match_schedule_cell.view.*
+
+
+class PreferencesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +51,8 @@ class PreferencesFragment: Fragment() {
                 userPreferencesFragment
             ).commit()
         }
+
+        root.tb_highlight_our_matches.setOnClickListener { starOurMatches() }
 
         return root
     }
@@ -74,7 +85,17 @@ class PreferencesFragment: Fragment() {
                 return
             }
         }
+    }
 
+    private fun starOurMatches() {
+        val citrusMatches = MainViewerActivity.matchCache.filter {
+            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
+        }.map { return@map it.value.matchNumber }
 
+        if (tb_highlight_our_matches.isChecked) {
+            MainViewerActivity.starredMatches += (citrusMatches)
+        } else {
+            MainViewerActivity.starredMatches -= (citrusMatches)
+        }
     }
 }
