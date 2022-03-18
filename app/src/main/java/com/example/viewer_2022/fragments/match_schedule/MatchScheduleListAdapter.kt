@@ -8,6 +8,9 @@
 
 package com.example.viewer_2022.fragments.match_schedule
 
+import android.graphics.Paint
+import android.graphics.Typeface
+import android.graphics.Typeface.*
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2022.*
 import com.example.viewer_2022.data.Match
@@ -89,11 +93,27 @@ class MatchScheduleListAdapter(
             viewHolder = rowView.tag as ViewHolder
         }
 
+        if (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.RED, matchNumber,
+                "has_actual_data").toBoolean()){
+            redAct = true
+        }
+        if (getAllianceInMatchObjectByKey(
+                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                Constants.BLUE, matchNumber,
+                "has_actual_data").toBoolean()){
+            blueAct = true
+        }
+
         for (tv in listOf(
             viewHolder.tvRedTeamOne,
             viewHolder.tvRedTeamTwo,
             viewHolder.tvRedTeamThree
         )) {
+
+            tv.paintFlags = 0
+            tv.setTypeface(DEFAULT)
 
             tv.text = matchContents[matchNumber]!!.redTeams[listOf(
                 viewHolder.tvRedTeamOne,
@@ -106,6 +126,10 @@ class MatchScheduleListAdapter(
             viewHolder.tvBlueTeamTwo,
             viewHolder.tvBlueTeamThree
         )) {
+
+            tv.paintFlags = 0
+            tv.setTypeface(DEFAULT)
+
             tv.text = matchContents[matchNumber]!!.blueTeams[0 +
                     listOf(
                         viewHolder.tvBlueTeamOne,
@@ -115,18 +139,34 @@ class MatchScheduleListAdapter(
         }
         viewHolder.tvMatchNumber.text = matchNumber
 
-        if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.RED, matchNumber.toString(),
-                "has_actual_data").toBoolean()){
-                    redAct = true
+        if(blueAct && redAct) {
+            if (getAllianceInMatchObjectByKey(
+                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                    Constants.RED, matchNumber, "won_match"
+                ).toBoolean()
+            ) {
+
+                for (tv in listOf(
+                    viewHolder.tvRedTeamOne,
+                    viewHolder.tvRedTeamTwo,
+                    viewHolder.tvRedTeamThree
+                )) {
+                    tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+                    tv.setTypeface(Typeface.DEFAULT_BOLD)
+                }
+            }
+            else {
+                for (tv in listOf(
+                    viewHolder.tvBlueTeamOne,
+                    viewHolder.tvBlueTeamTwo,
+                    viewHolder.tvBlueTeamThree
+                )) {
+                    tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+                    tv.setTypeface(Typeface.DEFAULT_BOLD)
+                }
+            }
         }
-        if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
-                Constants.BLUE, matchNumber.toString(),
-                "has_actual_data").toBoolean()){
-                    blueAct = true
-        }
+
         val field : String
 
         if (redAct && blueAct) {
