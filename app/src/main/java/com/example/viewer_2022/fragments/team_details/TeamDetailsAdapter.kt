@@ -140,7 +140,6 @@ class TeamDetailsAdapter(
                     )
                 ).matches()
             ) {
-                if (e in Constants.DRIVER_DATA) {
                     rowView.tv_datapoint_value.text = ("%.2f").format(
                         parseFloat(
                             getTeamDataValue(
@@ -149,16 +148,6 @@ class TeamDetailsAdapter(
                             )
                         )
                     )
-                } else {
-                    rowView.tv_datapoint_value.text = ("%.2f").format(
-                        parseFloat(
-                            getTeamDataValue(
-                                teamNumber,
-                                e
-                            )
-                        )
-                    )
-                }
             } else {
                 rowView.tv_datapoint_value.text = getTeamDataValue(
                     teamNumber,
