@@ -9,7 +9,6 @@
 package com.example.viewer_2022.fragments.match_schedule
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
