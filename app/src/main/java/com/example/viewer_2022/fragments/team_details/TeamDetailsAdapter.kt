@@ -150,7 +150,7 @@ class TeamDetailsAdapter(
                         )
                     )
                 } else {
-                    rowView.tv_datapoint_value.text = ("%.1f").format(
+                    rowView.tv_datapoint_value.text = ("%.2f").format(
                         parseFloat(
                             getTeamDataValue(
                                 teamNumber,
