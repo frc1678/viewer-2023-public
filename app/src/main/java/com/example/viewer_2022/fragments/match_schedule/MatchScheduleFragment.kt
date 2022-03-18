@@ -8,6 +8,8 @@
 
 package com.example.viewer_2022.fragments.match_schedule
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,10 +17,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import com.example.viewer_2022.getMatchSchedule
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 
@@ -100,6 +104,30 @@ open class MatchScheduleFragment : Fragment(){
             }
             override fun afterTextChanged(s: Editable) {}
         })
+
+        // This listener gets called when the keyboard enter button is pressed.
+        // Opens the team details for the searched team.
+        root.match_search_bar.setOnEditorActionListener { _, _, _ ->
+            // If the searched team isn't valid, don't do anything
+            if (!MainViewerActivity.teamList.contains(root.match_search_bar.text.toString())) {
+                return@setOnEditorActionListener true
+            }
+            // Otherwise, go to the team details fragment
+            fragmentManager!!.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.nav_host_fragment, TeamDetailsFragment().apply {
+                    // Put the team number into the arguments for the team details fragment to use
+                    arguments = Bundle().apply {
+                        putString(Constants.TEAM_NUMBER, root.match_search_bar.text.toString())
+                    }
+                })
+                .commit()
+            // Hide the keyboard once the new fragment has been created
+            (context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                .hideSoftInputFromWindow(root.match_search_bar.windowToken, 0)
+            // Return true to say that the enter action has been handled
+            return@setOnEditorActionListener true
+        }
     }
 
     override fun onDestroy() {
