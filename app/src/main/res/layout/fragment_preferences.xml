@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:id="@+id/tb_highlight_our_matches"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textOff="@string/highlight_our_matches_disabled"
         android:textOn="@string/highlight_our_matches_enabled"

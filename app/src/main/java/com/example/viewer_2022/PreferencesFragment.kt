@@ -2,9 +2,6 @@ package com.example.viewer_2022
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +9,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.constants.Constants
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
-import com.example.viewer_2022.MainViewerActivity.UserDatapoints
-import com.example.viewer_2022.R
-import com.example.viewer_2022.UserPreferencesFragment
-import com.example.viewer_2022.constants.Constants
 
 class PreferencesFragment : Fragment() {
 
