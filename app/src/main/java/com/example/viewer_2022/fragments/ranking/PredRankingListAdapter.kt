@@ -69,7 +69,7 @@ class PredRankingListAdapter(
         viewHolder.tvDatapointTwo.text =
             if (regex.matcher(getTeamObject("current_avg_rps",
                     position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)).matches()) {
-                (("%.2f").format(Float.parseFloat(getTeamObject("current_avg_rps",
+                (("%.1f").format(Float.parseFloat(getTeamObject("current_avg_rps",
                     position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))))
             } else{
                 getTeamObject("current_avg_rps",
@@ -79,7 +79,7 @@ class PredRankingListAdapter(
             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
         val predValue = (getTeamObject("predicted_rps",
             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))
-        viewHolder.tvDatapointFour.text = if(predValue == Constants.NULL_CHARACTER) Constants.NULL_CHARACTER else ("%.2f").format(predValue.toFloat())
+        viewHolder.tvDatapointFour.text = if(predValue == Constants.NULL_CHARACTER) Constants.NULL_CHARACTER else ("%.1f").format(predValue.toFloat())
         viewHolder.tvDatapointFive.text = getTeamObject("current_rank",
             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
 

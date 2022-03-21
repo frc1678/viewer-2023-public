@@ -69,7 +69,7 @@ class RankingListAdapter(
         viewHolder.tvDatapointTwo.text =
             if (regex.matcher(getTeamObject("current_avg_rps",
                 position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)).matches()) {
-            (("%.2f").format(
+            (("%.1f").format(
                 Float.parseFloat(getTeamObject("current_avg_rps",
                 position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))))
         } else{
@@ -80,7 +80,7 @@ class RankingListAdapter(
             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
         viewHolder.tvDatapointFour.text = if (regex.matcher(getTeamObject("predicted_rps",
                         position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)).matches()) {
-            (("%.2f").format(
+            (("%.1f").format(
                     Float.parseFloat(getTeamObject("predicted_rps",
                             position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))))
         } else{
