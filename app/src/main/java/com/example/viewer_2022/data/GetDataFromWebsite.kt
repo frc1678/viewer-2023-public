@@ -31,31 +31,6 @@ class GetDataFromWebsite(
                 WebsiteTeams
             )
 
-            val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/${Constants.EVENT_KEY}/?format=json"),
-                WebsiteMatchSchedule
-            )
-
-            for (i in rawMatchSchedule) {
-                val match = Match(i.key)
-                for (j in i.value.teams) {
-                    when (j.color) {
-                        "red" -> {
-                            match.redTeams.add(j.number.toString())
-                        }
-                        "blue" -> {
-                            match.blueTeams.add(j.number.toString())
-                        }
-                    }
-                }
-
-                Log.e("parsedmap", match.toString())
-                MainViewerActivity.matchCache[i.key] = match
-            }
-            MainViewerActivity.matchCache =
-                MainViewerActivity.matchCache.toList().sortedBy { (k, v) -> v.matchNumber.toInt() }
-                    .toMap().toMutableMap()
-
             //Sets the name of the collections on the website
             var listOfCollectionNames: List<String> =
                 listOf(
@@ -118,7 +93,33 @@ class GetDataFromWebsite(
                         Array<DatabaseReference.PicklistTeam>::class.java
                     ).toMutableList()
                 }
+                Log.e("result", "$result")
             }
+
+            val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
+                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/${Constants.EVENT_KEY}/?format=json"),
+                WebsiteMatchSchedule
+            )
+
+            for (i in rawMatchSchedule) {
+                val match = Match(i.key)
+                for (j in i.value.teams) {
+                    when (j.color) {
+                        "red" -> {
+                            match.redTeams.add(j.number.toString())
+                        }
+                        "blue" -> {
+                            match.blueTeams.add(j.number.toString())
+                        }
+                    }
+                }
+
+                Log.d("parsedmap", match.toString())
+                MainViewerActivity.matchCache[i.key] = match
+            }
+            MainViewerActivity.matchCache =
+                MainViewerActivity.matchCache.toList().sortedBy { (k, v) -> v.matchNumber.toInt() }
+                    .toMap().toMutableMap()
 
             lastUpdated = Calendar.getInstance().time
 
