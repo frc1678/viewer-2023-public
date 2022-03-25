@@ -77,6 +77,7 @@ class NotesFragment : Fragment() {
         Log.d("notes", Gson().toJson(data))
         root.btn_edit_notes.isEnabled = false
         try {
+            MainViewerActivity.notesCache[teamNumber!!] = root.et_notes.text.toString()
             PostRequestTask("notes/", Gson().toJson(data)) {
                 root.btn_edit_notes.isEnabled = true
             }.execute()
