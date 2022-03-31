@@ -12,7 +12,7 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val EVENT_KEY = "2022cada"
+        const val EVENT_KEY = "test2022caph"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
@@ -25,7 +25,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "3.0.06"
+        const val VERSION_NUM = "3.0.02"
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",
