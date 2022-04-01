@@ -94,7 +94,7 @@ class MainViewerActivity : ViewerActivity() {
         var starredMatches: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
-        var notesCache: Map<String, String> = mapOf()
+        var notesCache: MutableMap<String, String> = mutableMapOf()
         var mapMode = 1
         var mapRotation = -90F
 
@@ -104,7 +104,7 @@ class MainViewerActivity : ViewerActivity() {
                 notesList.forEach {
                     newMap[it.team_number] = it.notes;
                 }
-                notesCache = newMap.toMap()
+                notesCache = newMap.toMutableMap()
                 Log.d("notes", "updated notes cache")
             }
         }
