@@ -93,37 +93,6 @@ class GraphsFragment() : Fragment() {
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
-            } else if (datapoint == "climb_all_success_avg_time"){
-                if((timDataListClimbLevel!![index].lowercase() != "none") and
-                    (timDataListClimbLevel[index].lowercase() != Constants.NULL_CHARACTER)){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "low_avg_time"){
-                if(timDataListClimbLevel!![index].lowercase() == "low"){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "mid_avg_time"){
-                if(timDataListClimbLevel!![index].lowercase() == "mid"){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "high_avg_time"){
-                if(timDataListClimbLevel!![index].lowercase() == "high"){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "traversal_avg_time"){
-                if(timDataListClimbLevel!![index].lowercase() == "traversal"){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
             } else if (datapoint == "mode_climb_level"){
                 when(timDataListClimbLevel!![index].lowercase()){
                     "low" -> entries.add(BarEntry(index.toFloat(), 1F))
