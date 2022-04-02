@@ -12,7 +12,7 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val EVENT_KEY = "test2022caph"
+        const val EVENT_KEY = "2022cada"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
@@ -43,7 +43,7 @@ class Constants {
             "tele_high_balls",
             "Endgame",
             "climb_level",
-            "Fouls",
+            "climb_attempts",
             "Other",
             "intakes",
             "incap"
@@ -90,6 +90,7 @@ class Constants {
             "driver_ability",
             "driver_field_awareness",
             "driver_quickness",
+            "matches_played_defense",
             "Endgame",
             "climb_percent_success",
             "climb_all_attempts",
@@ -99,6 +100,7 @@ class Constants {
             "traversal_rung_successes",
             "mode_climb_level",
             "max_climb_level",
+            "avg_climb_points",
             "Pit Data",
             "drivetrain",
             "drivetrain_motors",
@@ -173,13 +175,14 @@ class Constants {
             "position_one_starts",
             "position_two_starts",
             "position_three_starts",
-            "position_four_starts"
+            "position_four_starts",
+            "avg_climb_points",
+            "climb_all_attempts"
         )
 
         val GRAPHABLE_BOOL: List<String> = listOf(
             "auto_line_successes",
             "climb_percent_success",
-            "climb_all_attempts",
             "low_rung_successes",
             "mid_rung_successes",
             "high_rung_successes",
@@ -188,7 +191,9 @@ class Constants {
 
         val GRAPHABLE_CLIMB_TIMES: List<String> = listOf(
             "climb_all_success_avg_time",
-            "mode_climb_level"
+            "mode_climb_level",
+            "avg_climb_points",
+            "climb_all_attempts"
         )
 
       val DRIVER_DATA: List<String> = listOf(
@@ -281,7 +286,8 @@ class Constants {
             "can_intake_terminal" to false,
             "has_vision" to false,
             "can_under_low_rung" to false,
-            "can_cheesecake" to false
+            "can_cheesecake" to false,
+            "avg_climb_points" to true
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")

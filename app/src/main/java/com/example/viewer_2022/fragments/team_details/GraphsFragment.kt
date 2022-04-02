@@ -63,7 +63,7 @@ class GraphsFragment() : Fragment() {
         //add data to a list of BarEntries so it can be added to the chart
         val entries: ArrayList<BarEntry> = ArrayList()
         for((index, timData) in timDataMap.values.withIndex()){
-            if((datapoint=="matches_incap") or (datapoint=="climb_all_attempts")){
+            if((datapoint=="matches_incap")){
                 if((timData != "0") and (timData != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
@@ -148,6 +148,24 @@ class GraphsFragment() : Fragment() {
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
+            } else if (datapoint == "avg_climb_points"){
+                when(timDataListClimbLevel!![index].lowercase()){
+                    "low" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "mid" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "high" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
+                    else -> entries.add(BarEntry(index.toFloat(), 0F))
+                }
+                root.bar_chart.axisLeft.axisMaximum = 4F
+            } else if (datapoint == "climb_all_attempts"){
+                when(timDataListClimbLevel!![index].lowercase()){
+                    "low" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "mid" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "high" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
+                    else -> entries.add(BarEntry(index.toFloat(), 0F))
+                }
+                root.bar_chart.axisLeft.axisMaximum = 4F
             } else if(Constants.GRAPHABLE_BOOL.contains(datapoint!!)) {
                 if (timData == "true") {
                     entries.add(BarEntry(index.toFloat(), 1F))

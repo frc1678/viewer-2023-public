@@ -94,6 +94,7 @@ class Translations {
             "auto_low_balls" to "# Balls Low" ,
             "tele_low_balls" to "# Balls Low",
             "intakes" to "# Intakes",
+            "avg_climb_points" to "Avg Climb Pts",
             "climb_level" to "Climb Level",
             "start_position" to "Start Position",
             "position_zero_starts" to "No Show",
@@ -101,6 +102,7 @@ class Translations {
             "position_two_starts" to "# Start Pos 2",
             "position_three_starts" to "# Start Pos 3",
             "position_four_starts" to "# Start Pos 4",
+            "climb_attempts" to "Climb Attempts",
             "See Matches" to "See Matches " + "\u2192".toCharArray()[0].toString()
         )
 
@@ -141,7 +143,9 @@ class Translations {
             "position_one_starts" to "start_position",
             "position_two_starts" to "start_position",
             "position_three_starts" to "start_position",
-            "position_four_starts" to "start_position"
+            "position_four_starts" to "start_position",
+            "avg_climb_points" to "climb_level",
+            "climb_all_attempts" to "climb_level"
             )
 
         val TIM_TO_HUMAN_READABLE : Map<String, String> = mapOf(
@@ -169,7 +173,8 @@ class Translations {
             "position_two_starts" to "Start Pos 2?",
             "position_three_starts" to "Start Pos 3?",
             "position_four_starts" to "Start Pos 4?",
-            "mode_start_position" to "Start Position"
+            "mode_start_position" to "Start Position",
+            "avg_climb_points" to "Climb Level"
         )
     }
 }

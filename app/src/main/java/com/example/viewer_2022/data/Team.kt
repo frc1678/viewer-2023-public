@@ -65,4 +65,6 @@ data class Team (var team_number: Int?) {
     var has_vision: Boolean? = null
     var can_cheesecake: Boolean? = null
     var can_under_low_rung: Boolean? = null
+    var avg_climb_points: Float? = null
+    var climb_attempts: Int? = null
 }
