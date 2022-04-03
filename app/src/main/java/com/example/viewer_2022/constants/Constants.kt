@@ -12,7 +12,7 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val EVENT_KEY = "test2022caph"
+        const val EVENT_KEY = "2022cada"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
@@ -348,6 +348,19 @@ class Constants {
             "has_vision" to false,
             "can_under_low_rung" to false,
             "can_cheesecake" to false
+        )
+
+        val RANK_BY_PIT = mapOf<String, Int>(
+            "swerve" to 1,
+            "tank" to 2,
+            "mecanum" to 3,
+            "minicim" to 1,
+            "cim" to 2,
+            "neo" to 3,
+            "falcon" to 4,
+            "other" to 5,
+            "true" to 1,
+            "false" to 2
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
