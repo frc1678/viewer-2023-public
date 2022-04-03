@@ -6,10 +6,10 @@ import com.example.viewer_2022.MainViewerActivity
 import java.net.URL
 import com.example.viewer_2022.StartupActivity.Companion.databaseReference
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.createLeaderboard
 import com.example.viewer_2022.data.*
 import com.example.viewer_2022.fragments.notes.GetAllNotesData
 import com.example.viewer_2022.fragments.notes.NotesData
-import com.example.viewer_2022.getRankingList
 import com.example.viewer_2022.lastUpdated
 import com.google.gson.Gson
 import java.io.*
@@ -138,7 +138,7 @@ class GetDataFromWebsite(
         MainViewerActivity.leaderboardCache.clear()
         Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
             if (it !in Constants.CATEGORY_NAMES) {
-                getRankingList(it, false)
+                createLeaderboard(it)
             }
         }
         onCompleted()
