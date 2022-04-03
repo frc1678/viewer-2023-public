@@ -23,7 +23,7 @@ fun getRankingList(datapoint: String, descending: Boolean): Leaderboard {
     val data = mutableListOf<TeamUnplacedItem>()
 
     MainViewerActivity.teamList.forEach {
-        if (datapoint !in Constants.PIT_DATA){
+        if (datapoint !in Constants.PIT_DATA) {
             val value = getTeamDataValue(it, datapoint).toFloatOrNull()
             data.add(
                 TeamUnplacedItem(
@@ -37,18 +37,37 @@ fun getRankingList(datapoint: String, descending: Boolean): Leaderboard {
     val nullTeams = data.filter { item -> item.value == Constants.NULL_CHARACTER }
     val dataTeams = data.filter { item -> item.value != Constants.NULL_CHARACTER }
 
-    val unidirectionalSortedData = dataTeams.sortedWith(compareBy { it.value.toFloatOrNull() })
-
-    val sortedData = if (descending) unidirectionalSortedData.reversed() else unidirectionalSortedData
-
-
-    val orderedDataList = sortedData.mapIndexed { index, item ->
-        TeamRankingItem(
-            item.teamNumber,
-            item.value,
-            if (item.value != Constants.NULL_CHARACTER) index + 1 else -1
-        )
+    val unidirectionalSortedData : List<TeamUnplacedItem>
+    if (datapoint in Constants.PIT_DATA && datapoint != "drivetrain_motors") {
+        val tempDataList = mutableListOf<TeamRankingItem>()
+        for (team in dataTeams){
+            tempDataList.add(TeamRankingItem(
+                team.teamNumber,
+                team.value,
+                Constants.RANK_BY_PIT[team.value]!!
+            ))
+        }
+        val tempSortedData = tempDataList.sortedWith(compareBy {it.placement})
+        val tempSortedRankless = mutableListOf<TeamUnplacedItem>()
+        for (team in tempSortedData){
+            tempSortedRankless.add(TeamUnplacedItem(team.teamNumber, team.value))
+        }
+        unidirectionalSortedData = tempSortedRankless
     }
+    else{
+        unidirectionalSortedData = dataTeams.sortedWith(compareBy { it.value.toFloatOrNull() })
+    }
+
+    val sortedData =
+        if (descending) unidirectionalSortedData.reversed() else unidirectionalSortedData
+
+        val orderedDataList = sortedData.mapIndexed { index, item ->
+            TeamRankingItem(
+                item.teamNumber,
+                item.value,
+                if (item.value != Constants.NULL_CHARACTER) index + 1 else -1
+            )
+        }
 
     val orderedNullList = nullTeams.mapIndexed { index, item ->
         TeamRankingItem(
