@@ -296,6 +296,19 @@ class Constants {
             "matches_played_defense" to true,
         )
 
+        val RANK_BY_PIT = mapOf<String, Int>(
+            "swerve" to 1,
+            "tank" to 2,
+            "mecanum" to 3,
+            "minicim" to 1,
+            "cim" to 2,
+            "neo" to 3,
+            "falcon" to 4,
+            "other" to 5,
+            "true" to 1,
+            "false" to 2
+        )
+
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
 
 
