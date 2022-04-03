@@ -8,8 +8,6 @@
 
 package com.example.viewer_2022.data
 
-import org.bson.types.ObjectId
-
 //Database reference class to make a database object from MongoDB.
 class DatabaseReference {
     data class CompetitionObject (
@@ -22,7 +20,8 @@ class DatabaseReference {
         var tba_team: MutableList<CalculatedTBATeam> = mutableListOf(),
         var pickability: MutableList<CalculatedPickAbilityTeam> = mutableListOf(),
         var tba_tim: MutableList<CalculatedTBATeamInMatch> = mutableListOf(),
-        var picklist: MutableList<PicklistTeam> = mutableListOf()
+        var picklist: MutableList<PicklistTeam> = mutableListOf(),
+        var subj_tim: MutableList<CalculatedSubjectiveTeamInMatch> = mutableListOf()
     )
 
     data class ObjectivePit (
@@ -46,10 +45,14 @@ class DatabaseReference {
         var actual_score: Int,
         var actual_rp1: Float,
         var actual_rp2: Float,
+        var won_match: Boolean,
+        var has_final_scores: Boolean,
+        var final_predicted_score: Float,
+        var final_predicted_rp1: Float,
+        var final_predicted_rp2: Float,
         var predicted_score: Float,
         var predicted_rp1: Float,
-        var predicted_rp2: Float,
-        var won_match: Boolean
+        var predicted_rp2: Float
     )
 
     data class CalculatedTBATeam (
@@ -59,8 +62,8 @@ class DatabaseReference {
     )
 
     data class CalculatedTBATeamInMatch (
-        var team_number: Int,
         var match_number: Int,
+        var team_number: Int,
         var auto_line: Boolean
     )
 
@@ -72,49 +75,35 @@ class DatabaseReference {
 
     data class CalculatedPredictedTeam (
         var team_number: Int,
-        var predicted_rps: Double,
-        var predicted_rank: Int,
-        var current_rps: Int,
         var current_rank: Int,
-        var current_avg_rps: Float
+        var current_rps: Int,
+        var current_avg_rps: Float,
+        var predicted_rps: Float,
+        var predicted_rank: Int
     )
 
     data class CalculatedSubjectiveTeam (
         var team_number: Int,
         var driver_field_awareness: Float,
-        var driver_far_field_rating: Float,
         var driver_quickness: Float,
         var driver_ability: Float
     )
 
     data class CalculatedObjectiveTeam (
         var team_number: Int,
-        var auto_avg_hub_high_balls: Float,
-        var auto_avg_other_high_balls: Float,
         var auto_avg_low_balls: Float,
-        var tele_avg_hub_high_balls: Float,
-        var tele_avg_other_high_balls: Float,
         var tele_avg_low_balls: Float,
         var auto_avg_high_balls: Float,
         var auto_avg_total_balls: Float,
         var tele_avg_high_balls: Float,
         var tele_avg_total_balls: Float,
         var avg_incap_time: Float,
-        var incap: Int,
         var avg_intakes: Float,
-        var avg_exit_ball_catches: Float,
-        var avg_opp_balls_scored: Float,
-        var lfm_auto_avg_hub_high_balls: Float,
-        var lfm_auto_avg_other_high_balls: Float,
-        var lfm_tele_avg_hub_high_balls: Float,
-        var lfm_tele_avg_other_high_balls: Float,
-        var lfm_tele_avg_low_balls: Float,
         var lfm_auto_avg_low_balls: Float,
+        var lfm_tele_avg_low_balls: Float,
         var lfm_auto_avg_high_balls: Float,
         var lfm_tele_avg_high_balls: Float,
         var lfm_avg_incap_time: Float,
-        var lfm_avg_exit_ball_catches: Float,
-        var lfm_avg_opp_balls_scored: Float,
         var auto_sd_low_balls: Float,
         var auto_sd_high_balls: Float,
         var tele_sd_low_balls: Float,
@@ -124,6 +113,11 @@ class DatabaseReference {
         var mid_rung_successes: Int,
         var high_rung_successes: Int,
         var traversal_rung_successes: Int,
+        var position_zero_starts: Int,
+        var position_one_starts: Int,
+        var position_two_starts: Int,
+        var position_three_starts: Int,
+        var position_four_starts: Int,
         var matches_played: Int,
         var matches_incap: Int,
         var lfm_climb_all_attempts: Int,
@@ -132,64 +126,42 @@ class DatabaseReference {
         var lfm_high_rung_successes: Int,
         var lfm_traversal_rung_successes: Int,
         var lfm_matches_incap: Int,
+        var matches_played_defense: Int,
         var auto_max_low_balls: Int,
         var auto_max_high_balls: Int,
         var tele_max_low_balls: Int,
         var tele_max_high_balls: Int,
         var max_incap: Int,
-        var max_exit_ball_catches: Int,
-        var max_opp_balls_scored: Int,
         var max_climb_level: String,
         var lfm_auto_max_low_balls: Int,
         var lfm_auto_max_high_balls: Int,
         var lfm_tele_max_low_balls: Int,
         var lfm_tele_max_high_balls: Int,
         var lfm_max_incap: Int,
-        var lfm_max_exit_ball_catches: Int,
-        var lfm_max_opp_balls_scored: Int,
         var lfm_max_climb_level: String,
         var mode_climb_level: List<String>,
         var mode_start_position: List<String>,
         var lfm_mode_start_position: List<String>,
-        var low_avg_time: Float,
-        var mid_avg_time: Float,
-        var high_avg_time: Float,
-        var traversal_avg_time: Float,
-        var lfm_low_avg_time: Float,
-        var lfm_mid_avg_time: Float,
-        var lfm_high_avg_time: Float,
-        var lfm_traversal_success_avg_time: Float,
         var climb_percent_success: Float,
         var lfm_climb_percent_success: Float,
-        var position_zero_starts: Int,
-        var position_one_starts: Int,
-        var position_two_starts: Int,
-        var position_three_starts: Int,
-        var position_four_starts: Int,
-        var matches_scored_far: Int
+        var avg_climb_points: Float,
     )
 
     data class CalculatedObjectiveTeamInMatch (
         var confidence_rating: Int,
         var team_number: Int,
         var match_number: Int,
-        var auto_hub_high_balls: Int,
-        var auto_other_high_balls: Int,
         var auto_low_balls: Int,
-        var auto_total_balls: Int,
-        var tele_hub_high_balls: Int,
-        var tele_other_high_balls: Int,
         var tele_low_balls: Int,
-        var tele_total_balls: Int,
         var intakes: Int,
-        var exit_ball_catches: Int,
-        var opp_balls_scored: Int,
+        var climb_attempts: Int,
         var auto_high_balls: Int,
         var tele_high_balls: Int,
+        var auto_total_balls: Int,
+        var tele_total_balls: Int,
+        var incap: Int,
         var climb_level: String,
         var start_position: String,
-        var incap: Int,
-        var climb_time: Int
     )
 
     data class PicklistTeam(
@@ -197,4 +169,12 @@ class DatabaseReference {
         var first_rank: Int,
         var second_rank: Int
     )
+
+    data class CalculatedSubjectiveTeamInMatch (
+        var team_number: Int,
+        var match_number: Int,
+        var quickness_score: Int,
+        var field_awareness_score: Int,
+        var played_defense: Boolean,
+            )
 }

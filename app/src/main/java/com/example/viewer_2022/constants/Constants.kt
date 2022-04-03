@@ -12,7 +12,7 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val EVENT_KEY = "test2022caph"
+        const val EVENT_KEY = "2022cada"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
@@ -41,14 +41,12 @@ class Constants {
             "Tele",
             "tele_low_balls",
             "tele_high_balls",
-            "tele_hub_high_balls",
-            "tele_other_high_balls",
+            "played_defense",
+            "field_awareness_score",
+            "quickness_score",
             "Endgame",
-            "climb_time",
             "climb_level",
-            "Fouls",
-            "exit_ball_catches",
-            "opp_balls_scored",
+            "climb_attempts",
             "Other",
             "intakes",
             "incap"
@@ -75,8 +73,6 @@ class Constants {
             "position_four_starts",
             "auto_avg_low_balls",
             "auto_avg_high_balls",
-            "auto_avg_hub_high_balls",
-            "auto_avg_other_high_balls",
             "auto_avg_total_balls",
             "auto_max_low_balls",
             "auto_max_high_balls",
@@ -85,8 +81,6 @@ class Constants {
             "Tele",
             "tele_avg_low_balls",
             "tele_avg_high_balls",
-            "tele_avg_hub_high_balls",
-            "tele_avg_other_high_balls",
             "tele_avg_total_balls",
             "tele_max_low_balls",
             "tele_max_high_balls",
@@ -96,14 +90,10 @@ class Constants {
             "avg_incap_time",
             "max_incap",
             "matches_incap",
-            "avg_exit_ball_catches",
-            "max_exit_ball_catches",
-            "avg_opp_balls_scored",
-            "max_opp_balls_scored",
             "driver_ability",
             "driver_field_awareness",
-            "driver_far_field_rating",
             "driver_quickness",
+            "matches_played_defense",
             "Endgame",
             "climb_percent_success",
             "climb_all_attempts",
@@ -113,10 +103,7 @@ class Constants {
             "traversal_rung_successes",
             "mode_climb_level",
             "max_climb_level",
-            "low_avg_time",
-            "mid_avg_time",
-            "high_avg_time",
-            "traversal_avg_time",
+            "avg_climb_points",
             "Pit Data",
             "drivetrain",
             "drivetrain_motors",
@@ -135,24 +122,16 @@ class Constants {
             "lfm_mode_start_position",
             "lfm_auto_avg_low_balls",
             "lfm_auto_avg_high_balls",
-            "lfm_auto_avg_hub_high_balls",
-            "lfm_auto_avg_other_high_balls",
             "lfm_auto_max_low_balls",
             "lfm_auto_max_high_balls",
             "L4M Tele",
             "lfm_tele_avg_low_balls",
             "lfm_tele_avg_high_balls",
-            "lfm_tele_avg_hub_high_balls",
-            "lfm_tele_avg_other_high_balls",
             "lfm_tele_max_low_balls",
             "lfm_tele_max_high_balls",
             "lfm_avg_incap_time",
             "lfm_max_incap",
             "lfm_matches_incap",
-            "lfm_avg_exit_ball_catches",
-            "lfm_max_exit_ball_catches",
-            "lfm_avg_opp_balls_scored",
-            "lfm_max_opp_balls_scored",
             "L4M Endgame",
             "lfm_climb_percent_success",
             "lfm_climb_all_attempts",
@@ -161,10 +140,6 @@ class Constants {
             "lfm_high_rung_successes",
             "lfm_traversal_rung_successes",
             "lfm_max_climb_level",
-            "lfm_low_avg_time",
-            "lfm_mid_avg_time",
-            "lfm_high_avg_time",
-            "lfm_traversal_success_avg_time"
         )
 
         val FIELDS_TO_BE_DISPLAYED_RANKING: List<String> = listOf(
@@ -190,45 +165,40 @@ class Constants {
         val GRAPHABLE: List<String> = listOf(
             "auto_avg_low_balls",
             "auto_avg_high_balls",
-            "auto_avg_hub_high_balls",
-            "auto_avg_other_high_balls",
             "auto_avg_total_balls",
-            "tele_avg_hub_high_balls",
-            "tele_avg_other_high_balls",
             "tele_avg_total_balls",
             "avg_intakes",
             "tele_avg_low_balls",
             "tele_avg_high_balls",
             "avg_incap_time",
             "matches_incap",
-            "avg_exit_ball_catches",
-            "avg_opp_balls_scored",
             "matches_incap",
             "mode_start_position",
             "position_zero_starts",
             "position_one_starts",
             "position_two_starts",
             "position_three_starts",
-            "position_four_starts"
+            "position_four_starts",
+            "avg_climb_points",
+            "climb_all_attempts",
+            "matches_played_defense"
         )
 
         val GRAPHABLE_BOOL: List<String> = listOf(
             "auto_line_successes",
             "climb_percent_success",
-            "climb_all_attempts",
             "low_rung_successes",
             "mid_rung_successes",
             "high_rung_successes",
-            "traversal_rung_successes"
+            "traversal_rung_successes",
+            "matches_played_defense"
         )
 
         val GRAPHABLE_CLIMB_TIMES: List<String> = listOf(
             "climb_all_success_avg_time",
-            "low_avg_time",
-            "mid_avg_time",
-            "high_avg_time",
-            "traversal_avg_time",
-            "mode_climb_level"
+            "mode_climb_level",
+            "avg_climb_points",
+            "climb_all_attempts"
         )
 
       val DRIVER_DATA: List<String> = listOf(
@@ -268,8 +238,6 @@ class Constants {
             "second_pickability" to true,
             "auto_avg_low_balls" to true,
             "auto_avg_high_balls" to true,
-            "auto_avg_hub_high_balls" to true,
-            "auto_avg_other_high_balls" to true,
             "auto_avg_total_balls" to true,
             "auto_line_successes" to true, //?????
             "auto_max_low_balls" to true,
@@ -278,12 +246,9 @@ class Constants {
             "auto_sd_high_balls" to true,
             "tele_avg_low_balls" to true,
             "tele_avg_high_balls" to true,
-            "tele_avg_hub_high_balls" to true,
-            "tele_avg_other_high_balls" to true,
             "tele_avg_total_balls" to true,
             "driver_ability" to true,
             "driver_field_awareness" to true,
-            "driver_far_field_rating" to true,
             "driver_quickness" to true,
             "tele_max_low_balls" to true,
             "tele_max_high_balls" to true,
@@ -298,24 +263,12 @@ class Constants {
             "mid_rung_successes" to true,
             "high_rung_successes" to true,
             "traversal_rung_successes" to true,
-            "low_avg_time" to true,
-            "mid_avg_time" to true,
-            "high_avg_time" to true,
-            "traversal_avg_time" to true,
-            "avg_exit_ball_catches" to true,
-            "max_exit_ball_catches" to true,
-            "avg_opp_balls_scored" to true,
-            "max_opp_balls_scored" to true,
             "lfm_auto_avg_low_balls" to true,
-            "lfm_auto_avg_hub_high_balls" to true,
-            "lfm_auto_avg_other_high_balls" to true,
             "lfm_auto_avg_low_balls" to true,
             "lfm_auto_avg_high_balls" to true,
             "lfm_auto_max_low_balls" to true,
             "lfm_auto_max_high_balls" to true,
             "lfm_tele_avg_low_balls" to true,
-            "lfm_tele_avg_hub_high_balls" to true,
-            "lfm_tele_avg_other_high_balls" to true,
             "lfm_tele_avg_low_balls" to true,
             "lfm_tele_avg_high_balls" to true,
             "lfm_tele_max_low_balls" to true,
@@ -323,22 +276,13 @@ class Constants {
             "lfm_max_incap" to false,
             "lfm_avg_incap_time" to false,
             "lfm_matches_incap" to false,
-            "lfm_avg_exit_ball_catches" to true,
-            "lfm_max_exit_ball_catches" to true,
-            "lfm_avg_opp_balls_scored" to true,
-            "lfm_max_opp_balls_scored" to true,
             "lfm_climb_percent_success" to true,
             "lfm_climb_all_attempts" to true,
             "lfm_low_rung_successes" to true,
             "lfm_mid_rung_successes" to true,
             "lfm_high_rung_successes" to true,
             "lfm_traversal_rung_successes" to true,
-            "lfm_low_avg_time" to true,
-            "lfm_mid_avg_time" to true,
-            "lfm_high_avg_time" to true,
-            "lfm_traversal_success_avg_time" to false,
             "avg_intakes" to true,
-            "incap" to false,
             "drivetrain" to false,
             "drivetrain_motors" to false,
             "drivetrain_motor_type" to false,
@@ -347,7 +291,9 @@ class Constants {
             "can_intake_terminal" to false,
             "has_vision" to false,
             "can_under_low_rung" to false,
-            "can_cheesecake" to false
+            "can_cheesecake" to false,
+            "avg_climb_points" to true,
+            "matches_played_defense" to true,
         )
 
         val RANK_BY_PIT = mapOf<String, Int>(
@@ -382,7 +328,8 @@ class Constants {
         CALCULATED_PREDICTED_TEAM("predicted_team"),
         CALCULATED_TBA_TEAM("tba_team"),
         CALCULATED_PICKABILITY("pickability"),
-        CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
+        CALCULATED_TBA_TEAM_IN_MATCH("tba_tim"),
+        CALCULATED_SUBJECTIVE_TEAM_IN_MATCH("subj_tim")
     }
     enum class ScheduleType {
         ALL_MATCHES,
