@@ -49,7 +49,10 @@ class GraphsFragment() : Fragment() {
         val timDataMap : Map<String, String> = if(timDatapoint == "auto_line"){
             getTIMDataValue(teamNumber!!, timDatapoint,
                 Constants.PROCESSED_OBJECT.CALCULATED_TBA_TEAM_IN_MATCH.value)
-        }else{
+        } else if (timDatapoint == "played_defense") {
+            getTIMDataValue(teamNumber!!, timDatapoint,
+                Constants.PROCESSED_OBJECT.CALCULATED_SUBJECTIVE_TEAM_IN_MATCH.value)
+        } else{
             getTIMDataValue(teamNumber!!, timDatapoint!!,
                 Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
         }

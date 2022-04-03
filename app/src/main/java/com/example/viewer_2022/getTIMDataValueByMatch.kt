@@ -23,9 +23,13 @@ fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: Strin
         val tbaTim = StartupActivity.databaseReference!!.tba_tim.find {
             it.match_number.toString() == matchNumber && it.team_number.toString() == teamNumber
         }
+        val subjTim = StartupActivity.databaseReference!!.subj_tim.find {
+            it.match_number.toString() == matchNumber && it.team_number.toString() == teamNumber
+        }
         timObject = TeamInMatch(teamNumber.toInt(), matchNumber.toInt())
         timObject.objTim = objTim
         timObject.tbaTim = tbaTim
+        timObject.subjTim = subjTim
         MainViewerActivity.timCache.add(timObject)
     }
     var fieldValue = Constants.NULL_CHARACTER
@@ -35,6 +39,9 @@ fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: Strin
     if (fieldValue == Constants.NULL_CHARACTER) {
         if (timObject.tbaTim != null) {
             fieldValue = getDirectField(timObject.tbaTim!!, field).toString()
+        }
+        if (timObject.subjTim != null) {
+            fieldValue = getDirectField(timObject.subjTim!!, field).toString()
         }
     }
     return fieldValue

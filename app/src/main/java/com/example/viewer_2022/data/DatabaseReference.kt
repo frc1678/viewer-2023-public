@@ -8,8 +8,6 @@
 
 package com.example.viewer_2022.data
 
-import org.bson.types.ObjectId
-
 //Database reference class to make a database object from MongoDB.
 class DatabaseReference {
     data class CompetitionObject (
@@ -22,7 +20,8 @@ class DatabaseReference {
         var tba_team: MutableList<CalculatedTBATeam> = mutableListOf(),
         var pickability: MutableList<CalculatedPickAbilityTeam> = mutableListOf(),
         var tba_tim: MutableList<CalculatedTBATeamInMatch> = mutableListOf(),
-        var picklist: MutableList<PicklistTeam> = mutableListOf()
+        var picklist: MutableList<PicklistTeam> = mutableListOf(),
+        var subj_tim: MutableList<CalculatedSubjectiveTeamInMatch> = mutableListOf()
     )
 
     data class ObjectivePit (
@@ -170,4 +169,12 @@ class DatabaseReference {
         var first_rank: Int,
         var second_rank: Int
     )
+
+    data class CalculatedSubjectiveTeamInMatch (
+        var team_number: Int,
+        var match_number: Int,
+        var quickness_score: Int,
+        var field_awareness_score: Int,
+        var played_defense: Boolean,
+            )
 }

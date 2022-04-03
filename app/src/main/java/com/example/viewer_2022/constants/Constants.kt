@@ -41,6 +41,9 @@ class Constants {
             "Tele",
             "tele_low_balls",
             "tele_high_balls",
+            "played_defense",
+            "field_awareness_score",
+            "quickness_score",
             "Endgame",
             "climb_level",
             "climb_attempts",
@@ -177,7 +180,8 @@ class Constants {
             "position_three_starts",
             "position_four_starts",
             "avg_climb_points",
-            "climb_all_attempts"
+            "climb_all_attempts",
+            "matches_played_defense"
         )
 
         val GRAPHABLE_BOOL: List<String> = listOf(
@@ -186,7 +190,8 @@ class Constants {
             "low_rung_successes",
             "mid_rung_successes",
             "high_rung_successes",
-            "traversal_rung_successes"
+            "traversal_rung_successes",
+            "matches_played_defense"
         )
 
         val GRAPHABLE_CLIMB_TIMES: List<String> = listOf(
@@ -287,7 +292,8 @@ class Constants {
             "has_vision" to false,
             "can_under_low_rung" to false,
             "can_cheesecake" to false,
-            "avg_climb_points" to true
+            "avg_climb_points" to true,
+            "matches_played_defense" to true,
         )
 
         val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
@@ -309,7 +315,8 @@ class Constants {
         CALCULATED_PREDICTED_TEAM("predicted_team"),
         CALCULATED_TBA_TEAM("tba_team"),
         CALCULATED_PICKABILITY("pickability"),
-        CALCULATED_TBA_TEAM_IN_MATCH("tba_tim")
+        CALCULATED_TBA_TEAM_IN_MATCH("tba_tim"),
+        CALCULATED_SUBJECTIVE_TEAM_IN_MATCH("subj_tim")
     }
     enum class ScheduleType {
         ALL_MATCHES,

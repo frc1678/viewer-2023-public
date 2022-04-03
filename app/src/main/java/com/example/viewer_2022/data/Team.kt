@@ -67,4 +67,5 @@ data class Team (var team_number: Int?) {
     var can_under_low_rung: Boolean? = null
     var avg_climb_points: Float? = null
     var climb_attempts: Int? = null
+    var matches_played_defense: Int? = null
 }

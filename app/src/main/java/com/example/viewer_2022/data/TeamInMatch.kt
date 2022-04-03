@@ -16,5 +16,6 @@ data class TeamInMatch(
     var match_number: Int? = null
 ) {
     var objTim: DatabaseReference.CalculatedObjectiveTeamInMatch? = null
+    var subjTim: DatabaseReference.CalculatedSubjectiveTeamInMatch? = null
     var tbaTim: DatabaseReference.CalculatedTBATeamInMatch? = null
 }

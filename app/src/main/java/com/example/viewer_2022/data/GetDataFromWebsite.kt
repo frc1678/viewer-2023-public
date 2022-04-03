@@ -3,7 +3,6 @@ package com.example.viewer_2022.data
 import android.os.AsyncTask
 import android.util.Log
 import com.example.viewer_2022.MainViewerActivity
-import com.example.viewer_2022.StartupActivity
 import java.net.URL
 import com.example.viewer_2022.StartupActivity.Companion.databaseReference
 import com.example.viewer_2022.constants.Constants
@@ -43,12 +42,13 @@ class GetDataFromWebsite(
                     "predicted_team",
                     "tba_team",
                     "pickability",
-                    "picklist"
+                    "picklist",
+                    "subj_tim"
                 )
 
             //For each of the collections (make sure to change this number if the number of collections change),
             //pull the data from the website and then add it to the databaseReference variable
-            for (x in 0..9) {
+            for (x in 0..10) {
                 val result =
                     sendRequest("https://cardinal.citruscircuits.org/cardinal/api/collection/${listOfCollectionNames[x]}/")
                 when (x) {
@@ -91,6 +91,10 @@ class GetDataFromWebsite(
                     9 -> databaseReference?.picklist = Gson().fromJson(
                         result.toString(),
                         Array<DatabaseReference.PicklistTeam>::class.java
+                    ).toMutableList()
+                    10 -> databaseReference?.subj_tim = Gson().fromJson(
+                        result.toString(),
+                        Array<DatabaseReference.CalculatedSubjectiveTeamInMatch>::class.java
                     ).toMutableList()
                 }
                 Log.e("result", "$result")
