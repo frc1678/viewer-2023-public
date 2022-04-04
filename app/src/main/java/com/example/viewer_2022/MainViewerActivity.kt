@@ -173,7 +173,7 @@ class MainViewerActivity : ViewerActivity() {
 
         Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
             if(it !in Constants.CATEGORY_NAMES){
-                getRankingList(it, false)
+                createLeaderboard(it)
             }
         }
 

@@ -84,13 +84,11 @@
     "Tele",
     "tele_avg_balls_low",
     "tele_avg_high_balls",
-    "tele_avg_hub_high_balls",
     "tele_avg_launchpad_high_balls",
     "avg_intakes",
     "avg_incap_time",
     "driver_ability",
     "driver_field_awareness",
-    "driver_far_field_rating",
     "Endgame",
     "climb_percent_success",
     "mode_climb_level",
@@ -134,8 +132,6 @@
     "tele_max_low_balls",
     "tele_max_high_balls",
     "avg_incap_time",
-    "avg_exit_ball_catches",
-    "avg_opp_balls_scored",
     "driver_ability",
     "driver_field_awareness",
     "driver_far_field_rating",
@@ -173,10 +169,6 @@
     "mid_rung_successes",
     "high_rung_successes",
     "traversal_rung_successes",
-    "max_climb_level",
-    "low_avg_time",
-    "mid_avg_time",
-    "high_avg_time",
-    "traversal_avg_time"
+    "max_climb_level"
   ]
 }

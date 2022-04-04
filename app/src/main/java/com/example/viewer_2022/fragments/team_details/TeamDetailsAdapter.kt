@@ -156,7 +156,7 @@ class TeamDetailsAdapter(
             }
         }
         if (e in Constants.RANKABLE_FIELDS) {
-            rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(teamNumber, e, Constants.RANKABLE_FIELDS[e]!!)
+            rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(teamNumber, e).placement.toString()
         }
 
         if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or

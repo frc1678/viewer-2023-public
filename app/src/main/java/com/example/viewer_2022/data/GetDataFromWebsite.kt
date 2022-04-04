@@ -3,14 +3,13 @@ package com.example.viewer_2022.data
 import android.os.AsyncTask
 import android.util.Log
 import com.example.viewer_2022.MainViewerActivity
-import com.example.viewer_2022.StartupActivity
 import java.net.URL
 import com.example.viewer_2022.StartupActivity.Companion.databaseReference
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.createLeaderboard
 import com.example.viewer_2022.data.*
 import com.example.viewer_2022.fragments.notes.GetAllNotesData
 import com.example.viewer_2022.fragments.notes.NotesData
-import com.example.viewer_2022.getRankingList
 import com.example.viewer_2022.lastUpdated
 import com.google.gson.Gson
 import java.io.*
@@ -43,12 +42,13 @@ class GetDataFromWebsite(
                     "predicted_team",
                     "tba_team",
                     "pickability",
-                    "picklist"
+                    "picklist",
+                    "subj_tim"
                 )
 
             //For each of the collections (make sure to change this number if the number of collections change),
             //pull the data from the website and then add it to the databaseReference variable
-            for (x in 0..9) {
+            for (x in 0..10) {
                 val result =
                     sendRequest("https://cardinal.citruscircuits.org/cardinal/api/collection/${listOfCollectionNames[x]}/")
                 when (x) {
@@ -92,8 +92,12 @@ class GetDataFromWebsite(
                         result.toString(),
                         Array<DatabaseReference.PicklistTeam>::class.java
                     ).toMutableList()
+                    10 -> databaseReference?.subj_tim = Gson().fromJson(
+                        result.toString(),
+                        Array<DatabaseReference.CalculatedSubjectiveTeamInMatch>::class.java
+                    ).toMutableList()
                 }
-                Log.e("result", "$result")
+                Log.e("dataFromWebsite", "$result")
             }
 
             val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
@@ -134,7 +138,7 @@ class GetDataFromWebsite(
         MainViewerActivity.leaderboardCache.clear()
         Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
             if (it !in Constants.CATEGORY_NAMES) {
-                getRankingList(it, false)
+                createLeaderboard(it)
             }
         }
         onCompleted()

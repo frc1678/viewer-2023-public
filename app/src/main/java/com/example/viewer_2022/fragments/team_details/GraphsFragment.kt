@@ -49,7 +49,10 @@ class GraphsFragment() : Fragment() {
         val timDataMap : Map<String, String> = if(timDatapoint == "auto_line"){
             getTIMDataValue(teamNumber!!, timDatapoint,
                 Constants.PROCESSED_OBJECT.CALCULATED_TBA_TEAM_IN_MATCH.value)
-        }else{
+        } else if (timDatapoint == "played_defense") {
+            getTIMDataValue(teamNumber!!, timDatapoint,
+                Constants.PROCESSED_OBJECT.CALCULATED_SUBJECTIVE_TEAM_IN_MATCH.value)
+        } else{
             getTIMDataValue(teamNumber!!, timDatapoint!!,
                 Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM_IN_MATCH.value)
         }
@@ -63,7 +66,7 @@ class GraphsFragment() : Fragment() {
         //add data to a list of BarEntries so it can be added to the chart
         val entries: ArrayList<BarEntry> = ArrayList()
         for((index, timData) in timDataMap.values.withIndex()){
-            if((datapoint=="matches_incap") or (datapoint=="climb_all_attempts")){
+            if((datapoint=="matches_incap")){
                 if((timData != "0") and (timData != Constants.NULL_CHARACTER)){
                     entries.add(BarEntry(index.toFloat(), 1F))
                 } else{
@@ -90,37 +93,6 @@ class GraphsFragment() : Fragment() {
             } else if (datapoint=="traversal_rung_successes"){
                 if(timData.lowercase() == "traversal"){
                     entries.add(BarEntry(index.toFloat(), 1F))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "climb_all_success_avg_time"){
-                if((timDataListClimbLevel!![index].lowercase() != "none") and
-                    (timDataListClimbLevel[index].lowercase() != Constants.NULL_CHARACTER)){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "low_avg_time"){
-                if(timDataListClimbLevel!![index].lowercase() == "low"){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "mid_avg_time"){
-                if(timDataListClimbLevel!![index].lowercase() == "mid"){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "high_avg_time"){
-                if(timDataListClimbLevel!![index].lowercase() == "high"){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
-                } else{
-                    entries.add(BarEntry(index.toFloat(), 0F))
-                }
-            } else if (datapoint == "traversal_avg_time"){
-                if(timDataListClimbLevel!![index].lowercase() == "traversal"){
-                    entries.add(BarEntry(index.toFloat(), timData.toFloat()))
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
@@ -179,6 +151,24 @@ class GraphsFragment() : Fragment() {
                 } else{
                     entries.add(BarEntry(index.toFloat(), 0F))
                 }
+            } else if (datapoint == "avg_climb_points"){
+                when(timDataListClimbLevel!![index].lowercase()){
+                    "low" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "mid" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "high" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
+                    else -> entries.add(BarEntry(index.toFloat(), 0F))
+                }
+                root.bar_chart.axisLeft.axisMaximum = 4F
+            } else if (datapoint == "climb_all_attempts"){
+                when(timDataListClimbLevel!![index].lowercase()){
+                    "low" -> entries.add(BarEntry(index.toFloat(), 1F))
+                    "mid" -> entries.add(BarEntry(index.toFloat(), 2F))
+                    "high" -> entries.add(BarEntry(index.toFloat(), 3F))
+                    "traversal" -> entries.add(BarEntry(index.toFloat(), 4F))
+                    else -> entries.add(BarEntry(index.toFloat(), 0F))
+                }
+                root.bar_chart.axisLeft.axisMaximum = 4F
             } else if(Constants.GRAPHABLE_BOOL.contains(datapoint!!)) {
                 if (timData == "true") {
                     entries.add(BarEntry(index.toFloat(), 1F))
