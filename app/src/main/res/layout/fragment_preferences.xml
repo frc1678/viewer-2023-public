@@ -35,8 +35,19 @@
             android:enabled="true">
         </Button>
 
-
     </LinearLayout>
+
+    <ToggleButton
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/tb_highlight_our_matches"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textOff="@string/highlight_our_matches_disabled"
+        android:textOn="@string/highlight_our_matches_enabled"
+        android:checked="false">
+    </ToggleButton>
+
     <TextView
         style="@style/version_number"
         android:id="@+id/tv_version_num"

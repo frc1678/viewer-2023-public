@@ -8,6 +8,8 @@
 
 package com.example.viewer_2022.fragments.match_schedule.match_details
 
+import android.graphics.Paint
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -55,6 +57,34 @@ class MatchDetailsFragment : Fragment() {
         // in Constants.kt -> FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS. FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS
         // is a list of strings
 
+        if(hasActualData as Boolean) {
+            if (getAllianceInMatchObjectByKey(
+                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
+                    Constants.BLUE, matchNumber.toString(),
+                    "won_match"
+                ).toBoolean()
+            ) {
+                for (tv in listOf(
+                    root.tv_team_one_label,
+                    root.tv_team_two_label,
+                    root.tv_team_three_label,
+                )) {
+                    tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+                    tv.setTypeface(Typeface.DEFAULT_BOLD)
+                    tv.setTextSize(12f)
+                }
+            } else {
+                for (tv in listOf(
+                    root.tv_team_four_label,
+                    root.tv_team_five_label,
+                    root.tv_team_six_label
+                )) {
+                    tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+                    tv.setTypeface(Typeface.DEFAULT_BOLD)
+                    tv.setTextSize(12f)
+                }
+            }
+        }
         for (teamNumber in getTeamNumbersXML(root)) {
             // If the index of the team number in the team number list is below 3, it means that the
             // team number is a team from the blue alliance.
@@ -72,8 +102,6 @@ class MatchDetailsFragment : Fragment() {
             } else {
                 teamNumber.text = getMatchSchedule()[matchNumber.toString()]!!.redTeams[getTeamNumbersXML(root).indexOf(teamNumber) - 3]
             }
-
-
         }
         // We run this method because the code above sets each team number text view to the
         // specified team number, and both the updateTeamListViews method and

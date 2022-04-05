@@ -1,88 +1,63 @@
 package com.example.viewer_2022
 
-import android.util.Log
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.fragments.team_ranking.floatToString
 
-fun getRankingList(datapoint: String, descending: Boolean): Leaderboard {
-    if (MainViewerActivity.leaderboardCache.containsKey(datapoint)) {
-        Log.d("getRankingList", "using cached leaderboard")
-        val leaderboard = MainViewerActivity.leaderboardCache[datapoint] as Leaderboard
-        val rankedTeams = leaderboard.map {
-            it.teamNumber
-        }
-        val nullTeams = (MainViewerActivity.teamList - rankedTeams).map {
-            return@map TeamRankingItem(it, Constants.NULL_CHARACTER, -1)
-        }
-
-        val finalLeaderboard = if (descending) leaderboard.reversed() else leaderboard
-        return finalLeaderboard + nullTeams
-    }
-    Log.d("getRankingList", "generating new leaderboard")
-
-    val data = mutableListOf<TeamUnplacedItem>()
-
+/**
+ * Initializes a leaderboard for a given datapoint. The order of the leaderboard (ascending or
+ * descending) is determined by [`Constants.RANKABLE_FIELDS`][Constants.RANKABLE_FIELDS]. Once the
+ * leaderboard is generated, it is added to the [cache][MainViewerActivity.leaderboardCache]. This
+ * function should be called for every datapoint on startup.
+ */
+fun createLeaderboard(datapoint: String) {
+    val data = mutableListOf<TeamRankingItem>()
     MainViewerActivity.teamList.forEach {
-        val value = getTeamDataValue(it, datapoint).toFloatOrNull()
-        data.add(
-            TeamUnplacedItem(
-                it,
-                value?.let { it1 -> floatToString(it1) } ?: Constants.NULL_CHARACTER))
-    }
-
-    val nullTeams = data.filter { item -> item.value == Constants.NULL_CHARACTER }
-    val dataTeams = data.filter { item -> item.value != Constants.NULL_CHARACTER }
-
-    val unidirectionalSortedData = dataTeams.sortedWith(compareBy { it.value.toFloatOrNull() })
-
-    val sortedData = if (descending) unidirectionalSortedData.reversed() else unidirectionalSortedData
-
-
-    val orderedDataList = sortedData.mapIndexed { index, item ->
-        TeamRankingItem(
-            item.teamNumber,
-            item.value,
-            if (item.value != Constants.NULL_CHARACTER) index + 1 else -1
-        )
-    }
-
-    val orderedNullList = nullTeams.mapIndexed { index, item ->
-        TeamRankingItem(
-            item.teamNumber,
-            item.value,
-            if (item.value != Constants.NULL_CHARACTER) index + 1 else -1
-        )
-    }
-    val finalList = (orderedDataList + orderedNullList)
-
-    MainViewerActivity.leaderboardCache[datapoint] = unidirectionalSortedData.mapIndexed { index, item ->
-        TeamRankingItem(
-            item.teamNumber,
-            item.value,
-            if (item.value != Constants.NULL_CHARACTER) index + 1 else -1
-        )
-    }
-
-    return finalList
-}
-
-fun getRankingTeam(teamNumber: String, datapoint: String, descending: Boolean): String {
-    val rankList = getRankingList(datapoint, descending)
-
-        val teamEntry = rankList.first { it.teamNumber == teamNumber }
-
-    return if (teamEntry.value == Constants.NULL_CHARACTER) {
-        teamEntry.value
-    } else{
-        if(!descending){
-            teamEntry.placement.toString()
-        } else{
-            (rankList.size - teamEntry.placement).toString()
+        if (datapoint !in Constants.PIT_DATA) {
+            val value = getTeamDataValue(it, datapoint).toFloatOrNull()
+            data.add(
+                TeamRankingItem(
+                    it,
+                    value?.let { it1 -> floatToString(it1) } ?: Constants.NULL_CHARACTER,
+                    null
+                )
+            )
+        } else {
+            data.add(TeamRankingItem(it, getTeamDataValue(it, datapoint), null))
         }
     }
+
+    val descending = Constants.RANKABLE_FIELDS[datapoint] ?: true
+
+    val nullTeams = data.filter { it.value == Constants.NULL_CHARACTER }
+    val nonNullTeams = data.filter { it.value != Constants.NULL_CHARACTER }
+
+    var sorted = nonNullTeams.sortedBy {
+        if (datapoint in Constants.PIT_DATA && datapoint != "drivetrain_motors") {
+            (Constants.RANK_BY_PIT[it.value] ?: 0).toFloat()
+        } else it.value.toFloatOrNull()
+    }
+
+    if (descending) sorted = sorted.reversed()
+
+    sorted.forEachIndexed { index, teamRankingItem ->
+        if (index != 0 && sorted[index - 1].value == teamRankingItem.value) {
+            sorted[index].placement = sorted[index - 1].placement
+        } else {
+            sorted[index].placement = index + 1
+        }
+    }
+
+    MainViewerActivity.leaderboardCache[datapoint] = sorted + nullTeams
 }
 
+fun getRankingList(datapoint: String): Leaderboard {
+    return MainViewerActivity.leaderboardCache[datapoint]!!
+}
 
-data class TeamUnplacedItem(val teamNumber: String, val value: String)
-data class TeamRankingItem(val teamNumber: String, val value: String, val placement: Int)
+fun getRankingTeam(teamNumber: String, datapoint: String): TeamRankingItem {
+    val data = MainViewerActivity.leaderboardCache[datapoint]
+    return data!!.find { it.teamNumber == teamNumber }!!
+}
+
+data class TeamRankingItem(val teamNumber: String, val value: String, var placement: Int?)
 typealias Leaderboard = List<TeamRankingItem>

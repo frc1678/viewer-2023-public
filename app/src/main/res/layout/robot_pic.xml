@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/very_small"
         android:layout_weight="0"
-        android:text="@string/full_robot"
+        android:text="@string/full_robot_1"
         tools:ignore="InefficientWeight" />
 
     <HorizontalScrollView

@@ -9,13 +9,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.constants.Constants
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
-import com.example.viewer_2022.MainViewerActivity.UserDatapoints
-import com.example.viewer_2022.R
-import com.example.viewer_2022.UserPreferencesFragment
-import com.example.viewer_2022.constants.Constants
-class PreferencesFragment: Fragment() {
+
+class PreferencesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +41,8 @@ class PreferencesFragment: Fragment() {
                 userPreferencesFragment
             ).commit()
         }
+
+        root.tb_highlight_our_matches.setOnClickListener { starOurMatches() }
 
         return root
     }
@@ -74,7 +75,17 @@ class PreferencesFragment: Fragment() {
                 return
             }
         }
+    }
 
+    private fun starOurMatches() {
+        val citrusMatches = MainViewerActivity.matchCache.filter {
+            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
+        }.map { return@map it.value.matchNumber }
 
+        if (tb_highlight_our_matches.isChecked) {
+            MainViewerActivity.starredMatches += (citrusMatches)
+        } else {
+            MainViewerActivity.starredMatches -= (citrusMatches)
+        }
     }
 }

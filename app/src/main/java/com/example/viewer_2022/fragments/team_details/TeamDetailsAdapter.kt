@@ -140,7 +140,6 @@ class TeamDetailsAdapter(
                     )
                 ).matches()
             ) {
-                if (e in Constants.DRIVER_DATA) {
                     rowView.tv_datapoint_value.text = ("%.2f").format(
                         parseFloat(
                             getTeamDataValue(
@@ -149,16 +148,6 @@ class TeamDetailsAdapter(
                             )
                         )
                     )
-                } else {
-                    rowView.tv_datapoint_value.text = ("%.1f").format(
-                        parseFloat(
-                            getTeamDataValue(
-                                teamNumber,
-                                e
-                            )
-                        )
-                    )
-                }
             } else {
                 rowView.tv_datapoint_value.text = getTeamDataValue(
                     teamNumber,
@@ -167,8 +156,7 @@ class TeamDetailsAdapter(
             }
         }
         if (e in Constants.RANKABLE_FIELDS) {
-            rowView.tv_ranking.text =
-                getRankingTeam(teamNumber, e, Constants.RANKABLE_FIELDS[e]!!)
+            rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(teamNumber, e).placement.toString()
         }
 
         if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or

@@ -53,8 +53,9 @@ class TeamRankingFragment : Fragment() {
 
     private fun setTextViews(root: View) {
         if (Translations.ACTUAL_TO_HUMAN_READABLE.containsKey(dataPoint)) {
-            if(Constants.FIELDS_TO_BE_DISPLAYED_LFM.contains(dataPoint)) {
-                root.tv_datapoint_header.text = "L4M " + Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
+            if (Constants.FIELDS_TO_BE_DISPLAYED_LFM.contains(dataPoint)) {
+                root.tv_datapoint_header.text =
+                    "L4M " + Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
             } else {
                 root.tv_datapoint_header.text = Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
             }
@@ -64,12 +65,23 @@ class TeamRankingFragment : Fragment() {
     }
 
     private fun setupAdapter(root: View) {
-
-        lvAdapter = TeamRankingListAdapter(activity!!, teamNumber, getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
-        if(refreshId == null){
+        lvAdapter = TeamRankingListAdapter(
+            activity!!,
+            teamNumber,
+            dataPoint!!,
+            getRankingList(
+                datapoint = dataPoint!!
+            ),
+            dataPoint in Constants.PIT_DATA
+        )
+        if (refreshId == null) {
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {
                 Log.d("data-refresh", "Updated: team-ranking")
-                lvAdapter?.updateItems(getRankingList(datapoint = dataPoint!!, descending = Constants.RANKABLE_FIELDS[dataPoint!!]!!))
+                lvAdapter?.updateItems(
+                    getRankingList(
+                        datapoint = dataPoint!!
+                    )
+                )
 
             }
         }
