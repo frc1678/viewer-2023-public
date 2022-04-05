@@ -69,7 +69,7 @@ fun getRankingList(datapoint: String, descending: Boolean): Leaderboard {
 fun getRankingTeam(teamNumber: String, datapoint: String, descending: Boolean): String {
     val rankList = getRankingList(datapoint, descending)
 
-    val teamEntry = rankList.first { it.teamNumber == teamNumber }
+        val teamEntry = rankList.first { it.teamNumber == teamNumber }
 
     return if (teamEntry.value == Constants.NULL_CHARACTER) {
         teamEntry.value

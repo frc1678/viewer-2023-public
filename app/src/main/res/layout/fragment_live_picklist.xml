@@ -4,9 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
         style="@style/tv_header"
-        android:text="@string/live_picklist" />
+    >
+        <TextView
+            style="@style/tv_header"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:text="@string/live_picklist" />
+        <Button
+            android:id="@+id/btn_picklist_edit"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/btn_picklist_edit"
+            />
+    </LinearLayout>
+
 
     <View style="@style/view_separator_horizontal" />
 
@@ -20,26 +36,34 @@
             style="@style/tv_standard_gray"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_marginHorizontal="@dimen/very_small"
+            android:layout_marginHorizontal="7dp"
             android:text="@string/team_number" />
+        <TextView
+            android:id="@+id/tv_pick_header"
+            style="@style/tv_live_picklist_header"
+            android:layout_marginHorizontal="7dp"
+            android:text="@string/picklist_rank"
+            />
         <Button
-            android:id="@+id/btn_first_rank"
-            style="@style/btn_live_picklist_header"
-            android:layout_marginHorizontal="@dimen/very_small"
-            android:text="@string/first_rank" />
-        <Button
-            android:id="@+id/btn_second_rank"
-            style="@style/btn_live_picklist_header"
-            android:layout_marginHorizontal="@dimen/very_small"
-            android:text="@string/second_rank" />
+            android:id="@+id/btn_connection"
+            style="@style/tv_live_picklist_header"
+            android:layout_marginHorizontal="7dp"
+            android:text="@string/disconnected"
+            android:textColor="@color/Red"
+            android:textSize="16sp"
+            />
 
     </LinearLayout>
 
     <View style="@style/view_separator_horizontal" />
 
-    <ListView
-        android:id="@+id/lv_live_picklist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+<!--    <ListView-->
+<!--        android:id="@+id/lv_live_picklist"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_live_picklist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 </LinearLayout>
