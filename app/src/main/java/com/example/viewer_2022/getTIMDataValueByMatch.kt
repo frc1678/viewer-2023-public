@@ -39,6 +39,9 @@ fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: Strin
     if (fieldValue == Constants.NULL_CHARACTER) {
         if (timObject.tbaTim != null) {
             fieldValue = getDirectField(timObject.tbaTim!!, field).toString()
+            if (fieldValue != Constants.NULL_CHARACTER) {
+                return fieldValue
+            }
         }
         if (timObject.subjTim != null) {
             fieldValue = getDirectField(timObject.subjTim!!, field).toString()
