@@ -3,7 +3,9 @@ package com.example.viewer_2022
 import android.util.Log
 import com.google.gson.JsonParser
 import io.ktor.client.*
+import io.ktor.client.features.*
 import io.ktor.client.features.websocket.*
+import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.cio.websocket.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -12,6 +14,9 @@ import kotlin.properties.Delegates
 
 val client = HttpClient {
     install(WebSockets)
+    defaultRequest {
+        header("Authorization", "870035c623fe45479373bdccf3403228")
+    }
 }
 
 object PicklistConnectionManager {
@@ -36,10 +41,8 @@ object PicklistConnectionManager {
         if(webSocketSession == null || !connected){
             Log.d("picklist", "connecting to websocket...")
             try {
-                client.webSocket(
-                    method = HttpMethod.Get,
-                    host = "127.0.0.1",
-                    port = 8000,
+                client.wss(
+                    host = "grosbeak.captured.earth",
                     path = "/ws/picklist"
                 ) {
                     webSocketSession = this

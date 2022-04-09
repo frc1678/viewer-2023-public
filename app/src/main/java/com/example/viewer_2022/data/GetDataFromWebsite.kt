@@ -169,12 +169,12 @@ private fun sendRequest(url: String): String {
     return result.toString()
 }
 
-class GetRequestTask(val endpoint: String, val done: ((response: String) -> Unit)? = null): AsyncTask<Unit, Unit, String>() {
+class GetRequestTask(val endpoint: String, val done: ((response: String?) -> Unit)? = null): AsyncTask<Unit, Unit, String?>() {
     override fun doInBackground(vararg params: Unit?): String {
         return sendRequest("https://cardinal.citruscircuits.org/cardinal/api/$endpoint")
     }
 
-    override fun onPostExecute(result: String) {
+    override fun onPostExecute(result: String?) {
         done?.let { it(result) }
     }
 }
@@ -182,7 +182,10 @@ class GetRequestTask(val endpoint: String, val done: ((response: String) -> Unit
 fun getAllNotes(cb: (List<NotesData>) -> Unit) {
     try {
         GetRequestTask("notes/all"){
-            cb(Gson().fromJson(it, GetAllNotesData))
+            if(it == null) throw Exception("Null response")
+            val notesData: List<NotesData> = Gson().fromJson(it, GetAllNotesData)
+                ?: return@GetRequestTask
+            cb(notesData)
         }.execute()
     } catch (e: Exception){
         Log.e("notes", "FAILED TO FETCH ALL NOTES. THIS IS NOT GOOD. VERY VERY BAD")
