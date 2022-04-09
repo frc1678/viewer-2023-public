@@ -25,7 +25,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "4.0.0"
+        const val VERSION_NUM = "4.0.1"
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",
