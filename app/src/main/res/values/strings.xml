@@ -24,13 +24,17 @@
     <string name="field">Field</string>
     <string name="pit">Pit</string>
     <string name="live_picklist">Live Picklist</string>
-    <string name="first_rank">First Pickability Rank</string>
-    <string name="second_rank">Second Pickability Rank</string>
+    <string name="picklist_rank">Picklist Rank</string>
     <string name="team_number">Team Number</string>
     <string name="full_robot_1">Full Robot</string>
     <string name="highlight_our_matches_enabled">Unstar Our Matches</string>
     <string name="highlight_our_matches_disabled">Star Our Matches</string>
     <string name="rotate">Rotate View</string>
+    <string name="btn_picklist_edit">Edit</string>
+    <string name="btn_picklist_view">View</string>
+    <string name="picklist_password_input">Password</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="connected">Connected</string>
 
     <string-array name="user_array">
         <item>None</item>
