@@ -177,6 +177,12 @@ class MainViewerActivity : ViewerActivity() {
             }
         }
 
+        Constants.FIELDS_TO_BE_DISPLAYED_LFM.forEach {
+            if(it !in Constants.CATEGORY_NAMES){
+                createLeaderboard(it)
+            }
+        }
+
         refreshManager.addRefreshListener {
             Log.d("data-refresh", "Updated: ranking")
             updateNavFooter()
