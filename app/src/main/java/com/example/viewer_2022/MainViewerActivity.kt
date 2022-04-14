@@ -467,6 +467,9 @@ class MainViewerActivity : ViewerActivity() {
 
         var contents = JsonObject()
         var gson = Gson()
+        val citrusMatches = matchCache.filter {
+            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
+        }.map { return@map it.value.matchNumber }
 
         private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_matches.json")
 

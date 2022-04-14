@@ -2,6 +2,7 @@ package com.example.viewer_2022
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.viewer_2022.MainViewerActivity.UserDatapoints
 import com.example.viewer_2022.constants.Constants
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
+import com.example.viewer_2022.MainViewerActivity.StarredMatches
 
 class PreferencesFragment : Fragment() {
 
@@ -33,6 +35,10 @@ class PreferencesFragment : Fragment() {
         val namePosition = resources.getStringArray(R.array.user_array).indexOf(name)
         root.spin_user.setSelection(namePosition)
 
+        val citrusMatches = MainViewerActivity.matchCache.filter {
+            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
+        }.map { return@map it.value.matchNumber }
+
         root.btn_user_pref_edit.setOnClickListener() {
             val userPreferencesFragment = UserPreferencesFragment()
 
@@ -41,6 +47,8 @@ class PreferencesFragment : Fragment() {
                 userPreferencesFragment
             ).commit()
         }
+
+        root.tb_highlight_our_matches.isChecked = MainViewerActivity.starredMatches.containsAll(StarredMatches.citrusMatches)
 
         root.tb_highlight_our_matches.setOnClickListener { starOurMatches() }
 
@@ -78,14 +86,13 @@ class PreferencesFragment : Fragment() {
     }
 
     private fun starOurMatches() {
-        val citrusMatches = MainViewerActivity.matchCache.filter {
-            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
-        }.map { return@map it.value.matchNumber }
 
         if (tb_highlight_our_matches.isChecked) {
-            MainViewerActivity.starredMatches += (citrusMatches)
+            MainViewerActivity.starredMatches += (StarredMatches.citrusMatches)
         } else {
-            MainViewerActivity.starredMatches -= (citrusMatches)
+            MainViewerActivity.starredMatches -= (StarredMatches.citrusMatches)
         }
+
+        StarredMatches.input()
     }
 }
