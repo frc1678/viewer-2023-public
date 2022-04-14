@@ -48,6 +48,7 @@ class PreferencesFragment : Fragment() {
             ).commit()
         }
 
+        // If all of our matches are already starred then it sets the Star Our Matches toggle to true
         root.tb_highlight_our_matches.isChecked = MainViewerActivity.starredMatches.containsAll(StarredMatches.citrusMatches)
 
         root.tb_highlight_our_matches.setOnClickListener { starOurMatches() }
@@ -85,6 +86,7 @@ class PreferencesFragment : Fragment() {
         }
     }
 
+    // Stars all of the matches that team 1678 is in
     private fun starOurMatches() {
 
         if (tb_highlight_our_matches.isChecked) {

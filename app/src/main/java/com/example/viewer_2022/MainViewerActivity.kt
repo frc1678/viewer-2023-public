@@ -467,6 +467,8 @@ class MainViewerActivity : ViewerActivity() {
 
         var contents = JsonObject()
         var gson = Gson()
+
+        // Creates a list that stores all of the match numbers that team 1678 is in
         val citrusMatches = matchCache.filter {
             return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
         }.map { return@map it.value.matchNumber }
