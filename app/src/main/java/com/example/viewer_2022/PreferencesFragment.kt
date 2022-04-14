@@ -35,10 +35,6 @@ class PreferencesFragment : Fragment() {
         val namePosition = resources.getStringArray(R.array.user_array).indexOf(name)
         root.spin_user.setSelection(namePosition)
 
-        val citrusMatches = MainViewerActivity.matchCache.filter {
-            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
-        }.map { return@map it.value.matchNumber }
-
         root.btn_user_pref_edit.setOnClickListener() {
             val userPreferencesFragment = UserPreferencesFragment()
 
