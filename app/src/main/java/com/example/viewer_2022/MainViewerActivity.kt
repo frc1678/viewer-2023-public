@@ -171,13 +171,7 @@ class MainViewerActivity : ViewerActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
-            if(it !in Constants.CATEGORY_NAMES){
-                createLeaderboard(it)
-            }
-        }
-
-        Constants.FIELDS_TO_BE_DISPLAYED_LFM.forEach {
+        (Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS + Constants.FIELDS_TO_BE_DISPLAYED_LFM).forEach {
             if(it !in Constants.CATEGORY_NAMES){
                 createLeaderboard(it)
             }
