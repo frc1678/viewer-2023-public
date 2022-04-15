@@ -11,6 +11,8 @@ package com.example.viewer_2022
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -18,6 +20,7 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
@@ -30,10 +33,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.Match
-import com.example.viewer_2022.data.Team
-import com.example.viewer_2022.data.TeamInMatch
-import com.example.viewer_2022.data.getAllNotes
+import com.example.viewer_2022.data.*
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.match_schedule.OurScheduleFragment
 import com.example.viewer_2022.fragments.match_schedule.StarredMatchesFragment
@@ -46,7 +46,10 @@ import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
+import kotlinx.android.synthetic.main.pit_map_popup.*
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
+import kotlinx.android.synthetic.main.robot_pic.view.*
+import org.apache.commons.collections.map.HashedMap
 import java.io.*
 
 
