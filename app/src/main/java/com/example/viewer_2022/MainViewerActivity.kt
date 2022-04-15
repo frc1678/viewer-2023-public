@@ -188,6 +188,7 @@ class MainViewerActivity : ViewerActivity() {
         val ourScheduleFragment = OurScheduleFragment()
         val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
+//        val livePicklistFragment = LivePicklistFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
         val teamListFragment = TeamListFragment()
@@ -242,6 +243,13 @@ class MainViewerActivity : ViewerActivity() {
                         .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
                         .commit()
                 }
+
+//                R.id.nav_menu_live_picklist -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .addToBackStack(null)
+//                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
+//                        .commit()
+//                }
 
                 R.id.nav_menu_pickability_first -> {
                     val ft = supportFragmentManager.beginTransaction()
@@ -507,6 +515,7 @@ class NavDrawerListener(private val navView: NavigationView, private val fragMan
                 "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
                 "starredMatches" -> navView.setCheckedItem(R.id.nav_menu_starred_matches)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
+//                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
                 "pickabilityFirst" -> navView.setCheckedItem(R.id.nav_menu_pickability_first)
                 "pickabilitySecond" -> navView.setCheckedItem(R.id.nav_menu_pickability_second)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
