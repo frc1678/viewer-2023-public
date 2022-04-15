@@ -24,11 +24,11 @@
         android:checkable="true"
         />
 
-    <item
-        android:id="@+id/nav_menu_live_picklist"
-        android:title="Live Picklist"
-        android:checkable="true"
-        />
+<!--    <item-->
+<!--        android:id="@+id/nav_menu_live_picklist"-->
+<!--        android:title="Live Picklist"-->
+<!--        android:checkable="true"-->
+<!--        />-->
 
     <item
         android:id="@+id/nav_menu_pickability_first"
