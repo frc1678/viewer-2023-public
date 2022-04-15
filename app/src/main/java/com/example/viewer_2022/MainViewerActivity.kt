@@ -32,7 +32,6 @@ import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
-import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.*
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
@@ -189,7 +188,7 @@ class MainViewerActivity : ViewerActivity() {
         val ourScheduleFragment = OurScheduleFragment()
         val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
-        val livePicklistFragment = LivePicklistFragment()
+//        val livePicklistFragment = LivePicklistFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
         val teamListFragment = TeamListFragment()
@@ -245,12 +244,12 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
-                R.id.nav_menu_live_picklist -> {
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
-                        .commit()
-                }
+//                R.id.nav_menu_live_picklist -> {
+//                    supportFragmentManager.beginTransaction()
+//                        .addToBackStack(null)
+//                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
+//                        .commit()
+//                }
 
                 R.id.nav_menu_pickability_first -> {
                     val ft = supportFragmentManager.beginTransaction()
@@ -521,7 +520,7 @@ class NavDrawerListener(private val navView: NavigationView, private val fragMan
                 "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
                 "starredMatches" -> navView.setCheckedItem(R.id.nav_menu_starred_matches)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
-                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
+//                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
                 "pickabilityFirst" -> navView.setCheckedItem(R.id.nav_menu_pickability_first)
                 "pickabilitySecond" -> navView.setCheckedItem(R.id.nav_menu_pickability_second)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
