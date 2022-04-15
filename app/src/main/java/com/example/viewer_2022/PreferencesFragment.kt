@@ -2,6 +2,7 @@ package com.example.viewer_2022
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.viewer_2022.MainViewerActivity.UserDatapoints
 import com.example.viewer_2022.constants.Constants
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
+import com.example.viewer_2022.MainViewerActivity.StarredMatches
 
 class PreferencesFragment : Fragment() {
 
@@ -41,6 +43,9 @@ class PreferencesFragment : Fragment() {
                 userPreferencesFragment
             ).commit()
         }
+
+        // If all of our matches are already starred then it sets the Star Our Matches toggle to true
+        root.tb_highlight_our_matches.isChecked = MainViewerActivity.starredMatches.containsAll(StarredMatches.citrusMatches)
 
         root.tb_highlight_our_matches.setOnClickListener { starOurMatches() }
 
@@ -77,15 +82,15 @@ class PreferencesFragment : Fragment() {
         }
     }
 
+    // Stars all of the matches that team 1678 is in
     private fun starOurMatches() {
-        val citrusMatches = MainViewerActivity.matchCache.filter {
-            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
-        }.map { return@map it.value.matchNumber }
 
         if (tb_highlight_our_matches.isChecked) {
-            MainViewerActivity.starredMatches += (citrusMatches)
+            MainViewerActivity.starredMatches += (StarredMatches.citrusMatches)
         } else {
-            MainViewerActivity.starredMatches -= (citrusMatches)
+            MainViewerActivity.starredMatches -= (StarredMatches.citrusMatches)
         }
+
+        StarredMatches.input()
     }
 }
