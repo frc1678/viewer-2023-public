@@ -25,7 +25,7 @@ class Constants {
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "4.0.0"
+        const val VERSION_NUM = "4.0.2"
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",
@@ -309,7 +309,7 @@ class Constants {
             "false" to 2
         )
 
-        val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
+        val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data", "L4M Auto", "L4M Tele", "L4M Endgame")
 
 
         //String literal translations.

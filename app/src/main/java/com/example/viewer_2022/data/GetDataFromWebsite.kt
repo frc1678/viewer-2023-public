@@ -97,7 +97,7 @@ class GetDataFromWebsite(
                         Array<DatabaseReference.CalculatedSubjectiveTeamInMatch>::class.java
                     ).toMutableList()
                 }
-                Log.e("dataFromWebsite", "$result")
+                Log.d("dataFromWebsite", result)
             }
 
             val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
