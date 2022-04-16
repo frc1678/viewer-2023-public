@@ -153,13 +153,15 @@ class Constants {
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED: List<String> = listOf(
             "predicted_score",
             "predicted_rp1",
-            "predicted_rp2"
+            "predicted_rp2",
+            "win_chance"
         )
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED: List<String> = listOf(
             "actual_score",
             "actual_rp1",
-            "actual_rp2"
+            "actual_rp2",
+            "win_chance"
         )
 
         val GRAPHABLE: List<String> = listOf(

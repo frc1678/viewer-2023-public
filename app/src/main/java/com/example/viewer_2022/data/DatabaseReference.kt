@@ -52,7 +52,8 @@ class DatabaseReference {
         var final_predicted_rp2: Float,
         var predicted_score: Float,
         var predicted_rp1: Float,
-        var predicted_rp2: Float
+        var predicted_rp2: Float,
+        var win_chance: Float
     )
 
     data class CalculatedTBATeam (

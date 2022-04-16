@@ -126,14 +126,14 @@ class MatchDetailsFragment : Fragment() {
 
     // Returns each of the three match details header text views that lay beside the team number.
     private fun getHeaderCollection(root: View): List<TextView> {
-        return listOf<TextView>(root.tv_header_one, root.tv_header_two, root.tv_header_three,
-            root.tv_header_four, root.tv_header_five, root.tv_header_six)
+        return listOf<TextView>(root.tv_header_one, root.tv_header_two, root.tv_header_three, root.tv_win_chance_blue,
+            root.tv_header_four, root.tv_header_five, root.tv_header_six, root.tv_win_chance_red)
     }
 
     private fun getHeaderLabelCollection(root: View): List<TextView> {
         return listOf<TextView>(root.tv_header_label_one, root.tv_header_label_two,
-            root.tv_header_label_three, root.tv_header_label_four, root.tv_header_label_five,
-            root.tv_header_label_six)
+            root.tv_header_label_three, root.tv_win_chance_label_blue, root.tv_header_label_four, root.tv_header_label_five,
+            root.tv_header_label_six, root.tv_win_chance_label_red)
     }
 
     // On every team number's specified text view, when the user clicks on the text view it will
@@ -202,7 +202,7 @@ class MatchDetailsFragment : Fragment() {
             text = matchNumber.toString()
 
         for (tv in getHeaderCollection(root)) {
-            if (getHeaderCollection(root).indexOf(tv) < 3) {
+            if (getHeaderCollection(root).indexOf(tv) < 4) {
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber.toString(),
@@ -213,7 +213,7 @@ class MatchDetailsFragment : Fragment() {
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber.toString(),
-                    headerDisplay[getHeaderCollection(root).indexOf(tv) - 3])
+                    headerDisplay[getHeaderCollection(root).indexOf(tv) - 4])
                 if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
                 else {tv.text = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())}
             }
@@ -223,12 +223,14 @@ class MatchDetailsFragment : Fragment() {
             val headerLabelIndex = getHeaderLabelCollection(root).indexOf(tv)
 
             when {
-                (headerLabelIndex == 0) or (headerLabelIndex == 3) ->
+                (headerLabelIndex == 0) or (headerLabelIndex == 4) ->
                     tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[0]]
-                (headerLabelIndex == 1) or (headerLabelIndex == 4) ->
+                (headerLabelIndex == 1) or (headerLabelIndex == 5) ->
                     tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[1]]
-                (headerLabelIndex == 2) or (headerLabelIndex == 5) ->
+                (headerLabelIndex == 2) or (headerLabelIndex == 6) ->
                     tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[2]]
+                (headerLabelIndex == 3) or (headerLabelIndex == 7) ->
+                    tv.text = Translations.ACTUAL_TO_HUMAN_READABLE[headerDisplay[3]]
             }
         }
     }

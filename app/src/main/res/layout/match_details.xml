@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -48,6 +48,16 @@
 
             <TextView
                 android:id="@+id/tv_header_three"
+                style="@style/tv_data_points_top_match_details"
+                android:textColor="@color/Blue" />
+
+            <TextView
+                android:id="@+id/tv_win_chance_label_blue"
+                style="@style/tv_data_points_top_match_details_labels"
+                android:textColor="@color/Blue" />
+
+            <TextView
+                android:id="@+id/tv_win_chance_blue"
                 style="@style/tv_data_points_top_match_details"
                 android:textColor="@color/Blue" />
 
@@ -99,6 +109,16 @@
 
             <TextView
                 android:id="@+id/tv_header_six"
+                style="@style/tv_data_points_top_match_details"
+                android:textColor="@color/Red" />
+
+            <TextView
+                android:id="@+id/tv_win_chance_label_red"
+                style="@style/tv_data_points_top_match_details_labels"
+                android:textColor="@color/Red" />
+
+            <TextView
+                android:id="@+id/tv_win_chance_red"
                 style="@style/tv_data_points_top_match_details"
                 android:textColor="@color/Red" />
 

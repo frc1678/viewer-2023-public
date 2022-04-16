@@ -107,7 +107,8 @@ class Translations {
             "quickness_score" to "Quickness Score",
             "field_awareness_score" to "Field Aware Score",
             "matches_played_defense" to "Matches Played D",
-            "See Matches" to "See Matches " + "\u2192".toCharArray()[0].toString()
+            "See Matches" to "See Matches " + "\u2192".toCharArray()[0].toString(),
+            "win_chance" to "Win Chance"
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(
