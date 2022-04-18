@@ -12,20 +12,19 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specfific data.
-        const val EVENT_KEY = "2022casj"
+        const val EVENT_KEY = "2022hop"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
         const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
         const val REFRESH_INTERVAL = 120
-        //In order to change the URL, see the GeDataFromWebsite Async Task
 
         //Util.
         const val NULL_PREDICTED_SCORE_CHARACTER = "-"
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "4.0.2"
+        const val VERSION_NUM = "5.0.0"
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",
