@@ -23,7 +23,11 @@ class RefreshManager {
                 Duration.seconds(Constants.REFRESH_INTERVAL)
             ).onEach {
                 Log.d("data-refresh", "tick")
-                MainViewerActivity.updateNotesCache()
+                try {
+                    MainViewerActivity.updateNotesCache()
+                } catch (e: Throwable) {
+                    Log.e("data-refresh", "Error fetching notes data $it")
+                }
                 GetDataFromWebsite({
                     Log.i("data-refresh", "Fetched data from website successfully")
 
