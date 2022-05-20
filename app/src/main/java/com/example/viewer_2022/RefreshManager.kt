@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.onEach
 import java.util.*
 import kotlin.time.Duration
 
-
+// Manages updates to the data and triggering refreshes in the UI
 class RefreshManager {
     private val listeners = mutableMapOf<String, () -> Unit>()
 

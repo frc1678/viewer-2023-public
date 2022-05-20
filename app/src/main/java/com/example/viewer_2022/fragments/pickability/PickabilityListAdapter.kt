@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.pickability_cell.view.*
 import java.lang.ClassCastException
 import java.lang.Float.parseFloat
 
+/**
+ * Adapter for the pickability list.
+ */
 class PickabilityListAdapter(
     private val context: Context,
     var items: Map<String, Float>,

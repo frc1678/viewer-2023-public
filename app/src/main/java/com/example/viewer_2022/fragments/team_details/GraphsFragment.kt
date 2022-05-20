@@ -25,6 +25,9 @@ import com.github.mikephil.charting.renderer.XAxisRenderer
 import com.github.mikephil.charting.utils.MPPointF
 import com.github.mikephil.charting.utils.Utils
 
+/**
+ * Page that the graphs are displayed on
+ */
 class GraphsFragment() : Fragment() {
     private var teamNumber: String? = null
     private var datapoint: String? = null

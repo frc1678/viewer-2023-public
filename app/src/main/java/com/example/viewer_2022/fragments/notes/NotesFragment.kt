@@ -19,6 +19,9 @@ import java.lang.reflect.Type
 import java.net.HttpURLConnection
 import java.net.URL
 
+/**
+ * Page that displays strategist notes
+ */
 class NotesFragment : Fragment() {
 
     var mode = Mode.VIEW

@@ -16,6 +16,9 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.util.*
 
+/**
+ * Async task to get data from the webserver
+ */
 class GetDataFromWebsite(
     val onCompleted: () -> Unit = {},
     val onError: (error: String) -> Unit = {}

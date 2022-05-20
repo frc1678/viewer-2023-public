@@ -42,7 +42,7 @@ object PicklistConnectionManager {
             Log.d("picklist", "connecting to websocket...")
             try {
                 client.wss(
-                    host = "grosbeak.captured.earth",
+                    host = "grosbeak.citruscircuits.org",
                     path = "/ws/picklist"
                 ) {
                     webSocketSession = this

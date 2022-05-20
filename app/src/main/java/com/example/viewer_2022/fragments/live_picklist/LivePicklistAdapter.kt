@@ -14,6 +14,9 @@ import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import com.google.gson.Gson
 import kotlinx.coroutines.runBlocking
 
+/**
+ * Recycler adapter for live picklist
+ */
 class LivePicklistRecyclerAdapter(val context: LivePicklistFragment) :
     ListAdapter<String, LivePicklistRecyclerAdapter.LivePicklistViewHolder>(object :
         DiffUtil.ItemCallback<String>() {

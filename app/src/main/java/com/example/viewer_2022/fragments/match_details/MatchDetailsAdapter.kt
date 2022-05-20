@@ -18,6 +18,9 @@ import com.example.viewer_2022.getTIMDataValueByMatch
 import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.match_details_cell.view.*
 
+/**
+ * Adapter for the match details datapoint list
+ */
 class MatchDetailsAdapter(
     private val context: FragmentActivity,
     private val datapointsDisplay: List<String>,

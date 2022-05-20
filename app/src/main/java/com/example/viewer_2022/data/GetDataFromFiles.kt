@@ -13,6 +13,9 @@ import java.io.*
 import java.util.*
 
 
+/**
+ * Async task to get data from test data files
+ */
 class GetDataFromFiles(
     var context: Context,
     val onCompleted: () -> Unit = {},

@@ -1,4 +1,4 @@
-package com.example.viewer_2022
+package com.example.viewer_2022.fragments.user_preferences
 
 import android.content.Context
 import android.util.TypedValue
@@ -11,11 +11,15 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
 import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.team_details_cell.view.*
 
+/**
+ * Adapter for the user preferences list
+ */
 class UserPreferencesAdapter(
     private val context: FragmentActivity,
     private val datapointsDisplayed: List<String>

@@ -2,6 +2,10 @@ package com.example.viewer_2022
 
 import com.example.viewer_2022.data.Match
 
+/**
+ * @param teamNumbers the list of team numbers to search. If you pass in an empty list then it will return all matches. If you pass in 1-2 items it will only return matches with those team numbers. If you pass in more than 2 items it will break.
+ * @param starred If true, only return matches that have been starred.
+ */
 fun getMatchSchedule(
     teamNumbers: List<String> = listOf(),
     starred: Boolean = false

@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.fragment_ranking.view.*
 import java.lang.ClassCastException
 import java.util.Comparator
 
+/**
+ * Page that ranks the pickability of each team. Previously allowed for first pickability and second pickability
+ */
 class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()

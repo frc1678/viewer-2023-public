@@ -12,6 +12,9 @@ import com.example.viewer_2022.constants.Translations
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 
+/**
+ * Page for showing predicted rankings
+ */
 class PredRankingFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()

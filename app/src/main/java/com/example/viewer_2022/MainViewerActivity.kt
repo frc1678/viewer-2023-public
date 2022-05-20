@@ -11,8 +11,6 @@ package com.example.viewer_2022
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -20,7 +18,6 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
@@ -39,6 +36,7 @@ import com.example.viewer_2022.fragments.match_schedule.OurScheduleFragment
 import com.example.viewer_2022.fragments.match_schedule.StarredMatchesFragment
 import com.example.viewer_2022.fragments.pickability.PickabilityFragment
 import com.example.viewer_2022.fragments.pickability.PickabilityMode
+import com.example.viewer_2022.fragments.preferences.PreferencesFragment
 import com.example.viewer_2022.fragments.ranking.RankingFragment
 import com.example.viewer_2022.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
@@ -46,20 +44,16 @@ import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
-import kotlinx.android.synthetic.main.pit_map_popup.*
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
-import kotlinx.android.synthetic.main.robot_pic.view.*
-import org.apache.commons.collections.map.HashedMap
 import java.io.*
 
 
-// Main activity class that handles the dual fragment view.
+// Main activity class that handles navigation.
 class MainViewerActivity : ViewerActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
 
     companion object {
-        var currentRankingMenuItem: MenuItem? = null
         var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
         var timCache = object : HashSet<TeamInMatch>() {

@@ -1,5 +1,8 @@
 package com.example.viewer_2022.constants
 
+/**
+ * Class that contains translations from datapoint names to human-readable names.
+ */
 class Translations {
     companion object {
         val ACTUAL_TO_HUMAN_READABLE: Map<String, String> = mapOf(

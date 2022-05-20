@@ -12,6 +12,9 @@ import com.example.viewer_2022.getMatchSchedule
 import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 
+/**
+ * Match schedule fragment with only our matches
+ */
 class OurScheduleFragment : MatchScheduleFragment() {
 
     override fun onCreateView(

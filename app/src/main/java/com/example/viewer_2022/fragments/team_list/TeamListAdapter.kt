@@ -10,6 +10,9 @@ import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.pickability_cell.view.tv_team_number
 import kotlinx.android.synthetic.main.team_list_cell.view.*
 
+/**
+ * Adapter for the team list fragment.
+ */
 class TeamListAdapter(private val context: Context, private val items: List<String>) :
     BaseAdapter() {
     private val inflater = LayoutInflater.from(context)

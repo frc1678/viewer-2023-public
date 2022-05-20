@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.fragment_match_schedule.view.*
 import kotlinx.android.synthetic.main.match_schedule_cell.view.*
 import com.example.viewer_2022.MainViewerActivity.StarredMatches
 
+/**
+ * Match schedule fragment with only starred matches
+ */
 class StarredMatchesFragment : MatchScheduleFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
