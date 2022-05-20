@@ -22,7 +22,7 @@ class UserPreferencesAdapter(
 ) : BaseAdapter() {
 
     val fullDatapoints = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-    var chosenDatapoints : MutableSet<String> = mutableSetOf()
+    var chosenDatapoints: MutableSet<String> = mutableSetOf()
     lateinit var intersectDatapoints: Set<String>
     var userName = UserDatapoints.contents?.get("selected")?.asString
 
@@ -78,15 +78,15 @@ class UserPreferencesAdapter(
         val datapointsArray = UserDatapoints.contents?.get(userName)?.asJsonArray
 
         for (datapoint in datapointsArray!!) {
-            if (datapoint.asString == datapointName){
+            if (datapoint.asString == datapointName) {
                 chosenDatapoints.add(datapointName)
                 rowView.setBackgroundColor(ContextCompat.getColor(context, R.color.ElectricGreen))
                 isGreen = true
             }
         }
 
-        rowView.setOnClickListener(){
-            isGreen = if(!isGreen) {
+        rowView.setOnClickListener() {
+            isGreen = if (!isGreen) {
                 rowView.setBackgroundColor(ContextCompat.getColor(context, R.color.ElectricGreen))
                 chosenDatapoints.add(datapointName)
                 true

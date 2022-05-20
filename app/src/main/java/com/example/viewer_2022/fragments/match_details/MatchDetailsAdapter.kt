@@ -1,4 +1,4 @@
-package com.example.viewer_2022.fragments.match_schedule.match_details
+package com.example.viewer_2022.fragments.match_details
 
 import android.content.Context
 import android.util.Log

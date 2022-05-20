@@ -169,7 +169,8 @@ private fun sendRequest(url: String): String {
     return result.toString()
 }
 
-class GetRequestTask(val endpoint: String, val done: ((response: String?) -> Unit)? = null): AsyncTask<Unit, Unit, String?>() {
+class GetRequestTask(val endpoint: String, val done: ((response: String?) -> Unit)? = null) :
+    AsyncTask<Unit, Unit, String?>() {
     override fun doInBackground(vararg params: Unit?): String {
         return sendRequest("https://cardinal.citruscircuits.org/cardinal/api/$endpoint")
     }
@@ -181,19 +182,23 @@ class GetRequestTask(val endpoint: String, val done: ((response: String?) -> Uni
 
 fun getAllNotes(cb: (List<NotesData>) -> Unit) {
     try {
-        GetRequestTask("notes/all"){
-            if(it == null) throw Exception("Null response")
+        GetRequestTask("notes/all") {
+            if (it == null) throw Exception("Null response")
             val notesData: List<NotesData> = Gson().fromJson(it, GetAllNotesData)
                 ?: return@GetRequestTask
             cb(notesData)
         }.execute()
-    } catch (e: Exception){
+    } catch (e: Exception) {
         Log.e("notes", "FAILED TO FETCH ALL NOTES. THIS IS NOT GOOD. VERY VERY BAD")
     }
 }
 
 
-class PostRequestTask(val endpoint: String, val data: String, val done: ((response: String) -> Unit)? = null) : AsyncTask<Unit, Unit, String>() {
+class PostRequestTask(
+    val endpoint: String,
+    val data: String,
+    val done: ((response: String) -> Unit)? = null
+) : AsyncTask<Unit, Unit, String>() {
     override fun doInBackground(vararg params: Unit?): String {
         val result = StringBuilder()
 
@@ -214,14 +219,13 @@ class PostRequestTask(val endpoint: String, val data: String, val done: ((respon
             bodyStream.flush()
             os.close()
             val status = urlConnection.responseCode;
-            if (status != HttpURLConnection.HTTP_OK)  {
+            if (status != HttpURLConnection.HTTP_OK) {
                 val inputStream = urlConnection.errorStream;
                 val reader = BufferedReader(InputStreamReader(inputStream))
                 val line = reader.readText()
                 Log.d("postRequest", "Line: $line")
                 result.append(line)
-            }
-            else  {
+            } else {
                 val inputStream = urlConnection.inputStream;
                 val reader = BufferedReader(InputStreamReader(inputStream))
                 val line = reader.readText()
@@ -240,6 +244,7 @@ class PostRequestTask(val endpoint: String, val data: String, val done: ((respon
         Log.d("postRequest", "Response body: $result")
         return result.toString()
     }
+
     override fun onPostExecute(result: String) {
         done?.let { it(result) }
     }

@@ -45,7 +45,8 @@ class PreferencesFragment : Fragment() {
         }
 
         // If all of our matches are already starred then it sets the Star Our Matches toggle to true
-        root.tb_highlight_our_matches.isChecked = MainViewerActivity.starredMatches.containsAll(StarredMatches.citrusMatches)
+        root.tb_highlight_our_matches.isChecked =
+            MainViewerActivity.starredMatches.containsAll(StarredMatches.citrusMatches)
 
         root.tb_highlight_our_matches.setOnClickListener { starOurMatches() }
 

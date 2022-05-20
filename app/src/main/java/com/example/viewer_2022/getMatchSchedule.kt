@@ -2,7 +2,10 @@ package com.example.viewer_2022
 
 import com.example.viewer_2022.data.Match
 
-fun getMatchSchedule(teamNumbers: List<String> = listOf(), starred: Boolean = false): Map<String, Match> {
+fun getMatchSchedule(
+    teamNumbers: List<String> = listOf(),
+    starred: Boolean = false
+): Map<String, Match> {
     if (starred) {
         val starredMatches = mutableMapOf<String, Match>()
         val searchedMatches = mutableMapOf<String, Match>()
@@ -19,7 +22,8 @@ fun getMatchSchedule(teamNumbers: List<String> = listOf(), starred: Boolean = fa
                         searchedMatches[i.key] = i.value
                     }
                 } else if (((teamNumbers[0] in i.value.redTeams) or (teamNumbers[0] in i.value.blueTeams))
-                    and ((teamNumbers[1] in i.value.redTeams) or (teamNumbers[1] in i.value.blueTeams))) {
+                    and ((teamNumbers[1] in i.value.redTeams) or (teamNumbers[1] in i.value.blueTeams))
+                ) {
                     searchedMatches[i.key] = i.value
                 }
             }
@@ -31,8 +35,7 @@ fun getMatchSchedule(teamNumbers: List<String> = listOf(), starred: Boolean = fa
                 }
             }
             return returnedMatches
-        }
-        else {
+        } else {
             return starredMatches
         }
     } else if (teamNumbers.isNotEmpty()) {
@@ -43,7 +46,8 @@ fun getMatchSchedule(teamNumbers: List<String> = listOf(), starred: Boolean = fa
                     tempMatches[i.key] = i.value
                 }
             } else if (((teamNumbers[0] in i.value.redTeams) or (teamNumbers[0] in i.value.blueTeams))
-                and ((teamNumbers[1] in i.value.redTeams) or (teamNumbers[1] in i.value.blueTeams))) {
+                and ((teamNumbers[1] in i.value.redTeams) or (teamNumbers[1] in i.value.blueTeams))
+            ) {
                 tempMatches[i.key] = i.value
             }
         }

@@ -12,7 +12,7 @@ import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.fragment_user_pref.view.*
 import java.io.InputStreamReader
 
-class UserPreferencesFragment: Fragment() {
+class UserPreferencesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +24,7 @@ class UserPreferencesFragment: Fragment() {
 
         val userName = UserDatapoints.contents?.get("selected")?.asString
 
-        root.user_datapoints_header.text = if (userName == "NONE"){
+        root.user_datapoints_header.text = if (userName == "NONE") {
             "User's Datapoints"
         } else {
             "${userName?.toLowerCase()?.capitalize()}'s Datapoints"
@@ -32,9 +32,11 @@ class UserPreferencesFragment: Fragment() {
 
         updateUserDatapointsListView(root)
 
-        root.reset_button.setOnClickListener(){
-            val defaultsJsonArray : JsonArray = JsonParser.parseReader(InputStreamReader
-                (context?.resources?.openRawResource(R.raw.default_prefs)))
+        root.reset_button.setOnClickListener() {
+            val defaultsJsonArray: JsonArray = JsonParser.parseReader(
+                InputStreamReader
+                    (context?.resources?.openRawResource(R.raw.default_prefs))
+            )
                 .asJsonObject.get(userName).asJsonArray
 
             UserDatapoints.contents?.remove(userName)

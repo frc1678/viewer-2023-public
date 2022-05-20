@@ -15,7 +15,8 @@ import com.google.gson.Gson
 import kotlinx.coroutines.runBlocking
 
 class LivePicklistRecyclerAdapter(val context: LivePicklistFragment) :
-    ListAdapter<String, LivePicklistRecyclerAdapter.LivePicklistViewHolder>(object : DiffUtil.ItemCallback<String>() {
+    ListAdapter<String, LivePicklistRecyclerAdapter.LivePicklistViewHolder>(object :
+        DiffUtil.ItemCallback<String>() {
 
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem.contentEquals(newItem)
@@ -26,11 +27,11 @@ class LivePicklistRecyclerAdapter(val context: LivePicklistFragment) :
         }
 
 
-    } ) {
+    }) {
     inner class LivePicklistViewHolder(private val itemViewBinding: LivePicklistCellBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root) {
         fun bindRoot(teamNumber: String) {
-            if(context.order.contains(teamNumber)){
+            if (context.order.contains(teamNumber)) {
                 itemViewBinding.tvFirstRank.text =
                     context.order.indexOf(teamNumber).plus(1).toString()
                 itemViewBinding.root.setBackgroundColor(context.resources.getColor(R.color.White))
@@ -43,7 +44,6 @@ class LivePicklistRecyclerAdapter(val context: LivePicklistFragment) :
 
         }
     }
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LivePicklistViewHolder {
@@ -61,8 +61,6 @@ class LivePicklistRecyclerAdapter(val context: LivePicklistFragment) :
         val picklistItem = this.getItem(position)
         holder.bindRoot(picklistItem)
     }
-
-
 
 
     fun onClick(teamNumber: String) {
@@ -98,7 +96,7 @@ class LivePicklistRecyclerAdapter(val context: LivePicklistFragment) :
         }
     }
 
-    fun handleDNPToggle(position: Int){
+    fun handleDNPToggle(position: Int) {
         val teamNumber = this.getItem(position)
         runBlocking {
             val data = ToggleDNPRequest(team_number = teamNumber.toInt())
