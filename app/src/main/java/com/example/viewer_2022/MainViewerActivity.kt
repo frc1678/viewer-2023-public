@@ -179,7 +179,9 @@ class MainViewerActivity : ViewerActivity() {
             updateNavFooter()
         }
 
-        updateNotesCache()
+        if (!Constants.USE_TEST_DATA){
+            updateNotesCache()
+        }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
