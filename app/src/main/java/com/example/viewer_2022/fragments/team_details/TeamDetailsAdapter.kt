@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
 import android.widget.FrameLayout
+import androidx.core.view.isVisible
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.notes.NotesFragment
@@ -110,7 +111,7 @@ class TeamDetailsAdapter(
 
             if (e == "Notes") {
                 if (Constants.USE_TEST_DATA) {
-                    return null
+                    rowView.isVisible = false
                 }
                 Log.d("notes", "SETTING UP NOTES CELL IN TEAM DETAILS")
                 rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
