@@ -125,26 +125,6 @@ class MainViewerActivity : ViewerActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED) {
-            try {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ),
-                    100
-                )
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-
-        // Creates the files for user datapoints and starred matches
-        UserDatapoints.read(this)
-        StarredMatches.read()
 
         // Pull the set of starred matches from the downloads file viewer_starred_matches.
         var jsonStarred = contents.get("starredMatches")?.asJsonArray

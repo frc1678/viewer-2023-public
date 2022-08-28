@@ -68,7 +68,7 @@ class StartupActivity : ViewerActivity() {
             GetDataFromFiles(this, {
                 ContextCompat.startActivity(
                     this,
-                    Intent(this, MainViewerActivity::class.java),
+                    Intent(this, WelcomeActivity::class.java),
                     null
                 )
 
@@ -84,7 +84,7 @@ class StartupActivity : ViewerActivity() {
             GetDataFromWebsite({
                 ContextCompat.startActivity(
                     this,
-                    Intent(this, MainViewerActivity::class.java),
+                    Intent(this, WelcomeActivity::class.java),
                     null
                 )
 
