@@ -236,24 +236,40 @@ class MatchScheduleListAdapter(
             when (listOf(viewHolder.tvRedPredictedRPOne, viewHolder.tvRedPredictedRPTwo).indexOf(tv)) {
                 0 -> {
                     if (hasActualData) {
-                        if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne != null && MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.cargo_ball)
+                        if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne != null) {
+                            if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+                                tv.setImageResource(R.drawable.cargo_ball)
+                            } else {
+                                tv.setImageDrawable(null)
+                            }
                             continue@red_predicted
                         }
-                    } else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne != null && MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                        tv.setImageResource(R.drawable.cargo_ball)
+                    } else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne != null) {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+                            tv.setImageResource(R.drawable.cargo_ball)
+                        } else {
+                            tv.setImageDrawable(null)
+                        }
                         continue@red_predicted
                     }
                 }
 
                 1 -> {
                     if (hasActualData) {
-                        if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo != null && MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.pull_up_bars)
+                        if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo != null) {
+                            if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+                                tv.setImageResource(R.drawable.pull_up_bars)
+                            } else {
+                                tv.setImageDrawable(null)
+                            }
                             continue@red_predicted
                         }
-                    } else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null && MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                        tv.setImageResource(R.drawable.pull_up_bars)
+                    } else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null) {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+                            tv.setImageResource(R.drawable.pull_up_bars)
+                        } else {
+                            tv.setImageDrawable(null)
+                        }
                         continue@red_predicted
                     }
                 }
@@ -298,24 +314,40 @@ class MatchScheduleListAdapter(
             when (listOf(viewHolder.tvBluePredictedRPOne, viewHolder.tvBluePredictedRPTwo).indexOf(tv)) {
                 0 -> {
                     if (hasActualData) {
-                        if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne != null && MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.cargo_ball)
+                        if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne != null) {
+                            if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+                                tv.setImageResource(R.drawable.cargo_ball)
+                            } else {
+                                tv.setImageDrawable(null)
+                            }
                             continue@blue_predicted
                         }
-                    } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne != null && MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                        tv.setImageResource(R.drawable.cargo_ball)
+                    } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne != null) {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+                            tv.setImageResource(R.drawable.cargo_ball)
+                        } else {
+                            tv.setImageDrawable(null)
+                        }
                         continue@blue_predicted
                     }
                 }
 
                 1 -> {
                     if (hasActualData) {
-                        if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo != null && MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.pull_up_bars)
+                        if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo != null) {
+                            if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+                                tv.setImageResource(R.drawable.pull_up_bars)
+                            } else {
+                                tv.setImageDrawable(null)
+                            }
                             continue@blue_predicted
                         }
-                    } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null && MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                        tv.setImageResource(R.drawable.pull_up_bars)
+                    } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null) {
+                        if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+                            tv.setImageResource(R.drawable.pull_up_bars)
+                        } else {
+                            tv.setImageDrawable(null)
+                        }
                         continue@blue_predicted
                     }
                 }
