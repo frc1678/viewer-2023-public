@@ -8,6 +8,7 @@
 
 package com.example.viewer_2022.fragments.match_schedule
 
+import android.content.Context
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.Typeface.DEFAULT
@@ -277,6 +278,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne =
                                 (("%.1f").format(value.toFloat())).toFloat()
                         }
+                        tv.setImageResource(R.drawable.cargo_ball)
                     }
 
                     1 -> {
@@ -287,6 +289,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo =
                                 (("%.1f").format(value.toFloat())).toFloat()
                         }
+                        tv.setImageResource(R.drawable.pull_up_bars)
                     }
                 }
             } else tv.setImageDrawable(null)
@@ -337,6 +340,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne =
                                 (("%.1f").format(value.toFloat())).toFloat()
                         }
+                        tv.setImageResource(R.drawable.cargo_ball)
                     }
 
                     1 -> {
@@ -347,6 +351,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo =
                                 (("%.1f").format(value.toFloat())).toFloat()
                         }
+                        tv.setImageResource(R.drawable.pull_up_bars)
                     }
                 }
             } else tv.setImageDrawable(null)
