@@ -288,10 +288,10 @@ class MatchScheduleListAdapter(
                     0 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne =
-                                (("%.0f").format(value.toFloat())).toFloat()
+                                "%.0f".format(value.toFloat()).toFloat()
                         } else {
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne =
-                                (("%.1f").format(value.toFloat())).toFloat()
+                                "%.1f".format(value.toFloat()).toFloat()
                         }
                         tv.setImageResource(R.drawable.cargo_ball)
                     }
@@ -299,10 +299,10 @@ class MatchScheduleListAdapter(
                     1 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo =
-                                (("%.0f").format(value.toFloat())).toFloat()
+                                "%.0f".format(value.toFloat()).toFloat()
                         } else {
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo =
-                                (("%.1f").format(value.toFloat())).toFloat()
+                                "%.1f".format(value.toFloat()).toFloat()
                         }
                         tv.setImageResource(R.drawable.pull_up_bars)
                     }
@@ -366,10 +366,10 @@ class MatchScheduleListAdapter(
                     0 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne =
-                                (("%.0f").format(value.toFloat())).toFloat()
+                                "%.0f".format(value.toFloat()).toFloat()
                         } else {
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne =
-                                (("%.1f").format(value.toFloat())).toFloat()
+                                "%.1f".format(value.toFloat()).toFloat()
                         }
                         tv.setImageResource(R.drawable.cargo_ball)
                     }
@@ -466,16 +466,7 @@ class MatchScheduleListAdapter(
         rowView.setOnClickListener {
             matchClick(it)
         }
-        for (team in viewHolder.blueTeams) {
-            team.setOnClickListener {
-                matchClick(it)
-            }
-            team.setOnLongClickListener {
-                teamLongClick(team, it)
-                return@setOnLongClickListener true
-            }
-        }
-        for (team in viewHolder.redTeams) {
+        for (team in viewHolder.blueTeams union viewHolder.redTeams) {
             team.setOnClickListener {
                 matchClick(it)
             }
