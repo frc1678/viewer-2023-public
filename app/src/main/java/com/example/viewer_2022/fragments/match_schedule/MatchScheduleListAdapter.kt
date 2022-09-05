@@ -8,7 +8,6 @@
 
 package com.example.viewer_2022.fragments.match_schedule
 
-import android.content.Context
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.Typeface.DEFAULT
@@ -17,7 +16,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.BaseAdapter
+import android.widget.ImageView
+import android.widget.ListView
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.viewer_2022.MainViewerActivity
@@ -145,20 +148,18 @@ class MatchScheduleListAdapter(
         val field = if (hasActualData) "actual_rp" else "predicted_rp"
 
         // Set the background color based on whether the match has been played
-        viewHolder.wholeLine.setBackgroundColor(
+        viewHolder.wholeCell.setBackgroundColor(
             ContextCompat.getColor(context, if (hasActualData) R.color.LightGray else R.color.White)
         )
 
         // Set the blue predicted score
         if ((!hasActualData) && MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore != null) {
             // Cache hit
-            viewHolder.tvBluePredictedScore.text =
-                MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
+            viewHolder.tvBlueScore.text = MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
         } else if (hasActualData && MainViewerActivity.matchCache[matchNumber]!!.blueActualScore != null) {
             // Cache hit
             // noinspection SetTextI18n
-            viewHolder.tvBluePredictedScore.text =
-                "%.0f".format(MainViewerActivity.matchCache[matchNumber]!!.blueActualScore)
+            viewHolder.tvBlueScore.text = "%.0f".format(MainViewerActivity.matchCache[matchNumber]!!.blueActualScore)
         } else {
             // Cache miss
             val value = getAllianceInMatchObjectByKey(
@@ -168,7 +169,7 @@ class MatchScheduleListAdapter(
                 if (hasActualData) "actual_score" else "predicted_score"
             )
             if (value != Constants.NULL_CHARACTER) {
-                viewHolder.tvBluePredictedScore.text = (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
+                viewHolder.tvBlueScore.text = (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
                 if (!hasActualData) {
                     MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
                         "%.1f".format(value.toFloat()).toFloat()
@@ -177,20 +178,18 @@ class MatchScheduleListAdapter(
                         "%.0f".format(value.toFloat()).toFloat()
                 }
             } else {
-                viewHolder.tvBluePredictedScore.text = Constants.NULL_PREDICTED_SCORE_CHARACTER
+                viewHolder.tvBlueScore.text = Constants.NULL_PREDICTED_SCORE_CHARACTER
             }
         }
 
         // Set the red predicted score
         if ((!hasActualData) && MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore != null) {
             // Cache hit
-            viewHolder.tvRedPredictedScore.text =
-                MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
+            viewHolder.tvRedScore.text = MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
         } else if (hasActualData && MainViewerActivity.matchCache[matchNumber]!!.redActualScore != null) {
             // Cache hit
             // noinspection SetTextI18n
-            viewHolder.tvRedPredictedScore.text =
-                "%.0f".format(MainViewerActivity.matchCache[matchNumber]!!.redActualScore)
+            viewHolder.tvRedScore.text = "%.0f".format(MainViewerActivity.matchCache[matchNumber]!!.redActualScore)
         } else {
             // Cache miss
             val value = if (hasActualData) {
@@ -209,7 +208,7 @@ class MatchScheduleListAdapter(
                 )
             }
             if (value != Constants.NULL_CHARACTER) {
-                viewHolder.tvRedPredictedScore.text = (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
+                viewHolder.tvRedScore.text = (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
                 if (!hasActualData) {
                     MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
                         "%.1f".format(value.toFloat()).toFloat()
@@ -218,12 +217,12 @@ class MatchScheduleListAdapter(
                         "%.0f".format(value.toFloat()).toFloat()
                 }
             } else {
-                viewHolder.tvRedPredictedScore.text = Constants.NULL_PREDICTED_SCORE_CHARACTER
+                viewHolder.tvRedScore.text = Constants.NULL_PREDICTED_SCORE_CHARACTER
             }
         }
 
         // Use a different color when there's no predicted score
-        for (tv in listOf(viewHolder.tvBluePredictedScore, viewHolder.tvRedPredictedScore)) {
+        for (tv in listOf(viewHolder.tvBlueScore, viewHolder.tvRedScore)) {
             if (tv.text == Constants.NULL_PREDICTED_SCORE_CHARACTER) {
                 tv.setTextColor(ContextCompat.getColor(context, R.color.ElectricGreen))
             } else {
@@ -232,8 +231,8 @@ class MatchScheduleListAdapter(
         }
 
         // Set the ranking point icons
-        red_predicted@ for (tv in listOf(viewHolder.tvRedPredictedRPOne, viewHolder.tvRedPredictedRPTwo)) {
-            when (listOf(viewHolder.tvRedPredictedRPOne, viewHolder.tvRedPredictedRPTwo).indexOf(tv)) {
+        red_predicted@ for (tv in listOf(viewHolder.imgRedRpOne, viewHolder.imgRedRpTwo)) {
+            when (listOf(viewHolder.imgRedRpOne, viewHolder.imgRedRpTwo).indexOf(tv)) {
                 0 -> {
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne != null) {
@@ -280,12 +279,12 @@ class MatchScheduleListAdapter(
                 matchNumber,
                 field + "${
                     listOf(
-                        viewHolder.tvRedPredictedRPOne, viewHolder.tvRedPredictedRPTwo
+                        viewHolder.imgRedRpOne, viewHolder.imgRedRpTwo
                     ).indexOf(tv) + 1
                 }"
             )
             if (value != Constants.NULL_CHARACTER && value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                when (listOf(viewHolder.tvRedPredictedRPOne, viewHolder.tvRedPredictedRPTwo).indexOf(tv)) {
+                when (listOf(viewHolder.imgRedRpOne, viewHolder.imgRedRpTwo).indexOf(tv)) {
                     0 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne =
@@ -310,8 +309,8 @@ class MatchScheduleListAdapter(
                 }
             } else tv.setImageDrawable(null)
         }
-        blue_predicted@ for (tv in listOf(viewHolder.tvBluePredictedRPOne, viewHolder.tvBluePredictedRPTwo)) {
-            when (listOf(viewHolder.tvBluePredictedRPOne, viewHolder.tvBluePredictedRPTwo).indexOf(tv)) {
+        blue_predicted@ for (tv in listOf(viewHolder.imgBlueRpOne, viewHolder.imgBlueRpTwo)) {
+            when (listOf(viewHolder.imgBlueRpOne, viewHolder.imgBlueRpTwo).indexOf(tv)) {
                 0 -> {
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne != null) {
@@ -358,12 +357,12 @@ class MatchScheduleListAdapter(
                 matchNumber,
                 field + "${
                     listOf(
-                        viewHolder.tvBluePredictedRPOne, viewHolder.tvBluePredictedRPTwo
+                        viewHolder.imgBlueRpOne, viewHolder.imgBlueRpTwo
                     ).indexOf(tv) + 1
                 }"
             )
             if (value != Constants.NULL_CHARACTER && value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                when (listOf(viewHolder.tvBluePredictedRPOne, viewHolder.tvBluePredictedRPTwo).indexOf(tv)) {
+                when (listOf(viewHolder.imgBlueRpOne, viewHolder.imgBlueRpTwo).indexOf(tv)) {
                     0 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne =
@@ -391,7 +390,7 @@ class MatchScheduleListAdapter(
 
         // Set background for starred matches
         if (MainViewerActivity.starredMatches.contains(matchNumber)) {
-            viewHolder.wholeLine.setBackgroundColor(
+            viewHolder.wholeCell.setBackgroundColor(
                 ContextCompat.getColor(context, if (hasActualData) R.color.DarkYellow else R.color.Yellow)
             )
         }
@@ -407,29 +406,29 @@ class MatchScheduleListAdapter(
      */
     private class ViewHolder(view: View?) {
         val tvMatchNumber = view?.findViewById(R.id.tv_match_number) as TextView
-        val tvBluePredictedScore = view?.findViewById(R.id.tv_blue_predicted_score) as TextView
-        val tvRedPredictedScore = view?.findViewById(R.id.tv_red_predicted_score) as TextView
-        val tvBluePredictedRPOne = view?.findViewById(R.id.tv_blue_predicted_rp1) as ImageView
-        val tvRedPredictedRPOne = view?.findViewById(R.id.tv_red_predicted_rp1) as ImageView
-        val tvBluePredictedRPTwo = view?.findViewById(R.id.tv_blue_predicted_rp2) as ImageView
-        val tvRedPredictedRPTwo = view?.findViewById(R.id.tv_red_predicted_rp2) as ImageView
-        val btnBlueTeamOne = view?.findViewById(R.id.btn_blue_team_one) as Button
-        val btnBlueTeamTwo = view?.findViewById(R.id.btn_blue_team_two) as Button
-        val btnBlueTeamThree = view?.findViewById(R.id.btn_blue_team_three) as Button
-        val btnRedTeamOne = view?.findViewById(R.id.btn_red_team_one) as Button
-        val btnRedTeamTwo = view?.findViewById(R.id.btn_red_team_two) as Button
-        val btnRedTeamThree = view?.findViewById(R.id.btn_red_team_three) as Button
-        val wholeLine = view?.findViewById(R.id.whole_line) as LinearLayout
+        val tvBlueScore = view?.findViewById(R.id.blue_score) as TextView
+        val tvRedScore = view?.findViewById(R.id.red_score) as TextView
+        val imgBlueRpOne = view?.findViewById(R.id.blue_rp1) as ImageView
+        val imgRedRpOne = view?.findViewById(R.id.red_rp1) as ImageView
+        val imgBlueRpTwo = view?.findViewById(R.id.blue_rp2) as ImageView
+        val imgRedRpTwo = view?.findViewById(R.id.red_rp2) as ImageView
+        val tvBlueTeamOne = view?.findViewById(R.id.blue_team1) as TextView
+        val tvBlueTeamTwo = view?.findViewById(R.id.blue_team2) as TextView
+        val tvBlueTeamThree = view?.findViewById(R.id.blue_team3) as TextView
+        val tvRedTeamOne = view?.findViewById(R.id.red_team1) as TextView
+        val tvRedTeamTwo = view?.findViewById(R.id.red_team2) as TextView
+        val tvRedTeamThree = view?.findViewById(R.id.red_team3) as TextView
+        val wholeCell = view?.findViewById(R.id.whole_cell) as ConstraintLayout
 
         /**
          * Convenience property holding all the blue teams.
          */
-        val blueTeams = listOf(btnBlueTeamOne, btnBlueTeamTwo, btnBlueTeamThree)
+        val blueTeams = listOf(tvBlueTeamOne, tvBlueTeamTwo, tvBlueTeamThree)
 
         /**
          * Convenience property holding all the red teams.
          */
-        val redTeams = listOf(btnRedTeamOne, btnRedTeamTwo, btnRedTeamThree)
+        val redTeams = listOf(tvRedTeamOne, tvRedTeamTwo, tvRedTeamThree)
     }
 
     /**
@@ -453,7 +452,7 @@ class MatchScheduleListAdapter(
             ).commit()
         }
 
-        fun teamLongClick(selected: Button, it: View) {
+        fun teamLongClick(selected: TextView, it: View) {
             val teamNumber = selected.text.toString()
             val matchScheduleFragment = MatchScheduleFragment()
             val matchScheduleFragmentTransaction = context.supportFragmentManager.beginTransaction()
