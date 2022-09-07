@@ -231,9 +231,9 @@ class MatchScheduleListAdapter(
         }
 
         // Set the ranking point icons
-        red_predicted@ for (tv in listOf(viewHolder.imgRedRpOne, viewHolder.imgRedRpTwo)) {
-            when (listOf(viewHolder.imgRedRpOne, viewHolder.imgRedRpTwo).indexOf(tv)) {
-                0 -> {
+        red_predicted@ for ((rp, tv) in mapOf(1 to viewHolder.imgRedRpOne, 2 to viewHolder.imgRedRpTwo)) {
+            when (rp) {
+                1 -> {
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
@@ -253,7 +253,7 @@ class MatchScheduleListAdapter(
                     }
                 }
 
-                1 -> {
+                2 -> {
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
@@ -277,15 +277,11 @@ class MatchScheduleListAdapter(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED,
                 matchNumber,
-                field + "${
-                    listOf(
-                        viewHolder.imgRedRpOne, viewHolder.imgRedRpTwo
-                    ).indexOf(tv) + 1
-                }"
+                field + "$rp"
             )
             if (value != Constants.NULL_CHARACTER && value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                when (listOf(viewHolder.imgRedRpOne, viewHolder.imgRedRpTwo).indexOf(tv)) {
-                    0 -> {
+                when (rp) {
+                    1 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne =
                                 "%.0f".format(value.toFloat()).toFloat()
@@ -296,7 +292,7 @@ class MatchScheduleListAdapter(
                         tv.setImageResource(R.drawable.cargo_ball)
                     }
 
-                    1 -> {
+                    2 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo =
                                 "%.0f".format(value.toFloat()).toFloat()
@@ -309,9 +305,9 @@ class MatchScheduleListAdapter(
                 }
             } else tv.setImageDrawable(null)
         }
-        blue_predicted@ for (tv in listOf(viewHolder.imgBlueRpOne, viewHolder.imgBlueRpTwo)) {
-            when (listOf(viewHolder.imgBlueRpOne, viewHolder.imgBlueRpTwo).indexOf(tv)) {
-                0 -> {
+        blue_predicted@ for ((rp, tv) in mapOf(1 to viewHolder.imgBlueRpOne, 2 to viewHolder.imgBlueRpTwo)) {
+            when (rp) {
+                1 -> {
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
@@ -331,7 +327,7 @@ class MatchScheduleListAdapter(
                     }
                 }
 
-                1 -> {
+                2 -> {
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
@@ -355,15 +351,11 @@ class MatchScheduleListAdapter(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE,
                 matchNumber,
-                field + "${
-                    listOf(
-                        viewHolder.imgBlueRpOne, viewHolder.imgBlueRpTwo
-                    ).indexOf(tv) + 1
-                }"
+                field + "$rp"
             )
             if (value != Constants.NULL_CHARACTER && value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                when (listOf(viewHolder.imgBlueRpOne, viewHolder.imgBlueRpTwo).indexOf(tv)) {
-                    0 -> {
+                when (rp) {
+                    1 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne =
                                 "%.0f".format(value.toFloat()).toFloat()
@@ -374,7 +366,7 @@ class MatchScheduleListAdapter(
                         tv.setImageResource(R.drawable.cargo_ball)
                     }
 
-                    1 -> {
+                    2 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo =
                                 (("%.0f").format(value.toFloat())).toFloat()
