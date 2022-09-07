@@ -232,6 +232,7 @@ class MatchScheduleListAdapter(
 
         // Set the ranking point icons
         red_predicted@ for ((rp, tv) in mapOf(1 to viewHolder.imgRedRpOne, 2 to viewHolder.imgRedRpTwo)) {
+            // Check the cache to see if the RP values have already been cached
             when (rp) {
                 1 -> {
                     if (hasActualData) {
@@ -273,6 +274,7 @@ class MatchScheduleListAdapter(
                     }
                 }
             }
+            // Cache missed, so we need to retrieve from the database
             val value = getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED,
@@ -306,6 +308,7 @@ class MatchScheduleListAdapter(
             } else tv.setImageDrawable(null)
         }
         blue_predicted@ for ((rp, tv) in mapOf(1 to viewHolder.imgBlueRpOne, 2 to viewHolder.imgBlueRpTwo)) {
+            // Check the cache to see if the RP values have already been cached
             when (rp) {
                 1 -> {
                     if (hasActualData) {
@@ -347,6 +350,7 @@ class MatchScheduleListAdapter(
                     }
                 }
             }
+            // Cache missed, so we need to retrieve from the database
             val value = getAllianceInMatchObjectByKey(
                 Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE,
