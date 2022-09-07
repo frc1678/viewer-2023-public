@@ -373,10 +373,10 @@ class MatchScheduleListAdapter(
                     2 -> {
                         if (hasActualData) {
                             MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo =
-                                (("%.0f").format(value.toFloat())).toFloat()
+                                "%.0f".format(value.toFloat()).toFloat()
                         } else {
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo =
-                                (("%.1f").format(value.toFloat())).toFloat()
+                                "%.1f".format(value.toFloat()).toFloat()
                         }
                         tv.setImageResource(R.drawable.pull_up_bars)
                     }
