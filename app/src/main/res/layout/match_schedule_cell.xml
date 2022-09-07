@@ -19,7 +19,8 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/Black"/>
+            android:textColor="@color/Black"
+            android:lines="1"/>
 
     <TextView
             android:text="1"
@@ -208,7 +209,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/red_rp1"
             android:textSize="14sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:lines="1"/>
 
     <TextView
             android:text="Blue Score"
@@ -220,7 +222,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/blue_rp1"
             android:textSize="14sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:lines="1"/>
 
     <ImageView
             android:layout_width="0dp"
