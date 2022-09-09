@@ -97,9 +97,7 @@ class RankingFragment : Fragment() {
         return root
     }
 
-    fun newInstance(): RankingFragment {
-        return RankingFragment()
-    }
+
 
     fun toggleToPredicted() {
         val predictedRankingFragment = PredRankingFragment()
