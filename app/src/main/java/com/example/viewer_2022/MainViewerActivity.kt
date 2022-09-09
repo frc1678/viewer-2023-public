@@ -190,7 +190,6 @@ class MainViewerActivity : ViewerActivity() {
         val rankingFragment = RankingFragment()
 //        val livePicklistFragment = LivePicklistFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
-        val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
         val teamListFragment = TeamListFragment()
         val preferencesFragment = PreferencesFragment()
 
@@ -251,7 +250,7 @@ class MainViewerActivity : ViewerActivity() {
 //                        .commit()
 //                }
 
-                R.id.nav_menu_pickability_first -> {
+                R.id.nav_menu_pickability -> {
                     val ft = supportFragmentManager.beginTransaction()
                     if (supportFragmentManager.fragments.last().tag != "pickabilityFirst") ft.addToBackStack(
                         null
@@ -260,18 +259,7 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
-                R.id.nav_menu_pickability_second -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "pickabilitySecond") ft.addToBackStack(
-                        null
-                    )
-                    ft.replace(
-                        R.id.nav_host_fragment,
-                        secondPickabilityFragment,
-                        "pickabilitySecond"
-                    )
-                        .commit()
-                }
+
 
                 R.id.nav_menu_team_list -> {
                     val ft = supportFragmentManager.beginTransaction()
@@ -521,8 +509,7 @@ class NavDrawerListener(private val navView: NavigationView, private val fragMan
                 "starredMatches" -> navView.setCheckedItem(R.id.nav_menu_starred_matches)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
 //                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
-                "pickabilityFirst" -> navView.setCheckedItem(R.id.nav_menu_pickability_first)
-                "pickabilitySecond" -> navView.setCheckedItem(R.id.nav_menu_pickability_second)
+                "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
                 "preferences" -> navView.setCheckedItem(R.id.nav_preferences)
             }

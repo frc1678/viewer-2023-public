@@ -15,7 +15,7 @@ import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.fragment_pickability.*
 import kotlinx.android.synthetic.main.fragment_pickability.view.*
 
-class PickabilityFragment(var mode: PickabilityMode) : Fragment() {
+class SecondPickabilityFragment(var mode: PickabilityMode) : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
 
@@ -49,16 +49,11 @@ class PickabilityFragment(var mode: PickabilityMode) : Fragment() {
 
 
         root.btn_pickability.setOnClickListener {
-
-
-            val secondpickabilityFragment = SecondPickabilityFragment(PickabilityMode.SECOND)
+            val pickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
             val ft = fragmentManager!!.beginTransaction()
-            if (fragmentManager!!.fragments.last().tag != "secondpickabilityRankings") ft.addToBackStack(null)
-            ft.replace(R.id.nav_host_fragment, secondpickabilityFragment, "secondpickabilityRankings")
+            if (fragmentManager!!.fragments.last().tag != "pickabilityRankings") ft.addToBackStack(null)
+            ft.replace(R.id.nav_host_fragment, pickabilityFragment, "pickabilityRankings")
                 .commit()
-
-
-
         }
 
         return root
@@ -67,7 +62,7 @@ class PickabilityFragment(var mode: PickabilityMode) : Fragment() {
     private fun updateMatchScheduleListView(root: View) : Map<String, Float>{
 
         val map = makeData()
-        val adapter = PickabilityListAdapter(
+        val adapter = SecondPickabilityListAdapter(
             items = map,
             context = activity!!,
             mode = mode
@@ -114,8 +109,4 @@ class PickabilityFragment(var mode: PickabilityMode) : Fragment() {
         super.onDestroy()
         MainViewerActivity.refreshManager.removeRefreshListener(refreshId)
     }
-}
-enum class PickabilityMode {
-    FIRST,
-    SECOND
 }

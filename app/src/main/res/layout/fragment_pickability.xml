@@ -3,10 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        style="@style/tv_header"
-        android:id="@+id/tv_pickability_header"
-        android:text="Pickability"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/toggle_bar"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/very_small"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_pickability_header"
+            style="@style/tv_header"
+            android:layout_weight="1"
+            android:layout_height="80dp"
+            android:text="Pickability"
+            android:textSize="20sp"/>
+        <Button
+            android:id="@+id/btn_pickability"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="To second pickability"
+            android:textSize="15sp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
     <View
         style="@style/view_separator_horizontal"/>
     <LinearLayout
@@ -32,9 +63,9 @@
         android:layout_height="5dp"
         android:background="@color/Black"
         />
+
     <ListView
         android:id="@+id/lv_pickability"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 </LinearLayout>
