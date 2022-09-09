@@ -75,27 +75,6 @@
     "Pit Data",
     "drivetrain"
   ],
-  "KATE": [
-    "current_rps",
-    "current_avg_rps",
-    "Auto",
-    "mode_start_position",
-    "auto_avg_total_balls",
-    "Tele",
-    "tele_avg_balls_low",
-    "tele_avg_high_balls",
-    "tele_avg_launchpad_high_balls",
-    "avg_intakes",
-    "avg_incap_time",
-    "driver_ability",
-    "driver_field_awareness",
-    "Endgame",
-    "climb_percent_success",
-    "mode_climb_level",
-    "max_climb_level",
-    "Pit Data",
-    "has_ground_intake"
-  ],
   "MIKE": [
     "Auto",
     "auto_line_successes",

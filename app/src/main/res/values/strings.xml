@@ -35,16 +35,17 @@
     <string name="picklist_password_input">Password</string>
     <string name="disconnected">Disconnected</string>
     <string name="connected">Connected</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="which_profile_would_you_like_to_use">Which profile would you like to use?</string>
+    <string name="continue_button">Continue</string>
 
     <string-array name="user_array">
         <item>None</item>
         <item>Austin</item>
         <item>Dave</item>
-        <item>Kate</item>
         <item>Mike</item>
         <item>Richard</item>
         <item>Brendan</item>
-
     </string-array>
 
     <string-array name="map_tb_array">
