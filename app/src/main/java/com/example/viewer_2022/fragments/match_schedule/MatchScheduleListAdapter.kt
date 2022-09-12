@@ -147,9 +147,9 @@ class MatchScheduleListAdapter(
 
         val field = if (hasActualData) "actual_rp" else "predicted_rp"
 
-        // Set the background color based on whether the match has been played
-        viewHolder.wholeCell.setBackgroundColor(
-            ContextCompat.getColor(context, if (hasActualData) R.color.LightGray else R.color.White)
+        // Set the match status icon
+        viewHolder.imgMatchStatus.setImageResource(
+            if (hasActualData) R.drawable.ic_baseline_check_24 else R.drawable.ic_outline_pending_24
         )
 
         // Set the blue predicted score
@@ -402,6 +402,7 @@ class MatchScheduleListAdapter(
      */
     private class ViewHolder(view: View?) {
         val tvMatchNumber = view?.findViewById(R.id.tv_match_number) as TextView
+        val imgMatchStatus = view?.findViewById(R.id.match_status) as ImageView
         val tvBlueScore = view?.findViewById(R.id.blue_score) as TextView
         val tvRedScore = view?.findViewById(R.id.red_score) as TextView
         val imgBlueRpOne = view?.findViewById(R.id.blue_rp1) as ImageView

@@ -17,10 +17,20 @@
             android:text="1"
             android:gravity="center"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@color/Black"
             android:lines="1"/>
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_outline_pending_24"
+            android:id="@+id/match_status"
+            app:layout_constraintTop_toBottomOf="@+id/tv_match_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline1"
+            app:layout_constraintBottom_toBottomOf="@+id/blue_team1"/>
 
     <TextView
             android:text="1"
