@@ -11,8 +11,8 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.viewer_2022.MainViewerActivity.StarredMatches
-import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.MainViewerActivity.*
+
 
 /**
  * The activity that greets the user and asks them to choose a profile.
@@ -45,9 +45,10 @@ class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsRes
             throw Exception("File permissions denied, please reopen the app and accept file permissions")
         }
 
-        // Create/read the user profile file and the starred matches file
+        // Create/read the user profile file, the starred matches file, and the starred teams file
         UserDatapoints.read(this)
         StarredMatches.read()
+        StarredTeams.read()
 
         setContentView(R.layout.activity_welcome)
 

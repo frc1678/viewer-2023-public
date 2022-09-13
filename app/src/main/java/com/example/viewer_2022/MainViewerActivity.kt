@@ -515,6 +515,44 @@ class MainViewerActivity : ViewerActivity() {
 
     }
 
+    /**
+     * An object to read/write the starred teams file with.
+     */
+    object StarredTeams {
+        val gson = Gson()
+
+        private val teams = mutableSetOf<String>()
+
+        fun add(team: String) {
+            teams.add(team)
+            write()
+        }
+
+        fun remove(team: String) {
+            teams.remove(team)
+            write()
+        }
+
+        fun contains(team: String) = teams.contains(team)
+
+        private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_teams.json")
+
+        fun read() {
+            if (!file.exists()) write()
+            try {
+                JsonParser.parseReader(FileReader(file)).asJsonArray.forEach { teams.add(it.asString) }
+            } catch (e: Exception) {
+                Log.e("StarredTeams.read", "Failed to read starred teams file")
+            }
+        }
+
+        private fun write() {
+            val writer = FileWriter(file, false)
+            gson.toJson(teams, writer)
+            writer.close()
+        }
+    }
+
 }
 
 class NavDrawerListener(
