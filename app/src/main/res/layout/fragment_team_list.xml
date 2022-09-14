@@ -20,9 +20,13 @@
         android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <androidx.legacy.widget.Space android:layout_weight="1"
-               android:layout_width="0dp"
-               android:layout_height="match_parent" />
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_stars_24"
+                android:tint="@color/Gray"
+                android:padding="@dimen/very_small"/>
 
         <TextView
             style="@style/tv_standard_gray"
