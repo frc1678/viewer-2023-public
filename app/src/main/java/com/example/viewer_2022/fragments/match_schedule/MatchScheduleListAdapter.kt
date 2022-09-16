@@ -384,11 +384,11 @@ class MatchScheduleListAdapter(
             } else tv.setImageDrawable(null)
         }
 
-        // Set background for starred matches
+        // Set border for starred matches
         if (MainViewerActivity.starredMatches.contains(matchNumber)) {
-            viewHolder.wholeCell.setBackgroundColor(
-                ContextCompat.getColor(context, if (hasActualData) R.color.DarkYellow else R.color.Yellow)
-            )
+            viewHolder.imgBorder.setImageResource(R.drawable.border)
+        } else {
+            viewHolder.imgBorder.setImageDrawable(null)
         }
 
         // Set the background color based on the number of starred teams in the match
@@ -399,15 +399,17 @@ class MatchScheduleListAdapter(
             }
         }
         viewHolder.wholeCell.setBackgroundColor(
-            ContextCompat.getColor(context, when (starredTeamCount) {
-                1 -> R.color.Highlight_1
-                2 -> R.color.Highlight_2
-                3 -> R.color.Highlight_3
-                4 -> R.color.Highlight_4
-                5 -> R.color.Highlight_5
-                6 -> R.color.Highlight_6
-                else -> R.color.Highlight_0
-            })
+            ContextCompat.getColor(
+                context, when (starredTeamCount) {
+                    1 -> R.color.Highlight_1
+                    2 -> R.color.Highlight_2
+                    3 -> R.color.Highlight_3
+                    4 -> R.color.Highlight_4
+                    5 -> R.color.Highlight_5
+                    6 -> R.color.Highlight_6
+                    else -> R.color.Highlight_0
+                }
+            )
         )
 
         // Set the click listeners to go to match details, etc.
@@ -435,6 +437,7 @@ class MatchScheduleListAdapter(
         val tvRedTeamTwo = view?.findViewById(R.id.red_team2) as TextView
         val tvRedTeamThree = view?.findViewById(R.id.red_team3) as TextView
         val wholeCell = view?.findViewById(R.id.whole_cell) as ConstraintLayout
+        val imgBorder = view?.findViewById(R.id.img_border) as ImageView
 
         /**
          * Convenience property holding all the blue teams.
