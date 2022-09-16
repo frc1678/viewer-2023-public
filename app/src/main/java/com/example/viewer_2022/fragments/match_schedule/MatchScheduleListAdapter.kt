@@ -391,6 +391,25 @@ class MatchScheduleListAdapter(
             )
         }
 
+        // Set the background color based on the number of starred teams in the match
+        var starredTeamCount = 0
+        for (team in matchContents[matchNumber]!!.blueTeams + matchContents[matchNumber]!!.redTeams) {
+            if (MainViewerActivity.StarredTeams.contains(team)) {
+                starredTeamCount++
+            }
+        }
+        viewHolder.wholeCell.setBackgroundColor(
+            ContextCompat.getColor(context, when (starredTeamCount) {
+                1 -> R.color.Highlight_1
+                2 -> R.color.Highlight_2
+                3 -> R.color.Highlight_3
+                4 -> R.color.Highlight_4
+                5 -> R.color.Highlight_5
+                6 -> R.color.Highlight_6
+                else -> R.color.Highlight_0
+            })
+        )
+
         // Set the click listeners to go to match details, etc.
         setClickListeners(rowView!!, viewHolder, position)
 

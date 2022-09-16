@@ -18,4 +18,13 @@
     <color name="Highlighter">#FF9900</color>
     <color name="DarkYellow">#C9AA23</color>
     <color name="ButtonGreen">#4CAF50</color>
+
+    <color name="Highlight_0">#FFFFFF</color>
+    <color name="Highlight_1">#FFF59D</color>
+    <color name="Highlight_2">#FFF176</color>
+    <color name="Highlight_3">#FFEE58</color>
+    <color name="Highlight_4">#FFEB3B</color>
+    <color name="Highlight_5">#FDD835</color>
+    <color name="Highlight_6">#FBC02D</color>
+
 </resources>
