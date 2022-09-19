@@ -383,7 +383,7 @@ class MatchScheduleListAdapter(
 
         // Set border for starred matches
         if (MainViewerActivity.starredMatches.contains(matchNumber)) {
-            viewHolder.imgBorder.setImageResource(R.drawable.border)
+            viewHolder.imgBorder.setImageResource(R.drawable.bg_border)
         } else {
             viewHolder.imgBorder.setImageDrawable(null)
         }

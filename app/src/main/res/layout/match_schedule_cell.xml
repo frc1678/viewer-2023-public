@@ -8,7 +8,7 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/border"
+            app:srcCompat="@drawable/bg_border"
             android:id="@+id/img_border"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

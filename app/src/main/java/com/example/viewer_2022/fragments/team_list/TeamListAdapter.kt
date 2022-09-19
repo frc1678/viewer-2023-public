@@ -40,13 +40,13 @@ class TeamListAdapter(private val context: Context, private val items: List<Stri
         if (StarredTeams.contains(teamNumber)) {
             (rowView.btn_star as ImageButton).setImageResource(R.drawable.ic_baseline_star_36)
         } else {
-            (rowView.btn_star as ImageButton).setImageResource(R.drawable.dot)
+            (rowView.btn_star as ImageButton).setImageResource(R.drawable.ic_dot)
         }
         // Toggle star if the icon is clicked
         rowView.btn_star.setOnClickListener {
             if (StarredTeams.contains(teamNumber)) {
                 StarredTeams.remove(teamNumber)
-                (it as ImageButton).setImageResource(R.drawable.dot)
+                (it as ImageButton).setImageResource(R.drawable.ic_dot)
             } else {
                 StarredTeams.add(teamNumber)
                 (it as ImageButton).setImageResource(R.drawable.ic_baseline_star_36)
