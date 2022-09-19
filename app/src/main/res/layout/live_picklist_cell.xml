@@ -18,10 +18,10 @@
         android:layout_width="0dp"
         android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/tv_second_rank"
-        style="@style/tv_standard_gray"
-        android:layout_width="0dp"
-        android:layout_weight="1" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_second_rank"-->
+<!--        style="@style/tv_standard_gray"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_weight="1" />-->
 
 </LinearLayout>
