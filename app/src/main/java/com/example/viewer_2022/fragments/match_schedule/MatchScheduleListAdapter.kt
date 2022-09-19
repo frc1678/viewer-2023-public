@@ -8,8 +8,6 @@
 
 package com.example.viewer_2022.fragments.match_schedule
 
-import android.graphics.Paint
-import android.graphics.Typeface
 import android.graphics.Typeface.DEFAULT
 import android.os.Bundle
 import android.util.Log
@@ -124,7 +122,7 @@ class MatchScheduleListAdapter(
         // Set the match number text
         viewHolder.tvMatchNumber.text = matchNumber
 
-        // Set the styling for the winning alliance
+        // Set the trophy icon for the winning alliance
         if (hasActualData) {
             if (getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
@@ -133,16 +131,15 @@ class MatchScheduleListAdapter(
                     "won_match"
                 ).toBoolean()
             ) {
-                for (tv in viewHolder.redTeams) {
-                    tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-                    tv.typeface = Typeface.DEFAULT_BOLD
-                }
+                viewHolder.imgRedWin.setImageResource(R.drawable.ic_baseline_trophy_24)
+                viewHolder.imgBlueWin.setImageDrawable(null)
             } else {
-                for (tv in viewHolder.blueTeams) {
-                    tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-                    tv.typeface = Typeface.DEFAULT_BOLD
-                }
+                viewHolder.imgBlueWin.setImageResource(R.drawable.ic_baseline_trophy_24)
+                viewHolder.imgRedWin.setImageDrawable(null)
             }
+        } else {
+            viewHolder.imgRedWin.setImageDrawable(null)
+            viewHolder.imgBlueWin.setImageDrawable(null)
         }
 
         val field = if (hasActualData) "actual_rp" else "predicted_rp"
@@ -426,6 +423,8 @@ class MatchScheduleListAdapter(
         val imgMatchStatus = view?.findViewById(R.id.match_status) as ImageView
         val tvBlueScore = view?.findViewById(R.id.blue_score) as TextView
         val tvRedScore = view?.findViewById(R.id.red_score) as TextView
+        val imgBlueWin = view?.findViewById(R.id.blue_win) as ImageView
+        val imgRedWin = view?.findViewById(R.id.red_win) as ImageView
         val imgBlueRpOne = view?.findViewById(R.id.blue_rp1) as ImageView
         val imgRedRpOne = view?.findViewById(R.id.red_rp1) as ImageView
         val imgBlueRpTwo = view?.findViewById(R.id.blue_rp2) as ImageView
