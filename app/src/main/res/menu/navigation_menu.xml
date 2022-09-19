@@ -36,15 +36,11 @@
         />
 
     <item
-        android:id="@+id/nav_menu_pickability_first"
-        android:title="First Pickability"
+        android:id="@+id/nav_menu_pickability"
+        android:title="Pickability"
         android:checkable="true"
         />
-    <item
-        android:id="@+id/nav_menu_pickability_second"
-        android:title="Second Pickability"
-        android:checkable="true"
-        />
+
     <item
         android:id="@+id/nav_menu_team_list"
         android:title="Team List"

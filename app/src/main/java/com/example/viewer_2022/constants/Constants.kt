@@ -11,7 +11,7 @@ package com.example.viewer_2022.constants
 //Class that contains a collection of Constant values, or final values that never change
 class Constants {
     companion object {
-        //Game specfific data.
+        //Game specific data.
         const val EVENT_KEY = "2022hop"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
