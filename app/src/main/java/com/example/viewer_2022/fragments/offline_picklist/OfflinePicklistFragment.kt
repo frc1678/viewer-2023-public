@@ -1,5 +1,6 @@
 package com.example.viewer_2022.fragments.offline_picklist
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -95,8 +97,14 @@ class OfflinePicklistFragment : Fragment() {
                 runBlocking {
                     val localData = getData()
                     try {
-                        val resp = PicklistApi.setPicklist(localData)
-                        showSuccess(context!!, "Picklist uploaded. Deleted ${resp.deleted} old teams")
+                        when (val resp = PicklistApi.setPicklist(localData, it)) {
+                            is PicklistApi.PicklistSetResponse.Success -> {
+                                showSuccess(context!!, "Picklist uploaded. Deleted ${resp.deleted} old teams")
+                            }
+                            is PicklistApi.PicklistSetResponse.Error -> {
+                                showError(context!!, "Error uploading picklist: ${resp.error}")
+                            }
+                        }
                     } catch (e: Throwable) {
                         Log.e("offline_picklist", "Error exporting picklist to server", e)
                         showError(context!!, "Error pushing picklist")
@@ -276,7 +284,7 @@ class ImportPopup(val onImport: (type: ImportType) -> Unit) : DialogFragment() {
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }
-class ExportPopup(val onExport: () -> Unit): DialogFragment() {
+class ExportPopup(val onExport: (password: String) -> Unit): DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
@@ -285,8 +293,9 @@ class ExportPopup(val onExport: () -> Unit): DialogFragment() {
 
             val view = ExportPicklistPopupBinding.inflate(inflater, null, false)
 
-            view.btnServer.setOnClickListener {
-                onExport()
+            view.btnServer.setOnClickListener { btnView ->
+                onExport(view.etPassword.text.toString().trim())
+                (it.getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(btnView.windowToken, 0)
                 dismiss()
             }
 

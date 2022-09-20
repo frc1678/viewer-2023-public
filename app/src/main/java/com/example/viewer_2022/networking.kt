@@ -9,7 +9,12 @@ import io.ktor.client.request.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonContentPolymorphicSerializer
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.serializer
 
 const val grosbeakURL = "http://localhost:8000"
 
@@ -23,14 +28,14 @@ val client = HttpClient(CIO) {
         port = 8000
     }
 }
-
 object PicklistApi {
     suspend fun getPicklist(eventKey: String? = null): PicklistData = client.get("$grosbeakURL/picklist/rest/list") {
         if (eventKey != null) {
             parameter("event_key", eventKey)
         }
     }.body()
-    suspend fun setPicklist(picklist: PicklistData, eventKey: String? = null): PicklistSetResponse = client.put("$grosbeakURL/picklist/rest/list") {
+    suspend fun setPicklist(picklist: PicklistData, password: String, eventKey: String? = null): PicklistSetResponse = client.put("$grosbeakURL/picklist/rest/list") {
+        parameter("password", password)
         if (eventKey != null) {
             parameter("event_key", eventKey)
         }
@@ -38,6 +43,22 @@ object PicklistApi {
         setBody(picklist)
     }.body()
 
-    @Serializable
-    data class PicklistSetResponse(val deleted: Int)
+    @Serializable(with = PicklistSetSerializer::class)
+    sealed class PicklistSetResponse {
+        @Serializable
+        data class Success(val deleted: Int) : PicklistSetResponse()
+
+        @Serializable
+        data class Error(val error: String) : PicklistSetResponse()
+
+    }
+    object PicklistSetSerializer : JsonContentPolymorphicSerializer<PicklistSetResponse>(PicklistSetResponse::class) {
+        override fun selectDeserializer(element: JsonElement): DeserializationStrategy<out PicklistSetResponse> = when {
+            element.jsonObject.containsKey("error") -> PicklistSetResponse.Error.serializer()
+            element.jsonObject.containsKey("deleted") -> PicklistSetResponse.Success.serializer()
+            else -> throw IllegalArgumentException("Unknown response type")
+        }
+    }
+
 }
+
