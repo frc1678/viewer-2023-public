@@ -16,7 +16,7 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.serializer
 
-const val grosbeakURL = "http://localhost:8000"
+const val grosbeakURL = "https://grosbeak.citruscircuits.org"
 
 val client = HttpClient(CIO) {
     install(ContentNegotiation) {
