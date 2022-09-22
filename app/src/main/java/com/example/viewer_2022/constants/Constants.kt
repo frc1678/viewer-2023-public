@@ -12,11 +12,11 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specific data.
-        const val EVENT_KEY = "2022hop"
+        const val EVENT_KEY = "2022cc"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = true
-        const val CARDINAL_KEY = ""
+        const val USE_TEST_DATA = false
+        const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
         const val REFRESH_INTERVAL = 120
 
         //Util.
