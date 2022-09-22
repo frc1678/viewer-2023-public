@@ -16,7 +16,7 @@ class Constants {
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
-        const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
+        const val CARDINAL_KEY = "a7f9d746a13f8ea86bd3fa9931c64ab8af8f2694"
         const val REFRESH_INTERVAL = 120
 
         //Util.
