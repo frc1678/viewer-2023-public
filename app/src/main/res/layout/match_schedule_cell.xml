@@ -212,7 +212,7 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/cargo_ball"
+            app:srcCompat="@drawable/ic_cargo_ball_24"
             android:id="@+id/red_rp1"
             app:layout_constraintBottom_toTopOf="@id/red_rp2"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
@@ -222,7 +222,7 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/pull_up_bars"
+            app:srcCompat="@drawable/ic_climb_48"
             android:id="@+id/red_rp2"
             app:layout_constraintEnd_toEndOf="@id/divider_horizontal"
             app:layout_constraintBottom_toTopOf="@id/divider_horizontal"
@@ -281,7 +281,7 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/cargo_ball"
+            app:srcCompat="@drawable/ic_cargo_ball_24"
             android:id="@+id/blue_rp1"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
             app:layout_constraintBottom_toTopOf="@id/blue_rp2"
@@ -293,7 +293,7 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/pull_up_bars"
+            app:srcCompat="@drawable/ic_climb_48"
             android:id="@+id/blue_rp2"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
             app:layout_constraintEnd_toEndOf="@id/divider_horizontal"
