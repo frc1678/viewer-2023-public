@@ -31,9 +31,11 @@ import androidx.fragment.app.FragmentManager
 import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.*
+import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.match_schedule.OurScheduleFragment
 import com.example.viewer_2022.fragments.match_schedule.StarredMatchesFragment
+import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
 import com.example.viewer_2022.fragments.pickability.PickabilityFragment
 import com.example.viewer_2022.fragments.pickability.PickabilityMode
 import com.example.viewer_2022.fragments.preferences.PreferencesFragment
@@ -189,7 +191,8 @@ class MainViewerActivity : ViewerActivity() {
         val ourScheduleFragment = OurScheduleFragment()
         val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
-//        val livePicklistFragment = LivePicklistFragment()
+        val livePicklistFragment = LivePicklistFragment()
+        val offlinePicklistFragment = OfflinePicklistFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
         val teamListFragment = TeamListFragment()
         val preferencesFragment = PreferencesFragment()
@@ -244,12 +247,19 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
-//                R.id.nav_menu_live_picklist -> {
-//                    supportFragmentManager.beginTransaction()
-//                        .addToBackStack(null)
-//                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
-//                        .commit()
-//                }
+                R.id.nav_menu_live_picklist -> {
+                    supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
+                        .commit()
+                }
+
+                R.id.nav_menu_offline_picklist -> {
+                    supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, offlinePicklistFragment, "offlinePicklist")
+                        .commit()
+                }
 
                 R.id.nav_menu_pickability -> {
                     val ft = supportFragmentManager.beginTransaction()
@@ -557,7 +567,7 @@ class NavDrawerListener(
                 "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
                 "starredMatches" -> navView.setCheckedItem(R.id.nav_menu_starred_matches)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
-//                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
+                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
                 "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
                 "preferences" -> navView.setCheckedItem(R.id.nav_preferences)
