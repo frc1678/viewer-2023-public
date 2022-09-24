@@ -59,7 +59,7 @@ class TeamRankingListAdapter(
             rowView.tv_team_ranking.text = Constants.NULL_PREDICTED_SCORE_CHARACTER
         } else {
             rowView.tv_team_ranking.text =
-                getRankingTeam(e.teamNumber, dataPoint).placement.toString()
+                getRankingTeam(e.teamNumber, dataPoint)?.placement.toString()
         }
 
         if (e.teamNumber == teamNumber) {

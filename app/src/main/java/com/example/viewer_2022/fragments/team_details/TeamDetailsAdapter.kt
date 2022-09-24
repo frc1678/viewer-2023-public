@@ -163,7 +163,7 @@ class TeamDetailsAdapter(
             rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(
                 teamNumber,
                 e
-            ).placement.toString()
+            )?.placement.toString()
         }
 
         if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
