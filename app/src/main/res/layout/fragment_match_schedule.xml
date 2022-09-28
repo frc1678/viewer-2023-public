@@ -14,6 +14,11 @@
             android:inputType="number"
             android:importantForAutofill="no"/>
 
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/Black"/>
+
     <ListView
             android:id="@+id/lv_match_schedule"
             android:layout_width="match_parent"
