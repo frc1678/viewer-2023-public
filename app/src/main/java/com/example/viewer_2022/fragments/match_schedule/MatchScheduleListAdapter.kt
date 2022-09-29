@@ -389,22 +389,20 @@ class MatchScheduleListAdapter(
         }
 
         // Set the background color based on the number of starred teams in the match
+        // Note: This will automatically break once it gets past 1, since we don't care about any more than that.
         var starredTeamCount = 0
         for (team in matchContents[matchNumber]!!.blueTeams + matchContents[matchNumber]!!.redTeams) {
             if (MainViewerActivity.StarredTeams.contains(team)) {
                 starredTeamCount++
+                if (starredTeamCount > 1) break
             }
         }
         viewHolder.wholeCell.setBackgroundColor(
             ContextCompat.getColor(
                 context, when (starredTeamCount) {
+                    0 -> R.color.Highlight_0
                     1 -> R.color.Highlight_1
-                    2 -> R.color.Highlight_2
-                    3 -> R.color.Highlight_3
-                    4 -> R.color.Highlight_4
-                    5 -> R.color.Highlight_5
-                    6 -> R.color.Highlight_6
-                    else -> R.color.Highlight_0
+                    else -> R.color.Highlight_2
                 }
             )
         )

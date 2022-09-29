@@ -22,10 +22,6 @@
 
     <color name="Highlight_0">#FFFFFF</color>
     <color name="Highlight_1">#FFF59D</color>
-    <color name="Highlight_2">#FFF176</color>
-    <color name="Highlight_3">#FFEE58</color>
-    <color name="Highlight_4">#FFEB3B</color>
-    <color name="Highlight_5">#FDD835</color>
-    <color name="Highlight_6">#FBC02D</color>
+    <color name="Highlight_2">#FDD835</color>
 
 </resources>
