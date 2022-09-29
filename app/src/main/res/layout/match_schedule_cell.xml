@@ -159,6 +159,26 @@
             android:textColor="@color/White"
             android:textSize="16sp"/>
 
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/bg_border_small"
+            android:id="@+id/red_win"
+            app:layout_constraintEnd_toStartOf="@id/guideline4"
+            app:layout_constraintTop_toTopOf="@id/red_team1"
+            app:layout_constraintBottom_toBottomOf="@id/red_team1"
+            app:layout_constraintStart_toEndOf="@id/guideline1"/>
+
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/bg_border_small"
+            android:id="@+id/blue_win"
+            app:layout_constraintBottom_toBottomOf="@id/blue_team1"
+            app:layout_constraintTop_toTopOf="@id/blue_team1"
+            app:layout_constraintEnd_toStartOf="@id/guideline4"
+            app:layout_constraintStart_toEndOf="@id/guideline1"/>
+
     <androidx.constraintlayout.widget.Guideline
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -229,16 +249,6 @@
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
             app:layout_constraintTop_toBottomOf="@id/red_rp1"/>
 
-    <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:srcCompat="@drawable/ic_baseline_trophy_24"
-            android:id="@+id/red_win"
-            app:layout_constraintBottom_toTopOf="@id/red_score"
-            app:layout_constraintEnd_toStartOf="@id/divider_vertical"
-            app:layout_constraintStart_toStartOf="@id/divider_horizontal"
-            app:layout_constraintTop_toTopOf="@id/divider_vertical"/>
-
     <TextView
             android:text="100"
             android:layout_width="0dp"
@@ -246,21 +256,11 @@
             android:id="@+id/red_score"
             app:layout_constraintBottom_toTopOf="@id/divider_horizontal"
             app:layout_constraintStart_toStartOf="@id/divider_horizontal"
-            app:layout_constraintTop_toBottomOf="@id/red_win"
             app:layout_constraintEnd_toStartOf="@id/divider_vertical"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:gravity="center"
-            android:lines="1"/>
-
-    <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:srcCompat="@drawable/ic_baseline_trophy_24"
-            android:id="@+id/blue_win"
-            app:layout_constraintBottom_toBottomOf="@id/divider_vertical"
-            app:layout_constraintTop_toBottomOf="@id/blue_score"
-            app:layout_constraintStart_toStartOf="@id/divider_horizontal"
-            app:layout_constraintEnd_toEndOf="@id/divider_vertical"/>
+            android:lines="1"
+            app:layout_constraintTop_toTopOf="@id/divider_vertical"/>
 
     <TextView
             android:text="100"
@@ -270,11 +270,10 @@
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal"
             app:layout_constraintStart_toStartOf="@id/divider_horizontal"
             app:layout_constraintEnd_toStartOf="@id/divider_vertical"
-            app:layout_constraintBottom_toTopOf="@id/blue_win"
-            app:layout_constraintVertical_chainStyle="spread"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:gravity="center"
-            android:lines="1"/>
+            android:lines="1"
+            app:layout_constraintBottom_toBottomOf="@id/divider_vertical"/>
 
     <ImageView
             android:layout_width="0dp"

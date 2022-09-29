@@ -9,6 +9,7 @@
 package com.example.viewer_2022.fragments.match_schedule
 
 import android.graphics.Typeface.DEFAULT
+import android.graphics.Typeface.DEFAULT_BOLD
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -122,7 +123,7 @@ class MatchScheduleListAdapter(
         // Set the match number text
         viewHolder.tvMatchNumber.text = matchNumber
 
-        // Set the trophy icon for the winning alliance
+        // Set the border and styling for the winning alliance
         if (hasActualData) {
             if (getAllianceInMatchObjectByKey(
                     Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
@@ -131,11 +132,13 @@ class MatchScheduleListAdapter(
                     "won_match"
                 ).toBoolean()
             ) {
-                viewHolder.imgRedWin.setImageResource(R.drawable.ic_baseline_trophy_24)
+                viewHolder.imgRedWin.setImageResource(R.drawable.bg_border_small)
                 viewHolder.imgBlueWin.setImageDrawable(null)
+                for (team in viewHolder.redTeams) team.typeface = DEFAULT_BOLD
             } else {
-                viewHolder.imgBlueWin.setImageResource(R.drawable.ic_baseline_trophy_24)
+                viewHolder.imgBlueWin.setImageResource(R.drawable.bg_border_small)
                 viewHolder.imgRedWin.setImageDrawable(null)
+                for (team in viewHolder.blueTeams) team.typeface = DEFAULT_BOLD
             }
         } else {
             viewHolder.imgRedWin.setImageDrawable(null)
