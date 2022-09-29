@@ -54,9 +54,9 @@ fun getRankingList(datapoint: String): Leaderboard {
     return MainViewerActivity.leaderboardCache[datapoint]!!
 }
 
-fun getRankingTeam(teamNumber: String, datapoint: String): TeamRankingItem {
+fun getRankingTeam(teamNumber: String, datapoint: String): TeamRankingItem? {
     val data = MainViewerActivity.leaderboardCache[datapoint]
-    return data!!.find { it.teamNumber == teamNumber }!!
+    return data?.find { it.teamNumber == teamNumber }
 }
 
 data class TeamRankingItem(val teamNumber: String, val value: String, var placement: Int?)
