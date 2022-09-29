@@ -409,6 +409,12 @@ class MatchScheduleListAdapter(
             )
         )
 
+        // Override the background color if our team is in the match
+        if ((matchContents[matchNumber]!!.blueTeams + matchContents[matchNumber]!!.redTeams).contains(
+                Constants.MY_TEAM_NUMBER
+            )
+        ) viewHolder.wholeCell.setBackgroundColor(ContextCompat.getColor(context, R.color.LimeGreen))
+
         // Set the click listeners to go to match details, etc.
         setClickListeners(rowView!!, viewHolder, position)
 
