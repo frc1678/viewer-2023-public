@@ -384,11 +384,11 @@ class MatchScheduleListAdapter(
             } else tv.setImageDrawable(null)
         }
 
-        // Set border for starred matches
+        // Set star for starred matches
         if (MainViewerActivity.starredMatches.contains(matchNumber)) {
-            viewHolder.imgBorder.setImageResource(R.drawable.bg_border)
+            viewHolder.starIcon.setImageResource(R.drawable.ic_baseline_star_border_24)
         } else {
-            viewHolder.imgBorder.setImageDrawable(null)
+            viewHolder.starIcon.setImageDrawable(null)
         }
 
         // Set the background color based on the number of starred teams in the match
@@ -443,7 +443,7 @@ class MatchScheduleListAdapter(
         val tvRedTeamTwo = view?.findViewById(R.id.red_team2) as TextView
         val tvRedTeamThree = view?.findViewById(R.id.red_team3) as TextView
         val wholeCell = view?.findViewById(R.id.whole_cell) as ConstraintLayout
-        val imgBorder = view?.findViewById(R.id.img_border) as ImageView
+        val starIcon = view?.findViewById(R.id.star_icon) as ImageView
 
         /**
          * Convenience property holding all the blue teams.
