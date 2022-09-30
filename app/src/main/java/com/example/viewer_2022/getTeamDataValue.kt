@@ -35,7 +35,10 @@ fun getTeamDataValue(teamNumber: String, field: String): String {
                 } else {
                     getTeamObjectByKey(
                         item, teamNumber, field
-                    )
+                    ).replace("ONE", "1")
+                        .replace("TWO", "2")
+                        .replace("THREE", "3")
+                        .replace("FOUR", "4")
                 }
             }
         } catch (e: Exception) {
@@ -66,7 +69,10 @@ fun getTeamDataValue(teamNumber: String, field: String): String {
                     else -> {
                         return getRawObjectByKey(
                             item, teamNumber, field
-                        )
+                        ).replace("ONE", "1")
+                            .replace("TWO", "2")
+                            .replace("THREE", "3")
+                            .replace("FOUR", "4")
                     }
                 }
             }

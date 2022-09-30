@@ -47,5 +47,13 @@ fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: Strin
             fieldValue = getDirectField(timObject.subjTim!!, field).toString()
         }
     }
+    fieldValue = when (fieldValue) {
+        "ONE" -> "1"
+        "TWO" -> "2"
+        "THREE" -> "3"
+        "FOUR" -> "4"
+
+        else -> fieldValue
+    }
     return fieldValue
 }
