@@ -3,14 +3,15 @@
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:id="@+id/whole_cell"
                                                    android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content">
+                                                   android:layout_height="wrap_content"
+                                                   android:padding="10dp">
 
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:srcCompat="@drawable/ic_baseline_star_border_24"
             android:id="@+id/star_icon"
-            app:layout_constraintTop_toTopOf="@id/red_team1"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline1"
             app:layout_constraintBottom_toTopOf="@id/tv_match_number"/>
@@ -31,14 +32,14 @@
             android:lines="1"/>
 
     <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             app:srcCompat="@drawable/ic_outline_pending_24"
             android:id="@+id/match_status"
             app:layout_constraintTop_toBottomOf="@id/tv_match_number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline1"
-            app:layout_constraintBottom_toBottomOf="@id/blue_team1"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
             android:text="1"
@@ -58,8 +59,7 @@
             android:clickable="true"
             android:focusable="true"
             android:textColor="@color/White"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="16sp"/>
 
     <TextView
             android:text="2"
@@ -118,8 +118,7 @@
             android:clickable="true"
             android:focusable="true"
             android:textColor="@color/White"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"/>
+            android:textSize="16sp"/>
 
     <TextView
             android:text="2"
@@ -165,7 +164,7 @@
             app:srcCompat="@drawable/bg_border_small"
             android:id="@+id/red_win"
             app:layout_constraintEnd_toStartOf="@id/guideline4"
-            app:layout_constraintTop_toTopOf="@id/red_team1"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/red_team1"
             app:layout_constraintStart_toEndOf="@id/guideline1"/>
 
@@ -174,7 +173,7 @@
             android:layout_height="0dp"
             app:srcCompat="@drawable/bg_border_small"
             android:id="@+id/blue_win"
-            app:layout_constraintBottom_toBottomOf="@id/blue_team1"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@id/blue_team1"
             app:layout_constraintEnd_toStartOf="@id/guideline4"
             app:layout_constraintStart_toEndOf="@id/guideline1"/>
@@ -216,8 +215,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginStart="5dp"/>
 
     <View
             android:id="@+id/divider_vertical"
@@ -226,8 +224,8 @@
             android:background="?android:attr/listDivider"
             app:layout_constraintStart_toStartOf="@id/divider_horizontal"
             app:layout_constraintEnd_toEndOf="@id/divider_horizontal"
-            app:layout_constraintTop_toTopOf="@id/red_team3"
-            app:layout_constraintBottom_toBottomOf="@id/blue_team3"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/blue_team1"/>
 
     <ImageView
             android:layout_width="0dp"
@@ -236,15 +234,15 @@
             android:id="@+id/red_rp1"
             app:layout_constraintBottom_toTopOf="@id/red_rp2"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
-            app:layout_constraintTop_toTopOf="@id/red_team3"
-            app:layout_constraintEnd_toEndOf="@id/divider_horizontal"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:srcCompat="@drawable/ic_climb_48"
             android:id="@+id/red_rp2"
-            app:layout_constraintEnd_toEndOf="@id/divider_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/divider_horizontal"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
             app:layout_constraintTop_toBottomOf="@id/red_rp1"/>
@@ -260,7 +258,7 @@
             android:textSize="18sp"
             android:gravity="center"
             android:lines="1"
-            app:layout_constraintTop_toTopOf="@id/divider_vertical"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
             android:text="100"
@@ -273,7 +271,7 @@
             android:textSize="18sp"
             android:gravity="center"
             android:lines="1"
-            app:layout_constraintBottom_toBottomOf="@id/divider_vertical"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageView
             android:layout_width="0dp"
@@ -283,7 +281,7 @@
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
             app:layout_constraintBottom_toTopOf="@id/blue_rp2"
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal"
-            app:layout_constraintEnd_toEndOf="@id/divider_horizontal"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
             android:layout_width="0dp"
@@ -291,8 +289,8 @@
             app:srcCompat="@drawable/ic_climb_48"
             android:id="@+id/blue_rp2"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
-            app:layout_constraintEnd_toEndOf="@id/divider_horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/divider_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/blue_rp1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
