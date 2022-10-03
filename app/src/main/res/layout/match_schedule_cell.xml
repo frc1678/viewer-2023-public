@@ -1,144 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/whole_line"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:orientation="horizontal">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:id="@+id/whole_cell"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   android:padding="10dp">
+
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_baseline_star_border_24"
+            android:id="@+id/star_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline1"
+            app:layout_constraintBottom_toTopOf="@id/tv_match_number"/>
 
     <TextView
-        android:id="@+id/tv_match_number"
-        style="@style/tv_standard_black"
-        android:gravity="center"
-        android:paddingLeft="10dp"
-        android:text="Qual 1" />
+            android:id="@+id/tv_match_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline1"
+            android:text="1"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:lines="1"/>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:layout_weight="5"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+    <ImageView
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            app:srcCompat="@drawable/ic_outline_pending_24"
+            android:id="@+id/match_status"
+            app:layout_constraintTop_toBottomOf="@id/tv_match_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline1"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <Button
-                android:id="@+id/tv_red_team_one"
-                style="@style/tv_standard_white"
-                android:background="@color/Red" />
+    <TextView
+            android:text="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/red_team1"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/blue_team1"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:gravity="center"
+            android:background="@color/Red"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:lines="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/White"
+            android:textSize="16sp"/>
 
-            <Button
-                android:id="@+id/tv_red_team_two"
-                style="@style/tv_standard_white"
-                android:background="@color/Red" />
+    <TextView
+            android:text="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/red_team2"
+            app:layout_constraintStart_toEndOf="@id/red_team1"
+            app:layout_constraintEnd_toStartOf="@id/guideline3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/blue_team2"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:gravity="center"
+            android:background="@color/Red"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:lines="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/White"
+            android:textSize="16sp"/>
 
-            <Button
-                android:id="@+id/tv_red_team_three"
-                style="@style/tv_standard_white"
-                android:background="@color/Red" />
+    <TextView
+            android:text="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/red_team3"
+            app:layout_constraintStart_toEndOf="@id/red_team2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline4"
+            app:layout_constraintBottom_toTopOf="@id/blue_team3"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:gravity="center"
+            android:background="@color/Red"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:lines="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/White"
+            android:textSize="16sp"/>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+    <TextView
+            android:text="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/blue_team1"
+            app:layout_constraintTop_toBottomOf="@id/red_team1"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            android:gravity="center"
+            android:background="@color/Blue"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:lines="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/White"
+            android:textSize="16sp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+    <TextView
+            android:text="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/blue_team2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/red_team2"
+            app:layout_constraintStart_toStartOf="@id/guideline2"
+            app:layout_constraintEnd_toStartOf="@id/guideline3"
+            android:gravity="center"
+            android:background="@color/Blue"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:lines="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/White"
+            android:textSize="16sp"/>
 
-                    <ImageView
-                        android:id="@+id/tv_red_predicted_rp1"
-                        style="@style/RP_images"
-                        android:src="@drawable/cargo_ball" />
+    <TextView
+            android:text="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/blue_team3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline3"
+            app:layout_constraintEnd_toStartOf="@id/guideline4"
+            app:layout_constraintTop_toBottomOf="@id/red_team3"
+            android:gravity="center"
+            android:background="@color/Blue"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:lines="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/White"
+            android:textSize="16sp"/>
 
-                    <ImageView
-                        android:id="@+id/tv_red_predicted_rp2"
-                        style="@style/RP_images"
-                        android:src="@drawable/pull_up_bars" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tv_red_predicted_score"
-                    style="@style/tv_rp_datapoint"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+    <ImageView
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            app:srcCompat="@drawable/bg_border_small"
+            android:id="@+id/red_win"
+            app:layout_constraintEnd_toStartOf="@id/guideline4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/red_team1"
+            app:layout_constraintStart_toEndOf="@id/guideline1"/>
 
-            <Button
-                android:id="@+id/tv_blue_team_one"
-                style="@style/tv_standard_white"
-                android:background="@color/Blue" />
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/bg_border_small"
+            android:id="@+id/blue_win"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/blue_team1"
+            app:layout_constraintEnd_toStartOf="@id/guideline4"
+            app:layout_constraintStart_toEndOf="@id/guideline1"/>
 
-            <Button
-                android:id="@+id/tv_blue_team_two"
-                style="@style/tv_standard_white"
-                android:background="@color/Blue" />
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline1"
+            app:layout_constraintGuide_percent="0.15"/>
 
-            <Button
-                android:id="@+id/tv_blue_team_three"
-                style="@style/tv_standard_white"
-                android:background="@color/Blue" />
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.35"
+            android:id="@+id/guideline2"/>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.55"
+            android:id="@+id/guideline3"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+    <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline4"
+            app:layout_constraintGuide_percent="0.75"/>
 
-                    <ImageView
-                        android:id="@+id/tv_blue_predicted_rp1"
-                        style="@style/RP_images"
-                        android:src="@drawable/cargo_ball" />
+    <View
+            android:id="@+id/divider_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="5dp"/>
 
-                    <ImageView
-                        android:id="@+id/tv_blue_predicted_rp2"
-                        style="@style/RP_images"
-                        android:src="@drawable/pull_up_bars" />
+    <View
+            android:id="@+id/divider_vertical"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toStartOf="@id/divider_horizontal"
+            app:layout_constraintEnd_toEndOf="@id/divider_horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/blue_team1"/>
 
-                </LinearLayout>
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_cargo_ball_24"
+            android:id="@+id/red_rp1"
+            app:layout_constraintBottom_toTopOf="@id/red_rp2"
+            app:layout_constraintStart_toEndOf="@id/divider_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-                <TextView
-                    android:id="@+id/tv_blue_predicted_score"
-                    style="@style/tv_rp_datapoint"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:textSize="12sp" />
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_climb_48"
+            android:id="@+id/red_rp2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/divider_horizontal"
+            app:layout_constraintStart_toEndOf="@id/divider_vertical"
+            app:layout_constraintTop_toBottomOf="@id/red_rp1"/>
 
-            </LinearLayout>
+    <TextView
+            android:text="100"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/red_score"
+            app:layout_constraintBottom_toTopOf="@id/divider_horizontal"
+            app:layout_constraintStart_toStartOf="@id/divider_horizontal"
+            app:layout_constraintEnd_toStartOf="@id/divider_vertical"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:lines="1"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        </LinearLayout>
+    <TextView
+            android:text="100"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/blue_score"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal"
+            app:layout_constraintStart_toStartOf="@id/divider_horizontal"
+            app:layout_constraintEnd_toStartOf="@id/divider_vertical"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:lines="1"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_cargo_ball_24"
+            android:id="@+id/blue_rp1"
+            app:layout_constraintStart_toEndOf="@id/divider_vertical"
+            app:layout_constraintBottom_toTopOf="@id/blue_rp2"
+            app:layout_constraintTop_toBottomOf="@id/divider_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </LinearLayout>
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_climb_48"
+            android:id="@+id/blue_rp2"
+            app:layout_constraintStart_toEndOf="@id/divider_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/blue_rp1"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
