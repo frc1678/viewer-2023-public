@@ -58,9 +58,9 @@ class MatchScheduleListAdapter(
         else -> matchContents[(position + 1).toString()]
     }
 
-    fun updateData(newData: Map<String, Match>, oneTeam: Constants.ScheduleType) {
-        matchContents = newData
-        scheduleType = oneTeam
+    fun updateData(newMatchSchedule: Map<String, Match>, newScheduleType: Constants.ScheduleType) {
+        matchContents = newMatchSchedule
+        scheduleType = newScheduleType
         notifyDataSetChanged()
     }
 
@@ -75,13 +75,7 @@ class MatchScheduleListAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val viewHolder: ViewHolder
         val rowView: View?
-        val matchNumber: String = when (scheduleType) {
-            Constants.ScheduleType.OUR_MATCHES, Constants.ScheduleType.STARRED_MATCHES -> {
-                matchContents.keys.toList()[position]
-            }
-
-            else -> (position + 1).toString()
-        }
+        val matchNumber = matchContents.keys.toList()[position]
 
         // Recycle previously inflated view if available
         if (convertView == null) {

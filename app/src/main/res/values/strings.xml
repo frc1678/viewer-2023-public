@@ -10,7 +10,6 @@
     <string name="title_auto">Auto</string>
     <string name="title_tele">Tele</string>
     <string name="title_endgame">Endgame</string>
-    <string name="title_our_schedule">Our Schedule</string>
     <string name="team_number_text">Team #</string>
     <string name="tv_version_num">Version %1$s</string>
     <string name="last_updated">Last Updated:\n%1$s</string>
@@ -43,6 +42,12 @@
     <string name="import_server">Import from server</string>
     <string name="btn_picklist_refresh">Refresh</string>
     <string name="export_picklist_button">Export to main server (for everyone)</string>
+
+    <string-array name="match_schedule_filter_array">
+        <item>All Matches</item>
+        <item>Our Matches</item>
+        <item>Starred</item>
+    </string-array>
 
     <string-array name="user_array">
         <item>None</item>
