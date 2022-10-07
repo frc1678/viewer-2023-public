@@ -1,5 +1,7 @@
 package com.example.viewer_2022
 
+import com.example.viewer_2022.data.DatabaseReference
+import com.example.viewer_2022.data.Website
 import com.example.viewer_2022.fragments.offline_picklist.PicklistData
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -11,16 +13,20 @@ import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonContentPolymorphicSerializer
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.*
 import kotlinx.serialization.serializer
 
 const val grosbeakURL = "https://grosbeak.citruscircuits.org"
 
+// Creates a client for the http request
 val client = HttpClient(CIO) {
     install(ContentNegotiation) {
         json()
+    }
+    // Sets the timeout to be 30 seconds
+    install(HttpTimeout) {
+        requestTimeoutMillis = 30*1000
+        connectTimeoutMillis = 30*1000
     }
     defaultRequest {
         header("Authorization", "02ae3a526cf54db9b563928b0ec05a77")
@@ -28,12 +34,15 @@ val client = HttpClient(CIO) {
         port = 8000
     }
 }
+
+// Gets the live picklist data from grosbeak and updates live picklist
 object PicklistApi {
     suspend fun getPicklist(eventKey: String? = null): PicklistData = client.get("$grosbeakURL/picklist/rest/list") {
         if (eventKey != null) {
             parameter("event_key", eventKey)
         }
     }.body()
+    // Sets the data in grosbeak to the new live picklist data
     suspend fun setPicklist(picklist: PicklistData, password: String, eventKey: String? = null): PicklistSetResponse = client.put("$grosbeakURL/picklist/rest/list") {
         parameter("password", password)
         if (eventKey != null) {
@@ -62,3 +71,22 @@ object PicklistApi {
 
 }
 
+
+object DataApi {
+    // Gets the data from grosbeak from a specific data collection
+    suspend fun getCollection(collectionName: String, eventKey: String?): JsonArray = client.get("$grosbeakURL/api/collection/$collectionName") {
+        if (eventKey != null) {
+            parameter("event_key", eventKey)
+        }
+    }.body()
+
+    // Returns the Team List from grosbeak as a List
+    suspend fun getTeamList(eventKey: String): List<String> = client.get("$grosbeakURL/api/team-list/$eventKey").body()
+
+    // Returns the Match Schedule from grosbeak as a Mutable Map
+    suspend fun getMatchSchedule(eventKey: String): MutableMap<String, Website.WebsiteMatch> = client.get("$grosbeakURL/api/match-schedule/$eventKey").body()
+}
+
+object NotesApi {
+
+}

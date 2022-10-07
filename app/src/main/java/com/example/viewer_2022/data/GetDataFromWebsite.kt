@@ -29,7 +29,7 @@ class GetDataFromWebsite(
         try {
 
             MainViewerActivity.teamList = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/teams-list/${Constants.EVENT_KEY}/?format=json"),
+                sendRequest("https://grosbeak.citruscircuits.org/api/team-list/${Constants.EVENT_KEY}"),
                 WebsiteTeams
             )
 
@@ -53,7 +53,7 @@ class GetDataFromWebsite(
             //pull the data from the website and then add it to the databaseReference variable
             for (x in 0..10) {
                 val result =
-                    sendRequest("https://cardinal.citruscircuits.org/cardinal/api/collection/${listOfCollectionNames[x]}/")
+                    sendRequest("https://grosbeak.citruscircuits.org/api/collection/${listOfCollectionNames[x]}/")
                 when (x) {
                     0 -> databaseReference?.raw_obj_pit = Gson().fromJson(
                         result.toString(),
@@ -104,7 +104,7 @@ class GetDataFromWebsite(
             }
 
             val rawMatchSchedule: MutableMap<String, Website.WebsiteMatch> = Gson().fromJson(
-                sendRequest("https://cardinal.citruscircuits.org/cardinal/api/match-schedule/${Constants.EVENT_KEY}/?format=json"),
+                sendRequest("https://grosbeak.citruscircuits.org/api/match-schedule/${Constants.EVENT_KEY}"),
                 WebsiteMatchSchedule
             )
 
@@ -175,7 +175,7 @@ private fun sendRequest(url: String): String {
 class GetRequestTask(val endpoint: String, val done: ((response: String?) -> Unit)? = null) :
     AsyncTask<Unit, Unit, String?>() {
     override fun doInBackground(vararg params: Unit?): String {
-        return sendRequest("https://cardinal.citruscircuits.org/cardinal/api/$endpoint")
+        return sendRequest("https://grosbeak.citruscircuits.org/api/$endpoint")
     }
 
     override fun onPostExecute(result: String?) {
@@ -183,6 +183,7 @@ class GetRequestTask(val endpoint: String, val done: ((response: String?) -> Uni
     }
 }
 
+// Gets live notes
 fun getAllNotes(cb: (List<NotesData>) -> Unit) {
     try {
         GetRequestTask("notes/all") {
@@ -196,7 +197,7 @@ fun getAllNotes(cb: (List<NotesData>) -> Unit) {
     }
 }
 
-
+// Sets the live notes
 class PostRequestTask(
     val endpoint: String,
     val data: String,

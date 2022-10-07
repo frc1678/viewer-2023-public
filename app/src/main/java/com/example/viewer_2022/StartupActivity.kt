@@ -5,16 +5,16 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.DatabaseReference
 import com.example.viewer_2022.data.GetDataFromFiles
-import com.example.viewer_2022.data.GetDataFromWebsite
+import com.example.viewer_2022.data.getDataFromWebsite
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
+import kotlinx.coroutines.launch
+import kotlinx.serialization.json.JsonObject
 
 // Splash screen activity that waits for the data to pull from the MongoDB database until it
 // begins the other Viewer activities. AKA once MainViewerActivity.databaseReference is not null,
@@ -22,8 +22,8 @@ import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 // activity begins.
 class StartupActivity : ViewerActivity() {
     companion object {
-        var databaseReference: DatabaseReference.CompetitionObject? =
-            DatabaseReference.CompetitionObject()
+        var databaseReference: JsonObject? =
+            null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class StartupActivity : ViewerActivity() {
         // TODO Make not crash when permissions are denied.
         MainViewerActivity.refreshManager.start(lifecycleScope)
 
-        getData()
+        lifecycleScope.launch { getData() }
 
     }
 
@@ -63,7 +63,7 @@ class StartupActivity : ViewerActivity() {
         }
     }
 
-    private fun getData() {
+    private suspend fun getData() {
         if (Constants.USE_TEST_DATA) {
             GetDataFromFiles(this, {
                 ContextCompat.startActivity(
@@ -81,21 +81,22 @@ class StartupActivity : ViewerActivity() {
 
             }.execute()
         } else {
-            GetDataFromWebsite({
+            // Tries to get data from website when starting the app and throws an error if fails
+            try {
+                getDataFromWebsite()
                 ContextCompat.startActivity(
                     this,
                     Intent(this, WelcomeActivity::class.java),
                     null
                 )
+            } catch (e: Throwable) {
 
-            }) {
-
-                Log.e("error", it)
+                Log.e("error", "Error fetching data from website $e")
                 runOnUiThread {
                     // Stuff that updates the UI
                     Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
                 }
-            }.execute()
+            }
         }
     }
 }
