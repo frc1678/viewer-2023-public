@@ -9,6 +9,8 @@
 package com.example.viewer_2022
 
 import com.example.viewer_2022.constants.Constants
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 // Returns a string value of any raw object in the database as long as you provide it with
 // the team number and the requested field.
@@ -19,10 +21,10 @@ import com.example.viewer_2022.constants.Constants
 
 // If the value cannot be found, then it returns whatever character is set in Constants -> NULL_CHARACTER.
 fun getRawObjectByKey(path: String, teamNumber: String, field: String): String {
-    for (`object` in getDirectField(StartupActivity.databaseReference!!, path)
-            as List<*>) {
-        if (getDirectField(`object`!!, "team_number").toString() == teamNumber) {
-            return getDirectField(`object`, field).toString()
+    for ((_, collectionElement) in StartupActivity.databaseReference!![path]!!.jsonObject) {
+        val collectionObject = collectionElement.jsonObject
+        if (collectionObject["team_number"]!!.jsonPrimitive.content == teamNumber) {
+            return collectionObject[field]!!.jsonPrimitive.content
         }
     }
 

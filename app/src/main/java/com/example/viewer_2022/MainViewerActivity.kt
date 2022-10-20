@@ -42,11 +42,11 @@ import com.example.viewer_2022.fragments.preferences.PreferencesFragment
 import com.example.viewer_2022.fragments.ranking.RankingFragment
 import com.example.viewer_2022.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
-import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
+import kotlinx.serialization.json.JsonObject
 import java.io.*
 
 

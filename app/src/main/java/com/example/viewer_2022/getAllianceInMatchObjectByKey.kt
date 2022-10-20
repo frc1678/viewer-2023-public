@@ -9,6 +9,8 @@
 package com.example.viewer_2022
 
 import com.example.viewer_2022.constants.Constants
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 // Returns a string value of any alliance object in the database as long as you provide it with
 // the match number and the alliance of the color (and the requested field).
@@ -24,17 +26,17 @@ fun getAllianceInMatchObjectByKey(
     matchNumber: String,
     field: String
 ): String {
-    for (`object` in getDirectField(StartupActivity.databaseReference!!, path)
-            as List<*>) {
-        if (getDirectField(`object`!!, "match_number").toString() == matchNumber) {
-            if (getDirectField(`object`, "alliance_color_is_red").toString() == "true" &&
+    for ((_, collectionElement) in StartupActivity.databaseReference!![path]!!.jsonObject) {
+        val collectionObject = collectionElement.jsonObject
+        if (collectionObject["match_number"]!!.jsonPrimitive.content == matchNumber) {
+            if (collectionObject["alliance_color_is_red"]!!.jsonPrimitive.content == "true" &&
                 allianceColor == "red"
             )
-                return getDirectField(`object`, field).toString()
-            else if (getDirectField(`object`, "alliance_color_is_red").toString() == "false" &&
+                return collectionObject[field]!!.jsonPrimitive.content
+            else if (collectionObject["alliance_color_is_red"]!!.jsonPrimitive.content == "false" &&
                 allianceColor == "blue"
             )
-                return getDirectField(`object`, field).toString()
+                return collectionObject[field]!!.jsonPrimitive.content
         }
     }
     return Constants.NULL_CHARACTER

@@ -74,6 +74,7 @@ object PicklistApi {
 
 object DataApi {
     // Gets the data from grosbeak from a specific data collection
+    // Note that we do not use this function currently as we are using the newly structured grosbeak database
     suspend fun getCollection(collectionName: String, eventKey: String?): JsonArray = client.get("$grosbeakURL/api/collection/$collectionName") {
         if (eventKey != null) {
             parameter("event_key", eventKey)
@@ -85,8 +86,19 @@ object DataApi {
 
     // Returns the Match Schedule from grosbeak as a Mutable Map
     suspend fun getMatchSchedule(eventKey: String): MutableMap<String, Website.WebsiteMatch> = client.get("$grosbeakURL/api/match-schedule/$eventKey").body()
-}
 
-object NotesApi {
+    suspend fun getViewerData(eventKey: String?): ViewerData = client.get("$grosbeakURL/api/viewer").body()
 
+    @Serializable
+    data class ViewerData (
+        val team: Map<String, JsonObject>,
+        val tim: Map<String, Map<String, JsonObject>>,
+        val aim: Map<String, AimData>
+    )
+
+    @Serializable
+    data class AimData (
+        val red: JsonObject? = null,
+        val blue: JsonObject? = null
+    )
 }

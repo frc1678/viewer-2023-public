@@ -22,8 +22,7 @@ import kotlinx.serialization.json.JsonObject
 // activity begins.
 class StartupActivity : ViewerActivity() {
     companion object {
-        var databaseReference: JsonObject? =
-            null
+        var databaseReference: JsonObject? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
