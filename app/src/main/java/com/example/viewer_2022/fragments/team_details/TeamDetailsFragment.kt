@@ -20,7 +20,6 @@ import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.fragments.notes.NotesFragment
 import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*

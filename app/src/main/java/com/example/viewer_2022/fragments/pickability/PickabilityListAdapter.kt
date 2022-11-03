@@ -18,7 +18,7 @@ import java.lang.Float.parseFloat
  */
 class PickabilityListAdapter(
     private val context: Context,
-    var items: Map<String, Float>,
+    var items: Map<String, Float?>,
     private val mode: PickabilityMode
 ) : BaseAdapter() {
     private val inflater = LayoutInflater.from(context)

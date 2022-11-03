@@ -66,53 +66,57 @@ class PredRankingListAdapter(
 
         viewHolder.tvDatapointOne.text = getTeamObject(
             "predicted_rank",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+            position
         )
         viewHolder.tvDatapointTwo.text =
             if (regex.matcher(
                     getTeamObject(
                         "current_avg_rps",
-                        position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+                        position
                     )
                 ).matches()
             ) {
                 (("%.2f").format(
-                    Float.parseFloat(
-                        getTeamObject(
-                            "current_avg_rps",
-                            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+                    getTeamObject(
+                        "current_avg_rps",
+                        position
+                    )?.let {
+                        Float.parseFloat(
+                            it
                         )
-                    )
+                    }
                 ))
             } else {
                 getTeamObject(
                     "current_avg_rps",
-                    position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+                    position
                 )
             }
         viewHolder.tvDatapointThree.text = getTeamObject(
             "current_rps",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+            position
         )
         val predValue = (getTeamObject(
             "predicted_rps",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+            position
         ))
-        viewHolder.tvDatapointFour.text =
-            if (predValue == Constants.NULL_CHARACTER) Constants.NULL_CHARACTER else ("%.2f").format(
-                predValue.toFloat()
-            )
+        if (predValue != null) {
+            viewHolder.tvDatapointFour.text =
+                if (predValue == null) Constants.NULL_CHARACTER else ("%.2f").format(
+                    predValue.toFloat()
+                )
+        }
         viewHolder.tvDatapointFive.text = getTeamObject(
             "current_rank",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+            position
         )
 
         return rowView!!
     }
 
-    private fun getTeamObject(field: String, position: Int, path: String): String {
+    private fun getTeamObject(field: String, position: Int): String? {
         return getTeamObjectByKey(
-            path, listContents[position],
+            listContents[position],
             field
         )
     }

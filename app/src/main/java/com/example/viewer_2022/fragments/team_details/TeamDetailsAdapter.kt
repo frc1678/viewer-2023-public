@@ -1,9 +1,7 @@
 package com.example.viewer_2022.fragments.team_details
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
@@ -21,7 +19,6 @@ import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_details_cell.view.*
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
-import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
@@ -144,14 +141,20 @@ class TeamDetailsAdapter(
                     )
                 ).matches()
             ) {
-                rowView.tv_datapoint_value.text = ("%.2f").format(
-                    parseFloat(
+                if(getTeamDataValue(teamNumber, e) != null) {
+                    rowView.tv_datapoint_value.text = ("%.2f").format(
                         getTeamDataValue(
                             teamNumber,
                             e
-                        )
+                        )?.let {
+                            parseFloat(
+                                it
+                            )
+                        }
                     )
-                )
+                } else {
+                    rowView.tv_datapoint_value.text = ("%.2f").format(Constants.NULL_CHARACTER)
+                }
             } else {
                 rowView.tv_datapoint_value.text = getTeamDataValue(
                     teamNumber,
@@ -163,7 +166,7 @@ class TeamDetailsAdapter(
             rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(
                 teamNumber,
                 e
-            )?.placement.toString()
+            )?.placement?.toString() ?: Constants.NULL_CHARACTER
         }
 
         if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
@@ -216,9 +219,6 @@ class TeamDetailsAdapter(
 
                     //attach the bundle to the fragment
                     teamRankingFragment.arguments = teamRankingFragmentArguments
-
-//                println((it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup))
-
 
                     teamRankingFragmentTransaction.addToBackStack(null).replace(
                         (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,

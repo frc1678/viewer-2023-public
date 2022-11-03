@@ -59,7 +59,6 @@ class MatchDetailsFragment : Fragment() {
 
         if(hasActualData as Boolean) {
             if (getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber.toString(),
                     "won_match"
                 ).toBoolean()
@@ -158,7 +157,6 @@ class MatchDetailsFragment : Fragment() {
         // For every team in the match details, we set the adapter for their list view according to
         // their team number and the current type Match object. We also include a list of the
         // data points we expect to be displayed on the MatchDetails list view.
-//        for (listView in getListViewCollection(root)) {
 
         val userName = UserDatapoints.contents?.get("selected")?.asString
         val datapoints = UserDatapoints.contents?.get(userName)?.asJsonArray
@@ -204,17 +202,15 @@ class MatchDetailsFragment : Fragment() {
         for (tv in getHeaderCollection(root)) {
             if (getHeaderCollection(root).indexOf(tv) < 4) {
                 val newText = getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber.toString(),
                     headerDisplay[getHeaderCollection(root).indexOf(tv)])
-                if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
+                if (newText == null) {tv.text = Constants.NULL_CHARACTER}
                 else {tv.text = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())}
             } else {
                 val newText = getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber.toString(),
                     headerDisplay[getHeaderCollection(root).indexOf(tv) - 4])
-                if (newText == Constants.NULL_CHARACTER) {tv.text = Constants.NULL_CHARACTER}
+                if (newText == null) {tv.text = Constants.NULL_CHARACTER}
                 else {tv.text = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())}
             }
         }
@@ -239,10 +235,8 @@ class MatchDetailsFragment : Fragment() {
 
     private fun checkHasActualData(): Boolean{
         return (getAllianceInMatchObjectByKey(
-            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
             Constants.BLUE, matchNumber.toString(),
             "has_actual_data").toBoolean() and (getAllianceInMatchObjectByKey(
-            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
             Constants.RED, matchNumber.toString(),
             "has_actual_data").toBoolean()))
     }

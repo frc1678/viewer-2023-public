@@ -66,66 +66,64 @@ class RankingListAdapter(
 
         viewHolder.tvDatapointOne.text = getTeamObject(
             "current_rank",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+            position
         )
         viewHolder.tvDatapointTwo.text =
             if (regex.matcher(
                     getTeamObject(
                         "current_avg_rps",
-                        position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+                        position
                     )
                 ).matches()
             ) {
                 (("%.2f").format(
-                    Float.parseFloat(
                         getTeamObject(
                             "current_avg_rps",
-                            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
-                        )
+                            position
+                        )?.toFloat() ?: Constants.NULL_CHARACTER
                     )
-                ))
+                )
             } else {
                 getTeamObject(
                     "current_avg_rps",
-                    position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+                    position
                 )
             }
         viewHolder.tvDatapointThree.text = getTeamObject(
             "current_rps",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+            position
         )
         viewHolder.tvDatapointFour.text = if (regex.matcher(
                 getTeamObject(
                     "predicted_rps",
-                    position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+                    position
                 )
             ).matches()
         ) {
             (("%.2f").format(
-                Float.parseFloat(
                     getTeamObject(
                         "predicted_rps",
-                        position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
-                    )
+                        position
+                    )?.toFloat() ?: Constants.NULL_CHARACTER
                 )
-            ))
+            )
         } else {
             getTeamObject(
                 "predicted_rps",
-                position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+                position
             )
         }
         viewHolder.tvDatapointFive.text = getTeamObject(
             "predicted_rank",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value
+            position
         )
 
         return rowView!!
     }
 
-    private fun getTeamObject(field: String, position: Int, path: String): String {
+    private fun getTeamObject(field: String, position: Int): String? {
         return getTeamObjectByKey(
-            path, listContents[position],
+            listContents[position],
             field
         )
     }

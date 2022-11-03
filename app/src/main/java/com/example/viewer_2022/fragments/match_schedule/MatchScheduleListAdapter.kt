@@ -9,7 +9,6 @@
 package com.example.viewer_2022.fragments.match_schedule
 
 import android.graphics.Paint
-import android.graphics.Typeface
 import android.graphics.Typeface.*
 import android.os.Bundle
 import android.util.Log
@@ -88,8 +87,9 @@ class MatchScheduleListAdapter(
             viewHolder = rowView.tag as ViewHolder
         }
 
+        Log.d("red actual data", "Actual data? $matchNumber ${getAllianceInMatchObjectByKey(Constants.RED, matchNumber,"has_actual_data").toBoolean()}")
+
         if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED, matchNumber,
                 "has_actual_data"
             ).toBoolean()
@@ -97,7 +97,6 @@ class MatchScheduleListAdapter(
             redAct = true
         }
         if (getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber,
                 "has_actual_data"
             ).toBoolean()
@@ -112,7 +111,7 @@ class MatchScheduleListAdapter(
         )) {
 
             tv.paintFlags = 0
-            tv.setTypeface(DEFAULT)
+            tv.typeface = DEFAULT
 
             tv.text = matchContents[matchNumber]!!.redTeams[listOf(
                 viewHolder.tvRedTeamOne,
@@ -127,7 +126,7 @@ class MatchScheduleListAdapter(
         )) {
 
             tv.paintFlags = 0
-            tv.setTypeface(DEFAULT)
+            tv.typeface = DEFAULT
 
             tv.text = matchContents[matchNumber]!!.blueTeams[0 +
                     listOf(
@@ -140,7 +139,6 @@ class MatchScheduleListAdapter(
 
         if (blueAct && redAct) {
             if (getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber, "won_match"
                 ).toBoolean()
             ) {
@@ -151,7 +149,7 @@ class MatchScheduleListAdapter(
                     viewHolder.tvRedTeamThree
                 )) {
                     tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-                    tv.setTypeface(Typeface.DEFAULT_BOLD)
+                    tv.typeface = DEFAULT_BOLD
                 }
             } else {
                 for (tv in listOf(
@@ -160,7 +158,7 @@ class MatchScheduleListAdapter(
                     viewHolder.tvBlueTeamThree
                 )) {
                     tv.paintFlags = Paint.UNDERLINE_TEXT_FLAG
-                    tv.setTypeface(Typeface.DEFAULT_BOLD)
+                    tv.typeface = DEFAULT_BOLD
                 }
             }
         }
@@ -194,16 +192,14 @@ class MatchScheduleListAdapter(
         } else {
             val value = if (blueAct && redAct) {
                 getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber, "actual_score"
                 )
             } else {
                 getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.BLUE, matchNumber, "predicted_score"
                 )
             }
-            if (value != Constants.NULL_CHARACTER) {
+            if (value != null) {
                 viewHolder.tvBluePredictedScore.text =
                     (if (blueAct) "%.0f" else "%.1f").format(value.toFloat())
                 if (!blueAct or !redAct) {
@@ -228,16 +224,14 @@ class MatchScheduleListAdapter(
         } else {
             val value = if (redAct && blueAct) {
                 getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber, "actual_score"
                 )
             } else {
                 getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED, matchNumber, "predicted_score"
                 )
             }
-            if (value != Constants.NULL_CHARACTER) {
+            if (value != null) {
                 viewHolder.tvRedPredictedScore.text =
                     (if (redAct) "%.0f" else "%.1f").format(value.toFloat())
                 if (!redAct or !blueAct) {
@@ -314,7 +308,6 @@ class MatchScheduleListAdapter(
                 }
             }
             val value = getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED, matchNumber, field +
                         "${
                             listOf(
@@ -323,7 +316,7 @@ class MatchScheduleListAdapter(
                             ).indexOf(tv) + 1
                         }"
             )
-            if (value != Constants.NULL_CHARACTER &&
+            if (value != null &&
                 value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION
             ) {
                 when (listOf(
@@ -395,7 +388,6 @@ class MatchScheduleListAdapter(
                 }
             }
             val value = getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE, matchNumber, field +
                         "${
                             listOf(
@@ -404,7 +396,7 @@ class MatchScheduleListAdapter(
                             ).indexOf(tv) + 1
                         }"
             )
-            if (value != Constants.NULL_CHARACTER &&
+            if (value != null &&
                 value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION
             ) {
                 when (listOf(

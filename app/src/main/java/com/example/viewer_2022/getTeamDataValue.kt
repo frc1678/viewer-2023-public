@@ -13,7 +13,7 @@ import com.example.viewer_2022.constants.Translations
 import java.lang.Exception
 
 // Parses through every local database key to return the value of the given field.
-fun getTeamDataValue(teamNumber: String, field: String): String {
+fun getTeamDataValue(teamNumber: String, field: String): String? {
     for (item in listOf(
         Constants.PROCESSED_OBJECT.CALCULATED_OBJECTIVE_TEAM.value,
         Constants.PROCESSED_OBJECT.CALCULATED_SUBJECTIVE_TEAM.value,
@@ -25,16 +25,16 @@ fun getTeamDataValue(teamNumber: String, field: String): String {
     ) {
         try {
             if (getTeamObjectByKey(
-                    item, teamNumber, field
-                ) != Constants.NULL_CHARACTER
+                    teamNumber, field
+                ) != null
             ) {
                 return if (field in Constants.PERCENT_DATA) {
-                    (getTeamObjectByKey(
-                        item, teamNumber, field
-                    ).toFloat() * 100.0).toString()
+                    ((getTeamObjectByKey(
+                        teamNumber, field
+                    )?.toFloat())?.times(100.0)).toString()
                 } else {
                     getTeamObjectByKey(
-                        item, teamNumber, field
+                        teamNumber, field
                     )
                 }
             }
@@ -49,23 +49,23 @@ fun getTeamDataValue(teamNumber: String, field: String): String {
     ) {
         try {
             if (getRawObjectByKey(
-                    item, teamNumber, field
-                ) != Constants.NULL_CHARACTER
+                    teamNumber, field
+                ) != null
             ) {
                 when (field) {
                     "drivetrain" -> {
                         return Translations.DRIVETRAIN[getRawObjectByKey(
-                            "raw_obj_pit", teamNumber, field
+                            teamNumber, field
                         )] ?: Constants.NULL_CHARACTER
                     }
                     "drivetrain_motor_type" -> {
                         return Translations.DRIVETRAIN_MOTOR_TYPE[getRawObjectByKey(
-                            "raw_obj_pit", teamNumber, field
+                            teamNumber, field
                         )] ?: Constants.NULL_CHARACTER
                     }
                     else -> {
                         return getRawObjectByKey(
-                            item, teamNumber, field
+                            teamNumber, field
                         )
                     }
                 }

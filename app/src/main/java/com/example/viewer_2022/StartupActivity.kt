@@ -9,8 +9,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.GetDataFromFiles
 import com.example.viewer_2022.data.getDataFromWebsite
+import com.example.viewer_2022.data.loadTestData
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 import kotlinx.coroutines.launch
@@ -22,7 +22,7 @@ import kotlinx.serialization.json.JsonObject
 // activity begins.
 class StartupActivity : ViewerActivity() {
     companion object {
-        var databaseReference: JsonObject? = null
+        var databaseReference: DataApi.ViewerData? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,39 +63,30 @@ class StartupActivity : ViewerActivity() {
     }
 
     private suspend fun getData() {
-        if (Constants.USE_TEST_DATA) {
-            GetDataFromFiles(this, {
-                ContextCompat.startActivity(
-                    this,
-                    Intent(this, WelcomeActivity::class.java),
-                    null
-                )
+        try {
+            if (Constants.USE_TEST_DATA) {
+                loadTestData(this.resources)
 
-            }) {
-                Log.e("error", it)
-                runOnUiThread {
-                    // Stuff that updates the UI
-                    Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
-                }
-
-            }.execute()
-        } else {
-            // Tries to get data from website when starting the app and throws an error if fails
-            try {
+            } else {
+                // Tries to get data from website when starting the app and throws an error if fails
                 getDataFromWebsite()
-                ContextCompat.startActivity(
-                    this,
-                    Intent(this, WelcomeActivity::class.java),
-                    null
-                )
-            } catch (e: Throwable) {
 
-                Log.e("error", "Error fetching data from website $e")
-                runOnUiThread {
-                    // Stuff that updates the UI
-                    Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
-                }
+            }
+            ContextCompat.startActivity(
+                this,
+                Intent(this, WelcomeActivity::class.java),
+                null
+            )
+        } catch (e: Throwable) {
+            Log.e(
+                "data",
+                "Error fetching data from ${if (Constants.USE_TEST_DATA) "files" else "website"}: $e"
+            )
+            runOnUiThread {
+                // Stuff that updates the UI
+                Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
             }
         }
+
     }
 }

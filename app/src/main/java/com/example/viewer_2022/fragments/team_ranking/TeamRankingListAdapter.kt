@@ -47,7 +47,11 @@ class TeamRankingListAdapter(
 
         rowView.tv_team_number_ranking.text = e.teamNumber
         if (regex.matcher(e.value).matches()) {
-            rowView.tv_value_ranking.text = ("%.2f").format(java.lang.Float.parseFloat(e.value))
+            rowView.tv_value_ranking.text = ("%.2f").format(e.value?.let {
+                java.lang.Float.parseFloat(
+                    it
+                )
+            })
         } else {
             rowView.tv_value_ranking.text = e.value
         }

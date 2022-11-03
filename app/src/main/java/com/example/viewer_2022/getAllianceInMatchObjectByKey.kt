@@ -19,25 +19,14 @@ import kotlinx.serialization.json.jsonPrimitive
 // It WILL iterate through every object in the given path until it finds the correct one which is a
 // bit heavy, yet there's no obvious better way to do it given the structure of our database.
 
-// If the value cannot be found, then it returns whatever character is set in Constants -> NULL_CHARACTER.
+// If the value cannot be found, then it returns null
 fun getAllianceInMatchObjectByKey(
-    path: String,
     allianceColor: String,
     matchNumber: String,
     field: String
-): String {
-    for ((_, collectionElement) in StartupActivity.databaseReference!![path]!!.jsonObject) {
-        val collectionObject = collectionElement.jsonObject
-        if (collectionObject["match_number"]!!.jsonPrimitive.content == matchNumber) {
-            if (collectionObject["alliance_color_is_red"]!!.jsonPrimitive.content == "true" &&
-                allianceColor == "red"
-            )
-                return collectionObject[field]!!.jsonPrimitive.content
-            else if (collectionObject["alliance_color_is_red"]!!.jsonPrimitive.content == "false" &&
-                allianceColor == "blue"
-            )
-                return collectionObject[field]!!.jsonPrimitive.content
-        }
-    }
-    return Constants.NULL_CHARACTER
+): String? {
+    return if (allianceColor == "red")
+        StartupActivity.databaseReference?.aim?.get(matchNumber)?.red?.get(field)?.jsonPrimitive?.content
+    else
+        StartupActivity.databaseReference?.aim?.get(matchNumber)?.blue?.get(field)?.jsonPrimitive?.content
 }
