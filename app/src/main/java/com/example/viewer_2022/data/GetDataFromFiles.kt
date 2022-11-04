@@ -50,57 +50,6 @@ suspend fun loadTestData(resources: Resources) {
 
     }
 
-/*
-class GetDataFromFiles(
-    var context: Context,
-    val onCompleted: () -> Unit = {},
-    val onError: (error: String) -> Unit = {}
-) :
-    AsyncTask<String, String, String>() {
-    override fun doInBackground(vararg p0: String?): String {
-        try {
-            //For each of the collections (make sure to change this number if the number of collections change),
-            //pull the data from the website and then add it to the databaseReference variable
-                databaseReference = Json.decodeFromString<DataApi.ViewerData>(readFile(context.resources.openRawResource(R.raw.test_data)))
-            val rawMatchSchedule = Json.decodeFromString<MutableMap<String, Website.WebsiteMatch>>(readFile(context.resources.openRawResource(R.raw.match_schedule)))
-
-            for (i in rawMatchSchedule) {
-                val match = Match(i.key)
-                for (j in i.value.teams) {
-                    when (j.color) {
-                        "red" -> {
-                            match.redTeams.add(j.number.toString())
-                        }
-                        "blue" -> {
-                            match.blueTeams.add(j.number.toString())
-                        }
-                    }
-                }
-
-                Log.e("parsedmap", match.toString())
-                MainViewerActivity.matchCache[i.key] = match
-            }
-            MainViewerActivity.matchCache =
-                MainViewerActivity.matchCache.toList().sortedBy { (k, v) -> v.matchNumber.toInt() }
-                    .toMap().toMutableMap()
-
-            MainViewerActivity.teamList = Json.decodeFromString(readFile(context.getResources().openRawResource(R.raw.team_list))
-            )
-
-            lastUpdated = Calendar.getInstance().time
-
-            return ("finished")
-        } catch (e: Throwable) {
-            onError(e.toString())
-            return ("error")
-        }
-    }
-
-    override fun onPostExecute(result: String) {
-        onCompleted()
-    }
-}*/
-
 private fun readFile(file: InputStream): String {
     val `is`: InputStream = file
     val writer: Writer = StringWriter()

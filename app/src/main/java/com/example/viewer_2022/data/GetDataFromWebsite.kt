@@ -14,7 +14,7 @@ suspend fun getDataFromWebsite() {
     // Sets databaseReference to the data in Grosbeak for the given Event Key
     StartupActivity.databaseReference = DataApi.getViewerData(Constants.EVENT_KEY)
 
-    Log.d("Viewer Data", "${StartupActivity.databaseReference!!.tim}")
+    Log.d("Viewer Data", "${StartupActivity.databaseReference!!.aim}")
 
     // Sets the teamList to the new team list for the competition
     // Gets this team list from grosbeak/api/team-list
@@ -25,7 +25,7 @@ suspend fun getDataFromWebsite() {
     val rawMatchSchedule = DataApi.getMatchSchedule(Constants.EVENT_KEY)
 
     // For each team in the match schedule it adds the team to either the redTeams list of the blueTeams list
-    for (i in rawMatchSchedule) {
+    for (i in rawMatchSchedule.toList().sortedBy { it.first.toInt() }.toMap()) {
         val match = Match(i.key)
         for (j in i.value.teams) {
             when (j.color) {
@@ -38,7 +38,6 @@ suspend fun getDataFromWebsite() {
             }
         }
 
-        Log.d("parsedmap", match.toString())
         MainViewerActivity.matchCache[i.key] = match
     }
 

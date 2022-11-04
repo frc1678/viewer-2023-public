@@ -39,7 +39,6 @@ class MatchScheduleListAdapter(
     private var scheduleType: Constants.ScheduleType,
     private var listView: ListView
 ) : BaseAdapter() {
-
     private val inflater = LayoutInflater.from(context)
 
     /**
@@ -99,7 +98,7 @@ class MatchScheduleListAdapter(
             matchNumber,
             "has_actual_data"
         ).toBoolean()
-
+        Log.d("actual data?", "$matchNumber : $hasActualData")
         // Set the team numbers and default styles
         for (tv in viewHolder.redTeams) {
             tv.paintFlags = 0
@@ -404,7 +403,6 @@ class MatchScheduleListAdapter(
 
         // Set the click listeners to go to match details, etc.
         setClickListeners(rowView!!, viewHolder, position)
-
         return rowView
     }
 
