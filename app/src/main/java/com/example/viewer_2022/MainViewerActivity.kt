@@ -77,7 +77,7 @@ class MainViewerActivity : ViewerActivity() {
                 Log.d("notes", "updated notes cache")
             }
          */
-        }
+    }
 
     //Overrides back button to go back to last fragment.
     //Disables the back button and returns nothing when in the startup match schedule.
@@ -227,7 +227,6 @@ class MainViewerActivity : ViewerActivity() {
                     ft.replace(R.id.nav_host_fragment, firstPickabilityFragment, "pickabilityFirst")
                         .commit()
                 }
-
 
 
                 R.id.nav_menu_team_list -> {
@@ -491,7 +490,8 @@ class MainViewerActivity : ViewerActivity() {
 
         fun contains(team: String) = teams.contains(team)
 
-        private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_teams.json")
+        private val file =
+            File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_teams.json")
 
         fun read() {
             if (!file.exists()) write()

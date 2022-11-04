@@ -98,7 +98,7 @@ class MatchScheduleListAdapter(
             matchNumber,
             "has_actual_data"
         ).toBoolean()
-        Log.d("actual data?", "$matchNumber : $hasActualData")
+
         // Set the team numbers and default styles
         for (tv in viewHolder.redTeams) {
             tv.paintFlags = 0

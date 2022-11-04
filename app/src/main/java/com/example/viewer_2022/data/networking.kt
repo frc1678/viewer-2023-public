@@ -90,7 +90,7 @@ object DataApi {
 
     suspend fun getViewerData(eventKey: String?): ViewerData = client.get("$grosbeakURL/api/viewer") {
         if (eventKey != null) {
-            parameter("event_key", "test2022cc")
+            parameter("event_key", eventKey)
         }
             parameter("use_strings", true)
     }.body()
