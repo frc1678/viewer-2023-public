@@ -35,8 +35,6 @@ import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.*
 import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
-import com.example.viewer_2022.fragments.match_schedule.OurScheduleFragment
-import com.example.viewer_2022.fragments.match_schedule.StarredMatchesFragment
 import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
 import com.example.viewer_2022.fragments.pickability.PickabilityFragment
 import com.example.viewer_2022.fragments.pickability.PickabilityMode
@@ -167,8 +165,6 @@ class MainViewerActivity : ViewerActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
-        val ourScheduleFragment = OurScheduleFragment()
-        val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
         val livePicklistFragment = LivePicklistFragment()
         val offlinePicklistFragment = OfflinePicklistFragment()
@@ -199,23 +195,6 @@ class MainViewerActivity : ViewerActivity() {
                     supportFragmentManager.beginTransaction()
                         .addToBackStack(null)
                         .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-                        .commit()
-                }
-
-                R.id.nav_menu_our_match_schedule -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "ourSchedule") ft.addToBackStack(
-                        null
-                    )
-                    ft.replace(R.id.nav_host_fragment, ourScheduleFragment, "ourSchedule")
-                        .commit()
-                }
-
-                R.id.nav_menu_starred_matches -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "starredMatches")
-                        ft.addToBackStack(null)
-                    ft.replace(R.id.nav_host_fragment, starredMatchesFragment, "starredMatches")
                         .commit()
                 }
 
@@ -492,6 +471,44 @@ class MainViewerActivity : ViewerActivity() {
 
     }
 
+    /**
+     * An object to read/write the starred teams file with.
+     */
+    object StarredTeams {
+        val gson = Gson()
+
+        private val teams = mutableSetOf<String>()
+
+        fun add(team: String) {
+            teams.add(team)
+            write()
+        }
+
+        fun remove(team: String) {
+            teams.remove(team)
+            write()
+        }
+
+        fun contains(team: String) = teams.contains(team)
+
+        private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_teams.json")
+
+        fun read() {
+            if (!file.exists()) write()
+            try {
+                JsonParser.parseReader(FileReader(file)).asJsonArray.forEach { teams.add(it.asString) }
+            } catch (e: Exception) {
+                Log.e("StarredTeams.read", "Failed to read starred teams file")
+            }
+        }
+
+        private fun write() {
+            val writer = FileWriter(file, false)
+            gson.toJson(teams, writer)
+            writer.close()
+        }
+    }
+
 }
 
 class NavDrawerListener(
@@ -505,8 +522,6 @@ class NavDrawerListener(
         if (newState == ViewDragHelper.STATE_SETTLING) {
             when (fragManager.fragments.last().tag) {
                 "matchSchedule" -> navView.setCheckedItem(R.id.nav_menu_match_schedule)
-                "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
-                "starredMatches" -> navView.setCheckedItem(R.id.nav_menu_starred_matches)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
                 "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
                 "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)

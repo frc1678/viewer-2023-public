@@ -15,6 +15,7 @@ private fun getTIMDocument(matchNumber: String, teamNumber: String): JsonObject?
  * @param field The field to get the value of.
  * @return The value of the requested field.
  */
+
 fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: String): String? {
     return StartupActivity.databaseReference?.tim?.get(matchNumber)?.get(teamNumber)?.get(field)?.jsonPrimitive?.content
 }
