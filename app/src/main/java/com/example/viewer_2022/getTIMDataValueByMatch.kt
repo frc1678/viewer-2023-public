@@ -52,6 +52,10 @@ fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: Strin
         "TWO" -> "2"
         "THREE" -> "3"
         "FOUR" -> "4"
+        "TRAVERSAL" -> "LVL 4"
+        "HIGH" -> "LVL 3"
+        "MID" -> "LVL 2"
+        "LOW" -> "LVL 1"
 
         else -> fieldValue
     }
