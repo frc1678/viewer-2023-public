@@ -10,6 +10,9 @@ package com.example.viewer_2022
 
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.Team
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 // Returns a string value of any team object in the database as long as you provide it with
 // the team number and the requested field.
@@ -19,40 +22,18 @@ import com.example.viewer_2022.data.Team
 // bit heavy, yet there's no obvious better way to do it given the structure of our database.
 
 // If the value cannot be found, then it returns whatever character is set in Constants -> NULL_CHARACTER.
-fun getTeamObjectByKey(path: String, teamNumber: String, field: String): String {
-    if (MainViewerActivity.teamCache.containsKey(teamNumber)) {
-        // Two separate if statements to lower computations per interaction.
-        if (getDirectField(
-                MainViewerActivity.teamCache[teamNumber]!!,
-                field
-            ).toString() != Constants.NULL_CHARACTER
-        ) {
-            return getDirectField(MainViewerActivity.teamCache[teamNumber]!!, field).toString()
+fun getTeamObjectByKey(teamNumber: String, field: String): String? {
+    return if (StartupActivity.databaseReference?.team?.contains(teamNumber) == true) {
+
+        val teamDocument = StartupActivity.databaseReference!!.team[teamNumber]!!
+
+        if (teamDocument.contains(field)) {
+            teamDocument[field]?.jsonPrimitive?.content
+        } else {
+            null
         }
+
     } else {
-        // If the team object doesn't exist in the cache, create the team object in the team cache.
-        MainViewerActivity.teamCache[teamNumber] = Team(teamNumber.toInt())
+        null
     }
-    // This for loop will occur when the team does NOT exist in the cache, AND when the team DOES
-    // exist in the cache but has a null value for the given field.
-    for (`object` in getDirectField(StartupActivity.databaseReference!!, path) as List<*>) {
-        if (getDirectField(`object`!!, "team_number").toString() == teamNumber) {
-            //TODO: Fix Team Cache stuff (Kate)
-
-            // Creating two constant variables. One for the current null cache field, and the other
-            // for the value that is going to replace it.
-            //val mField = MainViewerActivity.teamCache[teamNumber]!!::class.java.getDeclaredField(field)
-            val mValue = getDirectField(`object`, field)
-
-            // Set the accessibility to true and replace the null cache value with the database value.
-//            mField.isAccessible = true
-//            if (mValue != Constants.NULL_CHARACTER) {
-//                mField.set(MainViewerActivity.teamCache[teamNumber]!!, mValue)
-//            } else {
-//                mField.set(MainViewerActivity.teamCache[teamNumber]!!, null)
-//            }
-            return mValue.toString()
-        }
-    }
-    return Constants.NULL_CHARACTER
 }

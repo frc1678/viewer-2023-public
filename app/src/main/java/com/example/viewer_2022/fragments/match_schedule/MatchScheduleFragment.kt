@@ -123,7 +123,6 @@ class MatchScheduleFragment : Fragment() {
             ), scheduleType, root.lv_match_schedule
         )
         root.lv_match_schedule.adapter = adapter
-
         // Refresh the match schedule when the app refreshes
         if (refreshId == null) {
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {

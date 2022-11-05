@@ -28,7 +28,7 @@ class SecondPickabilityFragment(var mode: PickabilityMode) : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_pickability, container, false)
         root.tv_pickability_header.text = mode.toString().toLowerCase().capitalize() + " Pickability"
-        val map : Map<String, Float> = updateMatchScheduleListView(root)
+        val map : Map<String, Float?> = updateMatchScheduleListView(root)
 
         if (mode == PickabilityMode.SECOND) {
             root.btn_pickability.text = " To First Pickability"
@@ -59,7 +59,7 @@ class SecondPickabilityFragment(var mode: PickabilityMode) : Fragment() {
         return root
     }
 
-    private fun updateMatchScheduleListView(root: View) : Map<String, Float>{
+    private fun updateMatchScheduleListView(root: View) : Map<String, Float?>{
 
         val map = makeData()
         val adapter = SecondPickabilityListAdapter(
@@ -80,11 +80,10 @@ class SecondPickabilityFragment(var mode: PickabilityMode) : Fragment() {
         return map
     }
 
-    fun makeData(): Map<String, Float> {
+    fun makeData(): Map<String, Float?> {
 
-        var map = mutableMapOf<String, Float>()
+        var map = mutableMapOf<String, Float?>()
         val rawTeamNumbers = convertToFilteredTeamsList(
-            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
             MainViewerActivity.teamList
         )
 
@@ -92,7 +91,7 @@ class SecondPickabilityFragment(var mode: PickabilityMode) : Fragment() {
             getTeamDataValue(
                 e,
                 (if (mode == PickabilityMode.FIRST) "first_pickability" else "second_pickability")
-            ).toFloat()
+            )?.toFloat()
         } catch (e: Exception) {
             (-1000).toFloat()
         } }

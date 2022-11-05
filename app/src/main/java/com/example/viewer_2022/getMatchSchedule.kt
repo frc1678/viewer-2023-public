@@ -1,5 +1,6 @@
 package com.example.viewer_2022
 
+import android.util.Log
 import com.example.viewer_2022.data.Match
 
 /**
@@ -58,5 +59,6 @@ fun getMatchSchedule(
         return tempMatches
     }
 
-    return MainViewerActivity.matchCache
+    return MainViewerActivity.matchCache.toSortedMap(compareBy { it.toInt() })
+
 }

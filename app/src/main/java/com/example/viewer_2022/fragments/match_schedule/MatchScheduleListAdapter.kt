@@ -39,7 +39,6 @@ class MatchScheduleListAdapter(
     private var scheduleType: Constants.ScheduleType,
     private var listView: ListView
 ) : BaseAdapter() {
-
     private val inflater = LayoutInflater.from(context)
 
     /**
@@ -91,12 +90,10 @@ class MatchScheduleListAdapter(
          * Whether actual data exists for this match. Requires both red and blue to have actual data.
          */
         val hasActualData = getAllianceInMatchObjectByKey(
-            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
             Constants.RED,
             matchNumber,
             "has_actual_data"
         ).toBoolean() && getAllianceInMatchObjectByKey(
-            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
             Constants.BLUE,
             matchNumber,
             "has_actual_data"
@@ -120,7 +117,6 @@ class MatchScheduleListAdapter(
         // Set the border and styling for the winning alliance
         if (hasActualData) {
             if (getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED,
                     matchNumber,
                     "won_match"
@@ -157,12 +153,11 @@ class MatchScheduleListAdapter(
         } else {
             // Cache miss
             val value = getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE,
                 matchNumber,
                 if (hasActualData) "actual_score" else "predicted_score"
             )
-            if (value != Constants.NULL_CHARACTER) {
+            if (value != null) {
                 viewHolder.tvBlueScore.text = (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
                 if (!hasActualData) {
                     MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
@@ -188,20 +183,18 @@ class MatchScheduleListAdapter(
             // Cache miss
             val value = if (hasActualData) {
                 getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED,
                     matchNumber,
                     "actual_score"
                 )
             } else {
                 getAllianceInMatchObjectByKey(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                     Constants.RED,
                     matchNumber,
                     "predicted_score"
                 )
             }
-            if (value != Constants.NULL_CHARACTER) {
+            if (value != null) {
                 viewHolder.tvRedScore.text = (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
                 if (!hasActualData) {
                     MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
@@ -270,12 +263,11 @@ class MatchScheduleListAdapter(
             }
             // Cache missed, so we need to retrieve from the database
             val value = getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.RED,
                 matchNumber,
                 field + "$rp"
             )
-            if (value != Constants.NULL_CHARACTER && value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+            if (value != null && value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
                 when (rp) {
                     1 -> {
                         if (hasActualData) {
@@ -346,12 +338,11 @@ class MatchScheduleListAdapter(
             }
             // Cache missed, so we need to retrieve from the database
             val value = getAllianceInMatchObjectByKey(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_ALLIANCE_IN_MATCH.value,
                 Constants.BLUE,
                 matchNumber,
                 field + "$rp"
             )
-            if (value != Constants.NULL_CHARACTER && value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
+            if (value != null && value.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
                 when (rp) {
                     1 -> {
                         if (hasActualData) {
@@ -412,7 +403,6 @@ class MatchScheduleListAdapter(
 
         // Set the click listeners to go to match details, etc.
         setClickListeners(rowView!!, viewHolder, position)
-
         return rowView
     }
 

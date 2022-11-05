@@ -10,7 +10,7 @@ import com.example.viewer_2022.constants.Constants
 import kotlinx.android.synthetic.main.pickability_cell.view.*
 import java.lang.Float.parseFloat
 
-class SecondPickabilityListAdapter(private val context: Context, var items: Map<String, Float>, private val mode: PickabilityMode) : BaseAdapter() {
+class SecondPickabilityListAdapter(private val context: Context, var items: Map<String, Float?>, private val mode: PickabilityMode) : BaseAdapter() {
     private val inflater = LayoutInflater.from(context)
     override fun getCount(): Int {
         return items.size;

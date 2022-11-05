@@ -49,7 +49,6 @@ class PredRankingFragment : Fragment() {
 
         val adapter = PredRankingListAdapter(
             activity!!, convertToPredFilteredTeamsList(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
                 MainViewerActivity.teamList
             )
         )
@@ -65,7 +64,6 @@ class PredRankingFragment : Fragment() {
             val rankingFragmentTransaction = this.fragmentManager!!.beginTransaction()
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER, convertToPredFilteredTeamsList(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
                     MainViewerActivity.teamList
                 )[position]
             )
