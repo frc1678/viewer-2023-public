@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.viewer_2022.*
+import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.databinding.ExportPicklistPopupBinding
 import com.example.viewer_2022.databinding.FragmentOfflinePicklistBinding
 import com.example.viewer_2022.databinding.ImportPicklistPopupBinding
@@ -74,7 +75,7 @@ class OfflinePicklistFragment : Fragment() {
                         ImportType.Server -> {
                             runBlocking {
                                 try {
-                                    val data = PicklistApi.getPicklist()
+                                    val data = PicklistApi.getPicklist(Constants.EVENT_KEY)
                                     saveData(
                                         data.ranking,
                                         data.dnp
@@ -97,7 +98,7 @@ class OfflinePicklistFragment : Fragment() {
                 runBlocking {
                     val localData = getData()
                     try {
-                        when (val resp = PicklistApi.setPicklist(localData, it)) {
+                        when (val resp = PicklistApi.setPicklist(localData, it, Constants.EVENT_KEY)) {
                             is PicklistApi.PicklistSetResponse.Success -> {
                                 showSuccess(context!!, "Picklist uploaded. Deleted ${resp.deleted} old teams")
                             }

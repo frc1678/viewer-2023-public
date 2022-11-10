@@ -80,7 +80,7 @@ class StartupActivity : ViewerActivity() {
         } catch (e: Throwable) {
             Log.e(
                 "data",
-                "Error fetching data from ${if (Constants.USE_TEST_DATA) "files" else "website"}: $e"
+                "Error fetching data from ${if (Constants.USE_TEST_DATA) "files" else "website"}: ${Log.getStackTraceString(e)}"
             )
             runOnUiThread {
                 // Stuff that updates the UI
