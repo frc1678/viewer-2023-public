@@ -8,7 +8,8 @@ import com.example.viewer_2022.data.MatchScheduleMatch
 import com.example.viewer_2022.fragments.offline_picklist.PicklistData
 import io.ktor.client.*
 import io.ktor.client.call.*
-import io.ktor.client.engine.cio.*
+
+import io.ktor.client.engine.okhttp.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -21,7 +22,7 @@ import kotlinx.serialization.json.*
 const val grosbeakURL = "https://grosbeak.citruscircuits.org"
 
 // Creates a client for the http request
-val client = HttpClient(CIO) {
+val client = HttpClient(OkHttp) {
     install(ContentNegotiation) {
         json()
     }
@@ -29,6 +30,7 @@ val client = HttpClient(CIO) {
     install(HttpTimeout) {
         requestTimeoutMillis = 30*1000
         connectTimeoutMillis = 30*1000
+        socketTimeoutMillis = 30*1000
     }
     defaultRequest {
         header("Authorization", "02ae3a526cf54db9b563928b0ec05a77")
