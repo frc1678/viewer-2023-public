@@ -28,9 +28,9 @@ val client = HttpClient(OkHttp) {
     }
     // Sets the timeout to be 30 seconds
     install(HttpTimeout) {
-        requestTimeoutMillis = 30*1000
-        connectTimeoutMillis = 30*1000
-        socketTimeoutMillis = 30*1000
+        requestTimeoutMillis = 60*1000
+        connectTimeoutMillis = 60*1000
+        socketTimeoutMillis = 60*1000
     }
     defaultRequest {
         header("Authorization", "02ae3a526cf54db9b563928b0ec05a77")
