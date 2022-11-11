@@ -34,8 +34,6 @@ val client = HttpClient(OkHttp) {
     }
     defaultRequest {
         header("Authorization", "02ae3a526cf54db9b563928b0ec05a77")
-        /*host = "localhost"
-        port = 8000*/
     }
 }
 
