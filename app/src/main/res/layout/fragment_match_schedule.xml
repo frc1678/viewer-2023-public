@@ -17,7 +17,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="@string/team_number_text"
-                android:inputType="number"
+                android:inputType="text"
                 android:importantForAutofill="no"/>
 
         <Spinner
