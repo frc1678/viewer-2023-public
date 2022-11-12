@@ -21,6 +21,7 @@ import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.getTeamDataValue
+import com.example.viewer_2022.getTeamName
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
 import java.io.File
@@ -65,10 +66,10 @@ class TeamDetailsFragment : Fragment() {
         // is null, the default display will show '0' for the team number on TeamDetails.
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
-            teamName = getTeamDataValue(teamNumber!!, "team_name")
+            teamName = getTeamName(teamNumber!!)
         }
         root.tv_team_number.text = teamNumber.toString()
-        root.tv_team_name.text = teamName.toString()
+        root.tv_team_name.text = teamName ?: Constants.NULL_CHARACTER
     }
 
     // Updates the adapter for the list view of each team in the match details display.
