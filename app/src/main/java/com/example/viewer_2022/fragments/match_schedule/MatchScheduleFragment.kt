@@ -53,8 +53,8 @@ class MatchScheduleFragment : Fragment() {
      */
     private var search: String? = null
         set(value) {
-            field = value
-            updateAdapter(scheduleType, value)
+            field = value?.uppercase()
+            updateAdapter(scheduleType, field)
         }
 
     /**
