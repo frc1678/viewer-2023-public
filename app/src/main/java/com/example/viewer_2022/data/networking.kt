@@ -31,10 +31,8 @@ class Ipv4OnlyDns : Dns {
         val defaultAddresses = Dns.SYSTEM.lookup(hostname)
         val sortedAddresses = defaultAddresses.sortedBy {
             val isIpv4 = it is Inet4Address
-//            Log.d("Ktor", "isIpv4 for $it : $isIpv4")
             return@sortedBy isIpv4.not()
         }
-//        Log.d("Ktor", "DNS lookup for $hostname returned $sortedAddresses")
         return sortedAddresses
     }
 }
