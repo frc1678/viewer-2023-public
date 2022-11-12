@@ -113,7 +113,7 @@ object DataApi {
     }.body()
 
     // Returns the Team List from grosbeak as a List
-    suspend fun getTeamList(eventKey: String): List<Int> = client.get("$grosbeakURL/api/team-list/$eventKey").body()
+    suspend fun getTeamList(eventKey: String): List<String> = client.get("$grosbeakURL/api/team-list/$eventKey").body()
 
     // Returns the Match Schedule from grosbeak as a Mutable Map
     suspend fun getMatchSchedule(eventKey: String): MutableMap<String, MatchScheduleMatch> = client.get("$grosbeakURL/api/match-schedule/$eventKey").body()

@@ -69,13 +69,15 @@ class RankingListAdapter(
             position
         )
         viewHolder.tvDatapointTwo.text =
-            if (regex.matcher(
-                    getTeamObject(
-                        "current_avg_rps",
-                        position
-                    )
-                ).matches()
-            ) {
+            if (getTeamObject(
+                    "current_avg_rps",
+                    position
+                )?.let {
+                    regex.matcher(
+                        it
+                    ).matches()
+                }
+            == true) {
                 (("%.2f").format(
                         getTeamObject(
                             "current_avg_rps",
@@ -93,13 +95,15 @@ class RankingListAdapter(
             "current_rps",
             position
         )
-        viewHolder.tvDatapointFour.text = if (regex.matcher(
-                getTeamObject(
-                    "predicted_rps",
-                    position
-                )
-            ).matches()
-        ) {
+        viewHolder.tvDatapointFour.text = if (getTeamObject(
+                "predicted_rps",
+                position
+            )?.let {
+                regex.matcher(
+                    it
+                ).matches()
+            }
+        == true) {
             (("%.2f").format(
                     getTeamObject(
                         "predicted_rps",
