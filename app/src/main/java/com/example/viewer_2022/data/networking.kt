@@ -13,18 +13,48 @@ import io.ktor.client.engine.okhttp.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.*
+import okhttp3.Dns
+import okhttp3.OkHttpClient
+import java.net.Inet4Address
+import java.net.InetAddress
 
 const val grosbeakURL = "https://grosbeak.citruscircuits.org"
 
+class Ipv4OnlyDns : Dns {
+    override fun lookup(hostname: String): List<InetAddress> {
+        val defaultAddresses = Dns.SYSTEM.lookup(hostname)
+        val sortedAddresses = defaultAddresses.sortedBy {
+            val isIpv4 = it is Inet4Address
+//            Log.d("Ktor", "isIpv4 for $it : $isIpv4")
+            return@sortedBy isIpv4.not()
+        }
+//        Log.d("Ktor", "DNS lookup for $hostname returned $sortedAddresses")
+        return sortedAddresses
+    }
+}
+
 // Creates a client for the http request
 val client = HttpClient(OkHttp) {
+
     install(ContentNegotiation) {
         json()
+    }
+    engine {
+        preconfigured = OkHttpClient.Builder().dns(Ipv4OnlyDns()).build()
+    }
+    install(Logging) {
+        logger = object : Logger {
+            override fun log(message: String) {
+                Log.d("Ktor", message)
+            }
+        }
+        level = LogLevel.ALL
     }
     // Sets the timeout to be 30 seconds
     install(HttpTimeout) {
