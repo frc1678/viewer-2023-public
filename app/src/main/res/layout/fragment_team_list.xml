@@ -16,8 +16,8 @@
     <View style="@style/view_separator_horizontal" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="match_parent" 
+        android:layout_height="60dp"
         android:orientation="horizontal">
 
         <ImageView
