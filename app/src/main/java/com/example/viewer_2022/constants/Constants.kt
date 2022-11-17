@@ -331,16 +331,6 @@ class Constants {
 
     }
 
-    enum class PROCESSED_OBJECT(val value: String) {
-        CALCULATED_OBJECTIVE_TEAM("obj_team"),
-        CALCULATED_SUBJECTIVE_TEAM("subj_team"),
-        CALCULATED_PREDICTED_TEAM("predicted_team"),
-        CALCULATED_TBA_TEAM("tba_team"),
-        CALCULATED_PICKABILITY("pickability"),
-        CALCULATED_TBA_TEAM_IN_MATCH("tba_tim"),
-        CALCULATED_SUBJECTIVE_TEAM_IN_MATCH("subj_tim")
-    }
-
     enum class ScheduleType {
         ALL_MATCHES,
         OUR_MATCHES,
