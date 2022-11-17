@@ -78,7 +78,8 @@ class MatchDetailsAdapter(
             )
             for (i in 0..5) {
                 textViews[i].text =
-                    if (!hasActualData) getTeamValue(teamNumbers[i], datapointsDisplay[position]) ?: Constants.NULL_CHARACTER
+                    if (!hasActualData) getTeamValue(teamNumbers[i], datapointsDisplay[position])
+                        ?: Constants.NULL_CHARACTER
                     else getTIMDataValueByMatch(
                         matchNumber.toString(),
                         teamNumbers[i],

@@ -1,16 +1,16 @@
 package com.example.viewer_2022.fragments.live_picklist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.databinding.LivePicklistCellBinding
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
-import kotlinx.coroutines.runBlocking
 
 /**
  * Recycler adapter for live picklist

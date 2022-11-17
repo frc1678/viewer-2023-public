@@ -19,6 +19,11 @@ import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.getTeamObjectByKey
 import java.lang.Float
 import java.util.regex.Pattern
+import kotlin.Any
+import kotlin.Int
+import kotlin.Long
+import kotlin.String
+import kotlin.let
 
 // Custom list adapter class with aq object handling to display the custom cell for the match schedule.
 class PredRankingListAdapter(

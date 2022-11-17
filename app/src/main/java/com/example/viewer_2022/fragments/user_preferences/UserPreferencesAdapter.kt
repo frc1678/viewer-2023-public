@@ -89,7 +89,7 @@ class UserPreferencesAdapter(
             }
         }
 
-        rowView.setOnClickListener() {
+        rowView.setOnClickListener {
             isGreen = if (!isGreen) {
                 rowView.setBackgroundColor(ContextCompat.getColor(context, R.color.ElectricGreen))
                 chosenDatapoints.add(datapointName)

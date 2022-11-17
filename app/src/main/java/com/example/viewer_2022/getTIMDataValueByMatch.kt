@@ -1,8 +1,7 @@
 package com.example.viewer_2022
 
-import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.TeamInMatch
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
 private fun getTIMDocument(matchNumber: String, teamNumber: String): JsonObject? {
     return StartupActivity.databaseReference?.tim?.get(matchNumber)?.get(teamNumber)
@@ -16,7 +15,8 @@ private fun getTIMDocument(matchNumber: String, teamNumber: String): JsonObject?
  * @return The value of the requested field.
  */
 fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: String): String? {
-    var fieldValue = StartupActivity.databaseReference?.tim?.get(matchNumber)?.get(teamNumber)?.get(field)?.jsonPrimitive?.content
+    var fieldValue = StartupActivity.databaseReference?.tim?.get(matchNumber)?.get(teamNumber)
+        ?.get(field)?.jsonPrimitive?.content
     fieldValue = when (fieldValue) {
         "ONE" -> "1"
         "TWO" -> "2"

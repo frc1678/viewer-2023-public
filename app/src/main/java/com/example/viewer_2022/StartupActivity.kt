@@ -9,12 +9,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.DataApi
 import com.example.viewer_2022.data.getDataFromWebsite
 import com.example.viewer_2022.data.loadTestData
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.JsonObject
 
 // Splash screen activity that waits for the data to pull from the MongoDB database until it
 // begins the other Viewer activities. AKA once MainViewerActivity.databaseReference is not null,
@@ -80,7 +80,11 @@ class StartupActivity : ViewerActivity() {
         } catch (e: Throwable) {
             Log.e(
                 "data",
-                "Error fetching data from ${if (Constants.USE_TEST_DATA) "files" else "website"}: ${Log.getStackTraceString(e)}"
+                "Error fetching data from ${if (Constants.USE_TEST_DATA) "files" else "website"}: ${
+                    Log.getStackTraceString(
+                        e
+                    )
+                }"
             )
             runOnUiThread {
                 // Stuff that updates the UI

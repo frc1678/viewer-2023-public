@@ -145,11 +145,13 @@ class MatchScheduleListAdapter(
         // Set the blue predicted score
         if ((!hasActualData) && MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore != null) {
             // Cache hit
-            viewHolder.tvBlueScore.text = MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
+            viewHolder.tvBlueScore.text =
+                MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore.toString()
         } else if (hasActualData && MainViewerActivity.matchCache[matchNumber]!!.blueActualScore != null) {
             // Cache hit
             // noinspection SetTextI18n
-            viewHolder.tvBlueScore.text = "%.0f".format(MainViewerActivity.matchCache[matchNumber]!!.blueActualScore)
+            viewHolder.tvBlueScore.text =
+                "%.0f".format(MainViewerActivity.matchCache[matchNumber]!!.blueActualScore)
         } else {
             // Cache miss
             val value = getAllianceInMatchObjectByKey(
@@ -158,7 +160,8 @@ class MatchScheduleListAdapter(
                 if (hasActualData) "actual_score" else "predicted_score"
             )
             if (value != null) {
-                viewHolder.tvBlueScore.text = (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
+                viewHolder.tvBlueScore.text =
+                    (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
                 if (!hasActualData) {
                     MainViewerActivity.matchCache[matchNumber]!!.bluePredictedScore =
                         "%.1f".format(value.toFloat()).toFloat()
@@ -174,11 +177,13 @@ class MatchScheduleListAdapter(
         // Set the red predicted score
         if ((!hasActualData) && MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore != null) {
             // Cache hit
-            viewHolder.tvRedScore.text = MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
+            viewHolder.tvRedScore.text =
+                MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore.toString()
         } else if (hasActualData && MainViewerActivity.matchCache[matchNumber]!!.redActualScore != null) {
             // Cache hit
             // noinspection SetTextI18n
-            viewHolder.tvRedScore.text = "%.0f".format(MainViewerActivity.matchCache[matchNumber]!!.redActualScore)
+            viewHolder.tvRedScore.text =
+                "%.0f".format(MainViewerActivity.matchCache[matchNumber]!!.redActualScore)
         } else {
             // Cache miss
             val value = if (hasActualData) {
@@ -195,7 +200,8 @@ class MatchScheduleListAdapter(
                 )
             }
             if (value != null) {
-                viewHolder.tvRedScore.text = (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
+                viewHolder.tvRedScore.text =
+                    (if (hasActualData) "%.0f" else "%.1f").format(value.toFloat())
                 if (!hasActualData) {
                     MainViewerActivity.matchCache[matchNumber]!!.redPredictedScore =
                         "%.1f".format(value.toFloat()).toFloat()
@@ -218,7 +224,10 @@ class MatchScheduleListAdapter(
         }
 
         // Set the ranking point icons
-        red_predicted@ for ((rp, tv) in mapOf(1 to viewHolder.imgRedRpOne, 2 to viewHolder.imgRedRpTwo)) {
+        red_predicted@ for ((rp, tv) in mapOf(
+            1 to viewHolder.imgRedRpOne,
+            2 to viewHolder.imgRedRpTwo
+        )) {
             // Check the cache to see if the RP values have already been cached
             when (rp) {
                 1 -> {
@@ -293,7 +302,10 @@ class MatchScheduleListAdapter(
                 }
             } else tv.setImageDrawable(null)
         }
-        blue_predicted@ for ((rp, tv) in mapOf(1 to viewHolder.imgBlueRpOne, 2 to viewHolder.imgBlueRpTwo)) {
+        blue_predicted@ for ((rp, tv) in mapOf(
+            1 to viewHolder.imgBlueRpOne,
+            2 to viewHolder.imgBlueRpTwo
+        )) {
             // Check the cache to see if the RP values have already been cached
             when (rp) {
                 1 -> {
@@ -399,7 +411,12 @@ class MatchScheduleListAdapter(
         if ((matchContents[matchNumber]!!.blueTeams + matchContents[matchNumber]!!.redTeams).contains(
                 Constants.MY_TEAM_NUMBER
             )
-        ) viewHolder.wholeCell.setBackgroundColor(ContextCompat.getColor(context, R.color.LimeGreen))
+        ) viewHolder.wholeCell.setBackgroundColor(
+            ContextCompat.getColor(
+                context,
+                R.color.LimeGreen
+            )
+        )
 
         // Set the click listeners to go to match details, etc.
         setClickListeners(rowView!!, viewHolder, position)
@@ -454,10 +471,12 @@ class MatchScheduleListAdapter(
                 } else {
                     position + 1
                 }
-            matchDetailsFragment.arguments = Bundle().apply { putInt(Constants.MATCH_NUMBER, matchSelected) }
+            matchDetailsFragment.arguments =
+                Bundle().apply { putInt(Constants.MATCH_NUMBER, matchSelected) }
             matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             matchDetailsFragmentTransaction.addToBackStack(null).replace(
-                (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id, matchDetailsFragment
+                (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
+                matchDetailsFragment
             ).commit()
         }
 
@@ -465,9 +484,11 @@ class MatchScheduleListAdapter(
             val teamNumber = selected.text.toString()
             val matchScheduleFragment = MatchScheduleFragment()
             val matchScheduleFragmentTransaction = context.supportFragmentManager.beginTransaction()
-            matchScheduleFragment.arguments = Bundle().apply { putString(Constants.TEAM_NUMBER, teamNumber) }
+            matchScheduleFragment.arguments =
+                Bundle().apply { putString(Constants.TEAM_NUMBER, teamNumber) }
             matchScheduleFragmentTransaction.addToBackStack(null).replace(
-                (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id, matchScheduleFragment
+                (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
+                matchScheduleFragment
             ).commit()
         }
 

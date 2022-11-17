@@ -11,7 +11,6 @@ import com.example.viewer_2022.R
 import com.example.viewer_2022.TeamRankingItem
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.getRankingTeam
-import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 import java.util.regex.Pattern
 

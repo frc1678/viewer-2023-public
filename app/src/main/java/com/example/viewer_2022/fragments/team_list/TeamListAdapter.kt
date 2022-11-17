@@ -9,7 +9,6 @@ import android.widget.ImageButton
 import com.example.viewer_2022.MainViewerActivity.StarredTeams
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.getTeamDataValue
 import com.example.viewer_2022.getTeamName
 import kotlinx.android.synthetic.main.pickability_cell.view.tv_team_number
 import kotlinx.android.synthetic.main.team_list_cell.view.*
@@ -21,7 +20,7 @@ class TeamListAdapter(private val context: Context, private val items: List<Stri
     BaseAdapter() {
     private val inflater = LayoutInflater.from(context)
     override fun getCount(): Int {
-        return items.size;
+        return items.size
     }
 
     override fun getItem(i: Int): String {
