@@ -1,13 +1,9 @@
 package com.example.viewer_2022.data
 
-import android.os.AsyncTask
 import android.util.Log
-import com.example.viewer_2022.DataApi
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.StartupActivity
 import com.example.viewer_2022.constants.Constants
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.buildJsonObject
 
 suspend fun getDataFromWebsite() {
 
@@ -19,7 +15,7 @@ suspend fun getDataFromWebsite() {
     // Sets the teamList to the new team list for the competition
     // Gets this team list from grosbeak/api/team-list
     MainViewerActivity.teamList =
-        DataApi.getTeamList(Constants.EVENT_KEY).map { it.toString() }
+        DataApi.getTeamList(Constants.EVENT_KEY).map { it }
 
     // Pulls the match schedule from grosbeak and then puts it in rawMatchSchedule
     val rawMatchSchedule = DataApi.getMatchSchedule(Constants.EVENT_KEY)
@@ -30,10 +26,10 @@ suspend fun getDataFromWebsite() {
         for (j in i.value.teams) {
             when (j.color) {
                 "red" -> {
-                    match.redTeams.add(j.number.toString())
+                    match.redTeams.add(j.number)
                 }
                 "blue" -> {
-                    match.blueTeams.add(j.number.toString())
+                    match.blueTeams.add(j.number)
                 }
             }
         }

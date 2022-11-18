@@ -1,7 +1,5 @@
 package com.example.viewer_2022
 
-import com.example.viewer_2022.constants.Constants
-
 /**
  * @param teamsList The list of teams to be converted to a map of current rankings
  */

@@ -96,7 +96,6 @@ class RankingFragment : Fragment() {
     }
 
 
-
     fun toggleToPredicted() {
         val predictedRankingFragment = PredRankingFragment()
         val ft = fragmentManager!!.beginTransaction()

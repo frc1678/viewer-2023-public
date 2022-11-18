@@ -1,16 +1,16 @@
 package com.example.viewer_2022.fragments.offline_picklist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.databinding.LivePicklistCellBinding
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
-import kotlinx.coroutines.runBlocking
 
 /**
  * Recycler adapter for live picklist
@@ -86,11 +86,11 @@ class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
     }
 
     fun handleOrderChange(from: Int, to: Int) {
-            val newRanking = context.picklistData.ranking.toMutableList()
-            newRanking.add(to, newRanking.removeAt(from))
+        val newRanking = context.picklistData.ranking.toMutableList()
+        newRanking.add(to, newRanking.removeAt(from))
 
-            context.saveData(newRanking, context.picklistData.dnp)
-            context.updateData()
+        context.saveData(newRanking, context.picklistData.dnp)
+        context.updateData()
 
     }
 

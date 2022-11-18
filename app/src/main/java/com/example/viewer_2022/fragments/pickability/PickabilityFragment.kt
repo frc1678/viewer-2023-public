@@ -12,8 +12,9 @@ import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.convertToFilteredTeamsList
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import com.example.viewer_2022.getTeamDataValue
-import kotlinx.android.synthetic.main.fragment_pickability.*
 import kotlinx.android.synthetic.main.fragment_pickability.view.*
+import java.util.*
+
 /**
  * Page that ranks the pickability of each team. Previously allowed for first pickability and second pickability
  */
@@ -31,7 +32,8 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_pickability, container, false)
         root.tv_pickability_header.text =
-            mode.toString().toLowerCase().capitalize() + " Pickability"
+            mode.toString().lowercase(Locale.getDefault())
+                .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } + " Pickability"
         val map: Map<String, Float?> = updateMatchScheduleListView(root)
 
         if (mode == PickabilityMode.SECOND) {
@@ -58,10 +60,15 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
 
             val secondpickabilityFragment = SecondPickabilityFragment(PickabilityMode.SECOND)
             val ft = fragmentManager!!.beginTransaction()
-            if (fragmentManager!!.fragments.last().tag != "secondpickabilityRankings") ft.addToBackStack(null)
-            ft.replace(R.id.nav_host_fragment, secondpickabilityFragment, "secondpickabilityRankings")
+            if (fragmentManager!!.fragments.last().tag != "secondpickabilityRankings") ft.addToBackStack(
+                null
+            )
+            ft.replace(
+                R.id.nav_host_fragment,
+                secondpickabilityFragment,
+                "secondpickabilityRankings"
+            )
                 .commit()
-
 
 
         }
@@ -73,9 +80,8 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
     private fun updateMatchScheduleListView(root: View): Map<String, Float?> {
         val map = makeData()
         val adapter = PickabilityListAdapter(
-            items = map,
             context = activity!!,
-            mode = mode
+            items = map
         )
 
         if (refreshId == null) {

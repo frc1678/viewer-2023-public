@@ -8,10 +8,6 @@
 
 package com.example.viewer_2022
 
-import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.Team
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 // Returns a string value of any team object in the database as long as you provide it with
@@ -29,11 +25,6 @@ fun getTeamObjectByKey(teamNumber: String, field: String): String? {
 
         if (teamDocument.contains(field)) {
             teamDocument[field]?.jsonPrimitive?.content
-        } else {
-            null
-        }
-
-    } else {
-        null
-    }
+        } else null
+    } else null
 }
