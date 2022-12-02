@@ -3,27 +3,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 4041
+        "number": "4041"
       },
       {
         "color": "red",
-        "number": 1153
+        "number": "1153"
       },
       {
         "color": "red",
-        "number": 2370
+        "number": "2370"
       },
       {
         "color": "blue",
-        "number": 88
+        "number": "88"
       },
       {
         "color": "blue",
-        "number": 2342
+        "number": "2342"
       },
       {
         "color": "blue",
-        "number": 157
+        "number": "157"
       }
     ]
   },
@@ -31,27 +31,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 811
+        "number": "811"
       },
       {
         "color": "red",
-        "number": 3467
+        "number": "3467"
       },
       {
         "color": "red",
-        "number": 246
+        "number": "246"
       },
       {
         "color": "blue",
-        "number": 4909
+        "number": "4909"
       },
       {
         "color": "blue",
-        "number": 58
+        "number": "58"
       },
       {
         "color": "blue",
-        "number": 1721
+        "number": "1721"
       }
     ]
   },
@@ -59,27 +59,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 151
+        "number": "151"
       },
       {
         "color": "red",
-        "number": 2713
+        "number": "2713"
       },
       {
         "color": "red",
-        "number": 501
+        "number": "501"
       },
       {
         "color": "blue",
-        "number": 509
+        "number": "509"
       },
       {
         "color": "blue",
-        "number": 1073
+        "number": "1073"
       },
       {
         "color": "blue",
-        "number": 6153
+        "number": "6153"
       }
     ]
   },
@@ -87,27 +87,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 8724
+        "number": "8724"
       },
       {
         "color": "red",
-        "number": 5459
+        "number": "5459"
       },
       {
         "color": "red",
-        "number": 125
+        "number": "125"
       },
       {
         "color": "blue",
-        "number": 5687
+        "number": "5687"
       },
       {
         "color": "blue",
-        "number": 238
+        "number": "238"
       },
       {
         "color": "blue",
-        "number": 5813
+        "number": "5813"
       }
     ]
   },
@@ -115,27 +115,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 4909
+        "number": "4909"
       },
       {
         "color": "red",
-        "number": 88
+        "number": "88"
       },
       {
         "color": "red",
-        "number": 811
+        "number": "811"
       },
       {
         "color": "blue",
-        "number": 4041
+        "number": "4041"
       },
       {
         "color": "blue",
-        "number": 246
+        "number": "246"
       },
       {
         "color": "blue",
-        "number": 2342
+        "number": "2342"
       }
     ]
   },
@@ -143,27 +143,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 1153
+        "number": "1153"
       },
       {
         "color": "red",
-        "number": 157
+        "number": "157"
       },
       {
         "color": "red",
-        "number": 6153
+        "number": "6153"
       },
       {
         "color": "blue",
-        "number": 1721
+        "number": "1721"
       },
       {
         "color": "blue",
-        "number": 509
+        "number": "509"
       },
       {
         "color": "blue",
-        "number": 2713
+        "number": "2713"
       }
     ]
   },
@@ -171,27 +171,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 2370
+        "number": "2370"
       },
       {
         "color": "red",
-        "number": 5813
+        "number": "5813"
       },
       {
         "color": "red",
-        "number": 151
+        "number": "151"
       },
       {
         "color": "blue",
-        "number": 58
+        "number": "58"
       },
       {
         "color": "blue",
-        "number": 8724
+        "number": "8724"
       },
       {
         "color": "blue",
-        "number": 238
+        "number": "238"
       }
     ]
   },
@@ -199,27 +199,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 5459
+        "number": "5459"
       },
       {
         "color": "red",
-        "number": 501
+        "number": "501"
       },
       {
         "color": "red",
-        "number": 1073
+        "number": "1073"
       },
       {
         "color": "blue",
-        "number": 125
+        "number": "125"
       },
       {
         "color": "blue",
-        "number": 5687
+        "number": "5687"
       },
       {
         "color": "blue",
-        "number": 3467
+        "number": "3467"
       }
     ]
   },
@@ -227,27 +227,27 @@
     "teams": [
       {
         "color": "red",
-        "number": 6153
+        "number": "6153"
       },
       {
         "color": "red",
-        "number": 1721
+        "number": "1721"
       },
       {
         "color": "red",
-        "number": 88
+        "number": "88"
       },
       {
         "color": "blue",
-        "number": 2713
+        "number": "2713"
       },
       {
         "color": "blue",
-        "number": 811
+        "number": "811"
       },
       {
         "color": "blue",
-        "number": 4041
+        "number": "4041"
       }
     ]
   }
