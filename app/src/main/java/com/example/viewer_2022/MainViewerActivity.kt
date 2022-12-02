@@ -226,19 +226,13 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
-                R.id.nav_menu_live_picklist -> {
+                R.id.nav_menu_picklist -> {
                     supportFragmentManager.beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
+                        .replace(R.id.nav_host_fragment, livePicklistFragment, "picklist")
                         .commit()
                 }
 
-                R.id.nav_menu_offline_picklist -> {
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, offlinePicklistFragment, "offlinePicklist")
-                        .commit()
-                }
 
                 R.id.nav_menu_pickability -> {
                     val ft = supportFragmentManager.beginTransaction()
@@ -544,7 +538,7 @@ class NavDrawerListener(
             when (fragManager.fragments.last().tag) {
                 "matchSchedule" -> navView.setCheckedItem(R.id.nav_menu_match_schedule)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
-                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
+                "picklist" -> navView.setCheckedItem(R.id.nav_menu_picklist)
                 "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
                 "preferences" -> navView.setCheckedItem(R.id.nav_preferences)

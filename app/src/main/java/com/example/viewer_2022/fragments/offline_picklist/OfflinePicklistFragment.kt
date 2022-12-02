@@ -19,6 +19,7 @@ import com.example.viewer_2022.*
 import com.example.viewer_2022.databinding.ExportPicklistPopupBinding
 import com.example.viewer_2022.databinding.FragmentOfflinePicklistBinding
 import com.example.viewer_2022.databinding.ImportPicklistPopupBinding
+import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
@@ -59,6 +60,14 @@ class OfflinePicklistFragment : Fragment() {
         binding.rvOfflinePicklist.layoutManager = LinearLayoutManager(context)
         binding.rvOfflinePicklist.adapter = adapter
 
+        binding.btnSwitchOnline.setOnClickListener {
+
+            val livePicklistFragment = LivePicklistFragment()
+            val ft = fragmentManager!!.beginTransaction()
+            if (fragmentManager!!.fragments.last().tag != "livepicklistFragment") ft.addToBackStack(null)
+            ft.replace(R.id.nav_host_fragment, livePicklistFragment, "livepicklistFragment")
+                .commit()        }
+        updateData()
         // Init import button
         binding.btnDownload.setOnClickListener {
             ImportPopup {
@@ -91,6 +100,8 @@ class OfflinePicklistFragment : Fragment() {
                     }
             }.show(fragmentManager!!, "import_popup")
         }
+
+
         // Init export button
         binding.btnUpload.setOnClickListener {
             ExportPopup {
@@ -112,6 +123,7 @@ class OfflinePicklistFragment : Fragment() {
                 }
             }.show(fragmentManager!!, "export_popup")
         }
+
         // Init refresh button
         binding.btnPicklistRefresh.setOnClickListener {
             picklistData = getData()
