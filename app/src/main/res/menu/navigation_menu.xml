@@ -13,13 +13,8 @@
         />
 
     <item
-        android:id="@+id/nav_menu_live_picklist"
-        android:title="Live Picklist"
-        android:checkable="true"
-        />
-    <item
-        android:id="@+id/nav_menu_offline_picklist"
-        android:title="Offline Picklist"
+        android:id="@+id/nav_menu_picklist"
+        android:title="Picklist"
         android:checkable="true"
         />
 

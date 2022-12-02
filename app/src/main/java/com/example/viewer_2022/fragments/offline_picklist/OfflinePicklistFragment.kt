@@ -16,11 +16,17 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.PicklistApi
 import com.example.viewer_2022.databinding.ExportPicklistPopupBinding
 import com.example.viewer_2022.databinding.FragmentOfflinePicklistBinding
 import com.example.viewer_2022.databinding.ImportPicklistPopupBinding
+import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
+import io.ktor.client.call.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
 import com.example.viewer_2022.showError
 import com.example.viewer_2022.showSuccess
 import kotlinx.coroutines.runBlocking
@@ -60,6 +66,14 @@ class OfflinePicklistFragment : Fragment() {
         binding.rvOfflinePicklist.layoutManager = LinearLayoutManager(context)
         binding.rvOfflinePicklist.adapter = adapter
 
+        binding.btnSwitchOnline.setOnClickListener {
+
+            val livePicklistFragment = LivePicklistFragment()
+            val ft = fragmentManager!!.beginTransaction()
+            if (fragmentManager!!.fragments.last().tag != "livepicklistFragment") ft.addToBackStack(null)
+            ft.replace(R.id.nav_host_fragment, livePicklistFragment, "livepicklistFragment")
+                .commit()        }
+        updateData()
         // Init import button
         binding.btnDownload.setOnClickListener {
             ImportPopup {
@@ -95,6 +109,8 @@ class OfflinePicklistFragment : Fragment() {
                 }
             }.show(fragmentManager!!, "import_popup")
         }
+
+
         // Init export button
         binding.btnUpload.setOnClickListener {
             ExportPopup {
@@ -120,6 +136,7 @@ class OfflinePicklistFragment : Fragment() {
                 }
             }.show(fragmentManager!!, "export_popup")
         }
+
         // Init refresh button
         binding.btnPicklistRefresh.setOnClickListener {
             picklistData = getData()
