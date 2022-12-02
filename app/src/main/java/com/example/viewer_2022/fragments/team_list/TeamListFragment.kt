@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_team_list.view.*
 class TeamListFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
-    private val list: List<String> = MainViewerActivity.teamList.sortedBy { it.toInt() }
+    private val list: List<String> = MainViewerActivity.teamList.sortedBy { it.toIntOrNull() }
 
     private var refreshId: String? = null
 

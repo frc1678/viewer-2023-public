@@ -58,5 +58,6 @@ fun getMatchSchedule(
         return tempMatches
     }
 
-    return MainViewerActivity.matchCache
+    return MainViewerActivity.matchCache.toSortedMap(compareBy { it.toInt() })
+
 }

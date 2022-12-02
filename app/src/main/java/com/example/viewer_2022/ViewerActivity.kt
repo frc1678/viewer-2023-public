@@ -5,13 +5,13 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
-import java.util.*
 import java.text.SimpleDateFormat
+import java.util.*
 
 
 //Super class of all activity based classes for this project.
 //Used to implement class mechanisms that all activities should comprise of.
-var lastUpdated: Date = Calendar.getInstance().time;
+var lastUpdated: Date = Calendar.getInstance().time
 
 open class ViewerActivity : AppCompatActivity() {
     //When the back press is held down, this function will confirm the long click and then 'restart'

@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.viewer_2022.*
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
+import com.example.viewer_2022.convertToPredFilteredTeamsList
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 
@@ -49,7 +51,6 @@ class PredRankingFragment : Fragment() {
 
         val adapter = PredRankingListAdapter(
             activity!!, convertToPredFilteredTeamsList(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
                 MainViewerActivity.teamList
             )
         )
@@ -65,7 +66,6 @@ class PredRankingFragment : Fragment() {
             val rankingFragmentTransaction = this.fragmentManager!!.beginTransaction()
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER, convertToPredFilteredTeamsList(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
                     MainViewerActivity.teamList
                 )[position]
             )

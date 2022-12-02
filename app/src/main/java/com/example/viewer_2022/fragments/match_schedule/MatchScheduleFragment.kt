@@ -53,8 +53,8 @@ class MatchScheduleFragment : Fragment() {
      */
     private var search: String? = null
         set(value) {
-            field = value
-            updateAdapter(scheduleType, value)
+            field = value?.uppercase()
+            updateAdapter(scheduleType, field)
         }
 
     /**
@@ -65,11 +65,16 @@ class MatchScheduleFragment : Fragment() {
         if (scheduleType == Constants.ScheduleType.OUR_MATCHES) teams += Constants.MY_TEAM_NUMBER
         if (search != null) teams += search
         adapter.updateData(
-            getMatchSchedule(teams, scheduleType == Constants.ScheduleType.STARRED_MATCHES), scheduleType
+            getMatchSchedule(teams, scheduleType == Constants.ScheduleType.STARRED_MATCHES),
+            scheduleType
         )
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the match schedule layout
         val root = inflater.inflate(R.layout.fragment_match_schedule, container, false)
 
@@ -99,7 +104,12 @@ class MatchScheduleFragment : Fragment() {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         root.filter_spinner.adapter = spinnerAdapter
         root.filter_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 scheduleType = when (position) {
                     1 -> Constants.ScheduleType.OUR_MATCHES
                     2 -> Constants.ScheduleType.STARRED_MATCHES
@@ -123,7 +133,6 @@ class MatchScheduleFragment : Fragment() {
             ), scheduleType, root.lv_match_schedule
         )
         root.lv_match_schedule.adapter = adapter
-
         // Refresh the match schedule when the app refreshes
         if (refreshId == null) {
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {

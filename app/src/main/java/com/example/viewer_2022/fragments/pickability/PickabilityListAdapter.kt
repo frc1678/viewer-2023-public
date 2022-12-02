@@ -1,16 +1,13 @@
 package com.example.viewer_2022.fragments.pickability
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.pickability_cell.view.*
-import java.lang.ClassCastException
 import java.lang.Float.parseFloat
 
 /**
@@ -18,12 +15,11 @@ import java.lang.Float.parseFloat
  */
 class PickabilityListAdapter(
     private val context: Context,
-    var items: Map<String, Float>,
-    private val mode: PickabilityMode
+    var items: Map<String, Float?>
 ) : BaseAdapter() {
     private val inflater = LayoutInflater.from(context)
     override fun getCount(): Int {
-        return items.size;
+        return items.size
     }
 
     override fun getItem(i: Int): String {

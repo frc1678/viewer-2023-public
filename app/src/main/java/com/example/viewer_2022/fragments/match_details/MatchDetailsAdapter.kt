@@ -79,24 +79,25 @@ class MatchDetailsAdapter(
             for (i in 0..5) {
                 textViews[i].text =
                     if (!hasActualData) getTeamValue(teamNumbers[i], datapointsDisplay[position])
+                        ?: Constants.NULL_CHARACTER
                     else getTIMDataValueByMatch(
                         matchNumber.toString(),
                         teamNumbers[i],
                         datapointsDisplay[position]
-                    )
+                    ) ?: Constants.NULL_CHARACTER
             }
         }
         return rowView
     }
 
-    private fun getTeamValue(teamNumber: String, field: String): String {
+    private fun getTeamValue(teamNumber: String, field: String): String? {
         // If the datafield is a float, round the datapoint.
         // Otherwise, get returned string from getTeamDataValue.
         val regex = Regex("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
         val dataValue = getTeamDataValue(teamNumber, field)
-        return if (regex matches dataValue) {
-            if (field in Constants.DRIVER_DATA) "%.2f".format(dataValue.toFloat())
-            else "%.1f".format(dataValue.toFloat())
+        return if (regex matches dataValue.toString()) {
+            if (field in Constants.DRIVER_DATA) "%.2f".format(dataValue?.toFloat())
+            else "%.1f".format(dataValue?.toFloat())
         } else getTeamDataValue(teamNumber, field)
     }
 }

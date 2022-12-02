@@ -12,7 +12,7 @@ package com.example.viewer_2022.constants
 class Constants {
     companion object {
         //Game specific data.
-        const val EVENT_KEY = "2022cc"
+        const val EVENT_KEY = "2022mttd"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
@@ -329,18 +329,6 @@ class Constants {
         const val BLUE = "blue"
         const val RED = "red"
 
-    }
-
-    enum class PROCESSED_OBJECT(val value: String) {
-        CALCULATED_OBJECTIVE_TEAM_IN_MATCH("obj_tim"),
-        CALCULATED_OBJECTIVE_TEAM("obj_team"),
-        CALCULATED_SUBJECTIVE_TEAM("subj_team"),
-        CALCULATED_PREDICTED_ALLIANCE_IN_MATCH("predicted_aim"),
-        CALCULATED_PREDICTED_TEAM("predicted_team"),
-        CALCULATED_TBA_TEAM("tba_team"),
-        CALCULATED_PICKABILITY("pickability"),
-        CALCULATED_TBA_TEAM_IN_MATCH("tba_tim"),
-        CALCULATED_SUBJECTIVE_TEAM_IN_MATCH("subj_tim")
     }
 
     enum class ScheduleType {

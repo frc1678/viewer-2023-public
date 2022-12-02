@@ -8,6 +8,7 @@
 
 package com.example.viewer_2022
 
+//import com.example.viewer_2022.NotesApi.getAllNotes
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -30,7 +31,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.*
+import com.example.viewer_2022.data.Match
 import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
@@ -54,35 +55,7 @@ class MainViewerActivity : ViewerActivity() {
     lateinit var toggle: ActionBarDrawerToggle
 
     companion object {
-        var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
-        var timCache = object : HashSet<TeamInMatch>() {
-            /**
-             * The largest size the cache can have. If the cache size exceeds this, the cache will
-             * be cleared.
-             */
-            val maxCacheSize = 6
-
-            /**
-             * Adds the given TIM object to the cache. If the cache size exceeds the
-             * [max cache size][maxCacheSize], then the cache is cleared.
-             * @see java.util.HashSet.add
-             */
-            override fun add(element: TeamInMatch): Boolean {
-                if (this.size >= maxCacheSize) this.clear()
-                return super.add(element)
-            }
-
-            /**
-             * Adds the given TIM objects to the cache. If the cache size exceeds the
-             * [max cache size][maxCacheSize], then the cache is cleared.
-             * @see java.util.HashSet.addAll
-             */
-            override fun addAll(elements: Collection<TeamInMatch>): Boolean {
-                if (this.size + elements.size > maxCacheSize) this.clear()
-                return super.addAll(elements)
-            }
-        }
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
@@ -91,16 +64,17 @@ class MainViewerActivity : ViewerActivity() {
         var mapMode = 1
         var mapRotation = -90F
 
-        fun updateNotesCache() {
-            getAllNotes { notesList ->
-                val newMap = mutableMapOf<String, String>()
-                notesList.forEach {
+        /*
+        suspend fun updateNotesCache() {
+            var notesList = getAllNotes(Constants.EVENT_KEY)
+            val newMap = mutableMapOf<String, String>()
+            notesList.forEach {
                     newMap[it.team_number] = it.notes;
                 }
                 notesCache = newMap.toMutableMap()
                 Log.d("notes", "updated notes cache")
             }
-        }
+         */
     }
 
     //Overrides back button to go back to last fragment.
@@ -180,9 +154,12 @@ class MainViewerActivity : ViewerActivity() {
             updateNavFooter()
         }
 
-        if (!Constants.USE_TEST_DATA){
-            updateNotesCache()
+        /*if (!Constants.USE_TEST_DATA){
+            lifecycleScope.launch {
+                updateNotesCache()
+            }
         }
+         */
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
@@ -244,7 +221,6 @@ class MainViewerActivity : ViewerActivity() {
                 }
 
 
-
                 R.id.nav_menu_team_list -> {
                     val ft = supportFragmentManager.beginTransaction()
                     if (supportFragmentManager.fragments.last().tag != "teamList") ft.addToBackStack(
@@ -298,7 +274,7 @@ class MainViewerActivity : ViewerActivity() {
                 "pit_map"
             )
 
-            if (mapFile!!.exists()) {
+            if (mapFile.exists()) {
                 popupView.pit_map.setImageURI(mapFile.toUri())
             }
 
@@ -506,7 +482,8 @@ class MainViewerActivity : ViewerActivity() {
 
         fun contains(team: String) = teams.contains(team)
 
-        private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_teams.json")
+        private val file =
+            File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_teams.json")
 
         fun read() {
             if (!file.exists()) write()

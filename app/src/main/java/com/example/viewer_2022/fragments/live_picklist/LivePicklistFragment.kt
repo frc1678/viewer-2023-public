@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.viewer_2022.PicklistApi
 import com.example.viewer_2022.R
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.PicklistApi
 import com.example.viewer_2022.databinding.FragmentLivePicklistBinding
 import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
 import com.example.viewer_2022.fragments.offline_picklist.PicklistData
@@ -72,7 +73,7 @@ class LivePicklistFragment : Fragment() {
     private fun updateData() {
         lifecycleScope.launch {
             try {
-                picklistData = PicklistApi.getPicklist()
+                picklistData = PicklistApi.getPicklist(Constants.EVENT_KEY)
                 context?.run {
                     showSuccess(context!!, "Picklist updated!")
                 }

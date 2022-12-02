@@ -63,7 +63,6 @@ class RankingFragment : Fragment() {
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[4]]
         val adapter = RankingListAdapter(
             activity!!, convertToFilteredTeamsList(
-                Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
                 MainViewerActivity.teamList
             )
         )
@@ -79,7 +78,6 @@ class RankingFragment : Fragment() {
             val rankingFragmentTransaction = this.fragmentManager!!.beginTransaction()
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER, convertToFilteredTeamsList(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
                     MainViewerActivity.teamList
                 )[position]
             )
@@ -96,7 +94,6 @@ class RankingFragment : Fragment() {
         }
         return root
     }
-
 
 
     fun toggleToPredicted() {
