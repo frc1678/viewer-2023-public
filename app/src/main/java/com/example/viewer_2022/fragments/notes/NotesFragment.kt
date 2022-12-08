@@ -10,15 +10,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.MainViewerActivity
-import com.example.viewer_2022.NotesApi
-import com.example.viewer_2022.NotesApi.getNote
-import com.example.viewer_2022.NotesApi.setNote
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_notes.view.*
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 // Finds the lifecycle of the Fragment
 fun View.findViewTreeLifecycleOwner(): LifecycleOwner? = ViewTreeLifecycleOwner.get(this)
@@ -66,7 +61,7 @@ class NotesFragment : Fragment() {
                         Mode.EDIT
                     }
                     Mode.EDIT -> {
-                        it.launch {setupViewMode(root)  }
+                        it.launch { setupViewMode(root) }
                         Mode.VIEW
                     }
                 }
@@ -75,6 +70,7 @@ class NotesFragment : Fragment() {
         }
 
     }
+
     private fun setupEditMode(root: View) {
         root.btn_edit_notes.setImageResource(R.drawable.ic_baseline_save_24)
         root.et_notes.isEnabled = true
@@ -83,8 +79,8 @@ class NotesFragment : Fragment() {
     private suspend fun setupViewMode(root: View) {
         root.btn_edit_notes.setImageResource(R.drawable.ic_baseline_edit_24)
         root.et_notes.isEnabled = false
-        val data = SetNotesData(teamNumber!!, root.et_notes.text.toString())
-        Log.d("notes", Gson().toJson(data))
+//        val data = SetNotesData(teamNumber!!, root.et_notes.text.toString())
+//        Log.d("notes", Gson().toJson(data))
         root.btn_edit_notes.isEnabled = false
         try {
             MainViewerActivity.notesCache[teamNumber!!] = root.et_notes.text.toString()
@@ -101,11 +97,11 @@ class NotesFragment : Fragment() {
         try {
             teamNumber?.let {
                 root.findViewTreeLifecycleOwner()?.lifecycleScope?.launch {
-                    var response = getNote(it)
-                    if (response.success) {
-                        root.et_notes.setText(response.notes)
-                    }
-                    root.btn_edit_notes.isEnabled = true
+//                    var response = getNote(it)
+//                    if (response.success) {
+//                        root.et_notes.setText(response.notes)
+//                    }
+//                    root.btn_edit_notes.isEnabled = true
                 }
             }
         } catch (e: Exception) {
@@ -124,6 +120,4 @@ class NotesFragment : Fragment() {
         VIEW
     }
 }
-
-typealias SetNotesData = NotesApi.NotesData
 

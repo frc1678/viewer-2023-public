@@ -15,15 +15,20 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.viewer_2022.*
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.PicklistApi
 import com.example.viewer_2022.databinding.ExportPicklistPopupBinding
 import com.example.viewer_2022.databinding.FragmentOfflinePicklistBinding
 import com.example.viewer_2022.databinding.ImportPicklistPopupBinding
+import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import com.example.viewer_2022.showError
+import com.example.viewer_2022.showSuccess
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
@@ -36,7 +41,8 @@ class OfflinePicklistFragment : Fragment() {
 
     private lateinit var adapter: OfflinePicklistAdapter
     private lateinit var binding: FragmentOfflinePicklistBinding
-    private val dataFile = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/picklist.json")
+    private val dataFile =
+        File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/picklist.json")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,47 +66,64 @@ class OfflinePicklistFragment : Fragment() {
         binding.rvOfflinePicklist.layoutManager = LinearLayoutManager(context)
         binding.rvOfflinePicklist.adapter = adapter
 
+        binding.btnSwitchOnline.setOnClickListener {
+
+            val livePicklistFragment = LivePicklistFragment()
+            val ft = fragmentManager!!.beginTransaction()
+            if (fragmentManager!!.fragments.last().tag != "livepicklistFragment") ft.addToBackStack(null)
+            ft.replace(R.id.nav_host_fragment, livePicklistFragment, "livepicklistFragment")
+                .commit()        }
+        updateData()
         // Init import button
         binding.btnDownload.setOnClickListener {
             ImportPopup {
-                    when (it) {
-                        ImportType.TeamList -> {
-                            Log.d("offline_picklist", "Importing team list: ${MainViewerActivity.teamList}")
-                            saveData(
-                                MainViewerActivity.teamList,
-                                emptyList()
-                            )
-                            updateData()
-                        }
-                        ImportType.Server -> {
-                            runBlocking {
-                                try {
-                                    val data = PicklistApi.getPicklist(Constants.EVENT_KEY)
-                                    saveData(
-                                        data.ranking,
-                                        data.dnp
-                                    )
-                                    updateData()
-                                } catch (e: Throwable) {
-                                    Log.e("offline_picklist", "Error importing picklist from server", e)
-                                    showError(context!!, "Error pulling picklist")
-                                }
-
+                when (it) {
+                    ImportType.TeamList -> {
+                        Log.d(
+                            "offline_picklist",
+                            "Importing team list: ${MainViewerActivity.teamList}"
+                        )
+                        saveData(
+                            MainViewerActivity.teamList,
+                            emptyList()
+                        )
+                        updateData()
+                    }
+                    ImportType.Server -> {
+                        runBlocking {
+                            try {
+                                val data = PicklistApi.getPicklist(Constants.EVENT_KEY)
+                                saveData(
+                                    data.ranking,
+                                    data.dnp
+                                )
+                                updateData()
+                            } catch (e: Throwable) {
+                                Log.e("offline_picklist", "Error importing picklist from server", e)
+                                showError(context!!, "Error pulling picklist")
                             }
 
                         }
+
                     }
+                }
             }.show(fragmentManager!!, "import_popup")
         }
+
+
         // Init export button
         binding.btnUpload.setOnClickListener {
             ExportPopup {
                 runBlocking {
                     val localData = getData()
                     try {
-                        when (val resp = PicklistApi.setPicklist(localData, it, Constants.EVENT_KEY)) {
+                        when (val resp =
+                            PicklistApi.setPicklist(localData, it, Constants.EVENT_KEY)) {
                             is PicklistApi.PicklistSetResponse.Success -> {
-                                showSuccess(context!!, "Picklist uploaded. Deleted ${resp.deleted} old teams")
+                                showSuccess(
+                                    context!!,
+                                    "Picklist uploaded. Deleted ${resp.deleted} old teams"
+                                )
                             }
                             is PicklistApi.PicklistSetResponse.Error -> {
                                 showError(context!!, "Error uploading picklist: ${resp.error}")
@@ -113,6 +136,7 @@ class OfflinePicklistFragment : Fragment() {
                 }
             }.show(fragmentManager!!, "export_popup")
         }
+
         // Init refresh button
         binding.btnPicklistRefresh.setOnClickListener {
             picklistData = getData()
@@ -125,6 +149,7 @@ class OfflinePicklistFragment : Fragment() {
 
         return binding.root
     }
+
     fun getData(): PicklistData {
         val dataJson = dataFile.readText()
         val data = Json.decodeFromString<PicklistData>(dataJson)
@@ -241,12 +266,13 @@ class OfflinePicklistFragment : Fragment() {
 }
 
 
-
 @Serializable
-data class PicklistData(val ranking: List<String> = emptyList(), val dnp: List<String> = emptyList())
+data class PicklistData(
+    val ranking: List<String> = emptyList(),
+    val dnp: List<String> = emptyList()
+)
 
 data class LastMove(var from: Int, var to: Int, var fromSet: Boolean = false)
-
 
 
 enum class ImportType {
@@ -259,7 +285,7 @@ class ImportPopup(val onImport: (type: ImportType) -> Unit) : DialogFragment() {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
 
-            val inflater = requireActivity().layoutInflater;
+            val inflater = requireActivity().layoutInflater
 
             val view = ImportPicklistPopupBinding.inflate(inflater, null, false)
 
@@ -285,18 +311,22 @@ class ImportPopup(val onImport: (type: ImportType) -> Unit) : DialogFragment() {
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }
-class ExportPopup(val onExport: (password: String) -> Unit): DialogFragment() {
+
+class ExportPopup(val onExport: (password: String) -> Unit) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
 
-            val inflater = requireActivity().layoutInflater;
+            val inflater = requireActivity().layoutInflater
 
             val view = ExportPicklistPopupBinding.inflate(inflater, null, false)
 
             view.btnServer.setOnClickListener { btnView ->
                 onExport(view.etPassword.text.toString().trim())
-                (it.getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(btnView.windowToken, 0)
+                (it.getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager)?.hideSoftInputFromWindow(
+                    btnView.windowToken,
+                    0
+                )
                 dismiss()
             }
 

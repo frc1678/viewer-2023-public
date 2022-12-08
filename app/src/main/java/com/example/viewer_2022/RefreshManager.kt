@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.util.*
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 
 // Manages updates to the data and triggering refreshes in the UI
 class RefreshManager {
@@ -19,8 +20,8 @@ class RefreshManager {
     fun start(scope: CoroutineScope) {
         if (!Constants.USE_TEST_DATA) {
             tickerFlow(
-                Duration.seconds(Constants.REFRESH_INTERVAL),
-                Duration.seconds(Constants.REFRESH_INTERVAL)
+                Constants.REFRESH_INTERVAL.seconds,
+                Constants.REFRESH_INTERVAL.seconds
             ).onEach {
                 Log.d("data-refresh", "tick")
                 /*

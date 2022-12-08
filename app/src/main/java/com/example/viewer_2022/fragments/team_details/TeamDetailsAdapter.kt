@@ -11,20 +11,20 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
+import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
-import com.example.viewer_2022.getTeamDataValue
-import kotlinx.android.synthetic.main.team_details_cell.view.*
-import java.lang.Float.parseFloat
-import java.util.regex.Pattern
-import androidx.core.view.isVisible
-import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.notes.NotesFragment
 import com.example.viewer_2022.fragments.team_ranking.TeamRankingFragment
 import com.example.viewer_2022.getRankingTeam
+import com.example.viewer_2022.getTeamDataValue
+import kotlinx.android.synthetic.main.team_details_cell.view.*
+import java.lang.Float.parseFloat
+import java.util.regex.Pattern
 
 // Custom list adapter class for each list view of the six teams featured in every MatchDetails display.
 // TODO implement a type 'Team' object parameter to access the team data for the team number.
@@ -121,10 +121,10 @@ class TeamDetailsAdapter(
                     notesFragment.arguments = notesFragmentArgs
                     val notesFragmentTransaction =
                         context.supportFragmentManager.beginTransaction()
-                    notesFragmentTransaction?.addToBackStack(null).replace(
+                    notesFragmentTransaction.addToBackStack(null).replace(
                         (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
                         notesFragment
-                    )?.commit()
+                    ).commit()
                 }
                 if (MainViewerActivity.notesCache.containsKey(teamNumber)) {
                     rowView.tv_datapoint_name.text = MainViewerActivity.notesCache[teamNumber]
@@ -141,7 +141,7 @@ class TeamDetailsAdapter(
                     )
                 ).matches()
             ) {
-                if(getTeamDataValue(teamNumber, e) != null) {
+                if (getTeamDataValue(teamNumber, e) != null) {
                     rowView.tv_datapoint_value.text = ("%.2f").format(
                         getTeamDataValue(
                             teamNumber,

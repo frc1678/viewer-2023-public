@@ -8,13 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.viewer_2022.PicklistApi
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.PicklistApi
 import com.example.viewer_2022.databinding.FragmentLivePicklistBinding
+import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
 import com.example.viewer_2022.fragments.offline_picklist.PicklistData
+import com.example.viewer_2022.fragments.pickability.PickabilityMode
+import com.example.viewer_2022.fragments.pickability.SecondPickabilityFragment
 import com.example.viewer_2022.showError
 import com.example.viewer_2022.showSuccess
+import kotlinx.android.synthetic.main.fragment_offline_picklist.*
 import kotlinx.coroutines.launch
 
 
@@ -43,6 +47,14 @@ class LivePicklistFragment : Fragment() {
         binding.btnPicklistRefresh.setOnClickListener {
             updateData()
         }
+
+        binding.btnSwitchOffline.setOnClickListener {
+
+            val offlinePicklistFragment = OfflinePicklistFragment()
+            val ft = fragmentManager!!.beginTransaction()
+            if (fragmentManager!!.fragments.last().tag != "offlinepicklistFragment") ft.addToBackStack(null)
+            ft.replace(R.id.nav_host_fragment, offlinePicklistFragment, "offlinepicklistFragment")
+                .commit()        }
         updateData()
 
         return binding.root

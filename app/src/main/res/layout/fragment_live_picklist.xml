@@ -6,6 +6,7 @@
 
     <LinearLayout
         style="@style/tv_header"
+        android:layout_height="60dp"
         android:layout_width="match_parent"
         android:orientation="horizontal">
 
@@ -14,12 +15,18 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:text="@string/live_picklist" />
+        <Button
+                android:id="@+id/btn_switch_offline"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:text="@string/title_offline"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_picklist_refresh"
-            android:layout_width="0dp"
+            android:layout_width="5dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             android:text="@string/btn_picklist_refresh" />
     </LinearLayout>
 

@@ -10,13 +10,14 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.MainViewerActivity.StarredMatches
 import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.user_preferences.UserPreferencesFragment
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
-import com.example.viewer_2022.MainViewerActivity.StarredMatches
-import com.example.viewer_2022.R
-import com.example.viewer_2022.fragments.user_preferences.UserPreferencesFragment
+import java.util.*
 
 // Preferences page
 class PreferencesFragment : Fragment() {
@@ -34,11 +35,17 @@ class PreferencesFragment : Fragment() {
         root.tv_version_num.text = versionNumber
         context?.let { createSpinner(it, root.spin_user, R.array.user_array) }
 
-        val name = UserDatapoints.contents?.get("selected")?.asString?.toLowerCase()?.capitalize()
+        val name =
+            UserDatapoints.contents?.get("selected")?.asString?.lowercase(Locale.getDefault())
+                ?.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(
+                        Locale.getDefault()
+                    ) else it.toString()
+                }
         val namePosition = resources.getStringArray(R.array.user_array).indexOf(name)
         root.spin_user.setSelection(namePosition)
 
-        root.btn_user_pref_edit.setOnClickListener() {
+        root.btn_user_pref_edit.setOnClickListener {
             val userPreferencesFragment = UserPreferencesFragment()
 
             fragmentManager!!.beginTransaction().addToBackStack(null).replace(
@@ -73,7 +80,8 @@ class PreferencesFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                var userName: String = spin_user.selectedItem.toString().toUpperCase()
+                var userName: String = spin_user.selectedItem.toString()
+                    .uppercase(Locale.getDefault())
 
                 UserDatapoints.contents?.remove("selected")
                 UserDatapoints.contents?.addProperty("selected", userName)

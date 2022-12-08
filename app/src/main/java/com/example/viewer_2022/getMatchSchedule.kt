@@ -1,6 +1,5 @@
 package com.example.viewer_2022
 
-import android.util.Log
 import com.example.viewer_2022.data.Match
 
 /**

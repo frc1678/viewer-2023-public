@@ -1,7 +1,5 @@
 package com.example.viewer_2022
 
-import com.example.viewer_2022.constants.Constants
-
 /**
  * @param path The collection of data to get the value from
  * @param teamsList The list of teams to be converted to a map of predicted rankings

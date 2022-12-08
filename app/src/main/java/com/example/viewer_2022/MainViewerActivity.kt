@@ -8,6 +8,7 @@
 
 package com.example.viewer_2022
 
+//import com.example.viewer_2022.NotesApi.getAllNotes
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -28,11 +29,9 @@ import androidx.core.view.GravityCompat
 import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
-//import com.example.viewer_2022.NotesApi.getAllNotes
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.*
+import com.example.viewer_2022.data.Match
 import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
@@ -47,7 +46,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
-import kotlinx.coroutines.launch
 import java.io.*
 
 
@@ -205,19 +203,13 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
-                R.id.nav_menu_live_picklist -> {
+                R.id.nav_menu_picklist -> {
                     supportFragmentManager.beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
+                        .replace(R.id.nav_host_fragment, livePicklistFragment, "picklist")
                         .commit()
                 }
 
-                R.id.nav_menu_offline_picklist -> {
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, offlinePicklistFragment, "offlinePicklist")
-                        .commit()
-                }
 
                 R.id.nav_menu_pickability -> {
                     val ft = supportFragmentManager.beginTransaction()
@@ -282,7 +274,7 @@ class MainViewerActivity : ViewerActivity() {
                 "pit_map"
             )
 
-            if (mapFile!!.exists()) {
+            if (mapFile.exists()) {
                 popupView.pit_map.setImageURI(mapFile.toUri())
             }
 
@@ -523,7 +515,7 @@ class NavDrawerListener(
             when (fragManager.fragments.last().tag) {
                 "matchSchedule" -> navView.setCheckedItem(R.id.nav_menu_match_schedule)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
-                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
+                "picklist" -> navView.setCheckedItem(R.id.nav_menu_picklist)
                 "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
                 "preferences" -> navView.setCheckedItem(R.id.nav_preferences)

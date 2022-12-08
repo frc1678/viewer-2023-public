@@ -12,6 +12,7 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.fragment_user_pref.view.*
 import java.io.InputStreamReader
+import java.util.*
 
 /**
  * Page to select the user's preference of datapoints to be displayed.
@@ -31,12 +32,15 @@ class UserPreferencesFragment : Fragment() {
         root.user_datapoints_header.text = if (userName == "NONE") {
             "User's Datapoints"
         } else {
-            "${userName?.toLowerCase()?.capitalize()}'s Datapoints"
+            "${
+                userName?.lowercase(Locale.getDefault())
+                    ?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+            }'s Datapoints"
         }
 
         updateUserDatapointsListView(root)
 
-        root.reset_button.setOnClickListener() {
+        root.reset_button.setOnClickListener {
             val defaultsJsonArray: JsonArray = JsonParser.parseReader(
                 InputStreamReader
                     (context?.resources?.openRawResource(R.raw.default_prefs))

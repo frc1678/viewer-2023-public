@@ -1,13 +1,11 @@
 package com.example.viewer_2022.data
 
-import android.content.Context
 import android.content.res.Resources
-import android.os.AsyncTask
 import android.util.Log
-import com.example.viewer_2022.*
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.StartupActivity.Companion.databaseReference
-import com.example.viewer_2022.data.*
-import com.google.gson.Gson
+import com.example.viewer_2022.lastUpdated
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.*
@@ -19,36 +17,43 @@ import java.util.*
  */
 
 suspend fun loadTestData(resources: Resources) {
-        //For each of the collections (make sure to change this number if the number of collections change),
-        //pull the data from the website and then add it to the databaseReference variable
-        databaseReference = Json.decodeFromString<DataApi.ViewerData>(readFile(resources.openRawResource(R.raw.test_data)))
-        val rawMatchSchedule = Json.decodeFromString<MutableMap<String, MatchScheduleMatch>>(readFile(resources.openRawResource(R.raw.match_schedule)))
+    //For each of the collections (make sure to change this number if the number of collections change),
+    //pull the data from the website and then add it to the databaseReference variable
+    databaseReference =
+        Json.decodeFromString<DataApi.ViewerData>(readFile(resources.openRawResource(R.raw.test_data)))
+    val rawMatchSchedule = Json.decodeFromString<MutableMap<String, MatchScheduleMatch>>(
+        readFile(
+            resources.openRawResource(R.raw.match_schedule)
+        )
+    )
 
-        for (i in rawMatchSchedule) {
-            val match = Match(i.key)
-            for (j in i.value.teams) {
-                when (j.color) {
-                    "red" -> {
-                        match.redTeams.add(j.number.toString())
-                    }
-                    "blue" -> {
-                        match.blueTeams.add(j.number.toString())
-                    }
+    for (i in rawMatchSchedule) {
+        val match = Match(i.key)
+        for (j in i.value.teams) {
+            when (j.color) {
+                "red" -> {
+                    match.redTeams.add(j.number.toString())
+                }
+                "blue" -> {
+                    match.blueTeams.add(j.number.toString())
                 }
             }
-
-            Log.e("parsedmap", match.toString())
-            MainViewerActivity.matchCache[i.key] = match
         }
-        MainViewerActivity.matchCache =
-            MainViewerActivity.matchCache.toList().sortedBy { (k, v) -> v.matchNumber.toInt() }
-                .toMap().toMutableMap()
 
-        MainViewerActivity.teamList = Json.decodeFromString<List<Int>>(readFile(resources.openRawResource(R.raw.team_list))).map {it.toString()}
-
-        lastUpdated = Calendar.getInstance().time
-
+        Log.e("parsedmap", match.toString())
+        MainViewerActivity.matchCache[i.key] = match
     }
+    MainViewerActivity.matchCache =
+        MainViewerActivity.matchCache.toList().sortedBy { (k, v) -> v.matchNumber.toInt() }
+            .toMap().toMutableMap()
+
+    MainViewerActivity.teamList =
+        Json.decodeFromString<List<Int>>(readFile(resources.openRawResource(R.raw.team_list)))
+            .map { it.toString() }
+
+    lastUpdated = Calendar.getInstance().time
+
+}
 
 private fun readFile(file: InputStream): String {
     val `is`: InputStream = file

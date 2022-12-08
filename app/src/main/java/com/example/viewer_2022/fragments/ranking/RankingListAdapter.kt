@@ -17,7 +17,6 @@ import android.widget.TextView
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.getTeamObjectByKey
-import java.lang.Float
 import java.util.regex.Pattern
 
 // Custom list adapter class with aq object handling to display the custom cell for the match schedule.
@@ -69,20 +68,23 @@ class RankingListAdapter(
             position
         )
         viewHolder.tvDatapointTwo.text =
-            if (regex.matcher(
+            if (getTeamObject(
+                    "current_avg_rps",
+                    position
+                )?.let {
+                    regex.matcher(
+                        it
+                    ).matches()
+                }
+                == true
+            ) {
+                (("%.2f").format(
                     getTeamObject(
                         "current_avg_rps",
                         position
-                    )
-                ).matches()
-            ) {
-                (("%.2f").format(
-                        getTeamObject(
-                            "current_avg_rps",
-                            position
-                        )?.toFloat() ?: Constants.NULL_CHARACTER
-                    )
+                    )?.toFloat() ?: Constants.NULL_CHARACTER
                 )
+                        )
             } else {
                 getTeamObject(
                     "current_avg_rps",
@@ -93,20 +95,23 @@ class RankingListAdapter(
             "current_rps",
             position
         )
-        viewHolder.tvDatapointFour.text = if (regex.matcher(
+        viewHolder.tvDatapointFour.text = if (getTeamObject(
+                "predicted_rps",
+                position
+            )?.let {
+                regex.matcher(
+                    it
+                ).matches()
+            }
+            == true
+        ) {
+            (("%.2f").format(
                 getTeamObject(
                     "predicted_rps",
                     position
-                )
-            ).matches()
-        ) {
-            (("%.2f").format(
-                    getTeamObject(
-                        "predicted_rps",
-                        position
-                    )?.toFloat() ?: Constants.NULL_CHARACTER
-                )
+                )?.toFloat() ?: Constants.NULL_CHARACTER
             )
+                    )
         } else {
             getTeamObject(
                 "predicted_rps",

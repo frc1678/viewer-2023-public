@@ -37,7 +37,11 @@ class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsRes
     /**
      * Shows the welcome page after the file permissions are accepted/declined.
      */
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         // TODO: show another prompt instead of crashing when permissions are denied
