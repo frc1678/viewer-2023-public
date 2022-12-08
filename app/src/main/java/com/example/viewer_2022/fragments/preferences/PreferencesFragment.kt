@@ -1,4 +1,4 @@
-package com.example.viewer_2022
+package com.example.viewer_2022.fragments.preferences
 
 import android.content.Context
 import android.os.Bundle
@@ -9,11 +9,17 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.MainViewerActivity.StarredMatches
 import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.user_preferences.UserPreferencesFragment
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
+import java.util.*
 
+// Preferences page
 class PreferencesFragment : Fragment() {
 
     override fun onCreateView(
@@ -29,11 +35,17 @@ class PreferencesFragment : Fragment() {
         root.tv_version_num.text = versionNumber
         context?.let { createSpinner(it, root.spin_user, R.array.user_array) }
 
-        val name = UserDatapoints.contents?.get("selected")?.asString?.toLowerCase()?.capitalize()
+        val name =
+            UserDatapoints.contents?.get("selected")?.asString?.lowercase(Locale.getDefault())
+                ?.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(
+                        Locale.getDefault()
+                    ) else it.toString()
+                }
         val namePosition = resources.getStringArray(R.array.user_array).indexOf(name)
         root.spin_user.setSelection(namePosition)
 
-        root.btn_user_pref_edit.setOnClickListener() {
+        root.btn_user_pref_edit.setOnClickListener {
             val userPreferencesFragment = UserPreferencesFragment()
 
             fragmentManager!!.beginTransaction().addToBackStack(null).replace(
@@ -41,6 +53,10 @@ class PreferencesFragment : Fragment() {
                 userPreferencesFragment
             ).commit()
         }
+
+        // If all of our matches are already starred then it sets the Star Our Matches toggle to true
+        root.tb_highlight_our_matches.isChecked =
+            MainViewerActivity.starredMatches.containsAll(StarredMatches.citrusMatches)
 
         root.tb_highlight_our_matches.setOnClickListener { starOurMatches() }
 
@@ -64,7 +80,8 @@ class PreferencesFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                var userName: String = spin_user.selectedItem.toString().toUpperCase()
+                var userName: String = spin_user.selectedItem.toString()
+                    .uppercase(Locale.getDefault())
 
                 UserDatapoints.contents?.remove("selected")
                 UserDatapoints.contents?.addProperty("selected", userName)
@@ -77,15 +94,15 @@ class PreferencesFragment : Fragment() {
         }
     }
 
+    // Stars all of the matches that team 1678 is in
     private fun starOurMatches() {
-        val citrusMatches = MainViewerActivity.matchCache.filter {
-            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
-        }.map { return@map it.value.matchNumber }
 
         if (tb_highlight_our_matches.isChecked) {
-            MainViewerActivity.starredMatches += (citrusMatches)
+            MainViewerActivity.starredMatches += (StarredMatches.citrusMatches)
         } else {
-            MainViewerActivity.starredMatches -= (citrusMatches)
+            MainViewerActivity.starredMatches -= (StarredMatches.citrusMatches)
         }
+
+        StarredMatches.input()
     }
 }

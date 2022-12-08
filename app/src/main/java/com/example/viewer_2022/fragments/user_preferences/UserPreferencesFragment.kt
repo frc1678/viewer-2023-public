@@ -1,4 +1,4 @@
-package com.example.viewer_2022
+package com.example.viewer_2022.fragments.user_preferences
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,13 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity.UserDatapoints
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.fragment_user_pref.view.*
 import java.io.InputStreamReader
+import java.util.*
 
-class UserPreferencesFragment: Fragment() {
+/**
+ * Page to select the user's preference of datapoints to be displayed.
+ */
+class UserPreferencesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,17 +29,22 @@ class UserPreferencesFragment: Fragment() {
 
         val userName = UserDatapoints.contents?.get("selected")?.asString
 
-        root.user_datapoints_header.text = if (userName == "NONE"){
+        root.user_datapoints_header.text = if (userName == "NONE") {
             "User's Datapoints"
         } else {
-            "${userName?.toLowerCase()?.capitalize()}'s Datapoints"
+            "${
+                userName?.lowercase(Locale.getDefault())
+                    ?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+            }'s Datapoints"
         }
 
         updateUserDatapointsListView(root)
 
-        root.reset_button.setOnClickListener(){
-            val defaultsJsonArray : JsonArray = JsonParser.parseReader(InputStreamReader
-                (context?.resources?.openRawResource(R.raw.default_prefs)))
+        root.reset_button.setOnClickListener {
+            val defaultsJsonArray: JsonArray = JsonParser.parseReader(
+                InputStreamReader
+                    (context?.resources?.openRawResource(R.raw.default_prefs))
+            )
                 .asJsonObject.get(userName).asJsonArray
 
             UserDatapoints.contents?.remove(userName)

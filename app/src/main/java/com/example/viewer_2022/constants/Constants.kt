@@ -11,21 +11,20 @@ package com.example.viewer_2022.constants
 //Class that contains a collection of Constant values, or final values that never change
 class Constants {
     companion object {
-        //Game specfific data.
-        const val EVENT_KEY = "2022cada"
+        //Game specific data.
+        const val EVENT_KEY = "2022mttd"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
-        const val CARDINAL_KEY = "6260ddb0f1414290375cc01f0d7739d79149ac9c"
+        const val CARDINAL_KEY = "a7f9d746a13f8ea86bd3fa9931c64ab8af8f2694"
         const val REFRESH_INTERVAL = 120
-        //In order to change the URL, see the GeDataFromWebsite Async Task
 
         //Util.
         const val NULL_PREDICTED_SCORE_CHARACTER = "-"
         const val NULL_CHARACTER = "?"
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
-        const val VERSION_NUM = "3.0.02"
+        const val VERSION_NUM = "5.0.0"
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",
@@ -153,13 +152,15 @@ class Constants {
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED: List<String> = listOf(
             "predicted_score",
             "predicted_rp1",
-            "predicted_rp2"
+            "predicted_rp2",
+            "win_chance"
         )
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED: List<String> = listOf(
             "actual_score",
             "actual_rp1",
-            "actual_rp2"
+            "actual_rp2",
+            "win_chance"
         )
 
         val GRAPHABLE: List<String> = listOf(
@@ -201,7 +202,7 @@ class Constants {
             "climb_all_attempts"
         )
 
-      val DRIVER_DATA: List<String> = listOf(
+        val DRIVER_DATA: List<String> = listOf(
             "driver_quickness",
             "driver_field_awareness",
             "driver_ability"
@@ -309,7 +310,17 @@ class Constants {
             "false" to 2
         )
 
-        val CATEGORY_NAMES = listOf("Auto", "Tele", "Endgame", "Fouls", "Other", "Pit Data")
+        val CATEGORY_NAMES = listOf(
+            "Auto",
+            "Tele",
+            "Endgame",
+            "Fouls",
+            "Other",
+            "Pit Data",
+            "L4M Auto",
+            "L4M Tele",
+            "L4M Endgame"
+        )
 
 
         //String literal translations.
@@ -320,23 +331,11 @@ class Constants {
 
     }
 
-    enum class PROCESSED_OBJECT(val value: String) {
-        CALCULATED_OBJECTIVE_TEAM_IN_MATCH("obj_tim"),
-        CALCULATED_OBJECTIVE_TEAM("obj_team"),
-        CALCULATED_SUBJECTIVE_TEAM("subj_team"),
-        CALCULATED_PREDICTED_ALLIANCE_IN_MATCH("predicted_aim"),
-        CALCULATED_PREDICTED_TEAM("predicted_team"),
-        CALCULATED_TBA_TEAM("tba_team"),
-        CALCULATED_PICKABILITY("pickability"),
-        CALCULATED_TBA_TEAM_IN_MATCH("tba_tim"),
-        CALCULATED_SUBJECTIVE_TEAM_IN_MATCH("subj_tim")
-    }
     enum class ScheduleType {
         ALL_MATCHES,
         OUR_MATCHES,
         STARRED_MATCHES
     }
-
 
 
 }

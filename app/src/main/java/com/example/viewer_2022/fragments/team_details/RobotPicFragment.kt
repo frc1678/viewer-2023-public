@@ -18,6 +18,10 @@ import kotlinx.android.synthetic.main.team_details.view.tv_team_name
 import kotlinx.android.synthetic.main.team_details.view.tv_team_number
 import java.io.File
 
+
+/**
+ * Page for showing robot pictures
+ */
 class RobotPicFragment : Fragment() {
     private var teamNumber: String? = null
     private var teamName: String? = null
@@ -44,7 +48,7 @@ class RobotPicFragment : Fragment() {
     private fun getPicFiles() {
         picFile1 = File(
             "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
-            "${teamNumber}_full_robot.jpg"
+            "${teamNumber}_full_robot_1.jpg"
         )
         picFile2 = File(
             "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",

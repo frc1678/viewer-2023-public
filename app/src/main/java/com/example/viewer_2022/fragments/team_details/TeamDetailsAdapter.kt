@@ -1,9 +1,7 @@
 package com.example.viewer_2022.fragments.team_details
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
@@ -13,20 +11,20 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
+import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
-import com.example.viewer_2022.getTeamDataValue
-import kotlinx.android.synthetic.main.team_details_cell.view.*
-import java.lang.Float.parseFloat
-import java.util.regex.Pattern
-import android.widget.FrameLayout
-import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.notes.NotesFragment
 import com.example.viewer_2022.fragments.team_ranking.TeamRankingFragment
 import com.example.viewer_2022.getRankingTeam
+import com.example.viewer_2022.getTeamDataValue
+import kotlinx.android.synthetic.main.team_details_cell.view.*
+import java.lang.Float.parseFloat
+import java.util.regex.Pattern
 
 // Custom list adapter class for each list view of the six teams featured in every MatchDetails display.
 // TODO implement a type 'Team' object parameter to access the team data for the team number.
@@ -55,7 +53,7 @@ class TeamDetailsAdapter(
     }
 
     // Populate the elements of the custom cell.
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         val graphsFragment = GraphsFragment()
         val graphsFragmentArguments = Bundle()
         val e = getItem(position)
@@ -109,6 +107,9 @@ class TeamDetailsAdapter(
             rowView.tv_datapoint_value.text = ""
 
             if (e == "Notes") {
+                if (Constants.USE_TEST_DATA) {
+                    rowView.isVisible = false
+                }
                 Log.d("notes", "SETTING UP NOTES CELL IN TEAM DETAILS")
                 rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
                 rowView.tv_datapoint_name.setBackgroundColor(context.resources.getColor(R.color.Highlighter))
@@ -120,10 +121,10 @@ class TeamDetailsAdapter(
                     notesFragment.arguments = notesFragmentArgs
                     val notesFragmentTransaction =
                         context.supportFragmentManager.beginTransaction()
-                    notesFragmentTransaction?.addToBackStack(null).replace(
+                    notesFragmentTransaction.addToBackStack(null).replace(
                         (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
                         notesFragment
-                    )?.commit()
+                    ).commit()
                 }
                 if (MainViewerActivity.notesCache.containsKey(teamNumber)) {
                     rowView.tv_datapoint_name.text = MainViewerActivity.notesCache[teamNumber]
@@ -140,14 +141,20 @@ class TeamDetailsAdapter(
                     )
                 ).matches()
             ) {
+                if (getTeamDataValue(teamNumber, e) != null) {
                     rowView.tv_datapoint_value.text = ("%.2f").format(
-                        parseFloat(
-                            getTeamDataValue(
-                                teamNumber,
-                                e
+                        getTeamDataValue(
+                            teamNumber,
+                            e
+                        )?.let {
+                            parseFloat(
+                                it
                             )
-                        )
+                        }
                     )
+                } else {
+                    rowView.tv_datapoint_value.text = ("%.2f").format(Constants.NULL_CHARACTER)
+                }
             } else {
                 rowView.tv_datapoint_value.text = getTeamDataValue(
                     teamNumber,
@@ -156,7 +163,10 @@ class TeamDetailsAdapter(
             }
         }
         if (e in Constants.RANKABLE_FIELDS) {
-            rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(teamNumber, e).placement.toString()
+            rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(
+                teamNumber,
+                e
+            )?.placement?.toString() ?: Constants.NULL_CHARACTER
         }
 
         if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
@@ -209,9 +219,6 @@ class TeamDetailsAdapter(
 
                     //attach the bundle to the fragment
                     teamRankingFragment.arguments = teamRankingFragmentArguments
-
-//                println((it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup))
-
 
                     teamRankingFragmentTransaction.addToBackStack(null).replace(
                         (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,

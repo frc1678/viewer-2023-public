@@ -1,92 +1,89 @@
 package com.example.viewer_2022.fragments.live_picklist
 
-import android.content.Context
-import android.graphics.Typeface
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
-import kotlinx.android.synthetic.main.live_picklist_cell.view.*
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.databinding.LivePicklistCellBinding
+import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 
 /**
- * The adapter for the [`ListView`][android.widget.ListView] in the
- * [Live Picklist fragment][LivePicklistFragment].
- *
- * @param fragment A reference to the original instance of the fragment, so that properties of it
- * can be accessed.
+ * Recycler adapter for live picklist
  */
-class LivePicklistAdapter(
-    context: Context,
-    private val fragment: LivePicklistFragment
-) : BaseAdapter() {
+class LivePicklistRecyclerAdapter(val context: LivePicklistFragment) :
+    ListAdapter<String, LivePicklistRecyclerAdapter.LivePicklistViewHolder>(object :
+        DiffUtil.ItemCallback<String>() {
 
-    /** A convenience object for inflating layouts. */
-    private val inflater = LayoutInflater.from(context)
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem.contentEquals(newItem)
+        }
 
-    /** The number of teams displayed in the list. */
-    override fun getCount() = when (fragment.currentOrdering) {
-        LivePicklistFragment.Orders.FIRST -> fragment.firstOrder.size
-        LivePicklistFragment.Orders.SECOND -> fragment.secondOrder.size
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem.contentEquals(newItem)
+        }
+
+
+    }) {
+    inner class LivePicklistViewHolder(private val itemViewBinding: LivePicklistCellBinding) :
+        RecyclerView.ViewHolder(itemViewBinding.root) {
+        fun bindRoot(teamNumber: String) {
+            if (context.picklistData.ranking.contains(teamNumber)) {
+                itemViewBinding.tvFirstRank.text =
+                    context.picklistData.ranking.indexOf(teamNumber).plus(1).toString()
+                itemViewBinding.root.setBackgroundColor(context.resources.getColor(R.color.White))
+            } else {
+                itemViewBinding.root.setBackgroundColor(context.resources.getColor(R.color.Red))
+                itemViewBinding.tvFirstRank.text = "-"
+            }
+            itemViewBinding.tvTeamNumber.text = teamNumber
+            itemViewBinding.root.setOnClickListener { onClick(teamNumber) }
+
+        }
     }
 
-    /** The number of the team at the given position in the list. */
-    override fun getItem(i: Int) = when (fragment.currentOrdering) {
-        LivePicklistFragment.Orders.FIRST -> fragment.firstOrder
-        LivePicklistFragment.Orders.SECOND -> fragment.secondOrder
-    }[i].team_number
 
-    /** The ID of the row at the given position in the list. Simply uses the position. */
-    override fun getItemId(position: Int) = position.toLong()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LivePicklistViewHolder {
+        return LivePicklistViewHolder(
 
-    /** Gets the view in the specified row of the list. */
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val row: View?
-        if (convertView == null) { // The row is being inflated for the first time.
-            // Inflate the row's layout.
-            row = inflater.inflate(R.layout.live_picklist_cell, parent, false)
-            // Set the tag of the row so that it doesn't need to be reinflated if it gets loaded
-            // again.
-            row.tag = TeamHolder(row.tv_team_number, row.tv_first_rank, row.tv_second_rank)
-        } else { // The row was already inflated, and doesn't need to be inflated again.
-            row = convertView
-        }
-        // Populate the row with the data.
-        val team = when (fragment.currentOrdering) {
-            LivePicklistFragment.Orders.FIRST -> fragment.firstOrder
-            LivePicklistFragment.Orders.SECOND -> fragment.secondOrder
-        }[position]
-        runBlocking { // Asynchronous jobs to make populating much faster.
-            launch { row?.tv_team_number?.text = team.team_number.toString() }
-            launch { row?.tv_first_rank?.text = team.first_rank.toString() }
-            launch { row?.tv_second_rank?.text = team.second_rank.toString() }
-            // Set the text style based on the current ordering.
-            launch {
-                row?.tv_first_rank?.typeface = when (fragment.currentOrdering) {
-                    LivePicklistFragment.Orders.FIRST -> Typeface.DEFAULT_BOLD
-                    LivePicklistFragment.Orders.SECOND -> Typeface.DEFAULT
-                }
-            }
-            launch {
-                row?.tv_second_rank?.typeface = when (fragment.currentOrdering) {
-                    LivePicklistFragment.Orders.FIRST -> Typeface.DEFAULT
-                    LivePicklistFragment.Orders.SECOND -> Typeface.DEFAULT_BOLD
-                }
-            }
-        }
-        return row!!
+            LivePicklistCellBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+
+        )
     }
 
-    /**
-     * A class to hold the views in each row of the list, so that they don't have to be reinflated
-     * every time they are loaded.
-     */
-    data class TeamHolder(
-        val teamNumberView: TextView,
-        val firstRankView: TextView,
-        val secondRankView: TextView
-    )
+    override fun onBindViewHolder(holder: LivePicklistViewHolder, position: Int) {
+
+        val picklistItem = this.getItem(position)
+        holder.bindRoot(picklistItem)
+    }
+
+
+    fun onClick(teamNumber: String) {
+        if (teamNumber in MainViewerActivity.teamList) {
+            val teamDetailsFragment = TeamDetailsFragment()
+
+            // Put the arguments for the team details fragment.
+            teamDetailsFragment.arguments = Bundle().also {
+                it.putString(
+                    Constants.TEAM_NUMBER,
+                    teamNumber
+                )
+            }
+            // Switch to the team details fragment.
+            val ft = context.fragmentManager!!.beginTransaction()
+            ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+            context.view?.rootView?.findViewById<ViewGroup>(R.id.nav_host_fragment)?.let {
+                ft.addToBackStack(null).replace(it.id, teamDetailsFragment)
+                    .commit()
+            }
+        }
+    }
+
 }
+

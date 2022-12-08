@@ -8,11 +8,10 @@
 
 package com.example.viewer_2022
 
+//import com.example.viewer_2022.NotesApi.getAllNotes
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -20,7 +19,6 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
@@ -32,14 +30,14 @@ import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
-import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.*
+import com.example.viewer_2022.data.Match
+import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
-import com.example.viewer_2022.fragments.match_schedule.OurScheduleFragment
-import com.example.viewer_2022.fragments.match_schedule.StarredMatchesFragment
+import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
 import com.example.viewer_2022.fragments.pickability.PickabilityFragment
 import com.example.viewer_2022.fragments.pickability.PickabilityMode
+import com.example.viewer_2022.fragments.preferences.PreferencesFragment
 import com.example.viewer_2022.fragments.ranking.RankingFragment
 import com.example.viewer_2022.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
@@ -47,49 +45,17 @@ import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
-import kotlinx.android.synthetic.main.pit_map_popup.*
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
-import kotlinx.android.synthetic.main.robot_pic.view.*
-import org.apache.commons.collections.map.HashedMap
 import java.io.*
 
 
-// Main activity class that handles the dual fragment view.
+// Main activity class that handles navigation.
 class MainViewerActivity : ViewerActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
 
     companion object {
-        var currentRankingMenuItem: MenuItem? = null
-        var teamCache: HashMap<String, Team> = HashMap()
         var matchCache: MutableMap<String, Match> = HashMap()
-        var timCache = object : HashSet<TeamInMatch>() {
-            /**
-             * The largest size the cache can have. If the cache size exceeds this, the cache will
-             * be cleared.
-             */
-            val maxCacheSize = 6
-
-            /**
-             * Adds the given TIM object to the cache. If the cache size exceeds the
-             * [max cache size][maxCacheSize], then the cache is cleared.
-             * @see java.util.HashSet.add
-             */
-            override fun add(element: TeamInMatch): Boolean {
-                if (this.size >= maxCacheSize) this.clear()
-                return super.add(element)
-            }
-
-            /**
-             * Adds the given TIM objects to the cache. If the cache size exceeds the
-             * [max cache size][maxCacheSize], then the cache is cleared.
-             * @see java.util.HashSet.addAll
-             */
-            override fun addAll(elements: Collection<TeamInMatch>): Boolean {
-                if (this.size + elements.size > maxCacheSize) this.clear()
-                return super.addAll(elements)
-            }
-        }
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
@@ -98,16 +64,17 @@ class MainViewerActivity : ViewerActivity() {
         var mapMode = 1
         var mapRotation = -90F
 
-        fun updateNotesCache(){
-            getAllNotes { notesList ->
-                val newMap = mutableMapOf<String, String>()
-                notesList.forEach {
+        /*
+        suspend fun updateNotesCache() {
+            var notesList = getAllNotes(Constants.EVENT_KEY)
+            val newMap = mutableMapOf<String, String>()
+            notesList.forEach {
                     newMap[it.team_number] = it.notes;
                 }
                 notesCache = newMap.toMutableMap()
                 Log.d("notes", "updated notes cache")
             }
-        }
+         */
     }
 
     //Overrides back button to go back to last fragment.
@@ -126,9 +93,14 @@ class MainViewerActivity : ViewerActivity() {
 
     override fun onResume() {
         super.onResume()
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED) {
+            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+            != PackageManager.PERMISSION_GRANTED
+        ) {
             try {
                 ActivityCompat.requestPermissions(
                     this,
@@ -171,8 +143,8 @@ class MainViewerActivity : ViewerActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.forEach {
-            if(it !in Constants.CATEGORY_NAMES){
+        (Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS + Constants.FIELDS_TO_BE_DISPLAYED_LFM).forEach {
+            if (it !in Constants.CATEGORY_NAMES) {
                 createLeaderboard(it)
             }
         }
@@ -182,16 +154,19 @@ class MainViewerActivity : ViewerActivity() {
             updateNavFooter()
         }
 
-        updateNotesCache()
+        /*if (!Constants.USE_TEST_DATA){
+            lifecycleScope.launch {
+                updateNotesCache()
+            }
+        }
+         */
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()
-        val ourScheduleFragment = OurScheduleFragment()
-        val starredMatchesFragment = StarredMatchesFragment()
         val rankingFragment = RankingFragment()
         val livePicklistFragment = LivePicklistFragment()
+        val offlinePicklistFragment = OfflinePicklistFragment()
         val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
-        val secondPickabilityFragment = PickabilityFragment(PickabilityMode.SECOND)
         val teamListFragment = TeamListFragment()
         val preferencesFragment = PreferencesFragment()
 
@@ -221,23 +196,6 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
-                R.id.nav_menu_our_match_schedule -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "ourSchedule") ft.addToBackStack(
-                        null
-                    )
-                    ft.replace(R.id.nav_host_fragment, ourScheduleFragment, "ourSchedule")
-                        .commit()
-                }
-
-                R.id.nav_menu_starred_matches -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "starredMatches")
-                        ft.addToBackStack(null)
-                    ft.replace(R.id.nav_host_fragment, starredMatchesFragment, "starredMatches")
-                        .commit()
-                }
-
                 R.id.nav_menu_rankings -> {
                     supportFragmentManager.beginTransaction()
                         .addToBackStack(null)
@@ -245,14 +203,15 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
-                R.id.nav_menu_live_picklist -> {
+                R.id.nav_menu_picklist -> {
                     supportFragmentManager.beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, livePicklistFragment, "livePicklist")
+                        .replace(R.id.nav_host_fragment, livePicklistFragment, "picklist")
                         .commit()
                 }
 
-                R.id.nav_menu_pickability_first -> {
+
+                R.id.nav_menu_pickability -> {
                     val ft = supportFragmentManager.beginTransaction()
                     if (supportFragmentManager.fragments.last().tag != "pickabilityFirst") ft.addToBackStack(
                         null
@@ -261,18 +220,6 @@ class MainViewerActivity : ViewerActivity() {
                         .commit()
                 }
 
-                R.id.nav_menu_pickability_second -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "pickabilitySecond") ft.addToBackStack(
-                        null
-                    )
-                    ft.replace(
-                        R.id.nav_host_fragment,
-                        secondPickabilityFragment,
-                        "pickabilitySecond"
-                    )
-                        .commit()
-                }
 
                 R.id.nav_menu_team_list -> {
                     val ft = supportFragmentManager.beginTransaction()
@@ -308,11 +255,11 @@ class MainViewerActivity : ViewerActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu) : Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.toolbar, menu)
-        val fieldMapItem : MenuItem = menu.findItem(R.id.field_map_button)
-        val pitMapItem : MenuItem = menu.findItem(R.id.pit_map_button)
+        val fieldMapItem: MenuItem = menu.findItem(R.id.field_map_button)
+        val pitMapItem: MenuItem = menu.findItem(R.id.pit_map_button)
         val fieldButton = fieldMapItem.actionView
         val pitButton = pitMapItem.actionView
 
@@ -322,14 +269,17 @@ class MainViewerActivity : ViewerActivity() {
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
 
-            var mapFile = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
-            "pit_map")
+            var mapFile = File(
+                "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
+                "pit_map"
+            )
 
-            if (mapFile!!.exists()) {
+            if (mapFile.exists()) {
                 popupView.pit_map.setImageURI(mapFile.toUri())
             }
 
-            mapRotation = this.getSharedPreferences("VIEWER", 0).getFloat("mapRotation", mapRotation)
+            mapRotation =
+                this.getSharedPreferences("VIEWER", 0).getFloat("mapRotation", mapRotation)
 
             popupView.pit_map.rotation = mapRotation
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
@@ -352,7 +302,7 @@ class MainViewerActivity : ViewerActivity() {
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
             popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
-            when(mapMode){
+            when (mapMode) {
                 0 -> {
                     popupView.red_chip.isChecked = true
                     popupView.none_chip.isChecked = false
@@ -372,28 +322,28 @@ class MainViewerActivity : ViewerActivity() {
                     popupView.field_map.setImageResource(R.drawable.field_map_blue)
                 }
             }
-            popupView.red_chip.setOnClickListener{
+            popupView.red_chip.setOnClickListener {
                 popupView.red_chip.isChecked = true
             }
-            popupView.blue_chip.setOnClickListener{
+            popupView.blue_chip.setOnClickListener {
                 popupView.blue_chip.isChecked = true
             }
-            popupView.none_chip.setOnClickListener{
+            popupView.none_chip.setOnClickListener {
                 popupView.none_chip.isChecked = true
             }
             popupView.chip_group.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
                     popupView.red_chip.id -> {
                         popupView.field_map.setImageResource(R.drawable.field_map_red)
-                        mapMode=0
+                        mapMode = 0
                     }
                     popupView.none_chip.id -> {
                         popupView.field_map.setImageResource(R.drawable.field_map)
-                        mapMode=1
+                        mapMode = 1
                     }
                     popupView.blue_chip.id -> {
                         popupView.field_map.setImageResource(R.drawable.field_map_blue)
-                        mapMode=2
+                        mapMode = 2
                     }
                 }
                 return@setOnCheckedChangeListener
@@ -405,9 +355,9 @@ class MainViewerActivity : ViewerActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    fun updateNavFooter(){
+    fun updateNavFooter() {
         val footer = findViewById<TextView>(R.id.nav_footer)
-        if(Constants.USE_TEST_DATA){
+        if (Constants.USE_TEST_DATA) {
             footer.text = getString(R.string.test_data)
 
         } else {
@@ -420,14 +370,16 @@ class MainViewerActivity : ViewerActivity() {
         var contents: JsonObject? = null
         var gson = Gson()
 
-        private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_user_data_prefs.json")
+        private val file =
+            File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_user_data_prefs.json")
 
         fun read(context: Context) {
-            if (!fileExists()){
+            if (!fileExists()) {
                 copyDefaults(context)
             }
-            try { contents = JsonParser.parseReader(FileReader(file)).asJsonObject }
-            catch (e: Exception) {
+            try {
+                contents = JsonParser.parseReader(FileReader(file)).asJsonObject
+            } catch (e: Exception) {
                 Log.e("UserDatapoints.read", "Failed to read user datapoints file")
             }
         }
@@ -441,11 +393,11 @@ class MainViewerActivity : ViewerActivity() {
 
         fun fileExists(): Boolean = file.exists()
 
-        fun copyDefaults(context: Context){
-            val inputStream : InputStream = context.resources.openRawResource(R.raw.default_prefs)
+        fun copyDefaults(context: Context) {
+            val inputStream: InputStream = context.resources.openRawResource(R.raw.default_prefs)
 
             try {
-                val outputStream : OutputStream = FileOutputStream(file)
+                val outputStream: OutputStream = FileOutputStream(file)
 
                 val buffer = ByteArray(1024)
                 var len: Int? = null
@@ -468,14 +420,21 @@ class MainViewerActivity : ViewerActivity() {
         var contents = JsonObject()
         var gson = Gson()
 
-        private val file = File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_matches.json")
+        // Creates a list that stores all of the match numbers that team 1678 is in
+        val citrusMatches = matchCache.filter {
+            return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
+        }.map { return@map it.value.matchNumber }
+
+        private val file =
+            File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_matches.json")
 
         fun read() {
-            if (!fileExists()){
+            if (!fileExists()) {
                 write()
             }
-            try { contents = JsonParser.parseReader(FileReader(file)).asJsonObject }
-            catch (e: Exception) {
+            try {
+                contents = JsonParser.parseReader(FileReader(file)).asJsonObject
+            } catch (e: Exception) {
                 Log.e("StarredMatches.read", "Failed to read starred matches file")
             }
         }
@@ -503,22 +462,61 @@ class MainViewerActivity : ViewerActivity() {
 
     }
 
+    /**
+     * An object to read/write the starred teams file with.
+     */
+    object StarredTeams {
+        val gson = Gson()
+
+        private val teams = mutableSetOf<String>()
+
+        fun add(team: String) {
+            teams.add(team)
+            write()
+        }
+
+        fun remove(team: String) {
+            teams.remove(team)
+            write()
+        }
+
+        fun contains(team: String) = teams.contains(team)
+
+        private val file =
+            File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_teams.json")
+
+        fun read() {
+            if (!file.exists()) write()
+            try {
+                JsonParser.parseReader(FileReader(file)).asJsonArray.forEach { teams.add(it.asString) }
+            } catch (e: Exception) {
+                Log.e("StarredTeams.read", "Failed to read starred teams file")
+            }
+        }
+
+        private fun write() {
+            val writer = FileWriter(file, false)
+            gson.toJson(teams, writer)
+            writer.close()
+        }
+    }
+
 }
 
-class NavDrawerListener(private val navView: NavigationView, private val fragManager: FragmentManager) : DrawerLayout.DrawerListener {
+class NavDrawerListener(
+    private val navView: NavigationView,
+    private val fragManager: FragmentManager
+) : DrawerLayout.DrawerListener {
     override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
     override fun onDrawerOpened(drawerView: View) {}
     override fun onDrawerClosed(drawerView: View) {}
     override fun onDrawerStateChanged(newState: Int) {
-        if(newState == ViewDragHelper.STATE_SETTLING){
+        if (newState == ViewDragHelper.STATE_SETTLING) {
             when (fragManager.fragments.last().tag) {
                 "matchSchedule" -> navView.setCheckedItem(R.id.nav_menu_match_schedule)
-                "ourSchedule" -> navView.setCheckedItem(R.id.nav_menu_our_match_schedule)
-                "starredMatches" -> navView.setCheckedItem(R.id.nav_menu_starred_matches)
                 "rankings" -> navView.setCheckedItem(R.id.nav_menu_rankings)
-                "livePicklist" -> navView.setCheckedItem(R.id.nav_menu_live_picklist)
-                "pickabilityFirst" -> navView.setCheckedItem(R.id.nav_menu_pickability_first)
-                "pickabilitySecond" -> navView.setCheckedItem(R.id.nav_menu_pickability_second)
+                "picklist" -> navView.setCheckedItem(R.id.nav_menu_picklist)
+                "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
                 "preferences" -> navView.setCheckedItem(R.id.nav_preferences)
             }

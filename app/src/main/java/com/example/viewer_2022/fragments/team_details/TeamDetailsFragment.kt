@@ -20,8 +20,7 @@ import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.fragments.notes.NotesFragment
-import com.example.viewer_2022.getTeamDataValue
+import com.example.viewer_2022.getTeamName
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
 import java.io.File
@@ -66,10 +65,10 @@ class TeamDetailsFragment : Fragment() {
         // is null, the default display will show '0' for the team number on TeamDetails.
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
-            teamName = getTeamDataValue(teamNumber!!, "team_name")
+            teamName = getTeamName(teamNumber!!)
         }
         root.tv_team_number.text = teamNumber.toString()
-        root.tv_team_name.text = teamName.toString()
+        root.tv_team_name.text = teamName ?: Constants.NULL_CHARACTER
     }
 
     // Updates the adapter for the list view of each team in the match details display.
@@ -84,7 +83,7 @@ class TeamDetailsFragment : Fragment() {
             datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS,
             teamNumber = teamNumber!!
         )
-        if(refreshId == null){
+        if (refreshId == null) {
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {
                 Log.d("data-refresh", "Updated: team-details")
                 adapter.notifyDataSetChanged()
@@ -92,7 +91,7 @@ class TeamDetailsFragment : Fragment() {
         }
         root.lv_datapoint_display.adapter = adapter
 // Repopulates the list view based on whether LFM is toggled or not
-        root.btn_lfm.setOnClickListener{
+        root.btn_lfm.setOnClickListener {
             if (!isChecked) {
                 isChecked = true
                 dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_LFM
@@ -113,12 +112,12 @@ class TeamDetailsFragment : Fragment() {
         }
     }
 
-    private fun robotPics(root: View){
+    private fun robotPics(root: View) {
         val robotPicFragmentArguments = Bundle()
         val robotPicFragment = RobotPicFragment()
         if (!File(
                 "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
-                "${teamNumber}_full_robot.jpg"
+                "${teamNumber}_full_robot_1.jpg"
             ).exists()
             && !File(
                 "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",

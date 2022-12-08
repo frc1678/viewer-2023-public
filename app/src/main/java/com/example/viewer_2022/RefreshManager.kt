@@ -2,7 +2,7 @@ package com.example.viewer_2022
 
 import android.util.Log
 import com.example.viewer_2022.constants.Constants
-import com.example.viewer_2022.data.GetDataFromWebsite
+import com.example.viewer_2022.data.getDataFromWebsite
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
@@ -10,27 +10,36 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.util.*
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 
-
+// Manages updates to the data and triggering refreshes in the UI
 class RefreshManager {
     private val listeners = mutableMapOf<String, () -> Unit>()
 
 
     fun start(scope: CoroutineScope) {
         if (!Constants.USE_TEST_DATA) {
-            tickerFlow(Duration.seconds(Constants.REFRESH_INTERVAL), Duration.seconds(Constants.REFRESH_INTERVAL)).onEach {
+            tickerFlow(
+                Constants.REFRESH_INTERVAL.seconds,
+                Constants.REFRESH_INTERVAL.seconds
+            ).onEach {
                 Log.d("data-refresh", "tick")
-                MainViewerActivity.updateNotesCache()
-                GetDataFromWebsite({
+                /*
+                try {
+                    MainViewerActivity.updateNotesCache()
+                } catch (e: Throwable) {
+                    Log.e("data-refresh", "Error fetching notes data $it")
+                }
+                 */
+                try {
+                    getDataFromWebsite()
                     Log.i("data-refresh", "Fetched data from website successfully")
-
                     refresh()
-                }, {
+                } catch (e: Throwable) {
                     Log.e("data-refresh", "Error fetching data $it")
-                }).execute()
+                }
             }.launchIn(scope)
         }
-
     }
 
     fun addRefreshListener(listener: () -> Unit): String {
