@@ -12,6 +12,7 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.DeserializationStrategy
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.*
 import okhttp3.Dns
@@ -146,3 +147,19 @@ object DataApi {
     )
 }
 
+object NotesApi {
+    suspend fun getAll(eventKey: String?): Map<String, String> = client.get("$grosbeakURL/api/notes/all") {
+        parameter("event_key", eventKey)
+    }.body()
+    suspend fun get(eventKey: String?, team: String): NoteData = client.get("$grosbeakURL/api/notes/team/$team") {
+        parameter("event_key", eventKey)
+    }.body()
+    suspend fun set(eventKey: String?, team: String, notes: String) = client.put("$grosbeakURL/api/notes/team/") {
+        parameter("event_key", eventKey)
+        contentType(ContentType.Application.Json)
+        setBody(NoteData(team, notes))
+    }
+
+    @Serializable
+    data class NoteData(@SerialName("team_number") val teamNumber: String, val notes: String)
+}

@@ -32,6 +32,7 @@ import androidx.fragment.app.FragmentManager
 import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.Match
+import com.example.viewer_2022.data.NotesApi
 import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
@@ -64,17 +65,12 @@ class MainViewerActivity : ViewerActivity() {
         var mapMode = 1
         var mapRotation = -90F
 
-        /*
+
         suspend fun updateNotesCache() {
-            var notesList = getAllNotes(Constants.EVENT_KEY)
-            val newMap = mutableMapOf<String, String>()
-            notesList.forEach {
-                    newMap[it.team_number] = it.notes;
-                }
-                notesCache = newMap.toMutableMap()
-                Log.d("notes", "updated notes cache")
-            }
-         */
+            var notesList = NotesApi.getAll(Constants.EVENT_KEY)
+            notesCache = notesList.toMutableMap()
+            Log.d("notes", "updated notes cache")
+        }
     }
 
     //Overrides back button to go back to last fragment.
