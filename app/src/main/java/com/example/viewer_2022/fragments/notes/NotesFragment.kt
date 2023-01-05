@@ -13,6 +13,8 @@ import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.NotesApi
+import com.example.viewer_2022.showError
+import io.ktor.http.*
 import kotlinx.android.synthetic.main.fragment_notes.view.*
 import kotlinx.coroutines.launch
 
@@ -80,10 +82,16 @@ class NotesFragment : Fragment() {
         root.btn_edit_notes.isEnabled = false
         try {
             lifecycleScope.launch {
-                teamNumber?.let {
+                teamNumber?.let { teamNumber ->
                     val notes = root.et_notes.text.toString()
-                    MainViewerActivity.notesCache[teamNumber!!] = notes
-                    NotesApi.set(Constants.EVENT_KEY, it, notes)
+                    val resp = NotesApi.set(Constants.EVENT_KEY, teamNumber, notes)
+                    if (resp.status == HttpStatusCode.OK) {
+                        MainViewerActivity.notesCache[teamNumber] = notes
+                    } else {
+                        context?.let {
+                            showError(it, "Error saving notes: ${resp.status}")
+                        }
+                    }
                     root.btn_edit_notes.isEnabled = true
                 }
             }
