@@ -29,9 +29,11 @@ import androidx.core.view.GravityCompat
 import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.MainViewerActivity.StarredMatches.contents
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.data.Match
+import com.example.viewer_2022.data.NotesApi
 import com.example.viewer_2022.fragments.live_picklist.LivePicklistFragment
 import com.example.viewer_2022.fragments.match_schedule.MatchScheduleFragment
 import com.example.viewer_2022.fragments.offline_picklist.OfflinePicklistFragment
@@ -46,6 +48,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
+import kotlinx.coroutines.launch
 import java.io.*
 
 
@@ -64,17 +67,12 @@ class MainViewerActivity : ViewerActivity() {
         var mapMode = 1
         var mapRotation = -90F
 
-        /*
+
         suspend fun updateNotesCache() {
-            var notesList = getAllNotes(Constants.EVENT_KEY)
-            val newMap = mutableMapOf<String, String>()
-            notesList.forEach {
-                    newMap[it.team_number] = it.notes;
-                }
-                notesCache = newMap.toMutableMap()
-                Log.d("notes", "updated notes cache")
-            }
-         */
+            var notesList = NotesApi.getAll(Constants.EVENT_KEY)
+            notesCache = notesList.toMutableMap()
+            Log.d("notes", "updated notes cache")
+        }
     }
 
     //Overrides back button to go back to last fragment.
@@ -154,12 +152,12 @@ class MainViewerActivity : ViewerActivity() {
             updateNavFooter()
         }
 
-        /*if (!Constants.USE_TEST_DATA){
+        if (!Constants.USE_TEST_DATA){
             lifecycleScope.launch {
                 updateNotesCache()
             }
         }
-         */
+
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val matchScheduleFragment = MatchScheduleFragment()

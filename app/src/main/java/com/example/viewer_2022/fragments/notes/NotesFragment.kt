@@ -12,11 +12,14 @@ import androidx.lifecycle.lifecycleScope
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.data.NotesApi
+import com.example.viewer_2022.showError
+import io.ktor.http.*
 import kotlinx.android.synthetic.main.fragment_notes.view.*
 import kotlinx.coroutines.launch
 
 // Finds the lifecycle of the Fragment
-fun View.findViewTreeLifecycleOwner(): LifecycleOwner? = ViewTreeLifecycleOwner.get(this)
+//fun View.findViewTreeLifecycleOwner(): LifecycleOwner? = ViewTreeLifecycleOwner.get(this)
 
 /**
  * Page that displays strategist notes
@@ -41,7 +44,7 @@ class NotesFragment : Fragment() {
         if (refreshId == null) {
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {
                 if (this.mode == Mode.VIEW) {
-//                    getNotes(root)
+                    getNotes(root)
                 }
             }
         }
@@ -54,20 +57,17 @@ class NotesFragment : Fragment() {
 
     private fun setupListeners(root: View) {
         root.btn_edit_notes.setOnClickListener {
-            root.findViewTreeLifecycleOwner()?.lifecycleScope?.let {
                 mode = when (mode) {
                     Mode.VIEW -> {
                         setupEditMode(root)
                         Mode.EDIT
                     }
                     Mode.EDIT -> {
-                        it.launch { setupViewMode(root) }
+                        setupViewMode(root)
                         Mode.VIEW
                     }
                 }
             }
-
-        }
 
     }
 
@@ -76,16 +76,26 @@ class NotesFragment : Fragment() {
         root.et_notes.isEnabled = true
     }
 
-    private suspend fun setupViewMode(root: View) {
+    private fun setupViewMode(root: View) {
         root.btn_edit_notes.setImageResource(R.drawable.ic_baseline_edit_24)
         root.et_notes.isEnabled = false
-//        val data = SetNotesData(teamNumber!!, root.et_notes.text.toString())
-//        Log.d("notes", Gson().toJson(data))
         root.btn_edit_notes.isEnabled = false
         try {
-            MainViewerActivity.notesCache[teamNumber!!] = root.et_notes.text.toString()
-//            setNote(data)
-            root.btn_edit_notes.isEnabled = true
+            lifecycleScope.launch {
+                teamNumber?.let { teamNumber ->
+                    val notes = root.et_notes.text.toString()
+                    val resp = NotesApi.set(Constants.EVENT_KEY, teamNumber, notes)
+                    if (resp.status == HttpStatusCode.OK) {
+                        MainViewerActivity.notesCache[teamNumber] = notes
+                    } else {
+                        context?.let {
+                            showError(it, "Error saving notes: ${resp.status}")
+                        }
+                    }
+                    root.btn_edit_notes.isEnabled = true
+                }
+            }
+
         } catch (e: Exception) {
             Log.e("NOTES", "FAILED TO SAVE NOTES. WE JUST LOST DATA. FIX IMMEDIATELY")
         }
@@ -96,12 +106,10 @@ class NotesFragment : Fragment() {
         root.btn_edit_notes.isEnabled = false
         try {
             teamNumber?.let {
-                root.findViewTreeLifecycleOwner()?.lifecycleScope?.launch {
-//                    var response = getNote(it)
-//                    if (response.success) {
-//                        root.et_notes.setText(response.notes)
-//                    }
-//                    root.btn_edit_notes.isEnabled = true
+                lifecycleScope.launch {
+                    val response = NotesApi.get(Constants.EVENT_KEY, it)
+                    root.et_notes.setText(response.notes)
+                    root.btn_edit_notes.isEnabled = true
                 }
             }
         } catch (e: Exception) {
