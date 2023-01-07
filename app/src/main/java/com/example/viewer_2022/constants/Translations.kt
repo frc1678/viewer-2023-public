@@ -1,5 +1,8 @@
 package com.example.viewer_2022.constants
 
+/**
+ * Class that contains translations from datapoint names to human-readable names.
+ */
 class Translations {
     companion object {
         val ACTUAL_TO_HUMAN_READABLE: Map<String, String> = mapOf(
@@ -65,17 +68,17 @@ class Translations {
             "auto_sd_high_balls" to "SD Balls High",
             "tele_sd_low_balls" to "SD Balls Low",
             "tele_sd_high_balls" to "SD Balls High",
-            "low_rung_successes" to "# Low Climbs",
-            "mid_rung_successes" to "# Mid Climbs",
-            "high_rung_successes" to "# High Climbs",
-            "traversal_rung_successes" to "# Traversal Climbs",
+            "low_rung_successes" to "# LVL 1 Climbs",
+            "mid_rung_successes" to "# LVL 2 Climbs",
+            "high_rung_successes" to "# LVL 3 Climbs",
+            "traversal_rung_successes" to "# LVL 4 Climbs",
             "matches_played" to "Matches Played",
             "matches_incap" to "# Matches Incap",
             "lfm_climb_all_attempts" to "# Climbs",
-            "lfm_low_rung_successes" to "# Low CLimbs",
-            "lfm_mid_rung_successes" to "# Mid Climbs",
-            "lfm_high_rung_successes" to "# High Climbs",
-            "lfm_traversal_rung_successes" to "# Traversal Climbs",
+            "lfm_low_rung_successes" to "# LVL 1 CLimbs",
+            "lfm_mid_rung_successes" to "# LVL 2 Climbs",
+            "lfm_high_rung_successes" to "# LVL 3 Climbs",
+            "lfm_traversal_rung_successes" to "# LVL 4 Climbs",
             "lfm_matches_incap" to "Matches Incap",
             "max_climb_level" to "Max Climb Level",
             "lfm_auto_max_low_balls" to "# Max Balls Low",
@@ -91,7 +94,7 @@ class Translations {
             "climb_percent_success" to "Climb % Success",
             "lfm_climb_percent_success" to "Climb % Success",
             "confidence_rating" to "Confidence Rating",
-            "auto_low_balls" to "# Balls Low" ,
+            "auto_low_balls" to "# Balls Low",
             "tele_low_balls" to "# Balls Low",
             "intakes" to "# Intakes",
             "avg_climb_points" to "Avg Climb Pts",
@@ -126,7 +129,7 @@ class Translations {
             "4" to "other"
         )
 
-        val TIM_FROM_TEAM : Map<String, String> = mapOf(
+        val TIM_FROM_TEAM: Map<String, String> = mapOf(
             "auto_avg_low_balls" to "auto_low_balls",
             "auto_avg_high_balls" to "auto_high_balls",
             "auto_avg_total_balls" to "auto_total_balls",
@@ -152,9 +155,9 @@ class Translations {
             "avg_climb_points" to "climb_level",
             "climb_all_attempts" to "climb_level",
             "matches_played_defense" to "played_defense"
-            )
+        )
 
-        val TIM_TO_HUMAN_READABLE : Map<String, String> = mapOf(
+        val TIM_TO_HUMAN_READABLE: Map<String, String> = mapOf(
             "auto_avg_low_balls" to "Auto Balls Low",
             "auto_avg_high_balls" to "Auto Balls High",
             "auto_avg_total_balls" to "Auto Balls Total",

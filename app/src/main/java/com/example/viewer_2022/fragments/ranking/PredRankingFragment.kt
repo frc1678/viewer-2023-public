@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.viewer_2022.*
+import com.example.viewer_2022.MainViewerActivity
+import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
+import com.example.viewer_2022.convertToPredFilteredTeamsList
 import com.example.viewer_2022.fragments.team_details.TeamDetailsFragment
 import kotlinx.android.synthetic.main.fragment_ranking.view.*
 
+/**
+ * Page for showing predicted rankings
+ */
 class PredRankingFragment : Fragment() {
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
@@ -44,11 +49,12 @@ class PredRankingFragment : Fragment() {
         root.tv_datapoint_five.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[0]]
 
-        val adapter = PredRankingListAdapter(activity!!, convertToPredFilteredTeamsList(
-            Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
-            MainViewerActivity.teamList
-        ))
-        if(refreshId == null){
+        val adapter = PredRankingListAdapter(
+            activity!!, convertToPredFilteredTeamsList(
+                MainViewerActivity.teamList
+            )
+        )
+        if (refreshId == null) {
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {
                 Log.d("data-refresh", "Updated: pred-ranking")
                 adapter.notifyDataSetChanged()
@@ -60,7 +66,6 @@ class PredRankingFragment : Fragment() {
             val rankingFragmentTransaction = this.fragmentManager!!.beginTransaction()
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER, convertToPredFilteredTeamsList(
-                    Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value,
                     MainViewerActivity.teamList
                 )[position]
             )
@@ -76,6 +81,7 @@ class PredRankingFragment : Fragment() {
         }
         return root
     }
+
     fun toggletoRanking() {
         val rankingFragment = RankingFragment()
         val ft = fragmentManager!!.beginTransaction()

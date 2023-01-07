@@ -8,21 +8,31 @@
         android:id="@+id/tv_team_list_header"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:gravity="center"
         android:text="Team List"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center" />
+        android:textStyle="bold" />
 
     <View style="@style/view_separator_horizontal" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="match_parent" 
+        android:layout_height="60dp"
         android:orientation="horizontal">
+
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_stars_24"
+                android:tint="@color/Gray"
+                android:padding="@dimen/very_small"/>
+
         <TextView
             style="@style/tv_standard_gray"
             android:layout_weight="2"
-            android:text="Team Number"/>
+            android:text="Team Number" />
+
         <TextView
             style="@style/tv_standard_gray"
             android:layout_weight="5"
@@ -34,12 +44,10 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/Black"
-        />
+        android:background="@color/Black" />
 
     <ListView
         android:id="@+id/lv_team_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 </LinearLayout>

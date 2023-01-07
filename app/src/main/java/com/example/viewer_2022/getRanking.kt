@@ -13,7 +13,7 @@ fun createLeaderboard(datapoint: String) {
     val data = mutableListOf<TeamRankingItem>()
     MainViewerActivity.teamList.forEach {
         if (datapoint !in Constants.PIT_DATA) {
-            val value = getTeamDataValue(it, datapoint).toFloatOrNull()
+            val value = getTeamDataValue(it, datapoint)?.toFloatOrNull()
             data.add(
                 TeamRankingItem(
                     it,
@@ -34,7 +34,7 @@ fun createLeaderboard(datapoint: String) {
     var sorted = nonNullTeams.sortedBy {
         if (datapoint in Constants.PIT_DATA && datapoint != "drivetrain_motors") {
             (Constants.RANK_BY_PIT[it.value] ?: 0).toFloat()
-        } else it.value.toFloatOrNull()
+        } else it.value?.toFloatOrNull()
     }
 
     if (descending) sorted = sorted.reversed()
@@ -54,10 +54,10 @@ fun getRankingList(datapoint: String): Leaderboard {
     return MainViewerActivity.leaderboardCache[datapoint]!!
 }
 
-fun getRankingTeam(teamNumber: String, datapoint: String): TeamRankingItem {
+fun getRankingTeam(teamNumber: String, datapoint: String): TeamRankingItem? {
     val data = MainViewerActivity.leaderboardCache[datapoint]
-    return data!!.find { it.teamNumber == teamNumber }!!
+    return data?.find { it.teamNumber == teamNumber }
 }
 
-data class TeamRankingItem(val teamNumber: String, val value: String, var placement: Int?)
+data class TeamRankingItem(val teamNumber: String, val value: String?, var placement: Int?)
 typealias Leaderboard = List<TeamRankingItem>

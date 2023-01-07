@@ -5,13 +5,14 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
-import java.util.*
 import java.text.SimpleDateFormat
+import java.util.*
 
 
 //Super class of all activity based classes for this project.
 //Used to implement class mechanisms that all activities should comprise of.
-var lastUpdated: Date = Calendar.getInstance().time;
+var lastUpdated: Date = Calendar.getInstance().time
+
 open class ViewerActivity : AppCompatActivity() {
     //When the back press is held down, this function will confirm the long click and then 'restart'
     //the app by sending it to the mode collection activity and resetting the mode.
@@ -27,7 +28,8 @@ open class ViewerActivity : AppCompatActivity() {
     private fun intentToMainViewerActivity() {
         startActivity(
             Intent(this, MainViewerActivity::class.java),
-            ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+            ActivityOptions.makeSceneTransitionAnimation(this).toBundle()
+        )
     }
 
     fun setToolbarText(view: ActionBar?, support: androidx.appcompat.app.ActionBar?) {

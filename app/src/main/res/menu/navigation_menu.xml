@@ -7,39 +7,23 @@
         />
 
     <item
-        android:id="@+id/nav_menu_our_match_schedule"
-        android:title="Our Match Schedule"
-        android:checkable="true"
-        />
-
-    <item
-        android:id="@+id/nav_menu_starred_matches"
-        android:title="Starred Matches"
-        android:checkable="true"
-        />
-
-    <item
         android:id="@+id/nav_menu_rankings"
         android:title="Rankings"
         android:checkable="true"
         />
 
-<!--    <item-->
-<!--        android:id="@+id/nav_menu_live_picklist"-->
-<!--        android:title="Live Picklist"-->
-<!--        android:checkable="true"-->
-<!--        />-->
+    <item
+        android:id="@+id/nav_menu_picklist"
+        android:title="Picklist"
+        android:checkable="true"
+        />
 
     <item
-        android:id="@+id/nav_menu_pickability_first"
-        android:title="First Pickability"
+        android:id="@+id/nav_menu_pickability"
+        android:title="Pickability"
         android:checkable="true"
         />
-    <item
-        android:id="@+id/nav_menu_pickability_second"
-        android:title="Second Pickability"
-        android:checkable="true"
-        />
+
     <item
         android:id="@+id/nav_menu_team_list"
         android:title="Team List"

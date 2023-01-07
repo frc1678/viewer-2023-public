@@ -17,14 +17,13 @@ import android.widget.TextView
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.getTeamObjectByKey
-import java.lang.Float
 import java.util.regex.Pattern
 
 // Custom list adapter class with aq object handling to display the custom cell for the match schedule.
 class RankingListAdapter(
     private val activity: Activity,
     private val listContents: List<String>
-): BaseAdapter() {
+) : BaseAdapter() {
 
     private val inflater = LayoutInflater.from(activity)
 
@@ -64,41 +63,77 @@ class RankingListAdapter(
 
         val regex: Pattern = Pattern.compile("[0-9]+" + Regex.escape(".") + "[0-9]+")
 
-        viewHolder.tvDatapointOne.text = getTeamObject("current_rank",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
+        viewHolder.tvDatapointOne.text = getTeamObject(
+            "current_rank",
+            position
+        )
         viewHolder.tvDatapointTwo.text =
-            if (regex.matcher(getTeamObject("current_avg_rps",
-                position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)).matches()) {
+            if (getTeamObject(
+                    "current_avg_rps",
+                    position
+                )?.let {
+                    regex.matcher(
+                        it
+                    ).matches()
+                }
+                == true
+            ) {
+                (("%.2f").format(
+                    getTeamObject(
+                        "current_avg_rps",
+                        position
+                    )?.toFloat() ?: Constants.NULL_CHARACTER
+                )
+                        )
+            } else {
+                getTeamObject(
+                    "current_avg_rps",
+                    position
+                )
+            }
+        viewHolder.tvDatapointThree.text = getTeamObject(
+            "current_rps",
+            position
+        )
+        viewHolder.tvDatapointFour.text = if (getTeamObject(
+                "predicted_rps",
+                position
+            )?.let {
+                regex.matcher(
+                    it
+                ).matches()
+            }
+            == true
+        ) {
             (("%.2f").format(
-                Float.parseFloat(getTeamObject("current_avg_rps",
-                position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))))
-        } else{
-            getTeamObject("current_avg_rps",
-                position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
+                getTeamObject(
+                    "predicted_rps",
+                    position
+                )?.toFloat() ?: Constants.NULL_CHARACTER
+            )
+                    )
+        } else {
+            getTeamObject(
+                "predicted_rps",
+                position
+            )
         }
-        viewHolder.tvDatapointThree.text = getTeamObject("current_rps",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
-        viewHolder.tvDatapointFour.text = if (regex.matcher(getTeamObject("predicted_rps",
-                        position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)).matches()) {
-            (("%.2f").format(
-                    Float.parseFloat(getTeamObject("predicted_rps",
-                            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value))))
-        } else{
-            getTeamObject("predicted_rps",
-                    position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
-        }
-        viewHolder.tvDatapointFive.text = getTeamObject("predicted_rank",
-            position, Constants.PROCESSED_OBJECT.CALCULATED_PREDICTED_TEAM.value)
+        viewHolder.tvDatapointFive.text = getTeamObject(
+            "predicted_rank",
+            position
+        )
 
         return rowView!!
     }
 
-    private fun getTeamObject(field: String, position: Int, path: String): String {
+    private fun getTeamObject(field: String, position: Int): String? {
         return getTeamObjectByKey(
-            path, listContents[position],
-            field)
+            listContents[position],
+            field
+        )
     }
 }
+
 // View holder class to handle the elements used in the custom cells.
 private class ViewHolder(view: View?) {
     val tvTeamNumber = view?.findViewById(R.id.tv_team_number) as TextView

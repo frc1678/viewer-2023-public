@@ -11,10 +11,12 @@ import com.example.viewer_2022.R
 import com.example.viewer_2022.TeamRankingItem
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.getRankingTeam
-import com.example.viewer_2022.getTeamDataValue
 import kotlinx.android.synthetic.main.team_ranking_cell.view.*
 import java.util.regex.Pattern
 
+/**
+ * Adapter for the team ranking list.
+ */
 class TeamRankingListAdapter(
     private val context: FragmentActivity,
     private val teamNumber: String?,
@@ -44,7 +46,11 @@ class TeamRankingListAdapter(
 
         rowView.tv_team_number_ranking.text = e.teamNumber
         if (regex.matcher(e.value).matches()) {
-            rowView.tv_value_ranking.text = ("%.2f").format(java.lang.Float.parseFloat(e.value))
+            rowView.tv_value_ranking.text = ("%.2f").format(e.value?.let {
+                java.lang.Float.parseFloat(
+                    it
+                )
+            })
         } else {
             rowView.tv_value_ranking.text = e.value
         }
@@ -56,7 +62,7 @@ class TeamRankingListAdapter(
             rowView.tv_team_ranking.text = Constants.NULL_PREDICTED_SCORE_CHARACTER
         } else {
             rowView.tv_team_ranking.text =
-                getRankingTeam(e.teamNumber, dataPoint).placement.toString()
+                getRankingTeam(e.teamNumber, dataPoint)?.placement.toString()
         }
 
         if (e.teamNumber == teamNumber) {
