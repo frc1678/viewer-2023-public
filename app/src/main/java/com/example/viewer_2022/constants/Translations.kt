@@ -48,6 +48,7 @@ class Translations {
             "position_one_starts" to "# Start Pos 1",
             "position_two_starts" to "# Start Pos 2",
             "position_three_starts" to "# Start Pos 3",
+            "position_four_starts" to "# Start Pos 4",
             "played_defense" to "Played Defense",
             "quickness_score" to "Quickness Score",
             "field_awareness_score" to "Field Aware Score",
@@ -111,6 +112,7 @@ class Translations {
             "position_one_starts" to "start_position",
             "position_two_starts" to "start_position",
             "position_three_starts" to "start_position",
+            "position_four_starts" to "start_position",
             "matches_played_defense" to "played_defense"
         )
 
