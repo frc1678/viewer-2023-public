@@ -35,17 +35,11 @@ class Constants {
             "Auto",
             "auto_line",
             "start_position",
-            "auto_low_balls",
-            "auto_high_balls",
             "Tele",
-            "tele_low_balls",
-            "tele_high_balls",
             "played_defense",
             "field_awareness_score",
             "quickness_score",
             "Endgame",
-            "climb_level",
-            "climb_attempts",
             "Other",
             "intakes",
             "incap"
@@ -63,29 +57,13 @@ class Constants {
             "first_pickability",
             "second_pickability",
             "Auto",
-            "auto_line_successes",
             "mode_start_position",
             "position_zero_starts",
             "position_one_starts",
             "position_two_starts",
             "position_three_starts",
             "position_four_starts",
-            "auto_avg_low_balls",
-            "auto_avg_high_balls",
-            "auto_avg_total_balls",
-            "auto_max_low_balls",
-            "auto_max_high_balls",
-            "auto_sd_low_balls",
-            "auto_sd_high_balls",
             "Tele",
-            "tele_avg_low_balls",
-            "tele_avg_high_balls",
-            "tele_avg_total_balls",
-            "tele_max_low_balls",
-            "tele_max_high_balls",
-            "tele_sd_low_balls",
-            "tele_sd_high_balls",
-            "avg_intakes",
             "avg_incap_time",
             "max_incap",
             "matches_incap",
@@ -94,51 +72,21 @@ class Constants {
             "driver_quickness",
             "matches_played_defense",
             "Endgame",
-            "climb_percent_success",
-            "climb_all_attempts",
-            "low_rung_successes",
-            "mid_rung_successes",
-            "high_rung_successes",
-            "traversal_rung_successes",
-            "mode_climb_level",
-            "max_climb_level",
-            "avg_climb_points",
             "Pit Data",
             "drivetrain",
             "drivetrain_motors",
             "drivetrain_motor_type",
-            "can_climb",
-            "has_ground_intake",
-            "can_intake_terminal",
-            "has_vision",
-            "can_under_low_rung",
-            "can_cheesecake"
+            "has_vision"
         )
 
         val FIELDS_TO_BE_DISPLAYED_LFM: List<String> = listOf(
             "See Matches",
             "L4M Auto",
-            "lfm_mode_start_position",
-            "lfm_auto_avg_low_balls",
-            "lfm_auto_avg_high_balls",
-            "lfm_auto_max_low_balls",
-            "lfm_auto_max_high_balls",
             "L4M Tele",
-            "lfm_tele_avg_low_balls",
-            "lfm_tele_avg_high_balls",
-            "lfm_tele_max_low_balls",
-            "lfm_tele_max_high_balls",
             "lfm_avg_incap_time",
             "lfm_max_incap",
             "lfm_matches_incap",
             "L4M Endgame",
-            "lfm_climb_percent_success",
-            "lfm_climb_all_attempts",
-            "lfm_low_rung_successes",
-            "lfm_mid_rung_successes",
-            "lfm_high_rung_successes",
-            "lfm_traversal_rung_successes",
-            "lfm_max_climb_level",
         )
 
         val FIELDS_TO_BE_DISPLAYED_RANKING: List<String> = listOf(
@@ -164,13 +112,6 @@ class Constants {
         )
 
         val GRAPHABLE: List<String> = listOf(
-            "auto_avg_low_balls",
-            "auto_avg_high_balls",
-            "auto_avg_total_balls",
-            "tele_avg_total_balls",
-            "avg_intakes",
-            "tele_avg_low_balls",
-            "tele_avg_high_balls",
             "avg_incap_time",
             "matches_incap",
             "matches_incap",
@@ -180,26 +121,14 @@ class Constants {
             "position_two_starts",
             "position_three_starts",
             "position_four_starts",
-            "avg_climb_points",
-            "climb_all_attempts",
             "matches_played_defense"
         )
 
         val GRAPHABLE_BOOL: List<String> = listOf(
-            "auto_line_successes",
-            "climb_percent_success",
-            "low_rung_successes",
-            "mid_rung_successes",
-            "high_rung_successes",
-            "traversal_rung_successes",
             "matches_played_defense"
         )
 
         val GRAPHABLE_CLIMB_TIMES: List<String> = listOf(
-            "climb_all_success_avg_time",
-            "mode_climb_level",
-            "avg_climb_points",
-            "climb_all_attempts"
         )
 
         val DRIVER_DATA: List<String> = listOf(
@@ -209,19 +138,13 @@ class Constants {
         )
 
         val PERCENT_DATA: List<String> = listOf(
-            "climb_percent_success"
         )
 
         val PIT_DATA: List<String> = listOf(
             "drivetrain",
             "drivetrain_motors",
             "drivetrain_motor_type",
-            "can_climb",
-            "has_ground_intake",
-            "can_intake_terminal",
             "has_vision",
-            "can_under_low_rung",
-            "can_cheesecake"
         )
 
         //List of rankable fields
@@ -237,63 +160,21 @@ class Constants {
             "predicted_rps" to true,
             "first_pickability" to true,
             "second_pickability" to true,
-            "auto_avg_low_balls" to true,
-            "auto_avg_high_balls" to true,
-            "auto_avg_total_balls" to true,
             "auto_line_successes" to true, //?????
-            "auto_max_low_balls" to true,
-            "auto_max_high_balls" to true,
-            "auto_sd_low_balls" to true,
-            "auto_sd_high_balls" to true,
-            "tele_avg_low_balls" to true,
-            "tele_avg_high_balls" to true,
-            "tele_avg_total_balls" to true,
             "driver_ability" to true,
             "driver_field_awareness" to true,
             "driver_quickness" to true,
-            "tele_max_low_balls" to true,
-            "tele_max_high_balls" to true,
-            "tele_sd_low_balls" to false,
-            "tele_sd_high_balls" to false,
             "max_incap" to false,
             "avg_incap_time" to false,
             "matches_incap" to false,
-            "climb_percent_success" to true,
-            "climb_all_attempts" to true,
-            "low_rung_successes" to true,
-            "mid_rung_successes" to true,
-            "high_rung_successes" to true,
-            "traversal_rung_successes" to true,
-            "lfm_auto_avg_low_balls" to true,
-            "lfm_auto_avg_low_balls" to true,
-            "lfm_auto_avg_high_balls" to true,
-            "lfm_auto_max_low_balls" to true,
-            "lfm_auto_max_high_balls" to true,
-            "lfm_tele_avg_low_balls" to true,
-            "lfm_tele_avg_low_balls" to true,
-            "lfm_tele_avg_high_balls" to true,
-            "lfm_tele_max_low_balls" to true,
-            "lfm_tele_max_high_balls" to true,
             "lfm_max_incap" to false,
             "lfm_avg_incap_time" to false,
             "lfm_matches_incap" to false,
-            "lfm_climb_percent_success" to true,
-            "lfm_climb_all_attempts" to true,
-            "lfm_low_rung_successes" to true,
-            "lfm_mid_rung_successes" to true,
-            "lfm_high_rung_successes" to true,
-            "lfm_traversal_rung_successes" to true,
             "avg_intakes" to true,
             "drivetrain" to false,
             "drivetrain_motors" to false,
             "drivetrain_motor_type" to false,
-            "can_climb" to false,
-            "has_ground_intake" to false,
-            "can_intake_terminal" to false,
             "has_vision" to false,
-            "can_under_low_rung" to false,
-            "can_cheesecake" to false,
-            "avg_climb_points" to true,
             "matches_played_defense" to true,
         )
 

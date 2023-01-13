@@ -31,7 +31,6 @@ class Translations {
             "actual_rp2" to "Actual Charge RP",
             "team_number" to "Team Number",
             "has_vision" to "Has vision",
-            "can_cheesecake" to "Cheesecake",
             "match_number" to "Match Number",
             "first_pickability" to "First Pickability",
             "second_pickability" to "Second Pickability",
