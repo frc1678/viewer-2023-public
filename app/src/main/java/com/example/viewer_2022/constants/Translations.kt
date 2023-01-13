@@ -10,8 +10,8 @@ class Translations {
             "driver_quickness" to "Driver Quickness",
             "driver_field_awareness" to "Driver Field Awareness",
             "driver_ability" to "Driver Ability",
-//            "predicted_rp1" to "Pred. cargo RP", Add back when we know which rp is which
-//            "predicted_rp2" to "Pred. climb RP",
+            "predicted_rp1" to "Pred. link RP",
+            "predicted_rp2" to "Pred. charge RP",
             "predicted_score" to "Pred. score",
             "current_rps" to "# Current RPs",
             "current_avg_rps" to "Current Avg RPs",
@@ -27,8 +27,8 @@ class Translations {
             "incap" to "Incap Time",
             "max_incap" to "Max Incap",
             "actual_score" to "Actual Score",
-//            "actual_rp1" to "Actual Cargo RP", Add back when we know which rp is which
-//            "actual_rp2" to "Actual Climb RP",
+            "actual_rp1" to "Actual Link RP",
+            "actual_rp2" to "Actual Charge RP",
             "team_number" to "Team Number",
             "has_vision" to "Has vision",
             "can_cheesecake" to "Cheesecake",
