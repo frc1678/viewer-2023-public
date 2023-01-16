@@ -234,7 +234,7 @@ class MatchScheduleListAdapter(
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                                tv.setImageResource(R.drawable.ic_cargo_ball_24)
+                                tv.setImageResource(R.drawable.ic_link)
                             } else {
                                 tv.setImageDrawable(null)
                             }
@@ -242,7 +242,7 @@ class MatchScheduleListAdapter(
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne != null) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.ic_cargo_ball_24)
+                            tv.setImageResource(R.drawable.ic_link)
                         } else {
                             tv.setImageDrawable(null)
                         }
@@ -254,7 +254,7 @@ class MatchScheduleListAdapter(
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                                tv.setImageResource(R.drawable.ic_climb_48)
+                                tv.setImageResource(R.drawable.ic_power)
                             } else {
                                 tv.setImageDrawable(null)
                             }
@@ -262,7 +262,7 @@ class MatchScheduleListAdapter(
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.ic_climb_48)
+                            tv.setImageResource(R.drawable.ic_power)
                         } else {
                             tv.setImageDrawable(null)
                         }
@@ -286,7 +286,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPOne =
                                 "%.1f".format(value.toFloat()).toFloat()
                         }
-                        tv.setImageResource(R.drawable.ic_cargo_ball_24)
+                        tv.setImageResource(R.drawable.ic_link)
                     }
 
                     2 -> {
@@ -297,7 +297,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo =
                                 "%.1f".format(value.toFloat()).toFloat()
                         }
-                        tv.setImageResource(R.drawable.ic_climb_48)
+                        tv.setImageResource(R.drawable.ic_power)
                     }
                 }
             } else tv.setImageDrawable(null)
@@ -312,7 +312,7 @@ class MatchScheduleListAdapter(
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                                tv.setImageResource(R.drawable.ic_cargo_ball_24)
+                                tv.setImageResource(R.drawable.ic_link)
                             } else {
                                 tv.setImageDrawable(null)
                             }
@@ -320,7 +320,7 @@ class MatchScheduleListAdapter(
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne != null) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.ic_cargo_ball_24)
+                            tv.setImageResource(R.drawable.ic_link)
                         } else {
                             tv.setImageDrawable(null)
                         }
@@ -332,7 +332,7 @@ class MatchScheduleListAdapter(
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                                tv.setImageResource(R.drawable.ic_climb_48)
+                                tv.setImageResource(R.drawable.ic_power)
                             } else {
                                 tv.setImageDrawable(null)
                             }
@@ -340,7 +340,7 @@ class MatchScheduleListAdapter(
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.ic_climb_48)
+                            tv.setImageResource(R.drawable.ic_power)
                         } else {
                             tv.setImageDrawable(null)
                         }
@@ -364,7 +364,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPOne =
                                 "%.1f".format(value.toFloat()).toFloat()
                         }
-                        tv.setImageResource(R.drawable.ic_cargo_ball_24)
+                        tv.setImageResource(R.drawable.ic_link)
                     }
 
                     2 -> {
@@ -375,7 +375,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo =
                                 "%.1f".format(value.toFloat()).toFloat()
                         }
-                        tv.setImageResource(R.drawable.ic_climb_48)
+                        tv.setImageResource(R.drawable.ic_power)
                     }
                 }
             } else tv.setImageDrawable(null)
