@@ -116,11 +116,11 @@ class TeamDetailsFragment : Fragment() {
         val robotPicFragmentArguments = Bundle()
         val robotPicFragment = RobotPicFragment()
         if (!File(
-                "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
+                Constants.STORAGE_FOLDER,
                 "${teamNumber}_full_robot_1.jpg"
             ).exists()
             && !File(
-                "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
+                Constants.STORAGE_FOLDER,
                 "${teamNumber}_full_robot_2.jpg"
             ).exists()
         ) {

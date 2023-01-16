@@ -42,7 +42,7 @@ class OfflinePicklistFragment : Fragment() {
     private lateinit var adapter: OfflinePicklistAdapter
     private lateinit var binding: FragmentOfflinePicklistBinding
     private val dataFile =
-        File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/picklist.json")
+        File(Constants.STORAGE_FOLDER, "picklist.json")
 
     override fun onCreateView(
         inflater: LayoutInflater,

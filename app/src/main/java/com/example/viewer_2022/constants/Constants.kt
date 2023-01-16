@@ -8,6 +8,8 @@
 
 package com.example.viewer_2022.constants
 
+import java.io.File
+
 //Class that contains a collection of Constant values, or final values that never change
 class Constants {
     companion object {
@@ -25,6 +27,8 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
         const val VERSION_NUM = "5.0.0"
+
+        lateinit var STORAGE_FOLDER: File
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",
