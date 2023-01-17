@@ -47,11 +47,11 @@ class RobotPicFragment : Fragment() {
 
     private fun getPicFiles() {
         picFile1 = File(
-            "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
+            Constants.STORAGE_FOLDER,
             "${teamNumber}_full_robot_1.jpg"
         )
         picFile2 = File(
-            "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
+            Constants.STORAGE_FOLDER,
             "${teamNumber}_full_robot_2.jpg"
         )
     }

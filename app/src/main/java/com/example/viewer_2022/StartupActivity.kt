@@ -30,6 +30,8 @@ class StartupActivity : ViewerActivity() {
         setContentView(R.layout.mongodb_database_startup_splash_screen)
         supportActionBar?.hide()
 
+        Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
+
         // Interface to access the DatabaseReference -> CompetitionObject object that
         // should be an exact replica of every WANTED data value from MongoDB.
 

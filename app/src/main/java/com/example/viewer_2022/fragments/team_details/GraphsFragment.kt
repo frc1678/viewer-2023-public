@@ -1,20 +1,26 @@
 package com.example.viewer_2022.fragments.team_details
-
-import android.graphics.Canvas
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
+import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import co.yml.charts.axis.AxisData
 import co.yml.charts.common.model.Point
 import co.yml.charts.ui.barchart.BarChart
 import co.yml.charts.ui.barchart.models.BarChartData
 import co.yml.charts.ui.barchart.models.BarData
-import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
 import com.example.viewer_2022.databinding.FragmentGraphsBinding
@@ -67,8 +73,19 @@ class GraphsFragment : Fragment() {
             .labelData { index -> (index * (maxRange / yStepSize)).toString() }
             .build()
 
+
         binding.composeView.setContent {
-            BarChart(Modifier, BarChartData(barData, xAxisData, yAxisData))
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceBetween) {
+
+                Text(Translations.ACTUAL_TO_HUMAN_READABLE.getOrDefault(datapoint, datapoint),
+                    modifier  = Modifier.padding(10.dp), style = TextStyle(fontSize = 24.sp)
+                )
+                Text(teamNumber.toString(), modifier = Modifier.padding(bottom = 6.dp), style = TextStyle(fontSize = 20.sp, color = Color.Gray))
+                BarChart(Modifier.fillMaxHeight(0.9F), BarChartData(barData, xAxisData, yAxisData))
+
+                Text("Match Number", Modifier.padding(10.dp).weight(1F), style = TextStyle(fontSize = 24.sp))
+            }
+
         }
         return view
     }

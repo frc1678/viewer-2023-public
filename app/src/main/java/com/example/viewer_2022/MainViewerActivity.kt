@@ -261,14 +261,14 @@ class MainViewerActivity : ViewerActivity() {
         val fieldButton = fieldMapItem.actionView
         val pitButton = pitMapItem.actionView
 
-        pitButton.setOnClickListener {
+        pitButton?.setOnClickListener {
             val popupView = View.inflate(this, R.layout.pit_map_popup, null)
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val popupWindow = PopupWindow(popupView, width, height, false)
 
             var mapFile = File(
-                "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
+                Constants.STORAGE_FOLDER,
                 "pit_map"
             )
 
@@ -294,7 +294,7 @@ class MainViewerActivity : ViewerActivity() {
             }
         }
 
-        fieldButton.setOnClickListener {
+        fieldButton?.setOnClickListener {
             val popupView = View.inflate(this, R.layout.field_map_popup, null)
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
@@ -369,7 +369,7 @@ class MainViewerActivity : ViewerActivity() {
         var gson = Gson()
 
         private val file =
-            File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_user_data_prefs.json")
+            File(Constants.STORAGE_FOLDER, "viewer_user_data_prefs.json")
 
         fun read(context: Context) {
             if (!fileExists()) {
@@ -424,7 +424,7 @@ class MainViewerActivity : ViewerActivity() {
         }.map { return@map it.value.matchNumber }
 
         private val file =
-            File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_matches.json")
+            File(Constants.STORAGE_FOLDER, "viewer_starred_matches.json")
 
         fun read() {
             if (!fileExists()) {
@@ -481,7 +481,7 @@ class MainViewerActivity : ViewerActivity() {
         fun contains(team: String) = teams.contains(team)
 
         private val file =
-            File("/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/viewer_starred_teams.json")
+            File(Constants.STORAGE_FOLDER, "viewer_starred_teams.json")
 
         fun read() {
             if (!file.exists()) write()
