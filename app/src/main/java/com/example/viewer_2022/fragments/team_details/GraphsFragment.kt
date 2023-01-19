@@ -21,10 +21,13 @@ import co.yml.charts.common.model.Point
 import co.yml.charts.ui.barchart.BarChart
 import co.yml.charts.ui.barchart.models.BarChartData
 import co.yml.charts.ui.barchart.models.BarData
+import co.yml.charts.ui.barchart.models.BarStyle
+import co.yml.charts.ui.barchart.models.SelectionHighlightData
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
 import com.example.viewer_2022.databinding.FragmentGraphsBinding
 import com.example.viewer_2022.getTIMDataValue
+import kotlin.math.ceil
 
 /**
  * Page that the graphs are displayed on
@@ -49,21 +52,22 @@ class GraphsFragment : Fragment() {
             requireArguments().getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
         val datapoint = requireArguments().getString("datapoint", Constants.NULL_CHARACTER)
 
-        val timDataMap = getTIMDataValue(teamNumber, Translations.TIM_FROM_TEAM[datapoint]!!)
+        val timDataMap = getTIMDataValue(teamNumber, datapoint)
         val barData = buildList<BarData> {
             timDataMap.toList().forEachIndexed { i, (matchNumber, value) ->
 
                 add(BarData(Point(i.toFloat(), value?.toFloatOrNull() ?: 0F), label = matchNumber))
             }
         }
-        val maxRange = 50
-        val yStepSize = 10
+        val maxValue = timDataMap.toList().sortedBy { it.second?.toFloatOrNull() }.reversed()[0].second?.toFloatOrNull()
+        val maxRange = if (maxValue != null) (ceil(maxValue / 5) * 5) else 50f
+        val yStepSize = 5
 
         val xAxisData = AxisData.Builder()
             .axisStepSize(30.dp)
             .steps(barData.size - 1)
             .bottomPadding(40.dp)
-            .axisLabelAngle(20f)
+            .axisLabelAngle(0f)
             .labelData { index -> barData[index].label }
             .build()
         val yAxisData = AxisData.Builder()
@@ -81,9 +85,12 @@ class GraphsFragment : Fragment() {
                     modifier  = Modifier.padding(10.dp), style = TextStyle(fontSize = 24.sp)
                 )
                 Text(teamNumber.toString(), modifier = Modifier.padding(bottom = 6.dp), style = TextStyle(fontSize = 20.sp, color = Color.Gray))
-                BarChart(Modifier.fillMaxHeight(0.9F), BarChartData(barData, xAxisData, yAxisData))
+                BarChart(Modifier.fillMaxHeight(0.9F), BarChartData(barData, xAxisData, yAxisData, barStyle = BarStyle(selectionHighlightData = SelectionHighlightData(popUpLabel = {x, y -> "QM${timDataMap.toList()[x.toInt()].first}: $y"}))))
 
-                Text("Match Number", Modifier.padding(10.dp).weight(1F), style = TextStyle(fontSize = 24.sp))
+                Text("Match Number",
+                    Modifier
+                        .padding(10.dp)
+                        .weight(1F), style = TextStyle(fontSize = 24.sp))
             }
 
         }

@@ -169,13 +169,11 @@ class TeamDetailsAdapter(
             )?.placement?.toString() ?: Constants.NULL_CHARACTER
         }
 
-        if (Constants.GRAPHABLE.contains(datapointsDisplayed[position]) or
-            Constants.GRAPHABLE_BOOL.contains(datapointsDisplayed[position]) or
-            Constants.GRAPHABLE_CLIMB_TIMES.contains(datapointsDisplayed[position])
+        if (Constants.GRAPHABLE.contains(datapointsDisplayed[position])
         ) {
             rowView.setOnClickListener {
                 graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
-                graphsFragmentArguments.putString("datapoint", datapointsDisplayed[position])
+                graphsFragmentArguments.putString("datapoint", Constants.GRAPHABLE[datapointsDisplayed[position]])
                 graphsFragment.arguments = graphsFragmentArguments
                 context.supportFragmentManager.beginTransaction()
                     .addToBackStack(null)

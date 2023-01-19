@@ -226,25 +226,38 @@ class Constants {
             "win_chance"
         )
 
-        val GRAPHABLE: List<String> = listOf(
-            "avg_incap_time",
-            "matches_incap",
-            "matches_incap",
-            "mode_start_position",
-            "position_zero_starts",
-            "position_one_starts",
-            "position_two_starts",
-            "position_three_starts",
-            "position_four_starts",
-            "matches_played_defense"
+        val GRAPHABLE = mapOf(
+            "auto_avg_cube_low" to "auto_cube_low",
+            "auto_avg_cube_mid" to "auto_cube_mid",
+            "auto_avg_cube_high" to "auto_cube_high",
+            "auto_avg_cube_total" to "auto_total_cubes",
+            "auto_max_cubes" to "auto_total_cubes",
+            "auto_avg_cone_low" to "auto_cone_low",
+            "auto_avg_cone_mid" to "auto_cone_mid",
+            "auto_avg_cone_high" to "auto_cone_high",
+            "auto_max_cones" to "auto_total_cones",
+            "auto_avg_cone_total" to "auto_total_cones",
+            "tele_avg_cube_low" to "tele_cube_low",
+            "tele_avg_cube_mid" to "tele_cube_mid",
+            "tele_avg_cube_high" to "tele_cube_high",
+            "tele_avg_cube_total" to "tele_total_cubes",
+            "tele_max_cubes" to "tele_total_cubes",
+            "tele_avg_cone_low" to "tele_cone_low",
+            "tele_avg_cone_mid" to "tele_cone_mid",
+            "tele_avg_cone_high" to "tele_cone_high",
+            "tele_avg_cone_total" to "tele_total_cones",
+            "tele_max_cones" to "tele_total_cones",
+            "avg_intakes_ground" to "intakes_ground",
+            "avg_intakes_low_row" to "intakes_low_row",
+            "avg_intakes_station" to "intakes_station",
+
+
+
+
+
         )
 
-        val GRAPHABLE_BOOL: List<String> = listOf(
-            "matches_played_defense"
-        )
 
-        val GRAPHABLE_CLIMB_TIMES: List<String> = listOf(
-        )
 
         val DRIVER_DATA: List<String> = listOf(
             "driver_quickness",
