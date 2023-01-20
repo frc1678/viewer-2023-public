@@ -112,8 +112,6 @@ class UserPreferencesAdapter(
             UserDatapoints.write()
         }
 
-        Log.e("bobbo", "$chosenDatapoints")
-
         return rowView
     }
 }
