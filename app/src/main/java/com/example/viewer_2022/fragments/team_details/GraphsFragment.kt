@@ -59,7 +59,7 @@ class GraphsFragment : Fragment() {
         val barData = buildList<BarData> {
             timDataMap.toList().forEachIndexed { i, (matchNumber, value) ->
 
-                add(BarData(Point(i.toFloat(), value?.toFloatOrNull() ?: 0F), label = matchNumber))
+                add(BarData(Point(i.toFloat(), value?.toFloatOrNull() ?: 0F), label = (i + 1).toString()))
             }
         }
 
