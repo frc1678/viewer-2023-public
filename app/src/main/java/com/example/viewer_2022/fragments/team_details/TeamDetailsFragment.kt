@@ -20,6 +20,8 @@ import androidx.fragment.app.Fragment
 import com.example.viewer_2022.MainViewerActivity
 import com.example.viewer_2022.R
 import com.example.viewer_2022.constants.Constants
+import com.example.viewer_2022.fragments.user_preferences.UserPreferencesAdapter
+import com.example.viewer_2022.fragments.user_preferences.UserPreferencesFragment
 import com.example.viewer_2022.getTeamName
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
@@ -78,9 +80,18 @@ class TeamDetailsFragment : Fragment() {
         // data points we expect to be displayed on the TeamDetails list view.
         var dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
         var isChecked = false
+        var user = MainViewerActivity.UserDatapoints.contents?.get("selected")?.asString
+        var datapoints: MutableList<String> = mutableListOf()
+        var userdatapoints = MainViewerActivity.UserDatapoints.contents?.get(user)?.asJsonArray
+        if (userdatapoints != null) {
+            for (i in userdatapoints) {
+                datapoints.add(i.asString)
+            }
+        }
+
         val adapter = TeamDetailsAdapter(
-            context = activity!!,
-            datapointsDisplayed = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS,
+            context = requireActivity(),
+            datapointsDisplayed = datapoints,
             teamNumber = teamNumber!!
         )
         if (refreshId == null) {
@@ -99,12 +110,13 @@ class TeamDetailsFragment : Fragment() {
 
             } else {
                 isChecked = false
-                dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
+                dataDisplay = datapoints
+//                dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
                 btn_lfm.text = "To L4M"
             }
 
             val adapter = TeamDetailsAdapter(
-                context = activity!!,
+                context = requireActivity(),
                 datapointsDisplayed = dataDisplay,
                 teamNumber = teamNumber!!
             )
@@ -117,11 +129,7 @@ class TeamDetailsFragment : Fragment() {
         val robotPicFragment = RobotPicFragment()
         if (!File(
                 Constants.STORAGE_FOLDER,
-                "${teamNumber}_full_robot_1.jpg"
-            ).exists()
-            && !File(
-                Constants.STORAGE_FOLDER,
-                "${teamNumber}_full_robot_2.jpg"
+                "${teamNumber}_full_robot_.jpg"
             ).exists()
         ) {
             root.robot_pic_button.layoutParams = LinearLayout.LayoutParams(0, 0, 0f)
@@ -131,7 +139,7 @@ class TeamDetailsFragment : Fragment() {
             root.robot_pic_button.setOnClickListener {
                 robotPicFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
                 robotPicFragment.arguments = robotPicFragmentArguments
-                activity!!.supportFragmentManager.beginTransaction()
+                requireActivity().supportFragmentManager.beginTransaction()
                     .addToBackStack(null)
                     .replace(R.id.nav_host_fragment, robotPicFragment, "robot_pic")
                     .commit()
