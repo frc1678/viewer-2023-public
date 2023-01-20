@@ -107,9 +107,6 @@ class TeamDetailsAdapter(
             rowView.tv_datapoint_value.text = ""
 
             if (e == "Notes") {
-                if (Constants.USE_TEST_DATA) {
-                    rowView.isVisible = false
-                }
                 Log.d("notes", "SETTING UP NOTES CELL IN TEAM DETAILS")
                 rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
                 rowView.tv_datapoint_name.setBackgroundColor(context.resources.getColor(R.color.Highlighter))
