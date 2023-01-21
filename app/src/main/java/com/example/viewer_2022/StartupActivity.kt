@@ -90,7 +90,7 @@ class StartupActivity : ViewerActivity() {
             )
             runOnUiThread {
                 // Stuff that updates the UI
-                Snackbar.make(splash_screen_layout, "Data Failed to load", 2500).show()
+                Snackbar.make(splash_screen_layout, "Could not find match_schedule file for event key ${Constants.EVENT_KEY}", 1000000000).show()
             }
         }
 

@@ -52,7 +52,7 @@
     </string-array>
 
     <string-array name="user_array">
-        <item>None</item>
+        <item>Other</item>
         <item>Austin</item>
         <item>Dave</item>
         <item>Mike</item>

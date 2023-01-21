@@ -29,7 +29,7 @@ class UserPreferencesFragment : Fragment() {
 
         val userName = UserDatapoints.contents?.get("selected")?.asString
 
-        root.user_datapoints_header.text = if (userName == "NONE") {
+        root.user_datapoints_header.text = if (userName == "OTHER") {
             "User's Datapoints"
         } else {
             "${

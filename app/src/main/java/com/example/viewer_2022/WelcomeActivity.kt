@@ -43,7 +43,7 @@ class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsRes
         }
 
         // Find which profile is currently selected and show it
-        val previouslySelected = UserDatapoints.contents?.get("selected")?.asString ?: "NONE"
+        val previouslySelected = UserDatapoints.contents?.get("selected")?.asString ?: "OTHER"
         for (i in 0 until radioGroup.childCount) {
             val radioButton = radioGroup.getChildAt(i) as RadioButton
             if (radioButton.text.toString().uppercase() == previouslySelected.uppercase()) {
