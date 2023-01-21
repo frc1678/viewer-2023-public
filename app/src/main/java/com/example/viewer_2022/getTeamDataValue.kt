@@ -24,17 +24,9 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                         teamNumber, field
                     )?.toFloat())?.times(100.0)).toString()
                 } else {
-                    getTeamObjectByKey(
+                    replaceNums(getTeamObjectByKey(
                         teamNumber, field
-                    )?.replace("ONE", "1")
-                        ?.replace("TWO", "2")
-                        ?.replace("THREE", "3")
-                        ?.replace("FOUR", "4")
-                        ?.replace("TRAVERSAL", "LVL 4")
-                        ?.replace("HIGH", "LVL 3")
-                        ?.replace("MID", "LVL 2")
-                        ?.replace("LOW", "LVL 1")
-                        ?.replace("N1", "NONE")
+                    ))
                 }
             }
         } catch (e: Exception) {
@@ -58,17 +50,9 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                         )] ?: Constants.NULL_CHARACTER
                     }
                     else -> {
-                        return getRawObjectByKey(
+                        return replaceNums(getRawObjectByKey(
                             teamNumber, field
-                        )?.replace("ONE", "1")
-                            ?.replace("TWO", "2")
-                            ?.replace("THREE", "3")
-                            ?.replace("FOUR", "4")
-                            ?.replace("TRAVERSAL", "LVL 4")
-                            ?.replace("HIGH", "LVL 3")
-                            ?.replace("MID", "LVL 2")
-                            ?.replace("LOW", "LVL 1")
-                            ?.replace("N1", "NONE")
+                        ))
                     }
                 }
             }
@@ -77,4 +61,11 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
         }
 
     return Constants.NULL_CHARACTER
+}
+private fun replaceNums(string: String?): String? {
+    return string?.replace("ONE", "1")
+        ?.replace("TWO", "2")
+        ?.replace("THREE", "3")
+        ?.replace("FOUR", "4")
+        ?.replace("N1", "NONE")
 }
