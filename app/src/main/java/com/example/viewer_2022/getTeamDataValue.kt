@@ -26,15 +26,7 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                 } else {
                     getTeamObjectByKey(
                         teamNumber, field
-                    )?.replace("ONE", "1")
-                        ?.replace("TWO", "2")
-                        ?.replace("THREE", "3")
-                        ?.replace("FOUR", "4")
-                        ?.replace("TRAVERSAL", "LVL 4")
-                        ?.replace("HIGH", "LVL 3")
-                        ?.replace("MID", "LVL 2")
-                        ?.replace("LOW", "LVL 1")
-                        ?.replace("N1", "NONE")
+                    )
                 }
             }
         } catch (e: Exception) {
@@ -60,15 +52,7 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                     else -> {
                         return getRawObjectByKey(
                             teamNumber, field
-                        )?.replace("ONE", "1")
-                            ?.replace("TWO", "2")
-                            ?.replace("THREE", "3")
-                            ?.replace("FOUR", "4")
-                            ?.replace("TRAVERSAL", "LVL 4")
-                            ?.replace("HIGH", "LVL 3")
-                            ?.replace("MID", "LVL 2")
-                            ?.replace("LOW", "LVL 1")
-                            ?.replace("N1", "NONE")
+                        )
                     }
                 }
             }
