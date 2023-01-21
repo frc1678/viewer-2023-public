@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -92,5 +93,10 @@ class StartupActivity : ViewerActivity() {
             }
         }
 
+    }
+    fun btnRetryOnClick(view: View) {
+        MainViewerActivity.refreshManager.start(lifecycleScope)
+
+        lifecycleScope.launch { getData() }
     }
 }
