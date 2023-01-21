@@ -231,9 +231,15 @@ class Constants {
             "avg_intakes_ground" to "intakes_ground",
             "avg_intakes_low_row" to "intakes_low_row",
             "avg_intakes_station" to "intakes_station",
-            "auto_sd_cone_high" to "auto_cone"
+            "matches_incap" to "incap",
+            "max_incap" to "incap",
+            "mode_start_position" to "start_position",
 
 
+        //[auto + tele ] avg low
+        //translation for avg cones mid, high total
+        //max + avg cycles
+        //
 
 
 
