@@ -24,9 +24,9 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                         teamNumber, field
                     )?.toFloat())?.times(100.0)).toString()
                 } else {
-                    replaceNums(getTeamObjectByKey(
+                    getTeamObjectByKey(
                         teamNumber, field
-                    ))
+                    )
                 }
             }
         } catch (e: Exception) {
@@ -50,9 +50,9 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                         )] ?: Constants.NULL_CHARACTER
                     }
                     else -> {
-                        return replaceNums(getRawObjectByKey(
+                        return getRawObjectByKey(
                             teamNumber, field
-                        ))
+                        )
                     }
                 }
             }
@@ -61,11 +61,4 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
         }
 
     return Constants.NULL_CHARACTER
-}
-private fun replaceNums(string: String?): String? {
-    return string?.replace("ONE", "1")
-        ?.replace("TWO", "2")
-        ?.replace("THREE", "3")
-        ?.replace("FOUR", "4")
-        ?.replace("N1", "NONE")
 }
