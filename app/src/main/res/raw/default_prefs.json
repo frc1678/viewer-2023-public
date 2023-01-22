@@ -14,6 +14,7 @@
     "Auto",
     "mode_start_position",
     "auto_avg_gamepiece_low",
+    "auto_avg_cube_low",
     "auto_avg_cube_mid",
     "auto_avg_cube_high",
     "auto_avg_cube_total",
