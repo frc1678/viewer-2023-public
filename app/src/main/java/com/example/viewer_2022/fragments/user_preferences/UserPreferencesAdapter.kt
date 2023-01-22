@@ -26,9 +26,9 @@ class UserPreferencesAdapter(
 ) : BaseAdapter() {
 
     val fullDatapoints = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-    var chosenDatapoints: MutableSet<String> = mutableSetOf()
     lateinit var intersectDatapoints: Set<String>
     var userName = UserDatapoints.contents?.get("selected")?.asString
+    var chosenDatapoints: MutableSet<String> = UserDatapoints.contents!!.get(userName).asJsonArray.map { it.asString }.toMutableSet()
 
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -79,11 +79,8 @@ class UserPreferencesAdapter(
             rowView.isEnabled = false
         }
 
-        val datapointsArray = UserDatapoints.contents?.get(userName)?.asJsonArray
-
-        for (datapoint in datapointsArray!!) {
-            if (datapoint.asString == datapointName) {
-                chosenDatapoints.add(datapointName)
+        for (datapoint in chosenDatapoints!!) {
+            if (datapoint == datapointName) {
                 rowView.setBackgroundColor(ContextCompat.getColor(context, R.color.ElectricGreen))
                 isGreen = true
             }
