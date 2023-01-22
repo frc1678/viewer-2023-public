@@ -32,6 +32,7 @@ class Constants {
         )
 
         val FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED: List<String> = listOf(
+            "current_avg_rps",
             "Auto",
             "start_position",
             "preloaded_gamepiece",
@@ -50,6 +51,7 @@ class Constants {
             "tele_cone_low",
             "tele_cone_mid",
             "tele_cone_high",
+            "scored_coop",
             "Endgame",
             "tele_charge_level",
             "Other",
