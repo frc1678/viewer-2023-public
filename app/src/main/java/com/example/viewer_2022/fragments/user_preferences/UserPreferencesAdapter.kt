@@ -1,6 +1,7 @@
 package com.example.viewer_2022.fragments.user_preferences
 
 import android.content.Context
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
