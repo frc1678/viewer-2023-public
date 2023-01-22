@@ -51,7 +51,7 @@ class GraphsFragment : Fragment() {
         val timDatapoint = Translations.TIM_FROM_TEAM[datapoint!!]
 
         //get data
-        val timDataMap: Map<String, String?> = if (timDatapoint == "auto_line") {
+        val timDataMap: Map<String, String?> = if (timDatapoint == "mobility") {
             getTIMDataValue(
                 teamNumber!!, timDatapoint
             )

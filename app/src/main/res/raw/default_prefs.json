@@ -13,7 +13,12 @@
     "second_pickability",
     "Auto",
     "mode_start_position",
+<<<<<<< HEAD
     "auto_avg_gamepieces_low",
+=======
+    "auto_avg_gamepiece_low",
+    "auto_avg_cube_low",
+>>>>>>> f45961f4eb3506714191727b356ef90a763da90b
     "auto_avg_cube_mid",
     "auto_avg_cube_high",
     "auto_avg_cube_total",
