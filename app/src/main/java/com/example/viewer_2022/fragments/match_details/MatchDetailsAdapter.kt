@@ -94,6 +94,16 @@ class MatchDetailsAdapter(
                         teamNumbers[i],
                         datapointsDisplay[position]
                     ) ?: Constants.NULL_CHARACTER
+                if (datapointsDisplay[position] == "preloaded_gamepiece") {
+                    if (textViews[i].text == "▲") {
+                        textViews[i].setTextColor(ContextCompat.getColor(context, R.color.Yellow))
+                        textViews[i].setTextSize(5,4.5f)
+                    }
+//                    else if (textViews[i].text == "◾") {
+//                        textViews[i].setTextColor(ContextCompat.getColor(context, R.color.Purple))
+//                        textViews[i].setTextSize(5,5.5f)
+//                    }
+                }
             }
         }
         return rowView
