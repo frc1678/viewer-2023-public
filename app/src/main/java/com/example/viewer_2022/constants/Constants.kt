@@ -52,6 +52,7 @@ class Constants {
             "tele_cone_mid",
             "tele_cone_high",
             "scored_coop",
+            "driver_ability",
             "Endgame",
             "tele_charge_level",
             "Other",
