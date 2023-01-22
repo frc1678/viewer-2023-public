@@ -50,7 +50,7 @@ class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsRes
         }
 
         // Create/read the user profile file, the starred matches file, and the starred teams file
-        UserDatapoints.read(this,0)
+        UserDatapoints.read(this)
         StarredMatches.read()
         StarredTeams.read()
 
