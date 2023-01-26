@@ -8,6 +8,8 @@
 
 package com.example.viewer_2022.constants
 
+import java.io.File
+
 //Class that contains a collection of Constant values, or final values that never change
 class Constants {
     companion object {
@@ -25,6 +27,8 @@ class Constants {
         const val EMPTY_CHARACTER = ""
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
         const val VERSION_NUM = "5.0.0"
+
+        lateinit var STORAGE_FOLDER: File
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",
@@ -211,25 +215,57 @@ class Constants {
             "win_chance"
         )
 
-        val GRAPHABLE: List<String> = listOf(
-            "avg_incap_time",
-            "matches_incap",
-            "matches_incap",
-            "mode_start_position",
-            "position_zero_starts",
-            "position_one_starts",
-            "position_two_starts",
-            "position_three_starts",
-            "position_four_starts",
-            "matches_played_defense"
+        val GRAPHABLE = mapOf(
+            "auto_avg_cube_low" to "auto_cube_low",
+            "auto_avg_cube_mid" to "auto_cube_mid",
+            "auto_avg_cube_high" to "auto_cube_high",
+            "auto_avg_cube_total" to "auto_total_cubes",
+            "auto_max_cubes" to "auto_total_cubes",
+            "auto_avg_cone_low" to "auto_cone_low",
+            "auto_avg_cone_mid" to "auto_cone_mid",
+            "auto_avg_cone_high" to "auto_cone_high",
+            "auto_max_cones" to "auto_total_cones",
+            "auto_avg_cone_total" to "auto_total_cones",
+            "tele_avg_cube_low" to "tele_cube_low",
+            "tele_avg_cube_mid" to "tele_cube_mid",
+            "tele_avg_cube_high" to "tele_cube_high",
+            "tele_avg_cube_total" to "tele_total_cubes",
+            "tele_max_cubes" to "tele_total_cubes",
+            "tele_avg_cone_low" to "tele_cone_low",
+            "tele_avg_cone_mid" to "tele_cone_mid",
+            "tele_avg_cone_high" to "tele_cone_high",
+            "tele_avg_cone_total" to "tele_total_cones",
+            "tele_max_cones" to "tele_total_cones",
+            "avg_intakes_ground" to "intakes_ground",
+            "avg_intakes_low_row" to "intakes_low_row",
+            "avg_intakes_station" to "intakes_station",
+            "matches_incap" to "incap",
+            "max_incap" to "incap",
+            "mode_start_position" to "start_position",
+            "auto_max_gamepieces" to "auto_total_gamepieces",
+            "auto_avg_gamepieces" to "auto_total_gamepieces",
+            "tele_max_gamepieces" to "tele_total_gamepieces",
+            "tele_avg_gamepieces" to "tele_total_gamepieces",
+            "tele_avg_gamepieces_low" to "tele_total_gamepieces_low",
+//            "auto_avg_gamepieces_low" to "auto_total_gamepieces_low",
+            "auto_dock_successes" to "auto_charge_level",
+            "tele_dock_successes" to "tele_charge_level",
+            "auto_engage_successes" to "auto_charge_level",
+            "tele_engage_successes" to "tele_charge_level",
+            "auto_charge_attempts" to "auto_charge_attempt",
+            "tele_charge_attempts" to "tele_charge_attempt"
+
+
+        //[auto + tele ] avg low
+        //translation for avg cones mid, high total
+        //max + avg cycles
+        //
+
+
+
         )
 
-        val GRAPHABLE_BOOL: List<String> = listOf(
-            "matches_played_defense"
-        )
 
-        val GRAPHABLE_CLIMB_TIMES: List<String> = listOf(
-        )
 
         val DRIVER_DATA: List<String> = listOf(
             "driver_quickness",

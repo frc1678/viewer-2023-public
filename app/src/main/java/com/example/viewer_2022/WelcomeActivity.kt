@@ -12,6 +12,7 @@ import android.widget.RadioGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.viewer_2022.MainViewerActivity.*
+import com.example.viewer_2022.constants.Constants
 
 
 /**
@@ -21,33 +22,7 @@ class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsRes
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Before showing anything, ask for permissions
-        try {
-            ActivityCompat.requestPermissions(
-                this, arrayOf(
-                    READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
-                ), 100
-            )
-        } catch (e: Exception) {
-            Log.e("WelcomeActivity", "Unable to request file permissions: $e")
-        }
-    }
-
-    /**
-     * Shows the welcome page after the file permissions are accepted/declined.
-     */
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        // TODO: show another prompt instead of crashing when permissions are denied
-        if (grantResults.contains(PERMISSION_DENIED)) {
-            throw Exception("File permissions denied, please reopen the app and accept file permissions")
-        }
+        Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
 
         // Create/read the user profile file, the starred matches file, and the starred teams file
         UserDatapoints.read(this)

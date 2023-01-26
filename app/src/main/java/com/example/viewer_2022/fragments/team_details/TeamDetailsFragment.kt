@@ -93,7 +93,7 @@ class TeamDetailsFragment : Fragment() {
         }
 
         val adapter = TeamDetailsAdapter(
-            context = activity!!,
+            context = requireActivity(),
             datapointsDisplayed = datapoints,
             teamNumber = teamNumber!!
         )
@@ -119,7 +119,7 @@ class TeamDetailsFragment : Fragment() {
             }
 
             val adapter = TeamDetailsAdapter(
-                context = activity!!,
+                context = requireActivity(),
                 datapointsDisplayed = dataDisplay,
                 teamNumber = teamNumber!!
             )
@@ -131,8 +131,8 @@ class TeamDetailsFragment : Fragment() {
         val robotPicFragmentArguments = Bundle()
         val robotPicFragment = RobotPicFragment()
         if (!File(
-                "/storage/emulated/0/${Environment.DIRECTORY_DOWNLOADS}/",
-                "${teamNumber}_full_robot.jpg"
+                Constants.STORAGE_FOLDER,
+                "${teamNumber}_full_robot_.jpg"
             ).exists()
         ) {
             root.robot_pic_button.layoutParams = LinearLayout.LayoutParams(0, 0, 0f)
@@ -142,7 +142,7 @@ class TeamDetailsFragment : Fragment() {
             root.robot_pic_button.setOnClickListener {
                 robotPicFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
                 robotPicFragment.arguments = robotPicFragmentArguments
-                activity!!.supportFragmentManager.beginTransaction()
+                requireActivity().supportFragmentManager.beginTransaction()
                     .addToBackStack(null)
                     .replace(R.id.nav_host_fragment, robotPicFragment, "robot_pic")
                     .commit()
