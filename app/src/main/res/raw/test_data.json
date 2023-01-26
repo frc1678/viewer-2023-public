@@ -135,7 +135,7 @@
       "test_driver_ability": 9.145349578342854,
       "unadjusted_field_awareness": 95.82334664916587,
       "unadjusted_quickness": 46.62688474538954,
-      "auto_line_successes": 22,
+      "mobility_successes": 22,
       "team_name": "XYX",
       "foul_cc": 67.93086135790307,
       "current_rank": 68,
@@ -283,7 +283,7 @@
       "test_driver_ability": 24.020010785360824,
       "unadjusted_field_awareness": 20.082088199682513,
       "unadjusted_quickness": 85.26365553613779,
-      "auto_line_successes": 76,
+      "mobility_successes": 76,
       "team_name": "Cky",
       "foul_cc": 91.70698306971026,
       "current_rank": 45,
@@ -431,7 +431,7 @@
       "test_driver_ability": 37.057783055238566,
       "unadjusted_field_awareness": 88.96634806605836,
       "unadjusted_quickness": 9.358187528125782,
-      "auto_line_successes": 94,
+      "mobility_successes": 94,
       "team_name": "IhL",
       "foul_cc": 9.88168415520494,
       "current_rank": 37,
@@ -579,7 +579,7 @@
       "test_driver_ability": 85.7662041022461,
       "unadjusted_field_awareness": 63.22897295137253,
       "unadjusted_quickness": 56.46703144812395,
-      "auto_line_successes": 91,
+      "mobility_successes": 91,
       "team_name": "oej",
       "foul_cc": 53.790836358979035,
       "current_rank": 22,
@@ -727,7 +727,7 @@
       "test_driver_ability": 21.298860113759165,
       "unadjusted_field_awareness": 38.577039009477865,
       "unadjusted_quickness": 97.95937158655728,
-      "auto_line_successes": 5,
+      "mobility_successes": 5,
       "team_name": "qva",
       "foul_cc": 41.98329174632567,
       "current_rank": 24,
@@ -875,7 +875,7 @@
       "test_driver_ability": 29.826979350504956,
       "unadjusted_field_awareness": 88.00681552569856,
       "unadjusted_quickness": 35.973774688476176,
-      "auto_line_successes": 24,
+      "mobility_successes": 24,
       "team_name": "qod",
       "foul_cc": 92.96584361828974,
       "current_rank": 38,
@@ -1023,7 +1023,7 @@
       "test_driver_ability": 71.90092165258332,
       "unadjusted_field_awareness": 67.02735532759263,
       "unadjusted_quickness": 11.334586819388326,
-      "auto_line_successes": 48,
+      "mobility_successes": 48,
       "team_name": "iYa",
       "foul_cc": 28.476360612590025,
       "current_rank": 81,
@@ -1171,7 +1171,7 @@
       "test_driver_ability": 77.34732271356282,
       "unadjusted_field_awareness": 41.36406438667193,
       "unadjusted_quickness": 39.41644183390696,
-      "auto_line_successes": 32,
+      "mobility_successes": 32,
       "team_name": "XRU",
       "foul_cc": 46.92192582178259,
       "current_rank": 64,
@@ -1319,7 +1319,7 @@
       "test_driver_ability": 7.451177957017441,
       "unadjusted_field_awareness": 59.72676065887252,
       "unadjusted_quickness": 35.324392542639686,
-      "auto_line_successes": 74,
+      "mobility_successes": 74,
       "team_name": "R51",
       "foul_cc": 37.909475997905304,
       "current_rank": 32,
@@ -1467,7 +1467,7 @@
       "test_driver_ability": 1.924792017932364,
       "unadjusted_field_awareness": 17.482701842572503,
       "unadjusted_quickness": 16.782415046061928,
-      "auto_line_successes": 47,
+      "mobility_successes": 47,
       "team_name": "zAY",
       "foul_cc": 1.000182565395269,
       "current_rank": 43,
@@ -1615,7 +1615,7 @@
       "test_driver_ability": 52.279826576730756,
       "unadjusted_field_awareness": 45.13954899011774,
       "unadjusted_quickness": 87.32408479926453,
-      "auto_line_successes": 26,
+      "mobility_successes": 26,
       "team_name": "4Zf",
       "foul_cc": 8.20841718839822,
       "current_rank": 21,
@@ -1763,7 +1763,7 @@
       "test_driver_ability": 99.56723166812624,
       "unadjusted_field_awareness": 40.02852007339423,
       "unadjusted_quickness": 29.51112776378522,
-      "auto_line_successes": 55,
+      "mobility_successes": 55,
       "team_name": "5m3",
       "foul_cc": 61.13751944296513,
       "current_rank": 91,
@@ -1911,7 +1911,7 @@
       "test_driver_ability": 87.46935204672918,
       "unadjusted_field_awareness": 89.66059799568298,
       "unadjusted_quickness": 20.345652777488255,
-      "auto_line_successes": 34,
+      "mobility_successes": 34,
       "team_name": "L5h",
       "foul_cc": 30.52834466886638,
       "current_rank": 98,
@@ -2059,7 +2059,7 @@
       "test_driver_ability": 42.325303219187546,
       "unadjusted_field_awareness": 59.17878049720684,
       "unadjusted_quickness": 3.713416431271832,
-      "auto_line_successes": 57,
+      "mobility_successes": 57,
       "team_name": "Dho",
       "foul_cc": 84.10565797966143,
       "current_rank": 73,
@@ -2207,7 +2207,7 @@
       "test_driver_ability": 97.5057533426024,
       "unadjusted_field_awareness": 96.53879817756297,
       "unadjusted_quickness": 15.970196126142788,
-      "auto_line_successes": 6,
+      "mobility_successes": 6,
       "team_name": "n1s",
       "foul_cc": 40.757382168064126,
       "current_rank": 85,
@@ -2355,7 +2355,7 @@
       "test_driver_ability": 23.545653263005484,
       "unadjusted_field_awareness": 29.71757780577542,
       "unadjusted_quickness": 26.766040400260827,
-      "auto_line_successes": 18,
+      "mobility_successes": 18,
       "team_name": "bUh",
       "foul_cc": 40.034135846156936,
       "current_rank": 6,
@@ -2503,7 +2503,7 @@
       "test_driver_ability": 94.16572692219279,
       "unadjusted_field_awareness": 82.84191396698806,
       "unadjusted_quickness": 43.35703011553391,
-      "auto_line_successes": 55,
+      "mobility_successes": 55,
       "team_name": "r1c",
       "foul_cc": 74.76451480655764,
       "current_rank": 63,
@@ -2651,7 +2651,7 @@
       "test_driver_ability": 19.274468225117424,
       "unadjusted_field_awareness": 57.64263585287388,
       "unadjusted_quickness": 72.84664030804453,
-      "auto_line_successes": 64,
+      "mobility_successes": 64,
       "team_name": "CX4",
       "foul_cc": 26.577567877097398,
       "current_rank": 4,
@@ -2799,7 +2799,7 @@
       "test_driver_ability": 47.65932233033321,
       "unadjusted_field_awareness": 87.45989569196017,
       "unadjusted_quickness": 86.81653121747306,
-      "auto_line_successes": 22,
+      "mobility_successes": 22,
       "team_name": "KZN",
       "foul_cc": 23.54786858862017,
       "current_rank": 46,
@@ -2947,7 +2947,7 @@
       "test_driver_ability": 43.812464526407794,
       "unadjusted_field_awareness": 1.0874485015803126,
       "unadjusted_quickness": 45.4155925028183,
-      "auto_line_successes": 42,
+      "mobility_successes": 42,
       "team_name": "wOS",
       "foul_cc": 53.5957692067391,
       "current_rank": 69,
@@ -3095,7 +3095,7 @@
       "test_driver_ability": 87.90685865690394,
       "unadjusted_field_awareness": 95.68320041496906,
       "unadjusted_quickness": 16.16266055935114,
-      "auto_line_successes": 6,
+      "mobility_successes": 6,
       "team_name": "OKF",
       "foul_cc": 23.87399693689545,
       "current_rank": 67,
@@ -3243,7 +3243,7 @@
       "test_driver_ability": 79.62212176252193,
       "unadjusted_field_awareness": 14.779038762485097,
       "unadjusted_quickness": 50.07290161138498,
-      "auto_line_successes": 39,
+      "mobility_successes": 39,
       "team_name": "uoz",
       "foul_cc": 65.21872073853112,
       "current_rank": 46,
@@ -3391,7 +3391,7 @@
       "test_driver_ability": 28.219876279391798,
       "unadjusted_field_awareness": 80.33505727666174,
       "unadjusted_quickness": 90.94750197934307,
-      "auto_line_successes": 51,
+      "mobility_successes": 51,
       "team_name": "cVf",
       "foul_cc": 59.999445087578685,
       "current_rank": 57,
@@ -3539,7 +3539,7 @@
       "test_driver_ability": 8.72617619536058,
       "unadjusted_field_awareness": 12.176990271631993,
       "unadjusted_quickness": 96.28453250179933,
-      "auto_line_successes": 18,
+      "mobility_successes": 18,
       "team_name": "eqC",
       "foul_cc": 7.625123223907182,
       "current_rank": 14,
@@ -3687,7 +3687,7 @@
       "test_driver_ability": 49.79919437147235,
       "unadjusted_field_awareness": 25.04379064657487,
       "unadjusted_quickness": 37.29424924129307,
-      "auto_line_successes": 25,
+      "mobility_successes": 25,
       "team_name": "peJ",
       "foul_cc": 57.454011059929,
       "current_rank": 87,
@@ -3835,7 +3835,7 @@
       "test_driver_ability": 11.279897784772297,
       "unadjusted_field_awareness": 1.3029016634760415,
       "unadjusted_quickness": 87.68615721715656,
-      "auto_line_successes": 56,
+      "mobility_successes": 56,
       "team_name": "yCx",
       "foul_cc": 86.62424210900876,
       "current_rank": 73,
@@ -3983,7 +3983,7 @@
       "test_driver_ability": 14.776083744914526,
       "unadjusted_field_awareness": 49.21133971958622,
       "unadjusted_quickness": 99.47413981716477,
-      "auto_line_successes": 2,
+      "mobility_successes": 2,
       "team_name": "OoP",
       "foul_cc": 50.2129566140455,
       "current_rank": 22,
@@ -4131,7 +4131,7 @@
       "test_driver_ability": 9.134955261718702,
       "unadjusted_field_awareness": 31.448732956849447,
       "unadjusted_quickness": 55.554649692381375,
-      "auto_line_successes": 45,
+      "mobility_successes": 45,
       "team_name": "6L3",
       "foul_cc": 11.515126744720261,
       "current_rank": 84,
@@ -4279,7 +4279,7 @@
       "test_driver_ability": 99.66656780309746,
       "unadjusted_field_awareness": 51.48542388738464,
       "unadjusted_quickness": 65.4205662930028,
-      "auto_line_successes": 19,
+      "mobility_successes": 19,
       "team_name": "kJE",
       "foul_cc": 25.588422639380013,
       "current_rank": 66,
@@ -4427,7 +4427,7 @@
       "test_driver_ability": 51.83631630198793,
       "unadjusted_field_awareness": 71.97731457376706,
       "unadjusted_quickness": 67.36254172916902,
-      "auto_line_successes": 87,
+      "mobility_successes": 87,
       "team_name": "70F",
       "foul_cc": 98.5385088741888,
       "current_rank": 17,
@@ -4575,7 +4575,7 @@
       "test_driver_ability": 72.03091544482416,
       "unadjusted_field_awareness": 20.09061252429285,
       "unadjusted_quickness": 1.734799866987391,
-      "auto_line_successes": 30,
+      "mobility_successes": 30,
       "team_name": "HY1",
       "foul_cc": 7.80310247002054,
       "current_rank": 66,
@@ -4723,7 +4723,7 @@
       "test_driver_ability": 33.03480005330523,
       "unadjusted_field_awareness": 94.05244675681918,
       "unadjusted_quickness": 68.02351523441521,
-      "auto_line_successes": 99,
+      "mobility_successes": 99,
       "team_name": "jeQ",
       "foul_cc": 76.78544495420132,
       "current_rank": 14,
@@ -4871,7 +4871,7 @@
       "test_driver_ability": 84.83515248780746,
       "unadjusted_field_awareness": 89.14139645300018,
       "unadjusted_quickness": 55.3593717818186,
-      "auto_line_successes": 14,
+      "mobility_successes": 14,
       "team_name": "6L5",
       "foul_cc": 98.21752606886172,
       "current_rank": 57,
@@ -5019,7 +5019,7 @@
       "test_driver_ability": 90.22910372995885,
       "unadjusted_field_awareness": 79.19511684307743,
       "unadjusted_quickness": 14.520919762023565,
-      "auto_line_successes": 12,
+      "mobility_successes": 12,
       "team_name": "ghb",
       "foul_cc": 59.87797244376611,
       "current_rank": 68,
@@ -5167,7 +5167,7 @@
       "test_driver_ability": 20.55154146792546,
       "unadjusted_field_awareness": 38.179835655457325,
       "unadjusted_quickness": 80.03255844872132,
-      "auto_line_successes": 55,
+      "mobility_successes": 55,
       "team_name": "1mf",
       "foul_cc": 79.24281517919461,
       "current_rank": 47,
@@ -5315,7 +5315,7 @@
       "test_driver_ability": 37.636285941847845,
       "unadjusted_field_awareness": 45.755000667219626,
       "unadjusted_quickness": 71.36004734022686,
-      "auto_line_successes": 62,
+      "mobility_successes": 62,
       "team_name": "L00",
       "foul_cc": 2.694047289499313,
       "current_rank": 91,
@@ -5463,7 +5463,7 @@
       "test_driver_ability": 23.444592816406697,
       "unadjusted_field_awareness": 46.569049458264544,
       "unadjusted_quickness": 90.46811669446777,
-      "auto_line_successes": 7,
+      "mobility_successes": 7,
       "team_name": "wbZ",
       "foul_cc": 90.72735222839943,
       "current_rank": 19,
@@ -5611,7 +5611,7 @@
       "test_driver_ability": 29.035780066267414,
       "unadjusted_field_awareness": 10.109525972477229,
       "unadjusted_quickness": 91.3763848296683,
-      "auto_line_successes": 34,
+      "mobility_successes": 34,
       "team_name": "tN6",
       "foul_cc": 7.315204612348869,
       "current_rank": 61,
@@ -5759,7 +5759,7 @@
       "test_driver_ability": 67.19680914584882,
       "unadjusted_field_awareness": 7.498665311031827,
       "unadjusted_quickness": 37.284456206299964,
-      "auto_line_successes": 65,
+      "mobility_successes": 65,
       "team_name": "WNS",
       "foul_cc": 40.505279012070304,
       "current_rank": 77,
@@ -5907,7 +5907,7 @@
       "test_driver_ability": 95.99153664683956,
       "unadjusted_field_awareness": 22.975893429291318,
       "unadjusted_quickness": 58.13560913081746,
-      "auto_line_successes": 8,
+      "mobility_successes": 8,
       "team_name": "U0w",
       "foul_cc": 68.55206173550339,
       "current_rank": 74,
@@ -5955,7 +5955,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "7": {
         "confidence_rating": 52,
@@ -5989,7 +5989,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "12": {
         "confidence_rating": 86,
@@ -6023,7 +6023,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "16": {
         "confidence_rating": 3,
@@ -6057,7 +6057,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "20": {
         "confidence_rating": 42,
@@ -6091,7 +6091,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "29": {
         "confidence_rating": 89,
@@ -6125,7 +6125,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "2": {
@@ -6161,7 +6161,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "10": {
         "confidence_rating": 15,
@@ -6195,7 +6195,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "11": {
         "confidence_rating": 98,
@@ -6229,7 +6229,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "17": {
         "confidence_rating": 20,
@@ -6263,7 +6263,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "28": {
         "confidence_rating": 87,
@@ -6297,7 +6297,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "33": {
         "confidence_rating": 18,
@@ -6331,7 +6331,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "3": {
@@ -6367,7 +6367,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "15": {
         "confidence_rating": 62,
@@ -6401,7 +6401,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "22": {
         "confidence_rating": 21,
@@ -6435,7 +6435,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "26": {
         "confidence_rating": 75,
@@ -6469,7 +6469,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "27": {
         "confidence_rating": 48,
@@ -6503,7 +6503,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "31": {
         "confidence_rating": 71,
@@ -6537,7 +6537,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "4": {
@@ -6573,7 +6573,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "14": {
         "confidence_rating": 45,
@@ -6607,7 +6607,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "18": {
         "confidence_rating": 6,
@@ -6641,7 +6641,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "23": {
         "confidence_rating": 97,
@@ -6675,7 +6675,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "30": {
         "confidence_rating": 76,
@@ -6709,7 +6709,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "36": {
         "confidence_rating": 90,
@@ -6743,7 +6743,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "5": {
@@ -6779,7 +6779,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "5": {
         "confidence_rating": 9,
@@ -6813,7 +6813,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "13": {
         "confidence_rating": 13,
@@ -6847,7 +6847,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "19": {
         "confidence_rating": 92,
@@ -6881,7 +6881,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 86,
@@ -6915,7 +6915,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 82,
@@ -6949,7 +6949,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "6": {
@@ -6985,7 +6985,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "21": {
         "confidence_rating": 71,
@@ -7019,7 +7019,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "34": {
         "confidence_rating": 21,
@@ -7053,7 +7053,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "35": {
         "confidence_rating": 20,
@@ -7087,7 +7087,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "39": {
         "confidence_rating": 23,
@@ -7121,7 +7121,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 15,
@@ -7155,7 +7155,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "7": {
@@ -7191,7 +7191,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "12": {
         "confidence_rating": 60,
@@ -7225,7 +7225,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "24": {
         "confidence_rating": 75,
@@ -7259,7 +7259,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "31": {
         "confidence_rating": 46,
@@ -7293,7 +7293,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "37": {
         "confidence_rating": 88,
@@ -7327,7 +7327,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "38": {
         "confidence_rating": 77,
@@ -7361,7 +7361,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "8": {
@@ -7397,7 +7397,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "17": {
         "confidence_rating": 34,
@@ -7431,7 +7431,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "19": {
         "confidence_rating": 70,
@@ -7465,7 +7465,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "20": {
         "confidence_rating": 3,
@@ -7499,7 +7499,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "33": {
         "confidence_rating": 57,
@@ -7533,7 +7533,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "36": {
         "confidence_rating": 45,
@@ -7567,7 +7567,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "9": {
@@ -7603,7 +7603,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "5": {
         "confidence_rating": 61,
@@ -7637,7 +7637,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "22": {
         "confidence_rating": 37,
@@ -7671,7 +7671,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "24": {
         "confidence_rating": 15,
@@ -7705,7 +7705,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 6,
@@ -7739,7 +7739,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "34": {
         "confidence_rating": 59,
@@ -7773,7 +7773,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "10": {
@@ -7809,7 +7809,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "8": {
         "confidence_rating": 51,
@@ -7843,7 +7843,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "11": {
         "confidence_rating": 22,
@@ -7877,7 +7877,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "13": {
         "confidence_rating": 82,
@@ -7911,7 +7911,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "28": {
         "confidence_rating": 32,
@@ -7945,7 +7945,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "35": {
         "confidence_rating": 57,
@@ -7979,7 +7979,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "11": {
@@ -8015,7 +8015,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "21": {
         "confidence_rating": 28,
@@ -8049,7 +8049,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "23": {
         "confidence_rating": 31,
@@ -8083,7 +8083,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "26": {
         "confidence_rating": 11,
@@ -8117,7 +8117,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "32": {
         "confidence_rating": 34,
@@ -8151,7 +8151,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "39": {
         "confidence_rating": 32,
@@ -8185,7 +8185,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "12": {
@@ -8221,7 +8221,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "9": {
         "confidence_rating": 90,
@@ -8255,7 +8255,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "10": {
         "confidence_rating": 30,
@@ -8289,7 +8289,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "30": {
         "confidence_rating": 81,
@@ -8323,7 +8323,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "37": {
         "confidence_rating": 19,
@@ -8357,7 +8357,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "40": {
         "confidence_rating": 54,
@@ -8391,7 +8391,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "13": {
@@ -8427,7 +8427,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "2": {
         "confidence_rating": 89,
@@ -8461,7 +8461,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "7": {
         "confidence_rating": 57,
@@ -8495,7 +8495,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "16": {
         "confidence_rating": 45,
@@ -8529,7 +8529,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "29": {
         "confidence_rating": 75,
@@ -8563,7 +8563,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "38": {
         "confidence_rating": 56,
@@ -8597,7 +8597,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "14": {
@@ -8633,7 +8633,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "14": {
         "confidence_rating": 26,
@@ -8667,7 +8667,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "17": {
         "confidence_rating": 9,
@@ -8701,7 +8701,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "27": {
         "confidence_rating": 35,
@@ -8735,7 +8735,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "33": {
         "confidence_rating": 1,
@@ -8769,7 +8769,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "38": {
         "confidence_rating": 60,
@@ -8803,7 +8803,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "15": {
@@ -8839,7 +8839,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "8": {
         "confidence_rating": 42,
@@ -8873,7 +8873,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "19": {
         "confidence_rating": 33,
@@ -8907,7 +8907,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "24": {
         "confidence_rating": 41,
@@ -8941,7 +8941,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "26": {
         "confidence_rating": 77,
@@ -8975,7 +8975,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "27": {
         "confidence_rating": 6,
@@ -9009,7 +9009,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "16": {
@@ -9045,7 +9045,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "15": {
         "confidence_rating": 61,
@@ -9079,7 +9079,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "16": {
         "confidence_rating": 7,
@@ -9113,7 +9113,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "20": {
         "confidence_rating": 6,
@@ -9147,7 +9147,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "31": {
         "confidence_rating": 42,
@@ -9181,7 +9181,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "34": {
         "confidence_rating": 69,
@@ -9215,7 +9215,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "17": {
@@ -9251,7 +9251,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "3": {
         "confidence_rating": 31,
@@ -9285,7 +9285,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "5": {
         "confidence_rating": 58,
@@ -9319,7 +9319,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "13": {
         "confidence_rating": 57,
@@ -9353,7 +9353,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "22": {
         "confidence_rating": 49,
@@ -9387,7 +9387,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "40": {
         "confidence_rating": 91,
@@ -9421,7 +9421,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "18": {
@@ -9457,7 +9457,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "18": {
         "confidence_rating": 44,
@@ -9491,7 +9491,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "25": {
         "confidence_rating": 82,
@@ -9525,7 +9525,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "29": {
         "confidence_rating": 41,
@@ -9559,7 +9559,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 1,
@@ -9593,7 +9593,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "35": {
         "confidence_rating": 58,
@@ -9627,7 +9627,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "19": {
@@ -9663,7 +9663,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "10": {
         "confidence_rating": 67,
@@ -9697,7 +9697,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "12": {
         "confidence_rating": 43,
@@ -9731,7 +9731,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "14": {
         "confidence_rating": 87,
@@ -9765,7 +9765,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "36": {
         "confidence_rating": 60,
@@ -9799,7 +9799,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "39": {
         "confidence_rating": 41,
@@ -9833,7 +9833,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "20": {
@@ -9869,7 +9869,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "21": {
         "confidence_rating": 14,
@@ -9903,7 +9903,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "23": {
         "confidence_rating": 89,
@@ -9937,7 +9937,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "28": {
         "confidence_rating": 54,
@@ -9971,7 +9971,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "30": {
         "confidence_rating": 63,
@@ -10005,7 +10005,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "37": {
         "confidence_rating": 72,
@@ -10039,7 +10039,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "21": {
@@ -10075,7 +10075,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "17": {
         "confidence_rating": 60,
@@ -10109,7 +10109,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "28": {
         "confidence_rating": 75,
@@ -10143,7 +10143,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "30": {
         "confidence_rating": 11,
@@ -10177,7 +10177,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 82,
@@ -10211,7 +10211,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "35": {
         "confidence_rating": 6,
@@ -10245,7 +10245,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "22": {
@@ -10281,7 +10281,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "7": {
         "confidence_rating": 17,
@@ -10315,7 +10315,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "11": {
         "confidence_rating": 8,
@@ -10349,7 +10349,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "27": {
         "confidence_rating": 55,
@@ -10383,7 +10383,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "29": {
         "confidence_rating": 3,
@@ -10417,7 +10417,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "34": {
         "confidence_rating": 83,
@@ -10451,7 +10451,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "23": {
@@ -10487,7 +10487,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "15": {
         "confidence_rating": 54,
@@ -10521,7 +10521,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "33": {
         "confidence_rating": 72,
@@ -10555,7 +10555,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "36": {
         "confidence_rating": 31,
@@ -10589,7 +10589,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "37": {
         "confidence_rating": 76,
@@ -10623,7 +10623,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "38": {
         "confidence_rating": 8,
@@ -10657,7 +10657,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "24": {
@@ -10693,7 +10693,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "9": {
         "confidence_rating": 42,
@@ -10727,7 +10727,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "10": {
         "confidence_rating": 91,
@@ -10761,7 +10761,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "22": {
         "confidence_rating": 30,
@@ -10795,7 +10795,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 56,
@@ -10829,7 +10829,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 7,
@@ -10863,7 +10863,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "25": {
@@ -10899,7 +10899,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "12": {
         "confidence_rating": 13,
@@ -10933,7 +10933,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "19": {
         "confidence_rating": 93,
@@ -10967,7 +10967,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "23": {
         "confidence_rating": 22,
@@ -11001,7 +11001,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "24": {
         "confidence_rating": 58,
@@ -11035,7 +11035,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "39": {
         "confidence_rating": 8,
@@ -11069,7 +11069,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "26": {
@@ -11105,7 +11105,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "13": {
         "confidence_rating": 19,
@@ -11139,7 +11139,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "14": {
         "confidence_rating": 63,
@@ -11173,7 +11173,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "20": {
         "confidence_rating": 37,
@@ -11207,7 +11207,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "21": {
         "confidence_rating": 43,
@@ -11241,7 +11241,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "31": {
         "confidence_rating": 56,
@@ -11275,7 +11275,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "27": {
@@ -11311,7 +11311,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "16": {
         "confidence_rating": 35,
@@ -11345,7 +11345,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "18": {
         "confidence_rating": 55,
@@ -11379,7 +11379,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "26": {
         "confidence_rating": 31,
@@ -11413,7 +11413,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "28": {
         "confidence_rating": 47,
@@ -11447,7 +11447,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "39": {
         "confidence_rating": 69,
@@ -11481,7 +11481,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "28": {
@@ -11517,7 +11517,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "8": {
         "confidence_rating": 23,
@@ -11551,7 +11551,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "11": {
         "confidence_rating": 68,
@@ -11585,7 +11585,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "16": {
         "confidence_rating": 34,
@@ -11619,7 +11619,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "33": {
         "confidence_rating": 73,
@@ -11653,7 +11653,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "38": {
         "confidence_rating": 36,
@@ -11687,7 +11687,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "29": {
@@ -11723,7 +11723,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "6": {
         "confidence_rating": 78,
@@ -11757,7 +11757,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "23": {
         "confidence_rating": 31,
@@ -11791,7 +11791,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "24": {
         "confidence_rating": 93,
@@ -11825,7 +11825,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "30": {
         "confidence_rating": 42,
@@ -11859,7 +11859,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 70,
@@ -11893,7 +11893,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "30": {
@@ -11929,7 +11929,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "14": {
         "confidence_rating": 61,
@@ -11963,7 +11963,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "17": {
         "confidence_rating": 78,
@@ -11997,7 +11997,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "18": {
         "confidence_rating": 19,
@@ -12031,7 +12031,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "29": {
         "confidence_rating": 68,
@@ -12065,7 +12065,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "34": {
         "confidence_rating": 4,
@@ -12099,7 +12099,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "31": {
@@ -12135,7 +12135,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "12": {
         "confidence_rating": 76,
@@ -12169,7 +12169,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "21": {
         "confidence_rating": 74,
@@ -12203,7 +12203,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "27": {
         "confidence_rating": 68,
@@ -12237,7 +12237,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "31": {
         "confidence_rating": 65,
@@ -12271,7 +12271,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 77,
@@ -12305,7 +12305,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "32": {
@@ -12341,7 +12341,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "22": {
         "confidence_rating": 62,
@@ -12375,7 +12375,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 55,
@@ -12409,7 +12409,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "26": {
         "confidence_rating": 44,
@@ -12443,7 +12443,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "35": {
         "confidence_rating": 100,
@@ -12477,7 +12477,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "36": {
         "confidence_rating": 83,
@@ -12511,7 +12511,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "33": {
@@ -12547,7 +12547,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "7": {
         "confidence_rating": 63,
@@ -12581,7 +12581,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "10": {
         "confidence_rating": 56,
@@ -12615,7 +12615,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "15": {
         "confidence_rating": 51,
@@ -12649,7 +12649,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "20": {
         "confidence_rating": 26,
@@ -12683,7 +12683,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "37": {
         "confidence_rating": 18,
@@ -12717,7 +12717,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "34": {
@@ -12753,7 +12753,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "13": {
         "confidence_rating": 79,
@@ -12787,7 +12787,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "19": {
         "confidence_rating": 31,
@@ -12821,7 +12821,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "22": {
         "confidence_rating": 3,
@@ -12855,7 +12855,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "26": {
         "confidence_rating": 4,
@@ -12889,7 +12889,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "29": {
         "confidence_rating": 53,
@@ -12923,7 +12923,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "35": {
@@ -12959,7 +12959,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "14": {
         "confidence_rating": 54,
@@ -12993,7 +12993,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "15": {
         "confidence_rating": 69,
@@ -13027,7 +13027,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "16": {
         "confidence_rating": 94,
@@ -13061,7 +13061,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "31": {
         "confidence_rating": 21,
@@ -13095,7 +13095,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 69,
@@ -13129,7 +13129,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "36": {
@@ -13165,7 +13165,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "7": {
         "confidence_rating": 7,
@@ -13199,7 +13199,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "8": {
         "confidence_rating": 48,
@@ -13233,7 +13233,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "9": {
         "confidence_rating": 70,
@@ -13267,7 +13267,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "13": {
         "confidence_rating": 52,
@@ -13301,7 +13301,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "20": {
         "confidence_rating": 57,
@@ -13335,7 +13335,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "37": {
@@ -13371,7 +13371,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "10": {
         "confidence_rating": 97,
@@ -13405,7 +13405,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "19": {
         "confidence_rating": 81,
@@ -13439,7 +13439,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "32": {
         "confidence_rating": 87,
@@ -13473,7 +13473,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "35": {
         "confidence_rating": 93,
@@ -13507,7 +13507,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "38": {
         "confidence_rating": 14,
@@ -13541,7 +13541,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "38": {
@@ -13577,7 +13577,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "18": {
         "confidence_rating": 10,
@@ -13611,7 +13611,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "21": {
         "confidence_rating": 96,
@@ -13645,7 +13645,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "23": {
         "confidence_rating": 21,
@@ -13679,7 +13679,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "24": {
         "confidence_rating": 8,
@@ -13713,7 +13713,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "39": {
         "confidence_rating": 51,
@@ -13747,7 +13747,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "39": {
@@ -13783,7 +13783,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "5": {
         "confidence_rating": 75,
@@ -13817,7 +13817,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "28": {
         "confidence_rating": 86,
@@ -13851,7 +13851,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "34": {
         "confidence_rating": 59,
@@ -13885,7 +13885,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "36": {
         "confidence_rating": 59,
@@ -13919,7 +13919,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "37": {
         "confidence_rating": 46,
@@ -13953,7 +13953,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "40": {
@@ -13989,7 +13989,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "17": {
         "confidence_rating": 67,
@@ -14023,7 +14023,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "25": {
         "confidence_rating": 54,
@@ -14057,7 +14057,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "27": {
         "confidence_rating": 62,
@@ -14091,7 +14091,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "30": {
         "confidence_rating": 26,
@@ -14125,7 +14125,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "33": {
         "confidence_rating": 53,
@@ -14159,7 +14159,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "41": {
@@ -14195,7 +14195,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "13": {
         "confidence_rating": 93,
@@ -14229,7 +14229,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "27": {
         "confidence_rating": 51,
@@ -14263,7 +14263,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 87,
@@ -14297,7 +14297,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "35": {
         "confidence_rating": 66,
@@ -14331,7 +14331,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "37": {
         "confidence_rating": 32,
@@ -14365,7 +14365,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "42": {
@@ -14401,7 +14401,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "5": {
         "confidence_rating": 14,
@@ -14435,7 +14435,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "7": {
         "confidence_rating": 17,
@@ -14469,7 +14469,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "17": {
         "confidence_rating": 50,
@@ -14503,7 +14503,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "21": {
         "confidence_rating": 46,
@@ -14537,7 +14537,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "30": {
         "confidence_rating": 60,
@@ -14571,7 +14571,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "43": {
@@ -14607,7 +14607,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "16": {
         "confidence_rating": 93,
@@ -14641,7 +14641,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "18": {
         "confidence_rating": 44,
@@ -14675,7 +14675,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 51,
@@ -14709,7 +14709,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "28": {
         "confidence_rating": 9,
@@ -14743,7 +14743,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "31": {
         "confidence_rating": 14,
@@ -14777,7 +14777,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "44": {
@@ -14813,7 +14813,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "20": {
         "confidence_rating": 98,
@@ -14847,7 +14847,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "24": {
         "confidence_rating": 26,
@@ -14881,7 +14881,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "26": {
         "confidence_rating": 86,
@@ -14915,7 +14915,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "29": {
         "confidence_rating": 29,
@@ -14949,7 +14949,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "39": {
         "confidence_rating": 16,
@@ -14983,7 +14983,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "45": {
@@ -15019,7 +15019,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "11": {
         "confidence_rating": 68,
@@ -15053,7 +15053,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "12": {
         "confidence_rating": 35,
@@ -15087,7 +15087,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "34": {
         "confidence_rating": 75,
@@ -15121,7 +15121,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "38": {
         "confidence_rating": 37,
@@ -15155,7 +15155,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 16,
@@ -15189,7 +15189,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "46": {
@@ -15225,7 +15225,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "15": {
         "confidence_rating": 34,
@@ -15259,7 +15259,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "19": {
         "confidence_rating": 55,
@@ -15293,7 +15293,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "23": {
         "confidence_rating": 87,
@@ -15327,7 +15327,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "33": {
         "confidence_rating": 70,
@@ -15361,7 +15361,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "36": {
         "confidence_rating": 57,
@@ -15395,7 +15395,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "47": {
@@ -15431,7 +15431,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "8": {
         "confidence_rating": 38,
@@ -15465,7 +15465,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "14": {
         "confidence_rating": 1,
@@ -15499,7 +15499,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "20": {
         "confidence_rating": 42,
@@ -15533,7 +15533,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "22": {
         "confidence_rating": 80,
@@ -15567,7 +15567,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "27": {
         "confidence_rating": 47,
@@ -15601,7 +15601,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "48": {
@@ -15637,7 +15637,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "7": {
         "confidence_rating": 84,
@@ -15671,7 +15671,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "9": {
         "confidence_rating": 54,
@@ -15705,7 +15705,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "12": {
         "confidence_rating": 93,
@@ -15739,7 +15739,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "30": {
         "confidence_rating": 12,
@@ -15773,7 +15773,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "36": {
         "confidence_rating": 84,
@@ -15807,7 +15807,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "49": {
@@ -15843,7 +15843,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "14": {
         "confidence_rating": 61,
@@ -15877,7 +15877,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "23": {
         "confidence_rating": 54,
@@ -15911,7 +15911,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "32": {
         "confidence_rating": 25,
@@ -15945,7 +15945,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "38": {
         "confidence_rating": 65,
@@ -15979,7 +15979,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "40": {
         "confidence_rating": 40,
@@ -16013,7 +16013,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "50": {
@@ -16049,7 +16049,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "15": {
         "confidence_rating": 48,
@@ -16083,7 +16083,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 20,
@@ -16117,7 +16117,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "33": {
         "confidence_rating": 90,
@@ -16151,7 +16151,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "34": {
         "confidence_rating": 6,
@@ -16185,7 +16185,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "35": {
         "confidence_rating": 32,
@@ -16219,7 +16219,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "51": {
@@ -16255,7 +16255,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "4": {
         "confidence_rating": 9,
@@ -16289,7 +16289,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "21": {
         "confidence_rating": 74,
@@ -16323,7 +16323,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "22": {
         "confidence_rating": 5,
@@ -16357,7 +16357,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "29": {
         "confidence_rating": 15,
@@ -16391,7 +16391,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "39": {
         "confidence_rating": 51,
@@ -16425,7 +16425,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "52": {
@@ -16461,7 +16461,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "8": {
         "confidence_rating": 71,
@@ -16495,7 +16495,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "11": {
         "confidence_rating": 5,
@@ -16529,7 +16529,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "13": {
         "confidence_rating": 30,
@@ -16563,7 +16563,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "19": {
         "confidence_rating": 46,
@@ -16597,7 +16597,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "26": {
         "confidence_rating": 66,
@@ -16631,7 +16631,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "53": {
@@ -16667,7 +16667,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "17": {
         "confidence_rating": 87,
@@ -16701,7 +16701,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "18": {
         "confidence_rating": 53,
@@ -16735,7 +16735,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "24": {
         "confidence_rating": 81,
@@ -16769,7 +16769,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "28": {
         "confidence_rating": 95,
@@ -16803,7 +16803,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "37": {
         "confidence_rating": 58,
@@ -16837,7 +16837,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "54": {
@@ -16873,7 +16873,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "6": {
         "confidence_rating": 74,
@@ -16907,7 +16907,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "27": {
         "confidence_rating": 77,
@@ -16941,7 +16941,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "31": {
         "confidence_rating": 62,
@@ -16975,7 +16975,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "39": {
         "confidence_rating": 99,
@@ -17009,7 +17009,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 63,
@@ -17043,7 +17043,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "55": {
@@ -17079,7 +17079,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "12": {
         "confidence_rating": 71,
@@ -17113,7 +17113,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "15": {
         "confidence_rating": 46,
@@ -17147,7 +17147,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "16": {
         "confidence_rating": 99,
@@ -17181,7 +17181,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "31": {
         "confidence_rating": 74,
@@ -17215,7 +17215,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 14,
@@ -17249,7 +17249,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "56": {
@@ -17285,7 +17285,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "13": {
         "confidence_rating": 69,
@@ -17319,7 +17319,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "14": {
         "confidence_rating": 7,
@@ -17353,7 +17353,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "17": {
         "confidence_rating": 27,
@@ -17387,7 +17387,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "18": {
         "confidence_rating": 50,
@@ -17421,7 +17421,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "23": {
         "confidence_rating": 78,
@@ -17455,7 +17455,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "57": {
@@ -17491,7 +17491,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "9": {
         "confidence_rating": 83,
@@ -17525,7 +17525,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 1,
@@ -17559,7 +17559,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "26": {
         "confidence_rating": 20,
@@ -17593,7 +17593,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "28": {
         "confidence_rating": 43,
@@ -17627,7 +17627,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "37": {
         "confidence_rating": 74,
@@ -17661,7 +17661,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "58": {
@@ -17697,7 +17697,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "4": {
         "confidence_rating": 64,
@@ -17731,7 +17731,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "7": {
         "confidence_rating": 14,
@@ -17765,7 +17765,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "30": {
         "confidence_rating": 21,
@@ -17799,7 +17799,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "34": {
         "confidence_rating": 5,
@@ -17833,7 +17833,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "35": {
         "confidence_rating": 95,
@@ -17867,7 +17867,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "59": {
@@ -17903,7 +17903,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "10": {
         "confidence_rating": 90,
@@ -17937,7 +17937,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "19": {
         "confidence_rating": 80,
@@ -17971,7 +17971,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "20": {
         "confidence_rating": 91,
@@ -18005,7 +18005,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "22": {
         "confidence_rating": 93,
@@ -18039,7 +18039,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "33": {
         "confidence_rating": 53,
@@ -18073,7 +18073,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "60": {
@@ -18109,7 +18109,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "21": {
         "confidence_rating": 39,
@@ -18143,7 +18143,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "24": {
         "confidence_rating": 3,
@@ -18177,7 +18177,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "29": {
         "confidence_rating": 21,
@@ -18211,7 +18211,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "36": {
         "confidence_rating": 85,
@@ -18245,7 +18245,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "38": {
         "confidence_rating": 16,
@@ -18279,7 +18279,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "61": {
@@ -18315,7 +18315,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "13": {
         "confidence_rating": 72,
@@ -18349,7 +18349,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "19": {
         "confidence_rating": 2,
@@ -18383,7 +18383,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "22": {
         "confidence_rating": 79,
@@ -18417,7 +18417,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "26": {
         "confidence_rating": 20,
@@ -18451,7 +18451,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "27": {
         "confidence_rating": 24,
@@ -18485,7 +18485,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "62": {
@@ -18521,7 +18521,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "6": {
         "confidence_rating": 56,
@@ -18555,7 +18555,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "9": {
         "confidence_rating": 78,
@@ -18589,7 +18589,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "10": {
         "confidence_rating": 28,
@@ -18623,7 +18623,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "20": {
         "confidence_rating": 22,
@@ -18657,7 +18657,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "34": {
         "confidence_rating": 48,
@@ -18691,7 +18691,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "63": {
@@ -18727,7 +18727,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 1,
@@ -18761,7 +18761,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "30": {
         "confidence_rating": 69,
@@ -18795,7 +18795,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "31": {
         "confidence_rating": 1,
@@ -18829,7 +18829,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "33": {
         "confidence_rating": 59,
@@ -18863,7 +18863,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "35": {
         "confidence_rating": 20,
@@ -18897,7 +18897,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "64": {
@@ -18933,7 +18933,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "16": {
         "confidence_rating": 56,
@@ -18967,7 +18967,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "17": {
         "confidence_rating": 25,
@@ -19001,7 +19001,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "24": {
         "confidence_rating": 83,
@@ -19035,7 +19035,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 19,
@@ -19069,7 +19069,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "37": {
         "confidence_rating": 98,
@@ -19103,7 +19103,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "65": {
@@ -19139,7 +19139,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "11": {
         "confidence_rating": 92,
@@ -19173,7 +19173,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "14": {
         "confidence_rating": 72,
@@ -19207,7 +19207,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "36": {
         "confidence_rating": 63,
@@ -19241,7 +19241,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "38": {
         "confidence_rating": 31,
@@ -19275,7 +19275,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 55,
@@ -19309,7 +19309,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "66": {
@@ -19345,7 +19345,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "12": {
         "confidence_rating": 14,
@@ -19379,7 +19379,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "15": {
         "confidence_rating": 35,
@@ -19413,7 +19413,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "18": {
         "confidence_rating": 7,
@@ -19447,7 +19447,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "23": {
         "confidence_rating": 40,
@@ -19481,7 +19481,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "39": {
         "confidence_rating": 92,
@@ -19515,7 +19515,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "67": {
@@ -19551,7 +19551,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "21": {
         "confidence_rating": 8,
@@ -19585,7 +19585,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "28": {
         "confidence_rating": 28,
@@ -19619,7 +19619,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "29": {
         "confidence_rating": 43,
@@ -19653,7 +19653,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 50,
@@ -19687,7 +19687,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "68": {
@@ -19723,7 +19723,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "16": {
         "confidence_rating": 36,
@@ -19757,7 +19757,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "18": {
         "confidence_rating": 41,
@@ -19791,7 +19791,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "22": {
         "confidence_rating": 88,
@@ -19825,7 +19825,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "34": {
         "confidence_rating": 26,
@@ -19859,7 +19859,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 54,
@@ -19893,7 +19893,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "69": {
@@ -19929,7 +19929,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "6": {
         "confidence_rating": 32,
@@ -19963,7 +19963,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "10": {
         "confidence_rating": 57,
@@ -19997,7 +19997,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "23": {
         "confidence_rating": 54,
@@ -20031,7 +20031,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "24": {
         "confidence_rating": 1,
@@ -20065,7 +20065,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "37": {
         "confidence_rating": 59,
@@ -20099,7 +20099,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "70": {
@@ -20135,7 +20135,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "11": {
         "confidence_rating": 8,
@@ -20169,7 +20169,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "14": {
         "confidence_rating": 16,
@@ -20203,7 +20203,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "20": {
         "confidence_rating": 70,
@@ -20237,7 +20237,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "33": {
         "confidence_rating": 61,
@@ -20271,7 +20271,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "35": {
         "confidence_rating": 53,
@@ -20305,7 +20305,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "71": {
@@ -20341,7 +20341,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "8": {
         "confidence_rating": 90,
@@ -20375,7 +20375,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "9": {
         "confidence_rating": 18,
@@ -20409,7 +20409,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "12": {
         "confidence_rating": 89,
@@ -20443,7 +20443,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "17": {
         "confidence_rating": 43,
@@ -20477,7 +20477,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "36": {
         "confidence_rating": 59,
@@ -20511,7 +20511,7 @@
         "tele_charge_level": "P",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "72": {
@@ -20547,7 +20547,7 @@
         "tele_charge_level": "P",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "15": {
         "confidence_rating": 3,
@@ -20581,7 +20581,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "28": {
         "confidence_rating": 43,
@@ -20615,7 +20615,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "31": {
         "confidence_rating": 16,
@@ -20649,7 +20649,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "38": {
         "confidence_rating": 7,
@@ -20683,7 +20683,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "39": {
         "confidence_rating": 65,
@@ -20717,7 +20717,7 @@
         "tele_charge_level": "D",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "73": {
@@ -20753,7 +20753,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "3": {
         "confidence_rating": 91,
@@ -20787,7 +20787,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "19": {
         "confidence_rating": 28,
@@ -20821,7 +20821,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 9,
@@ -20855,7 +20855,7 @@
         "tele_charge_level": "N",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "26": {
         "confidence_rating": 20,
@@ -20888,8 +20888,8 @@
         "auto_charge_level": "E",
         "tele_charge_level": "E",
         "start_position": 4,
-        "preloaded_gamepiece": "U",
-        "auto_line": false
+        "preloaded_gamepiece": "U",    
+        "mobility": false
       },
       "29": {
         "confidence_rating": 24,
@@ -20923,7 +20923,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "74": {
@@ -20959,7 +20959,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "13": {
         "confidence_rating": 28,
@@ -20993,7 +20993,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "27": {
         "confidence_rating": 25,
@@ -21027,7 +21027,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "29": {
         "confidence_rating": 49,
@@ -21061,7 +21061,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "30": {
         "confidence_rating": 27,
@@ -21095,7 +21095,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "34": {
         "confidence_rating": 20,
@@ -21129,7 +21129,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "75": {
@@ -21165,7 +21165,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "7": {
         "confidence_rating": 32,
@@ -21199,7 +21199,7 @@
         "tele_charge_level": "E",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "8": {
         "confidence_rating": 91,
@@ -21233,7 +21233,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "10": {
         "confidence_rating": 45,
@@ -21267,7 +21267,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "21": {
         "confidence_rating": 21,
@@ -21301,7 +21301,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "31": {
         "confidence_rating": 17,
@@ -21335,7 +21335,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "76": {
@@ -21371,7 +21371,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "25": {
         "confidence_rating": 11,
@@ -21405,7 +21405,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "28": {
         "confidence_rating": 32,
@@ -21439,7 +21439,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "32": {
         "confidence_rating": 26,
@@ -21473,7 +21473,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "37": {
         "confidence_rating": 16,
@@ -21507,7 +21507,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "40": {
         "confidence_rating": 57,
@@ -21541,7 +21541,7 @@
         "tele_charge_level": "D",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       }
     },
     "77": {
@@ -21577,7 +21577,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "20": {
         "confidence_rating": 16,
@@ -21611,7 +21611,7 @@
         "tele_charge_level": "P",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "26": {
         "confidence_rating": 45,
@@ -21645,7 +21645,7 @@
         "tele_charge_level": "P",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "27": {
         "confidence_rating": 95,
@@ -21679,7 +21679,7 @@
         "tele_charge_level": "N",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "30": {
         "confidence_rating": 13,
@@ -21713,7 +21713,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "36": {
         "confidence_rating": 22,
@@ -21747,7 +21747,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       }
     },
     "78": {
@@ -21783,7 +21783,7 @@
         "tele_charge_level": "E",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "4": {
         "confidence_rating": 58,
@@ -21817,7 +21817,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "6": {
         "confidence_rating": 24,
@@ -21851,7 +21851,7 @@
         "tele_charge_level": "N",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "22": {
         "confidence_rating": 84,
@@ -21885,7 +21885,7 @@
         "tele_charge_level": "N",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "38": {
         "confidence_rating": 3,
@@ -21919,7 +21919,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "39": {
         "confidence_rating": 69,
@@ -21953,7 +21953,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     },
     "79": {
@@ -21989,7 +21989,7 @@
         "tele_charge_level": "D",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "9": {
         "confidence_rating": 56,
@@ -22023,7 +22023,7 @@
         "tele_charge_level": "E",
         "start_position": 3,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "12": {
         "confidence_rating": 51,
@@ -22057,7 +22057,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "19": {
         "confidence_rating": 54,
@@ -22091,7 +22091,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "23": {
         "confidence_rating": 10,
@@ -22125,7 +22125,7 @@
         "tele_charge_level": "P",
         "start_position": 2,
         "preloaded_gamepiece": "U",
-        "auto_line": true
+        "mobility": true
       },
       "35": {
         "confidence_rating": 59,
@@ -22159,7 +22159,7 @@
         "tele_charge_level": "N",
         "start_position": 0,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       }
     },
     "80": {
@@ -22195,7 +22195,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "15": {
         "confidence_rating": 9,
@@ -22229,7 +22229,7 @@
         "tele_charge_level": "D",
         "start_position": 3,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "16": {
         "confidence_rating": 92,
@@ -22263,7 +22263,7 @@
         "tele_charge_level": "E",
         "start_position": 4,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       },
       "17": {
         "confidence_rating": 95,
@@ -22297,7 +22297,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "O",
-        "auto_line": false
+        "mobility": false
       },
       "18": {
         "confidence_rating": 92,
@@ -22331,7 +22331,7 @@
         "tele_charge_level": "E",
         "start_position": 1,
         "preloaded_gamepiece": "U",
-        "auto_line": false
+        "mobility": false
       },
       "33": {
         "confidence_rating": 69,
@@ -22365,7 +22365,7 @@
         "tele_charge_level": "D",
         "start_position": 0,
         "preloaded_gamepiece": "O",
-        "auto_line": true
+        "mobility": true
       }
     }
   },
