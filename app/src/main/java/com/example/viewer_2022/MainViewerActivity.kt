@@ -49,7 +49,11 @@ import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
 import kotlinx.android.synthetic.main.pit_map_popup.view.*
 import kotlinx.coroutines.launch
+import org.apache.commons.lang3.CharSetUtils.delete
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.*
+import java.nio.charset.Charset
 
 
 // Main activity class that handles navigation.
@@ -380,6 +384,28 @@ class MainViewerActivity : ViewerActivity() {
             } catch (e: Exception) {
                 Log.e("UserDatapoints.read", "Failed to read user datapoints file")
             }
+            // checks if the current preferences are actually datapoints if they aren't, delete the preferences file and
+            // call read again, this causes it to call copyDefaults. times tracks how many times read has been called,
+            // making sure it doesn't get into an infinite loop of deleting the file, copying default preferences, then deleting
+            // the file again, then copying again. this can be caused if the default_prefs file has a datapoint that doesn't
+            // exist in Constants
+            var user = contents?.get("selected")?.asString
+            var userdatapoints = contents?.get(user)?.asJsonArray
+            if (userdatapoints != null) {
+                for (i in userdatapoints) {
+                    if (!(i.asString in Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS) && (i.asString != "See Matches")) {
+                        file.delete()
+                        Log.e(
+                            "UserDatapoints.read",
+                            "Datapoint ${i.asString} does not exist in Constants"
+                        )
+                        copyDefaults(context)
+                        break
+                    }
+                }
+            }
+
+
         }
 
         fun write() {
@@ -408,7 +434,6 @@ class MainViewerActivity : ViewerActivity() {
             } catch (e: Exception) {
                 Log.e("copyDefaults", "Failed to copy default preferences to file, $e")
             }
-
         }
     }
 

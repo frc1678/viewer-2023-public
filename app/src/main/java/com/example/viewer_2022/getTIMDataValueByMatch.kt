@@ -1,5 +1,8 @@
 package com.example.viewer_2022
 
+import android.graphics.drawable.Drawable
+import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.FragmentActivity
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
@@ -15,17 +18,13 @@ private fun getTIMDocument(matchNumber: String, teamNumber: String): JsonObject?
  * @return The value of the requested field.
  */
 fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: String): String? {
+    // Returns the field value for the given Team, Match, and Field requested
+//    purple_cube.png
     var fieldValue = StartupActivity.databaseReference?.tim?.get(matchNumber)?.get(teamNumber)
         ?.get(field)?.jsonPrimitive?.content
     fieldValue = when (fieldValue) {
-        "ONE" -> "1"
-        "TWO" -> "2"
-        "THREE" -> "3"
-        "FOUR" -> "4"
-        "TRAVERSAL" -> "LVL 4"
-        "HIGH" -> "LVL 3"
-        "MID" -> "LVL 2"
-        "LOW" -> "LVL 1"
+        "U" -> "🟪"
+        "O" -> "▲"
         else -> fieldValue
     }
     return fieldValue

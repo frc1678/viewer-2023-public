@@ -25,6 +25,7 @@ import com.example.viewer_2022.fragments.user_preferences.UserPreferencesFragmen
 import com.example.viewer_2022.getTeamName
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
+import org.apache.commons.lang3.CharSetUtils.delete
 import java.io.File
 
 // The fragment class for the Team Details display that occurs when you click on a
@@ -85,7 +86,9 @@ class TeamDetailsFragment : Fragment() {
         var userdatapoints = MainViewerActivity.UserDatapoints.contents?.get(user)?.asJsonArray
         if (userdatapoints != null) {
             for (i in userdatapoints) {
-                datapoints.add(i.asString)
+                if (i.asString in Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS) {
+                    datapoints.add(i.asString)
+                }
             }
         }
 

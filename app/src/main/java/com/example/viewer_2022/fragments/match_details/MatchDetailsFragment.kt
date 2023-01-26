@@ -191,8 +191,7 @@ class MatchDetailsFragment : Fragment() {
             datapointsList.add(datapoint.asString)
         }
 
-        val datapointsDisplay =
-            (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED else datapointsList)
+        val datapointsDisplay = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED
 
         val adapter = MatchDetailsAdapter(
             context = activity!!,

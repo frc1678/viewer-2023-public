@@ -91,6 +91,7 @@ class StartupActivity : ViewerActivity() {
             )
             runOnUiThread {
                 // Stuff that updates the UI
+                btn_retry.setVisibility(View.VISIBLE)
                 Snackbar.make(splash_screen_layout, "Could not find match_schedule file for event key ${Constants.EVENT_KEY}", 1000000000).show()
             }
         }

@@ -78,13 +78,32 @@ class MatchDetailsAdapter(
             )
             for (i in 0..5) {
                 textViews[i].text =
-                    if (!hasActualData) getTeamValue(teamNumbers[i], datapointsDisplay[position])
+                    if (!hasActualData)
+                        getTeamValue(teamNumbers[i], datapointsDisplay[position])
                         ?: Constants.NULL_CHARACTER
+                    else if(datapointsDisplay[position] == "driver_ability") {
+                            var teamData = getTeamDataValue(teamNumbers[i], datapointsDisplay[position])
+                        if(teamData != null) {
+                            ("%.1f").format(
+                                teamData.toFloatOrNull()
+                            )
+                        } else Constants.NULL_CHARACTER
+                    }
                     else getTIMDataValueByMatch(
                         matchNumber.toString(),
                         teamNumbers[i],
                         datapointsDisplay[position]
                     ) ?: Constants.NULL_CHARACTER
+                if (datapointsDisplay[position] == "preloaded_gamepiece") {
+                    if (textViews[i].text == "▲") {
+                        textViews[i].setTextColor(ContextCompat.getColor(context, R.color.Yellow))
+                        textViews[i].setTextSize(5,4.5f)
+                    }
+//                    else if (textViews[i].text == "◾") {
+//                        textViews[i].setTextColor(ContextCompat.getColor(context, R.color.Purple))
+//                        textViews[i].setTextSize(5,5.5f)
+//                    }
+                }
             }
         }
         return rowView
