@@ -15,10 +15,10 @@ suspend fun getDataFromWebsite() {
     // Sets the teamList to the new team list for the competition
     // Gets this team list from grosbeak/api/team-list
     MainViewerActivity.teamList =
-        DataApi.getTeamList(Constants.EVENT_KEY).map { it }
+        DataApi.getTeamList(Constants.SCHEDULE_KEY).map { it }
 
     // Pulls the match schedule from grosbeak and then puts it in rawMatchSchedule
-    val rawMatchSchedule = DataApi.getMatchSchedule(Constants.EVENT_KEY)
+    val rawMatchSchedule = DataApi.getMatchSchedule(Constants.SCHEDULE_KEY)
 
     // For each team in the match schedule it adds the team to either the redTeams list of the blueTeams list
     for (i in rawMatchSchedule.toList().sortedBy { it.first.toInt() }.toMap()) {
