@@ -15,6 +15,7 @@ class Constants {
     companion object {
         //Game specific data.
         const val EVENT_KEY = "2022mttd"
+        const val SCHEDULE_KEY = "2022mttd"
         const val MONGO_ATLAS = "mongodb-atlas"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = true
