@@ -26,6 +26,7 @@ class Translations {
             "incap" to "Incap Time",
             "max_incap" to "Max Incap",
             "total_incap" to "Total Incap",
+            "median_incap" to "Median Incap",
             "actual_score" to "Actual Score",
             "actual_rp1" to "Actual Link RP",
             "actual_rp2" to "Actual Charge RP",
@@ -40,6 +41,7 @@ class Translations {
             "lfm_max_incap" to "Max Incap",
             "lfm_tele_avg_incap_time" to "Avg Incap Time",
             "lfm_total_incap" to "Total Incap",
+            "lfm_median_incap" to "Median Incap",
             "mode_start_position" to "Mode Start Position",
             "lfm_mode_start_position" to "Mode Start Position",
             "confidence_rating" to "Confidence Rating",
@@ -182,6 +184,7 @@ class Translations {
         val TIM_FROM_TEAM: Map<String, String> = mapOf(
             "avg_incap_time" to "incap",
             "matches_incap" to "incap",
+            "median_incap" to "incap",
             "mode_start_position" to "start_position",
             "position_zero_starts" to "start_position",
             "position_one_starts" to "start_position",
@@ -194,6 +197,7 @@ class Translations {
         val TIM_TO_HUMAN_READABLE: Map<String, String> = mapOf(
             "avg_incap_time" to "Time Incap",
             "matches_incap" to "Matches Incap",
+            "median_incap" to "Median Incap",
             "start_position" to "Start Pos",
             "position_zero_starts" to "No Show?",
             "position_one_starts" to "Start Pos 1?",
