@@ -465,14 +465,9 @@ class MatchScheduleListAdapter(
             val matchDetailsFragment = MatchDetailsFragment()
             Log.d("data-refresh", "created MatchDetailsFragment in MatchSchedule")
             val matchDetailsFragmentTransaction = context.supportFragmentManager.beginTransaction()
-            val matchSelected =
-                if (scheduleType == Constants.ScheduleType.OUR_MATCHES || scheduleType == Constants.ScheduleType.STARRED_MATCHES) {
-                    matchContents.keys.toList()[position].toInt()
-                } else {
-                    position + 1
-                }
-            matchDetailsFragment.arguments =
-                Bundle().apply { putInt(Constants.MATCH_NUMBER, matchSelected) }
+            matchDetailsFragment.arguments = Bundle().apply {
+                putInt(Constants.MATCH_NUMBER, matchContents.keys.toList()[position].toInt())
+            }
             matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             matchDetailsFragmentTransaction.addToBackStack(null).replace(
                 (it.rootView.findViewById(R.id.nav_host_fragment) as ViewGroup).id,
