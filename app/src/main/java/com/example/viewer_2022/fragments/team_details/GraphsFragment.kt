@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,99 +31,90 @@ import com.example.viewer_2022.getTIMDataValue
 import kotlin.math.ceil
 
 /**
- * Page that the graphs are displayed on
+ * [Fragment] for displaying a graph of a TIM data point for a given team.
  */
 class GraphsFragment : Fragment() {
 
-
     private var _binding: FragmentGraphsBinding? = null
 
-
-    // This property is only valid between onCreateView and onDestroyView.
+    /**
+     * This property is only valid between [onCreateView] and [onDestroyView].
+     */
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        //Creating a binding that allows type safe access to ComposeView
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        // Creating a binding that allows type safe access to ComposeView
         _binding = FragmentGraphsBinding.inflate(inflater, container, false)
-        val view = binding.root
-        //Assign teamNumber + datapoint to the correct value from arguments of the fragment
+        // Get the team number from the fragment arguments
         val teamNumber =
             requireArguments().getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
-        val datapoint = requireArguments().getString("datapoint", Constants.NULL_CHARACTER)
-        //Getting the timDataMap for the datapoint of the team.
-        val timDataMap = getTIMDataValue(teamNumber, datapoint)
-        //Creating barData by looping through each index of timDataMap and adding a BarData of x value the index of the matchNumber
-        //y value is the value
-        val barData = buildList<BarData> {
-            timDataMap.toList().forEachIndexed { i, (matchNumber, value) ->
-
-                add(BarData(Point(i.toFloat(), value?.toFloatOrNull() ?: 0F), label = (i + 1).toString()))
-            }
+        // Get the data point name from the fragment arguments
+        val dataPoint = requireArguments().getString("datapoint", Constants.NULL_CHARACTER)
+        // Get the TIM data for the data point of the team
+        val timDataMap = getTIMDataValue(teamNumber, dataPoint)
+        // x is the index of the match number, y is the value
+        val barData = timDataMap.toList().mapIndexed { i, (_, value) ->
+            BarData(Point(x = i.toFloat(), y = value?.toFloatOrNull() ?: 0f), label = "${i + 1}")
         }
-
-        //Sorting the data map by highest data value and returning the highest value as a float
-
+        // Sort the data map by highest data value and get the highest value as a float
         val maxValue = timDataMap.toList().sortedBy { it.second?.toFloatOrNull() }
             .reversed()[0].second?.toFloatOrNull()
-        //Setting the maximum y range by rounding up the max value to the next highest multiple of 5 and on default be 50 as a float
-        val maxRange = if (maxValue != null) (ceil(maxValue / 5) * 5) else 50f
-
+        // Set the maximum y range by rounding up the max value to the next multiple of 5
+        // Default to 50
+        val maxRange = if (maxValue != null) ceil(maxValue / 5) * 5 else 50f
         val yStepSize = 5
-        //Preparing the x and y axis with the barData with the barData we created earlier
-        val xAxisData = AxisData.Builder()
-            .axisStepSize(30.dp)
-            .steps(barData.size - 1)
-            .bottomPadding(40.dp)
-            .axisLabelAngle(0f)
-            .labelData { index -> barData[index].label }
-            .build()
-        val yAxisData = AxisData.Builder()
-            .steps(yStepSize)
-            .labelAndAxisLinePadding(20.dp)
-            .axisOffset(20.dp)
-            .labelData { index -> (index * (maxRange / yStepSize)).toString() }
-            .build()
-
-        //Creating content of compose view
+        // Prepare the x and y axes with the bar data
+        val xAxisData =
+            AxisData.Builder().axisStepSize(30.dp).steps(barData.size - 1).bottomPadding(40.dp)
+                .axisLabelAngle(0f).labelData { index -> barData[index].label }.build()
+        val yAxisData =
+            AxisData.Builder().steps(yStepSize).labelAndAxisLinePadding(20.dp).axisOffset(20.dp)
+                .labelData { index -> (index * (maxRange / yStepSize)).toString() }.build()
+        // Set the page content to the graph
         binding.composeView.setContent {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-
-                Text(
-                    Translations.ACTUAL_TO_HUMAN_READABLE.getOrDefault(datapoint, datapoint),
-                    modifier = Modifier.padding(10.dp), style = TextStyle(fontSize = 24.sp)
-                )
-                Text(
-                    teamNumber.toString(),
-                    modifier = Modifier.padding(bottom = 6.dp),
-                    style = TextStyle(fontSize = 20.sp, color = Color.Gray)
-                )
-                //Creates actual chart with barData and axis and adds extra highlight text to qualification match
+            GraphPage(dataPoint = dataPoint, teamNumber = teamNumber, graphContent = {
                 BarChart(
-                    Modifier.fillMaxHeight(0.9F),
-                    BarChartData(
-                        barData, xAxisData, yAxisData,
-                        barStyle = BarStyle(
-                            selectionHighlightData = SelectionHighlightData(
-                                popUpLabel = { x, y -> "QM${timDataMap.toList()[x.toInt()].first}: $y" })
+                    modifier = Modifier.fillMaxHeight(0.9F), BarChartData(
+                        barData, xAxisData, yAxisData, barStyle = BarStyle(
+                            selectionHighlightData = SelectionHighlightData(popUpLabel = { x, y -> "QM${timDataMap.toList()[x.toInt()].first}: $y" })
                         )
                     )
                 )
-
-                Text(
-                    "Match Number",
-                    Modifier
-                        .padding(10.dp)
-                        .weight(1F), style = TextStyle(fontSize = 24.sp)
-                )
-            }
-
+            })
         }
-        return view
+        return binding.root
+    }
+
+    @Composable
+    fun GraphPage(graphContent: @Composable () -> Unit, dataPoint: String, teamNumber: String) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            // The name of the data point
+            Text(
+                Translations.ACTUAL_TO_HUMAN_READABLE.getOrDefault(dataPoint, dataPoint),
+                modifier = Modifier.padding(10.dp),
+                style = TextStyle(fontSize = 24.sp)
+            )
+            // The team number
+            Text(
+                teamNumber,
+                modifier = Modifier.padding(bottom = 6.dp),
+                style = TextStyle(fontSize = 20.sp, color = Color.Gray)
+            )
+            // The graph to be shown
+            graphContent()
+            // The y axis label
+            Text(
+                "Match Number",
+                modifier = Modifier
+                    .padding(10.dp)
+                    .weight(1f),
+                style = TextStyle(fontSize = 24.sp)
+            )
+        }
     }
 }
