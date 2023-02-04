@@ -10,6 +10,13 @@
         android:layout_height="60dp"
         android:layout_width="match_parent"
         android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            />
+
         <ImageButton
             android:contentDescription=" "
             android:id="@+id/btn_download"
@@ -18,6 +25,7 @@
             android:src="@drawable/ic_download"
             android:scaleType="centerCrop"
             />
+
         <ImageButton
             android:contentDescription=" "
             android:id="@+id/btn_upload"
@@ -85,10 +93,11 @@
 
     <View style="@style/view_separator_horizontal" />
 
-    <!--    <ListView-->
-    <!--        android:id="@+id/lv_live_picklist"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent" />-->
+    <ListView
+        android:id="@+id/lv_live_picklist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_offline_picklist"
         android:layout_width="match_parent"
