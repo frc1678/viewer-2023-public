@@ -29,6 +29,7 @@ import com.example.viewer_2022.constants.Translations
 import com.example.viewer_2022.databinding.FragmentGraphsBinding
 import com.example.viewer_2022.getTIMDataValue
 import kotlin.math.ceil
+import kotlin.math.roundToInt
 
 /**
  * [Fragment] for displaying a graph of a TIM data point for a given team.
@@ -52,33 +53,56 @@ class GraphsFragment : Fragment() {
             requireArguments().getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
         // Get the data point name from the fragment arguments
         val dataPoint = requireArguments().getString("datapoint", Constants.NULL_CHARACTER)
+        // Get whether charge levels should be shown instead of numbers
+        val showingChargeLevels =
+            dataPoint == "auto_charge_level" || dataPoint == "tele_charge_level"
         // Get the TIM data for the data point of the team
         val timDataMap = getTIMDataValue(teamNumber, dataPoint)
-        // x is the index of the match number, y is the value
+        // Set the data to be displayed by each bar
         val barData = timDataMap.toList().mapIndexed { i, (_, value) ->
-            BarData(Point(x = i.toFloat(), y = value?.toFloatOrNull() ?: 0f), label = "${i + 1}")
+            BarData(
+                Point(
+                    // match number index
+                    x = i.toFloat(),
+                    // value
+                    y = if (showingChargeLevels) Constants.CHARGE_LEVELS.indexOf(value)
+                        .takeIf { it != -1 }?.toFloat() ?: 0f
+                    else value?.toFloatOrNull() ?: 0f
+                ), label = "${i + 1}"
+            )
         }
         // Sort the data map by highest data value and get the highest value as a float
         val maxValue = timDataMap.toList().sortedBy { it.second?.toFloatOrNull() }
             .reversed()[0].second?.toFloatOrNull()
         // Set the maximum y range by rounding up the max value to the next multiple of 5
         // Default to 50
-        val maxRange = if (maxValue != null) ceil(maxValue / 5) * 5 else 50f
-        val yStepSize = 5
+        val maxRange = if (showingChargeLevels) {
+            Constants.CHARGE_LEVELS.lastIndex.toFloat()
+        } else if (maxValue != null) ceil(maxValue / 5) * 5 else 50f
+        val yStepSize = if (showingChargeLevels) Constants.CHARGE_LEVELS.lastIndex else 5
         // Prepare the x and y axes with the bar data
         val xAxisData =
             AxisData.Builder().axisStepSize(30.dp).steps(barData.size - 1).bottomPadding(40.dp)
                 .axisLabelAngle(0f).labelData { index -> barData[index].label }.build()
         val yAxisData =
             AxisData.Builder().steps(yStepSize).labelAndAxisLinePadding(20.dp).axisOffset(20.dp)
-                .labelData { index -> (index * (maxRange / yStepSize)).toString() }.build()
+                .labelData { index ->
+                    if (showingChargeLevels) Constants.CHARGE_LEVELS.getOrNull(index).toString()
+                    else (index * (maxRange / yStepSize)).toString()
+                }.build()
+        // Create the label to be shown when a bar is selected
+        val selectionHighlightData = SelectionHighlightData(popUpLabel = { x, y ->
+            "QM${timDataMap.toList()[x.toInt()].first}: ${
+                if (showingChargeLevels) Constants.CHARGE_LEVELS.getOrNull(y.roundToInt()) else y
+            }"
+        })
         // Set the page content to the graph
         binding.composeView.setContent {
             GraphPage(dataPoint = dataPoint, teamNumber = teamNumber, graphContent = {
                 BarChart(
-                    modifier = Modifier.fillMaxHeight(0.9F), BarChartData(
+                    modifier = Modifier.fillMaxHeight(0.9f), BarChartData(
                         barData, xAxisData, yAxisData, barStyle = BarStyle(
-                            selectionHighlightData = SelectionHighlightData(popUpLabel = { x, y -> "QM${timDataMap.toList()[x.toInt()].first}: $y" })
+                            selectionHighlightData = selectionHighlightData
                         )
                     )
                 )
