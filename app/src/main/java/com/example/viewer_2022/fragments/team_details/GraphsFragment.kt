@@ -98,7 +98,23 @@ class GraphsFragment : Fragment() {
         })
         // Set the page content to the graph
         binding.composeView.setContent {
-            GraphPage(dataPoint = dataPoint, teamNumber = teamNumber, graphContent = {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                // The name of the data point
+                Text(
+                    Translations.ACTUAL_TO_HUMAN_READABLE.getOrDefault(dataPoint, dataPoint),
+                    modifier = Modifier.padding(10.dp),
+                    style = TextStyle(fontSize = 24.sp)
+                )
+                // The team number
+                Text(
+                    teamNumber,
+                    modifier = Modifier.padding(bottom = 6.dp),
+                    style = TextStyle(fontSize = 20.sp, color = Color.Gray)
+                )
+                // The bar chart
                 BarChart(
                     modifier = Modifier.fillMaxHeight(0.9f), BarChartData(
                         barData, xAxisData, yAxisData, barStyle = BarStyle(
@@ -106,39 +122,16 @@ class GraphsFragment : Fragment() {
                         )
                     )
                 )
-            })
+                // The y axis label
+                Text(
+                    "Match Number",
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .weight(1f),
+                    style = TextStyle(fontSize = 24.sp)
+                )
+            }
         }
         return binding.root
-    }
-
-    @Composable
-    fun GraphPage(graphContent: @Composable () -> Unit, dataPoint: String, teamNumber: String) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            // The name of the data point
-            Text(
-                Translations.ACTUAL_TO_HUMAN_READABLE.getOrDefault(dataPoint, dataPoint),
-                modifier = Modifier.padding(10.dp),
-                style = TextStyle(fontSize = 24.sp)
-            )
-            // The team number
-            Text(
-                teamNumber,
-                modifier = Modifier.padding(bottom = 6.dp),
-                style = TextStyle(fontSize = 20.sp, color = Color.Gray)
-            )
-            // The graph to be shown
-            graphContent()
-            // The y axis label
-            Text(
-                "Match Number",
-                modifier = Modifier
-                    .padding(10.dp)
-                    .weight(1f),
-                style = TextStyle(fontSize = 24.sp)
-            )
-        }
     }
 }
