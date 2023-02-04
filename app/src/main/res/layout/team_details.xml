@@ -22,7 +22,8 @@
                 style="@style/btn_standard"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
-                android:text="To L4M" />
+                android:text="To L4M"
+                />
 
             <TextView
                 android:id="@+id/tv_team_number"
