@@ -10,17 +10,27 @@
         android:layout_height="60dp"
         android:layout_width="match_parent"
         android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            />
+
         <ImageButton
+            android:contentDescription=" "
             android:id="@+id/btn_download"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/ic_download"
             android:scaleType="centerCrop"
             />
+
         <ImageButton
+            android:contentDescription=" "
             android:id="@+id/btn_upload"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/ic_upload"
             android:scaleType="centerCrop"
 
@@ -37,15 +47,24 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="@string/title_live"
-                android:textSize="9sp"
-                android:layout_weight="1"/>
-        <Button
-            android:id="@+id/btn_picklist_refresh"
+                android:textSize="10sp"
+                android:layout_weight="1.2"
+            />
+        <View
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="9sp"
-            android:text="@string/btn_picklist_refresh" />
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            />
+
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_picklist_refresh"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1.2"-->
+<!--            android:textSize="8sp"-->
+<!--            android:text="@string/btn_picklist_refresh"-->
+<!--            />-->
     </LinearLayout>
 
 
@@ -74,10 +93,11 @@
 
     <View style="@style/view_separator_horizontal" />
 
-    <!--    <ListView-->
-    <!--        android:id="@+id/lv_live_picklist"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent" />-->
+    <ListView
+        android:id="@+id/lv_live_picklist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_offline_picklist"
         android:layout_width="match_parent"

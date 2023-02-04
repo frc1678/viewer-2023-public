@@ -137,11 +137,11 @@ class OfflinePicklistFragment : Fragment() {
             }.show(fragmentManager!!, "export_popup")
         }
 
-        // Init refresh button
-        binding.btnPicklistRefresh.setOnClickListener {
-            picklistData = getData()
-            updateData()
-        }
+//        // Init refresh button
+//        binding.btnPicklistRefresh.setOnClickListener {
+//            picklistData = getData()
+//            updateData()
+//        }
 
         // Populate initial data
         picklistData = getData()
