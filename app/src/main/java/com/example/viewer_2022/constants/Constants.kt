@@ -269,7 +269,13 @@ class Constants {
 
         )
 
-
+        val CHARGE_LEVELS = listOf(
+            "N",
+            "F",
+            "P",
+            "D",
+            "E"
+        )
 
         val DRIVER_DATA: List<String> = listOf(
             "driver_quickness",
