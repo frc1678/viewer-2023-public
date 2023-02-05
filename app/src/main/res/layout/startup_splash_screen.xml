@@ -8,8 +8,8 @@
     android:padding="@dimen/small">
     <Button
         android:id="@+id/btn_retry"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="110dp"
         android:text="Retry?"
         android:textSize="20sp"
         android:onClick="btnRetryOnClick"
