@@ -86,7 +86,7 @@ class GraphsFragment : Fragment() {
                 .axisLabelAngle(0f).labelData { index -> barData[index].label }.build()
         val yAxisData =
             AxisData.Builder().steps(yStepSize).labelAndAxisLinePadding(20.dp).axisOffset(20.dp)
-                .labelData { index ->
+                .topPadding(40.dp).labelData { index ->
                     if (showingChargeLevels) Constants.CHARGE_LEVELS.getOrNull(index).toString()
                     else (index * (maxRange / yStepSize)).toInt().toString()
                 }.build()
