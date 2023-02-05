@@ -47,13 +47,15 @@ class TeamDetailsFragment : Fragment() {
         updateDatapointDisplayListView(root)
         robotPics(root)
 
-        // This creates the on menu select listener for the TeamDetails fragment navigation bar.
-        // The purpose of this navigation bar is to switch between the type of data that the
-        // list view in team details displays. The list view adapter contents can be altered
-        // in Constants.kt -> FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS. FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-        // is a map of a string key to arraylist<string> value, with each string key being the menu
-        // items and the contents of each arraylist<string> being the specific data points displayed
-        // in each of the menu item's adapter settings sections.
+        /*
+            This creates the on menu select listener for the TeamDetails fragment navigation bar.
+          The purpose of this navigation bar is to switch between the type of data that the
+          list view in team details displays. The list view adapter contents can be altered
+          in Constants.kt -> FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS. FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
+          is a map of a string key to arraylist<string> value, with each string key being the menu
+          items and the contents of each arraylist<string> being the specific data points displayed
+          in each of the menu item's adapter settings sections.
+         */
         return root
     }
 
@@ -109,15 +111,14 @@ class TeamDetailsFragment : Fragment() {
             if (!isChecked) {
                 isChecked = true
                 dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_LFM
-                btn_lfm.text = "To All Matches"
-
+                root.btn_lfm.text = R.string.to_all_matches.toString()
+                root.btn_lfm.textSize = 14F
             } else {
                 isChecked = false
                 dataDisplay = datapoints
-//                dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-                btn_lfm.text = "To L4M"
+                root.btn_lfm.text = R.string.to_last_four_matches.toString()
+                root.btn_lfm.textSize = 18F
             }
-
             val adapter = TeamDetailsAdapter(
                 context = requireActivity(),
                 datapointsDisplayed = dataDisplay,

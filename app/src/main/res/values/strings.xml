@@ -44,6 +44,8 @@
     <string name="import_server">Import from server</string>
     <string name="btn_picklist_refresh">Refresh</string>
     <string name="export_picklist_button">Export to main server (for everyone)</string>
+    <string name="to_all_matches">To All Matches</string>
+    <string name="to_last_four_matches">To L4M</string>
 
     <string-array name="match_schedule_filter_array">
         <item>All Matches</item>
