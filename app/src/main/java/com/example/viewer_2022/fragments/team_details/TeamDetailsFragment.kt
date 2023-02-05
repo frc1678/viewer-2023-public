@@ -47,7 +47,7 @@ class TeamDetailsFragment : Fragment() {
         updateDatapointDisplayListView(root)
         robotPics(root)
 
-        /**
+        /*
             This creates the on menu select listener for the TeamDetails fragment navigation bar.
           The purpose of this navigation bar is to switch between the type of data that the
           list view in team details displays. The list view adapter contents can be altered
@@ -112,15 +112,13 @@ class TeamDetailsFragment : Fragment() {
                 isChecked = true
                 dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_LFM
                 root.btn_lfm.text = R.string.to_all_matches.toString()
-                root.btn_lfm.textSize = 14.toFloat()
+                root.btn_lfm.textSize = 14F
             } else {
                 isChecked = false
                 dataDisplay = datapoints
                 root.btn_lfm.text = R.string.to_last_four_matches.toString()
-                root.btn_lfm.textSize = 18.toFloat()
+                root.btn_lfm.textSize = 18F
             }
-            Log.e("btn checked2?", isChecked.toString())
-            Log.e("text", btn_lfm.text.toString())
             val adapter = TeamDetailsAdapter(
                 context = requireActivity(),
                 datapointsDisplayed = dataDisplay,
