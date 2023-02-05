@@ -111,12 +111,12 @@ class TeamDetailsFragment : Fragment() {
             if (!isChecked) {
                 isChecked = true
                 dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_LFM
-                root.btn_lfm.text = R.string.to_all_matches.toString()
+                root.btn_lfm.text = getString(R.string.to_all_matches)
                 root.btn_lfm.textSize = 14F
             } else {
                 isChecked = false
                 dataDisplay = datapoints
-                root.btn_lfm.text = R.string.to_last_four_matches.toString()
+                root.btn_lfm.text = getString(R.string.to_last_four_matches)
                 root.btn_lfm.textSize = 18F
             }
             val adapter = TeamDetailsAdapter(
