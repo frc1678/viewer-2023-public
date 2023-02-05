@@ -14,7 +14,7 @@ import com.example.viewer_2022.data.DataApi
 import com.example.viewer_2022.data.getDataFromWebsite
 import com.example.viewer_2022.data.loadTestData
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.mongodb_database_startup_splash_screen.*
+import kotlinx.android.synthetic.main.startup_splash_screen.*
 import kotlinx.coroutines.launch
 
 // Splash screen activity that waits for the data to pull from the MongoDB database until it
@@ -28,7 +28,7 @@ class StartupActivity : ViewerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.mongodb_database_startup_splash_screen)
+        setContentView(R.layout.startup_splash_screen)
         supportActionBar?.hide()
 
         Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
@@ -92,7 +92,7 @@ class StartupActivity : ViewerActivity() {
             runOnUiThread {
                 // Stuff that updates the UI
                 btn_retry.setVisibility(View.VISIBLE)
-                Snackbar.make(splash_screen_layout, "Could not find match_schedule file for event key ${Constants.EVENT_KEY}", 1000000000).show()
+                Snackbar.make(splash_screen_layout, "Could not find match_schedule file for schedule key ${Constants.SCHEDULE_KEY}", 1000000000).show()
             }
         }
 
