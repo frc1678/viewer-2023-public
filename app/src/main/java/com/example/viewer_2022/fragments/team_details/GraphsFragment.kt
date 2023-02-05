@@ -88,7 +88,7 @@ class GraphsFragment : Fragment() {
             AxisData.Builder().steps(yStepSize).labelAndAxisLinePadding(20.dp).axisOffset(20.dp)
                 .labelData { index ->
                     if (showingChargeLevels) Constants.CHARGE_LEVELS.getOrNull(index).toString()
-                    else (index * (maxRange / yStepSize)).toString()
+                    else (index * (maxRange / yStepSize)).toInt().toString()
                 }.build()
         // Create the label to be shown when a bar is selected
         val selectionHighlightData = SelectionHighlightData(popUpLabel = { x, y ->

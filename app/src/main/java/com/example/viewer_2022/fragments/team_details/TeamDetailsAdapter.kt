@@ -139,7 +139,7 @@ class TeamDetailsAdapter(
                 ).matches()
             ) {
                 if (getTeamDataValue(teamNumber, e) != null) {
-                    rowView.tv_datapoint_value.text = ("%.2f").format(
+                    rowView.tv_datapoint_value.text = ("%.1f").format(
                         getTeamDataValue(
                             teamNumber,
                             e
@@ -150,7 +150,7 @@ class TeamDetailsAdapter(
                         }
                     )
                 } else {
-                    rowView.tv_datapoint_value.text = ("%.2f").format(Constants.NULL_CHARACTER)
+                    rowView.tv_datapoint_value.text = ("%.1f").format(Constants.NULL_CHARACTER)
                 }
             } else {
                 rowView.tv_datapoint_value.text = getTeamDataValue(
