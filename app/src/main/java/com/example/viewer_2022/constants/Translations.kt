@@ -39,7 +39,7 @@ class Translations {
             "matches_incap" to "# Matches Incap",
             "lfm_matches_incap" to "Matches Incap",
             "lfm_max_incap" to "Max Incap",
-            "lfm_tele_avg_incap_time" to "Avg Incap Time",
+            "lfm_avg_incap_time" to "Avg Incap Time",
             "lfm_total_incap" to "Total Incap",
             "lfm_median_incap" to "Median Incap",
             "mode_start_position" to "Mode Start Position",
@@ -91,7 +91,7 @@ class Translations {
             "charging_rp" to "Charging RP",
             "has_communication_device" to "Communication Device on Robot",
             "intakes_ground" to "Ground Intakes",
-            "intakes_low_node" to "Low Row Intakes",
+            "intakes_low_row" to "Low Row Intakes",
             "intakes_station" to "Station Intakes",
             "length" to "Length (in.)",
             "lfm_auto_avg_cone_high" to "Avg Cones High",
@@ -172,7 +172,12 @@ class Translations {
             "tele_total_gamepieces" to "Tele Total Gamepieces",
             "tele_total_gamepieces_low" to "# Gamepieces Low Total",
             "weight" to "Weight (lbs.)",
-            "width" to "Width (in.)"
+            "width" to "Width (in.)",
+            "tele_park_successes" to "Park Successes",
+            "lfm_tele_park_successes" to "Park Successes",
+            "matches_scored_coop" to "Matches Scored Coop",
+            "tele_avg_charge_points" to "Avg Charge Points",
+            "auto_avg_charge_points" to "Avg Charge Points"
         )
 
         val DRIVETRAIN: Map<String, String> = mapOf(

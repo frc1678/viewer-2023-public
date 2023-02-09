@@ -14,12 +14,10 @@ import java.io.File
 class Constants {
     companion object {
         //Game specific data.
-        const val EVENT_KEY = "2022mttd"
-        const val SCHEDULE_KEY = "2022mttd"
-        const val MONGO_ATLAS = "mongodb-atlas"
+        const val EVENT_KEY = "test2022cc"
+        const val SCHEDULE_KEY = "2022cc"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = true
-        const val CARDINAL_KEY = "a7f9d746a13f8ea86bd3fa9931c64ab8af8f2694"
+        const val USE_TEST_DATA = false
         const val REFRESH_INTERVAL = 120
 
         //Util.
@@ -63,7 +61,7 @@ class Constants {
             "Other",
             "intakes_station",
             "intakes_ground",
-            "intakes_low_node",
+            "intakes_low_row",
             "incap"
         )
 
@@ -103,6 +101,7 @@ class Constants {
             "auto_charge_attempts",
             "auto_dock_successes",
             "auto_engage_successes",
+            "auto_avg_charge_points",
             "Tele",
             "tele_avg_gamepieces_low",
             "tele_avg_cube_low",
@@ -115,7 +114,7 @@ class Constants {
             "tele_avg_cone_high",
             "tele_avg_cone_total",
             "tele_max_cones",
-            "scored_coop",
+            "matches_scored_coop",
             "tele_avg_gamepieces",
             "tele_sd_gamepieces",
             "tele_max_gamepieces",
@@ -129,12 +128,12 @@ class Constants {
             "driver_field_awareness",
             "driver_quickness",
             "Endgame",
-            "tele_park",
+            "tele_park_successes",
             "tele_charge_attempts",
             "tele_dock_successes",
             "tele_engage_successes",
             "charge_percent_success",
-            "avg_charge_points",
+            "tele_avg_charge_points",
             "Pit Data",
             "has_communication_device",
             "has_vision",
@@ -183,16 +182,16 @@ class Constants {
             "lfm_tele_max_cones",
             "lfm_tele_avg_gamepieces",
             "lfm_tele_max_gamepieces",
-            "lfm_tele_avg_incap_time",
+            "lfm_avg_incap_time",
             "lfm_max_incap",
             "lfm_total_incap",
             "lfm_matches_incap",
             "lfm_median_incap",
             "L4M Endgame",
+            "lfm_tele_park_successes",
             "lfm_tele_charge_attempts",
             "lfm_tele_dock_successes",
             "lfm_tele_engage_successes",
-            "lfm_tele_park",
             "lfm_charge_percent_success"
         )
 
@@ -401,7 +400,13 @@ class Constants {
             "lfm_tele_avg_gamepieces" to true,
             "lfm_auto_max_gamepieces" to true,
             "lfm_auto_avg_gamepieces" to true,
-            "scored_coop" to true
+            "matches_scored_coop" to true,
+            "lfm_tele_park_successes" to true,
+            "tele_park_successes" to true,
+            "tele_avg_charge_points" to true,
+            "auto_avg_charge_points" to true,
+            "lfm_avg_incap_time" to true,
+            "lfm_median_incap" to true,
         )
 
         val RANK_BY_PIT = mapOf<String, Int>(
