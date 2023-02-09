@@ -8,6 +8,7 @@
 
 package com.example.viewer_2022
 
+import android.util.Log
 import com.example.viewer_2022.constants.Constants
 import com.example.viewer_2022.constants.Translations
 
@@ -27,6 +28,11 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                     getTeamObjectByKey(
                         teamNumber, field
                     )
+                        //removes extra brackets and apostrophes (for Mode Start Position)
+                        ?.replace("]", "")
+                        ?.replace("\'", "")
+                        ?.replace("[","")
+                        ?.replace(",",", ") //adds space after comma to separate list items
                 }
             }
         } catch (e: Exception) {
@@ -48,6 +54,12 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                         return Translations.DRIVETRAIN_MOTOR_TYPE[getRawObjectByKey(
                             teamNumber, field
                         )] ?: Constants.NULL_CHARACTER
+                    }
+                    "mode_start_position" -> {
+                        return getTeamObjectByKey(
+                            teamNumber, field
+                        ) ?.replace('[', ' ')
+                            ?.replace(']', ' ')
                     }
                     else -> {
                         return getRawObjectByKey(
