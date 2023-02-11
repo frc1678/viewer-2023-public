@@ -68,7 +68,6 @@ class MainViewerActivity : ViewerActivity() {
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
         var notesCache: MutableMap<String, String> = mutableMapOf()
         var mapMode = 1
-        var mapRotation = -90F
 
 
         suspend fun updateNotesCache() {
