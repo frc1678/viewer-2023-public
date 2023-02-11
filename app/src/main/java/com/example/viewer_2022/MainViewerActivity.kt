@@ -47,7 +47,6 @@ import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
 import kotlinx.android.synthetic.main.field_map_popup.view.close_button
-import kotlinx.android.synthetic.main.pit_map_popup.view.*
 import kotlinx.coroutines.launch
 import org.apache.commons.lang3.CharSetUtils.delete
 import org.json.JSONException
@@ -69,7 +68,6 @@ class MainViewerActivity : ViewerActivity() {
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
         var notesCache: MutableMap<String, String> = mutableMapOf()
         var mapMode = 1
-        var mapRotation = -90F
 
 
         suspend fun updateNotesCache() {
@@ -261,42 +259,7 @@ class MainViewerActivity : ViewerActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.toolbar, menu)
         val fieldMapItem: MenuItem = menu.findItem(R.id.field_map_button)
-        val pitMapItem: MenuItem = menu.findItem(R.id.pit_map_button)
         val fieldButton = fieldMapItem.actionView
-        val pitButton = pitMapItem.actionView
-
-        pitButton?.setOnClickListener {
-            val popupView = View.inflate(this, R.layout.pit_map_popup, null)
-            val width = LinearLayout.LayoutParams.MATCH_PARENT
-            val height = LinearLayout.LayoutParams.MATCH_PARENT
-            val popupWindow = PopupWindow(popupView, width, height, false)
-
-            var mapFile = File(
-                Constants.STORAGE_FOLDER,
-                "pit_map"
-            )
-
-            if (mapFile.exists()) {
-                popupView.pit_map.setImageURI(mapFile.toUri())
-            }
-
-            mapRotation =
-                this.getSharedPreferences("VIEWER", 0).getFloat("mapRotation", mapRotation)
-
-            popupView.pit_map.rotation = mapRotation
-            popupWindow.showAtLocation(it, Gravity.CENTER, 0, 0)
-
-            popupView.rotate_view.setOnClickListener {
-                popupView.pit_map.rotation += 90F
-                mapRotation = popupView.pit_map.rotation
-                this.getSharedPreferences("VIEWER", 0)?.edit()
-                    ?.putFloat("mapRotation", mapRotation)?.apply()
-            }
-
-            popupView.close_button.setOnClickListener {
-                popupWindow.dismiss()
-            }
-        }
 
         fieldButton?.setOnClickListener {
             val popupView = View.inflate(this, R.layout.field_map_popup, null)
