@@ -25,18 +25,18 @@ class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
         RecyclerView.ViewHolder(itemViewBinding.root) {
         fun bindRoot(teamNumber: String) = with(itemViewBinding) {
             if (context.picklistData.ranking.contains(teamNumber)) {
-                tvFirstRank.text =
+                tvLocalRank.text =
                     context.picklistData.ranking.indexOf(teamNumber).plus(1).toString()
                 root.setBackgroundColor(context.resources.getColor(R.color.White, null))
             } else {
                 root.setBackgroundColor(context.resources.getColor(R.color.Red, null))
-                tvFirstRank.text = "-"
+                tvLocalRank.text = "-"
             }
             tvTeamNumber.text = teamNumber
-            tvOriginalRank.text =
-                (context.originalPicklistData.ranking.indexOf(teamNumber).takeIf { it != -1 }
+            tvImportedRank.text =
+                (context.importedPicklistData.ranking.indexOf(teamNumber).takeIf { it != -1 }
                     ?.plus(1)
-                    ?: if (teamNumber in context.originalPicklistData.dnp) "DNP" else "?").toString()
+                    ?: if (teamNumber in context.importedPicklistData.dnp) "DNP" else "?").toString()
             root.setOnClickListener { onClick(teamNumber) }
         }
     }

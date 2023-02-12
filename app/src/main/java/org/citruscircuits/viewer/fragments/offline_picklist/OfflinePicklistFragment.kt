@@ -15,6 +15,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.ktor.client.call.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
+import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.constants.Constants
@@ -23,40 +32,24 @@ import org.citruscircuits.viewer.databinding.ExportPicklistPopupBinding
 import org.citruscircuits.viewer.databinding.FragmentOfflinePicklistBinding
 import org.citruscircuits.viewer.databinding.ImportPicklistPopupBinding
 import org.citruscircuits.viewer.fragments.live_picklist.LivePicklistFragment
-import io.ktor.client.call.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.http.*
 import org.citruscircuits.viewer.showError
 import org.citruscircuits.viewer.showSuccess
-import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.io.File
 
 class OfflinePicklistFragment : Fragment() {
     var picklistData = PicklistData()
-    var originalPicklistData = PicklistData()
+    var importedPicklistData = PicklistData()
 
     private lateinit var adapter: OfflinePicklistAdapter
     private lateinit var binding: FragmentOfflinePicklistBinding
     private val dataFile = File(Constants.STORAGE_FOLDER, "picklist.json")
+    private val dataFileImported = File(Constants.STORAGE_FOLDER, "picklist-imported.json")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        if (!dataFile.exists()) {
-            dataFile.writeText(
-                """
-                {
-                    "ranking": [],
-                    "dnp": []
-                }
-            """.trimIndent()
-            )
-        }
+        if (!dataFile.exists()) dataFile.writeText(Json.encodeToString(PicklistData()))
+        if (!dataFileImported.exists()) dataFileImported.writeText(Json.encodeToString(PicklistData()))
         binding = FragmentOfflinePicklistBinding.inflate(inflater, container, false)
         // Init adapter
         itemTouchHelper.attachToRecyclerView(binding.rvOfflinePicklist)
@@ -96,7 +89,8 @@ class OfflinePicklistFragment : Fragment() {
                         }
                     }
                 }
-                originalPicklistData = picklistData
+                importedPicklistData = picklistData
+                dataFileImported.writeText(Json.encodeToString(importedPicklistData))
                 updateData()
             }.show(parentFragmentManager, "import_popup")
         }
@@ -105,10 +99,10 @@ class OfflinePicklistFragment : Fragment() {
         binding.btnUpload.setOnClickListener {
             ExportPopup {
                 runBlocking {
-                    val localData = getData()
+                    getData()
                     try {
                         when (val resp =
-                            PicklistApi.setPicklist(localData, it, Constants.EVENT_KEY)) {
+                            PicklistApi.setPicklist(picklistData, it, Constants.EVENT_KEY)) {
                             is PicklistApi.PicklistSetResponse.Success -> {
                                 showSuccess(
                                     requireContext(),
@@ -137,17 +131,15 @@ class OfflinePicklistFragment : Fragment() {
 //        }
 
         // Populate initial data
-        picklistData = getData()
-        originalPicklistData = picklistData
+        getData()
         updateData()
 
         return binding.root
     }
 
-    private fun getData(): PicklistData {
-        val dataJson = dataFile.readText()
-        val data = Json.decodeFromString<PicklistData>(dataJson)
-        return PicklistData(data.ranking, data.dnp)
+    private fun getData() {
+        picklistData = Json.decodeFromString(dataFile.readText())
+        importedPicklistData = Json.decodeFromString(dataFileImported.readText())
     }
 
     fun saveData(ranking: List<String>, dnp: List<String>) {

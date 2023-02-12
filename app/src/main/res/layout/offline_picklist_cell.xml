@@ -11,11 +11,11 @@
             android:textStyle="bold" />
 
     <TextView
-            android:id="@+id/tv_first_rank"
+            android:id="@+id/tv_local_rank"
             style="@style/tv_standard_gray" />
 
     <TextView
-            android:id="@+id/tv_original_rank"
+            android:id="@+id/tv_imported_rank"
             style="@style/tv_standard_gray" />
 
 </LinearLayout>
