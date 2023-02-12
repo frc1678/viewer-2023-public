@@ -406,7 +406,7 @@ class Constants {
             "tele_avg_charge_points" to true,
             "auto_avg_charge_points" to true,
             "lfm_avg_incap_time" to true,
-            "lfm_median_incap" to true,
+            "lfm_median_nonzero_incap" to true,
         )
 
         val RANK_BY_PIT = mapOf<String, Int>(
