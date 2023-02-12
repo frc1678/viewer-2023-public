@@ -18,69 +18,44 @@ import org.citruscircuits.viewer.fragments.team_details.TeamDetailsFragment
 class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
     ListAdapter<String, OfflinePicklistAdapter.OfflinePicklistViewHolder>(object :
         DiffUtil.ItemCallback<String>() {
-
-        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem.contentEquals(newItem)
-        }
-
-        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem.contentEquals(newItem)
-        }
-
-
+        override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
+        override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
     }) {
     inner class OfflinePicklistViewHolder(private val itemViewBinding: LivePicklistCellBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root) {
-        fun bindRoot(teamNumber: String) {
+        fun bindRoot(teamNumber: String) = with(itemViewBinding) {
             if (context.picklistData.ranking.contains(teamNumber)) {
-                itemViewBinding.tvFirstRank.text =
+                tvFirstRank.text =
                     context.picklistData.ranking.indexOf(teamNumber).plus(1).toString()
-                itemViewBinding.root.setBackgroundColor(context.resources.getColor(R.color.White))
+                root.setBackgroundColor(context.resources.getColor(R.color.White, null))
             } else {
-                itemViewBinding.root.setBackgroundColor(context.resources.getColor(R.color.Red))
-                itemViewBinding.tvFirstRank.text = "-"
+                root.setBackgroundColor(context.resources.getColor(R.color.Red, null))
+                tvFirstRank.text = "-"
             }
-            itemViewBinding.tvTeamNumber.text = teamNumber
-            itemViewBinding.root.setOnClickListener { onClick(teamNumber) }
-
+            tvTeamNumber.text = teamNumber
+            root.setOnClickListener { onClick(teamNumber) }
         }
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = OfflinePicklistViewHolder(
+        LivePicklistCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    )
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OfflinePicklistViewHolder {
-        return OfflinePicklistViewHolder(
-
-            LivePicklistCellBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
-            )
-
-        )
-    }
-
-    override fun onBindViewHolder(holder: OfflinePicklistViewHolder, position: Int) {
-
-        val picklistItem = this.getItem(position)
-        holder.bindRoot(picklistItem)
-    }
-
+    override fun onBindViewHolder(holder: OfflinePicklistViewHolder, position: Int) =
+        holder.bindRoot(getItem(position))
 
     fun onClick(teamNumber: String) {
         if (teamNumber in MainViewerActivity.teamList) {
             val teamDetailsFragment = TeamDetailsFragment()
-
             // Put the arguments for the team details fragment.
             teamDetailsFragment.arguments = Bundle().also {
-                it.putString(
-                    Constants.TEAM_NUMBER,
-                    teamNumber
-                )
+                it.putString(Constants.TEAM_NUMBER, teamNumber)
             }
             // Switch to the team details fragment.
-            val ft = context.fragmentManager!!.beginTransaction()
+            val ft = context.parentFragmentManager.beginTransaction()
             ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             context.view?.rootView?.findViewById<ViewGroup>(R.id.nav_host_fragment)?.let {
-                ft.addToBackStack(null).replace(it.id, teamDetailsFragment)
-                    .commit()
+                ft.addToBackStack(null).replace(it.id, teamDetailsFragment).commit()
             }
         }
     }
@@ -88,10 +63,8 @@ class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
     fun handleOrderChange(from: Int, to: Int) {
         val newRanking = context.picklistData.ranking.toMutableList()
         newRanking.add(to, newRanking.removeAt(from))
-
         context.saveData(newRanking, context.picklistData.dnp)
         context.updateData()
-
     }
 
     fun handleDNPToggle(position: Int) {
@@ -108,7 +81,4 @@ class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
         context.saveData(newRanking, newDnp)
         context.updateData()
     }
-
-
 }
-
