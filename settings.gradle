@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='viewer-2022'
+rootProject.name='Viewer'
