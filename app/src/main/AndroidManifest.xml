@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.viewer_2022">
+    package="org.citruscircuits.viewer">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -15,14 +15,14 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".StartupActivity" android:exported="true" >
+            android:name="org.citruscircuits.viewer.StartupActivity" android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".MainViewerActivity" android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".ViewerActivity"/>
+        <activity android:name="org.citruscircuits.viewer.WelcomeActivity" />
+        <activity android:name="org.citruscircuits.viewer.MainViewerActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="org.citruscircuits.viewer.ViewerActivity"/>
     </application>
 </manifest>
