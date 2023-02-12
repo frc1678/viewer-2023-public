@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.constants.Constants
-import org.citruscircuits.viewer.databinding.LivePicklistCellBinding
+import org.citruscircuits.viewer.databinding.OfflinePicklistCellBinding
 import org.citruscircuits.viewer.fragments.team_details.TeamDetailsFragment
 
 /**
@@ -21,7 +21,7 @@ class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
         override fun areItemsTheSame(oldItem: String, newItem: String) = oldItem == newItem
         override fun areContentsTheSame(oldItem: String, newItem: String) = oldItem == newItem
     }) {
-    inner class OfflinePicklistViewHolder(private val itemViewBinding: LivePicklistCellBinding) :
+    inner class OfflinePicklistViewHolder(private val itemViewBinding: OfflinePicklistCellBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root) {
         fun bindRoot(teamNumber: String) = with(itemViewBinding) {
             if (context.picklistData.ranking.contains(teamNumber)) {
@@ -38,7 +38,7 @@ class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = OfflinePicklistViewHolder(
-        LivePicklistCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        OfflinePicklistCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: OfflinePicklistViewHolder, position: Int) =
