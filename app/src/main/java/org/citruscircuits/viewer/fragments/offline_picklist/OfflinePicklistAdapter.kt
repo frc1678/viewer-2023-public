@@ -33,6 +33,10 @@ class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
                 tvFirstRank.text = "-"
             }
             tvTeamNumber.text = teamNumber
+            tvOriginalRank.text =
+                (context.originalPicklistData.ranking.indexOf(teamNumber).takeIf { it != -1 }
+                    ?.plus(1)
+                    ?: if (teamNumber in context.originalPicklistData.dnp) "DNP" else "?").toString()
             root.setOnClickListener { onClick(teamNumber) }
         }
     }

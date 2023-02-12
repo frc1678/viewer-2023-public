@@ -38,6 +38,7 @@ import java.io.File
 
 class OfflinePicklistFragment : Fragment() {
     var picklistData = PicklistData()
+    var originalPicklistData = PicklistData()
 
     private lateinit var adapter: OfflinePicklistAdapter
     private lateinit var binding: FragmentOfflinePicklistBinding
@@ -83,20 +84,20 @@ class OfflinePicklistFragment : Fragment() {
                             "Importing team list: ${MainViewerActivity.teamList}"
                         )
                         saveData(MainViewerActivity.teamList, emptyList())
-                        updateData()
                     }
 
                     ImportType.Server -> runBlocking {
                         try {
                             val data = PicklistApi.getPicklist(Constants.EVENT_KEY)
                             saveData(data.ranking, data.dnp)
-                            updateData()
                         } catch (e: Throwable) {
                             Log.e("offline_picklist", "Error importing picklist from server", e)
                             showError(requireContext(), "Error pulling picklist")
                         }
                     }
                 }
+                originalPicklistData = picklistData
+                updateData()
             }.show(parentFragmentManager, "import_popup")
         }
 
@@ -137,6 +138,7 @@ class OfflinePicklistFragment : Fragment() {
 
         // Populate initial data
         picklistData = getData()
+        originalPicklistData = picklistData
         updateData()
 
         return binding.root
