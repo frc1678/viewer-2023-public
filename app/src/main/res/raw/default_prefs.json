@@ -272,6 +272,7 @@
     "tele_avg_cone_high",
     "tele_avg_cone_total",
     "tele_max_cones",
+    "matches_scored_coop",
     "tele_avg_gamepieces",
     "tele_max_gamepieces",
     "avg_total_intakes",
