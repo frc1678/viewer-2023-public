@@ -54,7 +54,9 @@ class TeamDetailsAdapter(
     // Populate the elements of the custom cell.
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         val graphsFragment = GraphsFragment()
+        val modeStartPositionFragment = ModeStartPositionFragment()
         val graphsFragmentArguments = Bundle()
+        val modeStartPositionFragmentArguments = Bundle()
         val e = getItem(position)
         val regex: Pattern = Pattern.compile("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
         val rowView = inflater.inflate(R.layout.team_details_cell, parent, false)
@@ -165,21 +167,33 @@ class TeamDetailsAdapter(
             )?.placement?.toString() ?: Constants.NULL_CHARACTER
         }
         //Only add graphable onclick listener if Constants contains the datapoint
-        if (Constants.GRAPHABLE.contains(datapointsDisplayed[position])
-        ) {
-
+        if (Constants.GRAPHABLE.contains(datapointsDisplayed[position])) {
             rowView.setOnClickListener {
-                graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
-                //Get the tim datapoint from the team datapoint and add as an argument
-                graphsFragmentArguments.putString(
-                    "datapoint",
-                    Constants.GRAPHABLE[datapointsDisplayed[position]]
-                )
-                graphsFragment.arguments = graphsFragmentArguments
-                context.supportFragmentManager.beginTransaction()
-                    .addToBackStack(null)
-                    .replace(R.id.nav_host_fragment, graphsFragment, "graphs")
-                    .commit()
+                if (datapointsDisplayed[position] == "mode_start_position") {
+                    modeStartPositionFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+                    modeStartPositionFragmentArguments.putString(
+                        "datapoint",
+                        Constants.GRAPHABLE[datapointsDisplayed[position]]
+                    )
+                    modeStartPositionFragment.arguments = modeStartPositionFragmentArguments
+                    context.supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, modeStartPositionFragment, "mode_start_position")
+                        .commit()
+                }
+                else {
+                    graphsFragmentArguments.putString(Constants.TEAM_NUMBER, teamNumber)
+                    //Get the tim datapoint from the team datapoint and add as an argument
+                    graphsFragmentArguments.putString(
+                        "datapoint",
+                        Constants.GRAPHABLE[datapointsDisplayed[position]]
+                    )
+                    graphsFragment.arguments = graphsFragmentArguments
+                    context.supportFragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, graphsFragment, "graphs")
+                        .commit()
+                }
             }
         }
 
