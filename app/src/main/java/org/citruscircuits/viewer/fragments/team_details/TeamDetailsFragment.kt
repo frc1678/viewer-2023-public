@@ -124,12 +124,13 @@ class TeamDetailsFragment : Fragment() {
         }
     }
 
+    // Displays a button to view the team's picture if the picture file exists on the phone
     private fun robotPics(root: View) {
         val robotPicFragmentArguments = Bundle()
         val robotPicFragment = RobotPicFragment()
         if (!File(
                 Constants.STORAGE_FOLDER,
-                "${teamNumber}_full_robot_.jpg"
+                "${teamNumber}_full_robot.jpg"
             ).exists()
         ) {
             root.robot_pic_button.layoutParams = LinearLayout.LayoutParams(0, 0, 0f)
