@@ -19,6 +19,8 @@
     <color name="DarkYellow">#C9AA23</color>
     <color name="ButtonGreen">#4CAF50</color>
     <color name="LimeGreen">#9CCC65</color>
+    <color name="Cube">#D1C4E9</color>
+    <color name="Cone">#FFECB3</color>
 
     <color name="Highlight_0">#FFFFFF</color>
     <color name="Highlight_1">#FFF59D</color>

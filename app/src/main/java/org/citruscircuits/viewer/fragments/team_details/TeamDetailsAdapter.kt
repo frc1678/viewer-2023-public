@@ -159,6 +159,11 @@ class TeamDetailsAdapter(
                     e
                 )
             }
+            if ("cube" in e) rowView.setBackgroundColor(
+                context.resources.getColor(R.color.Cube, null)
+            ) else if ("cone" in e) rowView.setBackgroundColor(
+                context.resources.getColor(R.color.Cone, null)
+            )
         }
         if (e in Constants.RANKABLE_FIELDS) {
             rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(
