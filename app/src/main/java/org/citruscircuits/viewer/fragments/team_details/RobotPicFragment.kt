@@ -24,8 +24,7 @@ import java.io.File
 class RobotPicFragment : Fragment() {
     private var teamNumber: String? = null
     private var teamName: String? = null
-    private var picFile1: File? = null
-    private var picFile2: File? = null
+    private var picFile: File? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -45,23 +44,16 @@ class RobotPicFragment : Fragment() {
     }
 
     private fun getPicFiles() {
-        picFile1 = File(
+        picFile = File(
             Constants.STORAGE_FOLDER,
-            "${teamNumber}_full_robot_1.jpg"
-        )
-        picFile2 = File(
-            Constants.STORAGE_FOLDER,
-            "${teamNumber}_full_robot_2.jpg"
+            "${teamNumber}_full_robot.jpg"
         )
     }
 
     private fun showPictures(root: View) {
         val bitmapsToDisplay = mutableListOf<Bitmap>()
-        if (picFile1!!.exists()) {
-            bitmapsToDisplay.add(BitmapFactory.decodeFile(picFile1!!.absolutePath).rotated())
-        }
-        if (picFile2!!.exists()) {
-            bitmapsToDisplay.add(BitmapFactory.decodeFile(picFile2!!.absolutePath).rotated())
+        if (picFile!!.exists()) {
+            bitmapsToDisplay.add(BitmapFactory.decodeFile(picFile!!.absolutePath).rotated())
         }
         for (bitmap in bitmapsToDisplay) {
             root.ll_robot_pics.addView(ImageView(context).also {

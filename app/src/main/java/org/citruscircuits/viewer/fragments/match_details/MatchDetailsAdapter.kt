@@ -81,9 +81,10 @@ class MatchDetailsAdapter(
                     if (!hasActualData)
                         getTeamValue(teamNumbers[i], datapointsDisplay[position])
                         ?: Constants.NULL_CHARACTER
-                    else if(datapointsDisplay[position] == "driver_ability") {
-                            var teamData = getTeamDataValue(teamNumbers[i], datapointsDisplay[position])
-                        if(teamData != null) {
+                    else if(datapointsDisplay[position] == "driver_ability" ||
+                        datapointsDisplay[position] == "current_avg_rps") {
+                        var teamData = getTeamDataValue(teamNumbers[i], datapointsDisplay[position])
+                        if(teamData != null && teamData != Constants.NULL_CHARACTER) {
                             ("%.1f").format(
                                 teamData.toFloatOrNull()
                             )
@@ -99,10 +100,6 @@ class MatchDetailsAdapter(
                         textViews[i].setTextColor(ContextCompat.getColor(context, R.color.Yellow))
                         textViews[i].setTextSize(5,4.5f)
                     }
-//                    else if (textViews[i].text == "◾") {
-//                        textViews[i].setTextColor(ContextCompat.getColor(context, R.color.Purple))
-//                        textViews[i].setTextSize(5,5.5f)
-//                    }
                 }
             }
         }
