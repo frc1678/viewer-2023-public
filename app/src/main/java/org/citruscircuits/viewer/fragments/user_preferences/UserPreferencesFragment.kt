@@ -1,6 +1,7 @@
 package org.citruscircuits.viewer.fragments.user_preferences
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,6 @@ class UserPreferencesFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_user_pref, container, false)
 
         val userName = UserDatapoints.contents?.get("selected")?.asString
-
         root.user_datapoints_header.text = if (userName == "OTHER") {
             "User's Datapoints"
         } else {
