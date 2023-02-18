@@ -254,7 +254,7 @@ class MatchScheduleListAdapter(
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                                tv.setImageResource(R.drawable.ic_power)
+                                tv.setImageResource(R.drawable.baseline_battery_charging_full)
                             } else {
                                 tv.setImageDrawable(null)
                             }
@@ -262,7 +262,7 @@ class MatchScheduleListAdapter(
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.ic_power)
+                            tv.setImageResource(R.drawable.baseline_battery_charging_full)
                         } else {
                             tv.setImageDrawable(null)
                         }
@@ -297,7 +297,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo =
                                 "%.1f".format(value.toFloat()).toFloat()
                         }
-                        tv.setImageResource(R.drawable.ic_power)
+                        tv.setImageResource(R.drawable.baseline_battery_charging_full)
                     }
                 }
             } else tv.setImageDrawable(null)
@@ -332,7 +332,7 @@ class MatchScheduleListAdapter(
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.blueActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                                tv.setImageResource(R.drawable.ic_power)
+                                tv.setImageResource(R.drawable.baseline_battery_charging_full)
                             } else {
                                 tv.setImageDrawable(null)
                             }
@@ -340,7 +340,7 @@ class MatchScheduleListAdapter(
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo != null) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.ic_power)
+                            tv.setImageResource(R.drawable.baseline_battery_charging_full)
                         } else {
                             tv.setImageDrawable(null)
                         }
@@ -375,7 +375,7 @@ class MatchScheduleListAdapter(
                             MainViewerActivity.matchCache[matchNumber]!!.bluePredictedRPTwo =
                                 "%.1f".format(value.toFloat()).toFloat()
                         }
-                        tv.setImageResource(R.drawable.ic_power)
+                        tv.setImageResource(R.drawable.baseline_battery_charging_full)
                     }
                 }
             } else tv.setImageDrawable(null)
