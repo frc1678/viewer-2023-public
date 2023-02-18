@@ -91,7 +91,6 @@ class Translations {
             "charging_rp" to "Charging RP",
             "has_communication_device" to "Communication Device on Robot",
             "intakes_ground" to "Ground Intakes",
-            "intakes_low_row" to "Low Row Intakes",
             "intakes_station" to "Station Intakes",
             "length" to "Length (in.)",
             "lfm_auto_avg_cone_high" to "Avg Cones High",

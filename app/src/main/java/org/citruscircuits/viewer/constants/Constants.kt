@@ -61,7 +61,6 @@ class Constants {
             "Other",
             "intakes_station",
             "intakes_ground",
-            "intakes_low_row",
             "incap"
         )
 
@@ -239,7 +238,6 @@ class Constants {
             "tele_avg_cone_total" to "tele_total_cones",
             "tele_max_cones" to "tele_total_cones",
             "avg_intakes_ground" to "intakes_ground",
-            "avg_intakes_low_row" to "intakes_low_row",
             "avg_intakes_station" to "intakes_station",
             "matches_incap" to "incap",
             "max_incap" to "incap",
