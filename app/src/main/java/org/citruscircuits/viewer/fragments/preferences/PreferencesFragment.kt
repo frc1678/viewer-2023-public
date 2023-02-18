@@ -2,6 +2,7 @@ package org.citruscircuits.viewer.fragments.preferences
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,8 +49,8 @@ class PreferencesFragment : Fragment() {
         root.btn_user_pref_edit.setOnClickListener {
             val userPreferencesFragment = UserPreferencesFragment()
 
-            fragmentManager!!.beginTransaction().addToBackStack(null).replace(
-                (view!!.parent as ViewGroup).id,
+            requireFragmentManager().beginTransaction().addToBackStack(null).replace(
+                (requireView().parent as ViewGroup).id,
                 userPreferencesFragment
             ).commit()
         }
@@ -80,9 +81,8 @@ class PreferencesFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                var userName: String = spin_user.selectedItem.toString()
+                var userName: String = spinner.selectedItem.toString()
                     .uppercase(Locale.getDefault())
-
                 UserDatapoints.contents?.remove("selected")
                 UserDatapoints.contents?.addProperty("selected", userName)
                 UserDatapoints.write()
