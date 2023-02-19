@@ -128,10 +128,6 @@ class TeamDetailsFragment : Fragment() {
     private fun robotPics(root: View) {
         val robotPicFragmentArguments = Bundle()
         val robotPicFragment = RobotPicFragment()
-        Log.d("robotPics", File(
-            Constants.STORAGE_FOLDER,
-            "${teamNumber}_full_robot.jpg"
-        ).absolutePath)
         if (!File(
                 Constants.STORAGE_FOLDER,
                 "${teamNumber}_full_robot.jpg"
