@@ -60,12 +60,21 @@ class PickabilityFragment() : Fragment() {
             ).commit()
         }
 
-        ArrayAdapter.createFromResource(requireContext(), R.array.pickability, android.R.layout.simple_spinner_item).also { adapter ->
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.pickability,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerMode.adapter = adapter
         }
         binding.spinnerMode.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 PickabilityMode.fromSpinner(position)?.let {
                     mode = it
                     updateMatchScheduleListView()
@@ -131,12 +140,13 @@ enum class PickabilityMode {
     SecondDefensive,
     SecondOverall;
 
-    val datapoint: String get() = when (this) {
-        First -> "first_pickability"
-        SecondOffensive -> "offensive_second_pickability"
-        SecondDefensive -> "defensive_second_pickability"
-        SecondOverall -> "overall_second_pickability"
-    }
+    val datapoint: String
+        get() = when (this) {
+            First -> "first_pickability"
+            SecondOffensive -> "offensive_second_pickability"
+            SecondDefensive -> "defensive_second_pickability"
+            SecondOverall -> "overall_second_pickability"
+        }
 
     companion object {
         fun fromSpinner(spinnerPosition: Int): PickabilityMode? = when (spinnerPosition) {
