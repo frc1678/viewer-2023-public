@@ -23,7 +23,7 @@ suspend fun loadTestData(resources: Resources) {
         Json.decodeFromString<DataApi.ViewerData>(readFile(resources.openRawResource(R.raw.test_data)))
     val rawMatchSchedule = Json.decodeFromString<MutableMap<String, MatchScheduleMatch>>(
         readFile(
-            resources.openRawResource(R.raw.match_schedule)
+            resources.openRawResource(R.raw.test_match_schedule)
         )
     )
 
@@ -48,7 +48,7 @@ suspend fun loadTestData(resources: Resources) {
             .toMap().toMutableMap()
 
     MainViewerActivity.teamList =
-        Json.decodeFromString<List<Int>>(readFile(resources.openRawResource(R.raw.team_list)))
+        Json.decodeFromString<List<Int>>(readFile(resources.openRawResource(R.raw.test_team_list)))
             .map { it.toString() }
 
     lastUpdated = Calendar.getInstance().time

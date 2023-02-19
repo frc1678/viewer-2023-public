@@ -17,7 +17,7 @@ class Constants {
         const val EVENT_KEY = "test2022cc"
         const val SCHEDULE_KEY = "2022cc"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = false
+        const val USE_TEST_DATA = true
         const val REFRESH_INTERVAL = 120
 
         //Util.

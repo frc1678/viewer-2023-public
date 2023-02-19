@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.R
@@ -13,35 +15,39 @@ import org.citruscircuits.viewer.convertToFilteredTeamsList
 import org.citruscircuits.viewer.fragments.team_details.TeamDetailsFragment
 import org.citruscircuits.viewer.getTeamDataValue
 import kotlinx.android.synthetic.main.fragment_pickability.view.*
+import org.citruscircuits.viewer.databinding.FragmentGraphsBinding
+import org.citruscircuits.viewer.databinding.FragmentPickabilityBinding
 import java.util.*
 
 /**
  * Page that ranks the pickability of each team. Previously allowed for first pickability and second pickability
  */
-class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
+class PickabilityFragment() : Fragment() {
 
     private val teamDetailsFragment = TeamDetailsFragment()
     private val teamDetailsFragmentArguments = Bundle()
 
     private var refreshId: String? = null
 
+    private var mode = PickabilityMode.First
+    private var _binding: FragmentPickabilityBinding? = null
+
+    /**
+     * This property is only valid between [onCreateView] and [onDestroyView].
+     */
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_pickability, container, false)
-        root.tv_pickability_header.text =
-            mode.toString().lowercase(Locale.getDefault())
-                .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } + " Pickability"
-        val map: Map<String, Float?> = updateMatchScheduleListView(root)
+    ): View {
+        _binding = FragmentPickabilityBinding.inflate(inflater, container, false)
+        val map: Map<String, String> = updateMatchScheduleListView()
 
-        if (mode == PickabilityMode.SECOND) {
-            root.btn_pickability.text = " To First Pickability"
-        } else root.btn_pickability.text = " To Second Pickability"
-        root.lv_pickability.setOnItemClickListener { _, _, position, _ ->
+        binding.lvPickability.setOnItemClickListener { _, _, position, _ ->
             val list: List<String> = map.keys.toList()
-            val pickabilityFragmentTransaction = this.fragmentManager!!.beginTransaction()
+            val pickabilityFragmentTransaction = parentFragmentManager.beginTransaction()
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER,
                 list[position]
@@ -49,38 +55,35 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
             teamDetailsFragment.arguments = teamDetailsFragmentArguments
             pickabilityFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             pickabilityFragmentTransaction.addToBackStack(null).replace(
-                (view!!.parent as ViewGroup).id,
+                (requireView().parent as ViewGroup).id,
                 teamDetailsFragment
             ).commit()
         }
 
+        ArrayAdapter.createFromResource(requireContext(), R.array.pickability, android.R.layout.simple_spinner_item).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerMode.adapter = adapter
+        }
+        binding.spinnerMode.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                PickabilityMode.fromSpinner(position)?.let {
+                    mode = it
+                    updateMatchScheduleListView()
+                }
 
-        root.btn_pickability.setOnClickListener {
+            }
 
-
-            val secondpickabilityFragment = SecondPickabilityFragment(PickabilityMode.SECOND)
-            val ft = fragmentManager!!.beginTransaction()
-            if (fragmentManager!!.fragments.last().tag != "secondpickabilityRankings") ft.addToBackStack(
-                null
-            )
-            ft.replace(
-                R.id.nav_host_fragment,
-                secondpickabilityFragment,
-                "secondpickabilityRankings"
-            )
-                .commit()
-
-
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
 
-        return root
+        return binding.root
     }
 
 
-    private fun updateMatchScheduleListView(root: View): Map<String, Float?> {
+    private fun updateMatchScheduleListView(): Map<String, String> {
         val map = makeData()
         val adapter = PickabilityListAdapter(
-            context = activity!!,
+            context = requireActivity(),
             items = map
         )
 
@@ -92,32 +95,26 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
             }
         }
 
-        root.lv_pickability.adapter = adapter
+        binding.lvPickability.adapter = adapter
         return map
     }
 
-    fun makeData(): Map<String, Float?> {
+    fun makeData(): Map<String, String> {
 
-        var map = mutableMapOf<String, Float?>()
+        var map = mutableMapOf<String, String>()
         val rawTeamNumbers = convertToFilteredTeamsList(
             MainViewerActivity.teamList
         )
 
         rawTeamNumbers.forEach { e ->
-            map[e] = try {
-                getTeamDataValue(
-                    e,
-                    (if (mode == PickabilityMode.FIRST) "first_pickability" else "second_pickability")
-                )?.toFloat()
-            } catch (e: Exception) {
-                (-1000).toFloat()
-            }
+            map[e] = getTeamDataValue(
+                e,
+                mode.datapoint
+            ) ?: Constants.NULL_CHARACTER
         }
 
         map = map.toList().sortedBy { (k, v) ->
-
-
-            (v)
+            (v.toFloatOrNull())
         }.reversed().toMap().toMutableMap()
         return map.toMap()
     }
@@ -129,6 +126,25 @@ class PickabilityFragment(val mode: PickabilityMode) : Fragment() {
 }
 
 enum class PickabilityMode {
-    FIRST,
-    SECOND
+    First,
+    SecondOffensive,
+    SecondDefensive,
+    SecondOverall;
+
+    val datapoint: String get() = when (this) {
+        First -> "first_pickability"
+        SecondOffensive -> "offensive_second_pickability"
+        SecondDefensive -> "defensive_second_pickability"
+        SecondOverall -> "overall_second_pickability"
+    }
+
+    companion object {
+        fun fromSpinner(spinnerPosition: Int): PickabilityMode? = when (spinnerPosition) {
+            0 -> First
+            1 -> SecondOverall
+            2 -> SecondOffensive
+            3 -> SecondDefensive
+            else -> null
+        }
+    }
 }

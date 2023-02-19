@@ -2,27 +2,27 @@
   "1": {
     "teams": [
       {
-        "number": "3",
+        "number": "6",
         "color": "red"
       },
       {
-        "number": "16",
+        "number": "26",
         "color": "red"
       },
       {
-        "number": "20",
+        "number": "33",
         "color": "red"
       },
       {
-        "number": "12",
+        "number": "38",
         "color": "blue"
       },
       {
-        "number": "7",
+        "number": "15",
         "color": "blue"
       },
       {
-        "number": "29",
+        "number": "18",
         "color": "blue"
       }
     ]
@@ -30,27 +30,27 @@
   "2": {
     "teams": [
       {
-        "number": "1",
-        "color": "red"
-      },
-      {
         "number": "17",
         "color": "red"
       },
       {
-        "number": "11",
+        "number": "27",
         "color": "red"
       },
       {
-        "number": "10",
+        "number": "40",
+        "color": "red"
+      },
+      {
+        "number": "1",
         "color": "blue"
       },
       {
-        "number": "28",
+        "number": "19",
         "color": "blue"
       },
       {
-        "number": "33",
+        "number": "20",
         "color": "blue"
       }
     ]
@@ -58,27 +58,27 @@
   "3": {
     "teams": [
       {
-        "number": "27",
+        "number": "9",
         "color": "red"
       },
       {
-        "number": "31",
+        "number": "28",
         "color": "red"
       },
       {
-        "number": "4",
+        "number": "36",
         "color": "red"
       },
       {
-        "number": "22",
+        "number": "12",
         "color": "blue"
       },
       {
-        "number": "15",
+        "number": "24",
         "color": "blue"
       },
       {
-        "number": "26",
+        "number": "14",
         "color": "blue"
       }
     ]
@@ -86,27 +86,27 @@
   "4": {
     "teams": [
       {
-        "number": "18",
+        "number": "2",
         "color": "red"
       },
       {
-        "number": "8",
+        "number": "31",
         "color": "red"
       },
       {
-        "number": "14",
+        "number": "22",
         "color": "red"
       },
       {
-        "number": "36",
+        "number": "32",
         "color": "blue"
       },
       {
-        "number": "23",
+        "number": "35",
         "color": "blue"
       },
       {
-        "number": "30",
+        "number": "13",
         "color": "blue"
       }
     ]
@@ -114,27 +114,27 @@
   "5": {
     "teams": [
       {
+        "number": "8",
+        "color": "red"
+      },
+      {
+        "number": "10",
+        "color": "red"
+      },
+      {
+        "number": "16",
+        "color": "red"
+      },
+      {
+        "number": "30",
+        "color": "blue"
+      },
+      {
         "number": "5",
-        "color": "red"
-      },
-      {
-        "number": "25",
-        "color": "red"
-      },
-      {
-        "number": "32",
-        "color": "red"
-      },
-      {
-        "number": "19",
         "color": "blue"
       },
       {
-        "number": "2",
-        "color": "blue"
-      },
-      {
-        "number": "13",
+        "number": "37",
         "color": "blue"
       }
     ]
@@ -142,27 +142,27 @@
   "6": {
     "teams": [
       {
-        "number": "21",
-        "color": "red"
-      },
-      {
-        "number": "34",
-        "color": "red"
-      },
-      {
-        "number": "35",
+        "number": "25",
         "color": "red"
       },
       {
         "number": "39",
+        "color": "red"
+      },
+      {
+        "number": "29",
+        "color": "red"
+      },
+      {
+        "number": "11",
         "color": "blue"
       },
       {
-        "number": "9",
+        "number": "3",
         "color": "blue"
       },
       {
-        "number": "40",
+        "number": "7",
         "color": "blue"
       }
     ]
@@ -170,27 +170,27 @@
   "7": {
     "teams": [
       {
-        "number": "37",
+        "number": "23",
         "color": "red"
       },
       {
-        "number": "6",
+        "number": "21",
         "color": "red"
       },
       {
-        "number": "24",
+        "number": "34",
         "color": "red"
       },
       {
-        "number": "38",
+        "number": "4",
         "color": "blue"
       },
       {
-        "number": "31",
+        "number": "28",
         "color": "blue"
       },
       {
-        "number": "12",
+        "number": "35",
         "color": "blue"
       }
     ]
@@ -198,15 +198,15 @@
   "8": {
     "teams": [
       {
-        "number": "19",
+        "number": "15",
         "color": "red"
       },
       {
-        "number": "20",
+        "number": "40",
         "color": "red"
       },
       {
-        "number": "17",
+        "number": "8",
         "color": "red"
       },
       {
@@ -214,11 +214,11 @@
         "color": "blue"
       },
       {
-        "number": "36",
+        "number": "37",
         "color": "blue"
       },
       {
-        "number": "15",
+        "number": "14",
         "color": "blue"
       }
     ]
@@ -226,27 +226,27 @@
   "9": {
     "teams": [
       {
-        "number": "3",
+        "number": "11",
         "color": "red"
       },
       {
-        "number": "24",
+        "number": "26",
         "color": "red"
       },
       {
-        "number": "22",
+        "number": "21",
         "color": "red"
+      },
+      {
+        "number": "39",
+        "color": "blue"
       },
       {
         "number": "25",
         "color": "blue"
       },
       {
-        "number": "34",
-        "color": "blue"
-      },
-      {
-        "number": "5",
+        "number": "19",
         "color": "blue"
       }
     ]
@@ -254,27 +254,27 @@
   "10": {
     "teams": [
       {
-        "number": "28",
+        "number": "30",
         "color": "red"
       },
       {
-        "number": "4",
+        "number": "36",
         "color": "red"
       },
       {
-        "number": "13",
+        "number": "1",
         "color": "red"
       },
       {
-        "number": "8",
+        "number": "16",
         "color": "blue"
       },
       {
-        "number": "35",
+        "number": "18",
         "color": "blue"
       },
       {
-        "number": "11",
+        "number": "24",
         "color": "blue"
       }
     ]
@@ -282,27 +282,27 @@
   "11": {
     "teams": [
       {
-        "number": "39",
+        "number": "34",
         "color": "red"
       },
       {
-        "number": "23",
+        "number": "38",
         "color": "red"
       },
       {
-        "number": "32",
+        "number": "27",
         "color": "red"
       },
       {
-        "number": "18",
+        "number": "6",
         "color": "blue"
       },
       {
-        "number": "21",
+        "number": "4",
         "color": "blue"
       },
       {
-        "number": "26",
+        "number": "5",
         "color": "blue"
       }
     ]
@@ -310,27 +310,27 @@
   "12": {
     "teams": [
       {
+        "number": "23",
+        "color": "red"
+      },
+      {
+        "number": "2",
+        "color": "red"
+      },
+      {
+        "number": "22",
+        "color": "red"
+      },
+      {
+        "number": "13",
+        "color": "blue"
+      },
+      {
+        "number": "29",
+        "color": "blue"
+      },
+      {
         "number": "10",
-        "color": "red"
-      },
-      {
-        "number": "9",
-        "color": "red"
-      },
-      {
-        "number": "6",
-        "color": "red"
-      },
-      {
-        "number": "30",
-        "color": "blue"
-      },
-      {
-        "number": "40",
-        "color": "blue"
-      },
-      {
-        "number": "37",
         "color": "blue"
       }
     ]
@@ -338,27 +338,27 @@
   "13": {
     "teams": [
       {
-        "number": "29",
+        "number": "32",
         "color": "red"
       },
       {
-        "number": "2",
+        "number": "9",
         "color": "red"
       },
       {
-        "number": "38",
+        "number": "12",
         "color": "red"
-      },
-      {
-        "number": "16",
-        "color": "blue"
-      },
-      {
-        "number": "1",
-        "color": "blue"
       },
       {
         "number": "7",
+        "color": "blue"
+      },
+      {
+        "number": "20",
+        "color": "blue"
+      },
+      {
+        "number": "17",
         "color": "blue"
       }
     ]
@@ -366,27 +366,27 @@
   "14": {
     "teams": [
       {
-        "number": "14",
+        "number": "3",
         "color": "red"
       },
       {
-        "number": "27",
-        "color": "red"
-      },
-      {
-        "number": "17",
+        "number": "31",
         "color": "red"
       },
       {
         "number": "7",
+        "color": "red"
+      },
+      {
+        "number": "34",
         "color": "blue"
       },
       {
-        "number": "38",
+        "number": "3",
         "color": "blue"
       },
       {
-        "number": "33",
+        "number": "15",
         "color": "blue"
       }
     ]
@@ -394,7 +394,11 @@
   "15": {
     "teams": [
       {
-        "number": "24",
+        "number": "21",
+        "color": "red"
+      },
+      {
+        "number": "30",
         "color": "red"
       },
       {
@@ -402,179 +406,7 @@
         "color": "red"
       },
       {
-        "number": "8",
-        "color": "red"
-      },
-      {
-        "number": "27",
-        "color": "blue"
-      },
-      {
-        "number": "1",
-        "color": "blue"
-      },
-      {
-        "number": "19",
-        "color": "blue"
-      }
-    ]
-  },
-  "16": {
-    "teams": [
-      {
-        "number": "15",
-        "color": "red"
-      },
-      {
-        "number": "16",
-        "color": "red"
-      },
-      {
-        "number": "9",
-        "color": "red"
-      },
-      {
         "number": "20",
-        "color": "blue"
-      },
-      {
-        "number": "31",
-        "color": "blue"
-      },
-      {
-        "number": "34",
-        "color": "blue"
-      }
-    ]
-  },
-  "17": {
-    "teams": [
-      {
-        "number": "2",
-        "color": "red"
-      },
-      {
-        "number": "5",
-        "color": "red"
-      },
-      {
-        "number": "22",
-        "color": "red"
-      },
-      {
-        "number": "13",
-        "color": "blue"
-      },
-      {
-        "number": "40",
-        "color": "blue"
-      },
-      {
-        "number": "3",
-        "color": "blue"
-      }
-    ]
-  },
-  "18": {
-    "teams": [
-      {
-        "number": "35",
-        "color": "red"
-      },
-      {
-        "number": "11",
-        "color": "red"
-      },
-      {
-        "number": "32",
-        "color": "red"
-      },
-      {
-        "number": "29",
-        "color": "blue"
-      },
-      {
-        "number": "25",
-        "color": "blue"
-      },
-      {
-        "number": "18",
-        "color": "blue"
-      }
-    ]
-  },
-  "19": {
-    "teams": [
-      {
-        "number": "36",
-        "color": "red"
-      },
-      {
-        "number": "39",
-        "color": "red"
-      },
-      {
-        "number": "4",
-        "color": "red"
-      },
-      {
-        "number": "12",
-        "color": "blue"
-      },
-      {
-        "number": "14",
-        "color": "blue"
-      },
-      {
-        "number": "10",
-        "color": "blue"
-      }
-    ]
-  },
-  "20": {
-    "teams": [
-      {
-        "number": "21",
-        "color": "red"
-      },
-      {
-        "number": "28",
-        "color": "red"
-      },
-      {
-        "number": "37",
-        "color": "red"
-      },
-      {
-        "number": "23",
-        "color": "blue"
-      },
-      {
-        "number": "6",
-        "color": "blue"
-      },
-      {
-        "number": "30",
-        "color": "blue"
-      }
-    ]
-  },
-  "21": {
-    "teams": [
-      {
-        "number": "30",
-        "color": "red"
-      },
-      {
-        "number": "28",
-        "color": "red"
-      },
-      {
-        "number": "35",
-        "color": "red"
-      },
-      {
-        "number": "32",
         "color": "blue"
       },
       {
@@ -582,73 +414,69 @@
         "color": "blue"
       },
       {
+        "number": "14",
+        "color": "blue"
+      }
+    ]
+  },
+  "16": {
+    "teams": [
+      {
+        "number": "36",
+        "color": "red"
+      },
+      {
+        "number": "2",
+        "color": "red"
+      },
+      {
+        "number": "23",
+        "color": "red"
+      },
+      {
+        "number": "10",
+        "color": "blue"
+      },
+      {
+        "number": "28",
+        "color": "blue"
+      },
+      {
+        "number": "31",
+        "color": "blue"
+      }
+    ]
+  },
+  "17": {
+    "teams": [
+      {
+        "number": "25",
+        "color": "red"
+      },
+      {
+        "number": "4",
+        "color": "red"
+      },
+      {
+        "number": "13",
+        "color": "red"
+      },
+      {
         "number": "6",
         "color": "blue"
-      }
-    ]
-  },
-  "22": {
-    "teams": [
-      {
-        "number": "27",
-        "color": "red"
       },
       {
-        "number": "29",
-        "color": "red"
-      },
-      {
-        "number": "11",
-        "color": "red"
-      },
-      {
-        "number": "34",
+        "number": "35",
         "color": "blue"
-      },
-      {
-        "number": "1",
-        "color": "blue"
-      },
-      {
-        "number": "7",
-        "color": "blue"
-      }
-    ]
-  },
-  "23": {
-    "teams": [
-      {
-        "number": "33",
-        "color": "red"
-      },
-      {
-        "number": "38",
-        "color": "red"
       },
       {
         "number": "8",
-        "color": "red"
-      },
-      {
-        "number": "15",
-        "color": "blue"
-      },
-      {
-        "number": "36",
-        "color": "blue"
-      },
-      {
-        "number": "37",
         "color": "blue"
       }
     ]
   },
-  "24": {
+  "18": {
     "teams": [
-      {
-        "number": "22",
-        "color": "red"
-      },
       {
         "number": "40",
         "color": "red"
@@ -658,67 +486,99 @@
         "color": "red"
       },
       {
-        "number": "10",
+        "number": "16",
+        "color": "red"
+      },
+      {
+        "number": "38",
         "color": "blue"
       },
       {
-        "number": "25",
+        "number": "19",
         "color": "blue"
       },
       {
-        "number": "3",
+        "number": "37",
         "color": "blue"
       }
     ]
   },
-  "25": {
+  "19": {
     "teams": [
       {
-        "number": "19",
+        "number": "33",
+        "color": "red"
+      },
+      {
+        "number": "11",
+        "color": "red"
+      },
+      {
+        "number": "22",
         "color": "red"
       },
       {
         "number": "39",
-        "color": "red"
-      },
-      {
-        "number": "12",
-        "color": "red"
-      },
-      {
-        "number": "23",
         "color": "blue"
       },
       {
-        "number": "2",
+        "number": "29",
         "color": "blue"
       },
       {
-        "number": "24",
+        "number": "1",
         "color": "blue"
       }
     ]
   },
-  "26": {
+  "20": {
     "teams": [
       {
-        "number": "21",
+        "number": "32",
         "color": "red"
       },
       {
-        "number": "4",
+        "number": "24",
         "color": "red"
       },
       {
-        "number": "31",
+        "number": "18",
         "color": "red"
       },
       {
-        "number": "13",
+        "number": "27",
         "color": "blue"
       },
       {
-        "number": "14",
+        "number": "5",
+        "color": "blue"
+      },
+      {
+        "number": "12",
+        "color": "blue"
+      }
+    ]
+  },
+  "21": {
+    "teams": [
+      {
+        "number": "40",
+        "color": "red"
+      },
+      {
+        "number": "3",
+        "color": "red"
+      },
+      {
+        "number": "28",
+        "color": "red"
+      },
+      {
+        "number": "30",
+        "color": "blue"
+      },
+      {
+        "number": "17",
         "color": "blue"
       },
       {
@@ -727,38 +587,14 @@
       }
     ]
   },
-  "27": {
+  "22": {
     "teams": [
       {
-        "number": "18",
+        "number": "12",
         "color": "red"
       },
       {
-        "number": "5",
-        "color": "red"
-      },
-      {
-        "number": "26",
-        "color": "red"
-      },
-      {
-        "number": "16",
-        "color": "blue"
-      },
-      {
-        "number": "39",
-        "color": "blue"
-      },
-      {
-        "number": "28",
-        "color": "blue"
-      }
-    ]
-  },
-  "28": {
-    "teams": [
-      {
-        "number": "4",
+        "number": "27",
         "color": "red"
       },
       {
@@ -766,11 +602,35 @@
         "color": "red"
       },
       {
-        "number": "33",
+        "number": "18",
+        "color": "blue"
+      },
+      {
+        "number": "9",
+        "color": "blue"
+      },
+      {
+        "number": "6",
+        "color": "blue"
+      }
+    ]
+  },
+  "23": {
+    "teams": [
+      {
+        "number": "5",
         "color": "red"
       },
       {
-        "number": "16",
+        "number": "29",
+        "color": "red"
+      },
+      {
+        "number": "19",
+        "color": "red"
+      },
+      {
+        "number": "39",
         "color": "blue"
       },
       {
@@ -778,7 +638,147 @@
         "color": "blue"
       },
       {
+        "number": "4",
+        "color": "blue"
+      }
+    ]
+  },
+  "24": {
+    "teams": [
+      {
+        "number": "26",
+        "color": "red"
+      },
+      {
+        "number": "21",
+        "color": "red"
+      },
+      {
+        "number": "7",
+        "color": "red"
+      },
+      {
+        "number": "37",
+        "color": "blue"
+      },
+      {
+        "number": "31",
+        "color": "blue"
+      },
+      {
+        "number": "1",
+        "color": "blue"
+      }
+    ]
+  },
+  "25": {
+    "teams": [
+      {
         "number": "8",
+        "color": "red"
+      },
+      {
+        "number": "23",
+        "color": "red"
+      },
+      {
+        "number": "24",
+        "color": "red"
+      },
+      {
+        "number": "15",
+        "color": "blue"
+      },
+      {
+        "number": "2",
+        "color": "blue"
+      },
+      {
+        "number": "35",
+        "color": "blue"
+      }
+    ]
+  },
+  "26": {
+    "teams": [
+      {
+        "number": "36",
+        "color": "red"
+      },
+      {
+        "number": "14",
+        "color": "red"
+      },
+      {
+        "number": "22",
+        "color": "red"
+      },
+      {
+        "number": "13",
+        "color": "blue"
+      },
+      {
+        "number": "25",
+        "color": "blue"
+      },
+      {
+        "number": "34",
+        "color": "blue"
+      }
+    ]
+  },
+  "27": {
+    "teams": [
+      {
+        "number": "10",
+        "color": "red"
+      },
+      {
+        "number": "16",
+        "color": "red"
+      },
+      {
+        "number": "33",
+        "color": "red"
+      },
+      {
+        "number": "32",
+        "color": "blue"
+      },
+      {
+        "number": "27",
+        "color": "blue"
+      },
+      {
+        "number": "36",
+        "color": "blue"
+      }
+    ]
+  },
+  "28": {
+    "teams": [
+      {
+        "number": "39",
+        "color": "red"
+      },
+      {
+        "number": "38",
+        "color": "red"
+      },
+      {
+        "number": "19",
+        "color": "red"
+      },
+      {
+        "number": "11",
+        "color": "blue"
+      },
+      {
+        "number": "15",
+        "color": "blue"
+      },
+      {
+        "number": "12",
         "color": "blue"
       }
     ]
@@ -786,11 +786,11 @@
   "29": {
     "teams": [
       {
-        "number": "24",
+        "number": "1",
         "color": "red"
       },
       {
-        "number": "6",
+        "number": "40",
         "color": "red"
       },
       {
@@ -798,11 +798,11 @@
         "color": "red"
       },
       {
-        "number": "23",
+        "number": "6",
         "color": "blue"
       },
       {
-        "number": "2",
+        "number": "20",
         "color": "blue"
       },
       {
@@ -814,27 +814,27 @@
   "30": {
     "teams": [
       {
-        "number": "29",
+        "number": "37",
         "color": "red"
       },
       {
-        "number": "18",
+        "number": "3",
         "color": "red"
       },
       {
-        "number": "1",
+        "number": "5",
         "color": "red"
       },
       {
-        "number": "17",
+        "number": "31",
         "color": "blue"
       },
       {
-        "number": "14",
+        "number": "9",
         "color": "blue"
       },
       {
-        "number": "34",
+        "number": "21",
         "color": "blue"
       }
     ]
@@ -842,27 +842,27 @@
   "31": {
     "teams": [
       {
-        "number": "9",
+        "number": "2",
         "color": "red"
       },
       {
-        "number": "27",
+        "number": "14",
         "color": "red"
       },
       {
-        "number": "31",
+        "number": "29",
         "color": "red"
       },
       {
-        "number": "40",
+        "number": "10",
         "color": "blue"
       },
       {
-        "number": "21",
+        "number": "28",
         "color": "blue"
       },
       {
-        "number": "12",
+        "number": "23",
         "color": "blue"
       }
     ]
@@ -870,27 +870,27 @@
   "32": {
     "teams": [
       {
-        "number": "26",
+        "number": "34",
         "color": "red"
       },
       {
-        "number": "25",
+        "number": "4",
         "color": "red"
       },
       {
-        "number": "22",
+        "number": "24",
         "color": "red"
       },
       {
-        "number": "35",
+        "number": "18",
         "color": "blue"
       },
       {
-        "number": "36",
+        "number": "33",
         "color": "blue"
       },
       {
-        "number": "5",
+        "number": "8",
         "color": "blue"
       }
     ]
@@ -898,23 +898,23 @@
   "33": {
     "teams": [
       {
-        "number": "10",
+        "number": "22",
         "color": "red"
       },
       {
-        "number": "37",
+        "number": "17",
         "color": "red"
       },
       {
-        "number": "20",
+        "number": "25",
         "color": "red"
       },
       {
-        "number": "15",
+        "number": "13",
         "color": "blue"
       },
       {
-        "number": "3",
+        "number": "35",
         "color": "blue"
       },
       {
@@ -926,27 +926,27 @@
   "34": {
     "teams": [
       {
-        "number": "13",
-        "color": "red"
-      },
-      {
-        "number": "19",
-        "color": "red"
-      },
-      {
-        "number": "6",
-        "color": "red"
-      },
-      {
-        "number": "29",
-        "color": "blue"
-      },
-      {
         "number": "26",
-        "color": "blue"
+        "color": "red"
+      },
+      {
+        "number": "16",
+        "color": "red"
+      },
+      {
+        "number": "3",
+        "color": "red"
       },
       {
         "number": "22",
+        "color": "blue"
+      },
+      {
+        "number": "24",
+        "color": "blue"
+      },
+      {
+        "number": "23",
         "color": "blue"
       }
     ]
@@ -954,27 +954,27 @@
   "35": {
     "teams": [
       {
-        "number": "31",
-        "color": "red"
-      },
-      {
         "number": "14",
         "color": "red"
       },
       {
-        "number": "15",
+        "number": "27",
         "color": "red"
       },
       {
-        "number": "11",
-        "color": "blue"
+        "number": "7",
+        "color": "red"
       },
       {
         "number": "40",
         "color": "blue"
       },
       {
-        "number": "16",
+        "number": "30",
+        "color": "blue"
+      },
+      {
+        "number": "38",
         "color": "blue"
       }
     ]
@@ -982,27 +982,27 @@
   "36": {
     "teams": [
       {
-        "number": "9",
+        "number": "6",
         "color": "red"
       },
       {
-        "number": "8",
+        "number": "5",
         "color": "red"
       },
       {
-        "number": "7",
+        "number": "1",
         "color": "red"
-      },
-      {
-        "number": "13",
-        "color": "blue"
       },
       {
         "number": "20",
         "color": "blue"
       },
       {
-        "number": "1",
+        "number": "39",
+        "color": "blue"
+      },
+      {
+        "number": "37",
         "color": "blue"
       }
     ]
@@ -1010,27 +1010,27 @@
   "37": {
     "teams": [
       {
+        "number": "12",
+        "color": "red"
+      },
+      {
+        "number": "33",
+        "color": "red"
+      },
+      {
+        "number": "18",
+        "color": "red"
+      },
+      {
         "number": "35",
-        "color": "red"
-      },
-      {
-        "number": "19",
-        "color": "red"
-      },
-      {
-        "number": "38",
-        "color": "red"
+        "color": "blue"
       },
       {
         "number": "4",
         "color": "blue"
       },
       {
-        "number": "10",
-        "color": "blue"
-      },
-      {
-        "number": "32",
+        "number": "15",
         "color": "blue"
       }
     ]
@@ -1038,27 +1038,27 @@
   "38": {
     "teams": [
       {
-        "number": "39",
+        "number": "11",
         "color": "red"
       },
       {
-        "number": "18",
+        "number": "8",
         "color": "red"
       },
       {
-        "number": "3",
+        "number": "26",
         "color": "red"
       },
       {
-        "number": "24",
+        "number": "36",
         "color": "blue"
       },
       {
-        "number": "21",
+        "number": "34",
         "color": "blue"
       },
       {
-        "number": "23",
+        "number": "28",
         "color": "blue"
       }
     ]
@@ -1066,27 +1066,27 @@
   "39": {
     "teams": [
       {
+        "number": "21",
+        "color": "red"
+      },
+      {
         "number": "2",
         "color": "red"
       },
       {
-        "number": "34",
+        "number": "29",
         "color": "red"
       },
       {
-        "number": "5",
-        "color": "red"
-      },
-      {
-        "number": "28",
+        "number": "13",
         "color": "blue"
       },
       {
-        "number": "36",
+        "number": "17",
         "color": "blue"
       },
       {
-        "number": "37",
+        "number": "10",
         "color": "blue"
       }
     ]
@@ -1094,27 +1094,27 @@
   "40": {
     "teams": [
       {
-        "number": "12",
+        "number": "16",
         "color": "red"
+      },
+      {
+        "number": "31",
+        "color": "red"
+      },
+      {
+        "number": "32",
+        "color": "red"
+      },
+      {
+        "number": "9",
+        "color": "blue"
       },
       {
         "number": "25",
-        "color": "red"
-      },
-      {
-        "number": "33",
-        "color": "red"
-      },
-      {
-        "number": "27",
         "color": "blue"
       },
       {
-        "number": "30",
-        "color": "blue"
-      },
-      {
-        "number": "17",
+        "number": "19",
         "color": "blue"
       }
     ]
@@ -1122,27 +1122,27 @@
   "41": {
     "teams": [
       {
-        "number": "13",
+        "number": "33",
         "color": "red"
-      },
-      {
-        "number": "32",
-        "color": "red"
-      },
-      {
-        "number": "9",
-        "color": "red"
-      },
-      {
-        "number": "37",
-        "color": "blue"
-      },
-      {
-        "number": "27",
-        "color": "blue"
       },
       {
         "number": "35",
+        "color": "red"
+      },
+      {
+        "number": "15",
+        "color": "red"
+      },
+      {
+        "number": "26",
+        "color": "blue"
+      },
+      {
+        "number": "11",
+        "color": "blue"
+      },
+      {
+        "number": "24",
         "color": "blue"
       }
     ]
@@ -1150,7 +1150,7 @@
   "42": {
     "teams": [
       {
-        "number": "4",
+        "number": "36",
         "color": "red"
       },
       {
@@ -1158,19 +1158,19 @@
         "color": "red"
       },
       {
-        "number": "7",
+        "number": "31",
         "color": "red"
       },
       {
-        "number": "5",
+        "number": "6",
         "color": "blue"
       },
       {
-        "number": "17",
+        "number": "1",
         "color": "blue"
       },
       {
-        "number": "30",
+        "number": "10",
         "color": "blue"
       }
     ]
@@ -1178,27 +1178,27 @@
   "43": {
     "teams": [
       {
-        "number": "25",
+        "number": "3",
         "color": "red"
       },
       {
-        "number": "6",
+        "number": "5",
         "color": "red"
       },
       {
-        "number": "31",
+        "number": "12",
         "color": "red"
       },
       {
-        "number": "18",
+        "number": "8",
         "color": "blue"
       },
       {
-        "number": "16",
+        "number": "7",
         "color": "blue"
       },
       {
-        "number": "28",
+        "number": "39",
         "color": "blue"
       }
     ]
@@ -1206,27 +1206,27 @@
   "44": {
     "teams": [
       {
-        "number": "29",
+        "number": "23",
         "color": "red"
       },
       {
-        "number": "39",
+        "number": "22",
         "color": "red"
       },
       {
-        "number": "24",
+        "number": "25",
         "color": "red"
       },
       {
-        "number": "26",
+        "number": "2",
         "color": "blue"
       },
       {
-        "number": "20",
+        "number": "16",
         "color": "blue"
       },
       {
-        "number": "3",
+        "number": "28",
         "color": "blue"
       }
     ]
@@ -1234,27 +1234,27 @@
   "45": {
     "teams": [
       {
-        "number": "40",
-        "color": "red"
-      },
-      {
-        "number": "11",
-        "color": "red"
-      },
-      {
         "number": "34",
         "color": "red"
       },
       {
+        "number": "32",
+        "color": "red"
+      },
+      {
         "number": "38",
+        "color": "red"
+      },
+      {
+        "number": "17",
         "color": "blue"
       },
       {
-        "number": "12",
+        "number": "18",
         "color": "blue"
       },
       {
-        "number": "1",
+        "number": "20",
         "color": "blue"
       }
     ]
@@ -1262,27 +1262,27 @@
   "46": {
     "teams": [
       {
-        "number": "10",
+        "number": "37",
         "color": "red"
       },
       {
-        "number": "19",
+        "number": "30",
         "color": "red"
       },
       {
-        "number": "36",
+        "number": "4",
         "color": "red"
       },
       {
-        "number": "15",
+        "number": "14",
         "color": "blue"
       },
       {
-        "number": "33",
+        "number": "9",
         "color": "blue"
       },
       {
-        "number": "23",
+        "number": "13",
         "color": "blue"
       }
     ]
@@ -1290,27 +1290,27 @@
   "47": {
     "teams": [
       {
-        "number": "22",
+        "number": "29",
         "color": "red"
       },
       {
-        "number": "14",
+        "number": "40",
         "color": "red"
       },
       {
-        "number": "2",
+        "number": "19",
         "color": "red"
       },
       {
-        "number": "8",
-        "color": "blue"
-      },
-      {
-        "number": "20",
+        "number": "27",
         "color": "blue"
       },
       {
         "number": "27",
+        "color": "blue"
+      },
+      {
+        "number": "19",
         "color": "blue"
       }
     ]
@@ -1318,27 +1318,27 @@
   "48": {
     "teams": [
       {
-        "number": "7",
+        "number": "10",
         "color": "red"
       },
       {
-        "number": "9",
+        "number": "21",
         "color": "red"
       },
       {
-        "number": "2",
+        "number": "33",
         "color": "red"
       },
       {
-        "number": "30",
+        "number": "26",
         "color": "blue"
       },
       {
-        "number": "12",
+        "number": "14",
         "color": "blue"
       },
       {
-        "number": "36",
+        "number": "38",
         "color": "blue"
       }
     ]
@@ -1346,27 +1346,27 @@
   "49": {
     "teams": [
       {
-        "number": "23",
+        "number": "39",
         "color": "red"
       },
       {
-        "number": "32",
+        "number": "17",
         "color": "red"
       },
       {
-        "number": "6",
+        "number": "31",
         "color": "red"
       },
       {
-        "number": "14",
+        "number": "29",
         "color": "blue"
       },
       {
-        "number": "38",
+        "number": "22",
         "color": "blue"
       },
       {
-        "number": "40",
+        "number": "12",
         "color": "blue"
       }
     ]
@@ -1374,27 +1374,27 @@
   "50": {
     "teams": [
       {
-        "number": "25",
+        "number": "3",
         "color": "red"
       },
       {
-        "number": "10",
+        "number": "4",
         "color": "red"
+      },
+      {
+        "number": "7",
+        "color": "red"
+      },
+      {
+        "number": "20",
+        "color": "blue"
       },
       {
         "number": "15",
-        "color": "red"
-      },
-      {
-        "number": "34",
         "color": "blue"
       },
       {
-        "number": "33",
-        "color": "blue"
-      },
-      {
-        "number": "35",
+        "number": "37",
         "color": "blue"
       }
     ]
@@ -1402,27 +1402,27 @@
   "51": {
     "teams": [
       {
-        "number": "4",
+        "number": "13",
         "color": "red"
-      },
-      {
-        "number": "39",
-        "color": "red"
-      },
-      {
-        "number": "22",
-        "color": "red"
-      },
-      {
-        "number": "29",
-        "color": "blue"
       },
       {
         "number": "1",
+        "color": "red"
+      },
+      {
+        "number": "23",
+        "color": "red"
+      },
+      {
+        "number": "6",
         "color": "blue"
       },
       {
-        "number": "21",
+        "number": "24",
+        "color": "blue"
+      },
+      {
+        "number": "40",
         "color": "blue"
       }
     ]
@@ -1430,27 +1430,27 @@
   "52": {
     "teams": [
       {
+        "number": "30",
+        "color": "red"
+      },
+      {
+        "number": "32",
+        "color": "red"
+      },
+      {
         "number": "11",
         "color": "red"
       },
       {
-        "number": "13",
-        "color": "red"
-      },
-      {
-        "number": "5",
-        "color": "red"
-      },
-      {
-        "number": "8",
+        "number": "16",
         "color": "blue"
       },
       {
-        "number": "19",
+        "number": "2",
         "color": "blue"
       },
       {
-        "number": "26",
+        "number": "28",
         "color": "blue"
       }
     ]
@@ -1458,27 +1458,27 @@
   "53": {
     "teams": [
       {
-        "number": "37",
+        "number": "5",
         "color": "red"
       },
       {
-        "number": "17",
+        "number": "34",
         "color": "red"
       },
       {
-        "number": "16",
+        "number": "35",
         "color": "red"
+      },
+      {
+        "number": "8",
+        "color": "blue"
       },
       {
         "number": "18",
         "color": "blue"
       },
       {
-        "number": "24",
-        "color": "blue"
-      },
-      {
-        "number": "28",
+        "number": "36",
         "color": "blue"
       }
     ]
@@ -1486,27 +1486,27 @@
   "54": {
     "teams": [
       {
+        "number": "9",
+        "color": "red"
+      },
+      {
+        "number": "25",
+        "color": "red"
+      },
+      {
+        "number": "24",
+        "color": "red"
+      },
+      {
+        "number": "30",
+        "color": "blue"
+      },
+      {
+        "number": "7",
+        "color": "blue"
+      },
+      {
         "number": "3",
-        "color": "red"
-      },
-      {
-        "number": "31",
-        "color": "red"
-      },
-      {
-        "number": "27",
-        "color": "red"
-      },
-      {
-        "number": "40",
-        "color": "blue"
-      },
-      {
-        "number": "39",
-        "color": "blue"
-      },
-      {
-        "number": "6",
         "color": "blue"
       }
     ]
@@ -1514,27 +1514,27 @@
   "55": {
     "teams": [
       {
-        "number": "16",
+        "number": "25",
         "color": "red"
       },
       {
-        "number": "32",
+        "number": "11",
+        "color": "red"
+      },
+      {
+        "number": "19",
         "color": "red"
       },
       {
         "number": "31",
-        "color": "red"
-      },
-      {
-        "number": "12",
         "color": "blue"
       },
       {
-        "number": "15",
+        "number": "32",
         "color": "blue"
       },
       {
-        "number": "11",
+        "number": "10",
         "color": "blue"
       }
     ]
@@ -1542,27 +1542,27 @@
   "56": {
     "teams": [
       {
-        "number": "5",
-        "color": "red"
-      },
-      {
-        "number": "14",
-        "color": "red"
-      },
-      {
-        "number": "18",
-        "color": "red"
-      },
-      {
         "number": "23",
-        "color": "blue"
+        "color": "red"
+      },
+      {
+        "number": "16",
+        "color": "red"
+      },
+      {
+        "number": "15",
+        "color": "red"
       },
       {
         "number": "13",
         "color": "blue"
       },
       {
-        "number": "17",
+        "number": "37",
+        "color": "blue"
+      },
+      {
+        "number": "38",
         "color": "blue"
       }
     ]
@@ -1570,27 +1570,27 @@
   "57": {
     "teams": [
       {
-        "number": "25",
-        "color": "red"
-      },
-      {
-        "number": "28",
-        "color": "red"
-      },
-      {
         "number": "26",
         "color": "red"
       },
       {
-        "number": "37",
+        "number": "21",
+        "color": "red"
+      },
+      {
+        "number": "20",
+        "color": "red"
+      },
+      {
+        "number": "8",
         "color": "blue"
       },
       {
-        "number": "2",
+        "number": "22",
         "color": "blue"
       },
       {
-        "number": "9",
+        "number": "39",
         "color": "blue"
       }
     ]
@@ -1598,27 +1598,27 @@
   "58": {
     "teams": [
       {
-        "number": "30",
+        "number": "5",
         "color": "red"
       },
       {
-        "number": "35",
+        "number": "18",
         "color": "red"
       },
       {
-        "number": "7",
+        "number": "2",
         "color": "red"
       },
       {
-        "number": "4",
+        "number": "33",
         "color": "blue"
       },
       {
-        "number": "3",
+        "number": "1",
         "color": "blue"
       },
       {
-        "number": "34",
+        "number": "9",
         "color": "blue"
       }
     ]
@@ -1626,27 +1626,27 @@
   "59": {
     "teams": [
       {
-        "number": "20",
+        "number": "28",
         "color": "red"
       },
       {
-        "number": "22",
+        "number": "14",
         "color": "red"
       },
       {
-        "number": "33",
+        "number": "29",
         "color": "red"
       },
       {
-        "number": "8",
+        "number": "4",
         "color": "blue"
       },
       {
-        "number": "10",
+        "number": "40",
         "color": "blue"
       },
       {
-        "number": "19",
+        "number": "34",
         "color": "blue"
       }
     ]
@@ -1654,27 +1654,27 @@
   "60": {
     "teams": [
       {
-        "number": "1",
+        "number": "35",
         "color": "red"
       },
       {
-        "number": "21",
+        "number": "12",
         "color": "red"
       },
       {
-        "number": "38",
+        "number": "6",
         "color": "red"
-      },
-      {
-        "number": "24",
-        "color": "blue"
       },
       {
         "number": "36",
         "color": "blue"
       },
       {
-        "number": "29",
+        "number": "27",
+        "color": "blue"
+      },
+      {
+        "number": "17",
         "color": "blue"
       }
     ]
@@ -1682,11 +1682,11 @@
   "61": {
     "teams": [
       {
-        "number": "19",
+        "number": "7",
         "color": "red"
       },
       {
-        "number": "22",
+        "number": "40",
         "color": "red"
       },
       {
@@ -1698,11 +1698,11 @@
         "color": "blue"
       },
       {
-        "number": "26",
+        "number": "11",
         "color": "blue"
       },
       {
-        "number": "27",
+        "number": "34",
         "color": "blue"
       }
     ]
@@ -1710,27 +1710,27 @@
   "62": {
     "teams": [
       {
-        "number": "20",
+        "number": "36",
         "color": "red"
       },
       {
-        "number": "6",
+        "number": "29",
         "color": "red"
       },
       {
-        "number": "9",
+        "number": "33",
         "color": "red"
       },
       {
-        "number": "4",
+        "number": "38",
         "color": "blue"
       },
       {
-        "number": "10",
+        "number": "26",
         "color": "blue"
       },
       {
-        "number": "34",
+        "number": "31",
         "color": "blue"
       }
     ]
@@ -1738,27 +1738,27 @@
   "63": {
     "teams": [
       {
-        "number": "5",
+        "number": "19",
         "color": "red"
       },
       {
-        "number": "30",
+        "number": "12",
         "color": "red"
       },
       {
-        "number": "33",
+        "number": "22",
         "color": "red"
       },
       {
-        "number": "31",
+        "number": "9",
         "color": "blue"
       },
       {
-        "number": "35",
+        "number": "24",
         "color": "blue"
       },
       {
-        "number": "25",
+        "number": "21",
         "color": "blue"
       }
     ]
@@ -1766,155 +1766,15 @@
   "64": {
     "teams": [
       {
-        "number": "16",
+        "number": "23",
         "color": "red"
       },
-      {
-        "number": "32",
-        "color": "red"
-      },
-      {
-        "number": "7",
-        "color": "red"
-      },
-      {
-        "number": "24",
-        "color": "blue"
-      },
-      {
-        "number": "17",
-        "color": "blue"
-      },
-      {
-        "number": "37",
-        "color": "blue"
-      }
-    ]
-  },
-  "65": {
-    "teams": [
-      {
-        "number": "14",
-        "color": "red"
-      },
-      {
-        "number": "11",
-        "color": "red"
-      },
-      {
-        "number": "38",
-        "color": "red"
-      },
-      {
-        "number": "36",
-        "color": "blue"
-      },
-      {
-        "number": "40",
-        "color": "blue"
-      },
-      {
-        "number": "1",
-        "color": "blue"
-      }
-    ]
-  },
-  "66": {
-    "teams": [
       {
         "number": "3",
         "color": "red"
       },
       {
-        "number": "39",
-        "color": "red"
-      },
-      {
-        "number": "12",
-        "color": "red"
-      },
-      {
-        "number": "23",
-        "color": "blue"
-      },
-      {
-        "number": "18",
-        "color": "blue"
-      },
-      {
-        "number": "15",
-        "color": "blue"
-      }
-    ]
-  },
-  "67": {
-    "teams": [
-      {
-        "number": "8",
-        "color": "red"
-      },
-      {
-        "number": "29",
-        "color": "red"
-      },
-      {
-        "number": "21",
-        "color": "red"
-      },
-      {
         "number": "28",
-        "color": "blue"
-      },
-      {
-        "number": "32",
-        "color": "blue"
-      },
-      {
-        "number": "21",
-        "color": "blue"
-      }
-    ]
-  },
-  "68": {
-    "teams": [
-      {
-        "number": "22",
-        "color": "red"
-      },
-      {
-        "number": "18",
-        "color": "red"
-      },
-      {
-        "number": "16",
-        "color": "red"
-      },
-      {
-        "number": "13",
-        "color": "blue"
-      },
-      {
-        "number": "34",
-        "color": "blue"
-      },
-      {
-        "number": "40",
-        "color": "blue"
-      }
-    ]
-  },
-  "69": {
-    "teams": [
-      {
-        "number": "6",
-        "color": "red"
-      },
-      {
-        "number": "4",
-        "color": "red"
-      },
-      {
-        "number": "23",
         "color": "red"
       },
       {
@@ -1922,7 +1782,35 @@
         "color": "blue"
       },
       {
-        "number": "24",
+        "number": "14",
+        "color": "blue"
+      },
+      {
+        "number": "17",
+        "color": "blue"
+      }
+    ]
+  },
+  "65": {
+    "teams": [
+      {
+        "number": "27",
+        "color": "red"
+      },
+      {
+        "number": "4",
+        "color": "red"
+      },
+      {
+        "number": "35",
+        "color": "red"
+      },
+      {
+        "number": "39",
+        "color": "blue"
+      },
+      {
+        "number": "8",
         "color": "blue"
       },
       {
@@ -1931,54 +1819,26 @@
       }
     ]
   },
-  "70": {
+  "66": {
     "teams": [
-      {
-        "number": "35",
-        "color": "red"
-      },
-      {
-        "number": "11",
-        "color": "red"
-      },
       {
         "number": "20",
         "color": "red"
       },
       {
-        "number": "14",
-        "color": "blue"
-      },
-      {
-        "number": "2",
-        "color": "blue"
-      },
-      {
-        "number": "33",
-        "color": "blue"
-      }
-    ]
-  },
-  "71": {
-    "teams": [
-      {
-        "number": "9",
+        "number": "30",
         "color": "red"
       },
       {
-        "number": "17",
+        "number": "6",
         "color": "red"
       },
       {
-        "number": "36",
-        "color": "red"
-      },
-      {
-        "number": "12",
+        "number": "15",
         "color": "blue"
       },
       {
-        "number": "8",
+        "number": "1",
         "color": "blue"
       },
       {
@@ -1987,26 +1847,26 @@
       }
     ]
   },
-  "72": {
+  "67": {
     "teams": [
       {
-        "number": "7",
+        "number": "25",
         "color": "red"
       },
       {
-        "number": "28",
+        "number": "32",
         "color": "red"
       },
       {
-        "number": "15",
+        "number": "18",
         "color": "red"
       },
       {
-        "number": "38",
+        "number": "16",
         "color": "blue"
       },
       {
-        "number": "31",
+        "number": "29",
         "color": "blue"
       },
       {
@@ -2015,70 +1875,154 @@
       }
     ]
   },
-  "73": {
+  "68": {
     "teams": [
       {
-        "number": "29",
+        "number": "5",
         "color": "red"
       },
       {
-        "number": "26",
+        "number": "22",
         "color": "red"
       },
       {
-        "number": "19",
+        "number": "33",
         "color": "red"
       },
       {
-        "number": "3",
+        "number": "20",
         "color": "blue"
       },
       {
-        "number": "25",
+        "number": "8",
         "color": "blue"
       },
       {
-        "number": "1",
+        "number": "31",
         "color": "blue"
       }
     ]
   },
-  "74": {
+  "69": {
+    "teams": [
+      {
+        "number": "18",
+        "color": "red"
+      },
+      {
+        "number": "16",
+        "color": "red"
+      },
+      {
+        "number": "1",
+        "color": "red"
+      },
+      {
+        "number": "11",
+        "color": "blue"
+      },
+      {
+        "number": "32",
+        "color": "blue"
+      },
+      {
+        "number": "30",
+        "color": "blue"
+      }
+    ]
+  },
+  "70": {
     "teams": [
       {
         "number": "27",
         "color": "red"
       },
       {
-        "number": "30",
+        "number": "3",
         "color": "red"
       },
       {
-        "number": "34",
+        "number": "25",
         "color": "red"
+      },
+      {
+        "number": "9",
+        "color": "blue"
       },
       {
         "number": "13",
         "color": "blue"
       },
       {
-        "number": "1",
-        "color": "blue"
-      },
-      {
-        "number": "29",
+        "number": "17",
         "color": "blue"
       }
     ]
   },
-  "75": {
+  "71": {
     "teams": [
       {
-        "number": "2",
+        "number": "21",
         "color": "red"
       },
       {
-        "number": "8",
+        "number": "23",
+        "color": "red"
+      },
+      {
+        "number": "15",
+        "color": "red"
+      },
+      {
+        "number": "26",
+        "color": "blue"
+      },
+      {
+        "number": "40",
+        "color": "blue"
+      },
+      {
+        "number": "38",
+        "color": "blue"
+      }
+    ]
+  },
+  "72": {
+    "teams": [
+      {
+        "number": "24",
+        "color": "red"
+      },
+      {
+        "number": "4",
+        "color": "red"
+      },
+      {
+        "number": "28",
+        "color": "red"
+      },
+      {
+        "number": "35",
+        "color": "blue"
+      },
+      {
+        "number": "37",
+        "color": "blue"
+      },
+      {
+        "number": "10",
+        "color": "blue"
+      }
+    ]
+  },
+  "73": {
+    "teams": [
+      {
+        "number": "19",
+        "color": "red"
+      },
+      {
+        "number": "14",
         "color": "red"
       },
       {
@@ -2086,15 +2030,71 @@
         "color": "red"
       },
       {
-        "number": "10",
+        "number": "6",
         "color": "blue"
       },
       {
-        "number": "31",
+        "number": "12",
         "color": "blue"
+      },
+      {
+        "number": "36",
+        "color": "blue"
+      }
+    ]
+  },
+  "74": {
+    "teams": [
+      {
+        "number": "2",
+        "color": "red"
+      },
+      {
+        "number": "34",
+        "color": "red"
+      },
+      {
+        "number": "35",
+        "color": "red"
+      },
+      {
+        "number": "22",
+        "color": "blue"
+      },
+      {
+        "number": "15",
+        "color": "blue"
+      },
+      {
+        "number": "18",
+        "color": "blue"
+      }
+    ]
+  },
+  "75": {
+    "teams": [
+      {
+        "number": "23",
+        "color": "red"
+      },
+      {
+        "number": "8",
+        "color": "red"
+      },
+      {
+        "number": "39",
+        "color": "red"
       },
       {
         "number": "21",
+        "color": "blue"
+      },
+      {
+        "number": "40",
+        "color": "blue"
+      },
+      {
+        "number": "7",
         "color": "blue"
       }
     ]
@@ -2106,11 +2106,11 @@
         "color": "red"
       },
       {
-        "number": "24",
+        "number": "12",
         "color": "red"
       },
       {
-        "number": "28",
+        "number": "16",
         "color": "red"
       },
       {
@@ -2118,7 +2118,35 @@
         "color": "blue"
       },
       {
-        "number": "40",
+        "number": "31",
+        "color": "blue"
+      },
+      {
+        "number": "24",
+        "color": "blue"
+      }
+    ]
+  },
+  "77": {
+    "teams": [
+      {
+        "number": "10",
+        "color": "red"
+      },
+      {
+        "number": "28",
+        "color": "red"
+      },
+      {
+        "number": "36",
+        "color": "red"
+      },
+      {
+        "number": "5",
+        "color": "blue"
+      },
+      {
+        "number": "13",
         "color": "blue"
       },
       {
@@ -2127,58 +2155,30 @@
       }
     ]
   },
-  "77": {
-    "teams": [
-      {
-        "number": "27",
-        "color": "red"
-      },
-      {
-        "number": "20",
-        "color": "red"
-      },
-      {
-        "number": "26",
-        "color": "red"
-      },
-      {
-        "number": "14",
-        "color": "blue"
-      },
-      {
-        "number": "36",
-        "color": "blue"
-      },
-      {
-        "number": "30",
-        "color": "blue"
-      }
-    ]
-  },
   "78": {
     "teams": [
+      {
+        "number": "3",
+        "color": "red"
+      },
+      {
+        "number": "19",
+        "color": "red"
+      },
       {
         "number": "4",
         "color": "red"
       },
       {
-        "number": "6",
-        "color": "red"
-      },
-      {
-        "number": "39",
-        "color": "red"
-      },
-      {
-        "number": "38",
+        "number": "34",
         "color": "blue"
       },
       {
-        "number": "3",
+        "number": "30",
         "color": "blue"
       },
       {
-        "number": "22",
+        "number": "17",
         "color": "blue"
       }
     ]
@@ -2186,43 +2186,15 @@
   "79": {
     "teams": [
       {
-        "number": "12",
+        "number": "38",
         "color": "red"
       },
       {
-        "number": "35",
+        "number": "6",
         "color": "red"
       },
       {
-        "number": "5",
-        "color": "red"
-      },
-      {
-        "number": "19",
-        "color": "blue"
-      },
-      {
-        "number": "23",
-        "color": "blue"
-      },
-      {
-        "number": "9",
-        "color": "blue"
-      }
-    ]
-  },
-  "80": {
-    "teams": [
-      {
-        "number": "17",
-        "color": "red"
-      },
-      {
-        "number": "16",
-        "color": "red"
-      },
-      {
-        "number": "33",
+        "number": "29",
         "color": "red"
       },
       {
@@ -2230,11 +2202,39 @@
         "color": "blue"
       },
       {
-        "number": "15",
+        "number": "9",
         "color": "blue"
       },
       {
-        "number": "18",
+        "number": "26",
+        "color": "blue"
+      }
+    ]
+  },
+  "80": {
+    "teams": [
+      {
+        "number": "33",
+        "color": "red"
+      },
+      {
+        "number": "14",
+        "color": "red"
+      },
+      {
+        "number": "1",
+        "color": "red"
+      },
+      {
+        "number": "27",
+        "color": "blue"
+      },
+      {
+        "number": "20",
+        "color": "blue"
+      },
+      {
+        "number": "2",
         "color": "blue"
       }
     ]
