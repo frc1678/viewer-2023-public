@@ -41,8 +41,8 @@
         <Spinner
             android:id="@+id/spinner_mode"
             style="@style/tv_standard_gray"
-            android:layout_weight="3.2"
-            android:text="First Pickability" />/
+            android:layout_weight="3"
+            android:text="" />
     </LinearLayout>
 
     <View
