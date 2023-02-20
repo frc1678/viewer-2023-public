@@ -159,7 +159,7 @@ class MainViewerActivity : ViewerActivity() {
         val rankingFragment = RankingFragment()
         val livePicklistFragment = LivePicklistFragment()
         val offlinePicklistFragment = OfflinePicklistFragment()
-        val firstPickabilityFragment = PickabilityFragment(PickabilityMode.FIRST)
+        val pickabilityFragment = PickabilityFragment()
         val teamListFragment = TeamListFragment()
         val preferencesFragment = PreferencesFragment()
 
@@ -206,10 +206,10 @@ class MainViewerActivity : ViewerActivity() {
 
                 R.id.nav_menu_pickability -> {
                     val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "pickabilityFirst") ft.addToBackStack(
+                    if (supportFragmentManager.fragments.last().tag != "pickability") ft.addToBackStack(
                         null
                     )
-                    ft.replace(R.id.nav_host_fragment, firstPickabilityFragment, "pickabilityFirst")
+                    ft.replace(R.id.nav_host_fragment, pickabilityFragment, "pickability")
                         .commit()
                 }
 

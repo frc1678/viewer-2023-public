@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.constants.Constants
-import kotlinx.android.synthetic.main.pickability_cell.view.*
+import org.citruscircuits.viewer.databinding.PickabilityCellBinding
 import java.lang.Float.parseFloat
 
 /**
  * Adapter for the pickability list.
  */
 class PickabilityListAdapter(
-    private val context: Context,
-    var items: Map<String, Float?>
+    context: Context,
+    var items: Map<String, String>
 ) : BaseAdapter() {
     private val inflater = LayoutInflater.from(context)
     override fun getCount(): Int {
@@ -32,16 +32,15 @@ class PickabilityListAdapter(
 
     override fun getView(i: Int, view: View?, parent: ViewGroup?): View {
         val e = getItem(i)
-        val pickability = if (items[e] == (-1000).toFloat()) {
-            Constants.NULL_CHARACTER
-        } else {
-            items[e]!!.toString()
-        }
-        val rowView = inflater.inflate(R.layout.pickability_cell, parent, false)
-        rowView.tv_placement.text = (i + 1).toString()
-        rowView.tv_team_number.text = e
-        rowView.tv_pickability.text =
+        val pickability = items[e]!!
+
+        val rowView = PickabilityCellBinding.inflate(inflater)
+        rowView.tvPlacement.text = (i + 1).toString()
+        rowView.tvTeamNumber.text = e
+        rowView.tvPickability.text =
             (if (pickability != Constants.NULL_CHARACTER) parseFloat(("%.1f").format(pickability.toFloat())).toString() else pickability)
-        return rowView
+        return rowView.root
+
+
     }
 }
