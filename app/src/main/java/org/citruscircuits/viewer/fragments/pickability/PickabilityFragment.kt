@@ -59,15 +59,11 @@ class PickabilityFragment() : Fragment() {
                 teamDetailsFragment
             ).commit()
         }
-
-        ArrayAdapter.createFromResource(
+        binding.spinnerMode.adapter = ArrayAdapter.createFromResource(
             requireContext(),
             R.array.pickability,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.spinnerMode.adapter = adapter
-        }
+            R.layout.spinner_item
+        )
         binding.spinnerMode.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
