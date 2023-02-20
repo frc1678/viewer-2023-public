@@ -63,9 +63,9 @@ class PickabilityFragment() : Fragment() {
         ArrayAdapter.createFromResource(
             requireContext(),
             R.array.pickability,
-            android.R.layout.simple_spinner_item
+            R.layout.gray_spinner_item
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.gray_spinner_item)
             binding.spinnerMode.adapter = adapter
         }
         binding.spinnerMode.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
