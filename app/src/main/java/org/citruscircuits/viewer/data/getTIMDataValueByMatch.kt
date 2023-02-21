@@ -20,12 +20,8 @@ fun getTIMDataValueByMatch(matchNumber: String, teamNumber: String, field: Strin
     var fieldValue = StartupActivity.databaseReference?.tim?.get(matchNumber)?.get(teamNumber)
         ?.get(field)?.jsonPrimitive?.content
     fieldValue = when (fieldValue) {
-        "CUBE" -> "🟪"
-        "CONE" -> "▲"
-        "ENGAGE" -> "E"
-        "DOCK" -> "D"
-        "PARK" -> "P"
-        "NONE" -> "N"
+        "U" -> "🟪"
+        "O" -> "▲"
         else -> fieldValue
     }
     return fieldValue
