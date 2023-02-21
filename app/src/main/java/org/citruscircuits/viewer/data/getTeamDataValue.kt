@@ -63,8 +63,8 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
                     else -> {
                         return getRawObjectByKey(
                             teamNumber, field
-                        )?.replace("CONE", "▲")
-                            ?.replace("CUBE", "🟪")
+                        )?.replace("O", "▲")
+                            ?.replace("U", "🟪")
                     }
                 }
             }
