@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -45,6 +46,15 @@ class OfflinePicklistFragment : Fragment() {
     private val dataFile = File(Constants.STORAGE_FOLDER, "picklist.json")
     private val dataFileImported = File(Constants.STORAGE_FOLDER, "picklist-imported.json")
 
+    private fun switchScreen() {
+        val livePicklistFragment = LivePicklistFragment()
+        val ft = parentFragmentManager.beginTransaction()
+        if (parentFragmentManager.fragments.last().tag != "livepicklistFragment") {
+            ft.addToBackStack(null)
+        }
+        ft.replace(R.id.nav_host_fragment, livePicklistFragment, "livepicklistFragment")
+            .commit()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -58,13 +68,10 @@ class OfflinePicklistFragment : Fragment() {
         binding.rvOfflinePicklist.adapter = adapter
 
         binding.btnSwitchOnline.setOnClickListener {
-            val livePicklistFragment = LivePicklistFragment()
-            val ft = parentFragmentManager.beginTransaction()
-            if (parentFragmentManager.fragments.last().tag != "livepicklistFragment") {
-                ft.addToBackStack(null)
-            }
-            ft.replace(R.id.nav_host_fragment, livePicklistFragment, "livepicklistFragment")
-                .commit()
+            switchScreen()
+        }
+        binding.btnSwitchOffline.setOnClickListener {
+            switchScreen()
         }
         updateData()
         // Init import button
