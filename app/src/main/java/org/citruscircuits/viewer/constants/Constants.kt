@@ -14,10 +14,10 @@ import java.io.File
 class Constants {
     companion object {
         //Game specific data.
-        const val EVENT_KEY = "test2022cc"
-        const val SCHEDULE_KEY = "2022cc"
+        const val EVENT_KEY = "2023week0"
+        const val SCHEDULE_KEY = "2023week0"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = true
+        const val USE_TEST_DATA = false
         const val REFRESH_INTERVAL = 120
 
         //Util.
@@ -54,7 +54,6 @@ class Constants {
             "tele_cone_low",
             "tele_cone_mid",
             "tele_cone_high",
-            "scored_coop",
             "driver_ability",
             "Endgame",
             "tele_charge_level",
@@ -74,7 +73,9 @@ class Constants {
             "predicted_rps",
             "predicted_rank",
             "first_pickability",
-            "second_pickability",
+            "overall_second_pickability",
+            "offensive_second_pickability",
+            "defensive_second_pickability",
             "Auto",
             "mode_start_position",
             "position_zero_starts",
@@ -307,7 +308,9 @@ class Constants {
             "current_avg_rps" to true,
             "predicted_rps" to true,
             "first_pickability" to true,
-            "second_pickability" to true,
+            "overall_second_pickability" to true,
+            "offensive_second_pickability" to true,
+            "defensive_second_pickability" to true,
             "driver_ability" to true,
             "driver_field_awareness" to true,
             "driver_quickness" to true,
