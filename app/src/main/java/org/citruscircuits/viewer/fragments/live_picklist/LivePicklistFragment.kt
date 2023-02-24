@@ -33,6 +33,13 @@ class LivePicklistFragment : Fragment() {
 
     lateinit var picklistData: PicklistData
 
+    private fun switchScreen() {
+        val offlinePicklistFragment = OfflinePicklistFragment()
+        val ft = requireFragmentManager().beginTransaction()
+        if (requireFragmentManager().fragments.last().tag != "offlinepicklistFragment") ft.addToBackStack(null)
+        ft.replace(R.id.nav_host_fragment, offlinePicklistFragment, "offlinepicklistFragment")
+            .commit()
+    }
     /** Runs when the fragment is created, to inflate the layout. */
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,14 +52,17 @@ class LivePicklistFragment : Fragment() {
         binding.btnPicklistRefresh.setOnClickListener {
             updateData()
         }
+//        binding.btnSwitchOnline.isEnabled = false
+//        binding.btnSwitchOnline.isActivated = true
+        context?.resources?.let { binding.btnSwitchOnline.setBackgroundColor(it.getColor(R.color.ToggleColor)) }
+        context?.resources?.let { binding.btnSwitchOffline.setBackgroundColor(it.getColor(R.color.LightGray)) }
 
         binding.btnSwitchOffline.setOnClickListener {
-
-            val offlinePicklistFragment = OfflinePicklistFragment()
-            val ft = fragmentManager!!.beginTransaction()
-            if (fragmentManager!!.fragments.last().tag != "offlinepicklistFragment") ft.addToBackStack(null)
-            ft.replace(R.id.nav_host_fragment, offlinePicklistFragment, "offlinepicklistFragment")
-                .commit()        }
+            switchScreen()
+        }
+        binding.btnSwitchOnline.setOnClickListener {
+            switchScreen()
+        }
         updateData()
 
         return binding.root
@@ -73,13 +83,13 @@ class LivePicklistFragment : Fragment() {
             try {
                 picklistData = PicklistApi.getPicklist(Constants.EVENT_KEY)
                 context?.run {
-                    showSuccess(context!!, "Picklist updated!")
+                    showSuccess(requireContext(), "Picklist updated!")
                 }
                 updateAdapter()
             } catch (e: Throwable) {
                 Log.e("picklist", "Error getting picklist", e)
                 context?.run {
-                    showError(context!!, "Error getting picklist: ${e.message}")
+                    showError(requireContext(), "Error getting picklist: ${e.message}")
                 }
             }
         }
