@@ -52,10 +52,6 @@ class LivePicklistFragment : Fragment() {
         binding.btnPicklistRefresh.setOnClickListener {
             updateData()
         }
-//        binding.btnSwitchOnline.isEnabled = false
-//        binding.btnSwitchOnline.isActivated = true
-        context?.resources?.let { binding.btnSwitchOnline.setBackgroundColor(it.getColor(R.color.ToggleColor)) }
-        context?.resources?.let { binding.btnSwitchOffline.setBackgroundColor(it.getColor(R.color.LightGray)) }
 
         binding.btnSwitchOffline.setOnClickListener {
             switchScreen()

@@ -66,9 +66,6 @@ class OfflinePicklistFragment : Fragment() {
         adapter = OfflinePicklistAdapter(this)
         binding.rvOfflinePicklist.layoutManager = LinearLayoutManager(context)
         binding.rvOfflinePicklist.adapter = adapter
-//        binding.btnSwitchOffline.isEnabled = false
-        context?.resources?.let { binding.btnSwitchOnline.setBackgroundColor(it.getColor(R.color.LightGray)) }
-        context?.resources?.let { binding.btnSwitchOffline.setBackgroundColor(it.getColor(R.color.ToggleColor)) }
 
         binding.btnSwitchOnline.setOnClickListener {
             switchScreen()
