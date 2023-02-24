@@ -99,7 +99,7 @@ class MatchScheduleFragment : Fragment() {
      */
     private fun initializeSpinner(root: View) {
         val spinnerAdapter = ArrayAdapter.createFromResource(
-            context!!, R.array.match_schedule_filter_array, android.R.layout.simple_spinner_item
+            requireContext(), R.array.match_schedule_filter_array, android.R.layout.simple_spinner_item
         )
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         root.filter_spinner.adapter = spinnerAdapter
@@ -127,7 +127,7 @@ class MatchScheduleFragment : Fragment() {
     private fun initializeMatchSchedule(root: View) {
         // Set the adapter for the match schedule
         adapter = MatchScheduleListAdapter(
-            activity!!, getMatchSchedule(
+            requireActivity(), getMatchSchedule(
                 if (scheduleType == Constants.ScheduleType.OUR_MATCHES) listOf(Constants.MY_TEAM_NUMBER) else emptyList(),
                 scheduleType == Constants.ScheduleType.STARRED_MATCHES
             ), scheduleType, root.lv_match_schedule
@@ -143,12 +143,18 @@ class MatchScheduleFragment : Fragment() {
 
         // Change the searched team when the user edits the search text
         root.match_search_bar.addTextChangedListener(object : TextWatcher {
+            val regex = "[^A-Z0-9]".toRegex()
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                search = if (s.isEmpty()) null else s.toString()
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                if (s.isNotEmpty()) {
+                    if (s.toString().contains(regex)) {
+                        val tempString: String = s.toString()
+                        root.match_search_bar.setText(regex.replace(tempString, ""))
+                    }
+                }
+                search = if (root.match_search_bar.text.isEmpty()) null else root.match_search_bar.text.toString()
             }
-
-            override fun afterTextChanged(s: Editable) {}
         })
 
         // Open the team details for the searched team when 'enter' is pressed
@@ -158,13 +164,13 @@ class MatchScheduleFragment : Fragment() {
                 return@setOnEditorActionListener true
             }
             // Otherwise, go to the team details fragment
-            fragmentManager!!.beginTransaction().addToBackStack(null)
+            requireFragmentManager().beginTransaction().addToBackStack(null)
                 .replace(R.id.nav_host_fragment, TeamDetailsFragment().apply {
                     // Put the team number into the arguments for the team details fragment to use
                     arguments = Bundle().apply { putString(Constants.TEAM_NUMBER, search) }
                 }).commit()
             // Hide the keyboard once the new fragment has been created
-            (context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+            (requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
                 root.match_search_bar.windowToken, 0
             )
             // Return true to say that the 'enter' action has been handled
