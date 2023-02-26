@@ -14,10 +14,10 @@ import java.io.File
 class Constants {
     companion object {
         //Game specific data.
-        const val EVENT_KEY = "test2022cc"
-        const val SCHEDULE_KEY = "2022cc"
+        const val EVENT_KEY = "test2023week0"
+        const val SCHEDULE_KEY = "2023week0"
         const val MY_TEAM_NUMBER = "1678"
-        const val USE_TEST_DATA = true
+        const val USE_TEST_DATA = false
         const val REFRESH_INTERVAL = 120
 
         //Util.
@@ -184,7 +184,6 @@ class Constants {
             "lfm_tele_max_gamepieces",
             "lfm_avg_incap_time",
             "lfm_max_incap",
-            "lfm_total_incap",
             "lfm_matches_incap",
             "lfm_median_nonzero_incap",
             "L4M Endgame",
@@ -317,7 +316,6 @@ class Constants {
             "matches_incap" to false,
             "median_nonzero_incap" to false,
             "lfm_max_incap" to false,
-            "lfm_total_incap" to false,
             "lfm_avg_incap_time" to false,
             "lfm_matches_incap" to false,
             "avg_total_intakes" to true,

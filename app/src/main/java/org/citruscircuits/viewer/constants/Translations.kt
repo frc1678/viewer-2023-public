@@ -40,7 +40,6 @@ class Translations {
             "lfm_matches_incap" to "Matches Incap",
             "lfm_max_incap" to "Max Incap",
             "lfm_avg_incap_time" to "Avg Incap Time",
-            "lfm_total_incap" to "Total Incap",
             "lfm_median_nonzero_incap" to "Median Nonzero Incap",
             "mode_start_position" to "Mode Start Position",
             "lfm_mode_start_position" to "Mode Start Position",
