@@ -231,7 +231,8 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/ic_link"
+            app:srcCompat="@drawable/baseline_battery_charging_full"
+            android:rotation="90"
             android:id="@+id/red_rp1"
             app:layout_constraintBottom_toTopOf="@id/red_rp2"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
@@ -241,9 +242,8 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/baseline_battery_charging_full"
+            app:srcCompat="@drawable/ic_link"
             android:id="@+id/red_rp2"
-            android:rotation="90"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/divider_horizontal"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
@@ -278,8 +278,9 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/ic_link"
+            app:srcCompat="@drawable/baseline_battery_charging_full"
             android:id="@+id/blue_rp1"
+            android:rotation="90"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
             app:layout_constraintBottom_toTopOf="@id/blue_rp2"
             app:layout_constraintTop_toBottomOf="@id/divider_horizontal"
@@ -288,9 +289,8 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/baseline_battery_charging_full"
+            app:srcCompat="@drawable/ic_link"
             android:id="@+id/blue_rp2"
-            android:rotation="90"
             app:layout_constraintStart_toEndOf="@id/divider_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
