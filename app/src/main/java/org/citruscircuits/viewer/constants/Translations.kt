@@ -36,7 +36,7 @@ class Translations {
             "first_pickability" to "First Pickability",
             "overall_second_pickability" to "Second Pickability",
             "offensive_second_pickability" to "Offensive 2nd Pickability",
-            "defensive_second_pickability" to "Deffensive 2nd Pickability",
+            "defensive_second_pickability" to "Defensive 2nd Pickability",
             "matches_played" to "Matches Played",
             "matches_incap" to "# Matches Incap",
             "lfm_matches_incap" to "Matches Incap",
