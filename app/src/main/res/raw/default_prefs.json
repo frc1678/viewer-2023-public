@@ -248,6 +248,8 @@
     "predicted_rank",
     "first_pickability",
     "overall_second_pickability",
+    "offensive_second_pickability",
+    "defenseive_second_pickability",
     "Auto",
     "mode_start_position",
     "auto_avg_cube_low",

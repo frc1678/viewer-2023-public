@@ -32,9 +32,7 @@ fun createLeaderboard(datapoint: String) {
     val nonNullTeams = data.filter { it.value != Constants.NULL_CHARACTER }
 
     var sorted = nonNullTeams.sortedBy {
-        if (datapoint in Constants.PIT_DATA && datapoint != "drivetrain_motors") {
-            (Constants.RANK_BY_PIT[it.value] ?: 0).toFloat()
-        } else it.value?.toFloatOrNull()
+        it.value?.toFloatOrNull()
     }
 
     if (descending) sorted = sorted.reversed()

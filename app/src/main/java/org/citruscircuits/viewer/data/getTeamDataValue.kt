@@ -45,23 +45,23 @@ fun getTeamDataValue(teamNumber: String, field: String): String? {
             ) {
                 when (field) {
                     "drivetrain" -> {
-                        return Translations.DRIVETRAIN[getRawObjectByKey(
+                        return getRawObjectByKey(
                             teamNumber, field
-                        )] ?: Constants.NULL_CHARACTER
+                        ) ?: Constants.NULL_CHARACTER
                     }
                     "drivetrain_motor_type" -> {
-                        return Translations.DRIVETRAIN_MOTOR_TYPE[getRawObjectByKey(
+                        return getRawObjectByKey(
                             teamNumber, field
-                        )] ?: Constants.NULL_CHARACTER
+                        ) ?: Constants.NULL_CHARACTER
                     }
                     "mode_start_position" -> {
-                        return getTeamObjectByKey(
+                        getTeamObjectByKey(
                             teamNumber, field
                         ) ?.replace('[', ' ')
                             ?.replace(']', ' ')
                     }
                     else -> {
-                        return getRawObjectByKey(
+                        getRawObjectByKey(
                             teamNumber, field
                         )?.replace("O", "▲")
                             ?.replace("U", "🟪")
