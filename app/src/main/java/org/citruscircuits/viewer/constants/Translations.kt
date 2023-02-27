@@ -35,8 +35,8 @@ class Translations {
             "match_number" to "Match Number",
             "first_pickability" to "First Pickability",
             "overall_second_pickability" to "Second Pickability",
-            "offensive_second_pickability" to "Offensive Second Pickability",
-            "defensive_second_pickability" to "Defensive Second Pickability",
+            "offensive_second_pickability" to "Offensive 2nd Pickability",
+            "defensive_second_pickability" to "Defensive 2nd Pickability",
             "matches_played" to "Matches Played",
             "matches_incap" to "# Matches Incap",
             "lfm_matches_incap" to "Matches Incap",
@@ -178,21 +178,6 @@ class Translations {
             "matches_scored_coop" to "Matches Scored Coop",
             "tele_avg_charge_points" to "Avg Charge Points",
             "auto_avg_charge_points" to "Avg Charge Points"
-        )
-
-        val DRIVETRAIN: Map<String, String> = mapOf(
-            "0" to "tank",
-            "1" to "mecanum",
-            "2" to "swerve",
-            "3" to "other"
-        )
-
-        val DRIVETRAIN_MOTOR_TYPE: Map<String, String> = mapOf(
-            "0" to "minicim",
-            "1" to "cim",
-            "2" to "neo",
-            "3" to "falcon",
-            "4" to "other"
         )
 
         val TIM_FROM_TEAM: Map<String, String> = mapOf(

@@ -323,7 +323,7 @@ class Constants {
             "lfm_matches_incap" to false,
             "avg_total_intakes" to true,
             "drivetrain" to false,
-            "drivetrain_motors" to false,
+            "drivetrain_motors" to true,
             "drivetrain_motor_type" to false,
             "has_vision" to false,
             "matches_played_defense" to true,
