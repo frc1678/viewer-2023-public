@@ -1,5 +1,6 @@
 package org.citruscircuits.viewer.fragments.ranking
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ class PredRankingFragment : Fragment() {
 
     private var refreshId: String? = null
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,9 +38,8 @@ class PredRankingFragment : Fragment() {
         // When a menu item of the navigation bar is clicked, it sends the MenuItem to
         // the handler activity (MainViewerActivity) to set the adapter of this fragment's
         // resource layout to the correct adapter given the new menu item that should be displayed.
-
-        root.tv_ranking_header.text = "Pred. Rankings"
-        root.btn_toggle.text = "To Rankings"
+        context?.resources?.let { root.btn_switch_rankings.setBackgroundColor(it.getColor(R.color.LightGray)) }
+        context?.resources?.let { root.btn_switch_pred_rankings.setBackgroundColor(it.getColor(R.color.ToggleColor)) }
 
         root.tv_datapoint_two.text =
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[1]]
@@ -50,7 +51,7 @@ class PredRankingFragment : Fragment() {
             Translations.ACTUAL_TO_HUMAN_READABLE[Constants.FIELDS_TO_BE_DISPLAYED_RANKING[0]]
 
         val adapter = PredRankingListAdapter(
-            activity!!, convertToPredFilteredTeamsList(
+            requireActivity(), convertToPredFilteredTeamsList(
                 MainViewerActivity.teamList
             )
         )
@@ -63,7 +64,7 @@ class PredRankingFragment : Fragment() {
         root.lv_ranking.adapter = adapter
 
         root.lv_ranking.setOnItemClickListener { _, _, position, _ ->
-            val rankingFragmentTransaction = this.fragmentManager!!.beginTransaction()
+            val rankingFragmentTransaction = this.requireFragmentManager().beginTransaction()
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER, convertToPredFilteredTeamsList(
                     MainViewerActivity.teamList
@@ -72,20 +73,22 @@ class PredRankingFragment : Fragment() {
             teamDetailsFragment.arguments = teamDetailsFragmentArguments
             rankingFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             rankingFragmentTransaction.addToBackStack(null).replace(
-                (view!!.parent as ViewGroup).id,
+                (requireView().parent as ViewGroup).id,
                 teamDetailsFragment
             ).commit()
         }
-        root.btn_toggle.setOnClickListener {
-            toggletoRanking()
+        root.btn_switch_pred_rankings.setOnClickListener {
+            toggleToRanking()
+        }
+        root.btn_switch_rankings.setOnClickListener {
+            toggleToRanking()
         }
         return root
     }
 
-    fun toggletoRanking() {
+    private fun toggleToRanking() {
         val rankingFragment = RankingFragment()
-        val ft = fragmentManager!!.beginTransaction()
-        fragmentManager!!.beginTransaction()
+        requireFragmentManager().beginTransaction()
             .addToBackStack(null)
             .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
             .commit()

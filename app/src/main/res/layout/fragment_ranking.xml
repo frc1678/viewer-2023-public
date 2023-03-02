@@ -14,22 +14,25 @@
         android:orientation="horizontal"
         android:padding="@dimen/very_small">
 
-        <TextView
-            android:id="@+id/tv_ranking_header"
-            style="@style/tv_header"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:text="Header"
-            android:textSize="20sp" />
+        <Button
+            android:id="@+id/btn_switch_rankings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/title_rankings"
+            android:layout_weight="1.075"
+            android:textSize="14sp"
+            android:backgroundTint="@color/ToggleColor"
+        />
 
         <Button
-            android:id="@+id/btn_toggle"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="Toggle"
-            android:textSize="15sp" />
+            android:id="@+id/btn_switch_pred_rankings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/title_pred_rankings"
+            android:layout_weight="1.075"
+            android:textSize="14sp"
+            android:backgroundTint="@color/LightGray"
+        />
     </LinearLayout>
 
     <View

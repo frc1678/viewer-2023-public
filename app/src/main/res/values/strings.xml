@@ -5,7 +5,8 @@
     <string name="data_points_texts_match_details">EXAMPLE</string>
     <string name="title_offline">Offline</string>
     <string name="title_online">Online</string>
-    <string name="title_ranking">Rankings</string>
+    <string name="title_rankings">Current Rankings</string>
+    <string name="title_pred_rankings">Pred. Rankings</string>
     <string name="title_match_schedule">Match Schedule</string>
     <string name="title_current_seed">Current Seed</string>
     <string name="title_predicted_seed">Predicted Seed</string>
