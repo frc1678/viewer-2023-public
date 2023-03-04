@@ -38,9 +38,9 @@ fun getMatchSchedule(
                     }
                 }
             }
-            return returnedMatches
+            return returnedMatches.toSortedMap(compareBy { it.toInt() })
         } else {
-            return starredMatches
+            return starredMatches.toSortedMap(compareBy { it.toInt() })
         }
     } else if (teamNumbers.isNotEmpty()) {
         val tempMatches = mutableMapOf<String, Match>()
@@ -55,7 +55,7 @@ fun getMatchSchedule(
                 tempMatches[i.key] = i.value
             }
         }
-        return tempMatches
+        return tempMatches.toSortedMap(compareBy { it.toInt() })
     }
 
     return MainViewerActivity.matchCache.toSortedMap(compareBy { it.toInt() })
