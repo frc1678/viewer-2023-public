@@ -128,6 +128,7 @@ class Constants {
             "driver_ability",
             "driver_field_awareness",
             "driver_quickness",
+            "foul_cc",
             "Endgame",
             "tele_park_successes",
             "tele_charge_attempts",
@@ -408,6 +409,7 @@ class Constants {
             "lfm_avg_incap_time" to true,
             "lfm_median_nonzero_incap" to true,
             "matches_played_defense" to true,
+            "foul_cc" to true,
         )
 
         val RANK_BY_PIT = mapOf<String, Int>(
