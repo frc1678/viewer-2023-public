@@ -107,7 +107,7 @@ class PredRankingListAdapter(
         ))
         if (predValue != null) {
             viewHolder.tvDatapointFour.text =
-                if (predValue == null) Constants.NULL_CHARACTER else ("%.2f").format(
+                if (predValue == null) Constants.NULL_CHARACTER else ("%.1f").format(
                     predValue.toFloat()
                 )
         }

@@ -105,7 +105,7 @@ class RankingListAdapter(
             }
             == true
         ) {
-            (("%.2f").format(
+            (("%.1f").format(
                 getTeamObject(
                     "predicted_rps",
                     position
