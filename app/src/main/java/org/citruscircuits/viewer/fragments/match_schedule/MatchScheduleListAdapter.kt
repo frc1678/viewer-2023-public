@@ -254,7 +254,7 @@ class MatchScheduleListAdapter(
                     if (hasActualData) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo != null) {
                             if (MainViewerActivity.matchCache[matchNumber]!!.redActualRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                                tv.setImageResource(R.drawable.baseline_battery_charging_full)
+                                tv.setImageResource(R.drawable.ic_link)
                             } else {
                                 tv.setImageDrawable(null)
                             }
@@ -262,7 +262,7 @@ class MatchScheduleListAdapter(
                         }
                     } else if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo != null) {
                         if (MainViewerActivity.matchCache[matchNumber]!!.redPredictedRPTwo!!.toDouble() > Constants.PREDICTED_RANKING_POINT_QUALIFICATION) {
-                            tv.setImageResource(R.drawable.baseline_battery_charging_full)
+                            tv.setImageResource(R.drawable.ic_link)
                         } else {
                             tv.setImageDrawable(null)
                         }
