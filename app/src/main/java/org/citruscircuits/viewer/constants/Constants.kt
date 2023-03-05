@@ -63,6 +63,29 @@ class Constants {
             "incap"
         )
 
+        val ACTUAL_TO_PREDICTED_MATCH_DETAILS = mapOf(
+            "start_position" to "mode_start_position",
+            "preloaded_gamepiece" to "mode_preloaded_gamepiece",
+            "auto_cube_low" to "auto_avg_cube_low",
+            "auto_cube_mid" to "auto_avg_cube_mid",
+            "auto_cube_high" to "auto_avg_cube_high",
+            "auto_cone_low" to "auto_avg_cone_low",
+            "auto_cone_mid" to "auto_avg_cone_mid",
+            "auto_cone_high" to "auto_avg_cone_high",
+            "mobility" to "mobility_successes",
+            "auto_charge_level" to "auto_avg_charge_points",
+            "tele_cube_low" to "tele_avg_cube_low",
+            "tele_cube_mid" to "tele_avg_cube_mid",
+            "tele_cube_high" to "tele_avg_cube_high",
+            "tele_cone_low" to "tele_avg_cone_low",
+            "tele_cone_mid" to "tele_avg_cone_mid",
+            "tele_cone_high" to "tele_avg_cone_high",
+            "tele_charge_level" to "tele_avg_charge_points",
+            "intakes_station" to "avg_intakes_station",
+            "intakes_ground" to "avg_intakes_ground",
+            "incap" to "avg_incap_time"
+        )
+
         val FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS: List<String> = listOf(
             "See Matches",
             "Notes",
