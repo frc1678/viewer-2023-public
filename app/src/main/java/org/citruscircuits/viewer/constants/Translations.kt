@@ -57,6 +57,7 @@ class Translations {
             "See Matches" to "See Matches " + "\u2192".toCharArray()[0].toString(),
             "win_chance" to "Win Chance",
             "matches_played_defense" to "Matches Played Defense",
+            "foul_cc" to "Foul OPR",
 
             // 2023
             "auto_avg_cone_high" to "Avg Cones High",
