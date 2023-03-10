@@ -91,9 +91,9 @@ class Constants {
             "Notes",
             "matches_played",
             "current_rps",
-            "current_rank",
-            "current_avg_rps",
             "predicted_rps",
+            "current_avg_rps",
+            "current_rank",
             "predicted_rank",
             "first_pickability",
             "overall_second_pickability",
@@ -172,6 +172,17 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_LFM: List<String> = listOf(
             "See Matches",
+            "Notes",
+            "matches_played",
+            "current_rps",
+            "predicted_rps",
+            "current_avg_rps",
+            "current_rank",
+            "predicted_rank",
+            "first_pickability",
+            "overall_second_pickability",
+            "offensive_second_pickability",
+            "defensive_second_pickability",
             "L4M Auto",
             "lfm_mode_start_position",
             "lfm_position_zero_starts",
@@ -190,6 +201,8 @@ class Constants {
             "lfm_auto_avg_cone_high",
             "lfm_auto_avg_cone_total",
             "lfm_auto_max_cones",
+            "lfm_auto_avg_gamepieces",
+            "auto_max_gamepieces",
             "lfm_auto_charge_attempts",
             "lfm_auto_dock_successes",
             "lfm_auto_engage_successes",
@@ -207,16 +220,29 @@ class Constants {
             "lfm_tele_max_cones",
             "lfm_tele_avg_gamepieces",
             "lfm_tele_max_gamepieces",
+            "lfm_avg_total_intakes",
             "lfm_avg_incap_time",
             "lfm_max_incap",
             "lfm_matches_incap",
             "lfm_median_nonzero_incap",
+            "driver_ability",
+            "driver_field_awareness",
+            "driver_quickness",
             "L4M Endgame",
             "lfm_tele_park_successes",
             "lfm_tele_charge_attempts",
             "lfm_tele_dock_successes",
             "lfm_tele_engage_successes",
-            "lfm_charge_percent_success"
+            "lfm_charge_percent_success",
+            "Pit Data",
+            "has_communication_device",
+            "has_vision",
+            "weight",
+            "length",
+            "width",
+            "drivetrain",
+            "drivetrain_motor_type",
+            "drivetrain_motors"
         )
 
         val FIELDS_TO_BE_DISPLAYED_RANKING: List<String> = listOf(
@@ -433,6 +459,7 @@ class Constants {
             "lfm_median_nonzero_incap" to true,
             "matches_played_defense" to true,
             "foul_cc" to true,
+            "lfm_avg_total_intakes" to true
         )
 
         val RANK_BY_PIT = mapOf<String, Int>(
