@@ -73,7 +73,8 @@ class TeamDetailsAdapter(
                 "L4M Endgame",
                 "Pit Data",
                 "See Matches",
-                "Notes"
+                "Notes",
+                "Notes Label"
             )
         ) {
             isHeader = true
@@ -91,6 +92,10 @@ class TeamDetailsAdapter(
                         R.color.MediumGray
                     )
                 )
+            } else if (e == "Notes Label") {
+                rowView.tv_datapoint_name.setBackgroundColor(context.resources.getColor(R.color.Highlighter))
+                rowView.tv_datapoint_name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+                rowView.tv_datapoint_name.text = "Notes (click below to edit)"
             } else {
                 rowView.tv_datapoint_name.setBackgroundColor(
                     ContextCompat.getColor(
