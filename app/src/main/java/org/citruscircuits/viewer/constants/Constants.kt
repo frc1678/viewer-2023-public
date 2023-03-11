@@ -459,7 +459,7 @@ class Constants {
             "width" to true,
             "length" to true,
             "weight" to true,
-            "has_communication_device" to false
+            "has_communication_device" to false,
             "lfm_avg_total_intakes" to true
         )
 
