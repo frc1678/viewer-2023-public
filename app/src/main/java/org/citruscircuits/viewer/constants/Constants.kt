@@ -273,7 +273,7 @@ class Constants {
             "tele_max_gamepieces" to "tele_total_gamepieces",
             "tele_avg_gamepieces" to "tele_total_gamepieces",
             "tele_avg_gamepieces_low" to "tele_total_gamepieces_low",
-//            "auto_avg_gamepieces_low" to "auto_total_gamepieces_low",
+            "matches_played_defense" to "played_defense",
             "auto_dock_successes" to "auto_charge_level",
             "tele_dock_successes" to "tele_charge_level",
             "auto_engage_successes" to "auto_charge_level",
@@ -433,6 +433,10 @@ class Constants {
             "lfm_median_nonzero_incap" to true,
             "matches_played_defense" to true,
             "foul_cc" to true,
+            "width" to true,
+            "length" to true,
+            "weight" to true,
+            "has_communication_device" to false
         )
 
         val RANK_BY_PIT = mapOf<String, Int>(
