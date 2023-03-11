@@ -2,6 +2,7 @@
   "selected": "OTHER",
   "OTHER": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -66,6 +67,7 @@
 
   "AUSTIN": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -131,6 +133,7 @@
 
   "DAVE": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -180,6 +183,7 @@
 
   "MIKE": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -243,6 +247,7 @@
 
   "RICHARD": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -308,6 +313,7 @@
 
   "KINA": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
