@@ -2,6 +2,7 @@
   "selected": "OTHER",
   "OTHER": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -42,6 +43,7 @@
     "tele_avg_gamepieces",
     "tele_max_gamepieces",
     "max_incap",
+    "matches_played_defense",
     "matches_incap",
     "driver_ability",
     "driver_field_awareness",
@@ -65,6 +67,7 @@
 
   "AUSTIN": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -106,6 +109,7 @@
     "tele_max_gamepieces",
     "tele_sd_gamepieces",
     "max_incap",
+    "matches_played_defense",
     "matches_incap",
     "driver_ability",
     "driver_field_awareness",
@@ -129,6 +133,7 @@
 
   "DAVE": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -164,6 +169,7 @@
     "tele_avg_gamepieces",
     "tele_max_gamepieces",
     "max_incap",
+    "matches_played_defense",
     "matches_incap",
     "Endgame",
     "tele_park_successes",
@@ -177,6 +183,7 @@
 
   "MIKE": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -216,6 +223,7 @@
     "tele_avg_gamepieces",
     "tele_max_gamepieces",
     "max_incap",
+    "matches_played_defense",
     "matches_incap",
     "driver_ability",
     "driver_field_awareness",
@@ -239,6 +247,7 @@
 
   "RICHARD": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -284,6 +293,7 @@
     "tele_max_gamepieces",
     "avg_total_intakes",
     "max_incap",
+    "matches_played_defense",
     "matches_incap",
     "driver_ability",
     "driver_field_awareness",
@@ -303,6 +313,7 @@
 
   "KINA": [
     "See Matches",
+    "Notes Label",
     "Notes",
     "matches_played",
     "current_rps",
@@ -343,6 +354,7 @@
     "tele_max_gamepieces",
     "avg_incap_time",
     "max_incap",
+    "matches_played_defense",
     "matches_incap",
     "driver_ability",
     "driver_field_awareness",

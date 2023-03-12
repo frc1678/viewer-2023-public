@@ -30,13 +30,18 @@ fun createLeaderboard(datapoint: String) {
 
     val nullTeams = data.filter { it.value == Constants.NULL_CHARACTER }
     val nonNullTeams = data.filter { it.value != Constants.NULL_CHARACTER }
-
+    //check if pit variable ranked is not an integer as that will be sorted differently
     var sorted = nonNullTeams.sortedBy {
-        if (datapoint in Constants.PIT_DATA && datapoint != "drivetrain_motors") {
+        if (datapoint in Constants.PIT_DATA && datapoint == "drivetrain"
+            || datapoint == "has_communication_device"
+            || datapoint == "has_vision"
+            || datapoint == "drivetrain_motor_type"
+        ) {
             (Constants.RANK_BY_PIT[it.value] ?: 0).toFloat()
-        } else it.value?.toFloatOrNull()
+        } else
+            it.value?.toFloatOrNull()
     }
-
+    //check if descending
     if (descending) sorted = sorted.reversed()
 
     sorted.forEachIndexed { index, teamRankingItem ->
