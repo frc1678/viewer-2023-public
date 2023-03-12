@@ -162,14 +162,15 @@ class MatchDetailsFragment : Fragment() {
     // On every team number's specified text view, when the user clicks on the text view it will
     // then go to a new TeamDetails page for the given team number.
     private fun initTeamNumberClickListeners(root: View) {
-        val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
+        val matchDetailsFragmentTransaction = this.requireFragmentManager().beginTransaction()
         for (tv in getTeamNumbersXML(root)) {
             tv.setOnClickListener {
                 teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, tv.text.toString())
+                teamDetailsFragmentArguments.putBoolean("LFM", false)
                 teamDetailsFragment.arguments = teamDetailsFragmentArguments
                 matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 matchDetailsFragmentTransaction.addToBackStack(null).replace(
-                    (view!!.parent as ViewGroup).id,
+                    (requireView().parent as ViewGroup).id,
                     teamDetailsFragment
                 ).commit()
             }
@@ -194,7 +195,7 @@ class MatchDetailsFragment : Fragment() {
         val datapointsDisplay = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED
 
         val adapter = MatchDetailsAdapter(
-            context = activity!!,
+            context = requireActivity(),
             datapointsDisplay = datapointsDisplay,
             matchNumber = matchNumber!!,
             teamNumbers = getTeamNumbersList(root),

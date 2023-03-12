@@ -173,6 +173,7 @@ class Constants {
 
         val FIELDS_TO_BE_DISPLAYED_LFM: List<String> = listOf(
             "See Matches",
+            "Notes Label",
             "Notes",
             "matches_played",
             "current_rps",
@@ -317,44 +318,44 @@ class Constants {
             "auto_charge_attempts" to "auto_charge_attempt",
             "tele_charge_attempts" to "tele_charge_attempt",
 
-            "lfm_auto_avg_cube_low" to "auto_cube_low",
-            "lfm_auto_avg_cube_mid" to "auto_cube_mid",
-            "lfm_auto_avg_cube_high" to "auto_cube_high",
-            "lfm_auto_avg_cube_total" to "auto_total_cubes",
-            "lfm_auto_max_cubes" to "auto_total_cubes",
-            "lfm_auto_avg_cone_low" to "auto_cone_low",
-            "lfm_auto_avg_cone_mid" to "auto_cone_mid",
-            "lfm_auto_avg_cone_high" to "auto_cone_high",
-            "lfm_auto_max_cones" to "auto_total_cones",
-            "lfm_auto_avg_cone_total" to "auto_total_cones",
-            "lfm_tele_avg_cube_low" to "tele_cube_low",
-            "lfm_tele_avg_cube_mid" to "tele_cube_mid",
-            "lfm_tele_avg_cube_high" to "tele_cube_high",
-            "lfm_tele_avg_cube_total" to "tele_total_cubes",
-            "lfm_tele_max_cubes" to "tele_total_cubes",
-            "lfm_tele_avg_cone_low" to "tele_cone_low",
-            "lfm_tele_avg_cone_mid" to "tele_cone_mid",
-            "lfm_tele_avg_cone_high" to "tele_cone_high",
-            "lfm_tele_avg_cone_total" to "tele_total_cones",
-            "lfm_tele_max_cones" to "tele_total_cones",
-            "lfm_avg_intakes_ground" to "intakes_ground",
-            "lfm_avg_intakes_station" to "intakes_station",
-            "lfm_matches_incap" to "incap",
-            "lfm_max_incap" to "incap",
-            "lfm_median_nonzero_incap" to "incap",
-            "lfm_mode_start_position" to "start_position",
-            "lfm_auto_max_gamepieces" to "auto_total_gamepieces",
-            "lfm_auto_avg_gamepieces" to "auto_total_gamepieces",
-            "lfm_tele_max_gamepieces" to "tele_total_gamepieces",
-            "lfm_tele_avg_gamepieces" to "tele_total_gamepieces",
-            "lfm_tele_avg_gamepieces_low" to "tele_total_gamepieces_low",
-            "lfm_matches_played_defense" to "played_defense",
-            "lfm_auto_dock_successes" to "auto_charge_level",
-            "lfm_tele_dock_successes" to "tele_charge_level",
-            "lfm_auto_engage_successes" to "auto_charge_level",
-            "lfm_tele_engage_successes" to "tele_charge_level",
-            "lfm_auto_charge_attempts" to "auto_charge_attempt",
-            "lfm_tele_charge_attempts" to "tele_charge_attempt"
+//            "lfm_auto_avg_cube_low" to "lfm_auto_cube_low",
+//            "lfm_auto_avg_cube_mid" to "lfm_auto_cube_mid",
+//            "lfm_auto_avg_cube_high" to "lfm_auto_cube_high",
+//            "lfm_auto_avg_cube_total" to "lfm_auto_total_cubes",
+//            "lfm_auto_max_cubes" to "lfm_auto_total_cubes",
+//            "lfm_auto_avg_cone_low" to "lfm_auto_cone_low",
+//            "lfm_auto_avg_cone_mid" to "lfm_auto_cone_mid",
+//            "lfm_auto_avg_cone_high" to "lfm_auto_cone_high",
+//            "lfm_auto_max_cones" to "lfm_auto_total_cones",
+//            "lfm_auto_avg_cone_total" to "lfm_auto_total_cones",
+//            "lfm_tele_avg_cube_low" to "lfm_tele_cube_low",
+//            "lfm_tele_avg_cube_mid" to "lfm_tele_cube_mid",
+//            "lfm_tele_avg_cube_high" to "lfm_tele_cube_high",
+//            "lfm_tele_avg_cube_total" to "lfm_tele_total_cubes",
+//            "lfm_tele_max_cubes" to "lfm_tele_total_cubes",
+//            "lfm_tele_avg_cone_low" to "lfm_tele_cone_low",
+//            "lfm_tele_avg_cone_mid" to "lfm_tele_cone_mid",
+//            "lfm_tele_avg_cone_high" to "lfm_tele_cone_high",
+//            "lfm_tele_avg_cone_total" to "lfm_tele_total_cones",
+//            "lfm_tele_max_cones" to "lfm_tele_total_cones",
+//            "lfm_avg_intakes_ground" to "lfm_intakes_ground",
+//            "lfm_avg_intakes_station" to "lfm_intakes_station",
+//            "lfm_matches_incap" to "lfm_incap",
+//            "lfm_max_incap" to "lfm_incap",
+//            "lfm_median_nonzero_incap" to "lfm_incap",
+//            "lfm_mode_start_position" to "lfm_start_position",
+//            "lfm_auto_max_gamepieces" to "lfm_auto_total_gamepieces",
+//            "lfm_auto_avg_gamepieces" to "lfm_auto_total_gamepieces",
+//            "lfm_tele_max_gamepieces" to "lfm_tele_total_gamepieces",
+//            "lfm_tele_avg_gamepieces" to "lfm_tele_total_gamepieces",
+//            "lfm_tele_avg_gamepieces_low" to "lfm_tele_total_gamepieces_low",
+//            "lfm_matches_played_defense" to "lfm_played_defense",
+//            "lfm_auto_dock_successes" to "lfm_auto_charge_level",
+//            "lfm_tele_dock_successes" to "lfm_tele_charge_level",
+//            "lfm_auto_engage_successes" to "lfm_auto_charge_level",
+//            "lfm_tele_engage_successes" to "lfm_tele_charge_level",
+//            "lfm_auto_charge_attempts" to "lfm_auto_charge_attempt",
+//            "lfm_tele_charge_attempts" to "lfm_tele_charge_attempt"
 
 
         //[auto + tele ] avg low
@@ -381,6 +382,8 @@ class Constants {
         )
 
         val PERCENT_DATA: List<String> = listOf(
+            "charge_percent_success",
+            "lfm_charge_percent_success"
         )
 
         val PIT_DATA: List<String> = listOf(
@@ -548,7 +551,8 @@ class Constants {
             "L4M Tele",
             "L4M Endgame",
             "See Matches",
-            "Notes"
+            "Notes",
+            "Notes Label"
         )
 
         val TEAM_AND_LFM_SHARED_DATAPOINTS = listOf(

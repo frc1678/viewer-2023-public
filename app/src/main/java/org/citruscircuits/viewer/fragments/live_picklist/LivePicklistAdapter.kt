@@ -74,9 +74,10 @@ class LivePicklistRecyclerAdapter(val context: LivePicklistFragment) :
                     Constants.TEAM_NUMBER,
                     teamNumber
                 )
+                it.putBoolean("LFM", false)
             }
             // Switch to the team details fragment.
-            val ft = context.fragmentManager!!.beginTransaction()
+            val ft = context.requireFragmentManager().beginTransaction()
             ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             context.view?.rootView?.findViewById<ViewGroup>(R.id.nav_host_fragment)?.let {
                 ft.addToBackStack(null).replace(it.id, teamDetailsFragment)

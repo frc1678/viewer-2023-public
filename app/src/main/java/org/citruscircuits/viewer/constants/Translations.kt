@@ -221,7 +221,8 @@ class Translations {
             "Auto" to "L4M Auto",
             "Tele" to "L4M Tele",
             "Endgame" to "L4M Endgame",
-            "Pit Data" to "Pit Data"
+            "Pit Data" to "Pit Data",
+            "Notes Label" to "Notes Label"
         )
     }
 }
