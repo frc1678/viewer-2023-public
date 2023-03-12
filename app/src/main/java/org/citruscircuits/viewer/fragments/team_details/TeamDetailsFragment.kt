@@ -22,6 +22,7 @@ import org.citruscircuits.viewer.constants.Constants
 import org.citruscircuits.viewer.getTeamName
 import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
+import org.citruscircuits.viewer.constants.Translations
 import java.io.File
 
 // The fragment class for the Team Details display that occurs when you click on a
@@ -106,7 +107,19 @@ class TeamDetailsFragment : Fragment() {
         root.btn_lfm.setOnClickListener {
             if (!isChecked) {
                 isChecked = true
-                dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_LFM
+                var lfmDatapoints: MutableList<String> = mutableListOf()
+                for (datapoint in datapoints) {
+                    if ((datapoint !in Constants.CATEGORY_NAMES) && (datapoint !in Constants.TEAM_AND_LFM_SHARED_DATAPOINTS)) {
+                        lfmDatapoints.add("lfm_$datapoint")
+                    }
+                    else if (datapoint in Constants.TEAM_AND_LFM_SHARED_DATAPOINTS) {
+                        lfmDatapoints.add(datapoint)
+                    }
+                    else {
+                        lfmDatapoints.add(Translations.TEAM_TO_LFM_HEADERS[datapoint]?: datapoint)
+                    }
+                }
+                dataDisplay = lfmDatapoints
                 root.btn_lfm.text = getString(R.string.to_all_matches)
                 root.btn_lfm.textSize = 12F
             } else {

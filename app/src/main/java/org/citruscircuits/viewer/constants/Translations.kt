@@ -206,5 +206,14 @@ class Translations {
             "mode_start_position" to "Start Position",
             "matches_played_defense" to "Played Def?"
         )
+
+        val TEAM_TO_LFM_HEADERS: Map<String, String> = mapOf(
+            "See Matches" to "See Matches",
+            "Notes" to "Notes",
+            "Auto" to "L4M Auto",
+            "Tele" to "L4M Tele",
+            "Endgame" to "L4M Endgame",
+            "Pit Data" to "Pit Data"
+        )
     }
 }

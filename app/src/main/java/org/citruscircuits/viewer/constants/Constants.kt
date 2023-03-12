@@ -202,7 +202,7 @@ class Constants {
             "lfm_auto_avg_cone_total",
             "lfm_auto_max_cones",
             "lfm_auto_avg_gamepieces",
-            "auto_max_gamepieces",
+            "lfm_auto_max_gamepieces",
             "lfm_auto_charge_attempts",
             "lfm_auto_dock_successes",
             "lfm_auto_engage_successes",
@@ -487,6 +487,29 @@ class Constants {
             "L4M Endgame"
         )
 
+        val TEAM_AND_LFM_SHARED_DATAPOINTS = listOf(
+            "matches_played",
+            "current_rps",
+            "predicted_rps",
+            "current_avg_rps",
+            "current_rank",
+            "predicted_rank",
+            "first_pickability",
+            "overall_second_pickability",
+            "offensive_second_pickability",
+            "defensive_second_pickability",
+            "driver_ability",
+            "driver_field_awareness",
+            "driver_quickness",
+            "has_communication_device",
+            "has_vision",
+            "weight",
+            "length",
+            "width",
+            "drivetrain",
+            "drivetrain_motor_type",
+            "drivetrain_motors"
+        )
 
         //String literal translations.
         const val TEAM_NUMBER = "teamNumber"
