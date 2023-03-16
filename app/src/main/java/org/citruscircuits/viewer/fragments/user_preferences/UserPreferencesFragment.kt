@@ -61,8 +61,8 @@ class UserPreferencesFragment : Fragment() {
         val datapointsDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
 
         val adapter = UserPreferencesAdapter(
-            context = activity!!,
-            datapointsDisplayed = datapointsDisplay - listOf("See Matches", "Notes")
+            context = requireActivity(),
+            datapointsDisplayed = datapointsDisplay - listOf("See Matches", "Notes Label", "Notes")
 
         )
         root.lv_user_datapoints.adapter = adapter

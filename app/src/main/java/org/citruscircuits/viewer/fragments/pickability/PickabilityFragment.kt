@@ -52,6 +52,7 @@ class PickabilityFragment() : Fragment() {
                 Constants.TEAM_NUMBER,
                 list[position]
             )
+            teamDetailsFragmentArguments.putBoolean("LFM", false)
             teamDetailsFragment.arguments = teamDetailsFragmentArguments
             pickabilityFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             pickabilityFragmentTransaction.addToBackStack(null).replace(

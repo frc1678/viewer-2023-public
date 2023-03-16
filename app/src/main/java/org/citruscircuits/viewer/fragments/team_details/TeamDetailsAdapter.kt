@@ -165,6 +165,10 @@ class TeamDetailsAdapter(
                 )
             }
 
+            if (Constants.PERCENT_DATA.contains(e)) {
+                rowView.tv_datapoint_value.text = "${rowView.tv_datapoint_value.text}%"
+            }
+            
             if ("cube" in e) rowView.setBackgroundColor(
                 context.resources.getColor(R.color.Cube, null)
             ) else if ("cone" in e) rowView.setBackgroundColor(
