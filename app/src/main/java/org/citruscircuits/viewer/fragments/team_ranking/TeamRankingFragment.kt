@@ -55,7 +55,7 @@ class TeamRankingFragment : Fragment() {
 
     private fun setTextViews(root: View) {
         if (Translations.ACTUAL_TO_HUMAN_READABLE.containsKey(dataPoint)) {
-            if (Constants.FIELDS_TO_BE_DISPLAYED_LFM.contains(dataPoint)) {
+            if (Constants.FIELDS_TO_BE_DISPLAYED_LFM.contains(dataPoint) and !Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.contains(dataPoint)) {
                 root.tv_datapoint_header.text =
                     "L4M " + Translations.ACTUAL_TO_HUMAN_READABLE[dataPoint]
             } else {
@@ -68,7 +68,7 @@ class TeamRankingFragment : Fragment() {
 
     private fun setupAdapter(root: View) {
         lvAdapter = TeamRankingListAdapter(
-            activity!!,
+            requireActivity(),
             teamNumber,
             dataPoint!!,
             getRankingList(
@@ -89,13 +89,14 @@ class TeamRankingFragment : Fragment() {
         }
         root.lv_team_ranking.adapter = lvAdapter
         root.lv_team_ranking.setOnItemClickListener { parent, view, position, id ->
-            val teamDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
+            val teamDetailsFragmentTransaction = this.requireFragmentManager().beginTransaction()
             val teamDetailsFragment = TeamDetailsFragment()
             val teamDetailsFragmentArguments = Bundle()
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER,
                 view.tv_team_number_ranking.text.toString()
             )
+            teamDetailsFragmentArguments.putBoolean("LFM", false)
             teamDetailsFragment.arguments = teamDetailsFragmentArguments
             teamDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             teamDetailsFragmentTransaction.addToBackStack(null).replace(

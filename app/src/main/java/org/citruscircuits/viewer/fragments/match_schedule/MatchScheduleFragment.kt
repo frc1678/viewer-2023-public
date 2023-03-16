@@ -167,7 +167,7 @@ class MatchScheduleFragment : Fragment() {
             requireFragmentManager().beginTransaction().addToBackStack(null)
                 .replace(R.id.nav_host_fragment, TeamDetailsFragment().apply {
                     // Put the team number into the arguments for the team details fragment to use
-                    arguments = Bundle().apply { putString(Constants.TEAM_NUMBER, search) }
+                    arguments = Bundle().apply { putString(Constants.TEAM_NUMBER, search) }.apply { putBoolean("LFM", false) }
                 }).commit()
             // Hide the keyboard once the new fragment has been created
             (requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
