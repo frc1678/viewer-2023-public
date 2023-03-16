@@ -77,6 +77,8 @@ class MatchDetailsAdapter(
                 rowView.tv_team_four_md, rowView.tv_team_five_md, rowView.tv_team_six_md
             )
             for (i in 0..5) {
+
+
                 textViews[i].text = if (!hasActualData) getTeamValue(
                     teamNumbers[i],
                     Constants.ACTUAL_TO_PREDICTED_MATCH_DETAILS[datapointsDisplay[position]]
@@ -102,6 +104,11 @@ class MatchDetailsAdapter(
                         textViews[i].setTextSize(5,4.5f)
                     }
                 }
+
+                if (!hasActualData && datapointsDisplay[position] == "mobility") {
+                    textViews[i].text = (textViews[i].text != "0").toString()
+                }
+
             }
         }
         return rowView
