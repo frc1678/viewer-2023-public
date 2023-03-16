@@ -164,12 +164,7 @@ class TeamDetailsAdapter(
                     e
                 )
             }
-            if (e == "Mobility") {
-                if (getTeamDataValue(teamNumber, e)!!.toInt() > 0)
-                    rowView.tv_datapoint_value.text = true.toString()
-                else
-                    rowView.tv_datapoint_value.text = false.toString()
-            }
+
             if ("cube" in e) rowView.setBackgroundColor(
                 context.resources.getColor(R.color.Cube, null)
             ) else if ("cone" in e) rowView.setBackgroundColor(

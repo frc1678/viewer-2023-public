@@ -77,6 +77,13 @@ class MatchDetailsAdapter(
                 rowView.tv_team_four_md, rowView.tv_team_five_md, rowView.tv_team_six_md
             )
             for (i in 0..5) {
+                if (datapointsDisplay[position] == "mobility") {
+                    if (textViews[i].text != "0") {
+                        textViews[i].text = true.toString()
+                    } else
+                        textViews[i].text = false.toString()
+                }
+
                 textViews[i].text = if (!hasActualData) getTeamValue(
                     teamNumbers[i],
                     Constants.ACTUAL_TO_PREDICTED_MATCH_DETAILS[datapointsDisplay[position]]
@@ -101,6 +108,12 @@ class MatchDetailsAdapter(
                         textViews[i].setTextColor(ContextCompat.getColor(context, R.color.Yellow))
                         textViews[i].setTextSize(5,4.5f)
                     }
+                }
+                if (datapointsDisplay[position] == "mobility") {
+                    if (textViews[i].text != "0") {
+                        textViews[i].text = true.toString()
+                    } else
+                        textViews[i].text = false.toString()
                 }
             }
         }
