@@ -78,10 +78,7 @@ class MatchDetailsAdapter(
             )
             for (i in 0..5) {
                 if (datapointsDisplay[position] == "mobility") {
-                    if (textViews[i].text != "0") {
-                        textViews[i].text = true.toString()
-                    } else
-                        textViews[i].text = false.toString()
+                    textViews[i].text = (textViews[i].text != "0").toString()
                 }
 
                 textViews[i].text = if (!hasActualData) getTeamValue(
@@ -110,10 +107,7 @@ class MatchDetailsAdapter(
                     }
                 }
                 if (datapointsDisplay[position] == "mobility") {
-                    if (textViews[i].text != "0") {
-                        textViews[i].text = true.toString()
-                    } else
-                        textViews[i].text = false.toString()
+                    textViews[i].text = (textViews[i].text != "0").toString()
                 }
             }
         }
