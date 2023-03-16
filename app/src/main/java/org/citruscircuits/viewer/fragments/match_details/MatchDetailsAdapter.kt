@@ -104,8 +104,11 @@ class MatchDetailsAdapter(
                         textViews[i].setTextSize(5,4.5f)
                     }
                 }
-                if (datapointsDisplay[position] == "mobility") {
-                    textViews[i].text = (textViews[i].text != "0").toString() }
+
+                if (!hasActualData && datapointsDisplay[position] == "mobility") {
+                    textViews[i].text = (textViews[i].text != "0").toString()
+                }
+
             }
         }
         return rowView
