@@ -71,7 +71,7 @@ class Translations {
             "auto_avg_gamepieces" to "Avg Game Pieces",
             "auto_avg_gamepieces_low" to "Avg All Low",
             "auto_charge_attempt" to "Auto Charge Attempts",
-            "auto_charge_attempts" to "Docking/Engaging Attempts",
+            "auto_charge_attempts" to "Charge Attempts",
             "auto_charge_level" to "Auto Charge Level",
             "auto_cone_high" to "# Cones High",
             "auto_cone_low" to "# Cones Low",
@@ -79,8 +79,8 @@ class Translations {
             "auto_cube_high" to "# Cubes High",
             "auto_cube_low" to "# Cubes Low",
             "auto_cube_mid" to "# Cubes Mid",
-            "auto_dock_successes" to "Docking Success %",
-            "auto_engage_successes" to "Engaging Success %",
+            "auto_dock_percent_success" to "Docking Success %",
+            "auto_engage_percent_success" to "Engaging Success %",
             "auto_max_cones" to "Max Cones",
             "auto_max_cubes" to "Max Cubes",
             "auto_max_gamepieces" to "Max Game Pieces",
@@ -106,9 +106,9 @@ class Translations {
             "lfm_auto_avg_cube_total" to "Avg Cubes Total",
             "lfm_auto_avg_gamepieces" to "Avg Game Pieces",
             "lfm_auto_avg_gamepieces_low" to "Avg All Low",
-            "lfm_auto_charge_attempts" to "Docking/Engaging Attempts",
-            "lfm_auto_dock_successes" to "Docking Success %",
-            "lfm_auto_engage_successes" to "Engaging Success %",
+            "lfm_auto_charge_attempts" to "Charge Attempts",
+            "lfm_auto_dock_percent_success" to "Docking Success %",
+            "lfm_auto_engage_percent_success" to "Engaging Success %",
             "lfm_auto_max_cones" to "Max Cones",
             "lfm_auto_max_cubes" to "Max Cubes",
             "lfm_auto_max_gamepieces" to "Max Game Pieces",
@@ -130,9 +130,9 @@ class Translations {
             "lfm_tele_avg_cube_total" to "Avg Cubes Total",
             "lfm_tele_avg_gamepieces" to "Avg Game Pieces",
             "lfm_tele_avg_gamepieces_low" to "Avg All Low",
-            "lfm_tele_charge_attempts" to "Docking/Engaging Attempts",
-            "lfm_tele_dock_successes" to "Docking Success %",
-            "lfm_tele_engage_successes" to "Engaging Success %",
+            "lfm_tele_charge_attempts" to "Charge Attempts",
+            "lfm_tele_dock_percent_success" to "Docking Success %",
+            "lfm_tele_engage_percent_success" to "Engaging Success %",
             "lfm_tele_max_cones" to "Max Cones",
             "lfm_tele_max_cubes" to "Max Cubes",
             "lfm_tele_max_gamepieces" to "Max Game Pieces",
@@ -152,7 +152,7 @@ class Translations {
             "tele_avg_cube_total" to "Avg Cubes Total",
             "tele_avg_gamepieces" to "Avg Game Pieces",
             "tele_avg_gamepieces_low" to "Avg All Low",
-            "tele_charge_attempts" to "Docking/Engaging Attempts",
+            "tele_charge_attempts" to "Charge Attempts",
             "tele_charge_level" to "Tele Charge Level",
             "tele_charge_attempt" to "Tele Charge Attempts",
             "tele_cone_high" to "# Cones High",
@@ -161,8 +161,8 @@ class Translations {
             "tele_cube_high" to "# Cubes High",
             "tele_cube_low" to "# Cubes Low",
             "tele_cube_mid" to "# Cubes Mid",
-            "tele_dock_successes" to "Docking Success %",
-            "tele_engage_successes" to "Engaging Success %",
+            "tele_dock_percent_success" to "Docking Success %",
+            "tele_engage_percent_success" to "Engaging Success %",
             "tele_max_cones" to "Max Cones",
             "tele_max_cubes" to "Max Cubes",
             "tele_max_gamepieces" to "Max Game Pieces",
@@ -181,7 +181,13 @@ class Translations {
             "auto_avg_charge_points" to "Avg Charge Points",
             "played_defense" to "Matches Played Defense",
             "lfm_avg_total_intakes" to "Avg Total Intakes",
-
+            "lfm_foul_cc" to "Foul OPR",
+            "lfm_mobility_successes" to "# Mobility",
+            "lfm_auto_avg_charge_points" to "Avg Charge Points",
+            "lfm_matches_scored_coop" to "Matches Scored Coop",
+            "lfm_total_incap" to "Total Incap",
+            "lfm_matches_played_defense" to "Matches Played Defense",
+            "lfm_tele_avg_charge_points" to "Avg Charge Points"
         )
 
         val TIM_FROM_TEAM: Map<String, String> = mapOf(
@@ -207,6 +213,16 @@ class Translations {
             "position_four_starts" to "Start Pos 4?",
             "mode_start_position" to "Start Position",
             "matches_played_defense" to "Played Def?"
+        )
+
+        val TEAM_TO_LFM_HEADERS: Map<String, String> = mapOf(
+            "See Matches" to "See Matches",
+            "Notes" to "Notes",
+            "Auto" to "L4M Auto",
+            "Tele" to "L4M Tele",
+            "Endgame" to "L4M Endgame",
+            "Pit Data" to "Pit Data",
+            "Notes Label" to "Notes Label"
         )
     }
 }

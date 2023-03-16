@@ -29,15 +29,16 @@ class TeamListFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_team_list, container, false)
 
         root.lv_team_list.setOnItemClickListener { _, _, position, _ ->
-            val teamListFragmentTransaction = this.fragmentManager!!.beginTransaction()
+            val teamListFragmentTransaction = this.requireFragmentManager().beginTransaction()
             teamDetailsFragmentArguments.putString(
                 Constants.TEAM_NUMBER,
                 list[position]
             )
+            teamDetailsFragmentArguments.putBoolean("LFM", false)
             teamDetailsFragment.arguments = teamDetailsFragmentArguments
             teamListFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             teamListFragmentTransaction.addToBackStack(null).replace(
-                (view!!.parent as ViewGroup).id,
+                (requireView().parent as ViewGroup).id,
                 teamDetailsFragment
             ).commit()
         }
@@ -63,7 +64,7 @@ class TeamListFragment : Fragment() {
 
     private fun updateTeamListView(root: View) {
         val adapter = TeamListAdapter(
-            context = activity!!,
+            context = requireActivity(),
             items = list
         )
         if (refreshId == null) {

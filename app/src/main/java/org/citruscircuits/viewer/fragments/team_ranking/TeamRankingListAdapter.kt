@@ -54,6 +54,9 @@ class TeamRankingListAdapter(
         } else {
             rowView.tv_value_ranking.text = e.value
         }
+        if (Constants.PERCENT_DATA.contains(dataPoint)) {
+            rowView.tv_value_ranking.text = "${rowView.tv_value_ranking.text}%"
+        }
         if (pit) {
             rowView.tv_team_ranking.text = ""
             rowView.tv_team_ranking.layoutParams =

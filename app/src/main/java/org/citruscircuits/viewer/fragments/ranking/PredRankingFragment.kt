@@ -70,6 +70,7 @@ class PredRankingFragment : Fragment() {
                     MainViewerActivity.teamList
                 )[position]
             )
+            teamDetailsFragmentArguments.putBoolean("LFM", false)
             teamDetailsFragment.arguments = teamDetailsFragmentArguments
             rankingFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             rankingFragmentTransaction.addToBackStack(null).replace(
