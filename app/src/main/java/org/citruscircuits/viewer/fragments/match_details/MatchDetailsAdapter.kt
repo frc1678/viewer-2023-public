@@ -1,5 +1,6 @@
 package org.citruscircuits.viewer.fragments.match_details
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.Gravity
@@ -45,6 +46,7 @@ class MatchDetailsAdapter(
     override fun getItemId(position: Int) = position.toLong()
 
     /** Populate the elements of the custom cell. */
+    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val rowView = inflater.inflate(R.layout.match_details_cell, parent, false)
         rowView.tv_datapoint_name.text =
@@ -110,7 +112,7 @@ class MatchDetailsAdapter(
     private fun getTeamValue(teamNumber: String, field: String): String? {
         // If the datafield is a float, round the datapoint.
         // Otherwise, get returned string from getTeamDataValue.
-        val regex = Regex("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
+        val regex = Regex("-?\\d+${Regex.escape(".")}\\d+")
         val dataValue = getTeamDataValue(teamNumber, field)
         return if (regex matches dataValue.toString()) {
             if (field in Constants.DRIVER_DATA) "%.2f".format(dataValue?.toFloat())

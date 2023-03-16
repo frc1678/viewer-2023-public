@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.match_details.view.*
 import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.MainViewerActivity.UserDatapoints
 import org.citruscircuits.viewer.R
@@ -25,7 +26,6 @@ import org.citruscircuits.viewer.constants.Translations
 import org.citruscircuits.viewer.fragments.team_details.TeamDetailsFragment
 import org.citruscircuits.viewer.getAllianceInMatchObjectByKey
 import org.citruscircuits.viewer.getMatchSchedule
-import kotlinx.android.synthetic.main.match_details.view.*
 
 // The fragment class for the Match Details display that occurs when you click on a
 // match in the match schedule page.
@@ -49,7 +49,9 @@ class MatchDetailsFragment : Fragment() {
         hasActualData = checkHasActualData()
 
         headerDisplay =
-            (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
+            (if (hasActualData!!) {
+                Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED
+            } else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
 
         val root = inflater.inflate(R.layout.match_details, container, false)
 
@@ -162,14 +164,14 @@ class MatchDetailsFragment : Fragment() {
     // On every team number's specified text view, when the user clicks on the text view it will
     // then go to a new TeamDetails page for the given team number.
     private fun initTeamNumberClickListeners(root: View) {
-        val matchDetailsFragmentTransaction = this.fragmentManager!!.beginTransaction()
+        val matchDetailsFragmentTransaction = this.requireFragmentManager().beginTransaction()
         for (tv in getTeamNumbersXML(root)) {
             tv.setOnClickListener {
                 teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, tv.text.toString())
                 teamDetailsFragment.arguments = teamDetailsFragmentArguments
                 matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 matchDetailsFragmentTransaction.addToBackStack(null).replace(
-                    (view!!.parent as ViewGroup).id,
+                    (requireView().parent as ViewGroup).id,
                     teamDetailsFragment
                 ).commit()
             }
@@ -194,7 +196,7 @@ class MatchDetailsFragment : Fragment() {
         val datapointsDisplay = Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_PLAYED
 
         val adapter = MatchDetailsAdapter(
-            context = activity!!,
+            context = requireActivity(),
             datapointsDisplay = datapointsDisplay,
             matchNumber = matchNumber!!,
             teamNumbers = getTeamNumbersList(root),
