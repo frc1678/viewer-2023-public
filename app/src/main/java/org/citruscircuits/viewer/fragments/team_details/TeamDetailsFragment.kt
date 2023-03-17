@@ -154,6 +154,14 @@ class TeamDetailsFragment : Fragment() {
         if (!File(
                 Constants.STORAGE_FOLDER,
                 "${teamNumber}_full_robot.jpg"
+            ).exists() &&
+            !File(
+                Constants.STORAGE_FOLDER,
+                "${teamNumber}_front.jpg"
+            ).exists() &&
+            !File(
+                Constants.STORAGE_FOLDER,
+                "${teamNumber}_side.jpg"
             ).exists()
         ) {
             root.robot_pic_button.layoutParams = LinearLayout.LayoutParams(0, 0, 0f)
