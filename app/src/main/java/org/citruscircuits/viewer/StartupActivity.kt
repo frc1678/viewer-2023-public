@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
@@ -32,6 +33,7 @@ class StartupActivity : ViewerActivity() {
         supportActionBar?.hide()
 
         Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
+        Constants.DOWNLOADS_FOLDER = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 
         // Interface to access the DatabaseReference -> CompetitionObject object that
         // should be an exact replica of every WANTED data value from MongoDB.

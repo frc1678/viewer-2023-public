@@ -28,6 +28,7 @@ class Constants {
         const val VERSION_NUM = "5.0.0"
 
         lateinit var STORAGE_FOLDER: File
+        lateinit var DOWNLOADS_FOLDER: File
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
             "processed",

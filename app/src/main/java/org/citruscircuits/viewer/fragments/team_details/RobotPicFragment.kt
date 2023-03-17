@@ -53,15 +53,15 @@ class RobotPicFragment : Fragment() {
     // Gets the picture files from the phone's Viewer data folder
     private fun getPicFiles() {
         picFileFull = File(
-            Constants.STORAGE_FOLDER,
+            Constants.DOWNLOADS_FOLDER,
             "${teamNumber}_full_robot.jpg"
         )
         picFileFront = File(
-            Constants.STORAGE_FOLDER,
+            Constants.DOWNLOADS_FOLDER,
             "${teamNumber}_front.jpg"
         )
         picFileSide = File(
-            Constants.STORAGE_FOLDER,
+            Constants.DOWNLOADS_FOLDER,
             "${teamNumber}_side.jpg"
         )
     }
