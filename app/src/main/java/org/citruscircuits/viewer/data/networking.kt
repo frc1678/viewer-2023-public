@@ -137,7 +137,8 @@ object DataApi {
     data class ViewerData(
         val team: Map<String, JsonObject>,
         val tim: Map<String, Map<String, JsonObject>>,
-        val aim: Map<String, AimData>
+        val aim: Map<String, AimData>,
+        val predictedAlliances: Map<String, JsonObject>
     )
 
     @Serializable

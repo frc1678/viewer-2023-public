@@ -9,13 +9,13 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.startup_splash_screen.*
+import kotlinx.coroutines.launch
 import org.citruscircuits.viewer.constants.Constants
 import org.citruscircuits.viewer.data.DataApi
 import org.citruscircuits.viewer.data.getDataFromWebsite
 import org.citruscircuits.viewer.data.loadTestData
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.startup_splash_screen.*
-import kotlinx.coroutines.launch
 
 // Splash screen activity that waits for the data to pull from the MongoDB database until it
 // begins the other Viewer activities. AKA once MainViewerActivity.databaseReference is not null,
@@ -47,17 +47,17 @@ class StartupActivity : ViewerActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET)
-            != PackageManager.PERMISSION_GRANTED
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.INTERNET
+            ) != PackageManager.PERMISSION_GRANTED
         ) {
             try {
                 ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(
+                    this, arrayOf(
 
                         Manifest.permission.INTERNET
-                    ),
-                    100
+                    ), 100
                 )
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -69,16 +69,12 @@ class StartupActivity : ViewerActivity() {
         try {
             if (Constants.USE_TEST_DATA) {
                 loadTestData(this.resources)
-
             } else {
                 // Tries to get data from website when starting the app and throws an error if fails
                 getDataFromWebsite()
-
             }
             ContextCompat.startActivity(
-                this,
-                Intent(this, WelcomeActivity::class.java),
-                null
+                this, Intent(this, WelcomeActivity::class.java), null
             )
         } catch (e: Throwable) {
             Log.e(
@@ -91,12 +87,16 @@ class StartupActivity : ViewerActivity() {
             )
             runOnUiThread {
                 // Stuff that updates the UI
-                btn_retry.setVisibility(View.VISIBLE)
-                Snackbar.make(splash_screen_layout, "Could not find match_schedule file for schedule key ${Constants.SCHEDULE_KEY}", 1000000000).show()
+                btn_retry.visibility = View.VISIBLE
+                Snackbar.make(
+                    splash_screen_layout,
+                    "Could not find match_schedule file for schedule key ${Constants.SCHEDULE_KEY}",
+                    1000000000
+                ).show()
             }
         }
-
     }
+
     fun btnRetryOnClick(view: View) {
         MainViewerActivity.refreshManager.start(lifecycleScope)
 
