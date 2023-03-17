@@ -15,15 +15,6 @@
         style="@style/tv_team_number_team_details_sub"
         android:layout_marginBottom="@dimen/very_small" />
 
-    <TextView
-        style="@style/tv_standard_gray"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/very_small"
-        android:layout_weight="0"
-        android:text="@string/full_robot_1"
-        tools:ignore="InefficientWeight" />
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
