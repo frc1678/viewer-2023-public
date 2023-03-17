@@ -2,6 +2,7 @@ package org.citruscircuits.viewer
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Environment
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -19,6 +20,7 @@ class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsRes
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
+        Constants.DOWNLOADS_FOLDER = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 
         // Create/read the user profile file, the starred matches file, and the starred teams file
         UserDatapoints.read(this)

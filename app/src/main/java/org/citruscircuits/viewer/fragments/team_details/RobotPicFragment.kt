@@ -45,7 +45,7 @@ class RobotPicFragment : Fragment() {
 
     private fun getPicFiles() {
         picFile = File(
-            Constants.STORAGE_FOLDER,
+            Constants.DOWNLOADS_FOLDER,
             "${teamNumber}_full_robot.jpg"
         )
     }
