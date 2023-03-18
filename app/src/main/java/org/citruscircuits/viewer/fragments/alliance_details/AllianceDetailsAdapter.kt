@@ -7,35 +7,48 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.fragment.app.FragmentActivity
-import kotlinx.android.synthetic.main.alliance_details_cell.view.*
+import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_alliance_num
+import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_auto_score
+import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_endgame_score
+import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_team1
+import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_team2
+import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_team3
+import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_tele_score
+import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_total_score
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonPrimitive
 import org.citruscircuits.viewer.R
+import org.citruscircuits.viewer.StartupActivity
+import org.citruscircuits.viewer.data.getPredictedAlliancesDataByKey
 
-class AllianceDetailsAdapter (
-    context: FragmentActivity
-): BaseAdapter() {
+class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
 
     private val inflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-    override fun getCount(): Int {
-        return 8
-    }
+    override fun getCount() = StartupActivity.databaseReference?.alliance?.size!!
+    override fun getItem(position: Int) =
+        StartupActivity.databaseReference?.alliance?.get(position + 1)
 
-    override fun getItem(p0: Int): Any {
-        return ""
-    }
+    override fun getItemId(position: Int) = position.toLong()
 
-    override fun getItemId(p0: Int): Long {
-        return p0.toLong()
-    }
-
-    @SuppressLint("ViewHolder")
+    @SuppressLint("ViewHolder", "SetTextI18n")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val rowView = inflater.inflate(R.layout.alliance_details_cell, parent, false)
-
-        rowView.alliance_details_alliance_num.text =
-
+        rowView.alliance_details_alliance_num.text = (position + 1).toString()
+        val picks = StartupActivity.databaseReference?.alliance?.get(position + 1)
+            ?.get("picks")?.jsonArray!!
+        rowView.alliance_details_team1.text = picks[0].jsonPrimitive.content
+        rowView.alliance_details_team2.text = picks[1].jsonPrimitive.content
+        rowView.alliance_details_team3.text = picks[2].jsonPrimitive.content
+        rowView.alliance_details_auto_score.text =
+            getPredictedAlliancesDataByKey(position + 1, "predicted_auto_score")
+        rowView.alliance_details_tele_score.text =
+            getPredictedAlliancesDataByKey(position + 1, "predicted_tele_score")
+        rowView.alliance_details_endgame_score.text =
+            getPredictedAlliancesDataByKey(position + 1, "predicted_charge_score")
+        rowView.alliance_details_total_score.text =
+            getPredictedAlliancesDataByKey(position + 1, "predicted_score")
         return rowView
     }
-
 }

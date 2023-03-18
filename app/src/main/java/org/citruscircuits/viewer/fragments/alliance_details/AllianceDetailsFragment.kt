@@ -1,19 +1,31 @@
 package org.citruscircuits.viewer.fragments.alliance_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_alliance_details.view.lv_alliance_details
+import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.R
 
 class AllianceDetailsFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private var refreshId: String? = null
 
-        return inflater.inflate(R.layout.fragment_alliance_details, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        val root = inflater.inflate(R.layout.fragment_alliance_details, container, false)
+        val adapter = AllianceDetailsAdapter(requireActivity())
+        if (refreshId == null) {
+            refreshId = MainViewerActivity.refreshManager.addRefreshListener {
+                Log.d("data-refresh", "Updated: alliance-details")
+                adapter.notifyDataSetChanged()
+            }
+        }
+        root.lv_alliance_details.adapter = adapter
+        return root
     }
 }

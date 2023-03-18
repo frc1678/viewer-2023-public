@@ -11,9 +11,5 @@ package org.citruscircuits.viewer.data
 import kotlinx.serialization.json.jsonPrimitive
 import org.citruscircuits.viewer.StartupActivity.Companion.databaseReference
 
-fun getPredictedAlliancesDataByKey(
-    allianceNumber: String,
-    field: String
-): String? {
-    return databaseReference?.predictedAlliances?.get(allianceNumber)?.get(field)?.jsonPrimitive?.content
-}
+fun getPredictedAlliancesDataByKey(allianceNumber: Int, field: String) =
+    databaseReference?.alliance?.get(allianceNumber)?.get(field)?.jsonPrimitive?.content
