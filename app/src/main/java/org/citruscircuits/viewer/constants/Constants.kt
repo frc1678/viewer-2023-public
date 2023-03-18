@@ -149,6 +149,7 @@ class Constants {
             "total_incap",
             "matches_incap",
             "median_nonzero_incap",
+            "matches_tippy",
             "matches_played_defense",
             "driver_ability",
             "driver_field_awareness",
@@ -234,6 +235,7 @@ class Constants {
             "lfm_total_incap",
             "lfm_matches_incap",
             "lfm_median_nonzero_incap",
+            "lfm_matches_tippy",
             "lfm_matches_played_defense",
             "driver_ability",
             "driver_field_awareness",
@@ -311,6 +313,7 @@ class Constants {
             "tele_max_gamepieces" to "tele_total_gamepieces",
             "tele_avg_gamepieces" to "tele_total_gamepieces",
             "tele_avg_gamepieces_low" to "tele_total_gamepieces_low",
+            "matches_tippy" to "tippy",
             "matches_played_defense" to "played_defense",
             "auto_dock_percent_success" to "auto_charge_level",
             "tele_dock_percent_success" to "tele_charge_level",
@@ -350,6 +353,7 @@ class Constants {
 //            "lfm_tele_max_gamepieces" to "lfm_tele_total_gamepieces",
 //            "lfm_tele_avg_gamepieces" to "lfm_tele_total_gamepieces",
 //            "lfm_tele_avg_gamepieces_low" to "lfm_tele_total_gamepieces_low",
+//            "lfm_matches_tippy" to "lfm_tippy",
 //            "lfm_matches_played_defense" to "lfm_played_defense",
 //            "lfm_auto_dock_percent_success" to "lfm_auto_charge_level",
 //            "lfm_tele_dock_percent_success" to "lfm_tele_charge_level",
@@ -533,7 +537,9 @@ class Constants {
             "lfm_tele_sd_gamepieces" to true,
             "lfm_total_incap" to false,
             "lfm_matches_played_defense" to true,
-            "lfm_tele_avg_charge_points" to true
+            "lfm_tele_avg_charge_points" to true,
+            "matches_tippy" to false,
+            "lfm_matches_tippy" to false
         )
 
         val RANK_BY_PIT = mapOf<String, Int>(

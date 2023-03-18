@@ -156,11 +156,11 @@ class TeamDetailsFragment : Fragment() {
                 "${teamNumber}_full_robot.jpg"
             ).exists() &&
             !File(
-                Constants.STORAGE_FOLDER,
+                Constants.DOWNLOADS_FOLDER,
                 "${teamNumber}_front.jpg"
             ).exists() &&
             !File(
-                Constants.STORAGE_FOLDER,
+                Constants.DOWNLOADS_FOLDER,
                 "${teamNumber}_side.jpg"
             ).exists()
         ) {

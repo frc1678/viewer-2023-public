@@ -180,6 +180,7 @@ class Translations {
             "tele_avg_charge_points" to "Avg Charge Points",
             "auto_avg_charge_points" to "Avg Charge Points",
             "played_defense" to "Matches Played Defense",
+            "tippy" to "Matches Marked Tippy",
             "lfm_avg_total_intakes" to "Avg Total Intakes",
             "lfm_foul_cc" to "Foul OPR",
             "lfm_mobility_successes" to "# Mobility",
@@ -187,7 +188,9 @@ class Translations {
             "lfm_matches_scored_coop" to "Matches Scored Coop",
             "lfm_total_incap" to "Total Incap",
             "lfm_matches_played_defense" to "Matches Played Defense",
-            "lfm_tele_avg_charge_points" to "Avg Charge Points"
+            "lfm_tele_avg_charge_points" to "Avg Charge Points",
+            "matches_tippy" to "Matches Marked Tippy",
+            "lfm_matches_tippy" to "Matches Marked Tippy"
         )
 
         val TIM_FROM_TEAM: Map<String, String> = mapOf(
