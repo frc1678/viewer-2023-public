@@ -12,12 +12,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import kotlinx.android.synthetic.main.match_details_cell.view.*
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.constants.Constants
 import org.citruscircuits.viewer.constants.Translations
 import org.citruscircuits.viewer.getTIMDataValueByMatch
 import org.citruscircuits.viewer.getTeamDataValue
-import kotlinx.android.synthetic.main.match_details_cell.view.*
 
 /**
  * Adapter for the match details datapoint list
@@ -75,8 +75,12 @@ class MatchDetailsAdapter(
             rowView.tv_team_six_md.text = ""
         } else {
             val textViews = listOf<TextView>(
-                rowView.tv_team_one_md, rowView.tv_team_two_md, rowView.tv_team_three_md,
-                rowView.tv_team_four_md, rowView.tv_team_five_md, rowView.tv_team_six_md
+                rowView.tv_team_one_md,
+                rowView.tv_team_two_md,
+                rowView.tv_team_three_md,
+                rowView.tv_team_four_md,
+                rowView.tv_team_five_md,
+                rowView.tv_team_six_md
             )
             for (i in 0..5) {
                 textViews[i].text = if (!hasActualData) getTeamValue(
@@ -84,24 +88,20 @@ class MatchDetailsAdapter(
                     Constants.ACTUAL_TO_PREDICTED_MATCH_DETAILS[datapointsDisplay[position]]
                         ?: datapointsDisplay[position]
                 )?.replace("O", "▲")?.replace("U", "🟪") ?: Constants.NULL_CHARACTER
-                    else if(datapointsDisplay[position] == "driver_ability" ||
-                        datapointsDisplay[position] == "current_avg_rps") {
-                        var teamData = getTeamDataValue(teamNumbers[i], datapointsDisplay[position])
-                        if(teamData != null && teamData != Constants.NULL_CHARACTER) {
-                            ("%.1f").format(
-                                teamData.toFloatOrNull()
-                            )
-                        } else Constants.NULL_CHARACTER
-                    }
-                    else getTIMDataValueByMatch(
-                        matchNumber.toString(),
-                        teamNumbers[i],
-                        datapointsDisplay[position]
-                    ) ?: Constants.NULL_CHARACTER
+                else if (datapointsDisplay[position] == "driver_ability" || datapointsDisplay[position] == "current_avg_rps") {
+                    var teamData = getTeamDataValue(teamNumbers[i], datapointsDisplay[position])
+                    if (teamData != null && teamData != Constants.NULL_CHARACTER) {
+                        ("%.1f").format(
+                            teamData.toFloatOrNull()
+                        )
+                    } else Constants.NULL_CHARACTER
+                } else getTIMDataValueByMatch(
+                    matchNumber.toString(), teamNumbers[i], datapointsDisplay[position]
+                ) ?: Constants.NULL_CHARACTER
                 if (datapointsDisplay[position] == "preloaded_gamepiece") {
                     if (textViews[i].text == "▲") {
                         textViews[i].setTextColor(ContextCompat.getColor(context, R.color.Yellow))
-                        textViews[i].setTextSize(5,4.5f)
+                        textViews[i].setTextSize(5, 4.5f)
                     }
                 }
             }

@@ -6,13 +6,14 @@
 * Copyright 2023 Citrus Circuits. All rights reserved.
 */
 
-package org.citruscircuits.viewer
+package org.citruscircuits.viewer.data
 
 import kotlinx.serialization.json.jsonPrimitive
+import org.citruscircuits.viewer.StartupActivity.Companion.databaseReference
 
 fun getPredictedAlliancesDataByKey(
     allianceNumber: String,
     field: String
 ): String? {
-    return StartupActivity.databaseReference?.predictedAlliances?.get(allianceNumber)?.get(field)?.jsonPrimitive?.content
+    return databaseReference?.predictedAlliances?.get(allianceNumber)?.get(field)?.jsonPrimitive?.content
 }
