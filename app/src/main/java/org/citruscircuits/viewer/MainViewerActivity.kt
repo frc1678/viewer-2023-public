@@ -12,6 +12,7 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.Gravity
 import android.view.Menu
@@ -329,7 +330,7 @@ class MainViewerActivity : ViewerActivity() {
         var gson = Gson()
 
         private val file =
-            File(Constants.STORAGE_FOLDER, "viewer_user_data_prefs.json")
+            File(Constants.DOWNLOADS_FOLDER, "viewer_user_data_prefs.json")
 
         fun read(context: Context) {
             if (!fileExists()) {
@@ -405,7 +406,7 @@ class MainViewerActivity : ViewerActivity() {
         }.map { return@map it.value.matchNumber }
 
         private val file =
-            File(Constants.STORAGE_FOLDER, "viewer_starred_matches.json")
+            File(Constants.DOWNLOADS_FOLDER, "viewer_starred_matches.json")
 
         fun read() {
             if (!fileExists()) {
@@ -462,7 +463,7 @@ class MainViewerActivity : ViewerActivity() {
         fun contains(team: String) = teams.contains(team)
 
         private val file =
-            File(Constants.STORAGE_FOLDER, "viewer_starred_teams.json")
+            File(Constants.DOWNLOADS_FOLDER, "viewer_starred_teams.json")
 
         fun read() {
             if (!file.exists()) write()
