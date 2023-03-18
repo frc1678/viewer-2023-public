@@ -19,6 +19,7 @@ import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonPrimitive
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.StartupActivity
+import org.citruscircuits.viewer.constants.Constants
 import org.citruscircuits.viewer.data.getPredictedAlliancesDataByKey
 
 class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
@@ -28,7 +29,7 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
 
     override fun getCount() = StartupActivity.databaseReference?.alliance?.size!!
     override fun getItem(position: Int) =
-        StartupActivity.databaseReference?.alliance?.get(position + 1)
+        StartupActivity.databaseReference?.alliance?.get((position + 1).toString())
 
     override fun getItemId(position: Int) = position.toLong()
 
@@ -36,19 +37,26 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val rowView = inflater.inflate(R.layout.alliance_details_cell, parent, false)
         rowView.alliance_details_alliance_num.text = (position + 1).toString()
-        val picks = StartupActivity.databaseReference?.alliance?.get(position + 1)
-            ?.get("picks")?.jsonArray!!
-        rowView.alliance_details_team1.text = picks[0].jsonPrimitive.content
-        rowView.alliance_details_team2.text = picks[1].jsonPrimitive.content
-        rowView.alliance_details_team3.text = picks[2].jsonPrimitive.content
+        val picks = StartupActivity.databaseReference?.alliance?.get((position + 1).toString())
+            ?.get("picks")?.jsonArray
+        rowView.alliance_details_team1.text =
+            picks?.get(0)?.jsonPrimitive?.content ?: Constants.NULL_CHARACTER
+        rowView.alliance_details_team2.text =
+            picks?.get(1)?.jsonPrimitive?.content ?: Constants.NULL_CHARACTER
+        rowView.alliance_details_team3.text =
+            picks?.get(2)?.jsonPrimitive?.content ?: Constants.NULL_CHARACTER
         rowView.alliance_details_auto_score.text =
             getPredictedAlliancesDataByKey(position + 1, "predicted_auto_score")
+                ?: Constants.NULL_CHARACTER
         rowView.alliance_details_tele_score.text =
             getPredictedAlliancesDataByKey(position + 1, "predicted_tele_score")
+                ?: Constants.NULL_CHARACTER
         rowView.alliance_details_endgame_score.text =
             getPredictedAlliancesDataByKey(position + 1, "predicted_charge_score")
+                ?: Constants.NULL_CHARACTER
         rowView.alliance_details_total_score.text =
             getPredictedAlliancesDataByKey(position + 1, "predicted_score")
+                ?: Constants.NULL_CHARACTER
         return rowView
     }
 }
