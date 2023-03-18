@@ -27,7 +27,7 @@ class Constants {
         const val PREDICTED_RANKING_POINT_QUALIFICATION = 0.65
         const val VERSION_NUM = "5.0.0"
 
-        lateinit var STORAGE_FOLDER: File
+//        lateinit var STORAGE_FOLDER: File
         lateinit var DOWNLOADS_FOLDER: File
 
         val FIELDS_TO_BE_DISPLAYED: List<String> = listOf(
