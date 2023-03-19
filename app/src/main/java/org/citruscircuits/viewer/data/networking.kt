@@ -130,7 +130,7 @@ object DataApi {
             if (eventKey != null) {
                 parameter("event_key", eventKey)
             }
-            parameter("use_strings", false)
+            parameter("use_strings", true)
         }.body()
 
     @Serializable

@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_detail
 import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_team3
 import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_tele_score
 import kotlinx.android.synthetic.main.alliance_details_cell.view.alliance_details_total_score
+import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonPrimitive
 import org.citruscircuits.viewer.R
@@ -37,14 +38,12 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val rowView = inflater.inflate(R.layout.alliance_details_cell, parent, false)
         rowView.alliance_details_alliance_num.text = (position + 1).toString()
-        val picks = StartupActivity.databaseReference?.alliance?.get((position + 1).toString())
-            ?.get("picks")?.jsonArray
-        rowView.alliance_details_team1.text =
-            picks?.get(0)?.jsonPrimitive?.content ?: Constants.NULL_CHARACTER
-        rowView.alliance_details_team2.text =
-            picks?.get(1)?.jsonPrimitive?.content ?: Constants.NULL_CHARACTER
-        rowView.alliance_details_team3.text =
-            picks?.get(2)?.jsonPrimitive?.content ?: Constants.NULL_CHARACTER
+        val picks = Json.parseToJsonElement(getPredictedAlliancesDataByKey(
+            position + 1, "picks"
+        )!!.filter { it != '\'' }).jsonArray
+        rowView.alliance_details_team1.text = picks[0].jsonPrimitive.content
+        rowView.alliance_details_team2.text = picks[1].jsonPrimitive.content
+        rowView.alliance_details_team3.text = picks[2].jsonPrimitive.content
         rowView.alliance_details_auto_score.text =
             getPredictedAlliancesDataByKey(position + 1, "predicted_auto_score")
                 ?: Constants.NULL_CHARACTER
