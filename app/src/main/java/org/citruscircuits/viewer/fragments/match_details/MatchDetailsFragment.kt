@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.match_details.view.*
 import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.MainViewerActivity.UserDatapoints
 import org.citruscircuits.viewer.R
@@ -25,7 +26,6 @@ import org.citruscircuits.viewer.constants.Translations
 import org.citruscircuits.viewer.fragments.team_details.TeamDetailsFragment
 import org.citruscircuits.viewer.getAllianceInMatchObjectByKey
 import org.citruscircuits.viewer.getMatchSchedule
-import kotlinx.android.synthetic.main.match_details.view.*
 
 // The fragment class for the Match Details display that occurs when you click on a
 // match in the match schedule page.
@@ -49,7 +49,9 @@ class MatchDetailsFragment : Fragment() {
         hasActualData = checkHasActualData()
 
         headerDisplay =
-            (if (hasActualData!!) Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
+            (if (hasActualData!!) {
+                Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_PLAYED
+            } else Constants.FIELDS_TO_BE_DISPLAYED_MATCH_DETAILS_HEADER_NOT_PLAYED)
 
         val root = inflater.inflate(R.layout.match_details, container, false)
 

@@ -28,24 +28,23 @@ import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
-import org.citruscircuits.viewer.MainViewerActivity.StarredMatches.contents
-import org.citruscircuits.viewer.constants.Constants
-import org.citruscircuits.viewer.data.Match
-import org.citruscircuits.viewer.data.NotesApi
-import org.citruscircuits.viewer.fragments.live_picklist.LivePicklistFragment
-import org.citruscircuits.viewer.fragments.match_schedule.MatchScheduleFragment
-import org.citruscircuits.viewer.fragments.offline_picklist.OfflinePicklistFragment
-import org.citruscircuits.viewer.fragments.pickability.PickabilityFragment
-import org.citruscircuits.viewer.fragments.pickability.PickabilityMode
-import org.citruscircuits.viewer.fragments.preferences.PreferencesFragment
-import org.citruscircuits.viewer.fragments.ranking.RankingFragment
-import org.citruscircuits.viewer.fragments.team_list.TeamListFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.field_map_popup.view.*
-import kotlinx.android.synthetic.main.field_map_popup.view.close_button
 import kotlinx.coroutines.launch
+import org.citruscircuits.viewer.MainViewerActivity.StarredMatches.contents
+import org.citruscircuits.viewer.constants.Constants
+import org.citruscircuits.viewer.data.Match
+import org.citruscircuits.viewer.data.NotesApi
+import org.citruscircuits.viewer.fragments.alliance_details.AllianceDetailsFragment
+import org.citruscircuits.viewer.fragments.live_picklist.LivePicklistFragment
+import org.citruscircuits.viewer.fragments.match_schedule.MatchScheduleFragment
+import org.citruscircuits.viewer.fragments.offline_picklist.OfflinePicklistFragment
+import org.citruscircuits.viewer.fragments.pickability.PickabilityFragment
+import org.citruscircuits.viewer.fragments.preferences.PreferencesFragment
+import org.citruscircuits.viewer.fragments.ranking.RankingFragment
+import org.citruscircuits.viewer.fragments.team_list.TeamListFragment
 import java.io.*
 
 
@@ -78,31 +77,27 @@ class MainViewerActivity : ViewerActivity() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.closeDrawer(GravityCompat.START)
         if (supportFragmentManager.fragments.last().tag == "rankings") {
             supportFragmentManager.popBackStack(0, 0)
-            supportFragmentManager.beginTransaction()
-                .addToBackStack(null)
-                .replace(R.id.nav_host_fragment, MatchScheduleFragment(), "matchSchedule")
-                .commit()
+            supportFragmentManager.beginTransaction().addToBackStack(null)
+                .replace(R.id.nav_host_fragment, MatchScheduleFragment(), "matchSchedule").commit()
         } else if (supportFragmentManager.backStackEntryCount > 1) supportFragmentManager.popBackStack()
     }
 
     override fun onResume() {
         super.onResume()
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+        if (ActivityCompat.checkSelfPermission(
                 this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-            != PackageManager.PERMISSION_GRANTED
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
         ) {
             try {
                 ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(
+                    this, arrayOf(
                         Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ),
-                    100
+                    ), 100
                 )
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -148,7 +143,7 @@ class MainViewerActivity : ViewerActivity() {
             updateNavFooter()
         }
 
-        if (!Constants.USE_TEST_DATA){
+        if (!Constants.USE_TEST_DATA) {
             lifecycleScope.launch {
                 updateNotesCache()
             }
@@ -163,14 +158,13 @@ class MainViewerActivity : ViewerActivity() {
         val pickabilityFragment = PickabilityFragment()
         val teamListFragment = TeamListFragment()
         val preferencesFragment = PreferencesFragment()
+        val allianceDetailsFragment = AllianceDetailsFragment()
 
         updateNavFooter()
 
         //default screen when the viewer starts (after pulling data)
-        supportFragmentManager.beginTransaction()
-            .addToBackStack(null)
-            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
-            .commit()
+        supportFragmentManager.beginTransaction().addToBackStack(null)
+            .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule").commit()
 
         container.addDrawerListener(NavDrawerListener(navView, supportFragmentManager))
 
@@ -184,24 +178,19 @@ class MainViewerActivity : ViewerActivity() {
 
                 R.id.nav_menu_match_schedule -> {
                     supportFragmentManager.popBackStack(0, 0)
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
+                    supportFragmentManager.beginTransaction().addToBackStack(null)
                         .replace(R.id.nav_host_fragment, matchScheduleFragment, "matchSchedule")
                         .commit()
                 }
 
                 R.id.nav_menu_rankings -> {
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, rankingFragment, "rankings")
-                        .commit()
+                    supportFragmentManager.beginTransaction().addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, rankingFragment, "rankings").commit()
                 }
 
                 R.id.nav_menu_picklist -> {
-                    supportFragmentManager.beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.nav_host_fragment, livePicklistFragment, "picklist")
-                        .commit()
+                    supportFragmentManager.beginTransaction().addToBackStack(null)
+                        .replace(R.id.nav_host_fragment, livePicklistFragment, "picklist").commit()
                 }
 
 
@@ -210,8 +199,7 @@ class MainViewerActivity : ViewerActivity() {
                     if (supportFragmentManager.fragments.last().tag != "pickability") ft.addToBackStack(
                         null
                     )
-                    ft.replace(R.id.nav_host_fragment, pickabilityFragment, "pickability")
-                        .commit()
+                    ft.replace(R.id.nav_host_fragment, pickabilityFragment, "pickability").commit()
                 }
 
 
@@ -220,17 +208,23 @@ class MainViewerActivity : ViewerActivity() {
                     if (supportFragmentManager.fragments.last().tag != "teamList") ft.addToBackStack(
                         null
                     )
-                    ft.replace(R.id.nav_host_fragment, teamListFragment, "teamlist")
-                        .commit()
+                    ft.replace(R.id.nav_host_fragment, teamListFragment, "teamlist").commit()
                 }
 
-                R.id.nav_preferences -> {
+                R.id.nav_menu_preferences -> {
                     val ft = supportFragmentManager.beginTransaction()
                     if (supportFragmentManager.fragments.last().tag != "preferences") ft.addToBackStack(
                         null
                     )
-                    ft.replace(R.id.nav_host_fragment, preferencesFragment, "preferences")
-                        .commit()
+                    ft.replace(R.id.nav_host_fragment, preferencesFragment, "preferences").commit()
+                }
+
+                R.id.nav_menu_alliance_details -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "allianceDetails") ft.addToBackStack(
+                        null
+                    )
+                    ft.replace(R.id.nav_host_fragment, allianceDetailsFragment, "allianceDetails").commit()
                 }
 
             }
@@ -329,8 +323,7 @@ class MainViewerActivity : ViewerActivity() {
         var contents: JsonObject? = null
         var gson = Gson()
 
-        private val file =
-            File(Constants.DOWNLOADS_FOLDER, "viewer_user_data_prefs.json")
+        private val file = File(Constants.DOWNLOADS_FOLDER, "viewer_user_data_prefs.json")
 
         fun read(context: Context) {
             if (!fileExists()) {
@@ -405,8 +398,7 @@ class MainViewerActivity : ViewerActivity() {
             return@filter it.value.blueTeams.contains("1678") or it.value.redTeams.contains("1678")
         }.map { return@map it.value.matchNumber }
 
-        private val file =
-            File(Constants.DOWNLOADS_FOLDER, "viewer_starred_matches.json")
+        private val file = File(Constants.DOWNLOADS_FOLDER, "viewer_starred_matches.json")
 
         fun read() {
             if (!fileExists()) {
@@ -462,8 +454,7 @@ class MainViewerActivity : ViewerActivity() {
 
         fun contains(team: String) = teams.contains(team)
 
-        private val file =
-            File(Constants.DOWNLOADS_FOLDER, "viewer_starred_teams.json")
+        private val file = File(Constants.DOWNLOADS_FOLDER, "viewer_starred_teams.json")
 
         fun read() {
             if (!file.exists()) write()
@@ -484,8 +475,7 @@ class MainViewerActivity : ViewerActivity() {
 }
 
 class NavDrawerListener(
-    private val navView: NavigationView,
-    private val fragManager: FragmentManager
+    private val navView: NavigationView, private val fragManager: FragmentManager
 ) : DrawerLayout.DrawerListener {
     override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
     override fun onDrawerOpened(drawerView: View) {}
@@ -498,7 +488,8 @@ class NavDrawerListener(
                 "picklist" -> navView.setCheckedItem(R.id.nav_menu_picklist)
                 "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
-                "preferences" -> navView.setCheckedItem(R.id.nav_preferences)
+                "preferences" -> navView.setCheckedItem(R.id.nav_menu_preferences)
+                "allianceDetails" -> navView.setCheckedItem(R.id.nav_menu_alliance_details)
             }
         }
     }
