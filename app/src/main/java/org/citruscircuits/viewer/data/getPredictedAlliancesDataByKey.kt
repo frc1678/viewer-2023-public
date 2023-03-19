@@ -1,5 +1,5 @@
 /*
-* getAllianceMatchObjectByKey.kt
+* getPredictedAlliancesDataByKey.kt
 * viewer
 *
 * Created on 3/16/2023
