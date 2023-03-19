@@ -8,7 +8,9 @@
 
 package org.citruscircuits.viewer.fragments.team_details
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -20,8 +22,8 @@ import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.constants.Constants
 import org.citruscircuits.viewer.getTeamName
-import kotlinx.android.synthetic.main.team_details.*
 import kotlinx.android.synthetic.main.team_details.view.*
+import org.citruscircuits.viewer.constants.Translations
 import java.io.File
 
 // The fragment class for the Team Details display that occurs when you click on a
@@ -29,6 +31,8 @@ import java.io.File
 class TeamDetailsFragment : Fragment() {
     private var teamNumber: String? = null
     private var teamName: String? = null
+
+    private var lfm: Boolean = false
 
     private var refreshId: String? = null
 
@@ -38,7 +42,6 @@ class TeamDetailsFragment : Fragment() {
 
     ): View? {
         val root = inflater.inflate(R.layout.team_details, container, false)
-
         populateTeamDetailsEssentials(root)
         updateDatapointDisplayListView(root)
         robotPics(root)
@@ -67,9 +70,27 @@ class TeamDetailsFragment : Fragment() {
         arguments?.let {
             teamNumber = it.getString(Constants.TEAM_NUMBER, Constants.NULL_CHARACTER)
             teamName = getTeamName(teamNumber!!)
+            lfm = it.getBoolean("LFM")
         }
         root.tv_team_number.text = teamNumber.toString()
         root.tv_team_name.text = teamName ?: Constants.NULL_CHARACTER
+    }
+
+    // gets the lfm equivalent of each of the given datapoints
+    private fun getLFMEquivalent(datapointList: List<String>): List<String> {
+        var lfmDatapoints: MutableList<String> = mutableListOf()
+        for (datapoint in datapointList) {
+            if (!Constants.CATEGORY_NAMES.contains(datapoint) && !Constants.TEAM_AND_LFM_SHARED_DATAPOINTS.contains(datapoint)) {
+                lfmDatapoints.add("lfm_$datapoint")
+            }
+            else if (Constants.TEAM_AND_LFM_SHARED_DATAPOINTS.contains(datapoint)) {
+                lfmDatapoints.add(datapoint)
+            }
+            else {
+                lfmDatapoints.add(Translations.TEAM_TO_LFM_HEADERS[datapoint]?: datapoint)
+            }
+        }
+        return lfmDatapoints
     }
 
     // Updates the adapter for the list view of each team in the match details display.
@@ -77,22 +98,26 @@ class TeamDetailsFragment : Fragment() {
         // We set the adapter for their list view according to
         // the team number and the current section. We also include a list of the
         // data points we expect to be displayed on the TeamDetails list view.
-        var dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-        var isChecked = false
         var user = MainViewerActivity.UserDatapoints.contents?.get("selected")?.asString
         var datapoints: MutableList<String> = mutableListOf()
         var userdatapoints = MainViewerActivity.UserDatapoints.contents?.get(user)?.asJsonArray
         if (userdatapoints != null) {
             for (i in userdatapoints) {
-                if (i.asString in Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS) {
+                if (Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS.contains(i.asString)) {
                     datapoints.add(i.asString)
                 }
             }
         }
-
+        if (lfm) {
+            root.btn_lfm.text = getString(R.string.to_all_matches)
+            root.btn_lfm.textSize = 12F
+        } else {
+            root.btn_lfm.text = getString(R.string.to_last_four_matches)
+            root.btn_lfm.textSize = 16F
+        }
         val adapter = TeamDetailsAdapter(
             context = requireActivity(),
-            datapointsDisplayed = datapoints,
+            datapointsDisplayed = if (lfm) getLFMEquivalent(datapoints) else datapoints,
             teamNumber = teamNumber!!
         )
         if (refreshId == null) {
@@ -104,20 +129,18 @@ class TeamDetailsFragment : Fragment() {
         root.lv_datapoint_display.adapter = adapter
 // Repopulates the list view based on whether LFM is toggled or not
         root.btn_lfm.setOnClickListener {
-            if (!isChecked) {
-                isChecked = true
-                dataDisplay = Constants.FIELDS_TO_BE_DISPLAYED_LFM
+            lfm = !lfm
+            if (lfm) {
                 root.btn_lfm.text = getString(R.string.to_all_matches)
                 root.btn_lfm.textSize = 12F
             } else {
-                isChecked = false
-                dataDisplay = datapoints
                 root.btn_lfm.text = getString(R.string.to_last_four_matches)
                 root.btn_lfm.textSize = 16F
             }
+            this.arguments?.putBoolean("LFM", lfm)
             val adapter = TeamDetailsAdapter(
                 context = requireActivity(),
-                datapointsDisplayed = dataDisplay,
+                datapointsDisplayed = if (lfm) getLFMEquivalent(datapoints) else datapoints,
                 teamNumber = teamNumber!!
             )
             root.lv_datapoint_display.adapter = adapter
@@ -129,8 +152,16 @@ class TeamDetailsFragment : Fragment() {
         val robotPicFragmentArguments = Bundle()
         val robotPicFragment = RobotPicFragment()
         if (!File(
-                Constants.STORAGE_FOLDER,
+                Constants.DOWNLOADS_FOLDER,
                 "${teamNumber}_full_robot.jpg"
+            ).exists() &&
+            !File(
+                Constants.DOWNLOADS_FOLDER,
+                "${teamNumber}_front.jpg"
+            ).exists() &&
+            !File(
+                Constants.DOWNLOADS_FOLDER,
+                "${teamNumber}_side.jpg"
             ).exists()
         ) {
             root.robot_pic_button.layoutParams = LinearLayout.LayoutParams(0, 0, 0f)

@@ -43,8 +43,8 @@ class OfflinePicklistFragment : Fragment() {
 
     private lateinit var adapter: OfflinePicklistAdapter
     private lateinit var binding: FragmentOfflinePicklistBinding
-    private val dataFile = File(Constants.STORAGE_FOLDER, "picklist.json")
-    private val dataFileImported = File(Constants.STORAGE_FOLDER, "picklist-imported.json")
+    private val dataFile = File(Constants.DOWNLOADS_FOLDER, "picklist.json")
+    private val dataFileImported = File(Constants.DOWNLOADS_FOLDER, "picklist-imported.json")
 
     private fun switchScreen() {
         val livePicklistFragment = LivePicklistFragment()

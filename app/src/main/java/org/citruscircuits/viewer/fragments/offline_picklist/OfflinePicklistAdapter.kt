@@ -54,6 +54,7 @@ class OfflinePicklistAdapter(val context: OfflinePicklistFragment) :
             // Put the arguments for the team details fragment.
             teamDetailsFragment.arguments = Bundle().also {
                 it.putString(Constants.TEAM_NUMBER, teamNumber)
+                it.putBoolean("LFM", false)
             }
             // Switch to the team details fragment.
             val ft = context.parentFragmentManager.beginTransaction()

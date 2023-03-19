@@ -3,9 +3,14 @@ package org.citruscircuits.viewer
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -26,12 +31,24 @@ class StartupActivity : ViewerActivity() {
         var databaseReference: DataApi.ViewerData? = null
     }
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.startup_splash_screen)
         supportActionBar?.hide()
-
-        Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
+        if (Environment.isExternalStorageManager()) {
+            // Permission is granted
+            // Access the downloads folder here
+            Constants.DOWNLOADS_FOLDER = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        } else {
+            // Permission is not granted
+            // Request permission from the user
+            val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+            val uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
+        }
+//        Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
 
         // Interface to access the DatabaseReference -> CompetitionObject object that
         // should be an exact replica of every WANTED data value from MongoDB.

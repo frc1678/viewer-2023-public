@@ -1,7 +1,11 @@
 package org.citruscircuits.viewer
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Environment
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -15,10 +19,40 @@ import org.citruscircuits.viewer.constants.Constants
  * The activity that greets the user and asks them to choose a profile.
  */
 class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsResultCallback {
+    // Storage Permissions
+    private val REQUEST_EXTERNAL_STORAGE = 1
+    private val PERMISSIONS_STORAGE = arrayOf<String>(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
 
+    /**
+     * Checks if the app has permission to write to device storage
+     *
+     * If the app does not has permission then the user will be prompted to grant permissions
+     *
+     * @param activity
+     */
+    fun verifyStoragePermissions(activity: Activity?) {
+        // Check if we have write permission
+        val permission = ActivityCompat.checkSelfPermission(
+            activity!!,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        )
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                activity,
+                PERMISSIONS_STORAGE,
+                REQUEST_EXTERNAL_STORAGE
+            )
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
+        verifyStoragePermissions(this)
+//        Constants.STORAGE_FOLDER = getExternalFilesDir(null)!!
+        Constants.DOWNLOADS_FOLDER = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 
         // Create/read the user profile file, the starred matches file, and the starred teams file
         UserDatapoints.read(this)

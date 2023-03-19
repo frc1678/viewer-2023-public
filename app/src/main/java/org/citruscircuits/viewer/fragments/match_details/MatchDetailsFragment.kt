@@ -168,6 +168,7 @@ class MatchDetailsFragment : Fragment() {
         for (tv in getTeamNumbersXML(root)) {
             tv.setOnClickListener {
                 teamDetailsFragmentArguments.putString(Constants.TEAM_NUMBER, tv.text.toString())
+                teamDetailsFragmentArguments.putBoolean("LFM", false)
                 teamDetailsFragment.arguments = teamDetailsFragmentArguments
                 matchDetailsFragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 matchDetailsFragmentTransaction.addToBackStack(null).replace(
