@@ -44,18 +44,22 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
         rowView.alliance_details_team1.text = picks[0].jsonPrimitive.content
         rowView.alliance_details_team2.text = picks[1].jsonPrimitive.content
         rowView.alliance_details_team3.text = picks[2].jsonPrimitive.content
-        rowView.alliance_details_auto_score.text =
-            getPredictedAlliancesDataByKey(position + 1, "predicted_auto_score")
+        rowView.alliance_details_auto_score.text = "%.2f".format(
+            getPredictedAlliancesDataByKey(position + 1, "predicted_auto_score")?.toFloatOrNull()
                 ?: Constants.NULL_CHARACTER
-        rowView.alliance_details_tele_score.text =
-            getPredictedAlliancesDataByKey(position + 1, "predicted_tele_score")
+        )
+        rowView.alliance_details_tele_score.text = "%.2f".format(
+            getPredictedAlliancesDataByKey(position + 1, "predicted_tele_score")?.toFloatOrNull()
                 ?: Constants.NULL_CHARACTER
-        rowView.alliance_details_endgame_score.text =
-            getPredictedAlliancesDataByKey(position + 1, "predicted_charge_score")
+        )
+        rowView.alliance_details_endgame_score.text = "%.2f".format(
+            getPredictedAlliancesDataByKey(position + 1, "predicted_charge_score")?.toFloatOrNull()
                 ?: Constants.NULL_CHARACTER
-        rowView.alliance_details_total_score.text =
-            getPredictedAlliancesDataByKey(position + 1, "predicted_score")
+        )
+        rowView.alliance_details_total_score.text = "%.2f".format(
+            getPredictedAlliancesDataByKey(position + 1, "predicted_score")?.toFloatOrNull()
                 ?: Constants.NULL_CHARACTER
+        )
         return rowView
     }
 }
