@@ -14,8 +14,8 @@ import java.io.File
 class Constants {
     companion object {
         //Game specific data.
-        const val EVENT_KEY = "test2023cafr"
-        const val SCHEDULE_KEY = "2023cafr"
+        const val EVENT_KEY = "2023cada"
+        const val SCHEDULE_KEY = "2023cada"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
         const val REFRESH_INTERVAL = 120
