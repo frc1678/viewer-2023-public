@@ -133,24 +133,18 @@ class PickabilityFragment() : Fragment() {
 
 enum class PickabilityMode {
     First,
-    SecondOffensive,
-    SecondDefensive,
-    SecondOverall;
+    Second;
 
     val datapoint: String
         get() = when (this) {
             First -> "first_pickability"
-            SecondOffensive -> "offensive_second_pickability"
-            SecondDefensive -> "defensive_second_pickability"
-            SecondOverall -> "overall_second_pickability"
+            Second -> "second_pickability"
         }
 
     companion object {
         fun fromSpinner(spinnerPosition: Int): PickabilityMode? = when (spinnerPosition) {
             0 -> First
-            1 -> SecondOverall
-            2 -> SecondOffensive
-            3 -> SecondDefensive
+            1 -> Second
             else -> null
         }
     }

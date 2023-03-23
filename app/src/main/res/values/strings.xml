@@ -73,8 +73,6 @@
     <string-array name="pickability">
         <item>1st</item>
         <item>2nd</item>
-        <item>2nd O</item>
-        <item>2nd D</item>
     </string-array>
 
 </resources>
