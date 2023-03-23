@@ -227,24 +227,28 @@ class MatchDetailsFragment : Fragment() {
 
         for (tv in getHeaderCollection(root)) {
             if (getHeaderCollection(root).indexOf(tv) < 4) {
+                val datapoint = headerDisplay[getHeaderCollection(root).indexOf(tv)]
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.BLUE, matchNumber.toString(),
-                    headerDisplay[getHeaderCollection(root).indexOf(tv)]
+                    datapoint
                 )
                 if (newText == null) {
                     tv.text = Constants.NULL_CHARACTER
                 } else {
-                    tv.text = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())
+                    val value = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())
+                    tv.text = if (Constants.PERCENT_DATA.contains(datapoint)) "${value.toFloat()*100}%" else value
                 }
             } else {
+                val datapoint = headerDisplay[getHeaderCollection(root).indexOf(tv) - 4]
                 val newText = getAllianceInMatchObjectByKey(
                     Constants.RED, matchNumber.toString(),
-                    headerDisplay[getHeaderCollection(root).indexOf(tv) - 4]
+                    datapoint
                 )
                 if (newText == null) {
                     tv.text = Constants.NULL_CHARACTER
                 } else {
-                    tv.text = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())
+                    val value = (if (hasActualData!!) "%.0f" else "%.1f").format(newText.toFloat())
+                    tv.text = if (Constants.PERCENT_DATA.contains(datapoint)) "${value.toFloat()*100}%" else value
                 }
             }
         }
