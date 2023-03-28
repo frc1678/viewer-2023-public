@@ -52,4 +52,20 @@
         style="@style/version_number"
         android:text="@string/tv_version_num" />
 
+    <TextView
+        android:id="@+id/tv_event_key"
+        style="@style/version_number"
+        android:text="edit event key" />
+    <EditText
+        style="@style/version_number"
+        android:id="@+id/et_event_key"/>
+
+    <TextView
+        android:id="@+id/tv_schedule_key"
+        style="@style/version_number"
+        android:text="edit schedule_key" />
+
+    <EditText
+        style="@style/version_number"
+        android:id="@+id/et_schedule_key"/>
 </LinearLayout>
