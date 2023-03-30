@@ -4,6 +4,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+    <CheckBox
+        android:id="@+id/checkbox_strike"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginStart="@dimen/very_small" />
+
     <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
