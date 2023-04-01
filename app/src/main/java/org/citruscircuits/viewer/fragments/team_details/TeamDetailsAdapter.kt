@@ -176,7 +176,7 @@ class TeamDetailsAdapter(
                     ((getTeamDataValue(teamNumber, e)!!.toFloat()) /
                             (getRankingList(e).last().value)!!.toFloat())
             } else if (("max" in e) || ("avg" in e) || (Constants.DRIVER_DATA.contains(e)) ||
-                ("matches_played_defense" == e)) {
+                ("matches_played_defense" == e) || ("success" in e) || ("attempt" in e)) {
                  //changes weight based on how datapoint compares to highest rank of that datapoint
                     (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
                         ((getTeamDataValue(teamNumber, e)!!.toFloat()) /
