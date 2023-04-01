@@ -61,7 +61,8 @@ class Constants {
             "Other",
             "intakes_station",
             "intakes_ground",
-            "incap"
+            "incap",
+            "played_defense"
         )
 
         val ACTUAL_TO_PREDICTED_MATCH_DETAILS = mapOf(
@@ -317,6 +318,8 @@ class Constants {
             "tele_engage_percent_success" to "tele_charge_level",
             "auto_charge_attempts" to "auto_charge_attempt",
             "tele_charge_attempts" to "tele_charge_attempt",
+            "matches_played_defense" to "played_defense",
+            "matches_tippy" to "was_tippy"
 
 //            "lfm_auto_avg_cube_low" to "lfm_auto_cube_low",
 //            "lfm_auto_avg_cube_mid" to "lfm_auto_cube_mid",
