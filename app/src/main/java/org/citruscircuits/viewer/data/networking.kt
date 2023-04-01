@@ -17,6 +17,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.*
 import okhttp3.Dns
 import okhttp3.OkHttpClient
+import org.citruscircuits.viewer.fragments.team_details.AutoPath
 import java.net.Inet4Address
 import java.net.InetAddress
 
@@ -37,7 +38,7 @@ class Ipv4OnlyDns : Dns {
 val client = HttpClient(OkHttp) {
 
     install(ContentNegotiation) {
-        json()
+        json(Json { ignoreUnknownKeys = true })
     }
     engine {
         preconfigured = OkHttpClient.Builder().dns(Ipv4OnlyDns()).build()
@@ -133,12 +134,14 @@ object DataApi {
             parameter("use_strings", true)
         }.body()
 
+    @Suppress("PropertyName")
     @Serializable
     data class ViewerData(
         val team: Map<String, JsonObject>,
         val tim: Map<String, Map<String, JsonObject>>,
         val aim: Map<String, AimData>,
-        val alliance: Map<String, JsonObject>
+        val alliance: Map<String, JsonObject>,
+        val auto_paths: Map<String, Map<String, Map<String, AutoPath>>>
     )
 
     @Serializable

@@ -18,38 +18,8 @@ import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import kotlinx.serialization.Serializable
 import org.citruscircuits.viewer.R
-
-@Suppress("PropertyName")
-@Serializable
-data class AutoPath(
-    val match_numbers: List<Int>,
-    val team_number: String,
-    val auto_charge_level: String,
-    val auto_charge_successes: Int,
-    val intake_1_piece: String?,
-    val intake_1_position: String?,
-    val intake_2_piece: String?,
-    val intake_2_position: String?,
-    val preloaded_gamepiece: String,
-    val score_1_piece: String?,
-    val score_1_piece_successes: Int,
-    val score_1_max_piece_successes: Int,
-    val score_1_position: String?,
-    val score_2_piece: String?,
-    val score_2_piece_successes: Int,
-    val score_2_max_piece_successes: Int,
-    val score_2_position: String?,
-    val score_3_piece: String?,
-    val score_3_piece_successes: Int,
-    val score_3_max_piece_successes: Int,
-    val score_3_position: String?,
-    val start_position: String,
-    val matches_ran: Int,
-    val path_number: Int,
-    val mobility: Boolean
-)
+import org.citruscircuits.viewer.data.AutoPath
 
 val intakeOffsets = mapOf(
     "one" to Offset(820f, 375f),
@@ -66,7 +36,7 @@ val intakeLeftOffsets = mapOf(
 )
 
 @Composable
-fun ColumnScope.AutoPath(autoPath: AutoPath) {
+fun ColumnScope.AutoPath(startPosition: String, autoPath: AutoPath) {
     val fieldMapImage = ImageBitmap.imageResource(id = R.drawable.field_map_auto_paths)
     Canvas(
         modifier = Modifier

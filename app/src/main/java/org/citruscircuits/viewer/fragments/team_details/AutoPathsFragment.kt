@@ -33,43 +33,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
+import org.citruscircuits.viewer.StartupActivity
 import org.citruscircuits.viewer.constants.Constants
-
-val testAutoPath = Json.decodeFromString<AutoPath>(
-    """
-     {
-  "path_number": 1,
-  "start_position": "1",
-  "team_number": "3482",
-  "auto_charge_level": "D",
-  "auto_charge_successes": 1,
-  "intake_1_piece": "U",
-  "intake_1_position": "one",
-  "intake_2_piece": "O",
-  "intake_2_position": "three",
-  "match_numbers": [
-    1
-  ],
-  "matches_ran": 1,
-  "mobility": false,
-  "preloaded_gamepiece": "U",
-  "score_1_max_piece_successes": 0,
-  "score_1_piece": "fail",
-  "score_1_piece_successes": 0,
-  "score_1_position": "fail",
-  "score_2_max_piece_successes": 0,
-  "score_2_piece": null,
-  "score_2_piece_successes": 0,
-  "score_2_position": null,
-  "score_3_max_piece_successes": 0,
-  "score_3_piece": null,
-  "score_3_piece_successes": 0,
-  "score_3_position": null
-}
-""".trimIndent()
-)
+import org.citruscircuits.viewer.data.AutoPath
 
 /**
  * Fragment for showing the auto paths of a given team.
@@ -78,26 +44,30 @@ class AutoPathsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ) = ComposeView(requireContext()).apply {
+        val teamNumber = requireArguments().getString(Constants.TEAM_NUMBER)!!
+        val autoPaths = mutableListOf<Pair<String, AutoPath>>()
+        StartupActivity.databaseReference!!.auto_paths[teamNumber]?.forEach { (startingPosition, paths) ->
+            paths.forEach { (_, path) -> autoPaths += startingPosition to path }
+        }
         setContent {
-            Column(modifier = Modifier.padding(horizontal = 10.dp)) {
-                val pageCount = 10
+            if (autoPaths.isNotEmpty()) Column(modifier = Modifier.padding(horizontal = 10.dp)) {
                 var currentPage by remember { mutableStateOf(0) }
                 Text(
-                    "Auto Paths for ${requireArguments().getString(Constants.TEAM_NUMBER)}",
+                    "Auto Paths for $teamNumber",
                     style = MaterialTheme.typography.headlineMedium,
                     modifier = Modifier.padding(vertical = 10.dp)
                 )
-                Text("Ran ${testAutoPath.matches_ran} time(s)")
+                Text("Ran ${autoPaths[currentPage].second.matches_ran} time(s)")
                 Text(
                     "Preloaded: ${
-                        when (testAutoPath.preloaded_gamepiece) {
+                        when (autoPaths[currentPage].second.preloaded_gamepiece) {
                             "O" -> "Cone"
                             "U" -> "Cube"
                             else -> "None"
                         }
                     }"
                 )
-                AutoPath(testAutoPath)
+                AutoPath(autoPaths[currentPage].first, autoPaths[currentPage].second)
                 Row(
                     Modifier
                         .height(50.dp)
@@ -115,7 +85,7 @@ class AutoPathsFragment : Fragment() {
                         )
                     }
                     LazyRow {
-                        repeat(pageCount) { iteration ->
+                        repeat(autoPaths.size) { iteration ->
                             item {
                                 Box(modifier = Modifier
                                     .clickable { currentPage = iteration }
@@ -128,7 +98,7 @@ class AutoPathsFragment : Fragment() {
                     }
                     IconButton(
                         onClick = { currentPage++ },
-                        enabled = currentPage < pageCount - 1,
+                        enabled = currentPage < autoPaths.size - 1,
                         modifier = Modifier.weight(1f)
                     ) {
                         Icon(
