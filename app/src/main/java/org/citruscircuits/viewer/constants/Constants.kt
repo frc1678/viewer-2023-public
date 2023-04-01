@@ -394,6 +394,7 @@ class Constants {
             "lfm_auto_engage_percent_success",
             "lfm_tele_dock_percent_success",
             "lfm_tele_engage_percent_success",
+            "win_chance"
         )
 
         val PIT_DATA: List<String> = listOf(
