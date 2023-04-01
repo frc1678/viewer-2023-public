@@ -39,18 +39,6 @@ class PreferencesFragment : Fragment() {
         root.tv_version_num.text = versionNumber
         context?.let { createSpinner(it, root.spin_user, R.array.user_array) }
 
-//        val jsonData = context?.resources?.openRawResource(
-//            requireContext().resources.getIdentifier(
-//                "default_prefs",
-//                "raw",
-//                context?.packageName
-//            )
-//
-//        )?.bufferedReader().use {it?.readText()}
-//
-//        val outputJsonString = JSONObject(jsonData)
-//
-
 
         val name =
             UserDatapoints.contents?.get("selected")?.asString?.lowercase(Locale.getDefault())
