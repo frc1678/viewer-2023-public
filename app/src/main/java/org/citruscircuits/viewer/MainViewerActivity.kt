@@ -23,6 +23,7 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat
 import androidx.customview.widget.ViewDragHelper
 import androidx.drawerlayout.widget.DrawerLayout
@@ -44,6 +45,7 @@ import org.citruscircuits.viewer.fragments.offline_picklist.OfflinePicklistFragm
 import org.citruscircuits.viewer.fragments.pickability.PickabilityFragment
 import org.citruscircuits.viewer.fragments.preferences.PreferencesFragment
 import org.citruscircuits.viewer.fragments.ranking.RankingFragment
+import org.citruscircuits.viewer.fragments.team_details.AutoPathsFragment
 import org.citruscircuits.viewer.fragments.team_list.TeamListFragment
 import java.io.*
 
