@@ -1,10 +1,10 @@
 package org.citruscircuits.viewer.fragments.preferences
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,19 +12,16 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.fragment_preferences.*
 import kotlinx.android.synthetic.main.fragment_preferences.view.*
-import kotlinx.coroutines.launch
 import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.MainViewerActivity.StarredMatches
 import org.citruscircuits.viewer.MainViewerActivity.UserDatapoints
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.constants.Constants
-import org.citruscircuits.viewer.data.getDataFromWebsite
-import org.citruscircuits.viewer.data.loadTestData
 import org.citruscircuits.viewer.fragments.user_preferences.UserPreferencesFragment
 import java.util.*
+
 
 // Preferences page
 class PreferencesFragment : Fragment() {
@@ -41,6 +38,20 @@ class PreferencesFragment : Fragment() {
         val versionNumber = this.getString(R.string.tv_version_num, Constants.VERSION_NUM)
         root.tv_version_num.text = versionNumber
         context?.let { createSpinner(it, root.spin_user, R.array.user_array) }
+
+//        val jsonData = context?.resources?.openRawResource(
+//            requireContext().resources.getIdentifier(
+//                "default_prefs",
+//                "raw",
+//                context?.packageName
+//            )
+//
+//        )?.bufferedReader().use {it?.readText()}
+//
+//        val outputJsonString = JSONObject(jsonData)
+//
+
+
         val name =
             UserDatapoints.contents?.get("selected")?.asString?.lowercase(Locale.getDefault())
                 ?.replaceFirstChar {
@@ -66,6 +77,8 @@ class PreferencesFragment : Fragment() {
 
         root.et_event_key.hint = Constants.DEFAULT_KEY
         root.et_schedule_key.hint = Constants.DEFAULT_SCHEDULE
+        root.et_event_key.setText(Constants.EVENT_KEY)
+        root.et_schedule_key.setText(Constants.SCHEDULE_KEY)
         root.et_event_key.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -74,21 +87,9 @@ class PreferencesFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                Constants.EVENT_KEY = p0.toString()
-                Log.d("a", Constants.EVENT_KEY)
+                if (p0.toString().equals("")) Constants.EVENT_KEY = Constants.DEFAULT_KEY
+                else Constants.EVENT_KEY = p0.toString()
 
-
-                MainViewerActivity.refreshManager.start(lifecycleScope)
-
-                lifecycleScope.launch { getData() }
-
-
-                if (p0.toString() == ("") || p0.isNullOrEmpty()) {
-                    Constants.EVENT_KEY = Constants.DEFAULT_KEY
-                    MainViewerActivity.refreshManager.start(lifecycleScope)
-
-                    lifecycleScope.launch { getData() }
-                }
 
             }
         })
@@ -101,20 +102,9 @@ class PreferencesFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                Constants.SCHEDULE_KEY = p0.toString()
-                Log.d("a", Constants.SCHEDULE_KEY)
+                if (p0.toString().equals("")) Constants.SCHEDULE_KEY = Constants.DEFAULT_SCHEDULE
+                else Constants.SCHEDULE_KEY = p0.toString()
 
-                MainViewerActivity.refreshManager.start(lifecycleScope)
-
-                lifecycleScope.launch { getData() }
-
-
-                if (p0.toString().equals("") || p0.isNullOrEmpty()) {
-                    Constants.SCHEDULE_KEY = Constants.DEFAULT_SCHEDULE
-                    MainViewerActivity.refreshManager.start(lifecycleScope)
-
-                    lifecycleScope.launch { getData() }
-                }
 
             }
         })
@@ -122,27 +112,24 @@ class PreferencesFragment : Fragment() {
 
         root.tb_highlight_our_matches.setOnClickListener { starOurMatches() }
 
+        root.btn_key_edit.setOnClickListener {
+            UserDatapoints.contents?.remove("key")
+            UserDatapoints.contents?.addProperty("key", Constants.EVENT_KEY)
+            UserDatapoints.contents?.remove("schedule")
+            UserDatapoints.contents?.addProperty("schedule", Constants.SCHEDULE_KEY)
+            UserDatapoints.write()
+            triggerRebirth(context)
+        }
         return root
     }
 
-    private suspend fun getData() {
-        try {
-            if (Constants.USE_TEST_DATA) {
-                loadTestData(this.resources)
-            } else {
-                // Tries to get data from website when starting the app and throws an error if fails
-                getDataFromWebsite()
-            }
-        } catch (e: Throwable) {
-            Log.e(
-                "data",
-                "Error fetching data from ${if (Constants.USE_TEST_DATA) "files" else "website"}: ${
-                    Log.getStackTraceString(
-                        e
-                    )
-                }"
-            )
-        }
+    fun triggerRebirth(context: Context?) {
+        val packageManager = context?.packageManager
+        val intent = packageManager?.getLaunchIntentForPackage(context.packageName)
+        val componentName = intent!!.component
+        val mainIntent = Intent.makeRestartActivityTask(componentName)
+        context.startActivity(mainIntent)
+        Runtime.getRuntime().exit(0)
     }
 
     private fun createSpinner(context: Context, spinner: Spinner, array: Int) {

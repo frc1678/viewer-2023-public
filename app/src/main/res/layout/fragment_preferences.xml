@@ -29,11 +29,10 @@
             android:id="@+id/btn_user_pref_edit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_margin="@dimen/very_small"
             android:layout_weight="1"
             android:enabled="true"
-            android:layout_margin="@dimen/very_small"
-            android:text="@string/edit">
-        </Button>
+            android:text="@string/edit"></Button>
 
     </LinearLayout>
 
@@ -55,17 +54,50 @@
     <TextView
         android:id="@+id/tv_event_key"
         style="@style/version_number"
-        android:text="edit event key" />
-    <EditText
-        style="@style/version_number"
-        android:id="@+id/et_event_key"/>
+        android:text="Edit Event Key" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_event_key"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_schedule_key"
         style="@style/version_number"
-        android:text="edit schedule_key" />
+        android:text="Edit Schedule Key" />
 
-    <EditText
-        style="@style/version_number"
-        android:id="@+id/et_schedule_key"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_schedule_key"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_key_edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:enabled="true"
+        android:text="Confirm Keys">
+
+    </Button>
+
+
 </LinearLayout>
