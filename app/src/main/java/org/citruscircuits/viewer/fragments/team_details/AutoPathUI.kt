@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
+import nl.birdly.zoombox.zoomable
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.data.AutoPath
 
@@ -71,6 +72,7 @@ fun ColumnScope.AutoPath(startPosition: String, autoPath: AutoPath) {
             .fillMaxWidth()
             .weight(1f)
             .padding(10.dp)
+            .zoomable()
     ) {
         drawImage(fieldMapImage)
         drawRect(
