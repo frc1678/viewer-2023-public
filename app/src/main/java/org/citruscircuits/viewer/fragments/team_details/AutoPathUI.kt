@@ -29,10 +29,38 @@ val intakeOffsets = mapOf(
 )
 
 val intakeLeftOffsets = mapOf(
-    "one" to Offset(700f, 450f),
-    "two" to Offset(700f, 600f),
-    "three" to Offset(700f, 750f),
-    "four" to Offset(700f, 900f)
+    "one" to Offset(650f, 450f),
+    "two" to Offset(650f, 600f),
+    "three" to Offset(650f, 750f),
+    "four" to Offset(650f, 900f)
+)
+
+val intakeRightOffsets = mapOf(
+    "one" to Offset(950f, 450f),
+    "two" to Offset(950f, 600f),
+    "three" to Offset(950f, 750f),
+    "four" to Offset(950f, 900f)
+)
+
+val startPosOffsets = mapOf(
+    "1" to (Offset(180f, 320f) to Size(230f, 180f)),
+    "2" to (Offset(180f, 500f) to Size(200f, 300f)),
+    "3" to (Offset(180f, 800f) to Size(200f, 190f)),
+    "4" to (Offset(360f, 800f) to Size(250f, 190f))
+)
+
+val startPosTopOffsets = mapOf(
+    "1" to Offset(230f, 400f),
+    "2" to Offset(230f, 600f),
+    "3" to Offset(230f, 880f),
+    "4" to Offset(410f, 880f)
+)
+
+val startPosBottomOffsets = mapOf(
+    "1" to Offset(230f, 480f),
+    "2" to Offset(230f, 680f),
+    "3" to Offset(230f, 960f),
+    "4" to Offset(410f, 960f)
 )
 
 @Composable
@@ -45,9 +73,24 @@ fun ColumnScope.AutoPath(startPosition: String, autoPath: AutoPath) {
             .padding(10.dp)
     ) {
         drawImage(fieldMapImage)
+        drawRect(
+            color = if (autoPath.preloaded_gamepiece == "O") Color.Yellow else Color.Magenta,
+            topLeft = startPosOffsets[startPosition]!!.first,
+            size = startPosOffsets[startPosition]!!.second
+        )
+        drawText(
+            text = "${autoPath.score_1_piece_successes}/${autoPath.matches_ran}",
+            offset = startPosTopOffsets[startPosition] ?: Offset.Zero,
+            size = 60f
+        )
+        drawText(
+            text = autoPath.score_1_position ?: "-",
+            offset = startPosBottomOffsets[startPosition] ?: Offset.Zero,
+            size = 60f
+        )
         if (autoPath.intake_1_piece != null) {
             drawRoundRect(
-                color = if (autoPath.intake_1_piece == "O") Color.Yellow else Color.Magenta,
+                color = if (autoPath.intake_1_piece == "cone") Color.Yellow else Color.Magenta,
                 topLeft = intakeOffsets[autoPath.intake_1_position] ?: Offset.Zero,
                 size = Size(100f, 100f),
                 cornerRadius = CornerRadius(10f),
@@ -57,10 +100,15 @@ fun ColumnScope.AutoPath(startPosition: String, autoPath: AutoPath) {
                 offset = intakeLeftOffsets[autoPath.intake_1_position] ?: Offset.Zero,
                 size = 80f
             )
+            drawText(
+                text = autoPath.score_2_position ?: "-",
+                offset = intakeRightOffsets[autoPath.intake_1_position] ?: Offset.Zero,
+                size = 80f
+            )
         }
         if (autoPath.intake_2_piece != null) {
             drawRoundRect(
-                color = if (autoPath.intake_2_piece == "O") Color.Yellow else Color.Magenta,
+                color = if (autoPath.intake_2_piece == "cone") Color.Yellow else Color.Magenta,
                 topLeft = intakeOffsets[autoPath.intake_2_position] ?: Offset.Zero,
                 size = Size(100f, 100f),
                 cornerRadius = CornerRadius(10f),
@@ -69,6 +117,11 @@ fun ColumnScope.AutoPath(startPosition: String, autoPath: AutoPath) {
             drawText(
                 text = "${autoPath.score_3_piece_successes}/${autoPath.matches_ran}",
                 offset = intakeLeftOffsets[autoPath.intake_2_position] ?: Offset.Zero,
+                size = 80f
+            )
+            drawText(
+                text = autoPath.score_3_position ?: "-",
+                offset = intakeRightOffsets[autoPath.intake_2_position] ?: Offset.Zero,
                 size = 80f
             )
         }

@@ -49,6 +49,7 @@ class AutoPathsFragment : Fragment() {
         StartupActivity.databaseReference!!.auto_paths[teamNumber]?.forEach { (startingPosition, paths) ->
             paths.forEach { (_, path) -> autoPaths += startingPosition to path }
         }
+        autoPaths.sortBy { it.first }
         setContent {
             if (autoPaths.isNotEmpty()) Column(modifier = Modifier.padding(horizontal = 10.dp)) {
                 var currentPage by remember { mutableStateOf(0) }
@@ -58,15 +59,7 @@ class AutoPathsFragment : Fragment() {
                     modifier = Modifier.padding(vertical = 10.dp)
                 )
                 Text("Ran ${autoPaths[currentPage].second.matches_ran} time(s)")
-                Text(
-                    "Preloaded: ${
-                        when (autoPaths[currentPage].second.preloaded_gamepiece) {
-                            "O" -> "Cone"
-                            "U" -> "Cube"
-                            else -> "None"
-                        }
-                    }"
-                )
+                Text("Mobility: ${if (autoPaths[currentPage].second.mobility) "yes" else "no"}")
                 AutoPath(autoPaths[currentPage].first, autoPaths[currentPage].second)
                 Row(
                     Modifier
@@ -107,7 +100,11 @@ class AutoPathsFragment : Fragment() {
                         )
                     }
                 }
-            }
+            } else Text(
+                text = "No auto paths found for $teamNumber",
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.padding(10.dp)
+            )
         }
     }
 }
