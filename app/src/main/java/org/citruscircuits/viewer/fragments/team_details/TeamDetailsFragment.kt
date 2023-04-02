@@ -147,7 +147,6 @@ class TeamDetailsFragment : Fragment() {
             root.lv_datapoint_display.adapter = adapter
         }
         root.btn_auto_paths.setOnClickListener {
-            Log.d("TeamDetailsFragment", "teamNumber: $teamNumber")
             parentFragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out).addToBackStack(null)
                 .replace((requireView().parent as ViewGroup).id, AutoPathsFragment().apply {
