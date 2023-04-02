@@ -176,7 +176,7 @@ class TeamDetailsAdapter(
             }
             if (visualDataBar && (getTeamDataValue(teamNumber, e)!! != Constants.NULL_CHARACTER) && ((getRankingList(e).last().value)!! != Constants.NULL_CHARACTER)) {
                 if ((Constants.PIT_DATA.contains(e)) || (Constants.FIELDS_TO_BE_DISPLAYED_RANKING.contains(e))
-                    || ("pickability" in e) || ("start_position" in e) || ("matches_played" == e)
+                    || ("pickability" in e) || ("start" in e) || ("matches_played" == e)
                 ) {
                     (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight = 0F
                     (rowView.data_bar_reverse.layoutParams as LinearLayout.LayoutParams).weight = 1F
