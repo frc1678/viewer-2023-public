@@ -181,12 +181,12 @@ class TeamDetailsAdapter(
                     || ("pickability" in e) || ("start_position" in e) || ("matches_played" == e)
                 ) {
                     (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight = 0F
-                } else if ("incap" in e) { //incap rankings are reversed, so divides by last value in rankings
+                } else if (("incap" in e) || ("foul" in e) || ("tippy" in e)) { //incap, foul, and tippiness rankings are reversed, so divides by last value in rankings
                     (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
                         ((getTeamDataValue(teamNumber, e)!!.toFloat()) /
                                 (getRankingList(e).last().value)!!.toFloat())
                 } else if (("max" in e) || ("avg" in e) || (Constants.DRIVER_DATA.contains(e)) ||
-                    ("matches_played_defense" == e) || ("success" in e) || ("attempt" in e)
+                    ("defense" in e) || ("success" in e) || ("attempt" in e)
                 ) {
                     //changes weight based on how datapoint compares to highest rank of that datapoint
                     (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
