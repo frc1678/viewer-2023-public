@@ -111,11 +111,20 @@ class MainViewerActivity : ViewerActivity() {
         EliminatedAlliances.read()
 
         // Pull the set of starred matches from the downloads file viewer_starred_matches.
-        var jsonStarred = contents.get("starredMatches")?.asJsonArray
+        var jsonStarred = StarredMatches.contents.get("starredMatches")?.asJsonArray
 
         if (jsonStarred != null) {
             for (starred in jsonStarred) {
                 starredMatches.add(starred.asString)
+            }
+        }
+
+        // Pull the set of eliminated alliances from the downloads file viewer_eliminated_alliances.
+        var jsonEliminated = EliminatedAlliances.contents.get("eliminatedAlliances")?.asJsonArray
+
+        if (jsonEliminated != null) {
+            for (alliance in jsonEliminated) {
+                eliminatedAlliances.add(alliance.asString)
             }
         }
     }
@@ -531,8 +540,8 @@ class NavDrawerListener(
                 "picklist" -> navView.setCheckedItem(R.id.nav_menu_picklist)
                 "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
-                "preferences" -> navView.setCheckedItem(R.id.nav_menu_preferences)
                 "allianceDetails" -> navView.setCheckedItem(R.id.nav_menu_alliance_details)
+                "preferences" -> navView.setCheckedItem(R.id.nav_menu_preferences)
             }
         }
     }

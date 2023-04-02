@@ -3,12 +3,15 @@ package org.citruscircuits.viewer.fragments.alliance_details
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Paint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import kotlinx.android.synthetic.main.alliance_details_cell.view.*
+import kotlinx.android.synthetic.main.match_details_cell.view.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonPrimitive
@@ -20,7 +23,9 @@ import org.citruscircuits.viewer.data.getPredictedAlliancesDataByKey
 import java.io.File
 
 
-class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
+class AllianceDetailsAdapter(
+    private val context: FragmentActivity
+) : BaseAdapter() {
 
     private val inflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -41,8 +46,6 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
         rowView.alliance_details_alliance_num.text = (position + 1).toString()
 
         val allianceNumber = (position + 1).toString()
-
-        var isEliminated = false
 
         // Gets the team number for each pick on an alliance
         val picks = Json.parseToJsonElement(getPredictedAlliancesDataByKey(
@@ -86,11 +89,17 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
             for (team in teamTextList) {
                 team.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             }
+            rowView.playoff_alliances.setBackgroundColor(
+                ContextCompat.getColor(context, R.color.LightRed)
+            )
             rowView.checkbox_strike.isChecked = true
         } else {
             for (team in teamTextList) {
                 team.paintFlags = 0
             }
+            rowView.playoff_alliances.setBackgroundColor(
+                ContextCompat.getColor(context, R.color.White)
+            )
             rowView.checkbox_strike.isChecked = false
         }
 
@@ -107,11 +116,17 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
                 for (team in teamTextList) {
                     team.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }
+                rowView.playoff_alliances.setBackgroundColor(
+                    ContextCompat.getColor(context, R.color.LightRed)
+                )
                 rowView.checkbox_strike.isChecked = true
             } else {
                 for (team in teamTextList) {
                     team.paintFlags = 0
                 }
+                rowView.playoff_alliances.setBackgroundColor(
+                    ContextCompat.getColor(context, R.color.White)
+                )
                 rowView.checkbox_strike.isChecked = false
             }
         }

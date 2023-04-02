@@ -22,6 +22,7 @@
     <color name="ToggleColor">#7DC8BE</color>
     <color name="Cube">#D1C4E9</color>
     <color name="Cone">#FFECB3</color>
+    <color name="LightRed">#FF5252</color>
 
     <color name="Highlight_0">#FFFFFF</color>
     <color name="Highlight_1">#FFF59D</color>
