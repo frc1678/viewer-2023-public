@@ -87,15 +87,11 @@ class StartupActivity : ViewerActivity() {
     }
 
     private suspend fun getData() {
-
-
         try {
-
             if (Constants.USE_TEST_DATA) {
                 loadTestData(this.resources)
             } else {
                 MainViewerActivity.UserDatapoints.read(this)
-
 
                 Constants.EVENT_KEY =
                     MainViewerActivity.UserDatapoints.contents?.get("key")!!.asString
@@ -121,25 +117,27 @@ class StartupActivity : ViewerActivity() {
                 // Stuff that updates the UI
                 tv_schedule.visibility = View.VISIBLE
                 et_schedule.visibility = View.VISIBLE
+                tv_event.visibility = View.VISIBLE
+                et_event.visibility = View.VISIBLE
                 btn_retry.visibility = View.VISIBLE
+                et_schedule.setText(Constants.SCHEDULE_KEY)
+                et_event.setText(Constants.EVENT_KEY)
 
-                et_schedule.addTextChangedListener(object : TextWatcher {
-                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    }
-
-                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    }
-
+                et_event.addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                     override fun afterTextChanged(p0: Editable?) {
-                        if (!p0.toString().equals("")) Constants.SCHEDULE_KEY = p0.toString()
-
-
+                        if (!p0.toString().equals("")) Constants.EVENT_KEY = p0.toString()
                     }
                 })
 
-
-
-
+                et_schedule.addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+                    override fun afterTextChanged(p0: Editable?) {
+                        if (!p0.toString().equals("")) Constants.SCHEDULE_KEY = p0.toString()
+                    }
+                })
 
                 MainViewerActivity.UserDatapoints.read(this)
                 Snackbar.make(
@@ -152,10 +150,10 @@ class StartupActivity : ViewerActivity() {
     }
 
     fun btnRetryOnClick(view: View) {
-
-
         MainViewerActivity.UserDatapoints.contents?.remove("schedule")
         MainViewerActivity.UserDatapoints.contents?.addProperty("schedule", Constants.SCHEDULE_KEY)
+        MainViewerActivity.UserDatapoints.contents?.remove("key")
+        MainViewerActivity.UserDatapoints.contents?.addProperty("key", Constants.EVENT_KEY)
         MainViewerActivity.UserDatapoints.write()
 
         MainViewerActivity.refreshManager.start(lifecycleScope)
