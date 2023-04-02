@@ -37,7 +37,7 @@ class Ipv4OnlyDns : Dns {
 val client = HttpClient(OkHttp) {
 
     install(ContentNegotiation) {
-        json()
+        json(Json { ignoreUnknownKeys = true })
     }
     engine {
         preconfigured = OkHttpClient.Builder().dns(Ipv4OnlyDns()).build()
@@ -133,12 +133,14 @@ object DataApi {
             parameter("use_strings", true)
         }.body()
 
+    @Suppress("PropertyName")
     @Serializable
     data class ViewerData(
         val team: Map<String, JsonObject>,
         val tim: Map<String, Map<String, JsonObject>>,
         val aim: Map<String, AimData>,
-        val alliance: Map<String, JsonObject>
+        val alliance: Map<String, JsonObject>,
+        val auto_paths: Map<String, Map<String, Map<String, AutoPath>>>
     )
 
     @Serializable
