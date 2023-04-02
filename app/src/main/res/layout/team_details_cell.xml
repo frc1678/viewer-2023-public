@@ -15,7 +15,14 @@
             android:layout_weight=".5"
             android:background="@color/LightGreen"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
+
+        <View
+            android:id="@+id/data_bar_reverse"
+            android:layout_weight=".5"
+            android:background="@color/White"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
     <LinearLayout
