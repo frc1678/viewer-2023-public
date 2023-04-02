@@ -29,7 +29,7 @@ class TeamDetailsAdapter(
     private val context: FragmentActivity,
     private val datapointsDisplayed: List<String>,
     private val teamNumber: String,
-    private var visualDataBar: Boolean = false
+    private val visualDataBar: Boolean
 ) : BaseAdapter() {
 
     private val inflater: LayoutInflater =
@@ -59,7 +59,6 @@ class TeamDetailsAdapter(
         var e = getItem(position)
         val regex: Pattern = Pattern.compile("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
         if (e == "Visual Data Bars") {
-            visualDataBar = true
             return View(context)
         }
         val rowView = inflater.inflate(R.layout.team_details_cell, parent, false)
