@@ -17,6 +17,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.R
@@ -146,6 +147,13 @@ class TeamDetailsFragment : Fragment() {
                 visualDataBar = ("Visual Data Bars" in (if (lfm) getLFMEquivalent(datapoints) else datapoints))
             )
             root.lv_datapoint_display.adapter = adapter
+        }
+        root.btn_auto_paths.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out).addToBackStack(null)
+                .replace((requireView().parent as ViewGroup).id, AutoPathsFragment().apply {
+                    arguments = bundleOf(Constants.TEAM_NUMBER to teamNumber)
+                }).commit()
         }
     }
 
