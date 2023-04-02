@@ -1,5 +1,7 @@
 {
   "selected": "OTHER",
+  "key" : "2023cada",
+  "schedule" : "2023cada",
   "OTHER": [
     "See Matches",
     "Notes Label",
@@ -185,6 +187,7 @@
     "See Matches",
     "Notes Label",
     "Notes",
+    "Visual Data Bars",
     "matches_played",
     "current_rps",
     "current_rank",
@@ -249,6 +252,7 @@
     "See Matches",
     "Notes Label",
     "Notes",
+    "Visual Data Bars",
     "matches_played",
     "current_rps",
     "current_rank",
@@ -315,6 +319,7 @@
     "See Matches",
     "Notes Label",
     "Notes",
+    "Visual Data Bars",
     "matches_played",
     "current_rps",
     "current_rank",

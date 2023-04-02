@@ -12,16 +12,14 @@ import android.widget.BaseAdapter
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
-import org.citruscircuits.viewer.MainViewerActivity
-import org.citruscircuits.viewer.R
+import kotlinx.android.synthetic.main.team_details_cell.view.*
+import org.citruscircuits.viewer.*
 import org.citruscircuits.viewer.constants.Constants
 import org.citruscircuits.viewer.constants.Translations
 import org.citruscircuits.viewer.fragments.match_schedule.MatchScheduleFragment
 import org.citruscircuits.viewer.fragments.notes.NotesFragment
 import org.citruscircuits.viewer.fragments.team_ranking.TeamRankingFragment
-import org.citruscircuits.viewer.getRankingTeam
-import org.citruscircuits.viewer.getTeamDataValue
-import kotlinx.android.synthetic.main.team_details_cell.view.*
+import org.citruscircuits.viewer.fragments.team_ranking.TeamRankingListAdapter
 import java.lang.Float.parseFloat
 import java.util.regex.Pattern
 
@@ -30,7 +28,8 @@ import java.util.regex.Pattern
 class TeamDetailsAdapter(
     private val context: FragmentActivity,
     private val datapointsDisplayed: List<String>,
-    private val teamNumber: String
+    private val teamNumber: String,
+    private val visualDataBar: Boolean
 ) : BaseAdapter() {
 
     private val inflater: LayoutInflater =
@@ -57,8 +56,11 @@ class TeamDetailsAdapter(
         val modeStartPositionFragment = ModeStartPositionFragment()
         val graphsFragmentArguments = Bundle()
         val modeStartPositionFragmentArguments = Bundle()
-        val e = getItem(position)
+        var e = getItem(position)
         val regex: Pattern = Pattern.compile("-?" + "[0-9]+" + Regex.escape(".") + "[0-9]+")
+        if (e == "Visual Data Bars") {
+            return View(context)
+        }
         val rowView = inflater.inflate(R.layout.team_details_cell, parent, false)
         var isHeader = false
         rowView.tv_datapoint_name.text =
@@ -167,13 +169,52 @@ class TeamDetailsAdapter(
 
             if (Constants.PERCENT_DATA.contains(e)) {
                 rowView.tv_datapoint_value.text = "${rowView.tv_datapoint_value.text}%"
+                if (visualDataBar) {
+                    (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
+                        (getTeamDataValue(teamNumber, e)!!.toFloat()) / 100
+                }
             }
-            
-            if ("cube" in e) rowView.setBackgroundColor(
-                context.resources.getColor(R.color.Cube, null)
-            ) else if ("cone" in e) rowView.setBackgroundColor(
-                context.resources.getColor(R.color.Cone, null)
-            )
+            if (visualDataBar) {
+                if ((Constants.PIT_DATA.contains(e)) || (Constants.FIELDS_TO_BE_DISPLAYED_RANKING.contains(
+                        e
+                    ))
+                    || ("pickability" in e) || ("start_position" in e) || ("matches_played" == e)
+                ) {
+                    (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight = 0F
+                } else if ("incap" in e) { //incap rankings are reversed, so divides by last value in rankings
+                    (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
+                        ((getTeamDataValue(teamNumber, e)!!.toFloat()) /
+                                (getRankingList(e).last().value)!!.toFloat())
+                } else if (("max" in e) || ("avg" in e) || (Constants.DRIVER_DATA.contains(e)) ||
+                    ("matches_played_defense" == e) || ("success" in e) || ("attempt" in e)
+                ) {
+                    //changes weight based on how datapoint compares to highest rank of that datapoint
+                    (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
+                        ((getTeamDataValue(teamNumber, e)!!.toFloat()) /
+                                (getRankingList(e).first().value)!!.toFloat())
+                }
+
+                if ("cube" in e) {
+                    rowView.data_bar.setBackgroundColor(
+                        context.resources.getColor(R.color.Cube)
+                    )
+                } else if ("cone" in e) {
+                    rowView.data_bar.setBackgroundColor(
+                        context.resources.getColor(R.color.Cone)
+                    )
+                }
+            } else {
+                (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight = 0F
+                if ("cube" in e) {
+                    rowView.setBackgroundColor(
+                        context.resources.getColor(R.color.Cube)
+                    )
+                } else if ("cone" in e) {
+                    rowView.setBackgroundColor(
+                        context.resources.getColor(R.color.Cone)
+                    )
+                }
+            }
         }
         if (e in Constants.RANKABLE_FIELDS) {
             rowView.tv_ranking.text = if (e in Constants.PIT_DATA) "" else getRankingTeam(
@@ -260,7 +301,6 @@ class TeamDetailsAdapter(
             }
 
         }
-
         return rowView
     }
 }

@@ -20,10 +20,10 @@
     <color name="ButtonGreen">#4CAF50</color>
     <color name="LimeGreen">#9CCC65</color>
     <color name="ToggleColor">#7DC8BE</color>
-    <color name="Cube">#D1C4E9</color>
-    <color name="Cone">#FFECB3</color>
     <color name="LightRed">#FF5252</color>
-
+    <color name="LightGreen">#d6f5d6</color>
+    <color name="Cube">#f4dffe</color>
+    <color name="Cone">#FFFFCE</color>
     <color name="Highlight_0">#FFFFFF</color>
     <color name="Highlight_1">#FFF59D</color>
     <color name="Highlight_2">#FDD835</color>

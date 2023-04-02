@@ -44,6 +44,14 @@
             android:id="@+id/tv_team_name"
             style="@style/tv_team_number_team_details_sub" />
 
+        <Button
+                android:id="@+id/btn_auto_paths"
+                style="@style/btn_standard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/auto_paths" />
+
         <View
             style="@style/view_separator_horizontal"
             android:layout_height="5dp" />

@@ -48,6 +48,7 @@
     <string name="to_last_four_matches">To L4M</string>
     <string name="imported_rank">Imported Rank</string>
     <string name="local_rank">Local Rank</string>
+    <string name="auto_paths">Auto Paths</string>
 
     <string-array name="match_schedule_filter_array">
         <item>All Matches</item>
