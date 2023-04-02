@@ -138,7 +138,8 @@ object DataApi {
         val team: Map<String, JsonObject>,
         val tim: Map<String, Map<String, JsonObject>>,
         val aim: Map<String, AimData>,
-        val alliance: Map<String, JsonObject>
+        val alliance: Map<String, JsonObject>,
+        val auto_paths: JsonObject
     )
 
     @Serializable

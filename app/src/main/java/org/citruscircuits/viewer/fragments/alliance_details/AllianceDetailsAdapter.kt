@@ -12,10 +12,12 @@ import kotlinx.android.synthetic.main.alliance_details_cell.view.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonPrimitive
+import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.StartupActivity
 import org.citruscircuits.viewer.constants.Constants
 import org.citruscircuits.viewer.data.getPredictedAlliancesDataByKey
+import java.io.File
 
 
 class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
@@ -38,13 +40,20 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
         val rowView = inflater.inflate(R.layout.alliance_details_cell, parent, false)
         rowView.alliance_details_alliance_num.text = (position + 1).toString()
 
+        val allianceNumber = (position + 1).toString()
+
+        var isEliminated = false
+
         // Gets the team number for each pick on an alliance
         val picks = Json.parseToJsonElement(getPredictedAlliancesDataByKey(
             position + 1, "picks"
         )!!.filter { it != '\'' }).jsonArray
 
+        val file = File(Constants.DOWNLOADS_FOLDER, "viewer_elim_alliances.json")
+
         // Creates list of every team text in the given alliance
         var teamTextList = listOf(
+            rowView.alliance_details_alliance_num,
             rowView.alliance_details_team1,
             rowView.alliance_details_team2,
             rowView.alliance_details_team3
@@ -73,16 +82,37 @@ class AllianceDetailsAdapter(context: FragmentActivity) : BaseAdapter() {
                 ?: Constants.NULL_CHARACTER
         )
 
+        if(MainViewerActivity.eliminatedAlliances.contains(allianceNumber)) {
+            for (team in teamTextList) {
+                team.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            }
+            rowView.checkbox_strike.isChecked = true
+        } else {
+            for (team in teamTextList) {
+                team.paintFlags = 0
+            }
+            rowView.checkbox_strike.isChecked = false
+        }
+
         // Strikes through an alliance when the user checks the given checkbox
         rowView.checkbox_strike.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked) {
+                MainViewerActivity.eliminatedAlliances.add(allianceNumber)
+            } else {
+                MainViewerActivity.eliminatedAlliances.remove(allianceNumber)
+            }
+            MainViewerActivity.EliminatedAlliances.input()
+
+            if(MainViewerActivity.eliminatedAlliances.contains(allianceNumber)) {
                 for (team in teamTextList) {
                     team.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }
+                rowView.checkbox_strike.isChecked = true
             } else {
                 for (team in teamTextList) {
                     team.paintFlags = 0
                 }
+                rowView.checkbox_strike.isChecked = false
             }
         }
 

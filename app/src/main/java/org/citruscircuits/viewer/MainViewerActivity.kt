@@ -57,6 +57,7 @@ class MainViewerActivity : ViewerActivity() {
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
+        var eliminatedAlliances: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
         var notesCache: MutableMap<String, String> = mutableMapOf()
@@ -107,6 +108,7 @@ class MainViewerActivity : ViewerActivity() {
         // Creates the files for user datapoints and starred matches
         UserDatapoints.read(this)
         StarredMatches.read()
+        EliminatedAlliances.read()
 
         // Pull the set of starred matches from the downloads file viewer_starred_matches.
         var jsonStarred = contents.get("starredMatches")?.asJsonArray
@@ -429,6 +431,47 @@ class MainViewerActivity : ViewerActivity() {
 
             contents.remove("starredMatches")
             contents.add("starredMatches", starredJsonArray)
+            write()
+        }
+
+    }
+
+    object EliminatedAlliances {
+
+        var contents = JsonObject()
+        var gson = Gson()
+
+        private val file = File(Constants.DOWNLOADS_FOLDER, "viewer_eliminated_alliances.json")
+
+        fun read() {
+            if (!fileExists()) {
+                write()
+            }
+            try {
+                contents = JsonParser.parseReader(FileReader(file)).asJsonObject
+            } catch (e: Exception) {
+                Log.e("EliminatedAlliances.read", "Failed to read eliminated alliances file")
+            }
+        }
+
+        fun write() {
+            var writer = FileWriter(file, false)
+            gson.toJson(contents as JsonElement, writer)
+
+            writer.close()
+        }
+
+        fun fileExists(): Boolean = file.exists()
+
+        // Updates the file with the currently starred matches based on the companion object starredMatches
+        fun input() {
+            val eliminatedJsonArray = JsonArray()
+            for (alliance in eliminatedAlliances) {
+                eliminatedJsonArray.add(alliance)
+            }
+
+            contents.remove("eliminatedAlliances")
+            contents.add("eliminatedAlliances", eliminatedJsonArray)
             write()
         }
 
