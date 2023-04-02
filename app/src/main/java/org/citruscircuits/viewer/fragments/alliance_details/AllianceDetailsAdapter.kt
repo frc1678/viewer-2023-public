@@ -90,7 +90,7 @@ class AllianceDetailsAdapter(
                 team.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             }
             rowView.playoff_alliances.setBackgroundColor(
-                ContextCompat.getColor(context, R.color.LightRed)
+                ContextCompat.getColor(context, R.color.MediumGray)
             )
             rowView.checkbox_strike.isChecked = true
         } else {
@@ -117,7 +117,7 @@ class AllianceDetailsAdapter(
                     team.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }
                 rowView.playoff_alliances.setBackgroundColor(
-                    ContextCompat.getColor(context, R.color.LightRed)
+                    ContextCompat.getColor(context, R.color.MediumGray)
                 )
                 rowView.checkbox_strike.isChecked = true
             } else {
