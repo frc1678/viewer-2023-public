@@ -118,7 +118,8 @@ class TeamDetailsFragment : Fragment() {
         val adapter = TeamDetailsAdapter(
             context = requireActivity(),
             datapointsDisplayed = if (lfm) getLFMEquivalent(datapoints) else datapoints,
-            teamNumber = teamNumber!!
+            teamNumber = teamNumber!!,
+            visualDataBar = ("Visual Data Bars" in (if (lfm) getLFMEquivalent(datapoints) else datapoints))
         )
         if (refreshId == null) {
             refreshId = MainViewerActivity.refreshManager.addRefreshListener {
@@ -141,7 +142,8 @@ class TeamDetailsFragment : Fragment() {
             val adapter = TeamDetailsAdapter(
                 context = requireActivity(),
                 datapointsDisplayed = if (lfm) getLFMEquivalent(datapoints) else datapoints,
-                teamNumber = teamNumber!!
+                teamNumber = teamNumber!!,
+                visualDataBar = ("Visual Data Bars" in (if (lfm) getLFMEquivalent(datapoints) else datapoints))
             )
             root.lv_datapoint_display.adapter = adapter
         }

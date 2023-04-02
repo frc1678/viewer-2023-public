@@ -94,6 +94,7 @@ class Constants {
             "See Matches",
             "Notes Label",
             "Notes",
+            "Visual Data Bars",
             "matches_played",
             "current_rps",
             "predicted_rps",
@@ -179,6 +180,7 @@ class Constants {
             "See Matches",
             "Notes Label",
             "Notes",
+            "Visual Data Bars",
             "matches_played",
             "current_rps",
             "predicted_rps",
@@ -591,7 +593,8 @@ class Constants {
             "width",
             "drivetrain",
             "drivetrain_motor_type",
-            "drivetrain_motors"
+            "drivetrain_motors",
+            "Visual Data Bars"
         )
 
         //String literal translations.
