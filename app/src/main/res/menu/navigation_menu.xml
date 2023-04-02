@@ -30,13 +30,13 @@
         android:checkable="true"
         />
     <item
-        android:id="@+id/nav_menu_preferences"
-        android:title="Preferences"
+        android:id="@+id/nav_menu_alliance_details"
+        android:title="Elim Alliance Details"
         android:checkable="true"
         />
     <item
-        android:id="@+id/nav_menu_alliance_details"
-        android:title="Elim Alliance Details"
+        android:id="@+id/nav_menu_preferences"
+        android:title="Preferences"
         android:checkable="true"
         />
 </menu>

@@ -168,8 +168,8 @@ class MainViewerActivity : ViewerActivity() {
         val offlinePicklistFragment = OfflinePicklistFragment()
         val pickabilityFragment = PickabilityFragment()
         val teamListFragment = TeamListFragment()
-        val preferencesFragment = PreferencesFragment()
         val allianceDetailsFragment = AllianceDetailsFragment()
+        val preferencesFragment = PreferencesFragment()
 
         updateNavFooter()
 
@@ -222,14 +222,6 @@ class MainViewerActivity : ViewerActivity() {
                     ft.replace(R.id.nav_host_fragment, teamListFragment, "teamlist").commit()
                 }
 
-                R.id.nav_menu_preferences -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "preferences") ft.addToBackStack(
-                        null
-                    )
-                    ft.replace(R.id.nav_host_fragment, preferencesFragment, "preferences").commit()
-                }
-
                 R.id.nav_menu_alliance_details -> {
                     val ft = supportFragmentManager.beginTransaction()
                     if (supportFragmentManager.fragments.last().tag != "allianceDetails") ft.addToBackStack(
@@ -238,6 +230,13 @@ class MainViewerActivity : ViewerActivity() {
                     ft.replace(R.id.nav_host_fragment, allianceDetailsFragment, "allianceDetails").commit()
                 }
 
+                R.id.nav_menu_preferences -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "preferences") ft.addToBackStack(
+                        null
+                    )
+                    ft.replace(R.id.nav_host_fragment, preferencesFragment, "preferences").commit()
+                }
             }
 
             true
