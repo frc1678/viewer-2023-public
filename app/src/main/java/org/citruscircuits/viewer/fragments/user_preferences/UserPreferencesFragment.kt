@@ -57,8 +57,7 @@ class UserPreferencesFragment : Fragment() {
 
         root.select_all_button.setOnClickListener {
             val newJsonArray = JsonArray()
-            val allDatapoints = Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS
-            for (datapoint in allDatapoints) {
+            for (datapoint in Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS) {
                 newJsonArray.add(datapoint)
             }
             UserDatapoints.contents?.remove(userName)
