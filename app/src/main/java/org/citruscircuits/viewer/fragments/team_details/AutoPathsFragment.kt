@@ -49,7 +49,7 @@ class AutoPathsFragment : Fragment() {
         StartupActivity.databaseReference!!.auto_paths[teamNumber]?.forEach { (startingPosition, paths) ->
             paths.forEach { (_, path) -> autoPaths += startingPosition to path }
         }
-        autoPaths.sortBy { it.first }
+        autoPaths.sortByDescending { it.second.matches_ran }
         setContent {
             if (autoPaths.isNotEmpty()) Column(modifier = Modifier.padding(horizontal = 10.dp)) {
                 var currentPage by remember { mutableStateOf(0) }
