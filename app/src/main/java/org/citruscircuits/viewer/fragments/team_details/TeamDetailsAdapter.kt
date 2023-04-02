@@ -174,24 +174,32 @@ class TeamDetailsAdapter(
                         (getTeamDataValue(teamNumber, e)!!.toFloat()) / 100
                 }
             }
-            if (visualDataBar) {
-                if ((Constants.PIT_DATA.contains(e)) || (Constants.FIELDS_TO_BE_DISPLAYED_RANKING.contains(
-                        e
-                    ))
-                    || ("pickability" in e) || ("start_position" in e) || ("matches_played" == e)
+            if (visualDataBar && (getTeamDataValue(teamNumber, e)!! != Constants.NULL_CHARACTER) && ((getRankingList(e).last().value)!! != Constants.NULL_CHARACTER)) {
+                if ((Constants.PIT_DATA.contains(e)) || (Constants.FIELDS_TO_BE_DISPLAYED_RANKING.contains(e))
+                    || ("pickability" in e) || ("start" in e) || ("matches_played" == e)
                 ) {
                     (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight = 0F
-                } else if ("incap" in e) { //incap rankings are reversed, so divides by last value in rankings
-                    (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
+                    (rowView.data_bar_reverse.layoutParams as LinearLayout.LayoutParams).weight = 1F
+                } else if (("incap" in e) || ("foul" in e) || ("tippy" in e)) { //incap, foul, and tippiness rankings are reversed, so divides by last value in rankings
+                    (rowView.data_bar_reverse.layoutParams as LinearLayout.LayoutParams).weight =
                         ((getTeamDataValue(teamNumber, e)!!.toFloat()) /
                                 (getRankingList(e).last().value)!!.toFloat())
+                    (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
+                        1 - (rowView.data_bar_reverse.layoutParams as LinearLayout.LayoutParams).weight
+                    rowView.data_bar.setBackgroundColor(
+                        context.resources.getColor(R.color.White)
+                    )
+                    rowView.data_bar_reverse.setBackgroundColor(
+                        context.resources.getColor(R.color.Pink)
+                    )
                 } else if (("max" in e) || ("avg" in e) || (Constants.DRIVER_DATA.contains(e)) ||
-                    ("matches_played_defense" == e) || ("success" in e) || ("attempt" in e)
+                    ("defense" in e) || ("success" in e) || ("attempt" in e)
                 ) {
                     //changes weight based on how datapoint compares to highest rank of that datapoint
                     (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight =
                         ((getTeamDataValue(teamNumber, e)!!.toFloat()) /
                                 (getRankingList(e).first().value)!!.toFloat())
+                    (rowView.data_bar_reverse.layoutParams as LinearLayout.LayoutParams).weight = 1 - (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight
                 }
 
                 if ("cube" in e) {
@@ -205,6 +213,7 @@ class TeamDetailsAdapter(
                 }
             } else {
                 (rowView.data_bar.layoutParams as LinearLayout.LayoutParams).weight = 0F
+                (rowView.data_bar_reverse.layoutParams as LinearLayout.LayoutParams).weight = 0F
                 if ("cube" in e) {
                     rowView.setBackgroundColor(
                         context.resources.getColor(R.color.Cube)
