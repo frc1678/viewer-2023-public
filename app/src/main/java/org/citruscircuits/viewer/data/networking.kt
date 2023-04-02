@@ -17,7 +17,6 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.*
 import okhttp3.Dns
 import okhttp3.OkHttpClient
-import org.citruscircuits.viewer.fragments.team_details.AutoPath
 import java.net.Inet4Address
 import java.net.InetAddress
 
