@@ -58,6 +58,7 @@ class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsRes
         UserDatapoints.read(this)
         StarredMatches.read()
         StarredTeams.read()
+        EliminatedAlliances.read()
 
         setContentView(R.layout.activity_welcome)
 

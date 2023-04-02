@@ -57,6 +57,7 @@ class MainViewerActivity : ViewerActivity() {
         var matchCache: MutableMap<String, Match> = HashMap()
         var teamList: List<String> = listOf()
         var starredMatches: HashSet<String> = HashSet()
+        var eliminatedAlliances: HashSet<String> = HashSet()
         val refreshManager = RefreshManager()
         val leaderboardCache: MutableMap<String, Leaderboard> = mutableMapOf()
         var notesCache: MutableMap<String, String> = mutableMapOf()
@@ -107,13 +108,23 @@ class MainViewerActivity : ViewerActivity() {
         // Creates the files for user datapoints and starred matches
         UserDatapoints.read(this)
         StarredMatches.read()
+        EliminatedAlliances.read()
 
         // Pull the set of starred matches from the downloads file viewer_starred_matches.
-        var jsonStarred = contents.get("starredMatches")?.asJsonArray
+        var jsonStarred = StarredMatches.contents.get("starredMatches")?.asJsonArray
 
         if (jsonStarred != null) {
             for (starred in jsonStarred) {
                 starredMatches.add(starred.asString)
+            }
+        }
+
+        // Pull the set of eliminated alliances from the downloads file viewer_eliminated_alliances.
+        var jsonEliminated = EliminatedAlliances.contents.get("eliminatedAlliances")?.asJsonArray
+
+        if (jsonEliminated != null) {
+            for (alliance in jsonEliminated) {
+                eliminatedAlliances.add(alliance.asString)
             }
         }
     }
@@ -157,8 +168,8 @@ class MainViewerActivity : ViewerActivity() {
         val offlinePicklistFragment = OfflinePicklistFragment()
         val pickabilityFragment = PickabilityFragment()
         val teamListFragment = TeamListFragment()
-        val preferencesFragment = PreferencesFragment()
         val allianceDetailsFragment = AllianceDetailsFragment()
+        val preferencesFragment = PreferencesFragment()
 
         updateNavFooter()
 
@@ -211,14 +222,6 @@ class MainViewerActivity : ViewerActivity() {
                     ft.replace(R.id.nav_host_fragment, teamListFragment, "teamlist").commit()
                 }
 
-                R.id.nav_menu_preferences -> {
-                    val ft = supportFragmentManager.beginTransaction()
-                    if (supportFragmentManager.fragments.last().tag != "preferences") ft.addToBackStack(
-                        null
-                    )
-                    ft.replace(R.id.nav_host_fragment, preferencesFragment, "preferences").commit()
-                }
-
                 R.id.nav_menu_alliance_details -> {
                     val ft = supportFragmentManager.beginTransaction()
                     if (supportFragmentManager.fragments.last().tag != "allianceDetails") ft.addToBackStack(
@@ -227,6 +230,13 @@ class MainViewerActivity : ViewerActivity() {
                     ft.replace(R.id.nav_host_fragment, allianceDetailsFragment, "allianceDetails").commit()
                 }
 
+                R.id.nav_menu_preferences -> {
+                    val ft = supportFragmentManager.beginTransaction()
+                    if (supportFragmentManager.fragments.last().tag != "preferences") ft.addToBackStack(
+                        null
+                    )
+                    ft.replace(R.id.nav_host_fragment, preferencesFragment, "preferences").commit()
+                }
             }
 
             true
@@ -434,6 +444,47 @@ class MainViewerActivity : ViewerActivity() {
 
     }
 
+    object EliminatedAlliances {
+
+        var contents = JsonObject()
+        var gson = Gson()
+
+        private val file = File(Constants.DOWNLOADS_FOLDER, "viewer_eliminated_alliances.json")
+
+        fun read() {
+            if (!fileExists()) {
+                write()
+            }
+            try {
+                contents = JsonParser.parseReader(FileReader(file)).asJsonObject
+            } catch (e: Exception) {
+                Log.e("EliminatedAlliances.read", "Failed to read eliminated alliances file")
+            }
+        }
+
+        fun write() {
+            var writer = FileWriter(file, false)
+            gson.toJson(contents as JsonElement, writer)
+
+            writer.close()
+        }
+
+        fun fileExists(): Boolean = file.exists()
+
+        // Updates the file with the currently starred matches based on the companion object starredMatches
+        fun input() {
+            val eliminatedJsonArray = JsonArray()
+            for (alliance in eliminatedAlliances) {
+                eliminatedJsonArray.add(alliance)
+            }
+
+            contents.remove("eliminatedAlliances")
+            contents.add("eliminatedAlliances", eliminatedJsonArray)
+            write()
+        }
+
+    }
+
     /**
      * An object to read/write the starred teams file with.
      */
@@ -488,8 +539,8 @@ class NavDrawerListener(
                 "picklist" -> navView.setCheckedItem(R.id.nav_menu_picklist)
                 "pickability" -> navView.setCheckedItem(R.id.nav_menu_pickability)
                 "teamList" -> navView.setCheckedItem(R.id.nav_menu_team_list)
-                "preferences" -> navView.setCheckedItem(R.id.nav_menu_preferences)
                 "allianceDetails" -> navView.setCheckedItem(R.id.nav_menu_alliance_details)
+                "preferences" -> navView.setCheckedItem(R.id.nav_menu_preferences)
             }
         }
     }
