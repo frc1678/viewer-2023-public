@@ -38,29 +38,38 @@ import org.citruscircuits.viewer.constants.Constants
 import org.citruscircuits.viewer.data.AutoPath
 
 /**
- * Fragment for showing the auto paths of a given team.
+ * [Fragment] for showing the auto paths of a given team.
  */
 class AutoPathsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ) = ComposeView(requireContext()).apply {
+        // Get the team number from the arguments
         val teamNumber = requireArguments().getString(Constants.TEAM_NUMBER)!!
         val autoPaths = mutableListOf<Pair<String, AutoPath>>()
+        // Add each auto path to the list of auto paths
         StartupActivity.databaseReference!!.auto_paths[teamNumber]?.forEach { (startingPosition, paths) ->
             paths.forEach { (_, path) -> autoPaths += startingPosition to path }
         }
+        // Sort the auto paths by the number of times they were ran
         autoPaths.sortByDescending { it.second.matches_ran }
         setContent {
+            // Only show the auto paths UI if there are auto paths
             if (autoPaths.isNotEmpty()) Column(modifier = Modifier.padding(horizontal = 10.dp)) {
                 var currentPage by remember { mutableStateOf(0) }
+                // The header for the page
                 Text(
                     "Auto Paths for $teamNumber",
                     style = MaterialTheme.typography.headlineMedium,
                     modifier = Modifier.padding(vertical = 10.dp)
                 )
+                // Show how many times this auto path was ran
                 Text("Ran ${autoPaths[currentPage].second.matches_ran} time(s)")
+                // Show whether the team scores mobility points in this auto path
                 Text("Mobility: ${if (autoPaths[currentPage].second.mobility) "yes" else "no"}")
+                // Show the main auto path map
                 AutoPath(autoPaths[currentPage].first, autoPaths[currentPage].second)
+                // Row of buttons to navigate between auto paths
                 Row(
                     Modifier
                         .height(50.dp)
@@ -68,6 +77,7 @@ class AutoPathsFragment : Fragment() {
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    // Left arrow button
                     IconButton(
                         onClick = { currentPage-- },
                         enabled = currentPage > 0,
@@ -77,6 +87,7 @@ class AutoPathsFragment : Fragment() {
                             imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = null
                         )
                     }
+                    // The circles in the middle
                     LazyRow {
                         repeat(autoPaths.size) { iteration ->
                             item {
@@ -89,6 +100,7 @@ class AutoPathsFragment : Fragment() {
                             }
                         }
                     }
+                    // Right arrow button
                     IconButton(
                         onClick = { currentPage++ },
                         enabled = currentPage < autoPaths.size - 1,
@@ -101,6 +113,7 @@ class AutoPathsFragment : Fragment() {
                     }
                 }
             } else Text(
+                // If there's no auto paths, show a message
                 text = "No auto paths found for $teamNumber",
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.padding(10.dp)
