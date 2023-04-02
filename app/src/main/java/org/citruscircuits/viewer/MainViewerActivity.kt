@@ -390,6 +390,17 @@ class MainViewerActivity : ViewerActivity() {
                 }
                 inputStream.close()
                 outputStream.close()
+                try {
+                    contents = JsonParser.parseReader(FileReader(file)).asJsonObject
+                    contents?.remove("key")
+                    contents?.addProperty("key", "${Constants.DEFAULT_KEY}")
+                    contents?.remove("schedule")
+                    contents?.addProperty("schedule", "${Constants.DEFAULT_SCHEDULE}")
+                    write()
+                } catch (e: Exception) {
+                    Log.e("UserDatapoints.read", "Failed to read user datapoints file")
+                }
+
 
             } catch (e: Exception) {
                 Log.e("copyDefaults", "Failed to copy default preferences to file, $e")
