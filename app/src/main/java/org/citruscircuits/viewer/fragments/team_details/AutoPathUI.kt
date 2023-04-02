@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -110,7 +111,7 @@ fun ColumnScope.AutoPath(startPosition: String, autoPath: AutoPath) {
         modifier = Modifier
             .fillMaxWidth()
             .weight(1f)
-            .padding(10.dp)
+            .scale(0.8f)
             .zoomable()
     ) {
         // Draw the field map
