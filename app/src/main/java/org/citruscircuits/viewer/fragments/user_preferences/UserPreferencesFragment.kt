@@ -54,6 +54,19 @@ class UserPreferencesFragment : Fragment() {
             root.lv_user_datapoints.invalidateViews()
             updateUserDatapointsListView(root)
         }
+
+        root.select_all_button.setOnClickListener {
+            val newJsonArray = JsonArray()
+            for (datapoint in Constants.FIELDS_TO_BE_DISPLAYED_TEAM_DETAILS) {
+                newJsonArray.add(datapoint)
+            }
+            UserDatapoints.contents?.remove(userName)
+            UserDatapoints.contents?.add(userName, newJsonArray)
+            UserDatapoints.write()
+
+            root.lv_user_datapoints.invalidateViews()
+            updateUserDatapointsListView(root)
+        }
         return root
     }
 
