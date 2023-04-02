@@ -1,6 +1,7 @@
 package org.citruscircuits.viewer.fragments.team_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,6 +56,8 @@ class GraphsFragment : Fragment() {
         // Get whether charge levels should be shown instead of numbers
         val showingChargeLevels =
             dataPoint == "auto_charge_level" || dataPoint == "tele_charge_level"
+        val showingTippyOrDefense =
+            dataPoint == "was_tippy" || dataPoint == "played_defense"
         // Get the TIM data for the data point of the team
         val timDataMap = getTIMDataValue(teamNumber, dataPoint)
         // Set the data to be displayed by each bar
@@ -66,6 +69,9 @@ class GraphsFragment : Fragment() {
                     // value
                     y = if (showingChargeLevels) Constants.CHARGE_LEVELS.indexOf(value)
                         .takeIf { it != -1 }?.toFloat() ?: 0f
+                    else if (showingTippyOrDefense) {
+                        (if (value == "true") 1f else 0f)
+                    }
                     else value?.toFloatOrNull() ?: 0f
                 ), label = "${i + 1}"
             )
@@ -75,10 +81,10 @@ class GraphsFragment : Fragment() {
             .reversed()[0].second?.toFloatOrNull()
         // Set the maximum y range by rounding up the max value to the next multiple of 5
         // Default to 50
-        val maxRange = if (showingChargeLevels) {
-            Constants.CHARGE_LEVELS.lastIndex.toFloat()
-        } else if (maxValue != null) ceil(maxValue / 5) * 5 else 50f
-        val yStepSize = if (showingChargeLevels) Constants.CHARGE_LEVELS.lastIndex else 5
+        val maxRange = if (showingChargeLevels) Constants.CHARGE_LEVELS.lastIndex.toFloat()
+            else if (showingTippyOrDefense) 1f
+            else if (maxValue != null) ceil(maxValue / 5) * 5 else 50f
+        val yStepSize = if (showingChargeLevels) Constants.CHARGE_LEVELS.lastIndex else if (showingTippyOrDefense) 1 else 5
         // Prepare the x and y axes with the bar data
         val xAxisData =
             AxisData.Builder().axisStepSize(30.dp).steps(barData.size - 1).bottomPadding(40.dp)
@@ -87,12 +93,15 @@ class GraphsFragment : Fragment() {
             AxisData.Builder().steps(yStepSize).labelAndAxisLinePadding(20.dp).axisOffset(20.dp)
                 .topPadding(40.dp).labelData { index ->
                     if (showingChargeLevels) Constants.CHARGE_LEVELS.getOrNull(index).toString()
+                    else if (showingTippyOrDefense) (if (index == 0) "FALSE" else "TRUE")
                     else (index * (maxRange / yStepSize)).toInt().toString()
                 }.build()
         // Create the label to be shown when a bar is selected
         val selectionHighlightData = SelectionHighlightData(popUpLabel = { x, y ->
             "QM${timDataMap.toList()[x.toInt()].first}: ${
-                if (showingChargeLevels) Constants.CHARGE_LEVELS.getOrNull(y.roundToInt()) else y
+                if (showingChargeLevels) Constants.CHARGE_LEVELS.getOrNull(y.roundToInt()) 
+                else if (showingTippyOrDefense) (if (y == 0f) "FALSE" else "TRUE")
+                else y
             }"
         })
         // Set the page content to the graph

@@ -8,6 +8,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -15,6 +17,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_preferences.*
+import kotlinx.android.synthetic.main.fragment_preferences.view.*
 import kotlinx.android.synthetic.main.startup_splash_screen.*
 import kotlinx.coroutines.launch
 import org.citruscircuits.viewer.constants.Constants
@@ -83,10 +87,21 @@ class StartupActivity : ViewerActivity() {
     }
 
     private suspend fun getData() {
+
+
         try {
+
             if (Constants.USE_TEST_DATA) {
                 loadTestData(this.resources)
             } else {
+                MainViewerActivity.UserDatapoints.read(this)
+
+
+                Constants.EVENT_KEY =
+                    MainViewerActivity.UserDatapoints.contents?.get("key")!!.asString
+                Constants.SCHEDULE_KEY =
+                    MainViewerActivity.UserDatapoints.contents?.get("schedule")!!.asString
+
                 // Tries to get data from website when starting the app and throws an error if fails
                 getDataFromWebsite()
             }
@@ -104,7 +119,29 @@ class StartupActivity : ViewerActivity() {
             )
             runOnUiThread {
                 // Stuff that updates the UI
+                tv_schedule.visibility = View.VISIBLE
+                et_schedule.visibility = View.VISIBLE
                 btn_retry.visibility = View.VISIBLE
+
+                et_schedule.addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    }
+
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    }
+
+                    override fun afterTextChanged(p0: Editable?) {
+                        if (!p0.toString().equals("")) Constants.SCHEDULE_KEY = p0.toString()
+
+
+                    }
+                })
+
+
+
+
+
+                MainViewerActivity.UserDatapoints.read(this)
                 Snackbar.make(
                     splash_screen_layout,
                     "Could not find match_schedule file for schedule key ${Constants.SCHEDULE_KEY}",
@@ -115,6 +152,12 @@ class StartupActivity : ViewerActivity() {
     }
 
     fun btnRetryOnClick(view: View) {
+
+
+        MainViewerActivity.UserDatapoints.contents?.remove("schedule")
+        MainViewerActivity.UserDatapoints.contents?.addProperty("schedule", Constants.SCHEDULE_KEY)
+        MainViewerActivity.UserDatapoints.write()
+
         MainViewerActivity.refreshManager.start(lifecycleScope)
 
         lifecycleScope.launch { getData() }

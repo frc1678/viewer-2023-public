@@ -14,8 +14,10 @@ import java.io.File
 class Constants {
     companion object {
         //Game specific data.
-        const val EVENT_KEY = "2023cada"
-        const val SCHEDULE_KEY = "2023cada"
+        val DEFAULT_KEY = "2023cada"
+        val DEFAULT_SCHEDULE = "2023cada"
+        var EVENT_KEY = "2023cada"
+        var SCHEDULE_KEY = "2023cada"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
         const val REFRESH_INTERVAL = 120
@@ -61,7 +63,8 @@ class Constants {
             "Other",
             "intakes_station",
             "intakes_ground",
-            "incap"
+            "incap",
+            "played_defense"
         )
 
         val ACTUAL_TO_PREDICTED_MATCH_DETAILS = mapOf(
@@ -317,6 +320,8 @@ class Constants {
             "tele_engage_percent_success" to "tele_charge_level",
             "auto_charge_attempts" to "auto_charge_attempt",
             "tele_charge_attempts" to "tele_charge_attempt",
+            "matches_played_defense" to "played_defense",
+            "matches_tippy" to "was_tippy"
 
 //            "lfm_auto_avg_cube_low" to "lfm_auto_cube_low",
 //            "lfm_auto_avg_cube_mid" to "lfm_auto_cube_mid",
@@ -391,6 +396,7 @@ class Constants {
             "lfm_auto_engage_percent_success",
             "lfm_tele_dock_percent_success",
             "lfm_tele_engage_percent_success",
+            "win_chance"
         )
 
         val PIT_DATA: List<String> = listOf(
