@@ -45,6 +45,7 @@ class Translations {
             "lfm_median_nonzero_incap" to "Median Nonzero Incap",
             "mode_start_position" to "Mode Start Position",
             "lfm_mode_start_position" to "Mode Start Position",
+            "middle_compatibility" to "Middle Compatibility",
             "confidence_rating" to "Confidence Rating",
             "start_position" to "Start Position",
             "position_zero_starts" to "No Show",

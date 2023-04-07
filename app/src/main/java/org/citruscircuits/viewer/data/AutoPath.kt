@@ -26,6 +26,5 @@ data class AutoPath(
     val score_3_max_piece_successes: Int,
     val score_3_position: String?,
     val matches_ran: Int,
-    val mobility: Boolean,
-    val middle_compatibility: Float
+    val mobility: Boolean
 )
