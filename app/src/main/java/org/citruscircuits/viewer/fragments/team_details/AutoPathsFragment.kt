@@ -67,6 +67,8 @@ class AutoPathsFragment : Fragment() {
                 Text("Ran ${autoPaths[currentPage].second.matches_ran} time(s)")
                 // Show whether the team scores mobility points in this auto path
                 Text("Mobility: ${if (autoPaths[currentPage].second.mobility) "yes" else "no"}")
+                // Show the middle compatibility for this auto path
+                Text("Middle Compatibility: ${autoPaths[currentPage].second.middle_compatibility}")
                 // Show the main auto path map
                 AutoPath(autoPaths[currentPage].first, autoPaths[currentPage].second)
                 // Row of buttons to navigate between auto paths
