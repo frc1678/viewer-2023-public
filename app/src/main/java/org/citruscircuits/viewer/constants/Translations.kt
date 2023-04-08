@@ -59,6 +59,7 @@ class Translations {
             "win_chance" to "Win Chance",
             "matches_played_defense" to "Matches Played Defense",
             "foul_cc" to "Foul OPR",
+            "avg_intakes_ground" to "Avg Ground Intakes",
 
             // 2023
             "auto_avg_cone_high" to "Avg Cones High",

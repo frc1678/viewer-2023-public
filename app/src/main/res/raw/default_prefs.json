@@ -118,6 +118,7 @@
     "driver_ability",
     "driver_field_awareness",
     "driver_quickness",
+    "avg_intakes_ground",
     "Endgame",
     "tele_park_successes",
     "tele_charge_attempts",
