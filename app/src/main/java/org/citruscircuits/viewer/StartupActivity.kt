@@ -92,7 +92,11 @@ class StartupActivity : ViewerActivity() {
                 loadTestData(this.resources)
             } else {
                 MainViewerActivity.UserDatapoints.read(this)
-
+                if (MainViewerActivity.UserDatapoints.contents?.get("default_key")!!.asString != Constants.DEFAULT_KEY ||
+                    MainViewerActivity.UserDatapoints.contents?.get("default_schedule")!!.asString != Constants.DEFAULT_SCHEDULE) {
+                    MainViewerActivity.UserDatapoints.file.delete()
+                    MainViewerActivity.UserDatapoints.copyDefaults(this)
+                }
                 Constants.EVENT_KEY =
                     MainViewerActivity.UserDatapoints.contents?.get("key")!!.asString
                 Constants.SCHEDULE_KEY =

@@ -2,6 +2,8 @@
   "selected": "OTHER",
   "key" : "",
   "schedule" : "",
+  "default_key": "",
+  "default_schedule": "",
 
   "OTHER": [
     "See Matches",
