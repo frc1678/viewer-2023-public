@@ -5,6 +5,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
+import org.citruscircuits.viewer.constants.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,8 +35,8 @@ open class ViewerActivity : AppCompatActivity() {
 
     fun setToolbarText(view: ActionBar?, support: androidx.appcompat.app.ActionBar?) {
         val headerText = "Viewer"
-        view?.title = headerText
-        support?.title = headerText
+        view?.title = headerText + ": ${Constants.VERSION_NUM}"
+        support?.title = "${Constants.EVENT_KEY} ${Constants.VERSION_NUM}"
         view?.show()
         support?.show()
     }

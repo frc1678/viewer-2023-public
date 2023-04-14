@@ -65,7 +65,8 @@ class WelcomeActivity : ViewerActivity(), ActivityCompat.OnRequestPermissionsRes
         val names = resources.getStringArray(R.array.user_array)
 
         val radioGroup = findViewById<RadioGroup>(R.id.profile_list)
-
+        //set default action Baar
+        setToolbarText(actionBar, supportActionBar)
         // Add the radio buttons to the radio group
         names.forEach {
             val radioButton = RadioButton(this)
