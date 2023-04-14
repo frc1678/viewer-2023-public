@@ -5,7 +5,6 @@ import android.util.Log
 import org.citruscircuits.viewer.MainViewerActivity
 import org.citruscircuits.viewer.R
 import org.citruscircuits.viewer.StartupActivity.Companion.databaseReference
-import org.citruscircuits.viewer.lastUpdated
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.*
@@ -50,9 +49,6 @@ suspend fun loadTestData(resources: Resources) {
     MainViewerActivity.teamList =
         Json.decodeFromString<List<Int>>(readFile(resources.openRawResource(R.raw.test_team_list)))
             .map { it.toString() }
-
-    lastUpdated = Calendar.getInstance().time
-
 }
 
 private fun readFile(file: InputStream): String {

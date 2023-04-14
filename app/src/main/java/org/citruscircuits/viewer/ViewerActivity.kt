@@ -7,12 +7,12 @@ import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import org.citruscircuits.viewer.constants.Constants
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 
 //Super class of all activity based classes for this project.
 //Used to implement class mechanisms that all activities should comprise of.
-var lastUpdated: Date = Calendar.getInstance().time
 
 open class ViewerActivity : AppCompatActivity() {
     //When the back press is held down, this function will confirm the long click and then 'restart'
@@ -43,6 +43,6 @@ open class ViewerActivity : AppCompatActivity() {
 
     fun getTimeText(): String {
         val sdf = SimpleDateFormat("MM/dd/yy hh:mm:ss a", Locale.getDefault())
-        return sdf.format(lastUpdated)
+        return sdf.format(Calendar.getInstance().time)
     }
 }

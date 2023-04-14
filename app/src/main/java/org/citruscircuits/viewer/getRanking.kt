@@ -12,7 +12,7 @@ import org.citruscircuits.viewer.fragments.team_ranking.floatToString
 fun createLeaderboard(datapoint: String) {
     val data = mutableListOf<TeamRankingItem>()
     MainViewerActivity.teamList.forEach {
-        if (datapoint !in Constants.PIT_DATA) {
+        if (datapoint !in Constants.PIT_DATA && datapoint != "middle_compatibility") {
             val value = getTeamDataValue(it, datapoint)?.toFloatOrNull()
             data.add(
                 TeamRankingItem(
@@ -32,10 +32,11 @@ fun createLeaderboard(datapoint: String) {
     val nonNullTeams = data.filter { it.value != Constants.NULL_CHARACTER }
     //check if pit variable ranked is not an integer as that will be sorted differently
     var sorted = nonNullTeams.sortedBy {
-        if (datapoint in Constants.PIT_DATA && datapoint == "drivetrain"
+        if ((datapoint in Constants.PIT_DATA && datapoint == "drivetrain"
             || datapoint == "has_communication_device"
             || datapoint == "has_vision"
-            || datapoint == "drivetrain_motor_type"
+            || datapoint == "drivetrain_motor_type")
+            || datapoint == "middle_compatibility"
         ) {
             (Constants.RANK_BY_PIT[it.value] ?: 0).toFloat()
         } else

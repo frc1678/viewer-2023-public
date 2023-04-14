@@ -107,6 +107,7 @@ class Constants {
             "defensive_second_pickability",
             "Auto",
             "mode_start_position",
+            "middle_compatibility",
             "position_zero_starts",
             "position_one_starts",
             "position_two_starts",
@@ -158,6 +159,7 @@ class Constants {
             "driver_field_awareness",
             "driver_quickness",
             "foul_cc",
+            "avg_intakes_ground",
             "Endgame",
             "tele_park_successes",
             "tele_charge_attempts",
@@ -444,6 +446,7 @@ class Constants {
             "drivetrain_motor_type" to false,
             "has_vision" to false,
             "matches_played_defense" to true,
+            "middle_compatibility" to false,
             "auto_avg_gamepieces_low" to true,
             "auto_avg_cube_low" to true,
             "auto_avg_cube_mid" to true,
@@ -541,7 +544,8 @@ class Constants {
             "lfm_matches_played_defense" to true,
             "lfm_tele_avg_charge_points" to true,
             "matches_tippy" to false,
-            "lfm_matches_tippy" to false
+            "lfm_matches_tippy" to false,
+            "avg_intakes_ground" to true
         )
 
         val RANK_BY_PIT = mapOf<String, Int>(
