@@ -333,7 +333,7 @@ class MainViewerActivity : ViewerActivity() {
         var contents: JsonObject? = null
         var gson = Gson()
 
-        private val file = File(Constants.DOWNLOADS_FOLDER, "viewer_user_data_prefs.json")
+        val file = File(Constants.DOWNLOADS_FOLDER, "viewer_user_data_prefs.json")
 
         fun read(context: Context) {
             if (!fileExists()) {
@@ -396,6 +396,10 @@ class MainViewerActivity : ViewerActivity() {
                     contents?.addProperty("key", "${Constants.DEFAULT_KEY}")
                     contents?.remove("schedule")
                     contents?.addProperty("schedule", "${Constants.DEFAULT_SCHEDULE}")
+                    contents?.remove("default_key")
+                    contents?.addProperty("default_key", "${Constants.DEFAULT_KEY}")
+                    contents?.remove("default_schedule")
+                    contents?.addProperty("default_schedule", "${Constants.DEFAULT_SCHEDULE}")
                     write()
                 } catch (e: Exception) {
                     Log.e("UserDatapoints.read", "Failed to read user datapoints file")
