@@ -198,7 +198,7 @@ class Translations {
             "lfm_tele_avg_charge_points" to "Avg Charge Points",
             "matches_tippy" to "Matches Marked Tippy",
             "lfm_matches_tippy" to "Matches Marked Tippy",
-            "forkable" to "Forkable",
+            "is_forkable" to "Is Forkable",
             "has_ground_intake" to "Has Ground Intake"
         )
 

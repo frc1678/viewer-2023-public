@@ -190,7 +190,7 @@ class Constants {
             "charge_percent_success",
             "tele_avg_charge_points",
             "Pit Data",
-            "forkable",
+            "is_forkable",
             "has_ground_intake",
             "has_communication_device",
             "has_vision",
