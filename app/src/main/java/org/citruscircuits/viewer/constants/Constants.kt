@@ -180,6 +180,8 @@ class Constants {
             "driver_quickness",
             "foul_cc",
             "avg_intakes_ground",
+            "avg_intakes_double",
+            "avg_intakes_single",
             "Endgame",
             "tele_park_successes",
             "tele_charge_attempts",
