@@ -14,10 +14,10 @@ import java.io.File
 class Constants {
     companion object {
         //Game specific data.
-        val DEFAULT_KEY = "2023casj"
-        val DEFAULT_SCHEDULE = "2023casj"
-        var EVENT_KEY = "2023casj"
-        var SCHEDULE_KEY = "2023casj"
+        val DEFAULT_KEY = "2023gal"
+        val DEFAULT_SCHEDULE = "2023gal"
+        var EVENT_KEY = "2023gal"
+        var SCHEDULE_KEY = "2023gal"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
         const val REFRESH_INTERVAL = 120
@@ -74,6 +74,7 @@ class Constants {
             "current_avg_rps",
             "Auto",
             "mode_start_position",
+            "mode_preloaded_gamepiece",
             "auto_avg_cube_low",
             "auto_avg_cube_mid",
             "auto_avg_cube_high",
