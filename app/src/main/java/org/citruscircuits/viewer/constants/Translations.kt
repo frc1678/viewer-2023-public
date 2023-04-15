@@ -62,6 +62,7 @@ class Translations {
             "avg_intakes_ground" to "Avg Ground Intakes",
 
             // 2023
+            "mode_preloaded_gamepiece" to "Mode Preloaded Game Piece",
             "auto_avg_cone_high" to "Avg Cones High",
             "auto_avg_cone_low" to "Avg Cones Low",
             "auto_avg_cone_mid" to "Avg Cones Mid",
