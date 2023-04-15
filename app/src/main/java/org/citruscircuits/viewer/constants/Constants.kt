@@ -331,6 +331,7 @@ class Constants {
             "tele_max_cones" to "tele_total_cones",
             "avg_intakes_ground" to "intakes_ground",
             "avg_intakes_double" to "intakes_double",
+            "avg_intakes_single" to "intakes_single",
             "matches_incap" to "incap",
             "max_incap" to "incap",
             "median_nonzero_incap" to "incap",
