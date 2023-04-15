@@ -97,7 +97,8 @@ class Translations {
             "charging_rp" to "Charging RP",
             "has_communication_device" to "Communication Device on Robot",
             "intakes_ground" to "Ground Intakes",
-            "intakes_station" to "Station Intakes",
+            "intakes_double" to "Double Substation Intakes",
+            "intakes_single" to "Single Substation Intakes",
             "length" to "Length (in.)",
             "lfm_auto_avg_cone_high" to "Avg Cones High",
             "lfm_auto_avg_cone_low" to "Avg Cones Low",
@@ -175,7 +176,8 @@ class Translations {
             "tele_total_cubes" to "# Cubes Total",
             "tele_total_gamepieces" to "Total Game Pieces",
             "tele_total_gamepieces_low" to "# Gamepieces Low Total",
-            "avg_intakes_station" to "Avg Intakes Station",
+            "avg_intakes_double" to "Avg Double Substation Intakes",
+            "avg_intakes_single" to "Avg Single Substation Intakes",
             "avg_intakes_ground" to "Avg Intakes Ground",
             "weight" to "Weight (lbs.)",
             "width" to "Width (in.)",
@@ -195,7 +197,9 @@ class Translations {
             "lfm_matches_played_defense" to "Matches Played Defense",
             "lfm_tele_avg_charge_points" to "Avg Charge Points",
             "matches_tippy" to "Matches Marked Tippy",
-            "lfm_matches_tippy" to "Matches Marked Tippy"
+            "lfm_matches_tippy" to "Matches Marked Tippy",
+            "is_forkable" to "Is Forkable",
+            "has_ground_intake" to "Has Ground Intake"
         )
 
         val TIM_FROM_TEAM: Map<String, String> = mapOf(
