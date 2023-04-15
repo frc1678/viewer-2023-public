@@ -557,6 +557,8 @@ class Constants {
             "width" to true,
             "length" to true,
             "weight" to true,
+            "is_forkable" to false,
+            "has_ground_intake" to false,
             "has_communication_device" to false,
             "lfm_avg_total_intakes" to true,
             "lfm_foul_cc" to false,
@@ -570,8 +572,10 @@ class Constants {
             "lfm_tele_avg_charge_points" to true,
             "matches_tippy" to false,
             "lfm_matches_tippy" to false,
-            "avg_intakes_ground" to true
-        )
+            "avg_intakes_ground" to true,
+            "avg_intakes_double" to true,
+            "avg_intakes_single" to true,
+            )
 
         val RANK_BY_PIT = mapOf<String, Int>(
             "swerve" to 1,
