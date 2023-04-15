@@ -14,10 +14,10 @@ import java.io.File
 class Constants {
     companion object {
         //Game specific data.
-        val DEFAULT_KEY = "test2023casj"
-        val DEFAULT_SCHEDULE = "2023casj"
-        var EVENT_KEY = "test2023casj"
-        var SCHEDULE_KEY = "2023casj"
+        val DEFAULT_KEY = "2023gal"
+        val DEFAULT_SCHEDULE = "2023gal"
+        var EVENT_KEY = "2023gal"
+        var SCHEDULE_KEY = "2023gal"
         const val MY_TEAM_NUMBER = "1678"
         const val USE_TEST_DATA = false
         const val REFRESH_INTERVAL = 120
