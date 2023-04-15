@@ -87,8 +87,7 @@ class MatchDetailsAdapter(
 
                 textViews[i].text = if (!hasActualData) getTeamValue(
                     teamNumbers[i],
-                    Constants.ACTUAL_TO_PREDICTED_MATCH_DETAILS[datapointsDisplay[position]]
-                        ?: datapointsDisplay[position]
+                    datapointsDisplay[position]
                 )?.replace("O", "▲")?.replace("U", "🟪") ?: Constants.NULL_CHARACTER
                 else if (datapointsDisplay[position] == "driver_ability" || datapointsDisplay[position] == "current_avg_rps") {
                     var teamData = getTeamDataValue(teamNumbers[i], datapointsDisplay[position])
