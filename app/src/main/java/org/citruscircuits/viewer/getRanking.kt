@@ -35,8 +35,10 @@ fun createLeaderboard(datapoint: String) {
         if ((datapoint in Constants.PIT_DATA && datapoint == "drivetrain"
             || datapoint == "has_communication_device"
             || datapoint == "has_vision"
-            || datapoint == "drivetrain_motor_type")
+            || datapoint == "drivetrain_motor_type"
             || datapoint == "middle_compatibility"
+            || datapoint == "is_forkable"
+            || datapoint == "has_ground_intake")
         ) {
             (Constants.RANK_BY_PIT[it.value] ?: 0).toFloat()
         } else
