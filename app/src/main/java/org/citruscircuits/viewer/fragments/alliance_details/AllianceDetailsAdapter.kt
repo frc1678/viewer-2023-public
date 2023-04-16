@@ -32,7 +32,7 @@ class AllianceDetailsAdapter(
 
     override fun getCount() = StartupActivity.databaseReference?.alliance?.size!!
     override fun getItem(position: Int) =
-        StartupActivity.databaseReference?.alliance?.get((position + 1).toString())
+        StartupActivity.databaseReference?.alliance?.get(((position % 8) + 1).toString())
 
     override fun getItemId(position: Int) = position.toLong()
 
@@ -43,19 +43,24 @@ class AllianceDetailsAdapter(
      */
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val rowView = inflater.inflate(R.layout.alliance_details_cell, parent, false)
-        rowView.alliance_details_alliance_num.text = (position + 1).toString()
-
         val allianceNumber = (position + 1).toString()
+
+        rowView.alliance_details_alliance_num.text = (((position % 8) + 1).toString() +
+                if(position in 0..7){
+                    " 3rd"
+                } else{
+                    " 4th"
+                })
 
         // Gets the team number for each pick on an alliance
         val picks = Json.parseToJsonElement(getPredictedAlliancesDataByKey(
-            position + 1, "picks"
+            allianceNumber.toInt(), "picks"
         )!!.filter { it != '\'' }).jsonArray
 
         val file = File(Constants.DOWNLOADS_FOLDER, "viewer_elim_alliances.json")
 
         // Creates list of every team text in the given alliance
-        var teamTextList = listOf(
+        val teamTextList = listOf(
             rowView.alliance_details_alliance_num,
             rowView.alliance_details_team1,
             rowView.alliance_details_team2,
@@ -69,19 +74,19 @@ class AllianceDetailsAdapter(
 
         // Sets the text for all of the predicted data for the given alliance
         rowView.alliance_details_auto_score.text = "%.2f".format(
-            getPredictedAlliancesDataByKey(position + 1, "predicted_auto_score")?.toFloatOrNull()
+            getPredictedAlliancesDataByKey(allianceNumber.toInt(), "predicted_auto_score")?.toFloatOrNull()
                 ?: Constants.NULL_CHARACTER
         )
         rowView.alliance_details_tele_score.text = "%.2f".format(
-            getPredictedAlliancesDataByKey(position + 1, "predicted_tele_score")?.toFloatOrNull()
+            getPredictedAlliancesDataByKey(allianceNumber.toInt(), "predicted_tele_score")?.toFloatOrNull()
                 ?: Constants.NULL_CHARACTER
         )
         rowView.alliance_details_endgame_score.text = "%.2f".format(
-            getPredictedAlliancesDataByKey(position + 1, "predicted_charge_score")?.toFloatOrNull()
+            getPredictedAlliancesDataByKey(allianceNumber.toInt(), "predicted_charge_score")?.toFloatOrNull()
                 ?: Constants.NULL_CHARACTER
         )
         rowView.alliance_details_total_score.text = "%.2f".format(
-            getPredictedAlliancesDataByKey(position + 1, "predicted_score")?.toFloatOrNull()
+            getPredictedAlliancesDataByKey(allianceNumber.toInt(), "predicted_score")?.toFloatOrNull()
                 ?: Constants.NULL_CHARACTER
         )
 
