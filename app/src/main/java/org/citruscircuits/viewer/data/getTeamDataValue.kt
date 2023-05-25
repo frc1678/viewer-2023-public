@@ -1,11 +1,3 @@
-/*
-* getTeamDataValue.kt
-* viewer
-*
-* Created on 3/5/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer
 
 import org.citruscircuits.viewer.constants.Constants

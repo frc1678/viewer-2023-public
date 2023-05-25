@@ -1,11 +1,3 @@
-/*
-* RankingFragment.kt
-* viewer
-*
-* Created on 1/26/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer.fragments.ranking
 
 import android.annotation.SuppressLint

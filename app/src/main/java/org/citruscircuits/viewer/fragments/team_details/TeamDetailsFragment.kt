@@ -1,11 +1,3 @@
-/*
-* TeamDetailsFragment.kt
-* viewer
-*
-* Created on 2/19/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer.fragments.team_details
 
 import android.content.Context

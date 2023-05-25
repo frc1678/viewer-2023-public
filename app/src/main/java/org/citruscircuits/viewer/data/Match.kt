@@ -1,11 +1,3 @@
-/*
-* Match.kt
-* viewer
-*
-* Created on 1/30/2019
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer.data
 
 // Data storage class for each individual match object.

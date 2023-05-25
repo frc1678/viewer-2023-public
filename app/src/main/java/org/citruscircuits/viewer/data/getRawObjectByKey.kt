@@ -1,11 +1,3 @@
-/*
-* getRawObjectByKey.kt
-* viewer
-*
-* Created on 2/26/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer
 
 import kotlinx.serialization.json.jsonPrimitive

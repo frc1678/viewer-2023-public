@@ -1,11 +1,3 @@
-/*
-* findFieldInheritedFields.kt
-* viewer
-*
-* Created on 2/22/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer
 
 import java.lang.reflect.Field

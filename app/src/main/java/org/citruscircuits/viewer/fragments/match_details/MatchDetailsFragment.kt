@@ -1,11 +1,3 @@
-/*
-* MatchDetailsFragment.kt
-* viewer
-*
-* Created on 2/10/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer.fragments.match_details
 
 import android.graphics.Paint
