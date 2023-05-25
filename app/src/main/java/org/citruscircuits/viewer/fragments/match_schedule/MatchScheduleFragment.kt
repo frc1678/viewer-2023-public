@@ -1,11 +1,3 @@
-/*
-* MatchScheduleFragment.kt
-* viewer
-*
-* Created on 1/26/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer.fragments.match_schedule
 
 import android.content.Context

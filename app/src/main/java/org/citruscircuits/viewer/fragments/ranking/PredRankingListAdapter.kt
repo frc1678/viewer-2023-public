@@ -1,11 +1,3 @@
-/*
-* RankingListAdapter.kt
-* viewer
-*
-* Created on 2/8/2020
-* Copyright 2020 Citrus Circuits. All rights reserved.
-*/
-
 package org.citruscircuits.viewer.fragments.ranking
 
 import android.app.Activity
